@@ -1,8 +1,8 @@
 {
-  "name": "govco-pwa",
-  "short_name": "govco-pwa",
-  "theme_color": "#1976d2",
-  "background_color": "#fafafa",
+  "name": "GOV.CO",
+  "short_name": "GOV.CO",
+  "theme_color": "#3366CC",
+  "background_color": "#3366CC",
   "display": "standalone",
   "scope": "./",
   "start_url": "./",
