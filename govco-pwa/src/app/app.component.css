@@ -43,8 +43,11 @@ mat-sidenav-container{
 }
 
 mat-sidenav{
-
-  width: 200px;
+  width: 60vw;
   background: whitesmoke;
   text-align: center;
+}
+
+.escalarContenido{
+  transform: scale(0.8);
 }
