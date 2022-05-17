@@ -1,0 +1,19 @@
+
+.buttom-navbar{
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: grey;
+  max-width: 100%;
+}
+
+.container .row .col a{
+  text-align: center;
+  text-decoration: none;
+  color: white;
+}
+
+.container .row .col a.active{
+  color: blue;
+}
