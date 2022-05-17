@@ -6,14 +6,14 @@
 
 <mat-sidenav-container>
 
-
-<mat-sidenav #sidenav="matSidenav">
+<mat-sidenav #sidenav="matSidenav" mode="push">
   <app-sidenav-items></app-sidenav-items>
 </mat-sidenav>
 
-
-  <mat-sidenav-content>
-
+  <mat-sidenav-content [class.escalarContenido]="sidenav.opened">
+    <div>
+      Contenido de la página
+    </div>
   </mat-sidenav-content>
 
 </mat-sidenav-container>
