@@ -17,3 +17,23 @@
 .container .row .col a.active{
   color: blue;
 }
+
+a{
+  position: relative;
+}
+a:after{
+  content: '';
+  position: absolute;
+  background-color: blue;
+  height: 5px;
+  width: 0;
+  left: 0;
+  top: 0px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  transition: 0.3s;
+}
+
+a:hover:after{
+  width: 100%;
+}
