@@ -37,3 +37,17 @@ a:after{
 a:hover:after{
   width: 100%;
 }
+
+mat-sidenav-container{
+  height: calc(100vh - 65px)
+}
+
+mat-sidenav{
+  width: 60vw;
+  background: whitesmoke;
+  text-align: center;
+}
+
+.escalarContenido{
+  transform: scale(0.8);
+}
