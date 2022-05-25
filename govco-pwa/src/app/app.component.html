@@ -1,7 +1,11 @@
 <mat-toolbar>
-  <button mat-icon-button>
-    <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
-  </button>
+  <div (click)="sidenav.toggle()">
+    <div class="menu-hamburgesa" [@efectoHamburguesaX]="esHamburguesa ? 'hamburguesa' : 'linea-superior'"></div>
+    <div class="menu-hamburgesa" [@efectoHamburguesaX]="esHamburguesa ? 'hamburguesa' : 'linea-medio'"></div>
+    <div class="menu-hamburgesa" [@efectoHamburguesaX]="esHamburguesa ? 'hamburguesa' : 'linea-inferior'"></div>
+  </div>
+
+
 </mat-toolbar>
 
 <mat-sidenav-container>
