@@ -1,5 +1,8 @@
+/* HOJA DE ESTILOS PAR EL PROYECTO GOVCO VERSIÓN MÓVIL */
+/* ESTILOS GENERALES DE TRANSVERSALES PROYECTO */
 
-.buttom-navbar{
+/* ESTILOS DEL BOTTOM NAVBAR */
+.bottom-navbar{
   overflow: hidden;
   position: fixed;
   bottom: 0;
@@ -38,6 +41,8 @@ a:hover:after{
   width: 100%;
 }
 
+/* ESTILOS DEL SIDE NAV */
+
 mat-sidenav-container{
   height: calc(100vh - 65px)
 }
@@ -48,14 +53,14 @@ mat-sidenav{
   text-align: center;
 }
 
-.escalarContenido{
-  transform: scale(0.8);
-}
-
 .menu-hamburgesa {
   width: 22px;
   height: 2px;
   background: black;
   margin: 3px;
   position: relative;
+}
+/* MICROINTERACCIÓN DE CONTENIDO */
+.escalarContenido{
+  transform: scale(0.8);
 }
