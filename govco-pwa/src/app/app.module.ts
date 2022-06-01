@@ -21,7 +21,12 @@ import { SidenavModule  } from './sidenav/sidenav.module';
   ],
   imports: [
     BrowserModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatIconModule,
     AppRoutingModule,
+    SidenavModule,
     InicioModule,
     PerfilModule,
     TransversalesModule,
@@ -30,7 +35,8 @@ import { SidenavModule  } from './sidenav/sidenav.module';
       // Register the ServiceWorker as soon as the application is stable
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000'
-    })
+    }),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

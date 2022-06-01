@@ -6,6 +6,7 @@
   </div>
 </mat-toolbar>
 
+<mat-sidenav-container>
 
 <mat-sidenav #sidenav="matSidenav" mode="push">
   <app-sidenav-items></app-sidenav-items>
@@ -13,7 +14,7 @@
 
   <mat-sidenav-content [class.escalarContenido]="sidenav.opened">
     <div>
-      Contenido de la página
+      <router-outlet></router-outlet>
     </div>
 
     <div class="bottom-navbar">

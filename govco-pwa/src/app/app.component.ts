@@ -24,7 +24,7 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
           opacity: 0,
         })
       ),
-      
+
       state(
         'linea-inferior',
         style({
@@ -55,10 +55,10 @@ export class AppComponent {
 
   esHamburguesa = true;
   onClick() {
-    
+
     if (this.sidenav.opened && this.esHamburguesa==false){
       this.esHamburguesa = false;
-      
+
     }
     else{
       this.esHamburguesa = !this.esHamburguesa;
