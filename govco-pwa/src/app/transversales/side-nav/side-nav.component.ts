@@ -2,11 +2,10 @@ import { Component, ViewChild } from '@angular/core';
 import { MatSidenav, MatSidenavContent } from '@angular/material/sidenav';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 
-
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  selector: 'app-side-nav',
+  templateUrl: './side-nav.component.html',
+  styleUrls: ['./side-nav.component.css'],
   animations: [
     trigger('efectoHamburguesaX', [
       state('hamburgesa', style({})),
@@ -24,6 +23,7 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
           opacity: 0,
         })
       ),
+
       state(
         'linea-inferior',
         style({
@@ -41,16 +41,12 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
     '(document:click)': 'onClick($event)',
 }
 })
-
-
-export class AppComponent {
-  title = 'govco-pwa';
+export class SideNavComponent {
 
   @ViewChild(MatSidenav) sidenav!: MatSidenav;
   @ViewChild(MatSidenavContent ) sidenavcontent!: MatSidenavContent;
 
-  constructor(){
-  }
+  constructor() { }
 
   esHamburguesa = true;
   onClick() {
@@ -63,4 +59,6 @@ export class AppComponent {
       this.esHamburguesa = !this.esHamburguesa;
     }
   }
+
+
 }

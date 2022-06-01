@@ -1,0 +1,12 @@
+
+.menu-hamburgesa {
+  width: 22px;
+  height: 2px;
+  background: black;
+  margin: 3px;
+  position: relative;
+}
+
+.escalarContenido{
+  transform: scale(0.8);
+}
