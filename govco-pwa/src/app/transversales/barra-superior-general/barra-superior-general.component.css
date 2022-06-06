@@ -1,0 +1,47 @@
+.barra-superior-general-pwa-govco {
+    display: grid;
+    grid-template-columns: 16px 1fr 16px;
+    grid-template-rows: 56px 60px;
+    height: 100%;
+}
+
+.menu-logo-pwa-govco {
+    grid-column: 2;
+    grid-row: 1;
+    display: grid;
+    grid-template-columns: 1fr 8px 1fr 8px 1fr 8px 1fr 8px 1fr 8px 1fr;
+}
+
+.menu-hamburgesa-pwa-govco {
+    grid-column: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin-left: 14px
+}
+
+.menu-pwa-govco {
+    background-color: #FFFFFF;
+}
+
+.menu-hamburgesa {
+    width: 20px;
+    height: 2px;
+    border-radius: 2px 2px;
+    margin: 2px;
+    position: relative;
+  }
+
+.logo-pwa-govco {
+    grid-column: 3 / 10;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.app-buscador-pwa-govco {
+    grid-column: 2;
+    grid-row: 2;
+}

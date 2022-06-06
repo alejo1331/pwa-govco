@@ -1,18 +1,22 @@
-<mat-toolbar>
-  <div (click)="sidenav.toggle()">
-    <div class="menu-hamburgesa" [@efectoHamburguesaX]="esHamburguesa ? 'hamburguesa' : 'linea-superior'"></div>
-    <div class="menu-hamburgesa" [@efectoHamburguesaX]="esHamburguesa ? 'hamburguesa' : 'linea-medio'"></div>
-    <div class="menu-hamburgesa" [@efectoHamburguesaX]="esHamburguesa ? 'hamburguesa' : 'linea-inferior'"></div>
-  </div>
-</mat-toolbar>
-
 <mat-sidenav-container>
-
-<mat-sidenav #sidenav="matSidenav" mode="push">
-  <app-sidenav-items></app-sidenav-items>
-</mat-sidenav>
+  <mat-sidenav #sidenav="matSidenav" mode="push">
+    <app-sidenav-items></app-sidenav-items>
+  </mat-sidenav>
 
   <mat-sidenav-content [class.escalarContenido]="sidenav.opened">
+
+    <header class="header-pwa-govco">
+      <!-- <mat-toolbar> -->
+        <div (click)="sidenav.toggle()">
+          <div class="menu-hamburgesa" [@efectoHamburguesaX]="esHamburguesa ? 'hamburguesa' : 'linea-superior'"></div>
+          <div class="menu-hamburgesa" [@efectoHamburguesaX]="esHamburguesa ? 'hamburguesa' : 'linea-medio'"></div>
+          <div class="menu-hamburgesa" [@efectoHamburguesaX]="esHamburguesa ? 'hamburguesa' : 'linea-inferior'"></div>
+        </div>
+      <!-- </mat-toolbar> -->
+      <app-barra-superior-general class="app-barra-superior-general-pwa-govco"></app-barra-superior-general>
+      <app-geolocalizacion class="app-geolocalizacionpwa-govco"></app-geolocalizacion>
+    </header>
+
     <div>
       <router-outlet></router-outlet>
     </div>
@@ -21,7 +25,8 @@
       <div class="container">
         <div class="row d-flex justify-content-center text-center bottom-nav">
           <div class="col">
-            <a routerLink="inicio/home" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-item nav-link">Inicio</a>
+            <a routerLink="inicio/home" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+              class="nav-item nav-link">Inicio</a>
           </div>
           <div class="col">
             <a routerLink="perfil/home" routerLinkActive="active" class="nav-item nav-link">Perfil</a>
