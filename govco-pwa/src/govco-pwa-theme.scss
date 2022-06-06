@@ -1,0 +1,61 @@
+@use '~@angular/material' as mat;
+@include mat.core();
+
+$govco-pwa-primary-color: (
+  300 : #7094db,
+  400 : #527dd4,
+  500 : #3366cc,
+  600 : #2e5ec7,
+  700 : #2753c0,
+  contrast: (
+      300 : #000000,
+      400 : #ffffff,
+      500 : #ffffff,
+      600 : #ffffff,
+      700 : #ffffff,
+  )
+);
+
+$govco-pwa-accent-color: (
+  300 : #51b296,
+  400 : #2ba280,
+  500 : #069169,
+  600 : #058961,
+  700 : #047e56,
+  contrast: (
+      300 : #000000,
+      400 : #ffffff,
+      500 : #ffffff,
+      600 : #ffffff,
+      700 : #ffffff,
+  )
+);
+
+$govco-pwa-warn-color: (
+  300 : #c25064,
+  400 : #b52b42,
+  500 : #a80521,
+  600 : #a0041d,
+  700 : #970418,
+  contrast: (
+      300 : #ffffff,
+      400 : #ffffff,
+      500 : #ffffff,
+      600 : #ffffff,
+      700 : #ffffff,
+  )
+);
+
+$govco-pwa-palette-primary: mat.define-palette($govco-pwa-primary-color);
+$govco-pwa-palette-accent: mat.define-palette($govco-pwa-accent-color);
+$govco-pwa-palette-warn: mat.define-palette($govco-pwa-warn-color);
+
+$govco-pwa-light-theme: mat.define-light-theme((
+  color:(
+    primary: $govco-pwa-primary-color,
+    accent: $govco-pwa-accent-color,
+    warn: $govco-pwa-warn-color
+  )
+));
+
+@include mat.all-component-themes($govco-pwa-light-theme);
