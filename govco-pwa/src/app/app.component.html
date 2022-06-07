@@ -1,11 +1,3 @@
-<mat-toolbar>
-  <div (click)="sidenav.toggle()">
-    <div class="menu-hamburgesa" [@efectoHamburguesaX]="esHamburguesa ? 'hamburguesa' : 'linea-superior'"></div>
-    <div class="menu-hamburgesa" [@efectoHamburguesaX]="esHamburguesa ? 'hamburguesa' : 'linea-medio'"></div>
-    <div class="menu-hamburgesa" [@efectoHamburguesaX]="esHamburguesa ? 'hamburguesa' : 'linea-inferior'"></div>
-  </div>
-</mat-toolbar>
-
 <mat-sidenav-container>
 
 <mat-sidenav #sidenav="matSidenav" mode="push">
@@ -13,6 +5,15 @@
 </mat-sidenav>
 
   <mat-sidenav-content [class.escalarContenido]="sidenav.opened">
+
+    <mat-toolbar>
+      <div (click)="sidenav.toggle()">
+        <div class="menu-hamburgesa" [@efectoHamburguesaX]="esHamburguesa ? 'hamburguesa' : 'linea-superior'"></div>
+        <div class="menu-hamburgesa" [@efectoHamburguesaX]="esHamburguesa ? 'hamburguesa' : 'linea-medio'"></div>
+        <div class="menu-hamburgesa" [@efectoHamburguesaX]="esHamburguesa ? 'hamburguesa' : 'linea-inferior'"></div>
+      </div>
+    </mat-toolbar>
+
     <div>
       <router-outlet></router-outlet>
     </div>

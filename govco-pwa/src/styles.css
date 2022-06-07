@@ -5,3 +5,11 @@ html, body {
   width: 100vw;
   margin: 0;
 }
+
+.mat-drawer-shown {
+  background-color: rgba(0, 0, 0, 0) !important;
+}
+
+.mat-drawer:not(.mat-drawer-side) {
+  box-shadow: none;
+}
