@@ -4,91 +4,106 @@
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500&display=swap');
 
 /* ESTILOS DEL BOTTOM NAVBAR */
-.bottom-navbar{
-    overflow: hidden;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background-color: grey;
-    max-width: 100%;
-  }
-  
-  .container .row .col a{
-    text-align: center;
-    text-decoration: none;
-    color: white;
-  }
-  
-  .container .row .col a.active{
-    color: blue;
-  }
-  
-  a{
-    position: relative;
-  }
-  a:after{
-    content: '';
-    position: absolute;
-    background-color: blue;
-    height: 5px;
-    width: 0;
-    left: 0;
-    top: 0px;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    transition: 0.3s;
-  }
-  
-  a:hover:after{
-    width: 100%;
-  }
+.bottom-navbar {
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: grey;
+  max-width: 100%;
+}
 
-  .menu-hamburgesa {
-    width: 20px;
-    height: 2px;
-    background-color: black;
-    border-radius: 2px 2px;
-    margin: 2px;
-    position: relative;
-  }
-  
-  /* ESTILOS DEL SIDE NAV */
-  
-  mat-sidenav-container{
-    height: calc(100vh - 65px);
-  }
-  
-  mat-sidenav{
-    width: 60vw;
-    background: whitesmoke;
-    text-align: center;
-    
-  }
-  
-  /* MICROINTERACCIÓN DE CONTENIDO */
-  .escalarContenido{
-    transform: scale(0.8);
-  }
-  
-  .header-pwa-govco {
-    display: grid;
-    grid-template-columns: 50% 50%;
-    grid-template-rows: 116px 36px;
-    height: 152px;
-  }
-  
-  .app-barra-superior-general-pwa-govco {
-    grid-column: 1 / span 2;
-    grid-row: 1;
-    height: 100%;
-    background-color: #3366CC;
-  }
-  
-  .app-geolocalizacionpwa-govco {
-    grid-column: 1 / span 2;
-    grid-row: 2;
-    height: 100%;
-    background-color: #E6EFFD;
-    display: flex;
-    align-items: center;
-  }
+.container .row .col a {
+  text-align: center;
+  text-decoration: none;
+  color: white;
+}
+
+.container .row .col a.active {
+  color: blue;
+}
+
+a {
+  position: relative;
+}
+
+a:after {
+  content: '';
+  position: absolute;
+  background-color: blue;
+  height: 5px;
+  width: 0;
+  left: 0;
+  top: 0px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  transition: 0.3s;
+}
+
+a:hover:after {
+  width: 100%;
+}
+
+/* ESTILOS DEL SIDE NAV */
+
+mat-sidenav-container {
+  height: 100%;
+}
+
+mat-sidenav {
+  width: 60vw;
+  background: whitesmoke;
+  text-align: center;
+}
+
+
+/* ESTILOS DEL SIDE NAV */
+
+mat-sidenav-container {
+  height: calc(100vh - 65px);
+}
+
+mat-sidenav {
+  width: 60vw;
+  background: whitesmoke;
+  text-align: center;
+
+}
+
+.menu-hamburgesa {
+  width: 20px;
+  height: 2px;
+  background-color: black;
+  border-radius: 2px 2px;
+  margin: 2px;
+  position: relative;
+}
+
+
+/* MICROINTERACCIÓN DE CONTENIDO */
+.escalarContenido {
+  transform: scale(0.8);
+}
+
+.header-pwa-govco {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 116px 36px;
+  height: 152px;
+}
+
+.app-barra-superior-general-pwa-govco {
+  grid-column: 1 / span 2;
+  grid-row: 1;
+  height: 100%;
+  background-color: #3366CC;
+}
+
+.app-geolocalizacionpwa-govco {
+  grid-column: 1 / span 2;
+  grid-row: 2;
+  height: 100%;
+  background-color: #E6EFFD;
+  display: flex;
+  align-items: center;
+}
