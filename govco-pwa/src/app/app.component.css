@@ -1,7 +1,7 @@
-
-
 /* HOJA DE ESTILOS PAR EL PROYECTO GOVCO VERSIÓN MÓVIL */
 /* ESTILOS GENERALES DE TRANSVERSALES PROYECTO */
+
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500&display=swap');
 
 /* ESTILOS DEL BOTTOM NAVBAR */
 .bottom-navbar{
@@ -64,13 +64,6 @@
     text-align: center;
     
   }
-  .mat-drawer-transition .mat-drawer-backdrop{
-    opacity: 0;
-  }
-  
-  /* .mat-drawer-transition .mat-drawer-content {
-    border-radius: 20px;
-  } */
   
   /* MICROINTERACCIÓN DE CONTENIDO */
   .escalarContenido{

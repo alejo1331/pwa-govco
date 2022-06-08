@@ -1,67 +1,24 @@
-import { Component, OnInit,ViewChild } from '@angular/core';
-import { trigger, state, style, animate, transition } from '@angular/animations';
-import { MatSidenav, MatSidenavContent } from '@angular/material/sidenav';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 
 @Component({
   selector: 'app-barra-superior-general',
   templateUrl: './barra-superior-general.component.html',
-  styleUrls: ['./barra-superior-general.component.css'],
-  animations: [
-    trigger('efectoHamburguesaX', [
-      state('hamburgesa', style({})),
-      state(
-        'linea-superior',
-        style({
-          transform: 'rotate(45deg)',
-          transformOrigin: 'left',
-          margin: '6px',
-        })
-      ),
-      state(
-        'linea-medio',
-        style({
-          opacity: 0,
-        })
-      ),
-      state(
-        'linea-inferior',
-        style({
-          transform: 'rotate(-45deg)',
-          transformOrigin: 'left',
-          margin: '6px',
-        })
-      ),
-      transition('* => *', [
-        animate('0.2s'),
-      ]),
-    ]),
-  ],
-  host: {
-    '(document:click)': 'onClick($event)',
-}
+  styleUrls: ['./barra-superior-general.component.css']
 })
 export class BarraSuperiorGeneralComponent implements OnInit {
-  
-  title = 'govco-pwa';
 
-  @ViewChild(MatSidenav) sidenav!: MatSidenav;
-  @ViewChild(MatSidenavContent ) sidenavcontent!: MatSidenavContent;
+  @Output() outEstadoMenu = new EventEmitter<boolean>();
+  estadoMenu: boolean = false;
 
-  constructor() { }
+  constructor() {
+   }
 
   ngOnInit(): void {
   }
-
-  esHamburguesa = true;
-  onClick() {
-
-    if (this.sidenav.opened && this.esHamburguesa==false){
-      this.esHamburguesa = false;
-
-    }
-    else{
-      this.esHamburguesa = !this.esHamburguesa;
-    }
+  
+  onClickMenu(){
+    this.estadoMenu = this.estadoMenu? false : true;
+    this.outEstadoMenu.emit(this.estadoMenu);
   }
 
 }

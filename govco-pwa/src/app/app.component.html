@@ -6,14 +6,9 @@
   <mat-sidenav-content [class.escalarContenido]="sidenav.opened">
 
     <header class="header-pwa-govco">
-      <!-- <mat-toolbar> -->
-        <div (click)="sidenav.toggle()">
-          <div class="menu-hamburgesa" [@efectoHamburguesaX]="esHamburguesa ? 'hamburguesa' : 'linea-superior'"></div>
-          <div class="menu-hamburgesa" [@efectoHamburguesaX]="esHamburguesa ? 'hamburguesa' : 'linea-medio'"></div>
-          <div class="menu-hamburgesa" [@efectoHamburguesaX]="esHamburguesa ? 'hamburguesa' : 'linea-inferior'"></div>
-        </div>
-      <!-- </mat-toolbar> -->
-      <app-barra-superior-general class="app-barra-superior-general-pwa-govco"></app-barra-superior-general>
+      <app-barra-superior-general (outEstadoMenu)="estadoMenu($event)" 
+        class="app-barra-superior-general-pwa-govco">
+      </app-barra-superior-general>
       <app-geolocalizacion class="app-geolocalizacionpwa-govco"></app-geolocalizacion>
     </header>
 
