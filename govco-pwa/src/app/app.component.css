@@ -56,20 +56,6 @@ mat-sidenav {
   text-align: center;
 }
 
-
-/* ESTILOS DEL SIDE NAV */
-
-mat-sidenav-container {
-  height: calc(100vh - 65px);
-}
-
-mat-sidenav {
-  width: 60vw;
-  background: whitesmoke;
-  text-align: center;
-
-}
-
 .menu-hamburgesa {
   width: 20px;
   height: 2px;
@@ -78,7 +64,6 @@ mat-sidenav {
   margin: 2px;
   position: relative;
 }
-
 
 /* MICROINTERACCIÓN DE CONTENIDO */
 .escalarContenido {
