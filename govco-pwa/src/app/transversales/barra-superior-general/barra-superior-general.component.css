@@ -1,0 +1,73 @@
+.barra-superior-general-pwa-govco {
+    display: grid;
+    grid-template-columns: 16px 1fr 16px;
+    grid-template-rows: 56px 60px;
+    height: 100%;
+}
+
+.menu-logo-pwa-govco {
+    grid-column: 2;
+    grid-row: 1;
+    display: grid;
+    grid-template-columns: 1fr 8px 1fr 8px 1fr 8px 1fr 8px 1fr 8px 1fr;
+}
+
+.menu-hamburgesa-pwa-govco {
+    grid-column: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin-left: 14px;
+}
+
+.menu-hamburgesa-superior, 
+.menu-hamburgesa-medio,
+.menu-hamburgesa-inferior {
+    transition: 0.6s;
+    width: 20px;
+    height: 2px;
+    border-radius: 2px 2px;
+    background-color: #fdfdfd;
+    margin: 2px;
+    position: relative;
+}
+
+.menu-hamburgesa-superior-rotacion,
+.menu-hamburgesa-medio-rotacion,
+.menu-hamburgesa-inferior-rotacion {
+    transition: 0.6s;
+}
+
+.menu-hamburgesa-superior-rotacion {
+    width: 8px;
+    transform: rotate(45deg);
+    transform-origin: top left;
+    margin: 2px 1px 3px 5px;
+}
+
+.menu-hamburgesa-medio-rotacion {
+    transform: rotate(-45deg);
+    transform-origin: bottom center;
+    margin: 1px 2px 1px 2px;
+}
+
+.menu-hamburgesa-inferior-rotacion {
+    width: 8px;
+    transform: rotate(45deg);
+    transform-origin: top center;
+    margin: 2px 3px 3px 12px;
+}
+
+.logo-pwa-govco {
+    grid-column: 3 / 10;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.app-buscador-pwa-govco {
+    grid-column: 2;
+    grid-row: 2;
+}

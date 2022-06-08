@@ -1,0 +1,18 @@
+.geolocalizacion-pwa-govco-icon {
+    color: #004884;
+    margin-left: 29px;
+    font-size: 20px;
+    font-variation-settings:
+        'FILL' 1,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 48;
+}
+
+.geolocalizacion-pwa-govco-texto {
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    margin-left: 9px;
+    color: #004884;
+}

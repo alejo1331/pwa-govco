@@ -1,0 +1,22 @@
+.buscador-pwa-govco::placeholder {
+  color: #BABABA;
+}
+.buscador-pwa-govco {
+  height: 44px;
+  width: 100%;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  border: 1px solid white;
+  border-radius: 22px;
+  padding: 14px 12px 14px 20px;
+  background-color: #FFFFFF;
+}
+
+.icono-buscador-pwa-govco{
+  background-image: url('../../../assets/logos/transversales/search_FILL0_wght700_GRAD0_opsz40.svg') ;
+  background-size: 25px 25px;
+  background-repeat: no-repeat;
+  background-position: right;
+  background-position-x: 97%;
+}

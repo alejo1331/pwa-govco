@@ -5,3 +5,14 @@ html, body {
   width: 100vw;
   margin: 0;
 }
+
+.mat-drawer-transition .mat-drawer-backdrop{
+  opacity: 0;
+}
+
+/* .mat-drawer-transition .mat-drawer-content {
+  border-radius: 20px;
+} */
+
+
+
