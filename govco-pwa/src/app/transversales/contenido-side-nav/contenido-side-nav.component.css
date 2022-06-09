@@ -1,0 +1,72 @@
+.govco-pwa-sidenav-contenido{
+  background-color: #3366CC;
+  height: 93%;
+  padding-left: 4%;
+  text-align: left;
+}
+
+.govco-pwa-sidenav-items{
+  height: 100%;
+  position: relative;
+}
+
+.govco-pwa-sidenav-primer-nivel{
+  margin-top: 16.2%;
+  padding-left: 0px;
+}
+
+.govco-pwa-sidenav-bottom-nivel{
+  margin-top: 16.2%;
+  padding-left: 0px;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  margin-bottom: 0;
+}
+
+.govco-pwa-sidenav-item{
+      display: block;
+      height: 100%;
+      width: 100%;
+      line-height: 48px;
+      font-family: 'work sans';
+      color: white;
+      display: inline-block;
+}
+
+li {
+  list-style: none;
+}
+
+
+li hr{
+  border: 1.5px solid white;
+  opacity: 1;
+  width: 152px;
+  margin-left: 5.6%;
+  border-radius: 1.5px;
+}
+
+a {
+  text-decoration: none;
+
+}
+
+.govco-pwa-sidenav-primer-nivel ul a {
+  display:block;
+}
+
+span.material-icons-outlined{
+  vertical-align: middle;
+  font-size: 20px;
+  padding: 0 5.6% 0 5.6%;
+}
+
+.govco-pwa-sidenav-item-text {
+  padding-left: 14px;
+}
+
+.govco-pwa-sidenav-label{
+  color: white;
+}
+

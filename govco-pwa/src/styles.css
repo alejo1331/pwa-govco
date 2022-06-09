@@ -10,14 +10,26 @@ html, body {
   opacity: 0;
 }
 
-/* .mat-drawer-transition .mat-drawer-content {
+.mat-drawer-transition .mat-drawer-content {
   border-radius: 20px;
-} */
-
-.mat-drawer-shown {
-  background-color: rgba(0, 0, 0, 0) !important;
 }
 
+.mat-drawer-shown {
+  background-color: #3366CC !important;
+}
+
+.mat-drawer.mat-drawer-push {
+  background-color: #3366CC;
+}
 .mat-drawer:not(.mat-drawer-side) {
   box-shadow: none;
+}
+
+.mat-drawer-container {
+  background-color: #3366CC;
+}
+
+section.govco-pwa-content {
+  background-color: white;
+  height: 100%;
 }
