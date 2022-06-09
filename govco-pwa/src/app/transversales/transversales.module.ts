@@ -7,6 +7,7 @@ import { BuscadorComponent } from './buscador/buscador.component';
 import { GeolocalizacionComponent } from './geolocalizacion/geolocalizacion.component';
 import { BarraSuperiorInternaComponent } from './barra-superior-interna/barra-superior-interna.component';
 import { BarraSuperiorGeneralComponent } from './barra-superior-general/barra-superior-general.component';
+import { ContenidoSideNavComponent } from './contenido-side-nav/contenido-side-nav.component';
 
 @NgModule({
   imports: [
@@ -14,20 +15,22 @@ import { BarraSuperiorGeneralComponent } from './barra-superior-general/barra-su
     MatToolbarModule,
   ],
   declarations: [
-    SideNavComponent, 
-    SideNavItemsComponent, 
-    BuscadorComponent, 
-    GeolocalizacionComponent, 
-    BarraSuperiorInternaComponent, 
-    BarraSuperiorGeneralComponent
+    SideNavComponent,
+    SideNavItemsComponent,
+    BuscadorComponent,
+    GeolocalizacionComponent,
+    BarraSuperiorInternaComponent,
+    BarraSuperiorGeneralComponent,
+    ContenidoSideNavComponent
   ],
   exports: [
-    SideNavComponent, 
-    SideNavItemsComponent, 
-    BarraSuperiorInternaComponent, 
+    SideNavComponent,
+    SideNavItemsComponent,
+    BarraSuperiorInternaComponent,
     BarraSuperiorGeneralComponent,
     GeolocalizacionComponent,
-    BuscadorComponent
+    BuscadorComponent,
+    ContenidoSideNavComponent
   ]
 })
 export class TransversalesModule { }

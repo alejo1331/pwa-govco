@@ -51,7 +51,7 @@ mat-sidenav-container {
 }
 
 mat-sidenav {
-  width: 60vw;
+  width: 71.78vw;
   background: whitesmoke;
   text-align: center;
 }
@@ -68,6 +68,7 @@ mat-sidenav {
 /* MICROINTERACCIÓN DE CONTENIDO */
 .escalarContenido {
   transform: scale(0.8);
+  border-radius: 20px;
 }
 
 .header-pwa-govco {
