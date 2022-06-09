@@ -14,6 +14,9 @@ export class AppComponent {
   @ViewChild(MatSidenav) sidenav!: MatSidenav;
   @ViewChild(MatSidenavContent ) sidenavcontent!: MatSidenavContent;
 
+  barraSuperiorGeneral :boolean = false;
+  barraSuperiorInterna :boolean = true;
+
   constructor(){
   }
 
@@ -24,6 +27,16 @@ export class AppComponent {
     }
     else {
       this.sidenav.opened = false;
+    }
+  }
+
+  prueba(value: boolean){
+    if(value === true){
+      this.barraSuperiorGeneral = true;
+      this.barraSuperiorInterna = false;
+    }else{
+      this.barraSuperiorGeneral = false;
+      this.barraSuperiorInterna = true;
     }
   }
 }

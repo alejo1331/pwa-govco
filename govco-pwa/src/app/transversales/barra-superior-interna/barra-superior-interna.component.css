@@ -1,0 +1,15 @@
+.caja-buscador-pwa-govco {
+    grid-column: 11 / 12;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icono-buscador-pwa-govco {
+    width: 20px;
+    height: 20px;
+    background-image: url('../../../assets/logos/transversales/search_FILL0_wght600_GRAD0_opsz40.svg');
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    filter: brightness(200%);
+}

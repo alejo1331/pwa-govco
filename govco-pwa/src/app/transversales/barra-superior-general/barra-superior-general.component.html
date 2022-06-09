@@ -1,17 +1,14 @@
-<div class="barra-superior-general-pwa-govco">
+<div class="barra-superior-pwa-govco">
     <div class="menu-logo-pwa-govco">
         <div (click)="onClickMenu(estadoMenu)" class="menu-hamburgesa-pwa-govco">
-            <div class="menu-hamburgesa-superior"
-                [ngClass]="{ 'menu-hamburgesa-superior-rotacion': estadoMenu }">
-            </div>
-            <div
-                class="menu-hamburgesa-medio"
-                [ngClass]="{ 'menu-hamburgesa-medio-rotacion': estadoMenu }">
-            </div>
-            <div
-                class="menu-hamburgesa-inferior"
-                [ngClass]="{ 'menu-hamburgesa-inferior-rotacion': estadoMenu}">
-            </div>
+            <span  class="menu-caja-pwa-govco">
+                <span class="menu-hamburgesa-superior" [ngClass]="{ 'menu-hamburgesa-superior-rotacion': estadoMenu }">
+                </span>
+                <span class="menu-hamburgesa-medio" [ngClass]="{ 'menu-hamburgesa-medio-rotacion': estadoMenu }">
+                </span>
+                <span class="menu-hamburgesa-inferior" [ngClass]="{ 'menu-hamburgesa-inferior-rotacion': estadoMenu}">
+                </span>
+            </span>
         </div>
         <div class="logo-pwa-govco">
             <img src="../../../assets/logos/transversales/GOVCO.svg" alt="logo de gov.co">
