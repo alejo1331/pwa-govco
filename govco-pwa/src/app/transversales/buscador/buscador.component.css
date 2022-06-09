@@ -9,14 +9,16 @@
   font-size: 14px;
   border: 1px solid white;
   border-radius: 22px;
-  padding: 14px 12px 14px 20px;
+  padding: 14px 11% 14px 20px;
   background-color: #FFFFFF;
 }
 
 .icono-buscador-pwa-govco{
-  background-image: url('../../../assets/logos/transversales/search_FILL0_wght700_GRAD0_opsz40.svg') ;
-  background-size: 25px 25px;
+  /* mask-image: url(../../../assets/logos/transversales/search_FILL0_wght600_GRAD0_opsz40.svg);
+  mask-repeat: no-repeat; */
+  background-image: url('../../../assets/logos/transversales/search_FILL0_wght600_GRAD0_opsz40.svg');
+  background-size: 20px 20px;
   background-repeat: no-repeat;
   background-position: right;
-  background-position-x: 97%;
+  background-position-x: 96.5%;
 }
