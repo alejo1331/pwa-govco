@@ -12,6 +12,7 @@ html, body {
 
 .mat-drawer-transition .mat-drawer-content {
   border-radius: 20px;
+  z-index: 3;
 }
 
 .mat-drawer-shown {
