@@ -36,11 +36,14 @@ section.govco-pwa-content {
   height: 100%;
 }
 
-.barra-superior-pwa-govco {
+.barra-superior-general-pwa-govco, .barra-superior-interna-pwa-govco {
   display: grid;
   grid-template-columns: 16px 1fr 16px;
-  grid-template-rows: 56px 60px;
   height: 100%;
+}
+
+.barra-superior-general-pwa-govco {
+  grid-template-rows: 56px 60px;
 }
 
 .menu-logo-pwa-govco {

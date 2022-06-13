@@ -69,6 +69,7 @@ mat-sidenav {
 .escalarContenido {
   transform: scale(0.8);
   border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
 }
 
 .header-pwa-govco-general {
@@ -86,8 +87,14 @@ mat-sidenav {
 .app-barra-superior-general-pwa-govco, 
 .app-barra-superior-interna-pwa-govco {
   grid-row: 1;
-  height: 100%;
   background-color: #3366CC;
+  height: 116px;
+  width: 100%;
+  position: fixed;
+}
+
+.app-barra-superior-interna-pwa-govco {
+  height: 56px;
 }
 
 .app-geolocalizacionpwa-govco {

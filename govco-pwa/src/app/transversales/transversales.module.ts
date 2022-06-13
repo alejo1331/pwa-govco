@@ -8,6 +8,7 @@ import { GeolocalizacionComponent } from './geolocalizacion/geolocalizacion.comp
 import { BarraSuperiorInternaComponent } from './barra-superior-interna/barra-superior-interna.component';
 import { BarraSuperiorGeneralComponent } from './barra-superior-general/barra-superior-general.component';
 import { ContenidoSideNavComponent } from './contenido-side-nav/contenido-side-nav.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import { ContenidoSideNavComponent } from './contenido-side-nav/contenido-side-n
     GeolocalizacionComponent,
     BarraSuperiorInternaComponent,
     BarraSuperiorGeneralComponent,
-    ContenidoSideNavComponent
+    ContenidoSideNavComponent,
+    FooterComponent
   ],
   exports: [
     SideNavComponent,
@@ -30,7 +32,8 @@ import { ContenidoSideNavComponent } from './contenido-side-nav/contenido-side-n
     BarraSuperiorGeneralComponent,
     GeolocalizacionComponent,
     BuscadorComponent,
-    ContenidoSideNavComponent
+    ContenidoSideNavComponent,
+    FooterComponent
   ]
 })
 export class TransversalesModule { }
