@@ -5,9 +5,9 @@
 
   <mat-sidenav-content [class.escalarContenido]="sidenav.opened">
 
-    <header [ngClass]="{ 
-      'header-pwa-govco-general': barraSuperiorGeneral, 
-      'header-pwa-govco-interna': barraSuperiorInterna  
+    <header [ngClass]="{
+      'header-pwa-govco-general': barraSuperiorGeneral,
+      'header-pwa-govco-interna': barraSuperiorInterna
     }">
       <app-barra-superior-general (outEstadoMenu)="estadoMenu($event)"
         class="app-barra-superior-general-pwa-govco" *ngIf="barraSuperiorGeneral">
