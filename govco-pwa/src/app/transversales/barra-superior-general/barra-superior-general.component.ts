@@ -17,8 +17,6 @@ export class BarraSuperiorGeneralComponent implements OnInit {
   }
 
   onClickMenu(estado:boolean){
-    console.log(estado)
-    // if estado
     this.estadoMenu = this.estadoMenu? false : true;
     this.outEstadoMenu.emit(this.estadoMenu);
   }

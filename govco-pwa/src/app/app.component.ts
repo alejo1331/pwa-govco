@@ -1,5 +1,6 @@
 import { Component, ViewChild} from '@angular/core';
 import { MatSidenav, MatSidenavContent } from '@angular/material/sidenav';
+import { SidenavService } from './transversales/services/sidenav-service/sidenav-service.service';
 
 
 @Component({
@@ -11,17 +12,20 @@ import { MatSidenav, MatSidenavContent } from '@angular/material/sidenav';
 
 export class AppComponent {
 
-  @ViewChild(MatSidenav) sidenav!: MatSidenav;
+  @ViewChild('sidenav') sidenav!: MatSidenav;
   @ViewChild(MatSidenavContent ) sidenavcontent!: MatSidenavContent;
 
   barraSuperiorGeneral :boolean = false;
   barraSuperiorInterna :boolean = true;
 
-  constructor(){
+  constructor(
+    private sidenavService : SidenavService){}
+
+  ngAfterContentChecked(): void {
+    this.sidenavService.setSidnav(this.sidenav)
   }
 
   estadoMenu(estado:boolean){
-    console.log("estado del menu", estado)
     if(estado == true){
       this.sidenav.opened = true;
     }
