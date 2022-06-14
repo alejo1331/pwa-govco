@@ -9,11 +9,13 @@ import { BarraSuperiorInternaComponent } from './barra-superior-interna/barra-su
 import { BarraSuperiorGeneralComponent } from './barra-superior-general/barra-superior-general.component';
 import { ContenidoSideNavComponent } from './contenido-side-nav/contenido-side-nav.component';
 import { FooterComponent } from './footer/footer.component';
+import { TransversalesRoutingModule } from './transversales.routing';
 
 @NgModule({
   imports: [
     CommonModule,
     MatToolbarModule,
+    TransversalesRoutingModule
   ],
   declarations: [
     SideNavComponent,
