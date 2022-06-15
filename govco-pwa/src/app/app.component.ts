@@ -20,6 +20,8 @@ export class AppComponent {
 
   statusMenu:boolean = false;
 
+  title = 'govco-pwa';
+
   constructor(
     private sidenavService : SidenavService){}
 
