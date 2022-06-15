@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { SidenavService } from '../services/sidenav-service/sidenav-service.service';
 
 @Component({
@@ -7,6 +7,9 @@ import { SidenavService } from '../services/sidenav-service/sidenav-service.serv
   styleUrls: ['./contenido-side-nav.component.css']
 })
 export class ContenidoSideNavComponent implements OnInit {
+
+  @Output() outEstadoMenu = new EventEmitter<boolean>();
+  estadoMenu: boolean = false;
 
   selectedIcon = 'outlined';
 
@@ -20,6 +23,9 @@ export class ContenidoSideNavComponent implements OnInit {
   status: boolean = false;
   renderer: any;
 
+  onClickMenu(){
+    this.outEstadoMenu.emit(this.estadoMenu);
+  }
 cambioIconos(event: any) {
   var element_target = event.target.offsetParent.getElementsByClassName("material-icons-outlined")[0].classList;
   const hasClass = element_target[0] == 'material-icons-outlined'

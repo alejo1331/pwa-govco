@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  urlApiFooter: 'http://3.237.183.133:8080/api/Footer'
 };
 
 /*

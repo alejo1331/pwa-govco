@@ -1,5 +1,7 @@
 /* ESTILOS GLOBALES DE USO DEL ESPACIO */
 
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&family=Work+Sans:wght@400;500;600&display=swap');
+
 html, body {
   height: 100vh;
   width: 100vw;
@@ -31,7 +33,7 @@ html, body {
   background-color: #3366CC;
 }
 
-section.govco-pwa-content {
+.govco-pwa-content {
   background-color: white;
   height: 100%;
 }

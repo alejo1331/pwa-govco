@@ -1,6 +1,6 @@
 <mat-sidenav-container>
   <mat-sidenav #sidenav="matSidenav" mode="push">
-    <app-contenido-side-nav></app-contenido-side-nav>
+    <app-contenido-side-nav (outEstadoMenu)="estadoMenu($event)"></app-contenido-side-nav>
   </mat-sidenav>
 
   <mat-sidenav-content [class.escalarContenido]="sidenav.opened">
@@ -9,7 +9,7 @@
       'header-pwa-govco-general': barraSuperiorGeneral,
       'header-pwa-govco-interna': barraSuperiorInterna
     }">
-      <app-barra-superior-general (outEstadoMenu)="estadoMenu($event)"
+      <app-barra-superior-general [inEstadoMenu]="statusMenu" (outEstadoMenu)="estadoMenu($event)"
         class="app-barra-superior-general-pwa-govco" *ngIf="barraSuperiorGeneral">
       </app-barra-superior-general>
       <app-barra-superior-interna (outEstadoMenu)="estadoMenu($event)"
@@ -26,10 +26,10 @@
       <div class="container">
         <div class="row d-flex justify-content-center text-center bottom-nav">
           <div class="col">
-            <a routerLink="inicio/home" (click)="prueba(true)" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+            <a routerLink="inicio/home" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
               class="nav-item nav-link" >Inicio</a>
           </div>
-          <div class="col" (click)="prueba(false)">
+          <div class="col">
             <a routerLink="perfil/home"  routerLinkActive="active" class="nav-item nav-link">Perfil</a>
           </div>
         </div>

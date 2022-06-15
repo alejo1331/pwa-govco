@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-barra-superior-interna',
@@ -8,6 +8,8 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 export class BarraSuperiorInternaComponent implements OnInit {
 
   @Output() outEstadoMenu = new EventEmitter<boolean>();
+  @Input() inEstadoMenu!: boolean;
+
   estadoMenu: boolean = false;
 
   constructor() { }
