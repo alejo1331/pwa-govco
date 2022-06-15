@@ -13,6 +13,7 @@ html, body {
 .mat-drawer-transition .mat-drawer-content {
   border-radius: 20px;
   z-index: 3;
+  transition-duration: 1s !important;
 }
 
 .mat-drawer-shown {
@@ -65,7 +66,7 @@ section.govco-pwa-content {
   flex-direction: column;
 }
 
-.menu-hamburgesa-superior, 
+.menu-hamburgesa-superior,
 .menu-hamburgesa-medio,
 .menu-hamburgesa-inferior {
   width: inherit;
@@ -75,7 +76,7 @@ section.govco-pwa-content {
   transition: all 0.6s;
 }
 
-.menu-hamburgesa-superior, 
+.menu-hamburgesa-superior,
 .menu-hamburgesa-medio {
   margin-bottom: 3.5px;
 }

@@ -14,6 +14,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { SidenavModule  } from './sidenav/sidenav.module';
+import { SidenavService } from './transversales/services/sidenav-service/sidenav-service.service';
 
 
 @NgModule({
@@ -39,7 +40,7 @@ import { SidenavModule  } from './sidenav/sidenav.module';
     }),
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [SidenavService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
