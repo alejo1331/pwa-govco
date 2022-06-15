@@ -1,16 +1,16 @@
 /* tslint:disable:no-unused-variable */
 
 import { TestBed, async, inject } from '@angular/core/testing';
-import { SidenavServiceService } from './sidenav-service.service';
+import { SidenavService } from './sidenav-service.service';
 
 describe('Service: SidenavService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [SidenavServiceService]
+      providers: [SidenavService]
     });
   });
 
-  it('should ...', inject([SidenavServiceService], (service: SidenavServiceService) => {
+  it('should ...', inject([SidenavService], (service: SidenavService) => {
     expect(service).toBeTruthy();
   }));
 });

@@ -1,0 +1,44 @@
+.footer-pwa-govco {
+    padding: 2.5rem 1rem 0 1rem;
+}
+
+.titulo-footer-pwa-govco {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    color: #004884;
+}
+
+.datos-ubicacion-pwa-govco {
+    margin-top: 1.5rem;
+}
+
+.lista-datos-ubicacion-pwa-govco {
+    padding-left: 1rem;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: #000000;
+    margin-bottom: 0;
+}
+
+.item-datos-ubicacion-pwa-govco {
+    margin-top: 1rem;
+}
+
+.contenido-item-ubicacion-pwa-govco{
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: #000000;
+    margin-bottom: 0rem;
+}
+
+.linea-vertical-pwa-govco {
+    height: 2px;
+    width: auto;
+    margin: 2rem 1rem 0 1rem;
+    background-color: #1C4780;
+    border-radius: 2px;
+}
+

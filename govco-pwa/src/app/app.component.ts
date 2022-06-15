@@ -15,8 +15,12 @@ export class AppComponent {
   @ViewChild('sidenav') sidenav!: MatSidenav;
   @ViewChild(MatSidenavContent ) sidenavcontent!: MatSidenavContent;
 
-  barraSuperiorGeneral :boolean = false;
-  barraSuperiorInterna :boolean = true;
+  barraSuperiorGeneral :boolean = true;
+  barraSuperiorInterna :boolean = false;
+
+  statusMenu:boolean = false;
+
+  title = 'govco-pwa';
 
   constructor(
     private sidenavService : SidenavService){}
@@ -26,6 +30,7 @@ export class AppComponent {
   }
 
   estadoMenu(estado:boolean){
+    this.statusMenu = estado;
     if(estado == true){
       this.sidenav.opened = true;
     }
@@ -34,13 +39,4 @@ export class AppComponent {
     }
   }
 
-  prueba(value: boolean){
-    if(value === true){
-      this.barraSuperiorGeneral = true;
-      this.barraSuperiorInterna = false;
-    }else{
-      this.barraSuperiorGeneral = false;
-      this.barraSuperiorInterna = true;
-    }
-  }
 }

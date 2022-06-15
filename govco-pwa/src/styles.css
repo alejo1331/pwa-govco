@@ -1,5 +1,7 @@
 /* ESTILOS GLOBALES DE USO DEL ESPACIO */
 
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&family=Work+Sans:wght@400;500;600&display=swap');
+
 html, body {
   height: 100vh;
   width: 100vw;
@@ -31,16 +33,19 @@ html, body {
   background-color: #3366CC;
 }
 
-section.govco-pwa-content {
+.govco-pwa-content {
   background-color: white;
   height: 100%;
 }
 
-.barra-superior-pwa-govco {
+.barra-superior-general-pwa-govco, .barra-superior-interna-pwa-govco {
   display: grid;
   grid-template-columns: 16px 1fr 16px;
-  grid-template-rows: 56px 60px;
   height: 100%;
+}
+
+.barra-superior-general-pwa-govco {
+  grid-template-rows: 56px 60px;
 }
 
 .menu-logo-pwa-govco {

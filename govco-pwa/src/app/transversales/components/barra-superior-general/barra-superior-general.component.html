@@ -1,6 +1,6 @@
-<div class="barra-superior-pwa-govco">
+<div class="barra-superior-general-pwa-govco">
     <div class="menu-logo-pwa-govco">
-        <div (click)="onClickMenu()"class="menu-hamburgesa-pwa-govco">
+        <div (click)="onClickMenu(estadoMenu)" class="menu-hamburgesa-pwa-govco">
             <span  class="menu-caja-pwa-govco">
                 <span class="menu-hamburgesa-superior" [ngClass]="{ 'menu-hamburgesa-superior-rotacion': estadoMenu }">
                 </span>
@@ -13,8 +13,6 @@
         <div class="logo-pwa-govco">
             <img src="../../../assets/logos/transversales/GOVCO.svg" alt="logo de gov.co">
         </div>
-        <span class="caja-buscador-pwa-govco">
-            <span class="icono-buscador-pwa-govco"></span>
-        </span>
     </div>
+    <app-buscador class="app-buscador-pwa-govco"></app-buscador>
 </div>

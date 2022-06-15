@@ -1,16 +1,24 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { SideNavComponent } from './side-nav/side-nav.component';
-import { SideNavItemsComponent } from "./side-nav-items/side-nav-items.component";
-
+import { SideNavComponent } from './components/side-nav/side-nav.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 const routes: Routes = [
   {
-    path: 'perfil',
+    path: 'transversales',
     children: [
       {
         path: 'side-nav',
         component: SideNavComponent
+      },
+    ]
+  },
+  {
+    path: 'transversales',
+    children: [
+      {
+        path: 'acerca-del-portal',
+        component: FooterComponent
       },
     ]
   }
@@ -20,6 +28,6 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class PerfilRoutingModule { }
+export class TransversalesRoutingModule { }
 export const ArrayOfComponents = [
 ]
