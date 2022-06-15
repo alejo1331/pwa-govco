@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { SidenavService } from '../services/sidenav-service/sidenav-service.service';
+import { SidenavService } from '../../services/sidenav-service/sidenav-service.service';
 
 @Component({
   selector: 'app-contenido-side-nav',
