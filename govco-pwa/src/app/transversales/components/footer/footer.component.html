@@ -1,27 +1,119 @@
 <div class="footer-pwa-govco">
-    <span class="titulo-footer-pwa-govco">Portal Único <br>del Estado Colombiano</span>
-    <section class="datos-ubicacion-pwa-govco">
-        <ul class="lista-datos-ubicacion-pwa-govco">
-            <li class="item-datos-ubicacion-pwa-govco">
-                Dirección <br>
-                <p class="contenido-item-ubicacion-pwa-govco">Edificio Murillo Toro cra 8 entre calles 12A y 12B Bogotá, Colombia.</p>
+
+    <span class="titulo-footer-pwa-govco">{{infGeneral?.titulo}}</span>
+
+    <section class="info-general-pwa-govco">
+        <ul class="lista-info-general-pwa-govco">
+            <li class="item-info-general-pwa-govco">
+                {{infGeneral?.textoDireccion}} <br>
+                <p class="contenido-item-info-general-pwa-govco">{{infGeneral?.direccion}}</p>
             </li>
-            <li class="item-datos-ubicacion-pwa-govco">
-                Horarios de Atención: <br>
-                <p class="contenido-item-ubicacion-pwa-govco">- Atención Presencial: Martes, Miércoles y Viernes de 9:00 am a 3:00 pm jornada continua.</p>
-                <p class="contenido-item-ubicacion-pwa-govco">- Atención Canales Virtuales: Lunes a Viernes de 8:30 am a 4:30 pm.</p> 
+            <li class="item-info-general-pwa-govco">
+                {{infGeneral?.tituloHorario}} <br>
+                <p class="contenido-item-info-general-pwa-govco">- {{infGeneral?.horarioPresencial}}</p>
+                <p class="contenido-item-info-general-pwa-govco">- {{infGeneral?.horarioVirtual}}</p>
             </li>
-            <li class="item-datos-ubicacion-pwa-govco">
-                Código Postal:
-                <p class="contenido-item-ubicacion-pwa-govco">111711</p>
+            <li class="item-info-general-pwa-govco">
+                {{infGeneral?.textoCodigoPostal}}
+                <p class="contenido-item-info-general-pwa-govco">{{infGeneral?.codigoPostal}}</p>
             </li>
         </ul>
     </section>
+
     <div class="linea-vertical-pwa-govco"></div>
-    <section class="acordeon-footer-pwa-govco">
-        hola mundo 2
+
+
+    <section class="accordion-pwa-govco" id="accordionFooterPwa">
+        <div class="item-accordion-pwa-govco">
+            <h2 class="accordion-footer-pwa-govco">
+                <button class="button-accordion-pwa-govco" type="button" id="accordionPanelOne"
+                    [ngClass]="{'button-accordion-margin-pwa-govco': marginAccordionOne}" data-bs-toggle="collapse"
+                    data-bs-target="#accordionPanels-collapseOne" aria-expanded="false"
+                    aria-controls="accordionPanels-collapseOne">
+                    <span style="background: url({{infContacto?.tituloUrlImagen}}) no-repeat;"
+                        class="icono-item-accordion-pwa-govco"></span>
+                    <span class="text-button-accordion-pwa-govco">{{infContacto?.titulo}}</span>
+                </button>
+            </h2>
+            <div id="accordionPanels-collapseOne" class="accordion-collapse collapse"
+                aria-labelledby="accordionPanelOne" data-bs-parent="#accordionFooterPwa">
+                <div class="body-accordion-pwa-govco">
+                    <ul class="lista-info-contacto-pwa-govco">
+                        <li class="item-info-contacto-pwa-govco">
+                            {{infContacto?.tituloTelefono}} <br>
+                            <p class="contenido-item-info-contacto-pwa-govco">- {{tituloTelefonoNacional}}:</p>
+                            <a class="contenido-item-info-contacto-pwa-govco">{{telefonoNacional}}</a>
+                            <p class="contenido-item-info-contacto-pwa-govco">- {{tituloTelefonoLocal}}:</p>
+                            <a class="contenido-item-info-contacto-pwa-govco">{{telefonoLocal}}</a>
+                            <p class="contenido-item-info-contacto-pwa-govco">- {{tituloLineaAnticorrupcion}}:</p>
+                            <a class="contenido-item-info-contacto-pwa-govco">{{lineaAnticorrupcion}}</a>
+                        </li>
+                        <li class="item-info-contacto-pwa-govco">
+                            {{infContacto?.correoTexto}} <br>
+                            <a class="contenido-item-correo-contacto-pwa-govco">{{infContacto?.correoInstitucional}}</a>
+                        </li>
+                    </ul>
+                    <div class="contenido-info-contacto-pwa-govco">
+                        <a href="{{infContacto?.soLlamadaUrlDestino}}"
+                            class="contenido-contacto-pwa-govco">{{infContacto?.soLlamadaTexto}}</a><br>
+                        <a href="{{infContacto?.llamadaWebUrlDestino}}"
+                            class="contenido-contacto-pwa-govco">{{infContacto?.llamadaWebTexto}}</a><br>
+                        <a href="{{infContacto?.hablemosUrlDestino}}"
+                            class="contenido-contacto-pwa-govco">{{infContacto?.hablemosTexto}}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="item-accordion-pwa-govco">
+            <h2 class="accordion-footer-pwa-govco">
+                <button class="button-accordion-pwa-govco collapsed" id="accordionPanelTwo" type="button"
+                    [ngClass]="{'button-accordion-margin-pwa-govco': marginAccordionTwo}" data-bs-toggle="collapse"
+                    data-bs-target="#accordionPanels-collapseTwo" aria-expanded="false"
+                    aria-controls="accordionPanels-collapseTwo">
+                    <span style="background: url({{infAcercaDelSitio?.tituloUrlImagen}}) no-repeat;"
+                        class="icono-item-accordion-pwa-govco"></span>
+                    <span class="text-button-accordion-pwa-govco">{{infAcercaDelSitio?.titulo}}</span>
+                </button>
+            </h2>
+            <div id="accordionPanels-collapseTwo" class="accordion-collapse collapse"
+                aria-labelledby="accordionPanelTwo" data-bs-parent="#accordionFooterPwa">
+                <div class="body-accordion-pwa-govco">
+                    <div class="contenido-info-contacto-pwa-govco">
+                        <a href="{{infAcercaDelSitio?.mapaSitioUrlDestino}}"
+                            class="contenido-contacto-pwa-govco">{{infAcercaDelSitio?.mapaSitioTexto}}</a><br>
+                        <a href="{{infAcercaDelSitio?.poPrivacidadUrlDestino}}"
+                            class="contenido-contacto-pwa-govco">{{infAcercaDelSitio?.poPrivacidadTexto}}</a><br>
+                        <a href="{{infAcercaDelSitio?.poAutorUrlDestino}}"
+                            class="contenido-contacto-pwa-govco">{{infAcercaDelSitio?.poAutorTexto}}</a><br>
+                        <a href="{{infAcercaDelSitio?.terCondicionesUrlDestino}}"
+                            class="contenido-contacto-pwa-govco">{{infAcercaDelSitio?.terCondicionesTexto}}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="item-accordion-pwa-govco">
+            <h2 class="accordion-footer-pwa-govco">
+                <button class="button-accordion-pwa-govco collapsed" id="accordionPanelThree" type="button"
+                    [ngClass]="{'button-accordion-margin-pwa-govco': marginAccordionThree}" data-bs-toggle="collapse"
+                    data-bs-target="#accordionPanels-collapseThree" aria-expanded="false"
+                    aria-controls="accordionPanels-collapseThree">
+                    <span style="background: url({{infAcercaDelSitio?.ayudaAccesibilidadImagen}}) no-repeat;"
+                        class="icono-item-accordion-pwa-govco"></span>
+                    <span class="text-button-accordion-pwa-govco">{{infAcercaDelSitio?.ayudaAccesibilidad}}</span>
+                </button>
+            </h2>
+            <div id="accordionPanels-collapseThree" class="accordion-collapse collapse"
+                aria-labelledby="accordionPanelThree" data-bs-parent="#accordionFooterPwa">
+                <div class="body-accordion-pwa-govco">
+                    <a href="{{infAcercaDelSitio?.centroRelevoUrlDestino}}"
+                        class="contenido-contacto-pwa-govco">{{infAcercaDelSitio?.centroRelevoTexto}}</a>
+                </div>
+            </div>
+        </div>
     </section>
+
     <section>
-        hola mundo 3
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere impedit sint quas ad eveniet vel voluptatibus!
+        Quibuas minus perferendis, esse repudiandae? Molestiae, in.
     </section>
 </div>
