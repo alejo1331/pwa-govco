@@ -34,8 +34,7 @@ html, body {
 }
 
 .govco-pwa-content {
-  background-color: white;
-  height: 100%;
+  background-color: #F6F8F9;
 }
 
 .barra-superior-general-pwa-govco, .barra-superior-interna-pwa-govco {
@@ -77,7 +76,7 @@ html, body {
   width: inherit;
   height: 17.24137%;
   border-radius: 2px;
-  background-color: #fdfdfd;
+  background-color: #FDFDFD;
   transition: all 0.6s;
 }
 

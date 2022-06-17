@@ -1,5 +1,5 @@
 .footer-pwa-govco {
-    padding: 2.5rem 1rem 0 1rem;
+    padding: 2.5rem 1rem 4.5rem 1rem;
 }
 
 .titulo-footer-pwa-govco {
@@ -9,11 +9,14 @@
     color: #004884;
 }
 
-.datos-ubicacion-pwa-govco {
+/* Seccion lista */
+
+.info-general-pwa-govco {
     margin-top: 1.5rem;
 }
 
-.lista-datos-ubicacion-pwa-govco {
+.lista-info-general-pwa-govco,
+.lista-info-contacto-pwa-govco {
     padding-left: 1rem;
     font-family: 'Work Sans', sans-serif;
     font-weight: 600;
@@ -22,11 +25,14 @@
     margin-bottom: 0;
 }
 
-.item-datos-ubicacion-pwa-govco {
-    margin-top: 1rem;
+.item-info-general-pwa-govco, 
+.item-info-contacto-pwa-govco {
+    margin-bottom: 1rem;
+    line-height: 1.429rem;
 }
 
-.contenido-item-ubicacion-pwa-govco{
+.contenido-item-info-general-pwa-govco,
+p.contenido-item-info-contacto-pwa-govco {
     font-family: 'Work Sans', sans-serif;
     font-weight: 400;
     font-size: 14px;
@@ -37,8 +43,81 @@
 .linea-vertical-pwa-govco {
     height: 2px;
     width: auto;
-    margin: 2rem 1rem 0 1rem;
+    margin: 2.5rem 1.5rem 2.5rem 1.5rem;
     background-color: #1C4780;
     border-radius: 2px;
 }
 
+/* Seccion acordeon */
+
+.accordion-pwa-govco .accordion-footer-pwa-govco {
+    line-height: 0;
+    margin: 0;
+}
+
+.accordion-pwa-govco .button-accordion-pwa-govco {
+    width: 100%;
+    text-align: left;
+    background-color: #f6f8f9;
+    border: 0;
+    min-height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0rem;
+    margin-bottom: 1rem;
+}
+
+.button-accordion-margin-pwa-govco {
+    margin-bottom: 0.5rem !important;
+}
+
+.accordion-pwa-govco .text-button-accordion-pwa-govco {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: #000000;
+    margin-left: 0.5rem;
+}
+
+/* .accordion-pwa-govco .button-accordion-pwa-govco::after {
+    font-family: "govco-font";
+    line-height: 0;
+    font-size: 26px;
+    color: #004884;
+    margin-left: auto;
+} */
+
+.accordion-pwa-govco .body-accordion-pwa-govco {
+    background-color: #f6f8f9;
+}
+.accordion-pwa-govco .icono-item-accordion-pwa-govco {
+    width: 20px;
+    height: 20px;
+    filter: brightness(0);
+}
+
+a.contenido-item-info-contacto-pwa-govco,
+a.contenido-item-correo-contacto-pwa-govco,
+a.contenido-contacto-pwa-govco {
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: #3366CC;
+    margin-bottom: 0rem;
+    margin-left: 12px;
+}
+
+.accordion-pwa-govco a.contenido-item-correo-contacto-pwa-govco,
+.accordion-pwa-govco a.contenido-contacto-pwa-govco {
+    margin-left: 0px;
+}
+
+.accordion-pwa-govco a.contenido-contacto-pwa-govco {
+    line-height: 2rem;
+}
+
+.accordion-pwa-govco .contenido-info-contacto-pwa-govco {
+    margin-bottom: 1rem;
+    line-height: 1.429rem;
+}
