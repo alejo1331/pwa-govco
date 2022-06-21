@@ -1,4 +1,4 @@
-<div class="footer-pwa-govco">
+<footer class="footer-pwa-govco">
 
     <span class="titulo-footer-pwa-govco">{{infGeneral?.titulo}}</span>
 
@@ -22,17 +22,27 @@
 
     <div class="linea-vertical-pwa-govco"></div>
 
-
     <section class="accordion-pwa-govco" id="accordionFooterPwa">
+
         <div class="item-accordion-pwa-govco">
             <h2 class="accordion-footer-pwa-govco">
                 <button class="button-accordion-pwa-govco" type="button" id="accordionPanelOne"
                     [ngClass]="{'button-accordion-margin-pwa-govco': marginAccordionOne}" data-bs-toggle="collapse"
                     data-bs-target="#accordionPanels-collapseOne" aria-expanded="false"
                     aria-controls="accordionPanels-collapseOne">
-                    <span style="background: url({{infContacto?.tituloUrlImagen}}) no-repeat;"
-                        class="icono-item-accordion-pwa-govco"></span>
-                    <span class="text-button-accordion-pwa-govco">{{infContacto?.titulo}}</span>
+                    <div class="icono-titulo-inf-contacto-pwa-govco">
+                        <span class="caja-icono-pwa-pwa-govco">
+                            <span style="background: url({{infContacto?.tituloUrlImagen}}) no-repeat;"
+                                class="icono-contacto-accordion-pwa-govco">
+                            </span>
+                        </span>
+                        <span class="text-button-accordion-pwa-govco">{{infContacto?.titulo}}</span>
+                    </div>
+                    <span class="caja-icono-pwa-pwa-govco">
+                        <span class="material-symbols-outlined"
+                            [ngClass]="{'open-expand-more-pwa-govco': marginAccordionOne == true}">
+                            expand_more</span>
+                    </span>
                 </button>
             </h2>
             <div id="accordionPanels-collapseOne" class="accordion-collapse collapse"
@@ -42,15 +52,19 @@
                         <li class="item-info-contacto-pwa-govco">
                             {{infContacto?.tituloTelefono}} <br>
                             <p class="contenido-item-info-contacto-pwa-govco">- {{tituloTelefonoNacional}}:</p>
-                            <a href="tel: {{telefonoNacional}}" class="contenido-item-info-contacto-pwa-govco">{{telefonoNacional}}</a>
+                            <a href="tel: {{telefonoNacional}}"
+                                class="contenido-item-info-contacto-pwa-govco">{{telefonoNacional}}</a>
                             <p class="contenido-item-info-contacto-pwa-govco">- {{tituloTelefonoLocal}}:</p>
-                            <a href="tel: {{telefonoLocal}}" class="contenido-item-info-contacto-pwa-govco">{{telefonoLocal}}</a>
+                            <a href="tel: {{telefonoLocal}}"
+                                class="contenido-item-info-contacto-pwa-govco">{{telefonoLocal}}</a>
                             <p class="contenido-item-info-contacto-pwa-govco">- {{tituloLineaAnticorrupcion}}:</p>
-                            <a href="tel: {{lineaAnticorrupcion}}" class="contenido-item-info-contacto-pwa-govco">{{lineaAnticorrupcion}}</a>
+                            <a href="tel: {{lineaAnticorrupcion}}"
+                                class="contenido-item-info-contacto-pwa-govco">{{lineaAnticorrupcion}}</a>
                         </li>
                         <li class="item-info-contacto-pwa-govco">
                             {{infContacto?.correoTexto}} <br>
-                            <a href="mailto: {{infContacto?.correoInstitucional}}" class="contenido-item-correo-contacto-pwa-govco">{{infContacto?.correoInstitucional}}</a>
+                            <a href="mailto: {{infContacto?.correoInstitucional}}"
+                                class="contenido-item-correo-contacto-pwa-govco">{{infContacto?.correoInstitucional}}</a>
                         </li>
                     </ul>
                     <div class="contenido-info-contacto-pwa-govco">
@@ -64,15 +78,25 @@
                 </div>
             </div>
         </div>
+
         <div class="item-accordion-pwa-govco">
             <h2 class="accordion-footer-pwa-govco">
                 <button class="button-accordion-pwa-govco collapsed" id="accordionPanelTwo" type="button"
                     [ngClass]="{'button-accordion-margin-pwa-govco': marginAccordionTwo}" data-bs-toggle="collapse"
                     data-bs-target="#accordionPanels-collapseTwo" aria-expanded="false"
                     aria-controls="accordionPanels-collapseTwo">
-                    <span style="background: url({{infAcercaDelSitio?.tituloUrlImagen}}) no-repeat;"
-                        class="icono-item-accordion-pwa-govco"></span>
-                    <span class="text-button-accordion-pwa-govco">{{infAcercaDelSitio?.titulo}}</span>
+                    <div class="icono-titulo-inf-contacto-pwa-govco">
+                        <span class="caja-icono-pwa-pwa-govco">
+                            <span style="background: url({{infAcercaDelSitio?.tituloUrlImagen}}) no-repeat;"
+                                class="icono-acerca-sitio-accordion-pwa-govco"></span>
+                        </span>
+                        <span class="text-button-accordion-pwa-govco">{{infAcercaDelSitio?.titulo}}</span>
+                    </div>
+                    <span class="caja-icono-pwa-pwa-govco">
+                        <span class="material-symbols-outlined"
+                            [ngClass]="{'open-expand-more-pwa-govco': marginAccordionTwo}">
+                            expand_more</span>
+                    </span>
                 </button>
             </h2>
             <div id="accordionPanels-collapseTwo" class="accordion-collapse collapse"
@@ -91,15 +115,25 @@
                 </div>
             </div>
         </div>
+
         <div class="item-accordion-pwa-govco">
             <h2 class="accordion-footer-pwa-govco">
                 <button class="button-accordion-pwa-govco collapsed" id="accordionPanelThree" type="button"
                     [ngClass]="{'button-accordion-margin-pwa-govco': marginAccordionThree}" data-bs-toggle="collapse"
                     data-bs-target="#accordionPanels-collapseThree" aria-expanded="false"
                     aria-controls="accordionPanels-collapseThree">
-                    <span style="background: url({{infAcercaDelSitio?.ayudaAccesibilidadImagen}}) no-repeat;"
-                        class="icono-item-accordion-pwa-govco"></span>
-                    <span class="text-button-accordion-pwa-govco">{{infAcercaDelSitio?.ayudaAccesibilidad}}</span>
+                    <div class="icono-titulo-inf-contacto-pwa-govco">
+                        <span class="caja-icono-pwa-pwa-govco">
+                            <span style="background: url({{infAcercaDelSitio?.ayudaAccesibilidadImagen}}) no-repeat;"
+                                class="icono-accesibilidad-accordion-pwa-govco"></span>
+                        </span>
+                        <span class="text-button-accordion-pwa-govco">{{infAcercaDelSitio?.ayudaAccesibilidad}}</span>
+                    </div>
+                    <span class="caja-icono-pwa-pwa-govco">
+                        <span class="material-symbols-outlined"
+                            [ngClass]="{'open-expand-more-pwa-govco': marginAccordionThree}">
+                            expand_more</span>
+                    </span>
                 </button>
             </h2>
             <div id="accordionPanels-collapseThree" class="accordion-collapse collapse"
@@ -112,8 +146,31 @@
         </div>
     </section>
 
-    <section>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere impedit sint quas ad eveniet vel voluptatibus!
-        Quibuas minus perferendis, esse repudiandae? Molestiae, in.
+    <section class="redes-sociales-pwa-govco">
+        <h2 class="texto-redes-sociales-pwa-govco">Síguenos en:</h2>
+        <button class="button-redes-sociales-pwa-govco">
+            <span style="background: url({{infAcercaDelSitio?.twitterUrlImagen}}) no-repeat;"
+                class="icono-redes-sociales-button-pwa-govco"></span>
+            <!-- <a href="twitter: {{infAcercaDelSitio?.twitterUrlDestino}}"
+                class="texto-redes-sociales-button-pwa-govco">@gobdigitalco</a> -->
+            
+            <a href="intent://scan/#Intent;scheme=zxing;package=com.google.zxing.client.android;end"
+                class="texto-redes-sociales-button-pwa-govco">@gobdigitalco</a>
+            <!-- <a href="intent://twitter/#Intent;scheme=twitter;package=com.twitter.android;S.browser_fallback_url=https%3A%2F%2twitter.com%2FGobDigitalCO;end"
+                class="texto-redes-sociales-button-pwa-govco">@gobdigitalco</a> -->
+
+        </button>
+        <button class="button-redes-sociales-pwa-govco">
+            <span style="background: url({{infAcercaDelSitio?.facebookUrlImagen}}) no-repeat;"
+                class="icono-redes-sociales-button-pwa-govco"></span>
+
+            <!-- <a href="facebook: {{infAcercaDelSitio?.facebookUrlDestino}}"
+                class="texto-redes-sociales-button-pwa-govco">Gobierno Digital</a> -->
+
+            <a href="intent://facebook/#Intent;scheme=facebook;action=action.VIEW;package=com.facebook.katana;end"
+                class="texto-redes-sociales-button-pwa-govco">Gobierno Digital</a>
+        </button>
     </section>
-</div>
+</footer>
+
+<div class="barra-inferior-footer-pwa-govco"> hola mundo</div>

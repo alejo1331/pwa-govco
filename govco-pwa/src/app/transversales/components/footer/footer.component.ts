@@ -21,9 +21,9 @@ export class FooterComponent implements OnInit {
   tituloTelefonoLocal: string;
   lineaAnticorrupcion: string;
   tituloLineaAnticorrupcion: string;
-  marginAccordionOne!: boolean;
-  marginAccordionTwo: boolean;
-  marginAccordionThree: boolean;
+  marginAccordionOne: boolean = false;
+  marginAccordionTwo: boolean = false;
+  marginAccordionThree: boolean = false;
 
   constructor(protected infoFooter: FooterServiceService) { }
 
