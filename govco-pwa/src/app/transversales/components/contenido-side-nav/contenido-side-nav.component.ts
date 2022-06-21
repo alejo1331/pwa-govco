@@ -23,10 +23,6 @@ export class ContenidoSideNavComponent implements OnInit {
   status: boolean = false;
   renderer: any;
 
-  onClickMenu() {
-    this.outEstadoMenu.emit(this.estadoMenu);
-  }
-  
   cambioIconos(event: any) {
     var element_target = event.target.offsetParent.getElementsByClassName("material-icons-outlined")[0].classList;
     const hasClass = element_target[0] == 'material-icons-outlined'
@@ -37,6 +33,7 @@ export class ContenidoSideNavComponent implements OnInit {
         this.sidenav.cerrar();
         element_target.add('material-icons-outlined');
         element_target.add('material-icons');
+        this.outEstadoMenu.emit(this.estadoMenu);
       }, 1000);
 
     } else {

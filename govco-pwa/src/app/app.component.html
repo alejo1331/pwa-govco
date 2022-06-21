@@ -1,5 +1,6 @@
 <mat-sidenav-container>
-  <mat-sidenav #sidenav="matSidenav" mode="push">
+  <mat-sidenav #sidenav="matSidenav" mode="push"
+  (closed)="estadoSideNav(true)">
     <app-contenido-side-nav (outEstadoMenu)="estadoMenu($event)"></app-contenido-side-nav>
   </mat-sidenav>
 
@@ -22,15 +23,9 @@
       <router-outlet></router-outlet>
     </section>
 
-    <section></section>
-
-
     <div class="govco-pwa-bottom-menu">
       <app-bottom-menu></app-bottom-menu>
     </div>
-
-
-
 
   </mat-sidenav-content>
 

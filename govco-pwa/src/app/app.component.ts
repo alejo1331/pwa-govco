@@ -1,5 +1,6 @@
-import { Component, ViewChild} from '@angular/core';
+import { Component, ViewChild, Output, EventEmitter } from '@angular/core';
 import { MatSidenav, MatSidenavContent } from '@angular/material/sidenav';
+import { BarraSuperiorGeneralComponent } from './transversales/components/barra-superior-general/barra-superior-general.component'
 import { SidenavService } from './transversales/services/sidenav-service/sidenav-service.service';
 
 
@@ -14,6 +15,7 @@ export class AppComponent {
 
   @ViewChild('sidenav') sidenav!: MatSidenav;
   @ViewChild(MatSidenavContent ) sidenavcontent!: MatSidenavContent;
+  @ViewChild( BarraSuperiorGeneralComponent ) barraSuperior : any;
 
   barraSuperiorGeneral :boolean = true;
   barraSuperiorInterna :boolean = false;
@@ -39,4 +41,7 @@ export class AppComponent {
     }
   }
 
+  estadoSideNav(sideNav:any){
+    this.barraSuperior.onClickMenu();
+  }
 }
