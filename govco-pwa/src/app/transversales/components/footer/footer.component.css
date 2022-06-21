@@ -1,5 +1,5 @@
 .footer-pwa-govco {
-    padding: 2.5rem 1rem 4.5rem 1rem;
+    padding: 2.5rem 1rem 0 1rem;
 }
 
 .titulo-footer-pwa-govco {
@@ -25,7 +25,7 @@
     margin-bottom: 0;
 }
 
-.item-info-general-pwa-govco, 
+.item-info-general-pwa-govco,
 .item-info-contacto-pwa-govco {
     margin-bottom: 1rem;
     line-height: 1.429rem;

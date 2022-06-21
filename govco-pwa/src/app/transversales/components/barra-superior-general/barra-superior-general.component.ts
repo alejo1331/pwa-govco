@@ -5,7 +5,7 @@ import { Component, EventEmitter, OnInit, Output, Input, OnChanges, SimpleChange
   templateUrl: './barra-superior-general.component.html',
   styleUrls: ['./barra-superior-general.component.css']
 })
-export class BarraSuperiorGeneralComponent implements OnInit, OnChanges {
+export class BarraSuperiorGeneralComponent {
 
   @Output() outEstadoMenu = new EventEmitter<boolean>();
   @Input() inEstadoMenu!: boolean;
@@ -15,14 +15,7 @@ export class BarraSuperiorGeneralComponent implements OnInit, OnChanges {
   constructor() {
    }
 
-  ngOnInit(): void {
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    this.estadoMenu = changes.inEstadoMenu.currentValue;
-  }
-
-  onClickMenu(estado:boolean){
+  onClickMenu(){
     this.estadoMenu = this.estadoMenu? false : true;
     this.outEstadoMenu.emit(this.estadoMenu);
   }

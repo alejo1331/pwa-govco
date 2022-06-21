@@ -4,7 +4,7 @@
 /* ESTILOS DEL BOTTOM NAVBAR */
 .govco-pwa-bottom-menu {
   overflow: hidden;
-  position: fixed;
+  position: sticky;
   bottom: 0;
   width: 100%;
   background-color: grey;

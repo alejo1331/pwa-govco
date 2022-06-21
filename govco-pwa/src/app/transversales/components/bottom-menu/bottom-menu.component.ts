@@ -30,7 +30,7 @@ export class BottomMenuComponent implements OnInit {
         });
         item.classList.add("active");
         const parentWidth = item.parentElement.clientWidth;
-        const lefPercent = (parentWidth / navigation_items_elms.length) * index;
+        const lefPercent = ((parentWidth / navigation_items_elms.length) * index)+20;
         navigation_pointer.style.left = lefPercent + "px";
 
       });
