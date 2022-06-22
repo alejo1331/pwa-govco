@@ -1,5 +1,5 @@
 .footer-pwa-govco {
-    padding: 2.5rem 1rem 0 1rem;
+    padding: 2.5rem 1rem 2.5rem 1rem;
 }
 
 .titulo-footer-pwa-govco {
@@ -63,13 +63,18 @@ p.contenido-item-info-contacto-pwa-govco {
     min-height: 3rem;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: space-between;
     padding: 0rem;
     margin-bottom: 1rem;
 }
 
 .button-accordion-margin-pwa-govco {
     margin-bottom: 0.5rem !important;
+}
+
+.icono-titulo-inf-contacto-pwa-govco {
+    display: flex;
+    align-items: center;
 }
 
 .accordion-pwa-govco .text-button-accordion-pwa-govco {
@@ -80,19 +85,39 @@ p.contenido-item-info-contacto-pwa-govco {
     margin-left: 0.5rem;
 }
 
-/* .accordion-pwa-govco .button-accordion-pwa-govco::after {
-    font-family: "govco-font";
-    line-height: 0;
-    font-size: 26px;
-    color: #004884;
-    margin-left: auto;
-} */
+.accordion-pwa-govco .material-symbols-outlined {
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 700,
+        'GRAD' 0,
+        'opsz' 20;
+        transition: 0.4s;
+}
+
+.open-expand-more-pwa-govco {
+    transition: 0.4s;
+    transform: rotate(-180deg);
+}
 
 .accordion-pwa-govco .body-accordion-pwa-govco {
     background-color: #f6f8f9;
 }
-.accordion-pwa-govco .icono-item-accordion-pwa-govco {
+
+.icono-contacto-accordion-pwa-govco {
     width: 20px;
+    height: 20px;
+    filter: brightness(0);
+    background-position: 1px 2px !important;
+}
+
+.icono-acerca-sitio-accordion-pwa-govco {
+    width: 20px;
+    height: 20px;
+    filter: brightness(0);
+}
+
+.icono-accesibilidad-accordion-pwa-govco {
+    width: 15.5px;
     height: 20px;
     filter: brightness(0);
 }
@@ -108,16 +133,55 @@ a.contenido-contacto-pwa-govco {
     margin-left: 12px;
 }
 
-.accordion-pwa-govco a.contenido-item-correo-contacto-pwa-govco,
-.accordion-pwa-govco a.contenido-contacto-pwa-govco {
+a.contenido-item-correo-contacto-pwa-govco,
+a.contenido-contacto-pwa-govco {
     margin-left: 0px;
 }
 
-.accordion-pwa-govco a.contenido-contacto-pwa-govco {
+a.contenido-contacto-pwa-govco {
     line-height: 2rem;
 }
 
-.accordion-pwa-govco .contenido-info-contacto-pwa-govco {
+.contenido-info-contacto-pwa-govco {
     margin-bottom: 1rem;
     line-height: 1.429rem;
+}
+
+.texto-redes-sociales-pwa-govco {
+    margin-top: 1.5rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: #000000;
+}
+
+.button-redes-sociales-pwa-govco {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 2.75rem;
+    border-radius: 25px;
+    background-color: #3366CC;
+    border: 1px solid #3366CC;
+    margin-top: 1.5rem;
+}
+
+.icono-redes-sociales-button-pwa-govco{
+    width: 20px;
+    height: 20px;
+}
+
+.texto-redes-sociales-button-pwa-govco {
+    margin: 0px 0px 0px 10px;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: #ffffff;
+}
+
+.barra-inferior-footer-pwa-govco {
+    width: 100%;
+    height: 5.25rem;
+    background-color: #3366CC;
 }
