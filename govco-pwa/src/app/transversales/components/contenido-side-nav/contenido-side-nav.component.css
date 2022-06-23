@@ -11,7 +11,7 @@
 }
 
 .govco-pwa-sidenav-primer-nivel{
-  margin-top: 16.2%;
+  margin-top: 16%;
   padding-left: 0px;
 }
 
@@ -31,7 +31,6 @@
       line-height: 48px;
       font-family: 'work sans';
       color: white;
-      display: inline-block;
 }
 
 li.govco-pwa-sidenav-item {
@@ -41,7 +40,21 @@ li.govco-pwa-sidenav-item {
   background: linear-gradient(to right, #004884 49.5%, #3366CC 50%);
   background-size: 200% 100%;
   background-position: right bottom;
-  transition: all 1s ease-out;
+}
+
+.active {
+  background: linear-gradient(to right, #004884 49.5%, #3366CC 50%) !important;
+  background-size: 200% 100% !important;
+}
+
+.govco-pwa-sidenav-item.active
+a .govco-pwa-sidenav-label
+.material-symbols-outlined{
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 500,
+  'GRAD' 0,
+  'opsz' 20
 }
 
 li.govco-pwa-sidenav-item-text{
@@ -61,13 +74,13 @@ li.govco-pwa-sidenav-item::before {
   width: 6px;
   height: 100%;
   background-color: #FFAB00;
-  transition: all 1s;
+  transition: all 0.6s;
   opacity: 1;
   z-index: -1;
 }
 
 li.govco-pwa-sidenav-item:hover::before{
-  animation: fadeIn 1s;
+  animation: fadeIn 0.6s;
   z-index: 1;
 }
 
@@ -78,6 +91,7 @@ li.govco-pwa-sidenav-item:hover::before{
 
 li.govco-pwa-sidenav-item:hover{
   background-position: left bottom;
+  transition: all 0.6s ease-out;
 }
 
 @keyframes showbackground {
@@ -100,7 +114,7 @@ li hr{
 
 a {
   text-decoration: none;
-
+  outline: none !important;
 }
 
 .govco-pwa-sidenav-primer-nivel ul a {
@@ -127,3 +141,16 @@ span.material-icons{
   color: white;
 }
 
+.govco-pwa-sidenav-item.active::before{
+  z-index: 1 !important;
+}
+
+.material-symbols-outlined {
+  vertical-align: middle;
+  padding: 0 5.6% 0 5.6%;
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 500,
+  'GRAD' 0,
+  'opsz' 20
+}
