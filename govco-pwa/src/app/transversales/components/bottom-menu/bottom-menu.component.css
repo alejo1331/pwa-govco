@@ -9,7 +9,6 @@ ul {
 
 .navigation-bar {
   background: #F6F8F9;
-  border-radius: 3px;
   min-height:11.25%;
   overflow: hidden;
 }
@@ -38,11 +37,19 @@ ul {
   color: #3366CC;
 }
 
+.navigation-bar .list-items .item.active .link .material-symbols-outlined{
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 500,
+  'GRAD' 0,
+  'opsz' 20
+}
+
 .navigation-bar .list-items .pointer {
   position: absolute;
-  left: calc(2.5rem/2);
+  left: 10px;
   height: 100%;
-  width: calc((100%/4) - 2.5rem);
+  width: 70px;
   z-index: 0;
   transition: all 0.2s linear;
 }
@@ -55,6 +62,19 @@ ul {
 
 .list-items .pointer::before {
   top: 0;
-  border-bottom: 8px solid #3366CC;
+  border-bottom: 6px solid #3366CC;
   border-radius: 0 0 30px 30px;
+}
+
+p{
+  font-family: 'work sans';
+  font-size: 14px;
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 500,
+  'GRAD' 0,
+  'opsz' 20
 }

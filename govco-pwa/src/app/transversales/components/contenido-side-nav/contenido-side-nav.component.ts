@@ -20,25 +20,23 @@ export class ContenidoSideNavComponent implements OnInit {
   ngOnInit() {
   }
 
-  status: boolean = false;
-  renderer: any;
+  ngAfterViewInit() {
 
-  cambioIconos(event: any) {
-    var element_target = event.target.offsetParent.getElementsByClassName("material-icons-outlined")[0].classList;
-    const hasClass = element_target[0] == 'material-icons-outlined'
-    if (hasClass) {
-      element_target.add('material-icons');
-      element_target.remove('material-icons-outlined');
-      setTimeout(() => {
-        this.sidenav.cerrar();
-        element_target.add('material-icons-outlined');
-        element_target.add('material-icons');
-        this.outEstadoMenu.emit(this.estadoMenu);
-      }, 1000);
+    const navigation_items_elms : any = document.querySelectorAll(".govco-pwa-sidenav-item");
 
-    } else {
-      element_target.add('material-icons-outlined');
-      element_target.add('material-icons');
-    }
+    navigation_items_elms.forEach((item:any, index:any) => {
+      item.addEventListener("click", (e:any) => {
+        e.preventDefault();
+        navigation_items_elms.forEach((itm:any) => {
+          if (itm.classList.contains("active")){
+            itm.classList.remove("active");
+          }
+        });
+        item.classList.add("active");
+          setTimeout(() => {
+            this.sidenav.cerrar();
+          }, 600);
+      })
+    })
   }
 }

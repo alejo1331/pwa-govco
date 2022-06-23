@@ -13,8 +13,6 @@ html, body {
 }
 
 .mat-drawer-transition .mat-drawer-content {
-  border-radius: 20px;
-  /* z-index: 3; */
   transition-duration: 1s !important;
 }
 
@@ -34,8 +32,8 @@ html, body {
 }
 
 .govco-pwa-content {
-  background-color: #F6F8F9;
-  /* height: 100%; */
+  background-color: #FFFFFF;
+  min-height: 100vh;
 }
 
 .barra-superior-general-pwa-govco, .barra-superior-interna-pwa-govco {
