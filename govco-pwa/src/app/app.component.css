@@ -41,8 +41,8 @@ mat-sidenav {
 
 .header-pwa-govco-general {
   display: grid;
-  grid-template-rows: 116px 36px;
-  height: 152px;
+  grid-template-rows: 7.25rem 2.25rem;
+  height: 9.438rem;
 }
 
 .header-pwa-govco-interna {

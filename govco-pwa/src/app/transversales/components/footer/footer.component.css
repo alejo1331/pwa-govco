@@ -2,11 +2,13 @@
     padding: 2.5rem 1rem 2.5rem 1rem;
 }
 
-.titulo-footer-pwa-govco {
+h1.titulo-footer-pwa-govco {
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
-    font-size: 20px;
+    font-size: 1.429em;
     color: #004884;
+    margin: 0;
+    line-height: 1.63rem;
 }
 
 /* Seccion lista */
@@ -20,7 +22,7 @@
     padding-left: 1rem;
     font-family: 'Work Sans', sans-serif;
     font-weight: 600;
-    font-size: 14px;
+    font-size: 0.9em;
     color: #000000;
     margin-bottom: 0;
 }
@@ -31,16 +33,20 @@
     line-height: 1.429rem;
 }
 
-.contenido-item-info-general-pwa-govco,
+p.contenido-item-info-general-pwa-govco,
 p.contenido-item-info-contacto-pwa-govco {
     font-family: 'Work Sans', sans-serif;
     font-weight: 400;
-    font-size: 14px;
     color: #000000;
     margin-bottom: 0rem;
 }
 
-.linea-vertical-pwa-govco {
+p.texto-item-info-general-pwa-govco,
+p.texto-item-info-contacto-pwa-govco {
+    margin: 0;
+}
+
+.linea-horizontal-pwa-govco {
     height: 2px;
     width: auto;
     margin: 2.5rem 1.5rem 2.5rem 1.5rem;
@@ -79,19 +85,20 @@ p.contenido-item-info-contacto-pwa-govco {
 
 .accordion-pwa-govco .text-button-accordion-pwa-govco {
     font-family: 'Montserrat', sans-serif;
-    font-weight: 500;
-    font-size: 16px;
+    font-weight: 600;
+    font-size: 0.65em;
     color: #000000;
     margin-left: 0.5rem;
 }
 
 .accordion-pwa-govco .material-symbols-outlined {
+    font-size: 1.25em;
     font-variation-settings:
         'FILL' 0,
-        'wght' 700,
+        'wght' 500,
         'GRAD' 0,
         'opsz' 20;
-        transition: 0.4s;
+    transition: 0.4s;
 }
 
 .open-expand-more-pwa-govco {
@@ -104,22 +111,25 @@ p.contenido-item-info-contacto-pwa-govco {
 }
 
 .icono-contacto-accordion-pwa-govco {
-    width: 20px;
-    height: 20px;
+    width: 0.82em;
+    height: 0.82em;
     filter: brightness(0);
     background-position: 1px 2px !important;
 }
 
 .icono-acerca-sitio-accordion-pwa-govco {
-    width: 20px;
-    height: 20px;
+    width: 0.82em;
+    height: 0.82em;
     filter: brightness(0);
 }
 
 .icono-accesibilidad-accordion-pwa-govco {
-    width: 15.5px;
-    height: 20px;
-    filter: brightness(0);
+    font-size: 0.82em !important;
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 500,
+        'GRAD' 0,
+        'opsz' 20 !important;
 }
 
 a.contenido-item-info-contacto-pwa-govco,
@@ -127,15 +137,19 @@ a.contenido-item-correo-contacto-pwa-govco,
 a.contenido-contacto-pwa-govco {
     font-family: 'Work Sans', sans-serif;
     font-weight: 600;
-    font-size: 14px;
     color: #3366CC;
-    margin-bottom: 0rem;
+    margin-bottom: 0;
     margin-left: 12px;
+    display: block;
+}
+
+a.contenido-contacto-pwa-govco {
+    font-size: 0.9em;
 }
 
 a.contenido-item-correo-contacto-pwa-govco,
 a.contenido-contacto-pwa-govco {
-    margin-left: 0px;
+    margin-left: 0;
 }
 
 a.contenido-contacto-pwa-govco {
@@ -151,8 +165,13 @@ a.contenido-contacto-pwa-govco {
     margin-top: 1.5rem;
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
-    font-size: 16px;
+    font-size: 1em;
     color: #000000;
+}
+
+a.redireccion-redes-sociales-pwa-govco {
+    text-decoration: none;
+    display: block;
 }
 
 .button-redes-sociales-pwa-govco {
@@ -160,16 +179,16 @@ a.contenido-contacto-pwa-govco {
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 2.75rem;
-    border-radius: 25px;
+    height: 2.75em;
+    border-radius: 1.375em;
     background-color: #3366CC;
     border: 1px solid #3366CC;
     margin-top: 1.5rem;
 }
 
 .icono-redes-sociales-button-pwa-govco{
-    width: 20px;
-    height: 20px;
+    width: 1.25em;
+    height: 1.25em;
 }
 
 .texto-redes-sociales-button-pwa-govco {
@@ -184,4 +203,15 @@ a.contenido-contacto-pwa-govco {
     width: 100%;
     height: 5.25rem;
     background-color: #3366CC;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.linea-barra-inferior-footer-pwa-govco {
+    height: 2.5rem;
+    width: 1px;
+    background-color: #ffffff;
+    border-radius: 2px;
+    margin: 0px 1.5em;
 }

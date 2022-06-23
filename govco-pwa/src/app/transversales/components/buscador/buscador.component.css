@@ -2,20 +2,23 @@
   color: #BABABA;
 }
 .buscador-pwa-govco {
-  height: 44px;
+  height: 3.143em;
   width: 100%;
   font-family: 'Work Sans', sans-serif;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 0.875em;
   border: 1px solid white;
-  border-radius: 22px;
-  padding: 14px 11% 14px 20px;
+  border-radius: 1.571em;
+  padding: 1em 11% 1em 1.429em;
   background-color: #FFFFFF;
 }
 
+input.buscador-pwa-govco {
+  outline: none;
+}
+
 .icono-buscador-pwa-govco{
-  background-image: url('../../../../assets/logos/transversales/search_FILL0_wght600_GRAD0_opsz40.svg');
-  background-size: 20px 20px;
+  background-size: 1.25em;
   background-repeat: no-repeat;
   background-position: right;
   background-position-x: 96.5%;

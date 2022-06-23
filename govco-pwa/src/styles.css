@@ -40,33 +40,32 @@ html, body {
 
 .barra-superior-general-pwa-govco, .barra-superior-interna-pwa-govco {
   display: grid;
-  grid-template-columns: 16px 1fr 16px;
+  grid-template-columns: 1rem 1fr 1rem;
   height: 100%;
 }
 
 .barra-superior-general-pwa-govco {
-  grid-template-rows: 56px 60px;
+  grid-template-rows: 3.5rem 3.75rem;
 }
 
 .menu-logo-pwa-govco {
   grid-column: 2;
   grid-row: 1;
   display: grid;
-  grid-template-columns: 1fr 8px 1fr 8px 1fr 8px 1fr 8px 1fr 8px 1fr;
+  grid-template-columns: 1fr 0.5rem 1fr 0.5rem 1fr 0.5rem 1fr 0.5rem 1fr 0.5rem 1fr;
 }
 
 .menu-hamburgesa-pwa-govco {
   grid-column: 1;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   justify-content: center;
-  margin-left: 14px;
+  align-items: center;
 }
 
 .menu-caja-pwa-govco{
-  width: 20px;
-  height: 14.5px;
+  width: 1.25em;
+  height: 0.906em;
   display: flex;
   flex-direction: column;
 }
@@ -83,15 +82,15 @@ html, body {
 
 .menu-hamburgesa-superior,
 .menu-hamburgesa-medio {
-  margin-bottom: 3.5px;
+  margin-bottom: 0.219em;
 }
 
 .menu-hamburgesa-inferior {
-  margin: 0px;
+  margin: 0;
 }
 
 .menu-hamburgesa-superior-rotacion {
-  margin: 0px;
+  margin: 0;
   width: 8px;
   transform: rotate(45deg) translate(2.5px,0.2px);
 }
@@ -114,7 +113,7 @@ html, body {
   align-items: center;
 }
 
-.caja-icono-pwa-pwa-govco {
+.caja-icono-pwa-govco {
   width: 1.5rem;
   height: 1.5rem;
   display: flex;

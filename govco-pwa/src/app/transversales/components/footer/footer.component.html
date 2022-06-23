@@ -1,26 +1,27 @@
 <footer class="footer-pwa-govco">
 
-    <span class="titulo-footer-pwa-govco">{{infGeneral?.titulo}}</span>
+    <h1 class="titulo-footer-pwa-govco">Portal Único</h1>
+    <h1 class="titulo-footer-pwa-govco">del Estado Colombiano</h1>
 
     <section class="info-general-pwa-govco">
         <ul class="lista-info-general-pwa-govco">
             <li class="item-info-general-pwa-govco">
-                {{infGeneral?.textoDireccion}} <br>
+                <p class="texto-item-info-general-pwa-govco">{{infGeneral?.textoDireccion}}</p>
                 <p class="contenido-item-info-general-pwa-govco">{{infGeneral?.direccion}}</p>
             </li>
             <li class="item-info-general-pwa-govco">
-                {{infGeneral?.tituloHorario}} <br>
+                <p class="texto-item-info-general-pwa-govco">{{infGeneral?.tituloHorario}}</p>
                 <p class="contenido-item-info-general-pwa-govco">- {{infGeneral?.horarioPresencial}}</p>
                 <p class="contenido-item-info-general-pwa-govco">- {{infGeneral?.horarioVirtual}}</p>
             </li>
             <li class="item-info-general-pwa-govco">
-                {{infGeneral?.textoCodigoPostal}}
+                <p class="texto-item-info-general-pwa-govco">{{infGeneral?.textoCodigoPostal}}</p>
                 <p class="contenido-item-info-general-pwa-govco">{{infGeneral?.codigoPostal}}</p>
             </li>
         </ul>
     </section>
 
-    <div class="linea-vertical-pwa-govco"></div>
+    <div class="linea-horizontal-pwa-govco"></div>
 
     <section class="accordion-pwa-govco" id="accordionFooterPwa">
 
@@ -31,14 +32,14 @@
                     data-bs-target="#accordionPanels-collapseOne" aria-expanded="false"
                     aria-controls="accordionPanels-collapseOne">
                     <div class="icono-titulo-inf-contacto-pwa-govco">
-                        <span class="caja-icono-pwa-pwa-govco">
+                        <span class="caja-icono-pwa-govco">
                             <span style="background: url({{infContacto?.tituloUrlImagen}}) no-repeat;"
                                 class="icono-contacto-accordion-pwa-govco">
                             </span>
                         </span>
                         <span class="text-button-accordion-pwa-govco">{{infContacto?.titulo}}</span>
                     </div>
-                    <span class="caja-icono-pwa-pwa-govco">
+                    <span class="caja-icono-pwa-govco">
                         <span class="material-symbols-outlined"
                             [ngClass]="{'open-expand-more-pwa-govco': marginAccordionOne == true}">
                             expand_more</span>
@@ -50,7 +51,7 @@
                 <div class="body-accordion-pwa-govco">
                     <ul class="lista-info-contacto-pwa-govco">
                         <li class="item-info-contacto-pwa-govco">
-                            {{infContacto?.tituloTelefono}} <br>
+                            <p class="texto-item-info-contacto-pwa-govco">{{infContacto?.tituloTelefono}}</p> 
                             <p class="contenido-item-info-contacto-pwa-govco">- {{tituloTelefonoNacional}}:</p>
                             <a href="tel: {{telefonoNacional}}"
                                 class="contenido-item-info-contacto-pwa-govco">{{telefonoNacional}}</a>
@@ -62,16 +63,16 @@
                                 class="contenido-item-info-contacto-pwa-govco">{{lineaAnticorrupcion}}</a>
                         </li>
                         <li class="item-info-contacto-pwa-govco">
-                            {{infContacto?.correoTexto}} <br>
+                            <p class="texto-item-info-contacto-pwa-govco">{{infContacto?.correoTexto}}</p> 
                             <a href="mailto: {{infContacto?.correoInstitucional}}"
                                 class="contenido-item-correo-contacto-pwa-govco">{{infContacto?.correoInstitucional}}</a>
                         </li>
                     </ul>
                     <div class="contenido-info-contacto-pwa-govco">
                         <a href="{{infContacto?.soLlamadaUrlDestino}}"
-                            class="contenido-contacto-pwa-govco">{{infContacto?.soLlamadaTexto}}</a><br>
+                            class="contenido-contacto-pwa-govco">{{infContacto?.soLlamadaTexto}}</a>
                         <a href="{{infContacto?.llamadaWebUrlDestino}}"
-                            class="contenido-contacto-pwa-govco">{{infContacto?.llamadaWebTexto}}</a><br>
+                            class="contenido-contacto-pwa-govco">{{infContacto?.llamadaWebTexto}}</a>
                         <a href="{{infContacto?.hablemosUrlDestino}}"
                             class="contenido-contacto-pwa-govco">{{infContacto?.hablemosTexto}}</a>
                     </div>
@@ -86,13 +87,13 @@
                     data-bs-target="#accordionPanels-collapseTwo" aria-expanded="false"
                     aria-controls="accordionPanels-collapseTwo">
                     <div class="icono-titulo-inf-contacto-pwa-govco">
-                        <span class="caja-icono-pwa-pwa-govco">
+                        <span class="caja-icono-pwa-govco">
                             <span style="background: url({{infAcercaDelSitio?.tituloUrlImagen}}) no-repeat;"
                                 class="icono-acerca-sitio-accordion-pwa-govco"></span>
                         </span>
                         <span class="text-button-accordion-pwa-govco">{{infAcercaDelSitio?.titulo}}</span>
                     </div>
-                    <span class="caja-icono-pwa-pwa-govco">
+                    <span class="caja-icono-pwa-govco">
                         <span class="material-symbols-outlined"
                             [ngClass]="{'open-expand-more-pwa-govco': marginAccordionTwo}">
                             expand_more</span>
@@ -104,11 +105,11 @@
                 <div class="body-accordion-pwa-govco">
                     <div class="contenido-info-contacto-pwa-govco">
                         <a href="{{infAcercaDelSitio?.mapaSitioUrlDestino}}"
-                            class="contenido-contacto-pwa-govco">{{infAcercaDelSitio?.mapaSitioTexto}}</a><br>
+                            class="contenido-contacto-pwa-govco">{{infAcercaDelSitio?.mapaSitioTexto}}</a>
                         <a href="{{infAcercaDelSitio?.poPrivacidadUrlDestino}}"
-                            class="contenido-contacto-pwa-govco">{{infAcercaDelSitio?.poPrivacidadTexto}}</a><br>
+                            class="contenido-contacto-pwa-govco">{{infAcercaDelSitio?.poPrivacidadTexto}}</a>
                         <a href="{{infAcercaDelSitio?.poAutorUrlDestino}}"
-                            class="contenido-contacto-pwa-govco">{{infAcercaDelSitio?.poAutorTexto}}</a><br>
+                            class="contenido-contacto-pwa-govco">{{infAcercaDelSitio?.poAutorTexto}}</a>
                         <a href="{{infAcercaDelSitio?.terCondicionesUrlDestino}}"
                             class="contenido-contacto-pwa-govco">{{infAcercaDelSitio?.terCondicionesTexto}}</a>
                     </div>
@@ -123,13 +124,12 @@
                     data-bs-target="#accordionPanels-collapseThree" aria-expanded="false"
                     aria-controls="accordionPanels-collapseThree">
                     <div class="icono-titulo-inf-contacto-pwa-govco">
-                        <span class="caja-icono-pwa-pwa-govco">
-                            <span style="background: url({{infAcercaDelSitio?.ayudaAccesibilidadImagen}}) no-repeat;"
-                                class="icono-accesibilidad-accordion-pwa-govco"></span>
+                        <span class="caja-icono-pwa-govco">
+                            <span class="icono-accesibilidad-accordion-pwa-govco material-symbols-outlined">settings_accessibility</span>
                         </span>
                         <span class="text-button-accordion-pwa-govco">{{infAcercaDelSitio?.ayudaAccesibilidad}}</span>
                     </div>
-                    <span class="caja-icono-pwa-pwa-govco">
+                    <span class="caja-icono-pwa-govco">
                         <span class="material-symbols-outlined"
                             [ngClass]="{'open-expand-more-pwa-govco': marginAccordionThree}">
                             expand_more</span>
@@ -148,29 +148,25 @@
 
     <section class="redes-sociales-pwa-govco">
         <h2 class="texto-redes-sociales-pwa-govco">Síguenos en:</h2>
-        <button class="button-redes-sociales-pwa-govco">
-            <span style="background: url({{infAcercaDelSitio?.twitterUrlImagen}}) no-repeat;"
-                class="icono-redes-sociales-button-pwa-govco"></span>
-            <!-- <a href="{{infAcercaDelSitio?.twitterUrlDestino}}"
-                class="texto-redes-sociales-button-pwa-govco">@gobdigitalco</a> -->
-            
-            <a href="intent://scan/#Intent;scheme=zxing;package=com.google.zxing.client.android;end"
-                class="texto-redes-sociales-button-pwa-govco">@gobdigitalco</a>
-            <!-- <a href="intent://twitter/#Intent;scheme=twitter;package=com.twitter.android;S.browser_fallback_url=https%3A%2F%2twitter.com%2FGobDigitalCO;end"
-                class="texto-redes-sociales-button-pwa-govco">@gobdigitalco</a> -->
-
-        </button>
-        <button class="button-redes-sociales-pwa-govco">
-            <span style="background: url({{infAcercaDelSitio?.facebookUrlImagen}}) no-repeat;"
-                class="icono-redes-sociales-button-pwa-govco"></span>
-                <!-- <a href="{{infAcercaDelSitio?.facebookUrlDestino}}"
-                class="texto-redes-sociales-button-pwa-govco">Gobierno Digital</a> -->
-                <!-- fb://facewebmodal/f?href=https://m.facebook.com/GobDigitalCO/ -->
-
-            <a href="fb://page/1692101410811137"
-                class="texto-redes-sociales-button-pwa-govco">Gobierno Digital</a>
-        </button>
+        <a href="{{infAcercaDelSitio?.twitterUrlDestino}}" class="redireccion-redes-sociales-pwa-govco">
+            <button class="button-redes-sociales-pwa-govco">
+                <span style="background: url(../../../../assets/icons-redes-sociales/twitter-square.svg) no-repeat;"
+                    class="icono-redes-sociales-button-pwa-govco"></span>
+                <p class="texto-redes-sociales-button-pwa-govco">@gobdigitalco</p>
+            </button>
+        </a>
+        <a href="fb://page/80681696914" class="redireccion-redes-sociales-pwa-govco">
+            <button class="button-redes-sociales-pwa-govco">
+                <span style="background: url(../../../../assets/icons-redes-sociales/facebook-square-01.svg) no-repeat;"
+                    class="icono-redes-sociales-button-pwa-govco"></span>
+                <p class="texto-redes-sociales-button-pwa-govco">Gobierno Digital</p>
+            </button>
+        </a>
     </section>
 </footer>
 
-<div class="barra-inferior-footer-pwa-govco"> hola mundo</div>
+<section class="barra-inferior-footer-pwa-govco">
+    <img src="../../../assets/logos/transversales/GOVCO.svg" alt="logo de gov.co">
+    <div class="linea-barra-inferior-footer-pwa-govco"></div>
+    <img src="../../../../assets/logos/transversales/Marca Pais.png" alt="logo marca pais">
+</section>
