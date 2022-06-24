@@ -2,6 +2,10 @@ import { Component, ViewChild, Output, EventEmitter } from '@angular/core';
 import { MatSidenav, MatSidenavContent } from '@angular/material/sidenav';
 import { BarraSuperiorGeneralComponent } from './transversales/components/barra-superior-general/barra-superior-general.component'
 import { SidenavService } from './transversales/services/sidenav-service/sidenav-service.service';
+import { AppService } from './app.service';
+import {Router, NavigationEnd, RouterEvent, Event} from '@angular/router';
+import {filter, map} from 'rxjs/operators';
+
 
 
 @Component({
@@ -25,7 +29,16 @@ export class AppComponent {
   title: string = 'govco-pwa';
 
   constructor(
-    private sidenavService : SidenavService){}
+    public appService: AppService,
+    private router: Router,
+    private sidenavService : SidenavService){
+      this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe((event: any) => {
+      this.appService.previousUrl= this.appService.currentUrl;
+      this.appService.currentUrl = event.url;
+      });
+    }
 
   ngAfterContentChecked(): void {
     this.sidenavService.setSidnav(this.sidenav)
