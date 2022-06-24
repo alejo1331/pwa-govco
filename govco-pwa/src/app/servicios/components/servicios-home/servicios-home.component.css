@@ -1,3 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
+
 .govco-pwa-servicios-content {
   height: 100vh;
+  margin: 0 16px 0 16px;
+}
+
+.gov-co-back-arrow-header{
+  height: 56px;
+  box-shadow: 0px 4px 6px #13173d14;
+  opacity: 1;
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  display: flex;
+  align-items: center;
+}
+
+.gov-co-back-arrow{
+  height: 48px;
+  width: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.material-symbols-outlined{
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 500,
+  'GRAD' 0,
+  'opsz' 20
+}
+
+a{
+  color: #000000;
+}
+
+.govco-pwa-servicios-titulo{
+  width: 243px;
+  height: 52px;
+}
+
+.govco-pwa-servicios-titulo p{
+  font-size: 20px;
+  font-family: 'Montserrat', sans-serif;
+  color: #004884;
+  margin-bottom: 0;
+}
+
+hr{
+    background-color: #1C4780;
+    border: 0;
+    width: 88px;
+    margin: 0 0;
+    height: 2px;
+    opacity: 1;
 }

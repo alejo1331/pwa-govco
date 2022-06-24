@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AppService } from '../../../app.service';
+import { Router, RoutesRecognized } from '@angular/router';
+import { BottomMenuService } from '../../../transversales/services/bottom-menu/bottom-menu.service';
 
 @Component({
   selector: 'app-servicios-home',
@@ -7,9 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ServiciosHomeComponent implements OnInit {
 
-  constructor() { }
+  anteriorUrl:any
+
+  constructor(
+    public router: Router,
+    appService : AppService,
+    public bottomService : BottomMenuService
+  ) {
+    this.anteriorUrl = appService.currentUrl
+   }
 
   ngOnInit() {
+  }
+
+  backUrl(){
+    this.bottomService.quitarActive()
   }
 
 }
