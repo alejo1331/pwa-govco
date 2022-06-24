@@ -11,6 +11,6 @@ export interface FooterInterface {
         panelCuartaColumna: PanelCuartaColumna;
     };
     succeeded: boolean;
-    errors: string;
-    message: string;
+    errors: string | null;
+    message: string | null;
 }

@@ -19,7 +19,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { SidenavModule  } from './sidenav/sidenav.module';
 import { SidenavService } from './transversales/services/sidenav-service/sidenav-service.service';
-
+import { NoticiasModule } from './noticias/noticias.module';
+import { ParticipaModule } from './participa/participa.module';
+import { EntidadesEstadoModule } from './entidades-estado/entidades-estado.module';
+import { SobreNosotrosModule } from './sobre-nosotros/sobre-nosotros.module';
 
 @NgModule({
   declarations: [
@@ -45,7 +48,11 @@ import { SidenavService } from './transversales/services/sidenav-service/sidenav
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000'
     }),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NoticiasModule,
+    ParticipaModule,
+    EntidadesEstadoModule,
+    SobreNosotrosModule
   ],
   providers: [SidenavService],
   bootstrap: [AppComponent]

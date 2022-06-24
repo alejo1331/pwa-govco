@@ -22,7 +22,7 @@ export class AppComponent {
 
   statusMenu:boolean = false;
 
-  title = 'govco-pwa';
+  title: string = 'govco-pwa';
 
   constructor(
     private sidenavService : SidenavService){}

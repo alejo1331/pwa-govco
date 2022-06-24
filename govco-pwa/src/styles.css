@@ -37,12 +37,12 @@ html, body {
   position: relative;
 }
 
-.barra-superior-general-pwa-govco, .barra-superior-interna-pwa-govco {
+.barra-superior-general-pwa-govco, 
+.barra-superior-interna-pwa-govco {
+  background-color: #3366CC;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1rem 1fr 1rem;
-  grid-template-columns: 1rem 1fr 1rem;
-  height: 100%;
+  padding: 0 16px;
 }
 
 .barra-superior-general-pwa-govco {
@@ -51,10 +51,8 @@ html, body {
 }
 
 .menu-logo-pwa-govco {
-  -ms-grid-column: 2;
-  grid-column: 2;
-  -ms-grid-row: 1;
   grid-row: 1;
+ -ms-grid-row: 1;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr 0.5rem 1fr 0.5rem 1fr 0.5rem 1fr 0.5rem 1fr 0.5rem 1fr;

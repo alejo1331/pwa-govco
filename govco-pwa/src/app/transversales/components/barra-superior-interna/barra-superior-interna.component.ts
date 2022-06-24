@@ -8,7 +8,6 @@ import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 export class BarraSuperiorInternaComponent implements OnInit {
 
   @Output() outEstadoMenu = new EventEmitter<boolean>();
-  @Input() inEstadoMenu!: boolean;
 
   estadoMenu: boolean = false;
 

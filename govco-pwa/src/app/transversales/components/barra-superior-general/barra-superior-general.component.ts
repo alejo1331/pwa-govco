@@ -8,7 +8,6 @@ import { Component, EventEmitter, OnInit, Output, Input, OnChanges, SimpleChange
 export class BarraSuperiorGeneralComponent {
 
   @Output() outEstadoMenu = new EventEmitter<boolean>();
-  @Input() inEstadoMenu!: boolean;
 
   estadoMenu: boolean = false;
 

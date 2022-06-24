@@ -1,23 +1,17 @@
 <mat-sidenav-container>
-  <mat-sidenav #sidenav="matSidenav" mode="push"
-  (closed)="estadoSideNav(true)">
+  <mat-sidenav #sidenav="matSidenav" mode="push" (closed)="estadoSideNav(true)">
     <app-contenido-side-nav (outEstadoMenu)="estadoMenu($event)"></app-contenido-side-nav>
   </mat-sidenav>
 
   <mat-sidenav-content [class.escalarContenido]="sidenav.opened">
 
-    <header [ngClass]="{
-      'header-pwa-govco-general': barraSuperiorGeneral,
-      'header-pwa-govco-interna': barraSuperiorInterna
-    }">
-      <app-barra-superior-general [inEstadoMenu]="statusMenu" (outEstadoMenu)="estadoMenu($event)"
-        class="app-barra-superior-general-pwa-govco" *ngIf="barraSuperiorGeneral">
-      </app-barra-superior-general>
-      <app-barra-superior-interna (outEstadoMenu)="estadoMenu($event)"
-        class="app-barra-superior-interna-pwa-govco" *ngIf="barraSuperiorInterna">
-      </app-barra-superior-interna>
-      <app-geolocalizacion class="app-geolocalizacionpwa-govco"></app-geolocalizacion>
-    </header>
+    <app-barra-superior-general (outEstadoMenu)="estadoMenu($event)" class="app-barra-superior-general-pwa-govco"
+      *ngIf="barraSuperiorGeneral">
+    </app-barra-superior-general>
+    <app-barra-superior-interna (outEstadoMenu)="estadoMenu($event)" class="app-barra-superior-interna-pwa-govco"
+      *ngIf="barraSuperiorInterna">
+    </app-barra-superior-interna>
+    <app-geolocalizacion class="app-geolocalizacionpwa-govco"></app-geolocalizacion>
 
     <section class="govco-pwa-content">
       <router-outlet></router-outlet>
