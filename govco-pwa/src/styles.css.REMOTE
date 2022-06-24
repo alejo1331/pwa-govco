@@ -3,8 +3,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&family=Work+Sans:wght@400;500;600&display=swap');
 
 html, body {
-  height: 100%;
-  width: 100%;
+  height: 100vh;
+  width: 100vw;
   margin: 0;
 }
 
@@ -13,7 +13,6 @@ html, body {
 }
 
 .mat-drawer-transition .mat-drawer-content {
-
   transition-duration: 1s !important;
 }
 
@@ -34,32 +33,26 @@ html, body {
 
 .govco-pwa-content {
   background-color: #FFFFFF;
-  position: relative;
+  min-height: 100vh;
 }
 
 .barra-superior-general-pwa-govco, .barra-superior-interna-pwa-govco {
-  display: -ms-grid;
   display: grid;
   height: 100%;
   padding: 0 16px;
 }
 
 .barra-superior-general-pwa-govco {
-  -ms-grid-rows: 3.5rem 3.75rem;
   grid-template-rows: 3.5rem 3.75rem;
 }
 
 .menu-logo-pwa-govco {
   grid-row: 1;
- -ms-grid-row: 1;
-  display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1fr 0.5rem 1fr 0.5rem 1fr 0.5rem 1fr 0.5rem 1fr 0.5rem 1fr;
   grid-template-columns: 1fr 0.5rem 1fr 0.5rem 1fr 0.5rem 1fr 0.5rem 1fr 0.5rem 1fr;
 }
 
 .menu-hamburgesa-pwa-govco {
-  -ms-grid-column: 1;
   grid-column: 1;
   display: flex;
   flex-direction: column;
@@ -111,8 +104,6 @@ html, body {
 }
 
 .logo-pwa-govco {
-  -ms-grid-column: 3;
-  -ms-grid-column-span: 7;
   grid-column: 3 / 10;
   display: flex;
   justify-content: center;
@@ -126,3 +117,4 @@ html, body {
   align-items: center;
   justify-content: center;
 }
+

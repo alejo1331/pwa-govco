@@ -1,5 +1,6 @@
 .footer-pwa-govco {
     padding: 2.5rem 1rem 2.5rem 1rem;
+    background-color: #f6f8f9;
 }
 
 h1.titulo-footer-pwa-govco {
@@ -83,7 +84,7 @@ p.texto-item-info-contacto-pwa-govco {
     align-items: center;
 }
 
-.accordion-pwa-govco .text-button-accordion-pwa-govco {
+.text-button-accordion-pwa-govco {
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     font-size: 0.65em;
@@ -91,8 +92,9 @@ p.texto-item-info-contacto-pwa-govco {
     margin-left: 0.5rem;
 }
 
-.accordion-pwa-govco .material-symbols-outlined {
+.material-symbols-outlined {
     font-size: 1.25em;
+    color: #000000;
     font-variation-settings:
         'FILL' 0,
         'wght' 500,

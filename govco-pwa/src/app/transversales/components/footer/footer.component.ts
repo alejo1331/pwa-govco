@@ -40,8 +40,6 @@ export class FooterComponent implements OnInit {
       this.lineaAnticorrupcion = footer.data.panelTerceraColumna.lineaAnticorrupcion.split(':')[1];
 
       this.infAcercaDelSitio = footer.data.panelCuartaColumna;
-      
-      console.log(this.infAcercaDelSitio)
     });
   }
 
