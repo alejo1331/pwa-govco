@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HomeComponent } from './components/home/home.component';
+import { TramitesHomeComponent } from './components/tramites-home//tramites-home.component';
 import { TramitesRoutingModule } from './tramites-routing.module';
 
 @NgModule({
@@ -8,7 +8,7 @@ import { TramitesRoutingModule } from './tramites-routing.module';
     CommonModule,
     TramitesRoutingModule
   ],
-  declarations: [HomeComponent],
-  exports:[HomeComponent]
+  declarations: [TramitesHomeComponent],
+  exports:[TramitesHomeComponent]
 })
 export class TramitesModule { }

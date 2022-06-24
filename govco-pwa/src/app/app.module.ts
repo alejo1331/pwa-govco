@@ -9,6 +9,8 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { InicioModule } from './inicio/inicio.module';
 import { PerfilModule } from './perfil/perfil.module';
+import { TramitesModule } from './tramites/tramites.module';
+import { ServiciosModule } from './servicios/servicios.module';
 import { TransversalesModule } from './transversales/transversales.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -34,6 +36,8 @@ import { SidenavService } from './transversales/services/sidenav-service/sidenav
     SidenavModule,
     InicioModule,
     PerfilModule,
+    TramitesModule,
+    ServiciosModule,
     TransversalesModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
