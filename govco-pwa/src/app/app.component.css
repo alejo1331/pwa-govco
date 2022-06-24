@@ -57,11 +57,10 @@ mat-sidenav {
 
 .app-barra-superior-general-pwa-govco,
 .app-barra-superior-interna-pwa-govco {
-  grid-row: 1;
-  background-color: #3366CC;
   height: 116px;
   width: 100%;
-  position: fixed;
+  position: sticky;
+  top: 0;
   z-index: 1;
 }
 
@@ -70,8 +69,7 @@ mat-sidenav {
 }
 
 .app-geolocalizacionpwa-govco {
-  grid-row: 2;
-  height: 100%;
+  height: 36px;
   background-color: #E6EFFD;
   display: flex;
   align-items: center;

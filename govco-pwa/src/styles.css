@@ -37,10 +37,11 @@ html, body {
   position: relative;
 }
 
-.barra-superior-general-pwa-govco, .barra-superior-interna-pwa-govco {
+.barra-superior-general-pwa-govco, 
+.barra-superior-interna-pwa-govco {
+  background-color: #3366CC;
   display: -ms-grid;
   display: grid;
-  height: 100%;
   padding: 0 16px;
 }
 
