@@ -10,7 +10,7 @@
       'header-pwa-govco-general': barraSuperiorGeneral,
       'header-pwa-govco-interna': barraSuperiorInterna
     }">
-      <app-barra-superior-general [inEstadoMenu]="statusMenu" (outEstadoMenu)="estadoMenu($event)"
+      <app-barra-superior-general (outEstadoMenu)="estadoMenu($event)"
         class="app-barra-superior-general-pwa-govco" *ngIf="barraSuperiorGeneral">
       </app-barra-superior-general>
       <app-barra-superior-interna (outEstadoMenu)="estadoMenu($event)"

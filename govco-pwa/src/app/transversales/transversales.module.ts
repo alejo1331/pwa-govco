@@ -12,6 +12,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { BottomMenuComponent } from './components/bottom-menu/bottom-menu.component';
 import { TransversalesRoutingModule } from './transversales.routing';
 
+
 @NgModule({
   imports: [
     CommonModule,

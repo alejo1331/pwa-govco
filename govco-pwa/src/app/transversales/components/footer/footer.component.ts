@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, OnChanges, SimpleChanges, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { FooterInterface } from '../../models/footer-models/footer-interface';
 import { PanelCuartaColumna } from '../../models/footer-models/panel-cuarta-columna';
 import { PanelSegundaColumna } from '../../models/footer-models/panel-segunda-columna';
@@ -21,6 +21,11 @@ export class FooterComponent implements OnInit {
   tituloTelefonoLocal: string;
   lineaAnticorrupcion: string;
   tituloLineaAnticorrupcion: string;
+
+  estadoAccordionOne: string = 'false';
+  estadoAccordionTwo: string = 'false';
+  estadoAccordionThree: string = 'false';
+
   marginAccordionOne: boolean = false;
   marginAccordionTwo: boolean = false;
   marginAccordionThree: boolean = false;
@@ -45,14 +50,14 @@ export class FooterComponent implements OnInit {
 
   @HostListener('click')
   onClick() {
-    const estadoAccordionOne = document.getElementById('accordionPanelOne')?.getAttribute('aria-expanded');
-    this.marginAccordionOne = (estadoAccordionOne?.toLowerCase() === 'true');
+    this.estadoAccordionOne = String(document.getElementById('accordionPanelOne')?.getAttribute('aria-expanded'));
+    this.marginAccordionOne = (this.estadoAccordionOne?.toLowerCase() === 'true');
 
-    const estadoAccordionTwo = document.getElementById('accordionPanelTwo')?.getAttribute('aria-expanded');
-    this.marginAccordionTwo = (estadoAccordionTwo?.toLowerCase() === 'true');
+    this.estadoAccordionTwo = String(document.getElementById('accordionPanelTwo')?.getAttribute('aria-expanded'));
+    this.marginAccordionTwo = (this.estadoAccordionTwo?.toLowerCase() === 'true');
 
-    const estadoAccordionThree = document.getElementById('accordionPanelThree')?.getAttribute('aria-expanded');
-    this.marginAccordionThree = (estadoAccordionThree?.toLowerCase() === 'true');
+    this.estadoAccordionThree = String(document.getElementById('accordionPanelThree')?.getAttribute('aria-expanded'));
+    this.marginAccordionThree = (this.estadoAccordionThree?.toLowerCase() === 'true');
     
   }
 
