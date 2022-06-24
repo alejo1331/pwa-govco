@@ -8,8 +8,8 @@
     <app-barra-superior-general (outEstadoMenu)="estadoMenu($event)" class="app-barra-superior-general-pwa-govco"
       *ngIf="barraSuperiorGeneral">
     </app-barra-superior-general>
-    <app-barra-superior-interna (outEstadoMenu)="estadoMenu($event)" class="app-barra-superior-interna-pwa-govco"
-      *ngIf="barraSuperiorInterna">
+    <app-barra-superior-interna (outEstadoMenu)="estadoMenu($event)"
+      class="app-barra-superior-interna-pwa-govco" *ngIf="barraSuperiorInterna">
     </app-barra-superior-interna>
     <app-geolocalizacion class="app-geolocalizacionpwa-govco"></app-geolocalizacion>
 
@@ -18,7 +18,7 @@
 
     </section>
     <section class="govco-pwa-bottom-menu">
-      <app-bottom-menu></app-bottom-menu>
+      <app-bottom-menu (outBarraSuInterna)="opcionBarraSuperiorInterna($event)"></app-bottom-menu>
     </section>
   </mat-sidenav-content>
 

@@ -57,4 +57,9 @@ export class AppComponent {
   estadoSideNav(sideNav:any){
     this.barraSuperior.onClickMenu();
   }
+
+  opcionBarraSuperiorInterna(opcion:boolean){
+    this.barraSuperiorInterna = opcion;
+    this.barraSuperiorGeneral = !opcion;
+  }
 }
