@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './components/home/home.component';
+import { TramitesHomeComponent } from './components/tramites-home/tramites-home.component';
 
 
 const routes: Routes = [{
@@ -8,8 +8,8 @@ const routes: Routes = [{
   children: [
 
     {
-      path: 'home',
-      component: HomeComponent
+      path: '',
+      component: TramitesHomeComponent
     },
   ]
 }];

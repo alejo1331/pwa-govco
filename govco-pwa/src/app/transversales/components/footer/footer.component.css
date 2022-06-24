@@ -215,3 +215,7 @@ a.redireccion-redes-sociales-pwa-govco {
     border-radius: 2px;
     margin: 0px 1.5em;
 }
+
+.govco-pwa-footer-content{
+  height: 100vh;
+}
