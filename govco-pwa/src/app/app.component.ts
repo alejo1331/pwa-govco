@@ -1,10 +1,10 @@
-import { Component, ViewChild, Output, EventEmitter } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { MatSidenav, MatSidenavContent } from '@angular/material/sidenav';
-import { BarraSuperiorGeneralComponent } from './transversales/components/barra-superior-general/barra-superior-general.component'
 import { SidenavService } from './transversales/services/sidenav-service/sidenav-service.service';
 import { AppService } from './app.service';
-import {Router, NavigationEnd, RouterEvent, Event} from '@angular/router';
-import {filter, map} from 'rxjs/operators';
+import {Router, NavigationEnd} from '@angular/router';
+import {filter} from 'rxjs/operators';
+import { BarraSuperiorComponent } from './transversales/components/barra-superior/barra-superior.component';
 
 
 
@@ -17,12 +17,12 @@ import {filter, map} from 'rxjs/operators';
 
 export class AppComponent {
 
-  @ViewChild('sidenav') sidenav!: MatSidenav;
-  @ViewChild(MatSidenavContent ) sidenavcontent!: MatSidenavContent;
-  @ViewChild( BarraSuperiorGeneralComponent ) barraSuperior : any;
+  @ViewChild( 'sidenav' ) sidenav!: MatSidenav;
+  @ViewChild( MatSidenavContent ) sidenavcontent!: MatSidenavContent;
+  @ViewChild( BarraSuperiorComponent ) barraSuperior : any;
+  @ViewChild( BarraSuperiorComponent ) cambiarBarra : any;
 
   barraSuperiorGeneral :boolean = true;
-  barraSuperiorInterna :boolean = false;
 
   statusMenu:boolean = false;
 
@@ -59,7 +59,6 @@ export class AppComponent {
   }
 
   opcionBarraSuperiorInterna(opcion:boolean){
-    this.barraSuperiorInterna = opcion;
-    this.barraSuperiorGeneral = !opcion;
+    this.cambiarBarra.barraSuperiorInterna = opcion;
   }
 }

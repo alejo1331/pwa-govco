@@ -2,13 +2,14 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&family=Work+Sans:wght@400;500;600&display=swap');
 
-html, body {
+html,
+body {
   height: 100%;
   width: 100%;
   margin: 0;
 }
 
-.mat-drawer-transition .mat-drawer-backdrop{
+.mat-drawer-transition .mat-drawer-backdrop {
   opacity: 0;
 }
 
@@ -24,6 +25,7 @@ html, body {
 .mat-drawer.mat-drawer-push {
   background-color: #3366CC;
 }
+
 .mat-drawer:not(.mat-drawer-side) {
   box-shadow: none;
 }
@@ -35,89 +37,6 @@ html, body {
 .govco-pwa-content {
   background-color: #FFFFFF;
   position: relative;
-}
-
-.barra-superior-general-pwa-govco, 
-.barra-superior-interna-pwa-govco {
-  background-color: #3366CC;
-  display: -ms-grid;
-  display: grid;
-  padding: 0 16px;
-}
-
-.barra-superior-general-pwa-govco {
-  -ms-grid-rows: 3.5rem 3.75rem;
-  grid-template-rows: 3.5rem 3.75rem;
-}
-
-.menu-logo-pwa-govco {
-  grid-row: 1;
- -ms-grid-row: 1;
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 1fr 0.5rem 1fr 0.5rem 1fr 0.5rem 1fr 0.5rem 1fr 0.5rem 1fr;
-  grid-template-columns: 1fr 0.5rem 1fr 0.5rem 1fr 0.5rem 1fr 0.5rem 1fr 0.5rem 1fr;
-}
-
-.menu-hamburgesa-pwa-govco {
-  -ms-grid-column: 1;
-  grid-column: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.menu-caja-pwa-govco{
-  width: 1.25em;
-  height: 0.906em;
-  display: flex;
-  flex-direction: column;
-}
-
-.menu-hamburgesa-superior,
-.menu-hamburgesa-medio,
-.menu-hamburgesa-inferior {
-  width: inherit;
-  height: 17.24137%;
-  border-radius: 2px;
-  background-color: #FDFDFD;
-  transition: all 0.6s;
-}
-
-.menu-hamburgesa-superior,
-.menu-hamburgesa-medio {
-  margin-bottom: 0.219em;
-}
-
-.menu-hamburgesa-inferior {
-  margin: 0;
-}
-
-.menu-hamburgesa-superior-rotacion {
-  margin: 0;
-  width: 8px;
-  transform: rotate(45deg) translate(2.5px,0.2px);
-}
-
-.menu-hamburgesa-medio-rotacion {
-  margin: 0px;
-  transform: rotate(-45deg) translate(-2.6px,3px);
-}
-
-.menu-hamburgesa-inferior-rotacion {
-  margin: 0px;
-  width: 8px;
-  transform: rotate(45deg) translate(10.7px,-3.3px);
-}
-
-.logo-pwa-govco {
-  -ms-grid-column: 3;
-  -ms-grid-column-span: 7;
-  grid-column: 3 / 10;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .caja-icono-pwa-govco {

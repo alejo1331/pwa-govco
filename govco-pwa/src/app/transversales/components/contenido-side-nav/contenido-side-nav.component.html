@@ -4,70 +4,73 @@
       <img src="../../../assets/logos/transversales/GOVCO.svg" alt="Logo de GOVCO">
     </div>
 
-      <ul class="govco-pwa-sidenav-primer-nivel">
-        <span class="pointer"></span>
-        <li class="govco-pwa-sidenav-item" routerLink="menu/noticias">
-          <a href="#">
-            <div class="govco-pwa-sidenav-label" >
-              <span class="material-symbols-outlined">feed</span>
-              <span class="">Noticias</span>
-            </div>
-          </a>
-        </li>
-        <li class="govco-pwa-sidenav-item" routerLink="menu/participa">
-          <a href="#">
-            <div class="govco-pwa-sidenav-label" >
-              <span class="material-symbols-outlined">chat</span>
-              <span class="">Participa</span>
-            </div>
-          </a>
-        </li>
-        <li class="govco-pwa-sidenav-item-text">
-          <div>
-            <div class="govco-pwa-sidenav-label-text">Conócenos</div>
+    <ul class="govco-pwa-sidenav-primer-nivel">
+      <span class="pointer"></span>
+      <li class="govco-pwa-sidenav-item" (click)="barraSuperiorInterna(false)" 
+        routerLink="menu/noticias">
+        <a href="#">
+          <div class="govco-pwa-sidenav-label">
+            <span class="material-symbols-outlined">feed</span>
+            <span class="">Noticias</span>
           </div>
-        </li>
-        <li class="govco-pwa-sidenav-item" routerLink="menu/entidades-del-estado">
-          <a href="#" >
-            <div class="govco-pwa-sidenav-label" >
-              <span class="material-symbols-outlined">villa</span>
-              <span >Entidades del estado</span>
-            </div>
-          </a>
-        </li>
-        <li class="govco-pwa-sidenav-item" routerLink="menu/sobre-nosotros">
-          <a href="#" >
-            <div class="govco-pwa-sidenav-label" >
-              <span class="material-symbols-outlined">contacts</span>
-              <span class="">Sobre nosotros</span>
-            </div>
-          </a>
-        </li>
-        <li class="govco-pwa-sidenav-item" routerLink="transversales/acerca-del-portal">
-          <a href="#" >
-            <div class="govco-pwa-sidenav-label" >
-              <span class="material-symbols-outlined">info</span>
-              <span class="">Acerca del portal</span>
-            </div>
-          </a>
-        </li>
-      </ul>
-      <ul class="govco-pwa-sidenav-bottom-nivel">
-        <li class="govco-pwa-sidenav-item-text">
-          <hr>
-        </li>
-        <li class="govco-pwa-sidenav-item govco-pwa-sidenav-item-bottom">
-          <a href="#" >
-            <div class="govco-pwa-sidenav-label" >
-              <span class="material-symbols-outlined">account_balance</span>
-              <span class="">Servicios para entidades</span>
-            </div>
-          </a>
-        </li>
-      </ul>
-    </div>
+        </a>
+      </li>
+      <li class="govco-pwa-sidenav-item" (click)="barraSuperiorInterna(false)" 
+        routerLink="menu/participa">
+        <a href="#">
+          <div class="govco-pwa-sidenav-label">
+            <span class="material-symbols-outlined">chat</span>
+            <span class="">Participa</span>
+          </div>
+        </a>
+      </li>
+      <li class="govco-pwa-sidenav-item-text">
+        <div>
+          <div class="govco-pwa-sidenav-label-text">Conócenos</div>
+        </div>
+      </li>
+      <li class="govco-pwa-sidenav-item" (click)="barraSuperiorInterna(false)" 
+        routerLink="menu/entidades-del-estado">
+        <a href="#">
+          <div class="govco-pwa-sidenav-label">
+            <span class="material-symbols-outlined">villa</span>
+            <span>Entidades del estado</span>
+          </div>
+        </a>
+      </li>
+      <li class="govco-pwa-sidenav-item" (click)="barraSuperiorInterna(false)" 
+        routerLink="menu/sobre-nosotros">
+        <a href="#">
+          <div class="govco-pwa-sidenav-label">
+            <span class="material-symbols-outlined">contacts</span>
+            <span class="">Sobre nosotros</span>
+          </div>
+        </a>
+      </li>
+      <li class="govco-pwa-sidenav-item" (click)="barraSuperiorInterna(false)"
+        routerLink="transversales/acerca-del-portal">
+        <a href="#">
+          <div class="govco-pwa-sidenav-label">
+            <span class="material-symbols-outlined">info</span>
+            <span class="">Acerca del portal</span>
+          </div>
+        </a>
+      </li>
+    </ul>
+    <ul class="govco-pwa-sidenav-bottom-nivel">
+      <li class="govco-pwa-sidenav-item-text">
+        <hr>
+      </li>
+      <li class="govco-pwa-sidenav-item govco-pwa-sidenav-item-bottom">
+        <a href="#">
+          <div class="govco-pwa-sidenav-label">
+            <span class="material-symbols-outlined">account_balance</span>
+            <span class="">Servicios para entidades</span>
+          </div>
+        </a>
+      </li>
+    </ul>
+  </div>
 
 
 </section>
-
-

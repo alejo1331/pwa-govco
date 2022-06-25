@@ -8,6 +8,7 @@ import { SidenavService } from '../../services/sidenav-service/sidenav-service.s
 })
 export class ContenidoSideNavComponent implements OnInit {
 
+  @Output() outBarraSuInterna = new EventEmitter<boolean>();
   @Output() outEstadoMenu = new EventEmitter<boolean>();
   estadoMenu: boolean = false;
 
@@ -38,5 +39,9 @@ export class ContenidoSideNavComponent implements OnInit {
           }, 600);
       })
     })
+  }
+
+  barraSuperiorInterna(opcion:boolean){
+    this.outBarraSuInterna.emit(opcion);
   }
 }

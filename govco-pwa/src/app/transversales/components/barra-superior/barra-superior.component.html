@@ -1,7 +1,9 @@
-<div class="barra-superior-general-pwa-govco">
+<div [ngClass]="{
+    'barra-superior-general-pwa-govco': !barraSuperiorInterna,
+    'barra-superior-interna-pwa-govco': barraSuperiorInterna}">
     <div class="menu-logo-pwa-govco">
         <span (click)="onClickMenu()" class="menu-hamburgesa-pwa-govco">
-            <span  class="menu-caja-pwa-govco">
+            <span class="menu-caja-pwa-govco">
                 <span class="menu-hamburgesa-superior" [ngClass]="{ 'menu-hamburgesa-superior-rotacion': estadoMenu }">
                 </span>
                 <span class="menu-hamburgesa-medio" [ngClass]="{ 'menu-hamburgesa-medio-rotacion': estadoMenu }">
@@ -13,6 +15,10 @@
         <div class="logo-pwa-govco">
             <img src="../../../assets/logos/transversales/GOVCO.svg" alt="logo de gov.co">
         </div>
+        <span class="caja-buscador-pwa-govco" *ngIf="barraSuperiorInterna">
+            <span class="icono-buscador-pwa-govco"
+                style="background-image: url(../../../../assets/icons-fonts/search_FILL0_wght500_GRAD0_opsz20.svg);"></span>
+        </span>
     </div>
-    <app-buscador class="app-buscador-pwa-govco"></app-buscador>
+    <app-buscador class="app-buscador-pwa-govco" *ngIf="!barraSuperiorInterna"></app-buscador>
 </div>
