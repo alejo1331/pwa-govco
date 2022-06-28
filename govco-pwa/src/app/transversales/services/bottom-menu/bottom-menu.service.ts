@@ -43,8 +43,10 @@ export class BottomMenuService {
         });
         item.classList.add("active");
         const parentWidth = item.parentElement.clientWidth;
-        const lefPercent = ((parentWidth / navigation_items_elms.length) * index)+10;
-        navigation_pointer.style.left = lefPercent + "px";
+        const lefPercent = ((parentWidth / navigation_items_elms.length) * index);
+        const relativePercent = (parentWidth/navigation_items_elms.length)/8;
+        const totalPercent = lefPercent + relativePercent;
+        navigation_pointer.style.left = totalPercent + "px";
       });
     });
 

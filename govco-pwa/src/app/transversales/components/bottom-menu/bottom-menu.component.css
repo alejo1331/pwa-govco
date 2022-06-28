@@ -51,9 +51,9 @@ ul {
 
 .navigation-bar .list-items .pointer {
   position: absolute;
-  left: 10px;
+  left: 3%;
   height: 100%;
-  width: 70px;
+  width: 19%;
   z-index: 0;
   -webkit-transition: all 0.2s linear;
   -o-transition: all 0.2s linear;
