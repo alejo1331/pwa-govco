@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ElementRef, AfterViewInit, Output, EventEmitter } from '@angular/core';
 import { BottomMenuService } from '../../services/bottom-menu/bottom-menu.service';
 
 @Component({
@@ -6,7 +6,9 @@ import { BottomMenuService } from '../../services/bottom-menu/bottom-menu.servic
   templateUrl: './bottom-menu.component.html',
   styleUrls: ['./bottom-menu.component.css']
 })
-export class BottomMenuComponent implements OnInit {
+export class BottomMenuComponent implements OnInit, AfterViewInit {
+
+  @Output() outBarraSuInterna = new EventEmitter<boolean>();
 
   constructor(private elementRef:ElementRef,
     public bottomMenu : BottomMenuService) { }
@@ -16,6 +18,10 @@ export class BottomMenuComponent implements OnInit {
 
   ngAfterViewInit() {
     this.bottomMenu.toogleActive()
+  }
+
+  barraSuperiorInterna(opcion: boolean){
+    this.outBarraSuInterna.emit(opcion);
   }
 
 }

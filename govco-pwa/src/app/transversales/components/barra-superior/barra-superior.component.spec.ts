@@ -1,26 +1,21 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
-import { BarraSuperiorGeneralComponent } from './barra-superior-general.component';
+import { BarraSuperiorComponent } from './barra-superior.component';
 
-describe('BarraSuperiorGeneralComponent', () => {
-  let component: BarraSuperiorGeneralComponent;
-  let fixture: ComponentFixture<BarraSuperiorGeneralComponent>;
+describe('BarraSuperiorComponent', () => {
+  let component: BarraSuperiorComponent;
+  let fixture: ComponentFixture<BarraSuperiorComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [
-
-      ],
-      declarations: [
-        BarraSuperiorGeneralComponent
-      ]
+      declarations: [ BarraSuperiorComponent ]
     })
-      .compileComponents();
+    .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BarraSuperiorGeneralComponent);
+    fixture = TestBed.createComponent(BarraSuperiorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -50,5 +45,4 @@ describe('BarraSuperiorGeneralComponent', () => {
     expect(component.estadoMenu).toBeFalse();
     console.log("Estado del menu", component.estadoMenu);
   });
-
 });

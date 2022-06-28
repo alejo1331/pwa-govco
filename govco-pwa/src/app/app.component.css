@@ -43,29 +43,11 @@ mat-sidenav {
   border: 1px solid rgba(255, 255, 255, 0.16);
 }
 
-.header-pwa-govco-general {
-  display: grid;
-  grid-template-rows: 7.25rem 2.25rem;
-  height: 9.438rem;
-}
-
-.header-pwa-govco-interna {
-  display: grid;
-  grid-template-rows: 56px 36px;
-  height: 92px;
-}
-
-.app-barra-superior-general-pwa-govco,
-.app-barra-superior-interna-pwa-govco {
-  height: 116px;
+.app-barra-superior-pwa-govco {
   width: 100%;
   position: sticky;
   top: 0;
   z-index: 1;
-}
-
-.app-barra-superior-interna-pwa-govco {
-  height: 56px;
 }
 
 .app-geolocalizacionpwa-govco {
