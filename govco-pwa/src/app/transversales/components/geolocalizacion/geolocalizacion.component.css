@@ -1,11 +1,15 @@
+.barra-geolocalizacion-pwa-govco{
+    height: 2.25em;
+    background-color: #E6EFFD;
+    display: flex;
+    align-items: center;
+}
+
 .geolocalizacion-pwa-govco-icon {
     color: #004884;
     font-size: 1.25em;
     font-variation-settings:
-        'FILL' 1,
-        'wght' 500,
-        'GRAD' 200,
-        'opsz' 20;
+        'FILL' 1;
 }
 
 .geolocalizacion-pwa-govco-texto {

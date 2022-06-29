@@ -1,3 +1,7 @@
+.govco-pwa-footer-content{
+    height: 100%;
+}
+
 .footer-pwa-govco {
     padding: 2.5rem 1rem 2.5rem 1rem;
     background-color: #f6f8f9;
@@ -92,14 +96,9 @@ p.texto-item-info-contacto-pwa-govco {
     margin-left: 0.5rem;
 }
 
-.material-symbols-outlined {
+.expandmore-accordion-pwa-govco {
     font-size: 1.25em;
     color: #000000;
-    font-variation-settings:
-        'FILL' 0,
-        'wght' 500,
-        'GRAD' 0,
-        'opsz' 20;
     transition: 0.4s;
 }
 
@@ -126,12 +125,7 @@ p.texto-item-info-contacto-pwa-govco {
 }
 
 .icono-accesibilidad-accordion-pwa-govco {
-    font-size: 0.82em !important;
-    font-variation-settings:
-        'FILL' 0,
-        'wght' 500,
-        'GRAD' 0,
-        'opsz' 20 !important;
+    font-size: 0.82em;
 }
 
 a.contenido-item-info-contacto-pwa-govco,
@@ -211,13 +205,15 @@ a.redireccion-redes-sociales-pwa-govco {
 }
 
 .linea-barra-inferior-footer-pwa-govco {
-    height: 2.5rem;
-    width: 1px;
+    height: auto;
+    width: 0.063em;
+    padding: 1.25em 0;
     background-color: #ffffff;
     border-radius: 2px;
     margin: 0px 1.5em;
 }
 
-.govco-pwa-footer-content{
-  height: 100%;
+.caja-logo-marca-pais {
+    width: 3em;
+    height: 3em;
 }

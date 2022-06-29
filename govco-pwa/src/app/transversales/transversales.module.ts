@@ -10,6 +10,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { BottomMenuComponent } from './components/bottom-menu/bottom-menu.component';
 import { TransversalesRoutingModule } from './transversales.routing';
 import { BarraSuperiorComponent } from './components/barra-superior/barra-superior.component';
+import { GeolocalizacionFormularioComponent } from './components/geolocalizacion-formulario/geolocalizacion-formulario.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { BarraSuperiorComponent } from './components/barra-superior/barra-superi
     ContenidoSideNavComponent,
     FooterComponent,
     BottomMenuComponent,
-    BarraSuperiorComponent
+    BarraSuperiorComponent,
+    GeolocalizacionFormularioComponent
   ],
   exports: [
     SideNavComponent,
@@ -36,7 +38,8 @@ import { BarraSuperiorComponent } from './components/barra-superior/barra-superi
     ContenidoSideNavComponent,
     FooterComponent,
     BottomMenuComponent,
-    BarraSuperiorComponent
+    BarraSuperiorComponent,
+    GeolocalizacionFormularioComponent
   ]
 })
 export class TransversalesModule { }

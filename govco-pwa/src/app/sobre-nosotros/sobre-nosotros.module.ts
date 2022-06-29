@@ -3,6 +3,9 @@ import { CommonModule } from '@angular/common';
 
 import { SobreNosotrosRoutingModule } from './sobre-nosotros-routing.module';
 import { SobreNosotrosComponent } from './components/sobre-nosotros/sobre-nosotros.component';
+import { AvisoDeConstruccionModule } from '../aviso-de-construccion/aviso-de-construccion.module';
+
+
 
 
 @NgModule({
@@ -11,7 +14,8 @@ import { SobreNosotrosComponent } from './components/sobre-nosotros/sobre-nosotr
   ],
   imports: [
     CommonModule,
-    SobreNosotrosRoutingModule
+    AvisoDeConstruccionModule,
+    SobreNosotrosRoutingModule,
   ],
   exports: [
     SobreNosotrosComponent

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { EntidadesEstadoRoutingModule } from './entidades-estado-routing.module';
 import { EntidadesEstadoComponent } from './components/entidades-estado/entidades-estado.component';
+import { AvisoDeConstruccionModule } from '../aviso-de-construccion/aviso-de-construccion.module';
 
 
 @NgModule({
@@ -11,6 +12,7 @@ import { EntidadesEstadoComponent } from './components/entidades-estado/entidade
   ],
   imports: [
     CommonModule,
+    AvisoDeConstruccionModule,
     EntidadesEstadoRoutingModule
   ],
   exports: [

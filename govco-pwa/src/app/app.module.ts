@@ -23,10 +23,11 @@ import { NoticiasModule } from './noticias/noticias.module';
 import { ParticipaModule } from './participa/participa.module';
 import { EntidadesEstadoModule } from './entidades-estado/entidades-estado.module';
 import { SobreNosotrosModule } from './sobre-nosotros/sobre-nosotros.module';
+import { AvisoDeConstruccionModule } from './aviso-de-construccion/aviso-de-construccion.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,7 +53,8 @@ import { SobreNosotrosModule } from './sobre-nosotros/sobre-nosotros.module';
     NoticiasModule,
     ParticipaModule,
     EntidadesEstadoModule,
-    SobreNosotrosModule
+    SobreNosotrosModule,
+    AvisoDeConstruccionModule
   ],
   providers: [SidenavService],
   bootstrap: [AppComponent]
