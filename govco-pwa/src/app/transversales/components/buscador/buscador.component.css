@@ -1,6 +1,7 @@
 .buscador-pwa-govco::placeholder {
   color: #BABABA;
 }
+
 .buscador-pwa-govco {
   height: 3.143em;
   width: 100%;
@@ -21,5 +22,5 @@ input.buscador-pwa-govco {
   background-size: 1.25em;
   background-repeat: no-repeat;
   background-position: right;
-  background-position-x: 96.5%;
+  background-position-x: 95.5%;
 }

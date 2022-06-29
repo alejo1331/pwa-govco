@@ -1,0 +1,39 @@
+.aviso-construccion-pwa-govco {
+    padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .imagen-contruccion-pwa-govco {
+    width: 100%;
+    height: inherit;
+    margin-bottom: 1.25em;
+  }
+  
+  .informacion-construccion-pwa-govco {
+    display: inherit;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 0.5em;
+  }
+  
+  .titulo-construccion-pwa-govco {
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 600;
+    font-size: 1.571em;
+    color: #004884;
+  }
+  
+  .texto-contruccion-pwa-govco {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.857em;
+    color: #000000;
+  }
+
+  .texto-button-pwa-govco {
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 500;
+    font-size: 1.143em;
+    color: #ffffff;
+  }

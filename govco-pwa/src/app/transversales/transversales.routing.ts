@@ -11,15 +11,10 @@ const routes: Routes = [
         path: 'side-nav',
         component: SideNavComponent
       },
-    ]
-  },
-  {
-    path: 'transversales',
-    children: [
       {
         path: 'acerca-del-portal',
         component: FooterComponent
-      },
+      }
     ]
   }
 ];

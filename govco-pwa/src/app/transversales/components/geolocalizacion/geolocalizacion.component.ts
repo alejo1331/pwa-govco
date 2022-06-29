@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { GeolocalizacionFormularioComponent } from '../geolocalizacion-formulario/geolocalizacion-formulario.component';
 
 @Component({
   selector: 'app-geolocalizacion',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GeolocalizacionComponent implements OnInit {
 
+  @ViewChild(GeolocalizacionFormularioComponent) openFormularioGeolocalizacion: any;
+
   constructor() { }
 
   ngOnInit(): void {
-  }
+  
+  }  
 
 }
