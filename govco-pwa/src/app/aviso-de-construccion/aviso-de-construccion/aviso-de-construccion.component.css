@@ -18,23 +18,9 @@
     margin-bottom: 0.5em;
   }
   
-  .titulo-construccion-pwa-govco {
-    font-family: 'Work Sans', sans-serif;
-    font-weight: 600;
-    font-size: 1.571em;
-    color: #004884;
-  }
-  
   .texto-contruccion-pwa-govco {
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     font-size: 0.857em;
     color: #000000;
-  }
-
-  .texto-button-pwa-govco {
-    font-family: 'Work Sans', sans-serif;
-    font-weight: 500;
-    font-size: 1.143em;
-    color: #ffffff;
   }
