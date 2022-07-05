@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+
 import { ConsultaUbicacionInterface } from '../../models/geolocalizacion/consulta-ubicacion-interface';
 import { DepartamentoInterface } from '../../models/geolocalizacion/departamento-interface';
 import { MunicipioInterface } from '../../models/geolocalizacion/municipio-interface';
@@ -13,14 +14,13 @@ export class GeolocalizacionService {
 
   urlApiEntidades: string = environment.urlApiEntidades;
 
-  private message = new BehaviorSubject<string>('Ingresa tu ubicación');
-
-  public customMessage = this.message.asObservable();
+  private datosUbicacion = new BehaviorSubject<[string,string]>(['null', 'null']);
+  public customMessage = this.datosUbicacion.asObservable();
 
   constructor(private http: HttpClient) { }
 
-  public changeMessage(msg: string): void {
-    this.message.next(msg);
+  public changeMessage(codigoDepartamento: string, codigoMunicipio: string): void {
+    this.datosUbicacion.next([codigoDepartamento,codigoMunicipio]);
   }
 
   getDepartamentos():Observable<DepartamentoInterface[]>{

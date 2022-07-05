@@ -2,5 +2,8 @@ export interface MunicipioInterface {
     codigo: string;
     nombre: string;
     codigoDepartamento: string;
-    departamento: string;
+    departamento: { 
+        codigo: string, 
+        nombre: string 
+    } | null;
 }

@@ -55,7 +55,6 @@ export class AppComponent implements OnInit, AfterContentChecked {
     this.appGeolocalizacion = (document.getElementsByTagName("app-geolocalizacion") as HTMLCollectionOf<HTMLElement>)[0].style;
     this.appGeolocalizacionFormulario = (document.getElementsByTagName("app-geolocalizacion-formulario") as HTMLCollectionOf<HTMLElement>)[0].style;
     this.matSidenavContent = (document.getElementsByTagName("mat-sidenav-container") as HTMLCollectionOf<HTMLElement>)[0].style;
-    this.prueba = (document.getElementsByTagName("dialog") as HTMLCollectionOf<HTMLElement>)[0]
   }
 
   ngAfterContentChecked(): void {
