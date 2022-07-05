@@ -75,12 +75,33 @@ hr{
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+}
+
+.govco-candybox-icon:hover::after{
+  content: "";
+    background: url("../../../../assets/icons-fonts/activo.svg") no-repeat;
+    width: 20px;
+    height: 20px;
+    float: left;
+    z-index: 5;
+    position: absolute;
+    top: 0px;
+    left: 30px;
 }
 
 .govco-candybox-element{
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  height: 103px;
+  width: 104px;
+}
+
+.govco-candybox-element:hover{
+  border: 2px solid #004884;
+  border-radius: 5px;
 }
 
 .govco-candybox-element p{
@@ -89,5 +110,6 @@ hr{
   text-align: center;
   letter-spacing: 0.02px;
   line-height: 1;
+  margin-bottom: 0px;
   margin-top: 8px;
 }
