@@ -1,10 +1,34 @@
 <div class="modal-geolocalizacion-pwa-govco">
-    <section class="">
-        <span class="">
-            <span class="material-symbols-outlined" (click)="closedFormulario()">arrow_back</span>
-        </span>
-    </section>
-    <section class="">
-
+    <div class="pwa-govco-back-arrow-header">
+        <div class="caja-pwa-govco-back-arrow" (click)="closedFormulario()">
+            <span class="material-symbols-outlined pwa-govco-back-arrow">arrow_back</span>
+        </div>
+    </div>
+    <section class="contenido-pwa-govco">
+        <h1 class="titulo-general-pwa-govco">Elige tu ubicación actual</h1>
+        <div class="linea-horizontal-2-pwa-govco"></div>
+        <p class="texto-general-pwa-govco">Podrás encontrar trámites, servicios e información
+            cercana a tu ubicación.</p>
+        <form [formGroup]="registerForm" (ngSubmit)="guardarUbicacion(registerForm.value)" class="formulario-pwa-govco">
+            <label class="label-pwa-govco" for="listadoDepartmentos">Departamento*</label>
+            <select (change)="getMunicipiosPorDepartamento($any($event.target).value)" formControlName="idDepartment"
+                class="select-pwa-govco texto-select-pwa-govco" id=" listadoDepartmentos"
+                [ngClass]="{ 'seleccionado': itemSeleccionado('idDepartment')}">
+                <option value="" disabled>Ejemplo: Campo de texto</option>
+                <option *ngFor="let departmentos of listaDepartamentos" value="{{ departmentos.codigo }}" >
+                    {{departmentos.nombre}}
+                </option>
+            </select>
+            <label class="label-pwa-govco margin-label-pwa-govco" for="listadoMunicipios">Municipio*</label>
+            <select formControlName="idMunicipality" class="select-pwa-govco texto-select-pwa-govco"
+                id="listadoMunicipios" [ngClass]="{ 'seleccionado': itemSeleccionado('idMunicipality')}">
+                <option value="" disabled>Ejemplo: Campo de texto</option>
+                <option *ngFor="let municipios of listaMunicipios" value="{{ municipios.codigo }}">
+                    {{municipios.nombre}}
+                </option>
+            </select>
+            <button class="boton-pwa-govco texto-button-pwa-govco"
+                [ngClass]="{ 'off': !itemSeleccionado('idMunicipality') || !itemSeleccionado('idDepartment')}">Guardar ubicación</button>
+        </form>
     </section>
 </div>

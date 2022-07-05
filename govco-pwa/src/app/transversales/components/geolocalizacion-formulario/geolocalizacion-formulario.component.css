@@ -1,0 +1,36 @@
+.titulo-general-pwa-govco {
+    margin: 1.4em 0 0 0;
+}
+
+.linea-horizontal-2-pwa-govco {
+    margin: 0.5em 0 0 0;
+}
+
+.texto-general-pwa-govco {
+    margin: 2.25em 0 0 0;
+}
+
+.formulario-pwa-govco {
+    margin: 2em 0 0 0;
+}
+
+.margin-label-pwa-govco {
+    margin: 1.714em 0 0 0;
+}
+
+.select-pwa-govco {
+    margin: 0.5em 0 0 0;
+}
+
+.option-select-pwa-govco {
+    padding-left: 10px;
+}
+
+.boton-pwa-govco {
+    margin: 0 0 1.563em 0;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 91.1%;
+}

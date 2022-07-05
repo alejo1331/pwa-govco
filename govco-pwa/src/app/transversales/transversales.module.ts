@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'; 
+
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { SideNavComponent } from './components/side-nav/side-nav.component';
 import { SideNavItemsComponent } from "./components/side-nav-items/side-nav-items.component";
@@ -16,6 +18,8 @@ import { GeolocalizacionFormularioComponent } from './components/geolocalizacion
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     MatToolbarModule,
     TransversalesRoutingModule
   ],
