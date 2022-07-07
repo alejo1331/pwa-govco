@@ -24,7 +24,7 @@
                 id="listadoMunicipios" [ngClass]="{ 'seleccionado': itemSeleccionado('codigoMunicipio')}">
                 <option value="" disabled>Ejemplo: Campo de texto</option>
                 <option *ngFor="let municipios of listaMunicipios" value="{{ municipios.codigo }}">
-                    {{municipios.nombre}}
+                    {{municipios.nombre.toUpperCase()}}
                 </option>
             </select>
             <button class="boton-pwa-govco texto-button-pwa-govco"

@@ -3,6 +3,9 @@ import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home/home.component';
 import { InicioRoutingModule } from './inicio-routing.module';
 import { AvisoDeConstruccionModule } from '../aviso-de-construccion/aviso-de-construccion.module';
+import { MenuContextualComponent } from './components/menu-contextual/menu-contextual.component';
+import { BannerPrincipalComponent } from './components/banner-principal/banner-principal.component';
+import { ContactosDeEmergenciaComponent } from './components/contactos-de-emergencia/contactos-de-emergencia.component';
 
 @NgModule({
   imports: [
@@ -10,7 +13,7 @@ import { AvisoDeConstruccionModule } from '../aviso-de-construccion/aviso-de-con
     AvisoDeConstruccionModule,
     InicioRoutingModule
   ],
-  declarations: [HomeComponent],
+  declarations: [HomeComponent, MenuContextualComponent, BannerPrincipalComponent, ContactosDeEmergenciaComponent],
   exports: [HomeComponent],
 })
 export class InicioModule { }
