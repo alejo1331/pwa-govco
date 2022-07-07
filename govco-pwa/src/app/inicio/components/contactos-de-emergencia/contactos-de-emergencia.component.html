@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12 pl-0 pr-0">
+        <div class="emergency-contact-container">
+            <div class="card">
+                <div class="card-body">
+                    <div class="headboard">
+                        <!-- <span class="icon-alert"></span> -->
+                        <h2 class="title">Contactos de emergencia</h2>
+                        <p class="launch">Llama a las líneas de atención correspondientes</p>
+                    </div>
+                    <div class=" content-govco">
+                      
+                        <ul>
+                            <li *ngFor="let coontEmer of contactos" class="emergency-contact-item">
+                                {{coontEmer.titulo}}
+                                <span class="{{coontEmer.icono}} image-icon">{{coontEmer.numero}}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -24,9 +24,7 @@
     "@popperjs/core": "^2.11.5",
     "bootstrap": "^5.1.3",
     "jquery": "^3.6.0",
-    "nativescript-admob": "^4.1.0",
     "rxjs": "~6.6.0",
-    "tns": "^0.2.0",
     "tns-core-modules": "^6.5.27",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

@@ -924,7 +924,7 @@ describe('GeolocalizacionService', () => {
 
     httpClientSpy.get.and.returnValue(of(mockUbicacion));
 
-    service.getUbicacion('4.2660458','-73.4770493').subscribe((resultado: ConsultaUbicacionInterface) => {
+    service.getUbicacionActual('4.2660458','-73.4770493').subscribe((resultado: ConsultaUbicacionInterface) => {
       console.log("Municipios del Meta", resultado)
       expect(resultado).toEqual(mockUbicacion);
       done();

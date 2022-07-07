@@ -1,4 +1,4 @@
-import { Component, EventEmitter, HostListener, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, HostListener, OnInit, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { ConsultaUbicacionInterface } from '../../models/geolocalizacion/consulta-ubicacion-interface';
@@ -13,11 +13,13 @@ import { GeolocalizacionService } from '../../services/geolocalizacion/geolocali
 })
 export class GeolocalizacionFormularioComponent implements OnInit {
 
-  listaDepartamentos: DepartamentoInterface[];
-  listaMunicipios: MunicipioInterface[];
-  estadoPermiso: string | null = localStorage.getItem("permisoGeolocalizacion");
+  listaDepartamentos: DepartamentoInterface[] = [];
+  listaMunicipios: MunicipioInterface[] = [];
+  opcionTodosDepartamentos: DepartamentoInterface[] = [];
+  opcionTodosMunicipios: MunicipioInterface[] = [];
+  estadoPermiso: string | null;
   datosUbicacion: [string, string];
-  cerrarModal: [string, string] = ["translate(100%)", 'translate(0%)'];
+  cerrarModal: [string, string];
 
   @Output() closedModal = new EventEmitter<[string, string]>();
   @Output() closedContent = new EventEmitter<string>();
@@ -37,20 +39,49 @@ export class GeolocalizacionFormularioComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if(this.estadoPermiso == null){
+    this.estadoPermiso = localStorage.getItem("permisoGeolocalizacion")
+    if (this.estadoPermiso == null) {
       localStorage.setItem("permisoGeolocalizacion", "false")
     }
-    this.ServicioGeolocalizacion.getDepartamentos().subscribe((departamentos: DepartamentoInterface[]) => {
-      this.listaDepartamentos = departamentos;
-    });
+
+    this.cerrarModal = ["translate(100%)", 'translate(0%)'];
+
+    this.opcionTodosMunicipios = [{
+      codigo: 'TodosLosMunicipios',
+      nombre: 'Todos',
+      codigoDepartamento: 'TodosLosDepartamentos',
+      departamento: {
+        codigo: 'TodosLosDepartamentos',
+        nombre: 'Todos'
+      }
+    }];
+
+    this.opcionTodosDepartamentos = [{
+      codigo: 'TodosLosDepartamentos',
+      nombre: 'Todos',
+      municipios: ["nul"]
+    }];
+
+    this.getDepartamentos();
     this.ServicioGeolocalizacion.customMessage.subscribe(msg => this.datosUbicacion = msg);
+  }
+
+  getDepartamentos() {
+    this.ServicioGeolocalizacion.getDepartamentos().subscribe((departamentos: DepartamentoInterface[]) => {
+      this.listaDepartamentos = this.opcionTodosDepartamentos.concat(departamentos);
+    });
   }
 
   getMunicipiosPorDepartamento(CodigoDepartamento: string) {
     this.registerForm.controls['codigoMunicipio'].setValue('')
-    this.ServicioGeolocalizacion.getMunicipiosPorDepartamento(CodigoDepartamento).subscribe((municipios: MunicipioInterface[]) => {
-      this.listaMunicipios = municipios;
-    });
+    if (CodigoDepartamento != 'TodosLosDepartamentos') {
+      this.ServicioGeolocalizacion.getMunicipiosPorDepartamento(CodigoDepartamento).subscribe((municipios: MunicipioInterface[]) => {
+        this.listaMunicipios = municipios;
+      });
+    } else {
+      this.listaMunicipios = this.opcionTodosMunicipios;
+      this.registerForm.controls['codigoMunicipio'].setValue('TodosLosMunicipios')
+    }
   }
 
   itemSeleccionado(field: string): boolean {
@@ -75,7 +106,6 @@ export class GeolocalizacionFormularioComponent implements OnInit {
 
   @HostListener('window:load')
   onLoad() {
-    console.log(this.estadoPermiso)
     if (this.estadoPermiso == 'true') {
       this.getGeolocalizacion(true);
     } else {
@@ -89,28 +119,29 @@ export class GeolocalizacionFormularioComponent implements OnInit {
     }
   }
 
-  getGeolocalizacion(barraGelocalizacion: boolean) {
+  getGeolocalizacion(MostrarEnBarraGelocalizacion: boolean) {
     setTimeout(() => {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition((ubicaion: any) => {
-          console.log(ubicaion.coords.latitude, ubicaion.coords.longitude)
-          this.ServicioGeolocalizacion.getUbicacion(ubicaion.coords.latitude, ubicaion.coords.longitude)
-            .subscribe((ubicacion: ConsultaUbicacionInterface) => {
-              if (barraGelocalizacion == true) {
-                this.ServicioGeolocalizacion.changeMessage(ubicacion.codigoDepartamento, ubicacion.codigoMunicipio);
-              }
-              localStorage.setItem("permisoGeolocalizacion", "true")
-              localStorage.setItem("codigoDepartamento", ubicacion.codigoDepartamento);
-              localStorage.setItem("codigoMunicipio", ubicacion.codigoMunicipio);
-              this.listaMunicipios = ubicacion.municipios;
-              this.registerForm.reset({
-                codigoDepartamento: ubicacion.codigoDepartamento,
-                codigoMunicipio: ubicacion.codigoMunicipio
-              });
-            }, this.errorServicioGeolocalizacion);
-        }, this.errorGeolocalitation, this.options)
-      } else {
-        alert("Su navegador no soporta la API de geolocalización");
+      if (this.ServicioGeolocalizacion.getEstadoServicioGeolocalizacion()) {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition((ubicaion: any) => {
+            this.ServicioGeolocalizacion.getUbicacionActual(ubicaion.coords.latitude, ubicaion.coords.longitude)
+              .subscribe((ubicacion: ConsultaUbicacionInterface) => {
+                if (MostrarEnBarraGelocalizacion == true) {
+                  this.ServicioGeolocalizacion.changeMessage(ubicacion.codigoDepartamento, ubicacion.codigoMunicipio);
+                }
+                localStorage.setItem("permisoGeolocalizacion", "true")
+                localStorage.setItem("codigoDepartamento", ubicacion.codigoDepartamento);
+                localStorage.setItem("codigoMunicipio", ubicacion.codigoMunicipio);
+                this.listaMunicipios = ubicacion.municipios;
+                this.registerForm.reset({
+                  codigoDepartamento: ubicacion.codigoDepartamento,
+                  codigoMunicipio: ubicacion.codigoMunicipio
+                });
+              }, this.errorServicioGeolocalizacion);
+          }, this.errorGeolocalitation, this.options)
+        } else {
+          alert("Su navegador no soporta la API de geolocalización");
+        }
       }
     }, 1000);
   }
@@ -134,6 +165,7 @@ export class GeolocalizacionFormularioComponent implements OnInit {
         break;
       default:
         alert("Error desconocido.");
+        break;
     }
   }
 }

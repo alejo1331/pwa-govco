@@ -1,0 +1,110 @@
+.emergency-contact-container {
+    margin-bottom: 5rem;
+    margin-top: 5rem;
+}
+.emergency-contact-container .headboard {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.emergency-contact-container .headboard .title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    text-align: center;
+}
+.emergency-contact-container .headboard .launch {
+    font-family: 'Work Sans',sans-serif;
+    font-weight: 300;
+    text-align: center;
+    font-size: 1.25rem;
+}
+.emergency-contact-container .title-govco {
+    margin: 0.5rem auto 1rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.emergency-contact-container .icon-alert {
+    display: block;
+    width: 80px;
+    height: 80px;
+    margin: 1.5rem;
+}
+.emergency-contact-container .card-body {
+    padding: 0.9375rem 1.875rem;
+}
+.emergency-contact-container .content-govco {
+    margin-bottom: 1.5rem;
+}
+.emergency-contact-container ul {
+    overflow: hidden;
+    padding: 1rem 3rem;
+}
+.emergency-contact-container ul li {
+    display: flex;
+    justify-content: space-between;
+    float: left;
+    width: 50%;
+    padding: 0 2rem;
+    align-items: center;
+}
+.emergency-contact-container ul li .govco-icon-callin-cn {
+    font-size: 1rem;
+    font-family:'Montserrat',sans-serif !important;
+    display: flex;
+    justify-content: space-between;
+    min-width: 4.5rem;
+    align-items: center;
+    font-weight: normal;
+}
+.emergency-contact-container ul li .govco-icon-callin-cn::before {
+    font-family: "Govco Icon";
+    font-size: 1.5rem;
+}
+/* Smartphones (portrait and landscape) ---------- */
+@media screen and (min-width: 320px) and (max-width: 480px) {
+    .emergency-contact-container ul li {
+        width: 100%;
+   }
+}
+/* Smartphones (portrait) ---------- */
+@media screen and (max-width: 320px) {
+    .emergency-contact-container ul li {
+        width: 100%;
+   }
+}
+/* Smartphones (landscape) ---------- */
+@media screen and (max-width: 321px) {
+    .emergency-contact-container ul li {
+        width: 100%;
+   }
+}
+/* tablets, iPads (portrait) ---------- */
+@media screen and (max-width: 768px) {
+    .emergency-contact-container {
+        padding: 0 1rem;
+   }
+    .emergency-contact-container ul {
+        padding: unset !important;
+   }
+    .emergency-contact-container ul li {
+        width: 100%;
+        padding: unset !important;
+        border-bottom: 1px solid rgba(0, 72, 132, 0.1);
+   }
+}
+/* tablets, iPads (portrait and landscape) ---------- */
+/* @media screen and (min-width: 768px) and (max-width: 1024px) {
+    .emergency-contact-container ul {
+        padding: unset !important;
+   }
+    .emergency-contact-container ul li {
+        width: 100%;
+        padding: unset !important;
+        border-bottom: 1px solid rgba(0, 72, 132, 0.1);
+   }
+} */

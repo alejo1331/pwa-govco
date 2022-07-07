@@ -26,7 +26,7 @@ import { AvisoDeConstruccionModule } from './aviso-de-construccion/aviso-de-cons
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
