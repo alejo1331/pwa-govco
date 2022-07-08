@@ -1,6 +1,6 @@
 .emergency-contact-container {
-    margin-bottom: 5rem;
-    margin-top: 5rem;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
 }
 .emergency-contact-container .headboard {
     text-align: center;
@@ -34,6 +34,18 @@
     height: 80px;
     margin: 1.5rem;
 }
+
+.emergency-contact-container .card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: none;
+}
+
 .emergency-contact-container .card-body {
     padding: 0.9375rem 1.875rem;
 }
@@ -46,7 +58,6 @@
 }
 .emergency-contact-container ul li {
     display: flex;
-    justify-content: space-between;
     float: left;
     width: 50%;
     padding: 0 2rem;
@@ -94,17 +105,5 @@
     .emergency-contact-container ul li {
         width: 100%;
         padding: unset !important;
-        border-bottom: 1px solid rgba(0, 72, 132, 0.1);
    }
 }
-/* tablets, iPads (portrait and landscape) ---------- */
-/* @media screen and (min-width: 768px) and (max-width: 1024px) {
-    .emergency-contact-container ul {
-        padding: unset !important;
-   }
-    .emergency-contact-container ul li {
-        width: 100%;
-        padding: unset !important;
-        border-bottom: 1px solid rgba(0, 72, 132, 0.1);
-   }
-} */
