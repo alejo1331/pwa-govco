@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './components/home/home.component';
 import { InicioRoutingModule } from './inicio-routing.module';
 import { AvisoDeConstruccionModule } from '../aviso-de-construccion/aviso-de-construccion.module';
 import { MenuContextualComponent } from './components/menu-contextual/menu-contextual.component';
@@ -13,7 +13,12 @@ import { ContactosDeEmergenciaComponent } from './components/contactos-de-emerge
     AvisoDeConstruccionModule,
     InicioRoutingModule
   ],
-  declarations: [HomeComponent, MenuContextualComponent, BannerPrincipalComponent, ContactosDeEmergenciaComponent],
+  declarations: [
+    HomeComponent, 
+    MenuContextualComponent, 
+    BannerPrincipalComponent, 
+    ContactosDeEmergenciaComponent
+  ],
   exports: [HomeComponent],
 })
 export class InicioModule { }

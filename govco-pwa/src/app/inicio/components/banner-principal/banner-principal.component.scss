@@ -1,0 +1,130 @@
+.background-overlay {
+  // background: linear-gradient(0deg, rgb(0 71 132 / 90%) 0%, rgb(51 88 171 / 90%) 80%);
+  // background: -webkit-linear-gradient(0deg, rgb(0 71 132 / 90%) 0%, rgb(51 88 171 / 90%) 80%);
+  // background: -moz-linear-gradient(0deg, rgb(0 71 132 / 90%) 0%, rgb(51 88 171 / 90%) 80%);
+  // background: #1b4aa7;
+  background: linear-gradient(180deg, rgb(27 74 167 / 90%) 0%, rgb(17 54 128 / 90%) 80%);
+  background: -webkit-linear-gradient(180deg, rgb(27 74 167 / 90%) 0%, rgb(17 54 128 / 90%) 80%);
+  background: -moz-linear-gradient(180deg, rgb(27 74 167 / 90%) 0%, rgb(17 54 128 / 90%) 80%);
+  // opacity: .9;
+  // height: calc(100vh - 124px);
+  // height: calc(100vh - 100px);
+}
+
+#buscador-home {
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: cover;
+
+  // height: 100vh;
+  // height: calc(100vh - 124px);
+  // height: calc(100vh - 100px);
+  .title-search-bienvenido {
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 2.5rem;
+    line-height: 3rem;
+    letter-spacing: 0rem;
+    padding-left: 0px !important;
+    // padding-bottom: 1.875rem !important;
+    margin-top: 3.75rem;
+    margin-bottom: 0;
+    opacity: 1;
+  }
+
+  .description-search-banner {
+    color: #ffffff;
+    margin: 0 !important;
+    padding: 0 0 1rem 0 !important;
+    font-size: 1rem !important;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+  }
+
+  .description-aux {
+    margin: 3.75rem 0 0 0 !important;
+    padding: 0 0 1rem 0 !important;
+    font-size: 1rem !important;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: normal;
+    white-space: pre-wrap;
+  }
+
+  .description-aux span {
+    color: #ffffff;
+  }
+
+  // .search-block-banner{
+  //     max-width: 95%;
+  //     margin: 0;
+  // }
+
+  .see-aux {
+    display: flex;
+    align-items: left;
+    // justify-content: center;
+    // margin: 2em 0;
+
+    a {
+      border-radius: 30px;
+      padding: 0.7em 2em;
+      color: rgb(255, 255, 255) !important;
+      border: 2px solid #ffffff;
+      background-color: #ffffff00;
+      font-size: 1rem !important;
+      font-family: "Work Sans", sans-serif;
+      font-weight: 500;
+      transition: background-color 0.4s ease-in;
+      -moz-transition: background-color 0.4s ease-in;
+      -webkit-transition: background-color 0.4s ease-in;
+
+      &:hover {
+        background-color: #ffffff;
+        border: 2px solid #004884;
+        color: #004884 !important;
+        transition: background-color 0.4s ease-out;
+        -moz-transition: background-color 0.4s ease-out;
+        -webkit-transition: background-color 0.4s ease-out;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 300px) and (max-width: 768px) {
+  #buscador-home {
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: cover;
+    // height: calc(100vh-100px);
+
+    .background-overlay {
+      // height: calc(100vh-100px);
+    }
+
+    .title-search-bienvenido {
+      font-size: 1.5rem !important;
+      line-height: 2.25rem !important;
+      letter-spacing: 0rem !important;
+      // padding-bottom: 1.875rem !important;
+      margin-top: 3.75rem !important;
+      // margin-bottom: 0 !important;
+    }
+
+    .description-search-banner {
+      font-size: 0.875rem !important;
+    }
+
+    .description-aux {
+      font-size: 0.875rem !important;
+      margin: 0 !important;
+    }
+
+    .see-aux {
+      a {
+        width: 100%;
+      }
+    }
+  }
+}
+
