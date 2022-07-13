@@ -1,7 +1,21 @@
 .emergency-contact-container {
-    margin-bottom: 2rem;
-    margin-top: 2rem;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
 }
+
+.emergency-contact-container .card {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: none;
+}
+
 .emergency-contact-container .headboard {
     text-align: center;
     display: flex;
@@ -11,14 +25,15 @@
 }
 .emergency-contact-container .headboard .title {
     font-family: 'Montserrat', sans-serif;
-    font-weight: 300;
+    font-weight: 600;
+    font-size: 1.125rem;
     text-align: center;
 }
 .emergency-contact-container .headboard .launch {
-    font-family: 'Work Sans',sans-serif;
-    font-weight: 300;
-    text-align: center;
-    font-size: 1.25rem;
+    font-family:  'Montserrat',sans-serif;
+    font-weight: 400;
+    text-align: left;
+    font-size: 1rem;
 }
 .emergency-contact-container .title-govco {
     margin: 0.5rem auto 1rem;
@@ -34,18 +49,6 @@
     height: 80px;
     margin: 1.5rem;
 }
-
-.emergency-contact-container .card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    word-wrap: break-word;
-    background-color: #fff;
-    background-clip: border-box;
-    border: none;
-}
-
 .emergency-contact-container .card-body {
     padding: 0.9375rem 1.875rem;
 }
@@ -62,15 +65,20 @@
     width: 50%;
     padding: 0 2rem;
     align-items: center;
+    font-size: 18px;
 }
 .emergency-contact-container ul li .govco-icon-callin-cn {
-    font-size: 1rem;
-    font-family:'Montserrat',sans-serif !important;
+    font-size: 1.125rem;
+    font-family: 'Montserrat',sans-serif !important;
     display: flex;
     justify-content: space-between;
     min-width: 4.5rem;
     align-items: center;
     font-weight: normal;
+    display: flex;
+    margin-right: 1em;
+    font-weight: 700;
+    color: #004884
 }
 .emergency-contact-container ul li .govco-icon-callin-cn::before {
     font-family: "Govco Icon";
@@ -105,5 +113,7 @@
     .emergency-contact-container ul li {
         width: 100%;
         padding: unset !important;
+        border-bottom: none;
    }
 }
+
