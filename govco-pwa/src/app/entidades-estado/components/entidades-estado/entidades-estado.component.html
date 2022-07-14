@@ -1,1 +1,32 @@
-<app-aviso-de-construccion></app-aviso-de-construccion>
+<section class="body body-entidades">
+    <!-- <govco-accesibility-bar></govco-accesibility-bar>
+    <div class="container content-breadcumb">
+      <app-bread-crumb></app-bread-crumb>
+    </div> -->
+    <div class="container container-entidades">
+      <div class="row">
+        <div class="col-12">
+          <div class="gov-co-informacion">
+            <h2 class="text-capitalize">Entidades</h2>
+            <div>
+              <p class="resumen">Conoce cómo está conformado el Estado colombiano y las actividades que realiza. Selecciona el tipo de
+                entidad
+                que buscas para visualizar la lista completa de entidades afines.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wrapper">
+      <div class="container">
+        <div id="buscador">
+          <govco-buscador seed={{this.parametroBuscador}} solobusqueda="entidades" placeholder="Buscar Entidad">
+          </govco-buscador>
+        </div>
+      </div>
+      <div class="container">
+        <app-articles></app-articles>
+        <app-categorias></app-categorias>
+      </div>
+    </div>
+  </section>
