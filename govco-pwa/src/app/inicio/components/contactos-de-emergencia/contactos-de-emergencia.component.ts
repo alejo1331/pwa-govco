@@ -5,7 +5,7 @@ import { ContactoEmergenciaService } from '../../services/contacto-emergencia-se
 @Component({
   selector: 'app-contactos-de-emergencia',
   templateUrl: './contactos-de-emergencia.component.html',
-  styleUrls: ['./contactos-de-emergencia.component.css']
+  styleUrls: ['./contactos-de-emergencia.component.scss']
 })
 export class ContactosDeEmergenciaComponent implements OnInit {
 

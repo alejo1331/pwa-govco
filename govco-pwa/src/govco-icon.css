@@ -1,0 +1,43 @@
+@font-face {
+    font-family: "Govco Icon";
+    font-style: normal;
+    src: url(assets/fonts/govco-icons.eot);
+    src: local("Govco Icon"), local("govco-icons"),
+        url(assets/fonts/govco-icons.eot?#iefix) format("embedded-opentype")
+}
+
+.govco-icon-callin-cn {
+    font-size: 18px;
+    font-family: "Montserrat", sans-serif !important;
+    display: flex;
+    margin-right: 1em;
+    justify-content: space-between;
+    min-width: 4.5rem;
+    align-items: center;
+    font-weight: 700;
+    color: #004884;
+
+}
+
+.govco-icon-callin-cn::before {
+    font-family: "Govco Icon";
+    font-size: 1.5rem;
+}
+
+.govco-icon {
+    font-family: "Govco Icon";
+    font-size: 2rem
+}
+
+/* @font-face {
+    font-family: "Govco Icon";
+    font-style: normal;
+    src: url(/v3/assets/fonts/icons/v2/govco-icons.eot);
+    src: local("Govco Icon"), 
+         local("govco-icons"),
+         url(/v3/assets/fonts/icons/v2/govco-icons.eot?#iefix) format("embedded-opentype"), 
+         url(/v3/assets/fonts/icons/v2/govco-icons.woff2) format("woff2"), 
+         url(/v3/assets/fonts/icons/v2/govco-icons.woff) format("woff"), 
+         url(/v3/assets/fonts/icons/v2/govco-icons.ttf) format("truetype"), 
+         url(/v3/assets/fonts/icons/v2/govco-icons.svg) format("svg")
+} */
