@@ -19,6 +19,7 @@
 
 mat-sidenav-container {
   height: 100%;
+  outline: none;
 }
 
 mat-sidenav {

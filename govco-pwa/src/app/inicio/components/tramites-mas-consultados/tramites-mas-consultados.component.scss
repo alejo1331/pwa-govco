@@ -1,0 +1,180 @@
+#tramites-servicios{
+    margin: 5rem auto;
+    
+    .headboard{
+        margin-bottom: 4rem;
+
+        .title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+            text-align: center;
+        }
+        .launch {
+            font-family: 'Work Sans',sans-serif;
+            font-weight: 300;
+            text-align: center;
+            font-size: 1.25rem;
+        }
+    }
+    .tys-element{
+        width: 100%;
+        margin: 1rem auto;
+        border-bottom: 1px solid #0B457F;
+        padding: 0.5rem 0;
+
+        .title {
+            padding-left: 4rem;
+            a{
+                font-weight: 600 !important;
+                text-decoration: underline;
+                text-align: unset !important;
+                color: #0B457F;
+                font-size: 1.25rem;
+
+                &:hover{
+                    color: #3772FF;
+                }
+            }
+        }
+        .entity{
+            padding-left: 4rem;
+            text-transform: capitalize !important;
+            color: #3D4B58;
+            font-size: 0.875rem;
+            font-family: 'Work Sans',sans-serif;
+        }
+
+        .info {
+            display: flex;
+            align-items: center;
+            padding: 0 1rem;
+            margin: 0 auto;
+            
+            span {
+                color: #4B4B4B;
+                font-size: 0.875rem;
+                display: flex;
+                align-items: center;
+                font-family: 'Work Sans',sans-serif;
+
+                .govco-icon {
+                    margin-right: 0.3rem;
+                    font-size: 1rem !important;
+                    font-family: 'Govco Icon' !important;
+                }
+            }
+            .online {
+                .govco-icon {
+                    color: #069169;
+                }
+            }
+            .toface {
+                .govco-icon {
+                    color: #4B4B4B;
+                }
+            }
+            .free{
+                .govco-icon {
+                    color: #069169;
+                }
+            }
+            .price {
+                .govco-icon {
+                    color: #4B4B4B;
+                }
+            }
+        }
+    }
+    .see-more {
+        div:first-of-type{
+            text-align: right;
+        }
+
+        .btn-standar {
+            display: inline-block;
+            color: #fff;
+            font-weight: 500;
+            padding: 0.6rem 1.5rem 0.5rem;
+            margin: 1rem 0 0.5rem 0;
+            background-color: #3772FF;
+            border: 2px solid #3772FF;
+            border-radius: 2rem;
+            text-transform: uppercase;
+            text-decoration: none;
+            font-family: 'Montserrat',sans-serif;
+            transition: all 0.4s ease-out;
+            -moz-transition: all 0.4s ease-out;
+            -webkit-transition: all 0.4s ease-out;
+
+            &:hover{
+                background-color: #004884;
+                border: 2px solid #004884;
+                color: #ffffff;
+                transition: all 0.4s ease-out;
+                -moz-transition: all 0.4s ease-out;
+                -webkit-transition: all 0.4s ease-out;
+            }
+        }
+        .btn-inverse{
+            display: inline-block;
+            color: #3772FF;
+            font-weight: 500;
+            padding: 0.6rem 1.5rem 0.5rem;
+            margin: 1rem 0 0.5rem 0;
+            background-color: #ffffff;
+            border: 2px solid #3772FF;
+            border-radius: 2rem;
+            text-transform: uppercase;
+            text-decoration: none;
+            font-family: 'Montserrat',sans-serif;
+            transition: all 0.4s ease-out;
+            -moz-transition: all 0.4s ease-out;
+            -webkit-transition: all 0.4s ease-out;
+
+            &:hover{
+                border-color: #E6EFFD;
+                background-color: #E6EFFD;
+                color: #004884;
+                transition: all 0.4s ease-out;
+                -moz-transition: all 0.4s ease-out;
+                -webkit-transition: all 0.4s ease-out;
+            }
+        }
+    }
+    .disclamer{
+        display: block;
+        text-align: center;
+        color: #3D4B58;
+        font-size: 0.875rem;
+        font-family: "Work Sans", sans-serif
+    }
+}
+@media (max-width: 987px){
+    #tramites-servicios{
+        .btn-home{
+            width: 100%;
+            text-align: center;
+        }
+    }
+}
+@media only screen and (max-device-width: 767px){
+    #tramites-servicios{
+        margin: 3rem auto;
+        
+        .headboard{
+            margin-bottom: 1rem;
+        }
+        .title{
+            padding: unset !important;
+            a{
+                font-size: 1rem !important;
+            }
+        }
+        .entity{
+            padding-left: unset !important;
+        }
+        .info {
+            width: 100% !important;
+        }        
+    }
+}

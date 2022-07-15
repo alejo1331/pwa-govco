@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './components/home/home.component';
 import { InicioRoutingModule } from './inicio-routing.module';
@@ -6,6 +6,8 @@ import { AvisoDeConstruccionModule } from '../aviso-de-construccion/aviso-de-con
 import { MenuContextualComponent } from './components/menu-contextual/menu-contextual.component';
 import { BannerPrincipalComponent } from './components/banner-principal/banner-principal.component';
 import { ContactosDeEmergenciaComponent } from './components/contactos-de-emergencia/contactos-de-emergencia.component';
+import { TramitesMasConsultadosComponent } from './components/tramites-mas-consultados/tramites-mas-consultados.component';
+import { CarpetaCiudadanaComponent } from './components/carpeta-ciudadana/carpeta-ciudadana.component';
 
 @NgModule({
   imports: [
@@ -17,8 +19,9 @@ import { ContactosDeEmergenciaComponent } from './components/contactos-de-emerge
     HomeComponent, 
     MenuContextualComponent, 
     BannerPrincipalComponent, 
-    ContactosDeEmergenciaComponent
+    ContactosDeEmergenciaComponent, TramitesMasConsultadosComponent, CarpetaCiudadanaComponent
   ],
   exports: [HomeComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class InicioModule { }
