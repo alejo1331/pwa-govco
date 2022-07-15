@@ -1,0 +1,143 @@
+#tramites-servicios {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    font-size: 16px;
+  
+    .headboard {
+      margin-bottom: 3rem;
+      padding: 0;
+  
+      .title {
+        font-family: "Montserrat", sans-serif;
+        font-size: 24px;
+        text-align: left;
+        font-weight: 700;
+      }
+      
+      @media screen and (max-width: 768px) {
+        text-align: left;
+        .title {
+          font-size: 20px;
+          line-height: 36px;
+        }
+      }
+    }
+    .categories {
+      display: flex;
+      flex-wrap: wrap;
+      .see-more{
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -3em;
+      }
+      &-container {
+        width: 255px;
+        background: #fff;
+        border: 1px solid #e6effd;
+        padding: 1.2em;
+        text-align: center;
+        border-radius: 5px;
+        margin: 0 0 1rem 0;
+        cursor: pointer;
+        &:hover {
+            border: 1px solid #004884;
+          -webkit-box-shadow: 0px 3px 5px 0px rgba(51, 102, 204, 0.29);
+          -moz-box-shadow: 0px 3px 5px 0px rgba(51, 102, 204, 0.29);
+          box-shadow: 0px 3px 5px 0px rgba(51, 102, 204, 0.29);
+        }
+        &_img {
+          height: 85px;
+        }
+        &-text {
+          &_title {
+            color: #004884;
+            font-size: 1rem;
+            line-height: 22px;
+            word-break: break-word;
+          }
+          &_description {
+            color: #4b4b4b;
+            line-height: 22px;
+            margin:0;
+            font-size: 1rem;
+          }
+        }
+        @media screen and (max-width: 768px) {
+          width: 100%;
+          height: auto;
+          display: flex;
+          &-text {
+            text-align: left;
+            margin-left: 1em;
+            &_img {
+              width: 64px;
+              height: 64px;
+            }
+            &_title {
+              margin: 0;
+            }
+            &_description {
+              font-size: 14px;
+            }
+          }
+        }
+      }
+      .categorie-element{
+        display: flex;
+        justify-content: stretch;
+      }
+    }
+    .see-more {
+      justify-content: center;
+      .p-2 {
+        .btn-high {
+          font-weight: 500;
+          font-family: "Work Sans", sans-serif;
+          font-size: 1rem;
+          text-transform: uppercase;
+          background: #3366CC;
+          padding: 1rem;
+          height: 41px;
+          width: 265px;
+          line-height: 0;
+          &:hover{
+            background: #004884 !important;
+          }
+        }
+      }
+    }
+  }
+  @media (max-width: 987px) {
+    #tramites-servicios {
+      .btn-home {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  }
+  @media screen and (max-width: 768px) {
+    #tramites-servicios {
+      margin: 0 auto;
+      padding: 2rem 0;
+      .headboard {
+        margin-bottom: 1rem;
+        font-size: 20px;
+      }
+      .title {
+        font-size: 20px;
+        padding: unset !important;
+        width: 100%;
+        a {
+          font-size: 1rem !important;
+        }
+      }
+      .entity {
+        padding-left: unset !important;
+      }
+      .info {
+        width: 100% !important;
+      }
+    }
+  }
+  

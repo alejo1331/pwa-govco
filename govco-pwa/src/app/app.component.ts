@@ -36,7 +36,7 @@ export class AppComponent implements OnInit, AfterContentChecked {
 
   prueba: any;
 
-
+  public parametroBuscador: string;
   title: string = 'govco-pwa';
 
   constructor(

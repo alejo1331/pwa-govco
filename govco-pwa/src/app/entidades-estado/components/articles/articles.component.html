@@ -1,0 +1,122 @@
+<main class="container-informacion">
+    <div class="gov-co-informacion-body">
+      <!-- NEW -->
+      <div class="row row-flex govco-entidades-container">
+        <div class="col-md-4 p-0 d-flex">
+          <div class="govco-nav-entidades">
+            <h5 class="title-orden">Estructura del Estado</h5>
+            <ul class="nav flex-column flex-nowrap overflow-hidden">
+              <li class="nav-item">
+                <a class="nav-link collapsed" href="#submenu1" data-toggle="collapse" data-target="#submenu1">
+                  <span class="d-sm-inline">Rama Ejecutiva</span>
+                </a>
+                <div class="collapse submenu show" id="submenu1" aria-expanded="false">
+                  <ul class="flex-column nav">
+                    <li class="nav-item">
+                      <a (click)="active = 'Nacional'; ShowHideButton('Rama Ejecutiva','Nacional'); " class="nav-link"
+                        [ngClass]="{'active': active === 'Nacional' || active === undefined}">
+                        <span>Orden Nacional</span></a>
+                    </li>
+                    <li class="nav-item">
+                      <a (click)="active = 'Departamental'; ShowHideButton('Rama Ejecutiva', 'Departamental'); "
+                        class="nav-link" [ngClass]="{'active': active === 'Departamental'}">
+                        <span>Orden Departamental</span>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a (click)="active = 'Municipal';ShowHideButton('Rama Ejecutiva', 'Municipal'); " class="nav-link"
+                        [ngClass]="{'active': active === 'Municipal'}">
+                        <span>Orden Municipal</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a (click)="active = 'Rama Legislativa'; ShowHideButton('Rama Legislativa', undefined); " class="nav-link"
+                  [ngClass]="{'active': active === 'Rama Legislativa'}">
+                  <span>Rama Legislativa</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a (click)="active = 'Rama Judicial';ShowHideButton('Rama Judicial', undefined); " class="nav-link"
+                  [ngClass]="{'active': active === 'Rama Judicial'}">
+                  <span>Rama Judicial</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a (click)="active='Organizacion Electoral'; ShowHideButton('Organizacion Electoral', undefined)"
+                  class="nav-link" [ngClass]="{'active': active === 'Organizacion Electoral'}">
+                  <span class="d-sm-inline">Organización Electoral</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a (click)="active='Organos Autonomos e Independientes'; ShowHideButton('Organos Autonomos e Independientes', undefined)"
+                  class="nav-link" [ngClass]="{'active': active === 'Organos Autonomos e Independientes'}">
+                  <span class="d-sm-inline">Órganos Autónomos e Independientes</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a (click)="active='Organismos de Control'; ShowHideButton('Organismos de Control', undefined)"
+                  class="nav-link" [ngClass]="{'active': active === 'Organismos de Control'}">
+                  <span class="d-sm-inline">Organismos de Control</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a (click)="active ='Sistema Integral de Verdad, Justicia, Reparacion y no Repeticion'; ShowHideButton('Sistema Integral de Verdad, Justicia, Reparacion y no Repeticion', undefined)"
+                  class="nav-link"
+                  [ngClass]="{'active': active === 'Sistema Integral de Verdad, Justicia, Reparacion y no Repeticion'}">
+                  <span class="d-sm-inline">Sistema Integral de Verdad, Justicia, Reparación y no Repetición</span>
+                </a>
+              </li>
+            </ul>
+            <a class="mas-informacion" (click)="openModalAlerta('Función Pública', 'https://www.funcionpublica.gov.co/')">
+              Más información www.funcionpublica.gov.co
+            </a>
+          </div>
+        </div>
+        <div class="col-md-8 p-0 d-flex">
+  
+          <div class="govco-entities-result w-100">
+            <div class="header-entities-result">
+              <h2 [ngClass]="reposObserverFilter.length > 0 || !isSearchResult?'title-entidad':'title-entidad p-0'">
+                {{showEntidades}}
+              </h2>
+              <h3
+                [ngClass]="showEntidades == '' || reposObserverFilter.length > minShowSearch || !isSearchResult ?'count-entidades p-0':'count-entidades pb33'">
+                {{nTotalEntidades}}
+              </h3>
+            </div>
+  
+            <div class="content-entities-results">
+              <div class="">
+  
+                <div *ngIf="reposObserverFilter.length == 0">
+                  <div class="titulo-1">Lo sentimos</div>
+                  <div class="titulo-2">No encontramos resultados con las palabras que ingresaste, te sugerimos:</div>
+                  <div class="titulo-2">1. Modifica las palabras usadas, usa el nombre de la entidad: Por ejemplo:
+                    Ministerio, Alcaldía o SENA</div>
+                  <div class="titulo-2">2. Si aún no encuentras lo que buscas, <a target="_blank"
+                      href="javascript:void(0);" (click)="scrollTobottom()">contáctanos</a></div>
+                </div>
+  
+                <div *ngFor="let repo of reposObserverFilter;let i=index">
+                  <h3 class="h3-select" *ngIf="repo.categorias != ''">
+                    {{repo.categorias }}
+                  </h3>
+                  <a 
+                    class="btn-link-external" 
+                    [title]="repo.title" alt="Abre en una nueva ventana" (click)="openModalAlerta(repo.title, repo.fieldUrlUrl)">
+                    {{repo.title}}
+                  </a>
+                </div>
+              </div>
+            </div>
+            <br />
+            <br />
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+  </main>
