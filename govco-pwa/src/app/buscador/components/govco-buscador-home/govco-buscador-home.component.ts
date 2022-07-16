@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+<<<<<<< HEAD
 import { BannerPrincipalInterface } from '../../../inicio/models/banner/banner-principal-interface'
 import { BannerService } from '../../../inicio/services/banner-servivice/banner.service';
 
@@ -84,4 +85,19 @@ export class BuscadorHomeComponent implements OnInit {
       (navigator.userAgent.match(/BlackBerry/i))
     );
   }
+=======
+
+@Component({
+  selector: 'app-govco-buscador-home',
+  templateUrl: './govco-buscador-home.component.html',
+  styleUrls: ['./govco-buscador-home.component.css']
+})
+export class GovcoBuscadorHomeComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+>>>>>>> Creacion de componentes
 }
