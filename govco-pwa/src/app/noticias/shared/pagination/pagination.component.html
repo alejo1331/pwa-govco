@@ -1,0 +1,16 @@
+<div class="pagination-container mt-4">
+  <nav aria-label="Page navigation example" class="pager-govco">
+      <ul class="pagination-news justify-content-center">
+              <li class="page-item" [ngClass]="{disabled: page === 0}">
+                  <a class="page-link" href="#" (click)="prevPage()">Anterior</a>
+              </li>
+                  <li *ngFor="let pageNumber of pages" class="page-item" [ngClass]="{active: pageNumber === page + 1}">
+
+                      <a class="page-link" href="#" (click)="nPage(pageNumber - 1)">{{pageNumber}}</a>
+                  </li>
+              <li class="page-item" [ngClass]="{disabled: !showNext}">
+                  <a class="page-link" href="#" (click)="nextPage()">Siguiente</a>
+              </li>
+      </ul>
+  </nav>
+</div>

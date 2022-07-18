@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule} from '@angular/common/http';
 
@@ -26,10 +26,23 @@ import { AvisoDeConstruccionModule } from './aviso-de-construccion/aviso-de-cons
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ArticlesComponent } from './entidades-estado/components/articles/articles.component';
 import { BuscadorModule } from './buscador/buscador.module';
+import { DetalleNoticiasComponent } from './noticias/components/detalle-noticias/detalle-noticias.component';
+import { BreadCrumbComponent } from './noticias/shared/bread-crumb/bread-crumb.component';
+import { WordLimitPipe } from './noticias/shared/pipe/word-limite.pipe';
+import { PaginationComponent } from './noticias/shared/pagination/pagination.component';
+import { ScrollToTopComponent } from './noticias/shared/scroll-to-top/scroll-to-top.component';
+import { ValidarUrlDirective } from './noticias/shared/directives/validar-url/validar-url.directive';
+
 
 @NgModule({
   declarations: [
     AppComponent
+ //   DetalleNoticiasComponent,
+ //   BreadCrumbComponent,
+ //   PaginationComponent,
+ //   ScrollToTopComponent,
+ //   ValidarUrlDirective,
+ //   WordLimitPipe
   ],
   imports: [
     BrowserModule,
@@ -60,7 +73,10 @@ import { BuscadorModule } from './buscador/buscador.module';
     NgbModule,
     BuscadorModule
   ],
+//  exports:[ValidarUrlDirective],
   providers: [SidenavService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+ // schemas: [CUSTOM_ELEMENTS_SCHEMA]
+
 })
 export class AppModule { }
