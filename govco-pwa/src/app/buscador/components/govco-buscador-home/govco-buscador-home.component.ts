@@ -45,7 +45,6 @@ export class BuscadorHomeComponent implements OnInit {
       );
   }
 
-
   asignarImagenRamdon() {
     let objImagenBanner = JSON.parse(this.storage.getItem("objImagenBanner")) == undefined ? { posImagen: 0, imagenBannePrincipal: "", descripcionImagen: "" } : JSON.parse(this.storage.getItem("objImagenBanner"));
     if (this.storage.getItem("sesionNueva") === "true") {
