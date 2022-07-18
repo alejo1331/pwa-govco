@@ -1,5 +1,6 @@
 <div *ngIf="banner">
-  <div id="buscador-home" [style.background-image]="'url('+imagen+')'" tabindex = "0" role="img" aria-labelledby="image-1">
+  <div id="buscador-home" style="background-image: url({{imagen}});" tabindex="0" role="img"
+    aria-labelledby="image-1">
     <p id="image-1" style="display: none;">{{descripcionImagen}}</p>
     <div class="background-overlay">
       <div class="container">
@@ -15,7 +16,7 @@
                 {{banner.textoBuscador}}
               </p>
             </div>
-            <div class="text-left mt-5">
+            <div class="text-left mt-3">
               <p class="description-aux ml-5 px-0" tabindex="0">
                 <span>{{banner.textoAuxiliar}}</span>
               </p>

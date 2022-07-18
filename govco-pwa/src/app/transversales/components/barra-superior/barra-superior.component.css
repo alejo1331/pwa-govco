@@ -3,8 +3,13 @@
   background-color: #3366CC;
   height: 7.25rem;
   padding: 0 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .barra-superior-interna-pwa-govco {
@@ -22,17 +27,31 @@
 .menu-hamburgesa-pwa-govco {
   -ms-grid-column: 1;
   grid-column: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .menu-caja-pwa-govco {
   width: 1.25em;
   height: 0.906em;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .menu-hamburgesa-superior,
@@ -42,6 +61,8 @@
   height: 17.24137%;
   border-radius: 0.143em;
   background-color: #FDFDFD;
+  -webkit-transition: all 0.6s;
+  -o-transition: all 0.6s;
   transition: all 0.6s;
 }
 
@@ -57,39 +78,60 @@
 .menu-hamburgesa-superior-rotacion {
   margin: 0;
   width: 0.5em;
-  transform: rotate(45deg) translate(2.5px, 0.2px);
+  -webkit-transform: rotate(45deg) translate(2.5px, 0.2px);
+      -ms-transform: rotate(45deg) translate(2.5px, 0.2px);
+          transform: rotate(45deg) translate(2.5px, 0.2px);
 }
 
 .menu-hamburgesa-medio-rotacion {
   margin: 0;
-  transform: rotate(-45deg) translate(-2.6px, 3px);
+  -webkit-transform: rotate(-45deg) translate(-2.6px, 3px);
+      -ms-transform: rotate(-45deg) translate(-2.6px, 3px);
+          transform: rotate(-45deg) translate(-2.6px, 3px);
 }
 
 .menu-hamburgesa-inferior-rotacion {
   margin: 0;
   width: 0.5em;
-  transform: rotate(45deg) translate(10.7px, -3.3px);
+  -webkit-transform: rotate(45deg) translate(10.7px, -3.3px);
+      -ms-transform: rotate(45deg) translate(10.7px, -3.3px);
+          transform: rotate(45deg) translate(10.7px, -3.3px);
 }
 
 .logo-pwa-govco {
   -ms-grid-column: 3;
   -ms-grid-column-span: 7;
   grid-column: 3 / 10;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .caja-buscador-pwa-govco {
+  -ms-grid-column: 11;
+  -ms-grid-column-span: 1;
   grid-column: 11 / 12;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .icono-buscador-pwa-govco {
   width: 1.25em;
   height: 1.25em;
   background-repeat: no-repeat;
-  filter: brightness(200%);
+  -webkit-filter: brightness(200%);
+          filter: brightness(200%);
 }

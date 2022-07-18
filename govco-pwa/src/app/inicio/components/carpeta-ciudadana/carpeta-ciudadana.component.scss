@@ -1,0 +1,160 @@
+.contenedor-seccion{
+    width: 100%;
+    height: 235px;
+    background: #F4F5F7;
+}
+
+.consultas-carpeta a  {
+    text-decoration: none !important;
+}
+
+
+.enlace {
+    font-family: Works Sans, sans-serif;
+    font-weight: 600 !important;
+    font-size: 0.938rem !important;
+}
+
+
+.contenedor-carpeta{
+    width: 445px;
+    height: 235px;
+    background: #004884;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.contenido-info{
+    display: flex;
+    padding-top: 2rem ;
+}
+
+.contenido-info {
+    h3{
+        text-align: left;
+        font: normal normal 600 18px/24px Montserrat !important;
+        letter-spacing: 0px;
+        color: #0B457F;
+        opacity: 1;
+    }
+
+    ul{
+        text-align: left;
+        letter-spacing: 0px;
+        opacity: 1;
+        padding: 0px;
+        padding-left: 20px;
+        margin-bottom: 0px;
+    }
+
+    li{
+        font-size: 14px !important;
+        list-style: disc;  
+    }
+
+    a {
+        text-align: left;
+        text-decoration: underline;
+        font-family: Works Sans, sans-serif;
+        font-size: 1rem;
+        letter-spacing: 0px;
+        color: #004884;
+        opacity: 1;
+    }
+}
+
+svg {
+    width: 35px;
+    padding-top: 0.8em;
+}
+
+.svg-color {
+    fill: #FFFFFF;
+}
+
+
+.info-icon {
+    width: 65px;
+    height: 65px;
+    background: #004884 0% 0% no-repeat padding-box;
+    border-radius: 100%;
+    opacity: 1;
+    text-align: center;
+}
+
+.info-icon img{
+    padding-top: 0.7em;
+    width: 40px;
+}
+
+.logo-carpeta {
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(59deg) brightness(104%) contrast(101%);
+}
+
+.info-text {
+    max-width: 540px;
+    padding-left: 30px;
+}
+
+
+.contenedor-carpeta {
+    h3{
+    text-align: center;
+    font: normal normal 600 18px/27px Montserrat !important;
+    letter-spacing: 0px;
+    color: #FFFFFF !important;
+    opacity: 1;
+    }
+
+}
+
+.registro-btn {
+    width: 165px;
+    height: 42px;
+    text-align: center;
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 0.5em 1em !important;
+    border: 2px solid #FFFFFF;
+    border-radius: 21px;
+    opacity: 1;
+    transition: background-color 0.4s ease-in;
+}
+
+.registro-btn:hover {
+    background: #FFFFFF;
+    color: #0B457F;
+}
+
+// media-queries
+
+@media screen and (max-width: 992px) {
+    .contenedor-seccion {
+        height: auto;
+        padding: 0;
+    }
+
+    .contenido-info {
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 20px !important;
+    }
+
+    .info-icon {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 15px;
+    }
+
+    .info-icon img{
+        padding-top: 0.7em;
+        width: 28px;
+    }
+
+    .contenedor-carpeta {
+        width: 100% !important;
+        height: 154px;
+    }
+}
