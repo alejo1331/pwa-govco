@@ -4,6 +4,8 @@ export const environment = {
   serverEntidades: 'http://100.24.232.62:8085/api/',
   serverUrl: 'http://100.24.232.62:8085/api/',
   urlApiEntidades: 'https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api/entidades',
+  apiUrl: "http://100.24.232.62:8088/api/",
+
   apiCrossUrl: "https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api/cross/",
   severApiCross: "http://100.24.232.62:8091/api/",
   //Home

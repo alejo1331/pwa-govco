@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ParticipaRoutingModule } from './participa-routing.module';
@@ -10,6 +10,8 @@ import { AvisoDeConstruccionModule } from '../aviso-de-construccion/aviso-de-con
   declarations: [
     ParticipaComponent
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+
   imports: [
     CommonModule,
     AvisoDeConstruccionModule,

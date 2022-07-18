@@ -35,6 +35,7 @@ registerLocaleData(es)
   declarations: [
     AppComponent
   ],
+
   imports: [
     BrowserModule,
     HttpClientModule,

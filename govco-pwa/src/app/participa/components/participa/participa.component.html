@@ -1,2 +1,31 @@
-<app-aviso-de-construccion></app-aviso-de-construccion>
+<!-- <app-aviso-de-construccion></app-aviso-de-construccion> -->
+<govco-header-4
+    menuoptions='[
+      {"name":"Participa","textoAlternativo":"participa", "url":"/tu-opinion-cuenta/", "isMobile":"true"},
+      {"name":"Conócenos","textoAlternativo":"conócenos, Abre opciones de la sección","url":"/conocenos/","isMobile":"true", "withNotification":"true","subMenu":[{"name":"Entidades","textoAlternativo":"entidades", "url":"/entidades/","isMobile":"true", "withNotification":"true"},{"name":"Sobre nosotros","textoAlternativo":"sobre nosotros", "url":"/sobre-nosotros/","isMobile":"true", "withNotification":"true"}]}
+    ]' ishome="true" isbeta="false" usuario="{{userName}}">
+  </govco-header-4>
+
+<apollo-modal buttons='[{"text": "ACEPTAR"}]' 
+  [isopen]="validarUrlService.openModal" 
+  appearance="primary"
+  (eventoContinuar)="validarUrlService.accionModal($event)"
+  (eventoCancelar)="validarUrlService.accionModal($event)">
+  </apollo-modal>
+  
+  <govco-st-banner-informativo></govco-st-banner-informativo>
+<section class="body body-participacion">
+  <govco-accesibility-bar></govco-accesibility-bar>
+  <div class="container">
+    <app-bread-crumb></app-bread-crumb>
+  </div>
+  <router-outlet></router-outlet>
+</section>
+<govco-back-to-top></govco-back-to-top>
+<!-- <govco-footer></govco-footer> -->
+<section class="footer-out">
+  <div class="container">
+      <govco-footer-3></govco-footer-3>
+  </div>
+</section>
 

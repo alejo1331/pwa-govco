@@ -4,6 +4,8 @@ export const environment = {
   serverEntidades: 'https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api/entidades/',
   serverUrl: 'https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api/entidades/',
   urlApiEntidades: 'https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api/entidades',
+  apiUrl: "https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api/participacion/",
+
   apiCrossUrl: "https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api/cross/",
   severApiCross: "https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api/cross/",
   //Home
