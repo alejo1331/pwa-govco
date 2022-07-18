@@ -23,6 +23,7 @@ import { ParticipaModule } from './participa/participa.module';
 import { EntidadesEstadoModule } from './entidades-estado/entidades-estado.module';
 import { SobreNosotrosModule } from './sobre-nosotros/sobre-nosotros.module';
 import { AvisoDeConstruccionModule } from './aviso-de-construccion/aviso-de-construccion.module';
+import { BuscadorModule } from './buscador/buscador.module';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { AvisoDeConstruccionModule } from './aviso-de-construccion/aviso-de-cons
     ParticipaModule,
     EntidadesEstadoModule,
     SobreNosotrosModule,
-    AvisoDeConstruccionModule
+    AvisoDeConstruccionModule,
+    BuscadorModule
   ],
   providers: [SidenavService],
   bootstrap: [AppComponent]
