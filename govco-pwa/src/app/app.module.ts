@@ -25,6 +25,7 @@ import { SobreNosotrosModule } from './sobre-nosotros/sobre-nosotros.module';
 import { AvisoDeConstruccionModule } from './aviso-de-construccion/aviso-de-construccion.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ArticlesComponent } from './entidades-estado/components/articles/articles.component';
+import { BuscadorModule } from './buscador/buscador.module';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { ArticlesComponent } from './entidades-estado/components/articles/articl
     EntidadesEstadoModule,
     SobreNosotrosModule,
     AvisoDeConstruccionModule,
-    NgbModule
+    NgbModule,
+    BuscadorModule
   ],
   providers: [SidenavService],
   bootstrap: [AppComponent]
