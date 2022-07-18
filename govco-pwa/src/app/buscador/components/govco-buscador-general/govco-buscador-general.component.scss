@@ -1,0 +1,91 @@
+.popover {
+  position: absolute;
+  z-index: 99999999!important;
+  background: #fff!important;
+  max-width: 100%!important;
+  width: 100%!important;
+  top: 50px;
+}
+.all{
+  #page-search {
+      .miga-buscador .breadcrumb li.breadcrumb-item:not(.activo) a{
+          color: #ddfb00 !important;;
+      }
+  }
+}
+#page-search{
+  min-height: 30vh;
+  background: rgb(246,248,249);
+  background: linear-gradient(90deg, rgba(246,248,249,1) 30%, rgba(255,255,255,1) 50%);
+  padding: 2rem 0;
+
+  .miga-buscador{
+      .breadcrumb{
+          li{
+              &:not(.activo){
+                  a{
+                      color: #004884 ;
+                      text-decoration: underline;
+                  }
+              }
+              &.activo{
+                  a{
+                      color: #004884 ;
+                      font-weight: 600;
+                      text-decoration: none;
+                  }
+              }
+              .govco-icon{
+                  color: #BABABA;
+                  font-size: 1.2rem;
+              }
+              a:hover{
+                  font-size: 1rem;
+              }
+          }
+      }
+  }
+}
+.resultadosBusqueda{
+  .opciones-busqueda{
+      .btn-filter {
+          width: 100%;
+          text-align: left;
+          background-color: transparent;
+          -ms-flex-align: center;
+          align-items: center;
+          -ms-flex-pack: justify;
+          justify-content: space-between;
+          display: none;
+      }
+  }
+}
+.box-shadow-buscador{
+  -webkit-box-shadow: 1px 8px 1px -4px rgba(224,224,224,1);
+  -moz-box-shadow: 1px 8px 1px -4px rgba(224,224,224,1);
+  box-shadow: 1px 8px 1px -4px rgba(224,224,224,1);
+}
+
+.contenedor-interaccion{
+position: relative;
+top: 20px;
+}
+
+.contendor-descripcion:after {
+  content: none !important;
+}
+
+@media only screen and (max-width: 768px)
+{
+  .btn-filter{
+      display: flex !important;
+  }
+  #btn-filter{
+      display: flex !important;
+  }
+  .contenedor-interaccion{
+    top: 0px;
+  }
+}
+
+
