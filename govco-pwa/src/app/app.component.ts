@@ -1,4 +1,4 @@
-import { Component, HostListener, ViewChild, OnInit, AfterContentChecked } from '@angular/core';
+import { Component, HostListener, ViewChild, OnInit, AfterContentChecked, ElementRef } from '@angular/core';
 import { MatSidenav, MatSidenavContent } from '@angular/material/sidenav';
 import { SidenavService } from './transversales/services/sidenav-service/sidenav-service.service';
 import { AppService } from './app.service';
@@ -21,7 +21,7 @@ export class AppComponent implements OnInit, AfterContentChecked {
   @ViewChild('sidenav') sidenav!: MatSidenav;
   @ViewChild(MatSidenavContent) sidenavcontent!: MatSidenavContent;
   @ViewChild(BarraSuperiorComponent) barraSuperior: any;
-  @ViewChild(GeolocalizacionFormularioComponent) activarGps: any
+  @ViewChild(GeolocalizacionFormularioComponent) activarGps: any;
 
   barraSuperiorGeneral: boolean = true;
   statusMenu: boolean = false;
@@ -46,6 +46,7 @@ export class AppComponent implements OnInit, AfterContentChecked {
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe((event: any) => {
+        document.querySelector('#topScroll')!.scrollTop = 0
         this.appService.previousUrl = this.appService.currentUrl;
         this.appService.currentUrl = event.url;
       });

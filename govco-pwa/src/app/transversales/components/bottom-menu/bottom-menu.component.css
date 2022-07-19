@@ -39,6 +39,7 @@ ul {
 }
 .navigation-bar .list-items .item.active .link {
   color: #3366CC;
+  background-color: #F6F8F9;
 }
 
 .navigation-bar .list-items .item.active .link .material-symbols-outlined{

@@ -5,6 +5,7 @@ import { PanelSegundaColumna } from '../../models/footer-models/panel-segunda-co
 import { PanelTerceraColumna } from '../../models/footer-models/panel-tercera-columna';
 import { FooterServiceService } from '../../services/footer-service/footer-service.service';
 
+
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
@@ -30,9 +31,11 @@ export class FooterComponent implements OnInit {
   marginAccordionTwo: boolean = false;
   marginAccordionThree: boolean = false;
 
-  constructor(protected infoFooter: FooterServiceService) { }
+  constructor(protected infoFooter: FooterServiceService) {}
 
   ngOnInit(): void {
+    window.scroll(0,0);
+
     this.infoFooter.getInformacionFooter().subscribe((footer:FooterInterface) =>{
       this.infGeneral = footer.data.panelSegundaColumna;
 
