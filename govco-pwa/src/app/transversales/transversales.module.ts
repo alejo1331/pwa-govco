@@ -13,11 +13,14 @@ import { BottomMenuComponent } from './components/bottom-menu/bottom-menu.compon
 import { TransversalesRoutingModule } from './transversales.routing';
 import { BarraSuperiorComponent } from './components/barra-superior/barra-superior.component';
 import { GeolocalizacionFormularioComponent } from './components/geolocalizacion-formulario/geolocalizacion-formulario.component';
+import { ServiciosParaEntidadesComponent } from './components/servicios-para-entidades/servicios-para-entidades.component';
+import { AvisoDeConstruccionModule } from '../aviso-de-construccion/aviso-de-construccion.module';
 
 
 @NgModule({
   imports: [
     CommonModule,
+    AvisoDeConstruccionModule,
     FormsModule,
     ReactiveFormsModule,
     MatToolbarModule,
@@ -32,7 +35,8 @@ import { GeolocalizacionFormularioComponent } from './components/geolocalizacion
     FooterComponent,
     BottomMenuComponent,
     BarraSuperiorComponent,
-    GeolocalizacionFormularioComponent
+    GeolocalizacionFormularioComponent,
+    ServiciosParaEntidadesComponent
   ],
   exports: [
     SideNavComponent,
