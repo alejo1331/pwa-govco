@@ -4,6 +4,8 @@ import { PanelCuartaColumna } from '../../models/footer-models/panel-cuarta-colu
 import { PanelSegundaColumna } from '../../models/footer-models/panel-segunda-columna';
 import { PanelTerceraColumna } from '../../models/footer-models/panel-tercera-columna';
 import { FooterServiceService } from '../../services/footer-service/footer-service.service';
+import { HeaderService } from '../../services/header-service/header.service';
+import { SidenavService } from '../../services/sidenav-service/sidenav-service.service';
 
 
 @Component({
@@ -31,10 +33,16 @@ export class FooterComponent implements OnInit {
   marginAccordionTwo: boolean = false;
   marginAccordionThree: boolean = false;
 
-  constructor(protected infoFooter: FooterServiceService) {}
+  constructor(
+    protected infoFooter: FooterServiceService, 
+    protected servicioSideNav: SidenavService,
+    protected servicioHeader: HeaderService
+    ) {}
 
   ngOnInit(): void {
-    window.scroll(0,0);
+
+    this.servicioHeader.estadoHeader(false,true);
+    this.servicioSideNav.seleccionandoItem(true,'acercaPortal');
 
     this.infoFooter.getInformacionFooter().subscribe((footer:FooterInterface) =>{
       this.infGeneral = footer.data.panelSegundaColumna;
@@ -61,7 +69,10 @@ export class FooterComponent implements OnInit {
 
     this.estadoAccordionThree = String(document.getElementById('accordionPanelThree')?.getAttribute('aria-expanded'));
     this.marginAccordionThree = (this.estadoAccordionThree?.toLowerCase() === 'true');
-    
+  }
+
+  desactivarItem(){
+    this.servicioSideNav.seleccionandoItem(false,'null');
   }
 
 }

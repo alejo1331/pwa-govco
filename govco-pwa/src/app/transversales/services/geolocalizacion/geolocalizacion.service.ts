@@ -23,7 +23,6 @@ export class GeolocalizacionService {
   }
 
   getEstadoServicioGeolocalizacion(): Observable<boolean> {
-
     return this.http.get<boolean>(this.urlApiEntidades + '/GeoLocalizacion/ObtenerEstadoGeolocalizacion');
   }
 

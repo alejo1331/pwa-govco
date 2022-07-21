@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MunicipioInterface } from '../../models/geolocalizacion/municipio-interface';
 import { GeolocalizacionService } from '../../services/geolocalizacion/geolocalizacion.service';
+import { HeaderService } from '../../services/header-service/header.service';
 import { GeolocalizacionFormularioComponent } from '../geolocalizacion-formulario/geolocalizacion-formulario.component';
 
 @Component({
@@ -14,10 +15,15 @@ export class GeolocalizacionComponent implements OnInit {
 
   datosUbicacion: [string, string];
   ubicacionMunicipio: string;
+  ocultar: boolean = false;
 
-  constructor(protected ServicioGeolocalizacion: GeolocalizacionService) { }
+  constructor(protected ServicioGeolocalizacion: GeolocalizacionService, protected servicioHeader: HeaderService) { }
 
   ngOnInit(): void {
+    this.servicioHeader.ocultandoHeader.subscribe(estado => {
+      this.ocultar = estado[1];
+    })
+
     this.ServicioGeolocalizacion.customMessage.subscribe(msg => {
       this.datosUbicacion = msg
       switch (this.datosUbicacion[0]) {
@@ -32,6 +38,7 @@ export class GeolocalizacionComponent implements OnInit {
           break;
       }
     })
+    
   }
 
   getMunicipiosPorDepartamento(CodigoDepartMunicipio: [string, string]) {

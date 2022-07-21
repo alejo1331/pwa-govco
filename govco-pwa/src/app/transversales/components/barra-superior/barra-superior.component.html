@@ -1,4 +1,4 @@
-<div [ngClass]="{
+<div *ngIf="ocultar" [ngClass]="{
     'barra-superior-general-pwa-govco': !barraSuperiorInterna,
     'barra-superior-interna-pwa-govco': barraSuperiorInterna}">
     <div class="menu-logo-pwa-govco">
@@ -13,7 +13,8 @@
             </span>
         </span>
         <div class="logo-pwa-govco">
-            <img src="../../../assets/logos/transversales/GOVCO.svg" alt="logo de gov.co">
+            <a routerLink="/" (click)="desactivarItem()"><img src="../../../assets/logos/transversales/GOVCO.svg" alt="logo de gov.co"></a>
+            
         </div>
         <span class="caja-buscador-pwa-govco" *ngIf="barraSuperiorInterna">
             <span class="icono-buscador-pwa-govco"

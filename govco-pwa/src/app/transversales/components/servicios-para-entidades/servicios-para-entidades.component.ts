@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HeaderService } from '../../services/header-service/header.service';
+import { SidenavService } from '../../services/sidenav-service/sidenav-service.service';
 
 @Component({
   selector: 'app-servicios-para-entidades',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ServiciosParaEntidadesComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    protected servicioSideNav: SidenavService,
+    protected servicioHeader: HeaderService
+  ) { }
 
   ngOnInit(): void {
+    this.servicioHeader.estadoHeader(true, true);
+    this.servicioSideNav.seleccionandoItem(true,'serviciosEntidades');
   }
 
 }
