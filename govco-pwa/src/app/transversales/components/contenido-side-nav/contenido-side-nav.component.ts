@@ -1,4 +1,5 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Output, EventEmitter, HostListener } from '@angular/core';
+import { HeaderService } from '../../services/header-service/header.service';
 import { SidenavService } from '../../services/sidenav-service/sidenav-service.service';
 
 @Component({
@@ -6,42 +7,65 @@ import { SidenavService } from '../../services/sidenav-service/sidenav-service.s
   templateUrl: './contenido-side-nav.component.html',
   styleUrls: ['./contenido-side-nav.component.css']
 })
-export class ContenidoSideNavComponent implements OnInit {
+export class ContenidoSideNavComponent implements OnInit, AfterViewInit {
 
-  @Output() outBarraSuInterna = new EventEmitter<boolean>();
+  @Output() efectoTransicion = new EventEmitter<boolean>();
   @Output() outEstadoMenu = new EventEmitter<boolean>();
   estadoMenu: boolean = false;
+  navigation_items_elms: any;
 
   selectedIcon = 'outlined';
 
   constructor(
-    private sidenav: SidenavService
+    private sidenav: SidenavService,
+    protected servicioHeader: HeaderService
+
   ) { }
 
   ngOnInit() {
+    this.navigation_items_elms = document.querySelectorAll(".govco-pwa-sidenav-item")
+
+    this.sidenav.modificandoItem.subscribe(([estado,idTem]) => {
+      switch (estado) {
+        case true:
+          this.desactivarItem();
+          document.getElementById(idTem)?.classList.add("active");
+          break;
+        case false:
+          this.desactivarItem();
+          break;
+      }
+    })
+  }
+
+  desactivarItem(){
+    this.navigation_items_elms.forEach((itm: any) => {
+      if (itm.classList.contains("active")) {
+        itm.classList.remove("active");
+      }
+    });
   }
 
   ngAfterViewInit() {
-
-    const navigation_items_elms : any = document.querySelectorAll(".govco-pwa-sidenav-item");
-
-    navigation_items_elms.forEach((item:any, index:any) => {
-      item.addEventListener("click", (e:any) => {
+    this.navigation_items_elms.forEach((item: any, index: any) => {
+      item.addEventListener("click", (e: any) => {
         e.preventDefault();
-        navigation_items_elms.forEach((itm:any) => {
-          if (itm.classList.contains("active")){
+        this.navigation_items_elms.forEach((itm: any) => {
+          if (itm.classList.contains("active")) {
             itm.classList.remove("active");
           }
         });
         item.classList.add("active");
-          setTimeout(() => {
-            this.sidenav.cerrar();
-          }, 600);
+        setTimeout(() => {
+          this.sidenav.cerrar();
+        }, 600);
       })
     })
   }
 
-  barraSuperiorInterna(opcion:boolean){
-    this.outBarraSuInterna.emit(opcion);
+  @HostListener('click') onClick() {
+    this.servicioHeader.ocultandoHeader.subscribe(([estilo, estado]) => {
+      this.efectoTransicion.emit(estilo);
+    })
   }
 }

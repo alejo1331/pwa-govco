@@ -1,5 +1,7 @@
-import { Component, OnInit, ElementRef, AfterViewInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, AfterViewInit} from '@angular/core';
 import { BottomMenuService } from '../../services/bottom-menu/bottom-menu.service';
+import { HeaderService } from '../../services/header-service/header.service';
+import { SidenavService } from '../../services/sidenav-service/sidenav-service.service';
 
 @Component({
   selector: 'app-bottom-menu',
@@ -8,20 +10,17 @@ import { BottomMenuService } from '../../services/bottom-menu/bottom-menu.servic
 })
 export class BottomMenuComponent implements OnInit, AfterViewInit {
 
-  @Output() outBarraSuInterna = new EventEmitter<boolean>();
-
-  constructor(private elementRef:ElementRef,
-    public bottomMenu : BottomMenuService) { }
+  constructor(
+    public bottomMenu : BottomMenuService, 
+    protected servicioSideNav: SidenavService,
+    protected servicioHeader: HeaderService
+    ) { }
 
   ngOnInit() {
   }
 
   ngAfterViewInit() {
     this.bottomMenu.toogleActive()
-  }
-
-  barraSuperiorInterna(opcion: boolean){
-    this.outBarraSuInterna.emit(opcion);
   }
 
 }

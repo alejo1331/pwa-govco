@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HeaderService } from 'src/app/transversales/services/header-service/header.service';
+import { SidenavService } from 'src/app/transversales/services/sidenav-service/sidenav-service.service';
 import { ConoceModel, } from '../../models/conoce.model';
 import { NosotrosModel } from '../../models/nosotros.model';
 import { SobreNosotrosModel } from '../../models/sobre-nosotros.model';
@@ -21,9 +23,17 @@ export class SobreNosotrosComponent implements OnInit {
   title: string;
 
 
-  constructor(private sobreNosotrosService: SobreNosotrosService, private router: Router) { }
+  constructor(
+    private sobreNosotrosService: SobreNosotrosService,
+    private router: Router,
+    protected servicioSideNav: SidenavService,
+    protected servicioHeader: HeaderService
+  ) { }
 
   ngOnInit(): void {
+    this.servicioHeader.estadoHeader(true,true);
+    this.servicioSideNav.seleccionandoItem(true,'sobreNosotros');
+    
     this.sobreNosotrosService.getTitleAndDescription(this.codigo)
       .subscribe((resp) => {
         this.title = resp.data.titulo;
@@ -48,8 +58,8 @@ export class SobreNosotrosComponent implements OnInit {
         }
       );
 
-    
-    this.consultarDataNosotros(); 
+
+    this.consultarDataNosotros();
   }
 
   //Suscribe extrae la data de la pagina sobre nosotros

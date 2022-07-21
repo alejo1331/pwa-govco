@@ -1,4 +1,4 @@
-import { Component, HostListener, ViewChild, OnInit, AfterContentChecked, ElementRef } from '@angular/core';
+import { Component, HostListener, ViewChild, OnInit, AfterContentChecked} from '@angular/core';
 import { MatSidenav, MatSidenavContent } from '@angular/material/sidenav';
 import { SidenavService } from './transversales/services/sidenav-service/sidenav-service.service';
 import { AppService } from './app.service';
@@ -6,8 +6,8 @@ import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { BarraSuperiorComponent } from './transversales/components/barra-superior/barra-superior.component';
 import { GeolocalizacionFormularioComponent } from './transversales/components/geolocalizacion-formulario/geolocalizacion-formulario.component';
-
-
+import { GeolocalizacionComponent } from './transversales/components/geolocalizacion/geolocalizacion.component';
+import { HeaderService } from './transversales/services/header-service/header.service';
 
 @Component({
   selector: 'app-root',
@@ -15,12 +15,12 @@ import { GeolocalizacionFormularioComponent } from './transversales/components/g
   styleUrls: ['./app.component.css']
 })
 
-
 export class AppComponent implements OnInit, AfterContentChecked {
 
   @ViewChild('sidenav') sidenav!: MatSidenav;
   @ViewChild(MatSidenavContent) sidenavcontent!: MatSidenavContent;
   @ViewChild(BarraSuperiorComponent) barraSuperior: any;
+  @ViewChild(GeolocalizacionComponent) barraGeolocalizacion: any;
   @ViewChild(GeolocalizacionFormularioComponent) activarGps: any;
 
   barraSuperiorGeneral: boolean = true;
@@ -42,7 +42,8 @@ export class AppComponent implements OnInit, AfterContentChecked {
   constructor(
     public appService: AppService,
     private router: Router,
-    private sidenavService: SidenavService) {
+    private sidenavService: SidenavService,
+    protected servicioHeader: HeaderService) {
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe((event: any) => {
@@ -76,23 +77,23 @@ export class AppComponent implements OnInit, AfterContentChecked {
     this.barraSuperior.onClickMenu();
   }
 
-  opcionBarraSuperiorInterna(opcion: boolean) {
-    this.barraSuperior.barraSuperiorInterna = opcion;
-    if(opcion === true){
-      this.appGeolocalizacion.transition = '0s'
-      this.appGeolocalizacion.top = '3.5em';
-    }
-    else{
-      this.appGeolocalizacion.top = '7.25em';
-    }
-
-  }
-
   formularioGeolocalizacion(modalAndContect: string[]) {
     this.appGeolocalizacionFormulario.transition = '0.6s';
     this.appGeolocalizacionFormulario.transform = modalAndContect[0];
     this.matSidenavContent.transition = '0.6s';
     this.matSidenavContent.transform = modalAndContect[1];
+  }
+
+  estadoEfectoTransicion(estilo: boolean) {
+    switch (estilo) {
+      case true:
+        this.appGeolocalizacion.transition = '0s'
+        this.appGeolocalizacion.top = '3.5em';
+        break;
+      case false:
+        this.appGeolocalizacion.top = '7.25em';
+        break;
+    }
   }
 
   @HostListener('touchstart', ['$event']) onTouchStart(event: any): void {
@@ -101,22 +102,30 @@ export class AppComponent implements OnInit, AfterContentChecked {
 
   @HostListener('touchmove', ['$event']) onTouchMove(event: any): void {
     this.touchMoveFinal = event.changedTouches[0].screenY;
-    this.appGeolocalizacion.transition = '0.6s'
-    if (this.touchMoveInicial < this.touchMoveFinal) {
-      this.touchMoveDiferencia = this.touchMoveFinal - this.touchMoveInicial;
-      if (this.touchMoveDiferencia >= 50) {
-        if(this.barraSuperior.barraSuperiorInterna === true){
-          this.appGeolocalizacion.top = '3.5em';
+    this.servicioHeader.ocultandoHeader.subscribe(([estilo, estado]) => {
+      this.appGeolocalizacion.transition = '0.6s'
+      if (this.touchMoveInicial < this.touchMoveFinal) {
+        this.touchMoveDiferencia = this.touchMoveFinal - this.touchMoveInicial;
+        if (this.touchMoveDiferencia >= 50) {
+          switch (estilo) {
+            case true:
+              this.appGeolocalizacion.top = '3.5em';
+              break;
+            case false:
+              this.appGeolocalizacion.top = '7.25em';
+              break;
+          }
         }
-        else
-          this.appGeolocalizacion.top = '7.25em';
+      } else {
+        switch (estilo) {
+          case true:
+            this.appGeolocalizacion.top = '1.25em';
+            break;
+          case false:
+            this.appGeolocalizacion.top = '5em';
+            break;
+        }
       }
-    } else {
-      if(this.barraSuperior.barraSuperiorInterna === true){
-        this.appGeolocalizacion.top = '1.25em';
-      }
-      else
-        this.appGeolocalizacion.top = '5em';
-    }
+    })
   }
 }

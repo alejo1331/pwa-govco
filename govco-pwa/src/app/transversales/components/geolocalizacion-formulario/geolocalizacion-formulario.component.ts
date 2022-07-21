@@ -112,8 +112,8 @@ export class GeolocalizacionFormularioComponent implements OnInit {
       setTimeout(() => {
         let IngresarUbicacion = confirm("Podrás encontrar trámites, servicios e información según tu ubicación")
         if (IngresarUbicacion == true) {
-          this.closedModal.emit(['translate(0%)', 'translate(-100%)']);
           this.getGeolocalizacion(false);
+          this.closedModal.emit(['translate(0%)', 'translate(-100%)']);
         }
       }, 1000);
     }
@@ -123,8 +123,8 @@ export class GeolocalizacionFormularioComponent implements OnInit {
     setTimeout(() => {
       if (this.ServicioGeolocalizacion.getEstadoServicioGeolocalizacion()) {
         if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition((ubicaion: any) => {
-            this.ServicioGeolocalizacion.getUbicacionActual(ubicaion.coords.latitude, ubicaion.coords.longitude)
+          navigator.geolocation.getCurrentPosition((data: any) => {
+            this.ServicioGeolocalizacion.getUbicacionActual(data.coords.latitude, data.coords.longitude)
               .subscribe((ubicacion: ConsultaUbicacionInterface) => {
                 if (MostrarEnBarraGelocalizacion == true) {
                   this.ServicioGeolocalizacion.changeMessage(ubicacion.codigoDepartamento, ubicacion.codigoMunicipio);

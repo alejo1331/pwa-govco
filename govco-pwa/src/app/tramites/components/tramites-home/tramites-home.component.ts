@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, RoutesRecognized } from '@angular/router';
-import { filter, pairwise } from 'rxjs/operators';
+import { Router } from '@angular/router';
+import { HeaderService } from 'src/app/transversales/services/header-service/header.service';
+import { SidenavService } from 'src/app/transversales/services/sidenav-service/sidenav-service.service';
 import { AppService } from '../../../app.service';
 import { BottomMenuService } from '../../../transversales/services/bottom-menu/bottom-menu.service';
 
@@ -11,23 +12,26 @@ import { BottomMenuService } from '../../../transversales/services/bottom-menu/b
 })
 export class TramitesHomeComponent implements OnInit {
 
-  anteriorUrl:any
+  anteriorUrl: any
 
   constructor(
     public router: Router,
-    appService : AppService,
-    public bottomService : BottomMenuService
+    appService: AppService,
+    public bottomService: BottomMenuService,
+    protected servicioHeader: HeaderService,
+    protected servicioSideNav: SidenavService
   ) {
     this.anteriorUrl = appService.currentUrl
-   }
-
-  ngOnInit() {
   }
 
-  backUrl(){
+  ngOnInit() {
+    this.servicioHeader.estadoHeader(false,false);
+    this.bottomService.seleccionandoItem(1);
+    this.servicioSideNav.seleccionandoItem(false,'null');
+  }
 
+  backUrl() {
     this.bottomService.quitarActive()
-
   }
 
 }
