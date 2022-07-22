@@ -24,17 +24,16 @@ steps:
     event:
     - push
 
-- name: check_commits
-  image: jjvargass/qa_develoment:latest
-  commands:
-  - python /app/check_commits.py
-  when:
-    branch:
-    - develop
-    - release/*
-    event:
-    - push
-
+# - name: check_commits
+#   image: jjvargass/qa_develoment:latest
+#   commands:
+#   - python /app/check_commits.py
+#   when:
+#     branch:
+#     - develop
+#     - release/*
+#     event:
+#     - push
 
 # - name: run_sonar_scanner
 #   image: timbru31/java-node
