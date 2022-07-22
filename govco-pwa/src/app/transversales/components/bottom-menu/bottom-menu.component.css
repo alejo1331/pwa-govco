@@ -19,6 +19,7 @@ ul {
   display: -ms-flexbox;
   display: flex;
   position: relative;
+  height: 4.5rem;
 }
 
 .navigation-bar .list-items .item {
