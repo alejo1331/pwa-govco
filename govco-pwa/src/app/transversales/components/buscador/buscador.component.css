@@ -3,7 +3,7 @@
 }
 
 .buscador-pwa-govco {
-  height: 3.143em;
+  height: 2.75rem;
   width: 100%;
   font-family: 'Work Sans', sans-serif;
   font-weight: 400;
@@ -12,6 +12,7 @@
   border-radius: 1.571em;
   padding: 1em 11% 1em 1.429em;
   background-color: #FFFFFF;
+  margin-bottom: 1rem;
 }
 
 input.buscador-pwa-govco {
@@ -19,7 +20,7 @@ input.buscador-pwa-govco {
 }
 
 .icono-buscador-pwa-govco{
-  background-size: 1.25em;
+  background-size: 1.25rem;
   background-repeat: no-repeat;
   background-position: right;
   background-position-x: 95.5%;
