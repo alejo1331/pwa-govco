@@ -2,17 +2,6 @@ kind: pipeline
 name: and_ci_cliente
 
 steps:
-# - name: check_readme
-#   image: jjvargass/qa_develoment:latest
-#   commands:
-#   - python /app/check_readme.py
-#   when:
-#     branch:
-#     - develop
-#     - release/*
-#     event:
-#     - push
-
 - name: check_branch
   image: jjvargass/qa_develoment:latest
   commands:
@@ -23,17 +12,6 @@ steps:
     - release/*
     event:
     - push
-
-# - name: check_commits
-#   image: jjvargass/qa_develoment:latest
-#   commands:
-#   - python /app/check_commits.py
-#   when:
-#     branch:
-#     - develop
-#     - release/*
-#     event:
-#     - push
 
 # - name: run_sonar_scanner
 #   image: timbru31/java-node
