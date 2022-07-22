@@ -2,16 +2,16 @@ kind: pipeline
 name: and_ci_cliente
 
 steps:
-- name: check_readme
-  image: jjvargass/qa_develoment:latest
-  commands:
-  - python /app/check_readme.py
-  when:
-    branch:
-    - develop
-    - release/*
-    event:
-    - push
+# - name: check_readme
+#   image: jjvargass/qa_develoment:latest
+#   commands:
+#   - python /app/check_readme.py
+#   when:
+#     branch:
+#     - develop
+#     - release/*
+#     event:
+#     - push
 
 - name: check_branch
   image: jjvargass/qa_develoment:latest
