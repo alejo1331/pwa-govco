@@ -13,29 +13,29 @@ steps:
     event:
     - push
 
-# - name: run_sonar_scanner
-#   image: timbru31/java-node
-#   commands:
-#     - export RELEASE=4.2.0.1873
-#     - cat /etc/os-release
-#     - apt-get update -y
-#     - apt-get -y install curl grep sed unzip zip nodejs apt-utils
-#     - node --version
-#     - npm --version
-#     - curl --insecure -o ./sonarscanner.zip -L https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-$RELEASE-linux.zip
-#     - unzip sonarscanner.zip
-#     - rm sonarscanner.zip
-#     - rm -rf sonar-scanner-$RELEASE-linux/jre
-#     - sed -i 's/use_embedded_jre=true/use_embedded_jre=false/g' ./sonar-scanner-$RELEASE-linux/bin/sonar-scanner
-#     - cp sonar-project.properties ./sonar-scanner-$RELEASE-linux/conf/sonar-scanner.properties
-#     - sonar-scanner-$RELEASE-linux/bin/sonar-scanner -X
-#   when:
-#     branch:
-#     - develop
-#     - release/*
-#     event:
-#     - push
-#     - merge
+- name: run_sonar_scanner
+  image: timbru31/java-node
+  commands:
+    - export RELEASE=4.2.0.1873
+    - cat /etc/os-release
+    - apt-get update -y
+    - apt-get -y install curl grep sed unzip zip nodejs apt-utils
+    - node --version
+    - npm --version
+    - curl --insecure -o ./sonarscanner.zip -L https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-$RELEASE-linux.zip
+    - unzip sonarscanner.zip
+    - rm sonarscanner.zip
+    - rm -rf sonar-scanner-$RELEASE-linux/jre
+    - sed -i 's/use_embedded_jre=true/use_embedded_jre=false/g' ./sonar-scanner-$RELEASE-linux/bin/sonar-scanner
+    - cp sonar-project.properties ./sonar-scanner-$RELEASE-linux/conf/sonar-scanner.properties
+    - sonar-scanner-$RELEASE-linux/bin/sonar-scanner -X
+  when:
+    branch:
+    - develop
+    - release/*
+    event:
+    - push
+    - merge
 
 # - name: nodejs_build_DEV
 #   image: node:14.15.4
