@@ -111,17 +111,8 @@ p.texto-item-info-contacto-pwa-govco {
     background-color: #f6f8f9;
 }
 
-.icono-contacto-accordion-pwa-govco {
-    width: 0.82em;
-    height: 0.82em;
-    filter: brightness(0);
-    background-position: 1px 2px !important;
-}
-
-.icono-acerca-sitio-accordion-pwa-govco {
-    width: 0.82em;
-    height: 0.82em;
-    filter: brightness(0);
+.caja-icono-pwa-govco .material-symbols-outlined {
+    font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 20;
 }
 
 .icono-accesibilidad-accordion-pwa-govco {
