@@ -17,4 +17,12 @@ export interface NoticiaPublicadaModel {
   entidad: string;
 
   estadoNoticiaId: number;
+
+  textoFecha:string;
+
+  imagen: string;
+
+  totalRegistros:string;
+
+  ultimaPagina:string;
 }

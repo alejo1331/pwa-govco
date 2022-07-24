@@ -13,7 +13,7 @@ import { ValidarUrlService } from 'src/app/noticias/services/validar-url.service
 export class DetalleNoticiasComponent implements OnInit {
 
   
-
+  valor:number=10;
   public idRecurso: any;
   noticiasError: boolean = false;
   loadingInfo: boolean = true;

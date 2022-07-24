@@ -36,7 +36,8 @@ import { ValidarUrlDirective } from './noticias/shared/directives/validar-url/va
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+ //   ListadoNoticiasComponent
  //   DetalleNoticiasComponent,
  //   BreadCrumbComponent,
  //   PaginationComponent,

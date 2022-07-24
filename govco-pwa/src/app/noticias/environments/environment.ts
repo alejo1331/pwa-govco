@@ -7,6 +7,8 @@ export const environment = {
   clientID: "GOVCONoticias",
   authIssuer: 'https://qaautenticaciondigital.and.gov.co',
   serverUrl: 'http://100.24.232.62:8093/api/noticias/'
+  //serverUrl: 'https://localhost:44319/api/noticias/'
+  
 };
 
 /*
