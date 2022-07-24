@@ -1,5 +1,5 @@
 <div *ngIf="banner">
-  <div id="buscador-home" style="background-image: url({{imagen}});" tabindex="0" role="img"
+  <div id="buscador-home" [style.background-image]="'url('+imagen+')'" tabindex="0" role="img"
     aria-labelledby="image-1">
     <p id="image-1" style="display: none;">{{descripcionImagen}}</p>
     <div class="background-overlay">
@@ -7,16 +7,16 @@
         <div class="row w-100 m-0 no-gutters pb-4">
           <div class="col-lg-8 col-md-12 col-sm-12">
             <div class="text-left">
-              <h2 class="title-search-bienvenido text-lg-left pb-4" tabindex="0">
+              <h1 class="title-search-bienvenido text-lg-left" tabindex="0">
                 {{banner.textoBienvenida}}
-              </h2>
+              </h1>
             </div>
             <div class="text-left">
               <p class="description-search-banner ml-5" tabindex="0">
                 {{banner.textoBuscador}}
               </p>
             </div>
-            <div class="text-left mt-3">
+            <div class="text-left mt-5">
               <p class="description-aux ml-5 px-0" tabindex="0">
                 <span>{{banner.textoAuxiliar}}</span>
               </p>

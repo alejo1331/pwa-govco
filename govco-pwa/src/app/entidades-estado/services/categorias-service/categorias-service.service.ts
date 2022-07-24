@@ -19,7 +19,6 @@ export class CategoriaService {
 
   constructor(private http: HttpClient) { }
 
-  //Categorias
   ObtenerCategorias(): Observable<CategoriaModel[]> {
     return this.http.get<CategoriaModel[]>(this.url_categorias + this.service+"Categoria/Activas");
   }
