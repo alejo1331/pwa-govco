@@ -1,0 +1,30 @@
+.breadcrumb {
+    .breadcrumb-item {
+        .govco-icon {
+            font-size: 1.1rem;
+            &::before {
+                color: #004884 !important;
+            }
+        }
+        .breadcrumb-text {
+            font-size: 14px;
+            font-weight: 500 !important;
+        }
+        span {
+            font-size: 14px !important;
+            font-weight: 500 !important;
+            &:hover {
+                color: #007bff;
+            }
+        }
+    }
+    .active .item-link {
+        cursor: default !important;
+        color: #007bff;
+        font-weight: 500 !important;
+        &:hover {
+            text-decoration: none !important;
+            color: #007bff;
+        }
+    }
+}

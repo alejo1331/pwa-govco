@@ -1,0 +1,17 @@
+<div class="scroll-to-top" [ngClass]="{'show-scrollTop': windowScrolled}">
+    <button (click)="scrollToTop()">
+        <span class="govco-icon govco-icon-shortu-arrow-n btn-svg-up-hover">
+        </span>
+        <span class="label-button-star-up"> 
+            Volver a arriba 
+        </span>
+    </button>
+</div>
+
+  <div class="backtoTop">
+    <div class="div-star-up scroll-to-top" [ngClass]="{'show-scrollTop': windowScrolled}">
+        <button class="btn-up-hover back-to-top-button" aria-label="Volver a arriba" type="button" (click)="scrollToTop()">
+            
+        </button>
+    </div>
+</div>

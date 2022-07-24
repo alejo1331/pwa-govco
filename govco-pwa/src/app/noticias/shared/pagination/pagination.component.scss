@@ -1,0 +1,59 @@
+.pagination-container {
+  text-align: center;
+}
+
+.pagination-news {
+  display: flex;
+  padding-left: 0;
+  list-style: none;
+  border-radius: .25rem;
+}
+
+.pager-govco .pagination-news .page-item .page-link{
+  font-family:"Work Sans", sans-serif;
+  border:none;
+  text-decoration:none;
+  color:#004884;
+  border-radius:0.3rem;
+  padding:0.5rem 1rem;
+  margin:0 0.1rem
+}
+  
+.pager-govco .pagination-news .page-item .page-link:hover{
+  background-color:#E5EEFB
+}
+
+.pager-govco .pagination-news .page-item:first-of-type .page-link{
+  color:#3772FF;
+  text-decoration:underline
+}
+
+.pager-govco .pagination-news .page-item:last-of-type .page-link{
+  color:#3772FF;
+  text-decoration:underline
+}
+
+.pager-govco .pagination-news .page-item:hover{
+  text-decoration:none
+}
+
+.pager-govco .pagination-news .page-item:hover .page-link{
+  text-decoration:none
+}
+
+.pager-govco .pagination-news .page-item.active .page-link{
+  background-color:#36c;
+  color:#fff
+}
+
+.pager-govco .pagination-news .page-item .page-link:focus{
+  box-shadow: none;
+}
+
+.pager-govco .pagination-news .page-item.active:hover .page-link{
+  text-decoration:none
+}
+
+.pager-govco .pagination-news .page-item[disabled] .page-link,.pager-govco .pagination-news .page-item.disabled .page-link{
+  color:#BABABA
+}

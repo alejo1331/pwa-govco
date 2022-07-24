@@ -1,15 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { NoticiasComponent } from './components/noticias/noticias.component';
+import { ListadoNoticiasComponent } from './components/listado-noticias/listado-noticias.component';
+import { DetalleNoticiasComponent } from './components/detalle-noticias/detalle-noticias.component';
+
 
 const routes: Routes = [
   {
-    path: 'menu',
+    path: 'noticias',
     children: [
       {
-        path: 'noticias',
-        component: NoticiasComponent
+        path: '',
+        component: ListadoNoticiasComponent
       },
+      {
+        path: 'detalle/:id',
+        component: DetalleNoticiasComponent
+      }
     ]
   },
 ];

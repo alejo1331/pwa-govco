@@ -1,0 +1,57 @@
+<div class="detalle-container news">
+    <div class="container">
+      <div *ngIf="(noticiasError || loadingInfo)">
+        <noticias-govco-bread-crumb></noticias-govco-bread-crumb>
+      </div>
+      <div *ngIf="!loadingInfo && !noticiasError">
+        <noticias-govco-bread-crumb [title]="noticia.titulo"></noticias-govco-bread-crumb>
+      </div>
+       {{valor}}
+      <div class="row">
+        <div class="col-lg-9 col-sm-12">
+              <!--loading content-->
+          <div class="loading-content" *ngIf="!noticiasError && loadingInfo">
+            <div class="card mt-2">
+              <div class="card-header">
+                <p><strong>Cargando información de la noticia</strong></p>
+              </div>
+            </div>
+          </div>
+  
+          <!-- error content-->
+          <div class="error-content" *ngIf="noticiasError && !loadingInfo">
+  
+            <div class="card mt-2">
+              <div class="card-header">
+                <p><strong>No fue posible obtener el detalle de la noticia</strong></p>
+              </div>
+            </div>
+          </div>
+  
+          <div *ngIf="!loadingInfo && !noticiasError">
+  
+            <!--Header-->
+            <div class="row mt-4">
+              <div class="col-md-12">
+                <h2>{{noticia.titulo}}</h2>
+                <div class="img-news mt-4 mb-4">
+                  <img class="img-responsive" [src]="noticia.urlImagen">
+                </div>
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-8 col-lg-9 col-xl-9">
+                <div class="p-content formatted-news" [innerHTML]="noticia.cuerpoTexto"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 col-xl-3 mt-3">
+          <govco-area-servicios module="Noticias" [itemid]="idRecurso"></govco-area-servicios>
+        </div>
+      </div>
+    </div>
+  </div>
+  
