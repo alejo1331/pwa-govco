@@ -1,4 +1,5 @@
-import { Component, OnInit, AfterViewInit} from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { BottomMenuService } from '../../services/bottom-menu/bottom-menu.service';
 import { HeaderService } from '../../services/header-service/header.service';
 import { SidenavService } from '../../services/sidenav-service/sidenav-service.service';
@@ -10,17 +11,27 @@ import { SidenavService } from '../../services/sidenav-service/sidenav-service.s
 })
 export class BottomMenuComponent implements OnInit, AfterViewInit {
 
+  contadorClic: number;
+
   constructor(
-    public bottomMenu : BottomMenuService, 
+    public bottomMenu: BottomMenuService,
     protected servicioSideNav: SidenavService,
-    protected servicioHeader: HeaderService
-    ) { }
+    protected servicioHeader: HeaderService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
+    this.contadorClic = 0;
   }
 
   ngAfterViewInit() {
-    this.bottomMenu.toogleActive()
   }
 
+  clickHome() {
+    if (document.querySelector('#topScroll')!.scrollTop > 10) {
+      document.querySelector('#topScroll')!.scrollTop = 0;
+    } else {
+      this.router.navigate(['/']);
+    }
+  }
 }

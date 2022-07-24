@@ -1,4 +1,5 @@
 import { Component, OnInit, AfterViewInit, Output, EventEmitter, HostListener } from '@angular/core';
+import { BottomMenuService } from '../../services/bottom-menu/bottom-menu.service';
 import { HeaderService } from '../../services/header-service/header.service';
 import { SidenavService } from '../../services/sidenav-service/sidenav-service.service';
 
@@ -18,11 +19,13 @@ export class ContenidoSideNavComponent implements OnInit, AfterViewInit {
 
   constructor(
     private sidenav: SidenavService,
-    protected servicioHeader: HeaderService
-
+    protected servicioHeader: HeaderService,
+    public bottomService: BottomMenuService
   ) { }
 
   ngOnInit() {
+    this.bottomService.seleccionandoItem(0);
+    
     this.navigation_items_elms = document.querySelectorAll(".govco-pwa-sidenav-item")
 
     this.sidenav.modificandoItem.subscribe(([estado,idTem]) => {
@@ -67,5 +70,6 @@ export class ContenidoSideNavComponent implements OnInit, AfterViewInit {
     this.servicioHeader.ocultandoHeader.subscribe(([estilo, estado]) => {
       this.efectoTransicion.emit(estilo);
     })
+    this.bottomService.seleccionandoItem(0);
   }
 }
