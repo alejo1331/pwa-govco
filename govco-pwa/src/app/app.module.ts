@@ -24,26 +24,13 @@ import { EntidadesEstadoModule } from './entidades-estado/entidades-estado.modul
 import { SobreNosotrosModule } from './sobre-nosotros/sobre-nosotros.module';
 import { AvisoDeConstruccionModule } from './aviso-de-construccion/aviso-de-construccion.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ArticlesComponent } from './entidades-estado/components/articles/articles.component';
 import { BuscadorModule } from './buscador/buscador.module';
-import { DetalleNoticiasComponent } from './noticias/components/detalle-noticias/detalle-noticias.component';
-import { BreadCrumbComponent } from './noticias/shared/bread-crumb/bread-crumb.component';
-import { WordLimitPipe } from './noticias/shared/pipe/word-limite.pipe';
-import { PaginationComponent } from './noticias/shared/pagination/pagination.component';
-import { ScrollToTopComponent } from './noticias/shared/scroll-to-top/scroll-to-top.component';
-import { ValidarUrlDirective } from './noticias/shared/directives/validar-url/validar-url.directive';
+
 
 
 @NgModule({
   declarations: [
-    AppComponent,
- //   ListadoNoticiasComponent
- //   DetalleNoticiasComponent,
- //   BreadCrumbComponent,
- //   PaginationComponent,
- //   ScrollToTopComponent,
- //   ValidarUrlDirective,
- //   WordLimitPipe
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -74,10 +61,8 @@ import { ValidarUrlDirective } from './noticias/shared/directives/validar-url/va
     NgbModule,
     BuscadorModule
   ],
-//  exports:[ValidarUrlDirective],
   providers: [SidenavService],
   bootstrap: [AppComponent],
- // schemas: [CUSTOM_ELEMENTS_SCHEMA]
 
 })
 export class AppModule { }

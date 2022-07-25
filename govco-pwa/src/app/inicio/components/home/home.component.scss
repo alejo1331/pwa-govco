@@ -1,0 +1,47 @@
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+.container-home-top{
+    .most-used-section{
+        p {
+            .nombretramite {
+                text-align: left;
+                font: Bold 16px/20px Montserrat, sans-serif;
+                letter-spacing: 0;
+                color: #0B457F;
+                opacity: 1;
+                line-height: 1.8rem;
+            }
+            .nombreentidad{
+                text-align: left;
+                font: Regular 14px/50px 'Work Sans', sans-serif;
+                letter-spacing: 0;
+                color: #0B457F;
+                opacity: 1;
+            }
+        }
+        .atributostramite{
+            display: inline-block !important;
+            margin: 0;
+            padding: 0;
+        }
+    }
+}
+.page-header {
+    min-height: 30rem;
+    background-position: 0 center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: #F2F2F2;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    -ms-flex-direction: column;
+}

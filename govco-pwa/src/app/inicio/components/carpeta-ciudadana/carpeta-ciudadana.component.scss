@@ -128,7 +128,6 @@ svg {
     color: #0B457F;
 }
 
-// media-queries
 
 @media screen and (max-width: 992px) {
     .contenedor-seccion {
@@ -140,6 +139,7 @@ svg {
         flex-direction: column;
         align-items: center;
         margin-bottom: 20px !important;
+        padding: 32px 15px 0 15px;
     }
 
     .info-icon {
