@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'; 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { SideNavComponent } from './components/side-nav/side-nav.component';
@@ -48,6 +48,7 @@ import { AvisoDeConstruccionModule } from '../aviso-de-construccion/aviso-de-con
     BottomMenuComponent,
     BarraSuperiorComponent,
     GeolocalizacionFormularioComponent
-  ]
+  ],
+  schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })
 export class TransversalesModule { }
