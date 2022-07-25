@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ListadoNoticiasComponent } from './components/listado-noticias/listado-noticias.component';
 import { DetalleNoticiasComponent } from './components/detalle-noticias/detalle-noticias.component';
+import { ActualidadPrincipalComponent } from './components/actualidad-principal/actualidad-principal.component';
+
 
 
 const routes: Routes = [
@@ -10,7 +12,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: ListadoNoticiasComponent
+        component: ActualidadPrincipalComponent
       },
       {
         path: 'detalle/:id',

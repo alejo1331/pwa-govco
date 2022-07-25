@@ -15,6 +15,10 @@ import { PaginationComponent } from './shared/pagination/pagination.component';
 import { ScrollToTopComponent } from './shared/scroll-to-top/scroll-to-top.component';
 import { ValidarUrlDirective } from './shared/directives/validar-url/validar-url.directive';
 import { OAuthModule } from 'angular-oauth2-oidc';
+import { ActualidadPrincipalComponent } from './components/actualidad-principal/actualidad-principal.component';
+import { ListadoNoticiasFiltroComponent } from './components/listado-noticias-filtro/listado-noticias-filtro.component';
+
+
 
 
 
@@ -22,6 +26,8 @@ import { OAuthModule } from 'angular-oauth2-oidc';
   declarations: [
     ListadoNoticiasComponent,
     DetalleNoticiasComponent,
+    ActualidadPrincipalComponent,
+    ListadoNoticiasFiltroComponent,
     BreadCrumbComponent,
     PaginationComponent,
     ScrollToTopComponent,
