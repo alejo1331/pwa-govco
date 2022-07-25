@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { HeaderService } from 'src/app/transversales/services/header-service/header.service';
+import { SidenavService } from 'src/app/transversales/services/sidenav-service/sidenav-service.service';
 import { EntidadesService } from '../../services/entidades-service/entidades-service.service';
 import { esResponsive, isMobile } from '../utils/utils';
+// import { Window } from '../../models/categoria-model';
 
 @Component({
   selector: 'app-entidades-estado',
@@ -19,14 +22,20 @@ export class EntidadesEstadoComponent implements OnInit {
   estadoEventoClick:boolean=false;
   estadoResize:boolean=true;
   estadoBanner:boolean=true;
-  estiloFijo:any = {position:'fixed',top:this.posicionTop, height:'90px'};;
+  estiloFijo:any = {position:'fixed',top:this.posicionTop, height:'90px'};
 
   objeto:any;
-  constructor(private serviceEntidades:EntidadesService) {
+  constructor(private serviceEntidades:EntidadesService, 
+    protected servicioSideNav: SidenavService,
+    protected servicioHeader: HeaderService) {
+    
   }
 
   ngOnInit() {
     this.getEntidades();
+
+    this.servicioHeader.estadoHeader(true,true);
+    this.servicioSideNav.seleccionandoItem(true,'entidadesEstado');
   }
 
   ngAfterViewInit(){
@@ -97,7 +106,7 @@ export class EntidadesEstadoComponent implements OnInit {
 
   arrasteASeccion(link: any,id: any){
     this.estadoEventoClick=true;
-    document.getElementById('seccion_'+id)!.style["scrollMarginTop"]="130px";
+    document.getElementById('seccion_'+id)!.style["scrollMarginTop"]="50px";
     document.getElementById("seccion_"+id)?.focus();
 
     setTimeout(() => {
@@ -133,7 +142,7 @@ export class EntidadesEstadoComponent implements OnInit {
 
   activarEventosAccesibilidad(evt: any){
     if(evt.keyCode==9){
-        window["objeto"]=this;
+        // window["Objeto"]=this;
         window.addEventListener('keyup',this.setEventos);
         window.addEventListener('keypress',this.setEventos);
     }else if(evt.keyCode==27){
@@ -150,7 +159,7 @@ export class EntidadesEstadoComponent implements OnInit {
 
   setEventos(evt: any){
     if(evt.key==="Escape"){
-      window.removeEventListener('keyup', window["objeto"].setEventos);
+      // window.removeEventListener('keyup', window["objeto"].setEventos);
       document.getElementById("salir-seccion-entidades")?.focus();
     }
     if(evt.code==="Space"){
