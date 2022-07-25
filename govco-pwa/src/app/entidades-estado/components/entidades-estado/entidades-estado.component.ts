@@ -106,7 +106,7 @@ export class EntidadesEstadoComponent implements OnInit {
 
   arrasteASeccion(link: any,id: any){
     this.estadoEventoClick=true;
-    document.getElementById('seccion_'+id)!.style["scrollMarginTop"]="50px";
+    document.getElementById('seccion_'+id)!.style["scrollMarginTop"]="60px";
     document.getElementById("seccion_"+id)?.focus();
 
     setTimeout(() => {
