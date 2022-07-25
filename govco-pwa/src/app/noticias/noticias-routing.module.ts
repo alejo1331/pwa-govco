@@ -4,6 +4,7 @@ import { ListadoNoticiasComponent } from './components/listado-noticias/listado-
 import { DetalleNoticiasComponent } from './components/detalle-noticias/detalle-noticias.component';
 
 
+
 const routes: Routes = [
   {
     path: 'noticias',
