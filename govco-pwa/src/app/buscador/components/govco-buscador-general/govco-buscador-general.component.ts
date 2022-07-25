@@ -12,6 +12,7 @@ export class BuscadorGeneralComponent implements OnInit {
   busqueda: any;
   navegador: string;
   public paramtrofiltros:string;
+  statusMenu: boolean = false;
 
 
   constructor(private actRoute: ActivatedRoute,

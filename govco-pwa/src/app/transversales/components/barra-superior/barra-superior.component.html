@@ -14,12 +14,12 @@
         </span>
         <div class="logo-pwa-govco">
             <a routerLink="/" (click)="desactivarItem()"><img src="../../../assets/logos/transversales/GOVCO.svg" alt="logo de gov.co"></a>
-            
+
         </div>
         <span class="caja-buscador-pwa-govco" *ngIf="barraSuperiorInterna">
             <span class="icono-buscador-pwa-govco"
                 style="background-image: url(../../../../assets/icons-fonts/search_FILL0_wght500_GRAD0_opsz20.svg);"></span>
         </span>
     </div>
-    <app-buscador class="app-buscador-pwa-govco" *ngIf="!barraSuperiorInterna"></app-buscador>
+    <govco-buscador-home no-shadow="true" id="home1" *ngIf="!barraSuperiorInterna" class="app-buscador-pwa-govco"></govco-buscador-home>
 </div>
