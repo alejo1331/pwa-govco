@@ -11,6 +11,7 @@ import { TituloModel, Data } from '../../models/titulo-model';
 export class EntidadesService {
   private UrlEndPoint = environment.serverIntegracion;
   private ApiCross = environment.severApiCross;
+  private serverUrl = environment.serverUrl;
 
   public httpOptions = {
     headers: new HttpHeaders({
@@ -35,5 +36,14 @@ export class EntidadesService {
   getTitleAndDescription(){
     const params = new HttpParams().set('codigo', 'entidades');
     return this.http.get<TituloModel>(`${this.ApiCross}cross/ObtenerTituloPagina`, {params})
+  }
+
+  getEntidades(){
+    try {
+      return this.http.get<any>(`${this.serverUrl}Ramas`)
+    } catch (error) {
+      console.log("Error getEntidades --> "+error);
+      return null;
+    }
   }
 }
