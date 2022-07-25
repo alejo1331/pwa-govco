@@ -4,10 +4,10 @@ import { EntidadesEstadoComponent } from './components/entidades-estado/entidade
 
 const routes: Routes = [
   {
-    path: 'menu',
+    path: 'entidades',
     children: [
       {
-        path: 'entidades-del-estado',
+        path: '',
         component: EntidadesEstadoComponent
       },
     ]
