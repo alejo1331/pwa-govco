@@ -28,7 +28,7 @@ export class ActualidadPrincipalComponent implements OnInit {
   listaMeses:any[]=[];
   listaAnos:any[]=[];
   filtro:FiltrosNoticiasModel;
-  fitrosDesplegados:boolean=false;
+  fitrosDesplegados:boolean|null=false;
   esResponsive = esResponsive;
   anoActual = new Date().getFullYear();
   mesActual = new Date().getMonth()+1;
@@ -102,7 +102,7 @@ export class ActualidadPrincipalComponent implements OnInit {
   abrirSeccionFiltros(){
     this.fitrosDesplegados=!this.fitrosDesplegados;
     setTimeout(() => {
-      this.fitrosDesplegados?document.getElementById("seccion-filtros").focus():null;
+      this.fitrosDesplegados?document.getElementById("seccion-filtros")?.focus():null;
     }, 200);
   }
 
@@ -163,7 +163,7 @@ export class ActualidadPrincipalComponent implements OnInit {
 
     this.construirFiltro();
     this.getEntidades();
-    document.getElementById("selectsubcategoria_arrow").focus();
+    document.getElementById("selectsubcategoria_arrow")?.focus();
   }
 
   cargarDependienteSubcategoria(subCategoria:any){
@@ -172,7 +172,7 @@ export class ActualidadPrincipalComponent implements OnInit {
     }
     this.construirFiltro();
     this.getEntidades();
-    document.getElementById("selectsector_arrow").focus();
+    document.getElementById("selectsector_arrow")?.focus();
   }
 
   cargarDependienteSector(sector:any){
@@ -181,12 +181,12 @@ export class ActualidadPrincipalComponent implements OnInit {
     }
     this.construirFiltro();
     this.getEntidades();
-    document.getElementById("selectentidad_arrow").focus();
+    document.getElementById("selectentidad_arrow")?.focus();
   }
 
   seleccionadoEntidad(){
     this.construirFiltro();
-    document.getElementById("fechaPublicacion").focus();
+    document.getElementById("fechaPublicacion")?.focus();
   }
 
   cargarDependienteAno(ano:any){

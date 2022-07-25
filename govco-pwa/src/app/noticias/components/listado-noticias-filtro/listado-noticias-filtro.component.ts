@@ -135,7 +135,7 @@ export class ListadoNoticiasFiltroComponent implements OnInit, OnChanges {
         // document.addEventListener("click", this.desActivarEventosClickPorFuera);
         this.estadoPaginadorAccesible=true;
     }else if(evt.keyCode==27){
-      document.getElementById("salir-seccion-noticias").focus();
+      document.getElementById("salir-seccion-noticias")?.focus();
     }
   }
 
@@ -150,16 +150,16 @@ export class ListadoNoticiasFiltroComponent implements OnInit, OnChanges {
   setEventos(evt:any){
     if(evt.key==="Escape"){
       window.removeEventListener('keyup', window["objeto"].setEventos);
-      document.getElementById("salir-seccion-noticias").focus();
+      document.getElementById("salir-seccion-noticias")?.focus();
     }
     if(evt.code==="Space"){
-      document.getElementById("listado-noticias").focus();
+      document.getElementById("listado-noticias")?.focus();
     }
   }
 
   setFocusGrupoNoticias(){
     setTimeout(() => {
-      document.getElementById("contenedor-noticias-focus").focus();
+      document.getElementById("contenedor-noticias-focus")?.focus();
       window.scrollTo(0, 300);
     }, 1000);
   }
@@ -169,7 +169,7 @@ export class ListadoNoticiasFiltroComponent implements OnInit, OnChanges {
     if(+evet.target.value>this.totalPages){
       this.estadoAlertaAccesible=true;
       setTimeout(() => {
-        document.getElementById("mensaje-numero-paginas").focus();
+        document.getElementById("mensaje-numero-paginas")?.focus();
       }, 100);
 
     }else{
