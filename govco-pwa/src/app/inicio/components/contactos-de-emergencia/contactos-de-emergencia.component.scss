@@ -1,3 +1,7 @@
+.container-contact {
+    margin: 0;
+}
+
 .emergency-contact-container {
     margin-bottom: 1rem;
     margin-top: 1rem;
@@ -137,7 +141,6 @@
 /* tablets, iPads (portrait) ---------- */
 @media screen and (max-width: 768px) {
     .emergency-contact-container {
-        padding: 0 1rem;
 
         ul {
             padding: unset !important;
