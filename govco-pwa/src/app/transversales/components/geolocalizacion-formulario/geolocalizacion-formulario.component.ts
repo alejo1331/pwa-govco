@@ -110,6 +110,8 @@ export class GeolocalizacionFormularioComponent implements OnInit {
 
   @HostListener('window:load')
   onLoad() {
+    const modalVisto = sessionStorage.getItem('modalVisto');
+
     if (this.estadoPermiso == 'true') {
       const dep = localStorage.getItem("codigoDepartamento");
       const mun = localStorage.getItem("codigoMunicipio");
@@ -127,12 +129,14 @@ export class GeolocalizacionFormularioComponent implements OnInit {
       } else {
         this.getGeolocalizacion(true);
       }
-    } else {
+    } else if (modalVisto != 'true') {
       setTimeout(() => {
         let IngresarUbicacion =this.dialog.open(ConfirmacionUbicacionComponent, {
           width: '280px'
-        });    
+        });
         IngresarUbicacion.afterClosed().subscribe( resultado => {
+          sessionStorage.setItem('modalVisto', 'true');
+          
           if (resultado) {
             this.getGeolocalizacion(false);
             this.closedModal.emit(['translate(0%)', 'translate(-100%)']);
