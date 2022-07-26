@@ -2,13 +2,7 @@
     font-family: "Govco Icon";
     font-style: normal;
     src: url(./assets/fonts/icons/govco-icons.eot);
-    src: local("Govco Icon"), 
-         local("govco-icons"),
-         url(./assets/fonts/icons/govco-icons.eot?#iefix) format("embedded-opentype"), 
-         url(./assets/fonts/icons/govco-icons.woff2) format("woff2"), 
-         url(./assets/fonts/icons/govco-icons.woff) format("woff"), 
-         url(./assets/fonts/icons/govco-icons.ttf) format("truetype"), 
-         url(./assets/fonts/icons/govco-icons.svg) format("svg")
+    src: local("Govco Icon"), local("govco-icons"), url(./assets/fonts/icons/govco-icons.eot?#iefix) format("embedded-opentype"), url(./assets/fonts/icons/govco-icons.woff2) format("woff2"), url(./assets/fonts/icons/govco-icons.woff) format("woff"), url(./assets/fonts/icons/govco-icons.ttf) format("truetype"), url(./assets/fonts/icons/govco-icons.svg) format("svg")
 }
 
 .govco-icon-callin-cn {
@@ -21,7 +15,6 @@
     align-items: center;
     font-weight: 700;
     color: #004884;
-
 }
 
 .govco-icon-callin-cn::before {
@@ -33,4 +26,3 @@
     font-family: "Govco Icon";
     font-size: 2rem
 }
-
