@@ -10,8 +10,8 @@
   box-shadow: 0px 4px 6px #13173d14;
   opacity: 1;
   background: #FFFFFF 0% 0% no-repeat padding-box;
-  display: flex;
-  align-items: center;
+  padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
 }
 
 .gov-co-back-arrow{
@@ -20,6 +20,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.gov-co-back-arrow a {
+  display: flex;
+  text-decoration: none;
 }
 
 .material-symbols-outlined{
@@ -36,6 +41,7 @@ a{
 
 .govco-pwa-servicios-titulo{
   width: 243px;
+  margin-top: 1.75rem;
 }
 
 .govco-pwa-servicios-titulo p{
@@ -57,8 +63,8 @@ hr{
 .govco-servicios-content{
   display: grid;
   grid-template-columns: auto auto auto;
-  justify-content: space-evenly;
-  margin-top: 40px;
+  justify-content: space-between;
+  margin-top: 2rem;
 }
 
 .govco-candybox a{
@@ -83,16 +89,25 @@ a{
   color: white;
 }
 
-.govco-candybox-element:hover .govco-candybox-icon::after{
+.govco-candybox-icon:hover {
+  background-color: #004884;
+}
+
+.govco-candybox-icon:hover::after{
   content: "";
-    background: url("../../../../assets/icons-fonts/activo.svg") no-repeat;
-    width: 20px;
-    height: 20px;
-    float: left;
-    z-index: 5;
-    position: absolute;
-    top: 0px;
-    left: 30px;
+  background: url("../../../../assets/icons-fonts/activo.svg") no-repeat;
+  width: 20px;
+  height: 20px;
+  float: left;
+  z-index: 5;
+  position: absolute;
+  top: 0px;
+  left: 30px;
+}
+
+.govco-candybox-icon .govco-folder-user img {
+  filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(59deg) brightness(104%) contrast(101%);
+  width: 1.25rem;
 }
 
 .govco-candybox-element{
@@ -100,8 +115,8 @@ a{
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 103px;
-  width: 104px;
+  width: 6.5rem;
+  height: 6.5rem;
 }
 
 .govco-candybox-element:hover{
