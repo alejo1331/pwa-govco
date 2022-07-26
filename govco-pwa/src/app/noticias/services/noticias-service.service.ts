@@ -42,15 +42,15 @@ export class NoticiasServiceService {
   }
 
   obtenerNoticiasPaginacion(filtro:any){
-    try {
+  //  try {
       const headers = { 'content-type': 'application/json'};
       const body=JSON.stringify(filtro);
       console.log(body)
       return this.http.post<any>(`${this.url_apiNoticias}Noticias/ObtenerNoticiasFiltradas`,body,{'headers':headers});
-    } catch (error) {
-      console.log("Error obtenerNoticiasPaginacion --> "+error);
-      return null;
-    }
+    //} catch (error) {
+     // console.log("Error obtenerNoticiasPaginacion --> "+error);
+     // return null;
+    //}
   }
 
   //Obtiene el detalle de la noticia

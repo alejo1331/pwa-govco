@@ -2,3 +2,42 @@
     // white-space: pre-wrap;
     word-break: break-word !important;
 }
+
+p {
+    color: red !important;
+}
+
+.titulo-detalle {
+    text-align: left;
+    font-size: 2.5rem !important;
+    font-family: "Montserrat", sans-serif !important;
+    font-weight: 600;
+    letter-spacing: 0px;
+    color: #004884;
+    opacity: 1;
+}
+
+
+
+
+.date-detalle {
+    text-align: left;
+    font-family: "Montserrat", sans-serif ;
+    font-size: 1.25rem !important;
+    font-weight: 500;
+    letter-spacing: 0px;
+    color: #004884;
+    opacity: 1;
+}
+
+
+@media screen and (max-width: 992px) {
+    .titulo-detalle {
+        font-size: 1.125rem !important;
+    }
+
+    .date-detalle {
+        font-size: 12px !important;
+        color: #707070;
+    }
+}

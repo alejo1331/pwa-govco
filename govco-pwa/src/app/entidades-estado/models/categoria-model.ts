@@ -8,3 +8,8 @@ export interface CategoriaModel {
     user: number,
     icono: string
 }
+
+
+interface Window {
+    [key:string] : any;
+}
