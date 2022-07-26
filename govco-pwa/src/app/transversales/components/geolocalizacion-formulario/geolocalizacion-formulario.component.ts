@@ -1,10 +1,12 @@
-import { Component, EventEmitter, HostListener, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, HostListener, OnInit, Output, Inject } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { ConsultaUbicacionInterface } from '../../models/geolocalizacion/consulta-ubicacion-interface';
 import { DepartamentoInterface } from '../../models/geolocalizacion/departamento-interface';
 import { MunicipioInterface } from '../../models/geolocalizacion/municipio-interface';
 import { GeolocalizacionService } from '../../services/geolocalizacion/geolocalizacion.service';
+import {MatDialog, MatDialogRef} from '@angular/material/dialog';
+import { ConfirmacionUbicacionComponent } from './components/confirmacion-ubicacion/confirmacion-ubicacion.component';
 
 @Component({
   selector: 'app-geolocalizacion-formulario',
@@ -35,7 +37,9 @@ export class GeolocalizacionFormularioComponent implements OnInit {
     codigoMunicipio: new FormControl('', Validators.required)
   });
 
-  constructor(protected ServicioGeolocalizacion: GeolocalizacionService) {
+  constructor(
+    protected ServicioGeolocalizacion: GeolocalizacionService,
+    public dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -125,11 +129,16 @@ export class GeolocalizacionFormularioComponent implements OnInit {
       }
     } else {
       setTimeout(() => {
-        let IngresarUbicacion = confirm("Podrás encontrar trámites, servicios e información según tu ubicación")
-        if (IngresarUbicacion == true) {
-          this.getGeolocalizacion(false);
-          this.closedModal.emit(['translate(0%)', 'translate(-100%)']);
-        }
+        let IngresarUbicacion =this.dialog.open(ConfirmacionUbicacionComponent, {
+          width: '280px'
+        });    
+        IngresarUbicacion.afterClosed().subscribe( resultado => {
+          if (resultado) {
+            this.getGeolocalizacion(false);
+            this.closedModal.emit(['translate(0%)', 'translate(-100%)']);
+          }
+       });
+        
       }, 1000);
     }
   }

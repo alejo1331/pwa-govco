@@ -1,0 +1,33 @@
+.govco-titulo-ubicacion {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: #000000DE;
+  margin-bottom: 0.875rem;
+}
+
+.govco-texto-ubicacion {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: #00000099;
+  padding-right: 3rem;
+}
+
+.govco-botones-ubicacion {
+  justify-content: end;
+  margin-right: -16px;
+  margin-bottom: -16px;
+  margin-top: 23px;
+  padding: 0;
+}
+
+.govco-botones-ubicacion button {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  color: #004884;
+  border: 0;
+  background-color: transparent;
+  padding: 10px 8px;
+}
