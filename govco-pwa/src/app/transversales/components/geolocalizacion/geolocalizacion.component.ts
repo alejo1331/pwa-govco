@@ -20,6 +20,7 @@ export class GeolocalizacionComponent implements OnInit {
   constructor(protected ServicioGeolocalizacion: GeolocalizacionService, protected servicioHeader: HeaderService) { }
 
   ngOnInit(): void {
+    
     this.servicioHeader.ocultandoHeader.subscribe(estado => {
       this.ocultar = estado[1];
     })

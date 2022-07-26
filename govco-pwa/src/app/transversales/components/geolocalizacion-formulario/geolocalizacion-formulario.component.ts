@@ -107,7 +107,22 @@ export class GeolocalizacionFormularioComponent implements OnInit {
   @HostListener('window:load')
   onLoad() {
     if (this.estadoPermiso == 'true') {
-      this.getGeolocalizacion(true);
+      const dep = localStorage.getItem("codigoDepartamento");
+      const mun = localStorage.getItem("codigoMunicipio");
+
+      if (dep && mun) {
+        this.ServicioGeolocalizacion.changeMessage(dep, mun);
+        this.ServicioGeolocalizacion.getMunicipiosPorDepartamento(dep).subscribe((municipios: MunicipioInterface[]) => {
+          this.listaMunicipios = municipios;
+
+          this.registerForm.reset({
+            codigoDepartamento: dep,
+            codigoMunicipio: mun
+          });
+        });
+      } else {
+        this.getGeolocalizacion(true);
+      }
     } else {
       setTimeout(() => {
         let IngresarUbicacion = confirm("Podrás encontrar trámites, servicios e información según tu ubicación")
