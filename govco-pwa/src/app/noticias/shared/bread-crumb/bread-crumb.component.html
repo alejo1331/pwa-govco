@@ -1,14 +1,14 @@
 <nav class="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item">
-            <a href="/">
+            <a [routerLink]="['/']">
                 <span class="">Inicio</span>
             </a>
         </li>
         <li [class]="title == '' ? 'breadcrumb-item active':'breadcrumb-item'">
             <div class="image-icon d-flex align-items-center">
                 <div class="govco-icon govco-icon-shortr-arrow mx-1"></div>
-                <a class="breadcrumb-text item-link" [routerLink]="['/']" >Noticias</a>
+                <a class="breadcrumb-text item-link" [routerLink]="['/noticias']" >Actualidad</a>
             </div>
         </li>
         <li *ngIf="title != ''" [class]="title != '' ? 'breadcrumb-item active':'breadcrumb-item'">

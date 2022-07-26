@@ -10,13 +10,11 @@ import { SidenavService } from 'src/app/transversales/services/sidenav-service/s
 export class NoticiasComponent implements OnInit {
 
   constructor(
-    protected servicioSideNav: SidenavService,
-    protected servicioHeader: HeaderService
+    
   ) { }
 
   ngOnInit(): void {
-    this.servicioHeader.estadoHeader(true, true);
-    this.servicioSideNav.seleccionandoItem(true,'noticias');
+    
   }
 
 }

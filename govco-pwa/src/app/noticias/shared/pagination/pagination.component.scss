@@ -10,26 +10,32 @@
 }
 
 .pager-govco .pagination-news .page-item .page-link{
-  font-family:"Work Sans", sans-serif;
+  font: normal normal 500 16px/19px Work Sans;
   border:none;
   text-decoration:none;
-  color:#004884;
+  color:#0B457F;
   border-radius:0.3rem;
   padding:0.5rem 1rem;
   margin:0 0.1rem
 }
-  
+
 .pager-govco .pagination-news .page-item .page-link:hover{
   background-color:#E5EEFB
 }
 
+.pager-govco .pagination-news .page-item .siguiente:hover, .pager-govco .pagination-news .page-item .anterior:hover{
+  background-color:#e5eefb00 !important;
+  color: #004884 !important;
+  text-decoration:underline !important;
+}
+
 .pager-govco .pagination-news .page-item:first-of-type .page-link{
-  color:#3772FF;
+  color:#3366CC;
   text-decoration:underline
 }
 
 .pager-govco .pagination-news .page-item:last-of-type .page-link{
-  color:#3772FF;
+  color:#3366CC;
   text-decoration:underline
 }
 
@@ -55,5 +61,6 @@
 }
 
 .pager-govco .pagination-news .page-item[disabled] .page-link,.pager-govco .pagination-news .page-item.disabled .page-link{
-  color:#BABABA
+  color:#737373;
+  text-decoration: none;
 }
