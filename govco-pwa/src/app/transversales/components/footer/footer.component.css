@@ -1,210 +1,252 @@
 .govco-pwa-footer-content{
-    height: 100%;
+  height: 100%;
 }
 
 .footer-pwa-govco {
-    padding: 2.5rem 1rem 2.5rem 1rem;
-    background-color: #f6f8f9;
+  padding: 2.5rem 1rem 2.5rem 1rem;
+  background-color: #f6f8f9;
 }
 
 h1.titulo-footer-pwa-govco {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    font-size: 1.429em;
-    color: #004884;
-    margin: 0;
-    line-height: 1.63rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 1.429em;
+  color: #004884;
+  margin: 0;
+  line-height: 1.63rem;
 }
 
 /* Seccion lista */
 
 .info-general-pwa-govco {
-    margin-top: 1.5rem;
+  margin-top: 1.5rem;
 }
 
 .lista-info-general-pwa-govco,
 .lista-info-contacto-pwa-govco {
-    padding-left: 1rem;
-    font-family: 'Work Sans', sans-serif;
-    font-weight: 600;
-    font-size: 0.9em;
-    color: #000000;
-    margin-bottom: 0;
+  padding-left: 1rem;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 600;
+  font-size: 0.9em;
+  color: #000000;
+  margin-bottom: 0;
 }
 
 .item-info-general-pwa-govco,
 .item-info-contacto-pwa-govco {
-    margin-bottom: 1rem;
-    line-height: 1.429rem;
+  margin-bottom: 1rem;
+  line-height: 1.429rem;
 }
 
 p.contenido-item-info-general-pwa-govco,
 p.contenido-item-info-contacto-pwa-govco {
-    font-family: 'Work Sans', sans-serif;
-    font-weight: 400;
-    color: #000000;
-    margin-bottom: 0rem;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 400;
+  color: #000000;
+  margin-bottom: 0rem;
 }
 
 p.texto-item-info-general-pwa-govco,
 p.texto-item-info-contacto-pwa-govco {
-    margin: 0;
+  margin: 0;
 }
 
 .linea-horizontal-pwa-govco {
-    height: 2px;
-    width: auto;
-    margin: 2.5rem 1.5rem 2.5rem 1.5rem;
-    background-color: #1C4780;
-    border-radius: 2px;
+  height: 2px;
+  width: auto;
+  margin: 2.5rem 1.5rem 2.5rem 1.5rem;
+  background-color: #1C4780;
+  border-radius: 2px;
 }
 
 /* Seccion acordeon */
 
 .accordion-pwa-govco .accordion-footer-pwa-govco {
-    line-height: 0;
-    margin: 0;
+  line-height: 0;
+  margin: 0;
 }
 
 .accordion-pwa-govco .button-accordion-pwa-govco {
-    width: 100%;
-    text-align: left;
-    background-color: #f6f8f9;
-    border: 0;
-    min-height: 3rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0rem;
-    margin-bottom: 1rem;
+  width: 100%;
+  text-align: left;
+  background-color: #f6f8f9;
+  border: 0;
+  min-height: 3rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0rem;
+  margin-bottom: 1rem;
 }
 
 .button-accordion-margin-pwa-govco {
-    margin-bottom: 0.5rem !important;
+  margin-bottom: 0.5rem !important;
 }
 
 .icono-titulo-inf-contacto-pwa-govco {
-    display: flex;
-    align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .text-button-accordion-pwa-govco {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    font-size: 0.65em;
-    color: #000000;
-    margin-left: 0.5rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 0.65em;
+  color: #000000;
+  margin-left: 0.5rem;
 }
 
 .expandmore-accordion-pwa-govco {
-    font-size: 1.25em;
-    color: #000000;
-    transition: 0.4s;
+  font-size: 1.25em;
+  color: #000000;
+  -webkit-transition: 0.4s;
+  -o-transition: 0.4s;
+  transition: 0.4s;
 }
 
 .open-expand-more-pwa-govco {
-    transition: 0.4s;
-    transform: rotate(-180deg);
+  -webkit-transition: 0.4s;
+  -o-transition: 0.4s;
+  transition: 0.4s;
+  -webkit-transform: rotate(-180deg);
+      -ms-transform: rotate(-180deg);
+          transform: rotate(-180deg);
 }
 
 .accordion-pwa-govco .body-accordion-pwa-govco {
-    background-color: #f6f8f9;
+  background-color: #f6f8f9;
 }
 
 .caja-icono-pwa-govco .material-symbols-outlined {
-    font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 20;
+  font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 20;
 }
 
 .icono-accesibilidad-accordion-pwa-govco {
-    font-size: 0.82em;
+  font-size: 0.82em;
 }
 
 a.contenido-item-info-contacto-pwa-govco,
 a.contenido-item-correo-contacto-pwa-govco,
 a.contenido-contacto-pwa-govco {
-    font-family: 'Work Sans', sans-serif;
-    font-weight: 600;
-    color: #3366CC;
-    margin-bottom: 0;
-    margin-left: 12px;
-    display: block;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 600;
+  color: #3366CC;
+  margin-bottom: 0;
+  margin-left: 12px;
+  display: block;
 }
 
 a.contenido-contacto-pwa-govco {
-    font-size: 0.9em;
+  font-size: 0.9em;
 }
 
 a.contenido-item-correo-contacto-pwa-govco,
 a.contenido-contacto-pwa-govco {
-    margin-left: 0;
+  margin-left: 0;
 }
 
 a.contenido-contacto-pwa-govco {
-    line-height: 2rem;
+  line-height: 2rem;
 }
 
 .contenido-info-contacto-pwa-govco {
-    margin-bottom: 1rem;
-    line-height: 1.429rem;
+  margin-bottom: 1rem;
+  line-height: 1.429rem;
 }
 
 .texto-redes-sociales-pwa-govco {
-    margin-top: 1.5rem;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 500;
-    font-size: 1em;
-    color: #000000;
+  margin-top: 1.5rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 1em;
+  color: #000000;
 }
 
 a.redireccion-redes-sociales-pwa-govco {
-    text-decoration: none;
-    display: block;
+  text-decoration: none;
+  display: block;
 }
 
 .button-redes-sociales-pwa-govco {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 2.75em;
-    border-radius: 1.375em;
-    background-color: #3366CC;
-    border: 1px solid #3366CC;
-    margin-top: 1.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  height: 2.75em;
+  border-radius: 1.375em;
+  background-color: #3366CC;
+  border: 1px solid #3366CC;
+  margin-top: 1.5rem;
 }
 
 .icono-redes-sociales-button-pwa-govco{
-    width: 1.25em;
-    height: 1.25em;
+  width: 1.25em;
+  height: 1.25em;
 }
 
 .texto-redes-sociales-button-pwa-govco {
-    margin: 0px 0px 0px 10px;
-    font-family: 'Work Sans', sans-serif;
-    font-weight: 500;
-    font-size: 16px;
-    color: #ffffff;
+  margin: 0px 0px 0px 10px;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: #ffffff;
 }
 
 .barra-inferior-footer-pwa-govco {
-    width: 100%;
-    height: 5.25rem;
-    background-color: #3366CC;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 100%;
+  height: 5.25rem;
+  background-color: #3366CC;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .linea-barra-inferior-footer-pwa-govco {
-    height: auto;
-    width: 0.063em;
-    padding: 1.25em 0;
-    background-color: #ffffff;
-    border-radius: 2px;
-    margin: 0px 1.5em;
+  height: auto;
+  width: 0.063em;
+  padding: 1.25em 0;
+  background-color: #ffffff;
+  border-radius: 2px;
+  margin: 0px 1.5em;
 }
 
 .caja-logo-marca-pais {
-    width: 3em;
-    height: 3em;
+  width: 3em;
+  height: 3em;
+}
+.example {
+  display: -ms-grid;
+  display: grid;
+  -webkit-transition: all .5s;
+  -o-transition: all .5s;
+  transition: all .5s;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  background: -webkit-gradient(linear, left top, left bottom, from(white), to(black));
+  background: -o-linear-gradient(top, white, black);
+  background: linear-gradient(to bottom, white, black);
 }

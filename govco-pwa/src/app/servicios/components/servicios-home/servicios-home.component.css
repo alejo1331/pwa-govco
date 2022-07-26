@@ -61,10 +61,14 @@ hr{
   margin-top: 40px;
 }
 
-.govco-candybox-element a{
+.govco-candybox a{
   color: white;
   text-decoration: none;
   font-family: 'Montserrat', sans-serif;
+}
+
+a{
+  text-decoration: none;
 }
 
 .govco-candybox-icon{
@@ -76,9 +80,10 @@ hr{
   align-items: center;
   justify-content: center;
   position: relative;
+  color: white;
 }
 
-.govco-candybox-icon:hover::after{
+.govco-candybox-element:hover .govco-candybox-icon::after{
   content: "";
     background: url("../../../../assets/icons-fonts/activo.svg") no-repeat;
     width: 20px;
