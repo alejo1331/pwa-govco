@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { BottomMenuService } from 'src/app/transversales/services/bottom-menu/bottom-menu.service';
 import { HeaderService } from 'src/app/transversales/services/header-service/header.service';
 import { SidenavService } from 'src/app/transversales/services/sidenav-service/sidenav-service.service';
 import { ConoceModel, } from '../../models/conoce.model';
@@ -27,11 +28,13 @@ export class SobreNosotrosComponent implements OnInit {
     private sobreNosotrosService: SobreNosotrosService,
     private router: Router,
     protected servicioSideNav: SidenavService,
-    protected servicioHeader: HeaderService
+    protected servicioHeader: HeaderService,
+    public bottomService: BottomMenuService
   ) { }
 
   ngOnInit(): void {
     this.servicioHeader.estadoHeader(true,true);
+    this.bottomService.seleccionandoItem(0);
     this.servicioSideNav.seleccionandoItem(true,'sobreNosotros');
     
     this.sobreNosotrosService.getTitleAndDescription(this.codigo)

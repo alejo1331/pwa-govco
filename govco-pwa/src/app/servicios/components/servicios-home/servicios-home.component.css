@@ -89,11 +89,13 @@ a{
   color: white;
 }
 
-.govco-candybox-icon:hover {
+.govco-candybox-icon:hover,
+.govco-candybox-element.govco-active .govco-candybox-icon {
   background-color: #004884;
 }
 
-.govco-candybox-icon:hover::after{
+.govco-candybox-icon:hover::after,
+.govco-candybox-element.govco-active .govco-candybox-icon::after{
   content: "";
   background: url("../../../../assets/icons-fonts/activo.svg") no-repeat;
   width: 20px;
@@ -119,7 +121,8 @@ a{
   height: 6.5rem;
 }
 
-.govco-candybox-element:hover{
+.govco-candybox-element:hover,
+.govco-candybox-element.govco-active{
   border: 2px solid #004884;
   border-radius: 5px;
 }

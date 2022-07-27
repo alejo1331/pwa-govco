@@ -57,6 +57,7 @@ body {
 .govco-pwa-content {
   background-color: #FFFFFF;
   position: relative;
+  height: 100%;
 }
 
 .caja-icono-pwa-govco {

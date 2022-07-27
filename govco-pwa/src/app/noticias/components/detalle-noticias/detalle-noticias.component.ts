@@ -4,6 +4,7 @@ import { NoticiasServiceService } from 'src/app/noticias/services/noticias-servi
 import { NoticiaPublicadaModel } from 'src/app/noticias/models/noticiaPublicadaModel';
 import { SidenavService } from 'src/app/transversales/services/sidenav-service/sidenav-service.service';
 import { HeaderService } from 'src/app/transversales/services/header-service/header.service';
+import { BottomMenuService } from 'src/app/transversales/services/bottom-menu/bottom-menu.service';
 
 @Component({
   selector: 'noticias-govco-detalle-noticias',
@@ -21,11 +22,13 @@ export class DetalleNoticiasComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private noticiasService: NoticiasServiceService,
     protected servicioSideNav: SidenavService,
-    protected servicioHeader: HeaderService) { }
+    protected servicioHeader: HeaderService,
+    public bottomService: BottomMenuService) { }
 
   ngOnInit() {
     window.scrollTo(0, 0);
     this.servicioHeader.estadoHeader(true, true);
+    this.bottomService.seleccionandoItem(0);
     this.servicioSideNav.seleccionandoItem(true, 'noticias');
 
     this.activatedRoute.url.subscribe(() => {
