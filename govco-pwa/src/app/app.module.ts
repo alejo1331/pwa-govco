@@ -25,14 +25,12 @@ import { SobreNosotrosModule } from './sobre-nosotros/sobre-nosotros.module';
 import { AvisoDeConstruccionModule } from './aviso-de-construccion/aviso-de-construccion.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BuscadorModule } from './buscador/buscador.module';
-import { SinResultadosNoticiasComponent } from './noticias/components/sin-resultados-noticias/sin-resultados-noticias.component';
 
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    SinResultadosNoticiasComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,

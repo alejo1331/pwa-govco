@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-sin-resultados-noticias',
+  selector: 'govco-sin-resultados-noticias',
   templateUrl: './sin-resultados-noticias.component.html',
-  styleUrls: ['./sin-resultados-noticias.component.css']
+  styleUrls: ['./sin-resultados-noticias.component.scss']
 })
 export class SinResultadosNoticiasComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit(){
   }
 
 }
