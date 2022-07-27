@@ -215,3 +215,8 @@ body {
   margin-right: auto;
   margin-left: auto;
 }
+
+.btn-slider.btn-slider-rigth,
+.btn-slider.btn-slider-left{
+  text-decoration: none;
+}
