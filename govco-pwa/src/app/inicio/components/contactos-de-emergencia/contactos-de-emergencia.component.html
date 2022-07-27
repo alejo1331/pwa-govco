@@ -1,23 +1,25 @@
-<div class="row container-contact">
-    <div class="col-sm-12 col-md-12 col-lg-12 pl-0 pr-0">
-        <div class="emergency-contact-container">
-            <div class="card">
-                <div class="card-body">
-                    <div class="headboard">
-                        <h2 class="title">Contactos de emergencia</h2>
-                        <p class="launch">Llama a las líneas de atención correspondientes</p>
-                    </div>
-                    <div class="content-govco">
-                        <ul>
-                            <li *ngFor="let coontEmer of contactos" class="emergency-contact-item">
-                                <a href="tel: {{coontEmer.numero}}"
-                                    class="{{coontEmer.icono}} image-icon">{{coontEmer.numero}}</a>
-                                {{coontEmer.titulo}}
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="govco-pwa-contactos-emergencia-container">
+  <div class="row-pwa">
+      <div class="col-sm-12 col-md-12 col-lg-12 pl-0 pr-0">
+          <div class="emergency-contact-container">
+              <div class="card">
+                  <div class="card-body">
+                      <div class="headboard">
+                          <h2 class="title">Contactos de emergencia</h2>
+                          <p class="launch">Llama a las líneas de atención correspondientes</p>
+                      </div>
+                      <div class="content-govco">
+                          <ul>
+                              <li *ngFor="let coontEmer of contactos" class="emergency-contact-item">
+                                  <a href="tel: {{coontEmer.numero}}"
+                                      class="{{coontEmer.icono}} image-icon">{{coontEmer.numero}}</a>
+                                  {{coontEmer.titulo}}
+                              </li>
+                          </ul>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
 </div>

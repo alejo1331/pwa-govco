@@ -1,25 +1,27 @@
-<div *ngIf="ocultar" [ngClass]="{
-    'barra-superior-general-pwa-govco': !barraSuperiorInterna,
-    'barra-superior-interna-pwa-govco': barraSuperiorInterna}">
-    <div class="menu-logo-pwa-govco">
-        <span (click)="onClickMenu()" class="menu-hamburgesa-pwa-govco">
-            <span class="menu-caja-pwa-govco">
-                <span class="menu-hamburgesa-superior" [ngClass]="{ 'menu-hamburgesa-superior-rotacion': estadoMenu }">
-                </span>
-                <span class="menu-hamburgesa-medio" [ngClass]="{ 'menu-hamburgesa-medio-rotacion': estadoMenu }">
-                </span>
-                <span class="menu-hamburgesa-inferior" [ngClass]="{ 'menu-hamburgesa-inferior-rotacion': estadoMenu}">
+<nav class="navigation-bar">
+    <div *ngIf="ocultar" [ngClass]="{
+        'barra-superior-general-pwa-govco': !barraSuperiorInterna,
+        'barra-superior-interna-pwa-govco': barraSuperiorInterna}">
+        <div class="menu-logo-pwa-govco">
+            <span (click)="onClickMenu()" class="menu-hamburgesa-pwa-govco">
+                <span class="menu-caja-pwa-govco">
+                    <span class="menu-hamburgesa-superior" [ngClass]="{ 'menu-hamburgesa-superior-rotacion': estadoMenu }">
+                    </span>
+                    <span class="menu-hamburgesa-medio" [ngClass]="{ 'menu-hamburgesa-medio-rotacion': estadoMenu }">
+                    </span>
+                    <span class="menu-hamburgesa-inferior" [ngClass]="{ 'menu-hamburgesa-inferior-rotacion': estadoMenu}">
+                    </span>
                 </span>
             </span>
-        </span>
-        <div class="logo-pwa-govco">
-            <a routerLink="/" (click)="desactivarItem()"><img src="../../../assets/logos/transversales/GOVCO.svg" alt="logo de gov.co"></a>
+            <div class="logo-pwa-govco">
+                <a routerLink="/" (click)="desactivarItem()"><img src="../../../assets/logos/transversales/GOVCO.svg" alt="logo de gov.co"></a>
 
+            </div>
+            <span class="caja-buscador-pwa-govco" *ngIf="barraSuperiorInterna">
+                <span class="icono-buscador-pwa-govco"
+                    style="background-image: url(../../../../assets/icons-fonts/search_FILL0_wght500_GRAD0_opsz20.svg);"></span>
+            </span>
         </div>
-        <span class="caja-buscador-pwa-govco" *ngIf="barraSuperiorInterna">
-            <span class="icono-buscador-pwa-govco"
-                style="background-image: url(../../../../assets/icons-fonts/search_FILL0_wght500_GRAD0_opsz20.svg);"></span>
-        </span>
-    </div>
-    <govco-buscador-home no-shadow="true" id="home1" *ngIf="!barraSuperiorInterna" class="app-buscador-pwa-govco"></govco-buscador-home>
-</div>
+        <govco-buscador-home no-shadow="true" id="home1" *ngIf="!barraSuperiorInterna" class="app-buscador-pwa-govco"></govco-buscador-home>
+      </div>
+</nav>
