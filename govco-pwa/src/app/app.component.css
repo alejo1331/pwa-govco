@@ -15,6 +15,21 @@
   max-width: 100%;
 }
 
+.govco-pwa-header{
+  overflow: hidden;
+  position: -webkit-sticky;
+  position: -moz-sticky;
+  position: -o-sticky;
+  position: -ms-sticky;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background-color: grey;
+  max-width: 100%;
+  z-index: 2;
+
+}
+
 /* ESTILOS DEL SIDE NAV */
 
 mat-sidenav-container {
@@ -46,12 +61,14 @@ mat-sidenav {
 
 .app-barra-superior-pwa-govco {
   width: 100%;
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
   z-index: 2;
 }
 
 .app-geolocalizacion-pwa-govco {
+  position: -webkit-sticky;
   position: sticky;
   z-index: 1;
 }
