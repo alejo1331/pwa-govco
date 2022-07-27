@@ -1,3 +1,7 @@
+.navigation-bar {
+  overflow: hidden;
+}
+
 .barra-superior-general-pwa-govco,
 .barra-superior-interna-pwa-govco {
   background-color: #3366CC;
