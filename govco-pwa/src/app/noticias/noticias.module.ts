@@ -17,6 +17,7 @@ import { ValidarUrlDirective } from './shared/directives/validar-url/validar-url
 import { OAuthModule } from 'angular-oauth2-oidc';
 import { ActualidadPrincipalComponent } from './components/actualidad-principal/actualidad-principal.component';
 import { ListadoNoticiasFiltroComponent } from './components/listado-noticias-filtro/listado-noticias-filtro.component';
+import { SinResultadosNoticiasComponent } from './components/sin-resultados-noticias/sin-resultados-noticias.component';
 
 
 
@@ -28,6 +29,7 @@ import { ListadoNoticiasFiltroComponent } from './components/listado-noticias-fi
     DetalleNoticiasComponent,
     ActualidadPrincipalComponent,
     ListadoNoticiasFiltroComponent,
+    SinResultadosNoticiasComponent,
     BreadCrumbComponent,
     PaginationComponent,
     ScrollToTopComponent,
