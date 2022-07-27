@@ -5,6 +5,7 @@ import { esResponsive } from 'src/app/noticias/utils/utils';
 import { ActualidadPrincipalServiceService } from 'src/app/noticias/services/actualidad-principal-service.service';
 import { SidenavService } from 'src/app/transversales/services/sidenav-service/sidenav-service.service';
 import { HeaderService } from 'src/app/transversales/services/header-service/header.service';
+import { BottomMenuService } from 'src/app/transversales/services/bottom-menu/bottom-menu.service';
 
 
 @Component({
@@ -44,7 +45,8 @@ export class ActualidadPrincipalComponent implements OnInit {
     private serviceActualidadPrincipal: ActualidadPrincipalServiceService,
     private activatedRouter: ActivatedRoute,
     protected servicioSideNav: SidenavService,
-    protected servicioHeader: HeaderService
+    protected servicioHeader: HeaderService,
+    public bottomService: BottomMenuService
   ) {
     this.iniciarFiltro();
   }
@@ -52,6 +54,7 @@ export class ActualidadPrincipalComponent implements OnInit {
   ngOnInit() {
 
     this.servicioHeader.estadoHeader(true, true);
+    this.bottomService.seleccionandoItem(0);
     this.servicioSideNav.seleccionandoItem(true, 'noticias');
 
     this.activatedRouter.url.subscribe(() => {

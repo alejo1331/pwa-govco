@@ -34,4 +34,7 @@ export class ServiciosHomeComponent implements OnInit {
     this.bottomService.quitarActive()
   }
 
+  inactivaItemGovco(){
+    document.querySelector('.govco-candybox-element.govco-active')?.classList.remove('govco-active');
+  }
 }

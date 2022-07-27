@@ -28,7 +28,6 @@ export class BottomMenuService {
     const navigation_pointer: any = document.querySelector(".navigation-bar .pointer");
     let lefPercent = this.lastPointer;
     this.quitarClaseActivo(navigation_items_elms, navigation_pointer);
-    this.lastClickedItem.classList.add("active");
     navigation_pointer.style.left = lefPercent;
     this.lastClickedItem = this.backItem;
     this.lastPointer = this.backPointerItem;

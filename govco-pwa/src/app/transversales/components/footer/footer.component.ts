@@ -3,6 +3,7 @@ import { FooterInterface } from '../../models/footer-models/footer-interface';
 import { PanelCuartaColumna } from '../../models/footer-models/panel-cuarta-columna';
 import { PanelSegundaColumna } from '../../models/footer-models/panel-segunda-columna';
 import { PanelTerceraColumna } from '../../models/footer-models/panel-tercera-columna';
+import { BottomMenuService } from '../../services/bottom-menu/bottom-menu.service';
 import { FooterServiceService } from '../../services/footer-service/footer-service.service';
 import { HeaderService } from '../../services/header-service/header.service';
 import { SidenavService } from '../../services/sidenav-service/sidenav-service.service';
@@ -36,12 +37,14 @@ export class FooterComponent implements OnInit {
   constructor(
     protected infoFooter: FooterServiceService, 
     protected servicioSideNav: SidenavService,
-    protected servicioHeader: HeaderService
+    protected servicioHeader: HeaderService,
+    public bottomService: BottomMenuService
     ) {}
 
   ngOnInit(): void {
 
     this.servicioHeader.estadoHeader(false,true);
+    this.bottomService.seleccionandoItem(0);
     this.servicioSideNav.seleccionandoItem(true,'acercaPortal');
 
     this.infoFooter.getInformacionFooter().subscribe((footer:FooterInterface) =>{
