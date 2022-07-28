@@ -208,6 +208,16 @@ body {
   width: 40px;
 }
 
+.cards-container .row {
+  margin: 0;
+}
+
+.col-lg-4,
+.container.current-container {
+  padding-right: 0;
+  padding-left: 0;
+}
+
 .container {
   width: 100%;
   padding-right: 15px;
@@ -220,3 +230,8 @@ body {
 .btn-slider.btn-slider-left{
   text-decoration: none;
 }
+
+.contenedorBuscador {
+  z-index: 1;
+}
+
