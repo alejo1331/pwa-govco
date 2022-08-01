@@ -94,13 +94,11 @@ export class GeolocalizacionFormularioComponent implements OnInit {
       this.ServicioGeolocalizacion.cacheJsonMunicipiosPorDepartamento(codigoDepartamento)
         .then(existe => {
           if (existe) {
-            console.log('existe')
             this.ServicioGeolocalizacion.getCacheJsonMunicipiosPorDepartamento(codigoDepartamento)
               .then((municipios: MunicipioInterface[]) => {
                 this.listaMunicipios = municipios;
               })
           } else {
-            console.log('no existe')
             this.ServicioGeolocalizacion.getMunicipiosPorDepartamento(codigoDepartamento)
               .subscribe((
                 municipios: MunicipioInterface[]) => {

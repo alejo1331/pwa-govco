@@ -1,0 +1,10 @@
+<div class="container-banner">
+    <div class="container">
+        <app-breadcumbs [title]="this.segundoTitulo==''?this.title:this.title+' - '+this.segundoTitulo"></app-breadcumbs>
+        <div class="pt-lg-4">
+            <h1 tabindex="0" class="titulo-banner">{{this.title}}{{this.segundoTitulo==""?"":" - "+this.segundoTitulo}}</h1>
+            <p tabindex="0" class="description-banner">
+                {{this.description}}</p>
+        </div>
+    </div>
+</div>

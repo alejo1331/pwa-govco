@@ -2,7 +2,7 @@ import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FiltrosNoticiasModel } from 'src/app/noticias//models/FiltrosNoticiasModel';
 import { esResponsive } from 'src/app/noticias/utils/utils';
-import { ActualidadPrincipalServiceService } from 'src/app/noticias/services/actualidad-principal-service.service';
+import { ActualidadPrincipalService } from 'src/app/noticias/services/actualidad-principal-service/actualidad-principal.service';
 import { SidenavService } from 'src/app/transversales/services/sidenav-service/sidenav-service.service';
 import { HeaderService } from 'src/app/transversales/services/header-service/header.service';
 import { BottomMenuService } from 'src/app/transversales/services/bottom-menu/bottom-menu.service';
@@ -42,7 +42,7 @@ export class ActualidadPrincipalComponent implements OnInit {
 
 
   constructor(
-    private serviceActualidadPrincipal: ActualidadPrincipalServiceService,
+    private serviceActualidadPrincipal: ActualidadPrincipalService,
     private activatedRouter: ActivatedRoute,
     protected servicioSideNav: SidenavService,
     protected servicioHeader: HeaderService,

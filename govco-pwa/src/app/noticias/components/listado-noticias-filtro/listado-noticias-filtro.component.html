@@ -1,11 +1,11 @@
-<div class="pb-5 container" *ngIf="noticias.length>0">
+<div class="pb-5" *ngIf="noticias.length>0">
     <div class="row ">
       <div id="listado-noticias" class="col-12 mt-4" *ngIf="this.objetoNoticias" tabindex="0">
         <span class="pre-resultados">Se encontraron </span><span class="resultados">{{this.objetoNoticias.totalRegistros?this.objetoNoticias.totalRegistros:"0"}} Resultados de noticias</span>
       </div>
     </div>
   
-    <div id="contenedor-noticias-focus" class="row " tabindex="0" [attr.aria-label]="'Se encuentra en la página'+(currentPage+1)+' con'+noticias.length+' noticias, para navegar entre las noticias presione la tecla tab.'">
+    <div id="contenedor-noticias-focus" tabindex="0" [attr.aria-label]="'Se encuentra en la página'+(currentPage+1)+' con'+noticias.length+' noticias, para navegar entre las noticias presione la tecla tab.'">
         <!-- <noticias-govco-bread-crumb title=""></noticias-govco-bread-crumb> -->
         <div class="col-12 link-container mt-4" *ngIf="currentPage==0 && noticias.length>0" >
           <a class="current-link" [routerLink]="['/noticias/detalle', noticias[0].id]" tabIndex="0" [attr.aria-label]="'Título de la noticia: ' + noticias[0].titulo+ '. Descripción: '+noticias[0].sumario+ '. Fecha de publicación: '+noticias[0].textoFecha" [title]="'Ir a ' + noticias[0].titulo">
@@ -82,7 +82,7 @@
     </noticias-govco-pagination>
   
   
-    <div class="row justify-content-center {{totalPages!=1 && totalPages!=0?'mt-5':''}}">
+    <div class="justify-content-center {{totalPages!=1 && totalPages!=0?'mt-5':''}}">
       <div class="px-0 btn-mas-noticias text-center">
         <a href="/buscador?ver=Noticias" class="link-mas-noticias" role="button" aria-label=" Buscar más noticias. Abrirá la página del buscador, la cual contiene más opciones de busqueda">Buscar más noticias</a>
       </div>
@@ -90,7 +90,7 @@
   </div>
   <div class="mt-5 pb-3 container" *ngIf="mostrarMensajeSinDatos">
     <govco-sin-resultados-noticias></govco-sin-resultados-noticias>
-    <div class="row justify-content-center mt-5">
+    <div class="justify-content-center mt-5">
       <div class="px-0 btn-mas-noticias text-center">
         <a href="/buscador?ver=Noticias" class="link-mas-noticias" role="button" aria-label=" Buscar más noticias. Abrirá la página del buscador, la cual contiene más opciones de busqueda">Buscar más noticias</a>
       </div>

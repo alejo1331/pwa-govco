@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient,HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { NoticiaPublicadaModel } from '../models/noticiaPublicadaModel';
+import { NoticiaPublicadaModel } from '../../models/noticiaPublicadaModel';
 import { environment } from 'src/environments/environment';
-import { NoticiasDetalleModel } from '../models/noticiaDetalleModel';
+import { NoticiasDetalleModel } from '../../models/noticiaDetalleModel';
 
 
 @Injectable({

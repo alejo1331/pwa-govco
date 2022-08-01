@@ -1,0 +1,16 @@
+<nav class="pt-3" >
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item white">
+          <a href="/">
+              Inicio
+          </a>
+      </li>
+      <li *ngIf="title != ''" [class]="title != '' ? 'breadcrumb-item activo white':'breadcrumb-item'">
+        <div class="image-icon">
+          <div class="govco-icon govco-icon-shortr-arrow mx-1"></div>
+          <span class="breadcrumb-text" title="{{ this.title }}">{{this.title}}</span>
+        </div>
+      </li>
+    </ol>
+  </nav>
+  
