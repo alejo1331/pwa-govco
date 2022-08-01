@@ -1,4 +1,4 @@
-<nav class="navigation-bar">
+<nav>
     <div *ngIf="ocultar" [ngClass]="{
         'barra-superior-general-pwa-govco': !barraSuperiorInterna,
         'barra-superior-interna-pwa-govco': barraSuperiorInterna}">
@@ -22,6 +22,9 @@
                     style="background-image: url(../../../../assets/icons-fonts/search_FILL0_wght500_GRAD0_opsz20.svg);"></span>
             </span>
         </div>
-        <govco-buscador-home no-shadow="true" id="home1" *ngIf="!barraSuperiorInterna" class="app-buscador-pwa-govco"></govco-buscador-home>
+        <div class="govco-pwa-buscador-header">
+          <govco-buscador-home no-shadow="true" id="home1" *ngIf="!barraSuperiorInterna" class="app-buscador-pwa-govco"></govco-buscador-home>
+        </div>
+
       </div>
 </nav>

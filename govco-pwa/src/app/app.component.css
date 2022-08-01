@@ -17,7 +17,6 @@
 }
 
 .govco-pwa-header{
-  overflow: hidden;
   position: -webkit-sticky;
   position: -moz-sticky;
   position: -o-sticky;

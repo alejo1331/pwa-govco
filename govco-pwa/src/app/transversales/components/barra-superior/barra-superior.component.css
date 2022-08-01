@@ -1,5 +1,5 @@
-.navigation-bar {
-  overflow: hidden;
+.govco-pwa-buscador-header{
+  z-index: 3;
 }
 
 .barra-superior-general-pwa-govco,
