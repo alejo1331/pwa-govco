@@ -207,3 +207,31 @@ body {
 .linea-horizontal-3-pwa-govco {
   width: 40px;
 }
+
+.cards-container .row {
+  margin: 0;
+}
+
+.col-lg-4,
+.container.current-container {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.btn-slider.btn-slider-rigth,
+.btn-slider.btn-slider-left{
+  text-decoration: none;
+}
+
+.contenedorBuscador {
+  z-index: 1;
+}
+
