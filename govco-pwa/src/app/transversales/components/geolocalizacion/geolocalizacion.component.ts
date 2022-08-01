@@ -13,21 +13,18 @@ export class GeolocalizacionComponent implements OnInit {
 
   @ViewChild(GeolocalizacionFormularioComponent) openFormularioGeolocalizacion: any;
 
-  datosUbicacion: [string, string];
   ubicacionMunicipio: string;
   ocultar: boolean = false;
 
   constructor(protected ServicioGeolocalizacion: GeolocalizacionService, protected servicioHeader: HeaderService) { }
 
   ngOnInit(): void {
-    
     this.servicioHeader.ocultandoHeader.subscribe(estado => {
       this.ocultar = estado[1];
     })
 
-    this.ServicioGeolocalizacion.customMessage.subscribe(msg => {
-      this.datosUbicacion = msg
-      switch (this.datosUbicacion[0]) {
+    this.ServicioGeolocalizacion.customMessage.subscribe(([codigoDepartamento, codigoMunicipio] )=> {
+      switch (codigoDepartamento) {
         case 'null':
           this.ubicacionMunicipio = 'Ingresa tu ubicación'
           break;
@@ -35,18 +32,29 @@ export class GeolocalizacionComponent implements OnInit {
           this.ubicacionMunicipio = 'Información para Toda Colombia';
           break;
         default:
-          this.getMunicipiosPorDepartamento(this.datosUbicacion)
+          this.getMunicipiosPorDepartamento([codigoDepartamento, codigoMunicipio])
           break;
       }
     })
-    
+
   }
 
-  getMunicipiosPorDepartamento(CodigoDepartMunicipio: [string, string]) {
-    this.ServicioGeolocalizacion.getMunicipiosPorDepartamento(CodigoDepartMunicipio[0]).subscribe(
-      (municipios: MunicipioInterface[]) => {
-        var municipioSeleccionado = municipios.filter((elemento: any)=>{return elemento.codigo === CodigoDepartMunicipio[1]})[0]
-        this.ubicacionMunicipio = 'Información para ' + municipioSeleccionado.nombre.toUpperCase();
+  getMunicipiosPorDepartamento([codigoDepartamento, codigoMunicipio]: [string, string]) {
+    this.ServicioGeolocalizacion.cacheJsonMunicipiosPorDepartamento(codigoDepartamento)
+      .then(existe => {
+        if (existe) {
+          this.ServicioGeolocalizacion.getCacheJsonMunicipiosPorDepartamento(codigoDepartamento)
+            .then((municipios: MunicipioInterface[]) => {
+              var municipioSeleccionado = municipios.filter((elemento: any) => { return elemento.codigo === codigoMunicipio })[0]
+              this.ubicacionMunicipio = 'Información para ' + municipioSeleccionado.nombre.toUpperCase();
+            })
+        } else {
+          this.ServicioGeolocalizacion.getMunicipiosPorDepartamento(codigoDepartamento)
+            .subscribe((municipios: MunicipioInterface[]) => {
+              var municipioSeleccionado = municipios.filter((elemento: any) => { return elemento.codigo === codigoMunicipio })[0]
+              this.ubicacionMunicipio = 'Información para ' + municipioSeleccionado.nombre.toUpperCase();
+            });
+        }
       })
   }
 
