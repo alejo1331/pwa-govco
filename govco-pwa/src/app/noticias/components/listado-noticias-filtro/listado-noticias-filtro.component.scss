@@ -121,7 +121,10 @@
   .btn-mas-noticias {
     display: flex !important;
     align-items: left !important;
-  
+
+    a {
+      text-decoration: none;
+    }
   
     .link-mas-noticias {
       height: 42px !important;

@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ActualidadPrincipalServiceService } from './actualidad-principal-service.service';
+import { ActualidadPrincipalServiceService } from './actualidad-principal.service';
 
 describe('ActualidadPrincipalServiceService', () => {
   let service: ActualidadPrincipalServiceService;

@@ -1,0 +1,36 @@
+.container-banner {
+    width: 100%;
+    height: 254px;
+    background: #004884 0% 0% no-repeat padding-box;
+    opacity: 1;
+}
+
+.titulo-banner {
+    text-align: left;
+    font: normal normal 600 40px/48px "Montserrat", sans-serif;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    opacity: 1;    
+}
+
+.description-banner {
+    text-align: left;
+    font: normal normal medium 20px/30px "Montserrat", sans-serif;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    opacity: 1;    
+}
+
+@media screen and (max-width: 992px) {
+
+    .container-banner {
+        height: 202px;
+    }
+    .titulo-banner {
+      font: normal normal 600 1.25rem/3rem Montserrat !important;
+    }
+
+    .description-banner {
+      font: normal normal 400 0.875rem/1.25rem Montserrat !important;
+    }
+}

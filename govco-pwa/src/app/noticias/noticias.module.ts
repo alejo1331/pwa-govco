@@ -13,11 +13,12 @@ import { BreadCrumbComponent } from './shared/bread-crumb/bread-crumb.component'
 import { WordLimitPipe } from './shared/pipe/word-limite.pipe';
 import { PaginationComponent } from './shared/pagination/pagination.component';
 import { ScrollToTopComponent } from './shared/scroll-to-top/scroll-to-top.component';
-import { ValidarUrlDirective } from './shared/directives/validar-url/validar-url.directive';
 import { OAuthModule } from 'angular-oauth2-oidc';
 import { ActualidadPrincipalComponent } from './components/actualidad-principal/actualidad-principal.component';
 import { ListadoNoticiasFiltroComponent } from './components/listado-noticias-filtro/listado-noticias-filtro.component';
 import { SinResultadosNoticiasComponent } from './components/sin-resultados-noticias/sin-resultados-noticias.component';
+import { BannerPrincipalComponent } from './shared/banner-principal/banner-principal.component';
+import { BreadcumbsComponent } from './shared/breadcumbs/breadcumbs.component';
 
 
 
@@ -33,8 +34,9 @@ import { SinResultadosNoticiasComponent } from './components/sin-resultados-noti
     BreadCrumbComponent,
     PaginationComponent,
     ScrollToTopComponent,
-    ValidarUrlDirective,
-    WordLimitPipe
+    WordLimitPipe,
+    BannerPrincipalComponent,
+    BreadcumbsComponent
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: GeneralIterceptorService, multi: true }
@@ -55,8 +57,7 @@ import { SinResultadosNoticiasComponent } from './components/sin-resultados-noti
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   exports: [
-    ListadoNoticiasComponent,
-    ValidarUrlDirective
+    ListadoNoticiasComponent
   ]
 })
 export class NoticiasModule { }

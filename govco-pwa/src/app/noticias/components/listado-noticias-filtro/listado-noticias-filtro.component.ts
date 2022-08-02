@@ -2,7 +2,7 @@ import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/cor
 import { NoticiaPublicadaModel } from 'src/app/noticias/models/noticiaPublicadaModel';
 import { FiltrosNoticiasModel } from 'src/app/noticias/models/FiltrosNoticiasModel';
 import { esResponsive } from 'src/app/noticias/utils/utils';
-import { NoticiasServiceService } from 'src/app/noticias/services/noticias-service.service';
+import { NoticiasServiceService } from 'src/app/noticias/services/noticias-service/noticias-service.service';
 
 @Component({
   selector: 'govco-listado-noticias-filtros',

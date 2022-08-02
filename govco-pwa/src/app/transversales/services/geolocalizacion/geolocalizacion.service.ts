@@ -47,7 +47,7 @@ export class GeolocalizacionService {
 
   cacheJsonMunicipiosPorDepartamento(codigoDepartamento: string){
     let url = this.urlApiEntidades + '/GeoLocalizacion/ObtenerMunicipiosPorDepartamento?codigo=' + codigoDepartamento;
-    return this.servicioCache.cacheStorege(url, 'geolocalizacion-json', codigoDepartamento,'.json').then(data => { return data })
+    return this.servicioCache.cacheStorege(url, 'geolocalizacion', codigoDepartamento,'.json').then(data => { return data })
   }
 
   getCacheJsonMunicipiosPorDepartamento(codigoDepartamento: string){

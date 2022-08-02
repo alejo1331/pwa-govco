@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { NoticiasServiceService } from 'src/app/noticias/services/noticias-service.service';
+import { NoticiasServiceService } from 'src/app/noticias/services/noticias-service/noticias-service.service';
 import { NoticiaPublicadaModel } from 'src/app/noticias/models/noticiaPublicadaModel';
 import { SidenavService } from 'src/app/transversales/services/sidenav-service/sidenav-service.service';
 import { HeaderService } from 'src/app/transversales/services/header-service/header.service';
