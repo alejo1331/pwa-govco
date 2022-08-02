@@ -1,4 +1,4 @@
-import { Component, HostListener, ViewChild, OnInit, AfterContentChecked} from '@angular/core';
+import { Component, HostListener, ViewChild, OnInit, AfterContentChecked } from '@angular/core';
 import { MatSidenav, MatSidenavContent } from '@angular/material/sidenav';
 import { SidenavService } from './transversales/services/sidenav-service/sidenav-service.service';
 import { AppService } from './app.service';
@@ -34,6 +34,10 @@ export class AppComponent implements OnInit, AfterContentChecked {
   touchMoveFinal: number = 0;
   touchMoveDiferencia: number = 0;
 
+  clicAdelante: HTMLElement | null;
+  clicAtras: HTMLElement | null;
+  clicSlide: HTMLElement | null;
+
   prueba: any;
 
   public parametroBuscador: string;
@@ -51,6 +55,7 @@ export class AppComponent implements OnInit, AfterContentChecked {
         this.appService.previousUrl = this.appService.currentUrl;
         this.appService.currentUrl = event.url;
       });
+    console.log('constructor')
   }
 
   ngOnInit(): void {
@@ -60,7 +65,10 @@ export class AppComponent implements OnInit, AfterContentChecked {
   }
 
   ngAfterContentChecked(): void {
-    this.sidenavService.setSidnav(this.sidenav)
+    this.sidenavService.setSidnav(this.sidenav);
+    this.clicAdelante = document.getElementById('adelante');
+    this.clicAtras = document.getElementById('atras');
+    this.clicSlide = document.querySelector('.contenedor-img.activo');
   }
 
   estadoMenu(estado: boolean) {
@@ -127,6 +135,44 @@ export class AppComponent implements OnInit, AfterContentChecked {
         }
       }
     })
+  }
+
+
+  @HostListener('click', ['$event'])
+  onClick(event: Event) {
+    if (event.path[0] == this.clicAdelante || event.path[1] == this.clicAdelante) {
+      console.log("adelante")
+    }
+    if (event.path[0] == this.clicAtras || event.path[1] == this.clicAtras) {
+      console.log("atras")
+    }
+    if (event.path[3] == this.clicSlide || event.path[4] == this.clicSlide) {
+      localStorage.setItem("idSlide", String(this.clicSlide?.id))
+    }
+  }
+
+  @HostListener('window:load') onLoad() {
+    console.log('load')
+    setTimeout(() => {
+      let verificar: boolean = false;
+      const allSlide = document.querySelectorAll('.contenedor-img');
+      const idSlide = localStorage.getItem("idSlide");
+
+      allSlide.forEach((slide, i) => {
+        setTimeout(() => {
+          if (idSlide != null) {
+            if (slide.id == idSlide) {
+              verificar = true
+            } else {
+              if (!verificar) {
+                console.log(slide.id)
+                document.getElementById('adelante')?.click()
+              }
+            }
+          }
+        }, i * 500);
+      })
+    }, 500);
   }
 }
 
