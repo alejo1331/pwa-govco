@@ -21,6 +21,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.servicioHeader.estadoHeader(false, true);
     this.bottomService.seleccionandoItem(0);
+    this.bottomService.ajustandoPantalla(false);
     this.servicioSideNav.seleccionandoItem(false, 'null');
   }
 

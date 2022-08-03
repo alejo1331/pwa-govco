@@ -20,6 +20,7 @@ export class PerfilHomeComponent implements OnInit {
   ngOnInit() {
     this.servicioHeader.estadoHeader(false, true);
     this.bottomService.seleccionandoItem(2)
+    this.bottomService.ajustandoPantalla(false);
     this.servicioSideNav.seleccionandoItem(false, 'null');
   }
 

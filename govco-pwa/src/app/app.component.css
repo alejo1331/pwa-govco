@@ -13,6 +13,10 @@
   background-color: grey;
   max-width: 100%;
   z-index: 2;
+  position: sticky;
+  bottom: 0;
+  right: 0;
+  left: 0;
 }
 
 .govco-pwa-header{

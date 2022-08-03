@@ -8,6 +8,7 @@ import { BarraSuperiorComponent } from './transversales/components/barra-superio
 import { GeolocalizacionFormularioComponent } from './transversales/components/geolocalizacion-formulario/geolocalizacion-formulario.component';
 import { GeolocalizacionComponent } from './transversales/components/geolocalizacion/geolocalizacion.component';
 import { HeaderService } from './transversales/services/header-service/header.service';
+import { BottomMenuService } from './transversales/services/bottom-menu/bottom-menu.service';
 
 @Component({
   selector: 'app-root',
@@ -25,6 +26,7 @@ export class AppComponent implements OnInit, AfterContentChecked {
 
   barraSuperiorGeneral: boolean = true;
   statusMenu: boolean = false;
+  cambiarEstilo: boolean = false;
 
   matSidenavContent: any;
   appGeolocalizacion: any;
@@ -47,7 +49,9 @@ export class AppComponent implements OnInit, AfterContentChecked {
     public appService: AppService,
     private router: Router,
     private sidenavService: SidenavService,
-    protected servicioHeader: HeaderService) {
+    protected servicioHeader: HeaderService,
+    public bottomService: BottomMenuService
+  ) {
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe((event: any) => {
@@ -55,10 +59,12 @@ export class AppComponent implements OnInit, AfterContentChecked {
         this.appService.previousUrl = this.appService.currentUrl;
         this.appService.currentUrl = event.url;
       });
-    console.log('constructor')
   }
 
   ngOnInit(): void {
+    this.bottomService.ajustePantalla.subscribe(estado =>{
+      this.cambiarEstilo = estado;
+    })
     this.appGeolocalizacion = (document.getElementsByTagName("app-geolocalizacion") as HTMLCollectionOf<HTMLElement>)[0].style;
     this.appGeolocalizacionFormulario = (document.getElementsByTagName("app-geolocalizacion-formulario") as HTMLCollectionOf<HTMLElement>)[0].style;
     this.matSidenavContent = (document.getElementsByTagName("mat-sidenav-container") as HTMLCollectionOf<HTMLElement>)[0].style;
@@ -73,11 +79,17 @@ export class AppComponent implements OnInit, AfterContentChecked {
 
   estadoMenu(estado: boolean) {
     this.statusMenu = estado;
+    const bottomMenu = document.querySelector('.govco-pwa-bottom-menu') as HTMLElement;
+    const content = document.querySelector('.govco-pwa-content') as HTMLElement;
     if (estado == true) {
       this.sidenav.opened = true;
+      bottomMenu.style.borderBottomLeftRadius = '20px';
+      content.style.borderBottomLeftRadius = '20px';
     }
     else {
       this.sidenav.opened = false;
+      bottomMenu.style.borderBottomLeftRadius = '0';
+      content.style.borderBottomLeftRadius = '0';
     }
   }
 

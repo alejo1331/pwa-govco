@@ -4,7 +4,7 @@
       (efectoTransicion)="estadoEfectoTransicion($event)"></app-contenido-side-nav>
   </mat-sidenav>
 
-  <mat-sidenav-content id="topScroll" [class.escalarContenido]="sidenav.opened">
+  <mat-sidenav-content [class.escalarContenido]="sidenav.opened">
 
       <section class="govco-pwa-header">
 
@@ -14,11 +14,11 @@
         </app-geolocalizacion>
       </section>
 
-    <section class="govco-pwa-content">
+    <section id="topScroll" class="govco-pwa-content" [ngClass]="{'govco-pwa-content-2': cambiarEstilo}">
       <router-outlet></router-outlet>
     </section>
 
-    <section class="govco-pwa-bottom-menu fixed-bottom">
+    <section class="govco-pwa-bottom-menu">
       <app-bottom-menu></app-bottom-menu>
     </section>
 
