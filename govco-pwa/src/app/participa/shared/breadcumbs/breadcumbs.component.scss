@@ -1,0 +1,43 @@
+.breadcrumb {
+    background-color: transparent !important;
+
+    .breadcrumb-item {
+        span {
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+        a{
+            font-size: 14px;
+            font-family: "Work Sans", sans-serif;
+        }
+        a:hover{
+            font-size: 0.875rem;
+        }
+        .breadcrumb-text {
+            position: relative;
+            font-size: 14px !important;
+            font-family: "Work Sans", sans-serif;
+        }
+        .govco-icon {
+            font-size: 1.1rem;
+            color: #004884;
+        }
+        .item-link{
+            color: #3772FC;
+        }
+        .breadcrumb-home:hover {
+            color: #3772FF;
+        }
+    }
+}
+.white {
+    a, .breadcrumb-text, .govco-icon{
+      color: #fff !important;
+    }
+    .breadcrumb-text {
+        font-size: 14px !important;
+        font-weight: 500;
+        font-family: "Work Sans", sans-serif;
+        line-height: 1.4;
+    }
+  }

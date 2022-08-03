@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
 import { map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -12,11 +13,12 @@ export class ValidarUrlService {
   public openModal = false;
   private loadingSubject = new Subject<boolean>();
   public loading$: Observable<boolean> = this.loadingSubject.asObservable();
+  url_apiUtils: string = environment.apiUtils;
 
   constructor(private http: HttpClient) { }
 
   private validate(url: string) {    
-    return this.http.get(`https://api-interno.www.gov.co/api/utils/validateurl?url=${url}`)
+    return this.http.get(this.url_apiUtils+`validateurl?url=${url}`)
                     .pipe(map( m => {
                       // Pruebas
                       //m = false;
@@ -24,7 +26,7 @@ export class ValidarUrlService {
                         this.loadingSubject.next(true);
                       }
                       return m;
-                    }));    
+                    }));
   }
 
   public openLink(url:string){

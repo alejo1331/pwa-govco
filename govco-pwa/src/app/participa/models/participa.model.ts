@@ -1,7 +1,11 @@
 export interface ParticipaModel {
-    homeId: number,
+    id: number,
     urlVideo: string,
     titulo: string,
     estado: number,
-    descripcion: string
+    descripcion: string,
+    nombreFuncionalidad:string,
+    tituloSecundario:string,
+    urlFuncionalidad:string
+
 }

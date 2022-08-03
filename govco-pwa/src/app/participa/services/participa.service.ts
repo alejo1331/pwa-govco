@@ -5,7 +5,7 @@ import { OpinionModel } from '../models/opinion.model';
 import { environment } from 'src/environments/environment';
 
 const API_URL = environment.apiUrl;
-// const ARI_CROSS = environment.apiCross;
+ const ARI_CROSS = environment.apiCross;
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +25,6 @@ export class ParticipaService {
   // Servicio para obtener el titulo y la descripcion de tu opinion cuenta
   getTitleAndDescription() {
     const params = new HttpParams().set('codigo', 'tuopinioncuenta');
-    // return this.http.get<OpinionModel>(`${ARI_CROSS}cross/ObtenerTituloPagina`, { params })
+    return this.http.get<OpinionModel>(`${ARI_CROSS}cross/ObtenerTituloPagina`, { params })
   }
 }

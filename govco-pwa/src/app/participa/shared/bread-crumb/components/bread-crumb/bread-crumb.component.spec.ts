@@ -1,17 +1,18 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { BreadCrumbComponent } from './bread-crumb.component';
 import { RouterTestingModule } from '@angular/router/testing';
-import { WordLimitPipe } from '@shared/pipes/word-limit/word-limit.pipe';
+//import { WordLimitPipe } from '@shared/pipes/word-limit/word-limit.pipe';
 import { DebugElement } from '@angular/core';
 import { Router } from '@angular/router';
+import { WordLimitPipe } from '../../../pipes/word-limite.pipe';
 
 describe('BreadCrumbComponent', () => {
   let component: BreadCrumbComponent;
   let fixture: ComponentFixture<BreadCrumbComponent>;
   const routerSpy = jasmine.createSpyObj('Router', ['navigate']);
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ BreadCrumbComponent, WordLimitPipe ],
       imports: [ 
@@ -39,3 +40,4 @@ describe('BreadCrumbComponent', () => {
     expect(homeElement.length).toEqual(1);
   });
 });
+

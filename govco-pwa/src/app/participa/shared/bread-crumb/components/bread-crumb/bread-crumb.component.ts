@@ -38,7 +38,7 @@ export class BreadCrumbComponent implements OnInit {
 
 
         this.homeService.getTitleAndDescription()
-          .subscribe((resp) => {
+          .subscribe((resp: { data: { titulo: string; }; }) => {
             this.title = resp.data.titulo;
             this.breadCrumb = [{
               name: this.title,

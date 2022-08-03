@@ -1,31 +1,103 @@
-<!-- <app-aviso-de-construccion></app-aviso-de-construccion> -->
-<govco-header-4
-    menuoptions='[
-      {"name":"Participa","textoAlternativo":"participa", "url":"/tu-opinion-cuenta/", "isMobile":"true"},
-      {"name":"Conócenos","textoAlternativo":"conócenos, Abre opciones de la sección","url":"/conocenos/","isMobile":"true", "withNotification":"true","subMenu":[{"name":"Entidades","textoAlternativo":"entidades", "url":"/entidades/","isMobile":"true", "withNotification":"true"},{"name":"Sobre nosotros","textoAlternativo":"sobre nosotros", "url":"/sobre-nosotros/","isMobile":"true", "withNotification":"true"}]}
-    ]' ishome="true" isbeta="false" usuario="{{userName}}">
-  </govco-header-4>
-
-<apollo-modal buttons='[{"text": "ACEPTAR"}]' 
-  [isopen]="validarUrlService.openModal" 
-  appearance="primary"
-  (eventoContinuar)="validarUrlService.accionModal($event)"
-  (eventoCancelar)="validarUrlService.accionModal($event)">
-  </apollo-modal>
-  
-  <govco-st-banner-informativo></govco-st-banner-informativo>
-<section class="body body-participacion">
-  <govco-accesibility-bar></govco-accesibility-bar>
-  <div class="container">
-    <app-bread-crumb></app-bread-crumb>
+<app-banner-principal codigo="tuopinioncuenta"></app-banner-principal>
+<div class="container-fluid">
+  <div class=" row">
+    <div class="contenedor-seccion-video col-12" *ngIf="videoHome">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-12 col-lg-7 d-flex flex-column mb-4">
+                    <h3 class="mb-4" tabindex="0" [attr.aria-label]="videoHome.titulo">{{videoHome.titulo}}</h3>
+                    <p class="descripcion-seccion-video" tabindex="0" [attr.aria-label]="videoHome.descripcion" [innerHTML]="videoHome.descripcion"></p>
+                </div>
+                <div class="col-12 col-md-12 col-lg-5 contendor-video" tabindex="0" aria-label="Video">
+                  <div class="video-c">
+                    <iframe  scrolling="no" [src]="videoHome.urlVideo | safe" title="Video" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen crossorigin="anonymous"></iframe>
+                  </div>
+                  <div class="contendor-guion">
+                    <a [href]="videoHome.urlFuncionalidad" target="_blank" title="Ir a descargar guión" aria-label="Descargar Guión, descargará un archivo pdf con el guion del video">{{videoHome.nombreFuncionalidad}}</a>
+                  </div>
+                </div>
+                <!-- <div class="contendor-guion col-12">
+                  <a [href]="videoHome.urlFuncionalidad" target="_blank" title="Ir a descargar guión" aria-label="Descargar Guión, descargará un archivo pdf con el guion del video">{{videoHome.nombreFuncionalidad}}</a>
+                </div> -->
+            </div>
+        </div>
+    </div>
+    <div  class="col-12" *ngIf="videoHome">
+      <div class="flecha-abajo">
+        <a href="javascript:void(0)" (click)="focoSeccionParticipa()" title="Ir a sección participa" tabindex="-1"><i class="fa fa-chevron-down" aria-hidden="true"></i></a>
+      </div>
+    </div>
   </div>
-  <router-outlet></router-outlet>
-</section>
-<govco-back-to-top></govco-back-to-top>
-<!-- <govco-footer></govco-footer> -->
-<section class="footer-out">
-  <div class="container">
-      <govco-footer-3></govco-footer-3>
+</div>
+<div class="container"  *ngIf="videoHome">
+  <div class="row contenedor-filtros-participa align-items-center">
+    <div class="controles-accesibles">
+      <a class="descripcion-skipe skip-link" href="javascript:void(0)" (keydown)="activarEventosAccesibilidad($event)" title="Saltar carrusel" aria-label="A continuación encontrará los  temas de participación de gov.co .  Si en algún momento desea salir de la sección presione la tecla escape.">A continuación encontrará los  temas de participación de gov.co .  Si en algún momento desea salir de la sección presione la tecla escape.</a>
+    </div>
+    <div class="col-12 col-md-9 mb-4">
+      <h3 id="seccionParticipa" class="titulo-lista-participa mb-4" tabindex="0">{{videoHome.tituloSecundario}}</h3>
+      <div class="contenedor-switch">
+        <label for="controlFiltro" class="switch">
+          <input id="controlFiltro" type="checkbox" (keypress)="filtrarActivos()" (click)="filtrarActivos()" tabindex="0" [checked]="mostrarTemas" aria-label="Si desea consultar solo los temas Activos , habilite este campo, de lo contrario presione la tecla Tab.">
+          <span class="slider round"></span>
+        </label>
+        <span  class="label-switch" (click)="filtrarActivos()">Mostrar temas activos</span>
+      </div>
+    </div>
+    <div class="col-12 col-md-3">
+      <select-1
+          id-select="selectordenamiento"
+          label-select="Ordenar por:"
+          aria-label-select="Seleccione un valor para ordenar los temas de participación"
+          aria-label-validation=""
+          [list]=listaFiltros
+          (clicEmitEvent)="filtrarOrden($event)"
+          [seleccionado]="seleccionado"
+          place-holder="Escoger"
+          ngModel #selectordenamiento>
+        </select-1>
+    </div>
   </div>
-</section>
+</div>
+<div  class="container mt-4 margin-bottom" *ngIf="ejercicios">
+  <div id="contenedor-temas-participacion-focus" class="row" tabindex="0" [attr.aria-label]="'Se encuentra en la página'+(currentPage+1)+' con'+ejercicios.length+' temas de participación, para navegar entre los temas de participación presione la tecla tab.'">
+    <div class="col-12 col-lg-4 link-container" *ngFor="let ejercicio of ejercicios">
+      <a class="current-link" (click)="validarUrlService.openLink(ejercicio.urlNoticia)" tabIndex="0" [attr.aria-label]="'Titulo del ejercicio de participación: ' + ejercicio.nombre+ '. Descripción: '+ejercicio.descripcion+ '. Estado: '+ejercicio.estado+ '. Fecha desde: '+ejercicio.textoFechaCreacion+ '. Fecha hasta: '+ejercicio.textoFechaFinalizacion" title="Ir a {{ejercicio.nombre}}">
+        <div class="conenedor-card-participacion">
+          <div class="image-container">
+            <img class="img" [src]="ejercicio.imagen" alt="Imagen decorativa"  (error)="$event.target.src = 'https://govco-prod-webutils.s3.amazonaws.com/uploads/2022-04-19/0afed651-6c25-48ee-85d0-46aceeff88a9-Default_image_Background.svg'" />
+            <div [ngClass]="ejercicio.estado=='Activo'?'estado-participacion-activo':'estado-participacion-finalizado'">
+              Estado: {{ejercicio.estado}}
+            </div>
+          </div>
+          <div class="fechas-participacion">
+            <span><b>Desde:</b> {{ejercicio.textoFechaCreacion}}</span>
+            <span><b>Hasta:</b> {{ejercicio.textoFechaFinalizacion}}</span>
+          </div>
+          <div class="info-container">
+            <h3>{{(ejercicio.nombre.length>60)?ejercicio.nombre.substring(0,60)+"...":ejercicio.nombre}}</h3>
+            <p>{{(ejercicio.descripcion.length>180)?ejercicio.descripcion.substring(0,180)+"...":ejercicio.descripcion}}</p>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <!-- <div class="controles-accesibles"> -->
+      <div id="mensaje-numero-paginas" *ngIf="estadoAlertaAccesible" tabindex="0" class="descripcion-skipe skip-link mb-4">
+        No puede ingresar páginas mayores que {{totalPages}}, presione la tecla tab para ingresar nuevamente la página.
+      </div>
+    <!-- </div> -->
+    <div *ngIf="estadoPaginadorAccesible" class="paginador-accesible mb-4 p-2">
+      <span class="mb-4">
+        Este es el paginador accesible. Ingrese el número de página que desea visitar y presione la tecla enter. Recuerde que página ingresada no debe ser mayor a {{totalPages}}
+      </span>
 
+      <input  id="paginador-accesible" type="number" class="mb-3 " (change)="cargarPaginaAccesible($event)" [min]="1" [max]="totalPages" [value]="currentPageAccesibilidad" [attr.aria-label]="'Este es el paginador accesible. Ingrese el número de página que desea visitar y presione la tecla enter. Recuerde que página ingresada no debe ser mayor a '+totalPages"  placeholder=""/>
+    </div>
+  </div>
+  <div class="row justify-content-center my-4">
+    <govco-pagination *ngIf="totalPages!=1 && totalPages!=0" [page]='currentPage' [showNext]='showNext' [totalPages]='totalPages' (prev)="changePage($event)" (next)="changePage($event)">
+    </govco-pagination>
+  </div>
+</div>

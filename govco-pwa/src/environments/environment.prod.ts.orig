@@ -1,11 +1,10 @@
 export const environment = {
   production: true,
+<<<<<<< HEAD
   //General
   serverEntidades: 'https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api/entidades/',
   serverUrl: 'https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api/entidades/',
   urlApiEntidades: 'https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api/entidades',
-  apiUrl: "https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api/participacion/",
-
   apiCrossUrl: "https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api/cross/",
   severApiCross: "https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api/cross/",
   //Home
@@ -20,17 +19,15 @@ export const environment = {
   //Entidades
   serverIntegracion: 'https://api-interno.www.gov.co/api/integracion-sedes/IntegracionSedes/',
   //Tu opinion cuenta o Participacion
-  //production: true,
-  clientIDOpinion: "GOVCOOpinion",
-  authIssuer: 'https://qaautenticaciondigital.and.gov.co',
-  keyCaptcha: "6LeCqOcUAAAAAMu9McR1zoUH0z6wDj_dekAODW5h",
-  //apiUrl: "http://100.24.232.62:8088/api/",
-  apiCross: "https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api/cross/",
-  apiUtils: "https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api/utils/",
-
 
 
   
   urlApiTramites: "https://aws-api-interno.www.gov.co/api/ficha-tramites-y-servicios",
   serverUrlNoticias: "https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api/noticias/",
+=======
+  urlApiFooter: 'https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api/cross',
+  urlApiEntidades: 'https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api/entidades',
+  apiUrl: "https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api/participacion/",
+
+>>>>>>> 36bc348 (Migracion componentes de Participa V1)
 };
