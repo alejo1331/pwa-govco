@@ -113,7 +113,6 @@ steps:
     - release/*
     - master
     - stage
-    - devops
     status:
     - failure
     - success
