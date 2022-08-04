@@ -131,43 +131,5 @@ export class AppComponent implements OnInit, AfterContentChecked {
       this.appGeolocalizacion.top = '-2.25rem';
     }
   }
-
-
-  @HostListener('click', ['$event'])
-  onClick(event: Event) {
-    if (event.path[0] == this.clicAdelante || event.path[1] == this.clicAdelante) {
-      console.log("adelante")
-    }
-    if (event.path[0] == this.clicAtras || event.path[1] == this.clicAtras) {
-      console.log("atras")
-    }
-    if (event.path[3] == this.clicSlide || event.path[4] == this.clicSlide) {
-      localStorage.setItem("idSlide", String(this.clicSlide?.id))
-    }
-  }
-
-  @HostListener('window:load') onLoad() {
-    console.log('load')
-    setTimeout(() => {
-      let verificar: boolean = false;
-      const allSlide = document.querySelectorAll('.contenedor-img');
-      const idSlide = localStorage.getItem("idSlide");
-
-      allSlide.forEach((slide, i) => {
-        setTimeout(() => {
-          if (idSlide != null) {
-            if (slide.id == idSlide) {
-              verificar = true
-            } else {
-              if (!verificar) {
-                console.log(slide.id)
-                document.getElementById('adelante')?.click()
-              }
-            }
-          }
-        }, i * 500);
-      })
-    }, 500);
-  }
 }
 

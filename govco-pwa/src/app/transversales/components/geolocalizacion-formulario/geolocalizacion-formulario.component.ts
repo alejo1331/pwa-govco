@@ -71,8 +71,8 @@ export class GeolocalizacionFormularioComponent implements OnInit {
     this.ServicioGeolocalizacion.coordenadas.subscribe(msg => this.datosUbicacion = msg);
   }
 
-  resetForm(codigoDepartamento: string, codigoMunicipio: string){
-    console.log('resetForm',codigoDepartamento,codigoMunicipio)
+  resetForm(codigoDepartamento: string, codigoMunicipio: string) {
+    console.log('resetForm', codigoDepartamento, codigoMunicipio)
   }
 
   getDepartamentos() {
@@ -139,13 +139,13 @@ export class GeolocalizacionFormularioComponent implements OnInit {
 
   closedFormulario() {
     this.closedModal.emit(this.cerrarModal);
-    this.ServicioGeolocalizacion.coordenadas.subscribe(([codigoDepartamento, codigoMunicipio]) =>{
-      this.getMunicipiosPorDepartamento(codigoDepartamento)
-      this.registerForm.reset({
-        codigoDepartamento: codigoDepartamento,
-        codigoMunicipio: codigoMunicipio
-      });
-    })
+    const codigoDepartamento = String(localStorage.getItem("codigoDepartamento"));
+    const codigoMunicipio = String(localStorage.getItem("codigoMunicipio"));
+    this.getMunicipiosPorDepartamento(codigoDepartamento)
+    this.registerForm.reset({
+      codigoDepartamento: codigoDepartamento,
+      codigoMunicipio: codigoMunicipio
+    });
   }
 
   guardarUbicacion(form: any) {
