@@ -80,7 +80,7 @@ steps:
     region:
       from_secret: REGION_S3
     source: ./govco-pwa/dist/govco-pwa/**/*
-    strip_prefix: ./govco-pwa/dist/govco-pwa/
+    strip_prefix: govco-pwa/dist/govco-pwa
     target: /
   when:
     branch:
