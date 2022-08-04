@@ -64,7 +64,7 @@ export class AppComponent implements OnInit, AfterContentChecked {
   }
 
   ngOnInit(): void {
-    this.bottomService.ajustePantalla.subscribe(estado =>{
+    this.bottomService.ajustePantalla.subscribe(estado => {
       this.cambiarEstilo = estado;
     })
     this.appGeolocalizacion = (document.getElementsByTagName("app-geolocalizacion") as HTMLCollectionOf<HTMLElement>)[0].style;
@@ -107,15 +107,8 @@ export class AppComponent implements OnInit, AfterContentChecked {
   }
 
   estadoEfectoTransicion(estilo: boolean) {
-    switch (estilo) {
-      case true:
-        this.appGeolocalizacion.transition = '0s'
-        this.appGeolocalizacion.top = '0em';
-        break;
-      case false:
-        this.appGeolocalizacion.top = '0em';
-        break;
-    }
+    this.appGeolocalizacion.transition = '0s'
+    this.appGeolocalizacion.top = '0em';
   }
 
   @HostListener('touchstart', ['$event']) onTouchStart(event: any): void {
@@ -132,16 +125,17 @@ export class AppComponent implements OnInit, AfterContentChecked {
 
       }
       this.appGeolocalizacion.transition = '0.6s';
-      if (this.touchMoveInicial < this.touchMoveFinal) {
-        this.touchMoveDiferencia = this.touchMoveFinal - this.touchMoveInicial;
-        if (this.touchMoveDiferencia >= 50) {
+    if (this.touchMoveInicial < this.touchMoveFinal) {
+      this.touchMoveDiferencia = this.touchMoveFinal - this.touchMoveInicial;
+      // alert("diferencia:"+this.touchMoveDiferencia);
+      if (this.touchMoveDiferencia >= 50) {
 
           console.log(this.appGeolocalizacion)
-          this.appGeolocalizacion.top = '0rem';
-        }
-      } else {
-        this.appGeolocalizacion.top = '-2.25rem';
+        this.appGeolocalizacion.top = '0rem';
       }
+    } else {
+      this.appGeolocalizacion.top = '-2.25rem';
+    }
   }
 
 
