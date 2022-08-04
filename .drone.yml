@@ -35,7 +35,6 @@ steps:
     - develop
     - release/*
     event:
-    - push
     - merge
 
 - name: nodejs_build_DEV
@@ -84,7 +83,6 @@ steps:
     branch:
     - develop
   event:
-    - push
     - merge
 
 - name: slack_notify
