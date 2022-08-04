@@ -3,8 +3,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { SideNavComponent } from './components/side-nav/side-nav.component';
-import { SideNavItemsComponent } from "./components/side-nav-items/side-nav-items.component";
 import { BuscadorComponent } from './components/buscador/buscador.component';
 import { GeolocalizacionComponent } from './components/geolocalizacion/geolocalizacion.component';
 import { ContenidoSideNavComponent } from './components/contenido-side-nav/contenido-side-nav.component';
@@ -30,8 +28,6 @@ import { ConfirmacionUbicacionComponent } from './components/geolocalizacion-for
     MatDialogModule
   ],
   declarations: [
-    SideNavComponent,
-    SideNavItemsComponent,
     BuscadorComponent,
     GeolocalizacionComponent,
     ContenidoSideNavComponent,
@@ -43,8 +39,6 @@ import { ConfirmacionUbicacionComponent } from './components/geolocalizacion-for
     ConfirmacionUbicacionComponent
   ],
   exports: [
-    SideNavComponent,
-    SideNavItemsComponent,
     GeolocalizacionComponent,
     BuscadorComponent,
     ContenidoSideNavComponent,

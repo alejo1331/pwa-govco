@@ -15,14 +15,14 @@ export class GeolocalizacionService {
   urlApiEntidades: string = environment.urlApiEntidades;
 
   private datosUbicacion = new BehaviorSubject<[string, string]>(['null', 'null']);
-  public customMessage = this.datosUbicacion.asObservable();
+  public coordenadas = this.datosUbicacion.asObservable();
 
   constructor(
     private http: HttpClient,
     protected servicioCache:CacheStorageService
     ) { }
 
-  public changeMessage(codigoDepartamento: string, codigoMunicipio: string): void {
+  public ubicacion(codigoDepartamento: string, codigoMunicipio: string): void {
     this.datosUbicacion.next([codigoDepartamento, codigoMunicipio]);
   }
 
