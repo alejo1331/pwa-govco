@@ -54,6 +54,10 @@
         list-style: disc;  
     }
 
+    li::marker {
+        color: #004884;
+    }
+
     a {
         text-align: left;
         text-decoration: underline;
@@ -81,16 +85,13 @@ svg {
     background: #004884 0% 0% no-repeat padding-box;
     border-radius: 100%;
     opacity: 1;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .info-icon img{
-    padding-top: 0.7em;
     width: 40px;
-}
-
-.logo-carpeta {
-    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(59deg) brightness(104%) contrast(101%);
 }
 
 .info-text {
@@ -149,7 +150,6 @@ svg {
     }
 
     .info-icon img{
-        padding-top: 0.7em;
         width: 28px;
     }
 

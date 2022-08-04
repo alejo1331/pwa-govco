@@ -34,7 +34,7 @@
           <div class="row mt-4">
             <div class="col-md-12">
               <h1 tabindex="0" class="titulo-detalle">{{noticia.titulo}}</h1>
-              <span tabindex="0" class="date-detalle">{{noticia.fechaPublicacion | date:'longDate'}}</span>
+              <span tabindex="0" class="date-detalle">{{noticia.fechaPublicacion | date:"d 'de' MMMM 'de' yyyy"}}</span>
               <div class="img-news mt-4 mb-4">
                 <img tabindex="0" class="img-responsive" [src]="noticia.urlImagen"
                   [alt]=" 'Imagen de ' + noticia.titulo">
