@@ -25,7 +25,7 @@ import { SobreNosotrosModule } from './sobre-nosotros/sobre-nosotros.module';
 import { AvisoDeConstruccionModule } from './aviso-de-construccion/aviso-de-construccion.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BuscadorModule } from './buscador/buscador.module';
-
+import {PlatformModule} from '@angular/cdk/platform';
 
 
 @NgModule({
@@ -46,6 +46,7 @@ import { BuscadorModule } from './buscador/buscador.module';
     TramitesModule,
     ServiciosModule,
     TransversalesModule,
+    PlatformModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the application is stable
