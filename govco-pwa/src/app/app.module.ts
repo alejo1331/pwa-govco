@@ -1,6 +1,7 @@
-import { NgModule,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule,CUSTOM_ELEMENTS_SCHEMA, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule} from '@angular/common/http';
+import es from '@angular/common/locales/es';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -26,7 +27,9 @@ import { AvisoDeConstruccionModule } from './aviso-de-construccion/aviso-de-cons
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BuscadorModule } from './buscador/buscador.module';
 import {PlatformModule} from '@angular/cdk/platform';
+import { registerLocaleData } from '@angular/common';
 
+registerLocaleData(es)
 
 @NgModule({
   declarations: [
@@ -62,7 +65,10 @@ import {PlatformModule} from '@angular/cdk/platform';
     NgbModule,
     BuscadorModule
   ],
-  providers: [SidenavService],
+  providers: [
+    SidenavService, 
+    {provide: LOCALE_ID, useValue: 'es-ES'}
+  ],
   bootstrap: [AppComponent],
 
 })

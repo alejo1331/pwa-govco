@@ -259,3 +259,15 @@ select-search-1 a{
   font-size: 1rem;
 }
 
+.content-close.hide {
+  opacity: 0;
+}
+
+.govco-icon-plus::before {
+  content: '\e902';
+}
+
+.govco-icon-search-cn::before {
+  content: '\e95b';
+}
+

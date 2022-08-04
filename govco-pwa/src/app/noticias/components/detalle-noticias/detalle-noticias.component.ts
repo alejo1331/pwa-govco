@@ -43,6 +43,7 @@ export class DetalleNoticiasComponent implements OnInit {
       (data: NoticiaPublicadaModel) => {
         this.loadingInfo = false;
         this.noticia = data;
+        console.log('this.noticia', this.noticia)
       }
     );
   }
