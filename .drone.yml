@@ -35,7 +35,6 @@ steps:
     - develop
     - release/*
     event:
-    - push
     - merge
 
 - name: nodejs_build_DEV
@@ -66,7 +65,7 @@ steps:
 #     - push
 #     - merge
 
-- name: upload_to_aws_s3
+- name: upload_to_aws_s3_dev
   image: plugins/s3
   settings:
     bucket: 
@@ -83,7 +82,7 @@ steps:
   when:
     branch:
     - develop
-  event:
+    event:
     - push
     - merge
 
