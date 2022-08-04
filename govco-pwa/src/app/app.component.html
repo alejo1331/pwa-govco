@@ -7,7 +7,6 @@
   <mat-sidenav-content [class.escalarContenido]="sidenav.opened">
 
       <section class="govco-pwa-header">
-
         <app-barra-superior (outEstadoMenu)="estadoMenu($event)"></app-barra-superior>
         <app-geolocalizacion (click)="formularioGeolocalizacion(['translate(0%)', 'translate(-100%)'])"
           class="app-geolocalizacion-pwa-govco">

@@ -80,16 +80,16 @@ export class AppComponent implements OnInit, AfterContentChecked {
   estadoMenu(estado: boolean) {
     this.statusMenu = estado;
     const bottomMenu = document.querySelector('.govco-pwa-bottom-menu') as HTMLElement;
-    const content = document.querySelector('.govco-pwa-content') as HTMLElement;
     if (estado == true) {
       this.sidenav.opened = true;
       bottomMenu.style.borderBottomLeftRadius = '20px';
-      content.style.borderBottomLeftRadius = '20px';
+      bottomMenu.style.transition = '0.6s'
+      bottomMenu.style.boxShadow = '#3366CC -6px 6px';
     }
     else {
       this.sidenav.opened = false;
       bottomMenu.style.borderBottomLeftRadius = '0';
-      content.style.borderBottomLeftRadius = '0';
+      bottomMenu.style.boxShadow = 'none';
     }
   }
 
