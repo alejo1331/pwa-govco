@@ -8,8 +8,9 @@ steps:
   - python /app/check_branch.py -H ${DRONE_GIT_HTTP_URL}
   when:
     branch:
-    - develop
-    - release/*
+    - devops
+    # - develop
+    # - release/*
     event:
     - push
 
@@ -31,6 +32,7 @@ steps:
 #     - sonar-scanner-$RELEASE-linux/bin/sonar-scanner -X
 #   when:
 #     branch:
+#     - devops
 #     - develop
 #     - release/*
 #     event:
@@ -38,21 +40,22 @@ steps:
 #     - merge
 
 - name: nodejs_build_DEV
-  image: node:14.15.4
+  image: node:16.14.0
   commands:
-  - cd ./govco-pwa/
+  - cd ./govco-pwa/src
   - npm install -g @angular/cli
   - npm i
-  - ng build --base-href /govco-pwa/
+  - ng build --base-href /
   when:
     branch:
-    - develop
+    - devops
+    # - develop
     event:
     - push
     - merge
 
 # - name: nodejs_build_QA
-#   image: node:14.15.4
+#   image: node:16.14.0
 #   commands:
 #   - cd ./govco-pwa/
 #   - npm install -g @angular/cli
@@ -65,139 +68,55 @@ steps:
 #     - push
 #     - merge
 
-- name: compress_tar_build_DEV
-  image: alpine
-  commands:
-  - cd ./govco-pwa/dist/
-  - tar -czvf mobile.tar.gz ./govco-pwa/
+- name: upload_to_aws_s3
+  image: plugins/s3
+  settings:
+    bucket: 
+      from_secret: BUCKET
+    access_key: 
+      from_secret: ACCESS_KEY_S3
+    secret_key: 
+      from_secret: SECRET_S3
+    region:
+      from_secret: REGION_S3
+    source: ./govco-pwa/dist/govco-pwa/**/*
+    strip_prefix: ./govco-pwa/dist/govco-pwa/
+    target: /
   when:
     branch:
-    - develop
-    event:
+    - devops
+    # - develop
+  event:
     - push
     - merge
 
-# - name: compress_tar_build_QA
-#   image: alpine
-#   commands:
-#   - cd ./govco-pwa/dist/
-#   - tar -czvf mobile.tar.gz ./govco-pwa/
-#   when:
-#     branch:
-#     - stage
-#     event:
-#     - push
-#     - merge
-
-# - name: scp_to_server_develop
-#   image: appleboy/drone-scp
+# - name: slack_notify
+#   image: plugins/slack
 #   settings:
-#     host:
-#       from_secret: SERVER_DEVELOP
-#     user:
-#       from_secret: USER_SERVER_DEVELOP
-#     key:
-#       from_secret: SSH_KEY
-#     target: /govco/services/proxy-reverso/src
-#     source: dist/*.tar.gz
-#     strip_components: 1
+#     webhook:
+#       from_secret: SLACK_AND_WEBHOOK
+#     channel: despliegue-continuo
+#     link_names: true
+#     template: >
+#       {{#if build.pull }}
+#         *{{#success build.status}}✔{{ else }}✘{{/success}} {{ uppercasefirst build.status }}*: <https://gitlab.com/{{ repo.owner }}/{{ repo.name }}/pull/{{ build.pull }}|Pull Request #{{ build.pull }}>
+#       {{else}}
+#         *{{#success build.status}}✔{{ else }}✘{{/success}} {{ uppercasefirst build.status }}: Build #{{ build.number }}* (type: `{{ build.event }}`)
+#       {{/if}}
+#       *Repo:* {{ repo.name }}
+#       *Branch:* <http://https://gitlab.com/govco-developers/{{ repo.owner }}/repos/{{ repo.name }}/commits?until=refs/heads/{{ build.branch }}&merges=include|{{ build.branch }}>
+#       *Commit:* <http://https://gitlab.com/govco-developers/{{ repo.owner }}/repos/{{ repo.name }}/commits/{{ build.commit }}|{{ truncate build.commit 8 }}>
+
+#       Author: {{ build.author }}
+
+#       <{{ build.link }}|Visit build page ↗>
 #   when:
 #     branch:
-#     - develop
-#     event:
-#     - push
-#     - merge
-
-# - name: scp_to_server_stage
-#   image: appleboy/drone-scp
-#   settings:
-#     host:
-#       from_secret: SERVER_STAGE
-#     user:
-#       from_secret: USER_SERVER_STAGE
-#     key:
-#       from_secret: SSH_KEY_STAGE
-#     target: /govco/services/proxy-reverso/src
-#     source: dist/*.tar.gz
-#     strip_components: 1
-#   when:
-#     branch:
-#     - stage
-#     event:
-#     - push
-#     - merge
-
-# - name: ssh_to_server_develop
-#   image: appleboy/drone-ssh
-#   settings:
-#     host:
-#       from_secret: SERVER_DEVELOP
-#     username:
-#       from_secret: USER_SERVER_DEVELOP
-#     key:
-#       from_secret: SSH_KEY
-#     script:
-#       - cd /govco/services/proxy-reverso/src
-#       - rm -r mobile
-#       - tar -xzvf mobile.tar.gz
-#       - rm *.tar.gz
-#   when:
-#     branch:
-#     - develop
-#     event:
-#     - push
-#     - merge
-
-# - name: ssh_to_server_stage
-#   image: appleboy/drone-ssh
-#   settings:
-#     host:
-#       from_secret: SERVER_STAGE
-#     username:
-#       from_secret: USER_SERVER_STAGE
-#     key:
-#       from_secret: SSH_KEY_STAGE
-#     script:
-#       - cd /govco/services/proxy-reverso/src
-#       - rm -r mobile
-#       - tar -xzvf mobile.tar.gz
-#       - rm *.tar.gz
-#       - cd mobile
-#       - mv index.staging.html index.html
-
-#   when:
-#     branch:
-#     - stage
-#     event:
-#     - push
-#     - merge
-
-- name: slack_notify
-  image: plugins/slack
-  settings:
-    webhook:
-      from_secret: SLACK_AND_WEBHOOK
-    channel: despliegue-continuo
-    link_names: true
-    template: >
-      {{#if build.pull }}
-        *{{#success build.status}}✔{{ else }}✘{{/success}} {{ uppercasefirst build.status }}*: <https://gitlab.com/{{ repo.owner }}/{{ repo.name }}/pull/{{ build.pull }}|Pull Request #{{ build.pull }}>
-      {{else}}
-        *{{#success build.status}}✔{{ else }}✘{{/success}} {{ uppercasefirst build.status }}: Build #{{ build.number }}* (type: `{{ build.event }}`)
-      {{/if}}
-      *Repo:* {{ repo.name }}
-      *Branch:* <http://https://gitlab.com/govco-developers/{{ repo.owner }}/repos/{{ repo.name }}/commits?until=refs/heads/{{ build.branch }}&merges=include|{{ build.branch }}>
-      *Commit:* <http://https://gitlab.com/govco-developers/{{ repo.owner }}/repos/{{ repo.name }}/commits/{{ build.commit }}|{{ truncate build.commit 8 }}>
-
-      Author: {{ build.author }}
-
-      <{{ build.link }}|Visit build page ↗>
-  when:
-    branch:
-    - develop
-    - release/*
-    - master
-    - stage
-    status:
-    - failure
-    - success
+#     - devops
+#     # - develop
+#     # - release/*
+#     # - master
+#     # - stage
+#     status:
+#     - failure
+#     - success
