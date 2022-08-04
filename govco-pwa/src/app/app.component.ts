@@ -122,7 +122,6 @@ export class AppComponent implements OnInit, AfterContentChecked {
 
   @HostListener('touchmove', ['$event']) onTouchMove(event: any): void {
     this.touchMoveFinal = event.changedTouches[0].screenY;
-    alert(this.touchMoveFinal)
       this.appGeolocalizacion.transition = '0.6s'
       if (this.touchMoveInicial < this.touchMoveFinal) {
         this.touchMoveDiferencia = this.touchMoveFinal - this.touchMoveInicial;
