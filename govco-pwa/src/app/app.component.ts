@@ -9,6 +9,7 @@ import { GeolocalizacionFormularioComponent } from './transversales/components/g
 import { GeolocalizacionComponent } from './transversales/components/geolocalizacion/geolocalizacion.component';
 import { HeaderService } from './transversales/services/header-service/header.service';
 import { BottomMenuService } from './transversales/services/bottom-menu/bottom-menu.service';
+import { Platform } from '@angular/cdk/platform';
 
 @Component({
   selector: 'app-root',
@@ -50,7 +51,8 @@ export class AppComponent implements OnInit, AfterContentChecked {
     private router: Router,
     private sidenavService: SidenavService,
     protected servicioHeader: HeaderService,
-    public bottomService: BottomMenuService
+    public bottomService: BottomMenuService,
+    public platform: Platform
   ) {
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
@@ -121,11 +123,20 @@ export class AppComponent implements OnInit, AfterContentChecked {
   }
 
   @HostListener('touchmove', ['$event']) onTouchMove(event: any): void {
+    const posicionInicial = this.touchMoveInicial;
     this.touchMoveFinal = event.changedTouches[0].screenY;
-      this.appGeolocalizacion.transition = '0.6s'
+      if (this.platform.IOS || this.platform.SAFARI){
+          this.touchMoveInicial = posicionInicial;
+          this.appGeolocalizacion = (document.getElementsByClassName("barra-geolocalizacion-pwa-govco") as HTMLCollectionOf<HTMLElement>)[0].style;
+          this.appGeolocalizacion.position = 'sticky';
+
+      }
+      this.appGeolocalizacion.transition = '0.6s';
       if (this.touchMoveInicial < this.touchMoveFinal) {
         this.touchMoveDiferencia = this.touchMoveFinal - this.touchMoveInicial;
         if (this.touchMoveDiferencia >= 50) {
+
+          console.log(this.appGeolocalizacion)
           this.appGeolocalizacion.top = '0rem';
         }
       } else {
