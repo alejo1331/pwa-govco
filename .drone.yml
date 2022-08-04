@@ -44,7 +44,7 @@ steps:
   - cd ./govco-pwa/
   - npm install -g @angular/cli
   - npm i
-  - ng build --base-href /
+  - ng build --prod
   when:
     branch:
     - develop
