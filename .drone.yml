@@ -82,7 +82,8 @@ steps:
   when:
     branch:
     - develop
-  event:
+    event:
+    - push
     - merge
 
 - name: slack_notify
