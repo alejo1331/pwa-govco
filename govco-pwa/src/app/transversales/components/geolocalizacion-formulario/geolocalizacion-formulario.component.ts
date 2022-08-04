@@ -68,7 +68,11 @@ export class GeolocalizacionFormularioComponent implements OnInit {
 
     this.getDepartamentos();
 
-    this.ServicioGeolocalizacion.customMessage.subscribe(msg => this.datosUbicacion = msg);
+    this.ServicioGeolocalizacion.coordenadas.subscribe(msg => this.datosUbicacion = msg);
+  }
+
+  resetForm(codigoDepartamento: string, codigoMunicipio: string){
+    console.log('resetForm',codigoDepartamento,codigoMunicipio)
   }
 
   getDepartamentos() {
@@ -135,12 +139,19 @@ export class GeolocalizacionFormularioComponent implements OnInit {
 
   closedFormulario() {
     this.closedModal.emit(this.cerrarModal);
+    this.ServicioGeolocalizacion.coordenadas.subscribe(([codigoDepartamento, codigoMunicipio]) =>{
+      this.getMunicipiosPorDepartamento(codigoDepartamento)
+      this.registerForm.reset({
+        codigoDepartamento: codigoDepartamento,
+        codigoMunicipio: codigoMunicipio
+      });
+    })
   }
 
   guardarUbicacion(form: any) {
     localStorage.setItem("codigoDepartamento", form.codigoDepartamento);
     localStorage.setItem("codigoMunicipio", form.codigoMunicipio);
-    this.ServicioGeolocalizacion.changeMessage(form.codigoDepartamento, form.codigoMunicipio);
+    this.ServicioGeolocalizacion.ubicacion(form.codigoDepartamento, form.codigoMunicipio);
     this.closedFormulario();
   }
 
@@ -153,7 +164,7 @@ export class GeolocalizacionFormularioComponent implements OnInit {
       const mun = localStorage.getItem("codigoMunicipio");
 
       if (dep && mun) {
-        this.ServicioGeolocalizacion.changeMessage(dep, mun);
+        this.ServicioGeolocalizacion.ubicacion(dep, mun);
         this.ServicioGeolocalizacion.cacheJsonMunicipiosPorDepartamento(dep)
           .then(existe => {
             if (existe) {
@@ -205,7 +216,7 @@ export class GeolocalizacionFormularioComponent implements OnInit {
             this.ServicioGeolocalizacion.getUbicacionActual(data.coords.latitude, data.coords.longitude)
               .subscribe((ubicacion: ConsultaUbicacionInterface) => {
                 if (MostrarEnBarraGelocalizacion == true) {
-                  this.ServicioGeolocalizacion.changeMessage(ubicacion.codigoDepartamento, ubicacion.codigoMunicipio);
+                  this.ServicioGeolocalizacion.ubicacion(ubicacion.codigoDepartamento, ubicacion.codigoMunicipio);
                 }
                 localStorage.setItem("permisoGeolocalizacion", "true")
                 localStorage.setItem("codigoDepartamento", ubicacion.codigoDepartamento);

@@ -4,10 +4,10 @@ import { ParticipaComponent } from './components/participa/participa.component';
 
 const routes: Routes = [
   {
-    path: 'menu',
+    path: 'participa',
     children: [
       {
-        path: 'participa',
+        path: '',
         component: ParticipaComponent
       },
     ]

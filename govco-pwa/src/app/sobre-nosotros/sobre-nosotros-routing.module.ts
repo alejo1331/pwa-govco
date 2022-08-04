@@ -4,10 +4,10 @@ import { SobreNosotrosComponent } from './components/sobre-nosotros/sobre-nosotr
 
 const routes: Routes = [
   {
-    path: 'menu',
+    path: 'sobre-nosotros',
     children: [
       {
-        path: 'sobre-nosotros',
+        path: '',
         component: SobreNosotrosComponent
       },
     ]

@@ -16,14 +16,17 @@ export class GeolocalizacionComponent implements OnInit {
   ubicacionMunicipio: string;
   ocultar: boolean = false;
 
-  constructor(protected ServicioGeolocalizacion: GeolocalizacionService, protected servicioHeader: HeaderService) { }
+  constructor(
+    protected ServicioGeolocalizacion: GeolocalizacionService,
+    protected servicioHeader: HeaderService
+  ) { }
 
   ngOnInit(): void {
     this.servicioHeader.ocultandoHeader.subscribe(estado => {
       this.ocultar = estado[1];
     })
 
-    this.ServicioGeolocalizacion.customMessage.subscribe(([codigoDepartamento, codigoMunicipio] )=> {
+    this.ServicioGeolocalizacion.coordenadas.subscribe(([codigoDepartamento, codigoMunicipio]) => {
       switch (codigoDepartamento) {
         case 'null':
           this.ubicacionMunicipio = 'Ingresa tu ubicación'

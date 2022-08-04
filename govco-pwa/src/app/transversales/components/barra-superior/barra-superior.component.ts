@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { BottomMenuService } from '../../services/bottom-menu/bottom-menu.service';
 import { HeaderService } from '../../services/header-service/header.service';
 import { SidenavService } from '../../services/sidenav-service/sidenav-service.service';
@@ -18,7 +19,8 @@ export class BarraSuperiorComponent implements OnInit {
 
   constructor(
     protected servicioSideNav: SidenavService,
-    protected servicioHeader: HeaderService
+    protected servicioHeader: HeaderService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -35,6 +37,11 @@ export class BarraSuperiorComponent implements OnInit {
 
   desactivarItem() {
     this.servicioSideNav.seleccionandoItem(false,'null');
+  }
+
+  clickHome() {
+    this.router.navigate(['/']);
+    document.querySelector('#topScroll')!.scrollTop = 0;
   }
 
 }

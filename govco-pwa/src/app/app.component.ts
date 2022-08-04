@@ -5,11 +5,10 @@ import { AppService } from './app.service';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { BarraSuperiorComponent } from './transversales/components/barra-superior/barra-superior.component';
-import { GeolocalizacionFormularioComponent } from './transversales/components/geolocalizacion-formulario/geolocalizacion-formulario.component';
-import { GeolocalizacionComponent } from './transversales/components/geolocalizacion/geolocalizacion.component';
 import { HeaderService } from './transversales/services/header-service/header.service';
 import { BottomMenuService } from './transversales/services/bottom-menu/bottom-menu.service';
 import { Platform } from '@angular/cdk/platform';
+import { GeolocalizacionService } from './transversales/services/geolocalizacion/geolocalizacion.service';
 
 @Component({
   selector: 'app-root',
@@ -22,8 +21,6 @@ export class AppComponent implements OnInit, AfterContentChecked {
   @ViewChild('sidenav') sidenav!: MatSidenav;
   @ViewChild(MatSidenavContent) sidenavcontent!: MatSidenavContent;
   @ViewChild(BarraSuperiorComponent) barraSuperior: any;
-  @ViewChild(GeolocalizacionComponent) barraGeolocalizacion: any;
-  @ViewChild(GeolocalizacionFormularioComponent) activarGps: any;
 
   barraSuperiorGeneral: boolean = true;
   statusMenu: boolean = false;
@@ -52,7 +49,8 @@ export class AppComponent implements OnInit, AfterContentChecked {
     private sidenavService: SidenavService,
     protected servicioHeader: HeaderService,
     public bottomService: BottomMenuService,
-    public platform: Platform
+    public platform: Platform,
+    protected ServicioGeolocalizacion: GeolocalizacionService
   ) {
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
@@ -64,7 +62,7 @@ export class AppComponent implements OnInit, AfterContentChecked {
   }
 
   ngOnInit(): void {
-    this.bottomService.ajustePantalla.subscribe(estado =>{
+    this.bottomService.ajustePantalla.subscribe(estado => {
       this.cambiarEstilo = estado;
     })
     this.appGeolocalizacion = (document.getElementsByTagName("app-geolocalizacion") as HTMLCollectionOf<HTMLElement>)[0].style;
@@ -107,15 +105,8 @@ export class AppComponent implements OnInit, AfterContentChecked {
   }
 
   estadoEfectoTransicion(estilo: boolean) {
-    switch (estilo) {
-      case true:
-        this.appGeolocalizacion.transition = '0s'
-        this.appGeolocalizacion.top = '0em';
-        break;
-      case false:
-        this.appGeolocalizacion.top = '0em';
-        break;
-    }
+    this.appGeolocalizacion.transition = '0s'
+    this.appGeolocalizacion.top = '0em';
   }
 
   @HostListener('touchstart', ['$event']) onTouchStart(event: any): void {
@@ -129,19 +120,16 @@ export class AppComponent implements OnInit, AfterContentChecked {
           this.touchMoveInicial = posicionInicial;
           this.appGeolocalizacion = (document.getElementsByClassName("barra-geolocalizacion-pwa-govco") as HTMLCollectionOf<HTMLElement>)[0].style;
           this.appGeolocalizacion.position = 'sticky';
-
       }
       this.appGeolocalizacion.transition = '0.6s';
-      if (this.touchMoveInicial < this.touchMoveFinal) {
-        this.touchMoveDiferencia = this.touchMoveFinal - this.touchMoveInicial;
-        if (this.touchMoveDiferencia >= 50) {
-
-          console.log(this.appGeolocalizacion)
-          this.appGeolocalizacion.top = '0rem';
-        }
-      } else {
-        this.appGeolocalizacion.top = '-2.25rem';
+    if (this.touchMoveInicial < this.touchMoveFinal) {
+      this.touchMoveDiferencia = this.touchMoveFinal - this.touchMoveInicial;
+      if (this.touchMoveDiferencia >= 50) {
+        this.appGeolocalizacion.top = '0rem';
       }
+    } else {
+      this.appGeolocalizacion.top = '-2.25rem';
+    }
   }
 
 
