@@ -65,7 +65,7 @@ steps:
 #     - push
 #     - merge
 
-- name: upload_to_aws_s3
+- name: upload_to_aws_s3_dev
   image: plugins/s3
   settings:
     bucket: 
