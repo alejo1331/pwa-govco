@@ -42,7 +42,7 @@ steps:
 - name: nodejs_build_DEV
   image: node:16.14.0
   commands:
-  - cd ./govco-pwa/src
+  - cd ./govco-pwa/
   - npm install -g @angular/cli
   - npm i
   - ng build --base-href /
