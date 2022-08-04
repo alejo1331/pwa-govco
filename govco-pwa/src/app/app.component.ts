@@ -108,10 +108,10 @@ export class AppComponent implements OnInit, AfterContentChecked {
     switch (estilo) {
       case true:
         this.appGeolocalizacion.transition = '0s'
-        this.appGeolocalizacion.top = '3.5em';
+        this.appGeolocalizacion.top = '0em';
         break;
       case false:
-        this.appGeolocalizacion.top = '7.25em';
+        this.appGeolocalizacion.top = '0em';
         break;
     }
   }
@@ -122,31 +122,16 @@ export class AppComponent implements OnInit, AfterContentChecked {
 
   @HostListener('touchmove', ['$event']) onTouchMove(event: any): void {
     this.touchMoveFinal = event.changedTouches[0].screenY;
-    this.servicioHeader.ocultandoHeader.subscribe(([estilo, estado]) => {
+    alert(this.touchMoveFinal)
       this.appGeolocalizacion.transition = '0.6s'
       if (this.touchMoveInicial < this.touchMoveFinal) {
         this.touchMoveDiferencia = this.touchMoveFinal - this.touchMoveInicial;
         if (this.touchMoveDiferencia >= 50) {
-          switch (estilo) {
-            case true:
-              this.appGeolocalizacion.top = '3.5em';
-              break;
-            case false:
-              this.appGeolocalizacion.top = '7.25em';
-              break;
-          }
+          this.appGeolocalizacion.top = '0rem';
         }
       } else {
-        switch (estilo) {
-          case true:
-            this.appGeolocalizacion.top = '1.25em';
-            break;
-          case false:
-            this.appGeolocalizacion.top = '5em';
-            break;
-        }
+        this.appGeolocalizacion.top = '-2.25rem';
       }
-    })
   }
 
 
