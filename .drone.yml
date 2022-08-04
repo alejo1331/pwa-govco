@@ -35,6 +35,7 @@ steps:
     - develop
     - release/*
     event:
+    - push
     - merge
 
 - name: nodejs_build_DEV
