@@ -1,24 +1,23 @@
 <mat-sidenav-container>
   <mat-sidenav #sidenav="matSidenav" mode="push" (closed)="estadoSideNav(true)">
-    <app-contenido-side-nav (outEstadoMenu)="estadoMenu($event)"
-      (efectoTransicion)="estadoEfectoTransicion($event)"></app-contenido-side-nav>
+    <app-contenido-side-nav (outEstadoMenu)="estadoMenu($event)" (efectoTransicion)="estadoEfectoTransicion($event)">
+    </app-contenido-side-nav>
   </mat-sidenav>
 
-  <mat-sidenav-content id="topScroll" [class.escalarContenido]="sidenav.opened">
+  <mat-sidenav-content [class.escalarContenido]="sidenav.opened">
 
-      <section class="govco-pwa-header">
+    <section class="govco-pwa-header">
+      <app-barra-superior (outEstadoMenu)="estadoMenu($event)"></app-barra-superior>
+    </section>
 
-        <app-barra-superior (outEstadoMenu)="estadoMenu($event)"></app-barra-superior>
-        <app-geolocalizacion (click)="formularioGeolocalizacion(['translate(0%)', 'translate(-100%)'])"
-          class="app-geolocalizacion-pwa-govco">
-        </app-geolocalizacion>
-      </section>
-
-    <section class="govco-pwa-content">
+    <section id="topScroll" class="govco-pwa-content" [ngClass]="{'govco-pwa-content-2': cambiarEstilo}">
+      <app-geolocalizacion (click)="formularioGeolocalizacion(['translate(0%)', 'translate(-100%)'])"
+        class="app-geolocalizacion-pwa-govco">
+      </app-geolocalizacion>
       <router-outlet></router-outlet>
     </section>
 
-    <section class="govco-pwa-bottom-menu fixed-bottom">
+    <section class="govco-pwa-bottom-menu">
       <app-bottom-menu></app-bottom-menu>
     </section>
 

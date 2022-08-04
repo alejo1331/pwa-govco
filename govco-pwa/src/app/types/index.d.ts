@@ -7,5 +7,6 @@ declare global {
     interface Event {
         request : any;
         respondWith: any;
+        path: any;
     }
 }

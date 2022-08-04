@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, Input, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FiltrosNoticiasModel } from 'src/app/noticias//models/FiltrosNoticiasModel';
 import { esResponsive } from 'src/app/noticias/utils/utils';

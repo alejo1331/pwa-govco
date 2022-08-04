@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,13 @@ export class BottomMenuService {
   public lastPointer: any;
   public backItem: any;
   public backPointerItem: any;
+
+  private pantalla = new BehaviorSubject<boolean>(false);
+  public ajustePantalla = this.pantalla.asObservable();
+
+  public ajustandoPantalla(ajustePantalla: boolean): void {
+    this.pantalla.next(ajustePantalla);
+  }
 
   public seleccionandoItem(seleccionado: number): void {
     const navigation_items_elms: any = document.querySelectorAll(".navigation-bar .list-items .item");

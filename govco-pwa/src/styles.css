@@ -17,6 +17,14 @@ body {
   display: none;
 }
 
+.mat-drawer-content {
+  position: relative;
+  z-index: 1;
+  display: block;
+  height: 100%;
+  overflow: visible !important;
+}
+
 ::-webkit-scrollbar-thumb {
   background: #e0e0e0;
   border-radius: 0px;
@@ -57,8 +65,14 @@ body {
 .govco-pwa-content {
   background-color: #FFFFFF;
   position: relative;
-  min-height: 100%;
+  overflow: scroll;
+  height: calc(100% - 8rem);
   padding-bottom: 100px;
+}
+
+.govco-pwa-content-2 {
+  overflow: visible;
+  height: 100%;
 }
 
 .caja-icono-pwa-govco {
@@ -234,5 +248,14 @@ body {
 
 .contenedorBuscador {
   z-index: 1;
+}
+
+select-search-1 a{
+  text-decoration: none;
+}
+
+.fa-chevron-up:before {
+  content: "\f077";
+  font-size: 1rem;
 }
 
