@@ -1,4 +1,4 @@
-import { Component, HostListener, ViewChild, OnInit, AfterContentChecked } from '@angular/core';
+import { Component, HostListener, ViewChild, OnInit, AfterContentChecked} from '@angular/core';
 import { MatSidenav, MatSidenavContent } from '@angular/material/sidenav';
 import { SidenavService } from './transversales/services/sidenav-service/sidenav-service.service';
 import { AppService } from './app.service';
@@ -34,10 +34,6 @@ export class AppComponent implements OnInit, AfterContentChecked {
   touchMoveFinal: number = 0;
   touchMoveDiferencia: number = 0;
 
-  clicAdelante: HTMLElement | null;
-  clicAtras: HTMLElement | null;
-  clicSlide: HTMLElement | null;
-
   prueba: any;
 
   public parametroBuscador: string;
@@ -59,12 +55,14 @@ export class AppComponent implements OnInit, AfterContentChecked {
         this.appService.previousUrl = this.appService.currentUrl;
         this.appService.currentUrl = event.url;
       });
+    setTimeout(() => {
+      this.bottomService.ajustePantalla.subscribe(estado => {
+        this.cambiarEstilo = estado;
+      })
+    }, 100);
   }
 
   ngOnInit(): void {
-    this.bottomService.ajustePantalla.subscribe(estado => {
-      this.cambiarEstilo = estado;
-    })
     this.appGeolocalizacion = (document.getElementsByTagName("app-geolocalizacion") as HTMLCollectionOf<HTMLElement>)[0].style;
     this.appGeolocalizacionFormulario = (document.getElementsByTagName("app-geolocalizacion-formulario") as HTMLCollectionOf<HTMLElement>)[0].style;
     this.matSidenavContent = (document.getElementsByTagName("mat-sidenav-container") as HTMLCollectionOf<HTMLElement>)[0].style;
@@ -72,9 +70,6 @@ export class AppComponent implements OnInit, AfterContentChecked {
 
   ngAfterContentChecked(): void {
     this.sidenavService.setSidnav(this.sidenav);
-    this.clicAdelante = document.getElementById('adelante');
-    this.clicAtras = document.getElementById('atras');
-    this.clicSlide = document.querySelector('.contenedor-img.activo');
   }
 
   estadoMenu(estado: boolean) {
