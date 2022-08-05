@@ -52,19 +52,19 @@ steps:
     - push
     - merge
 
-# - name: nodejs_build_QA
-#   image: node:16.14.0
-#   commands:
-#   - cd ./govco-pwa/
-#   - npm install -g @angular/cli
-#   - npm i
-#   - ng build --configuration="staging" --base-href /
-#   when:
-#     branch:
-#     - stage
-#     event:
-#     - push
-#     - merge
+- name: nodejs_build_QA
+  image: node:16.14.0
+  commands:
+  - cd ./govco-pwa/
+  - npm install -g @angular/cli
+  - npm i
+  - ng build --prod
+  when:
+    branch:
+    - stage
+    event:
+    - push
+    - merge
 
 - name: upload_to_aws_s3_dev
   image: plugins/s3
@@ -88,27 +88,27 @@ steps:
     - push
     - merge
 
-# - name: upload_to_aws_s3_stage
-#   image: plugins/s3
-#   settings:
-#     bucket: 
-#       from_secret: BUCKET_STAGE
-#     access_key: 
-#       from_secret: ACCESS_KEY_S3
-#     secret_key: 
-#       from_secret: SECRET_S3
-#     region:
-#       from_secret: REGION_S3
-#     strip_prefix: govco-pwa/dist/govco-pwa
-#     delete: true
-#     source: ./govco-pwa/dist/govco-pwa/**/*
-#     target: /
-#   when:
-#     branch:
-#     - stage
-#     event:
-#     - push
-#     - merge
+- name: upload_to_aws_s3_stage
+  image: plugins/s3
+  settings:
+    bucket: 
+      from_secret: BUCKET_STAGE
+    access_key: 
+      from_secret: ACCESS_KEY_S3
+    secret_key: 
+      from_secret: SECRET_S3
+    region:
+      from_secret: REGION_S3
+    strip_prefix: govco-pwa/dist/govco-pwa
+    delete: true
+    source: ./govco-pwa/dist/govco-pwa/**/*
+    target: /
+  when:
+    branch:
+    - stage
+    event:
+    - push
+    - merge
 
 - name: slack_notify
   image: plugins/slack
