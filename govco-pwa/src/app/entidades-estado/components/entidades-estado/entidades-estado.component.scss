@@ -3,6 +3,13 @@
   box-shadow: 0px 3px 13px #00488459;
   position: relative;
   z-index: 1;
+  padding-left: 15px;
+  padding-right: 15px;
+
+  .container {
+    padding-left: 15px!important;
+    padding-right: 15px!important;
+  }
 
   .titulo-entidades{
     margin-bottom: 30px;
@@ -14,6 +21,7 @@
 
   .contenedor-menu-entidades{
     justify-content: space-between;
+    --bs-gutter-x: 0;
     .items-menu{
       display: flex;
       align-items: center;
@@ -27,6 +35,7 @@
       margin-right: 15px;
       margin-top: 10px;
       margin-bottom: 10px;
+      text-decoration: none;
 
       .contenedor-icono{
         width: 60px;
@@ -39,6 +48,7 @@
       }
       .texto-items-menu{
         text-decoration: underline;
+        text-decoration-color: #004884;
         margin: 10px;
         position: relative;
         span{
@@ -172,6 +182,11 @@
       height: 100%;
       overflow: hidden;
       // overflow-y: auto;
+
+      .descripcion-seccion-entidades {
+        font: normal normal 400 1rem/1.5rem Work Sans;
+        color: #4B4B4B;
+      }
     }
     .contenedor-enlace-entidades{
       background: #E6EFFD;
