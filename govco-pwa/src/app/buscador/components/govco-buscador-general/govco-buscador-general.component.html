@@ -1,7 +1,23 @@
 <app-barra-superior class="app-barra-superior-pwa-govco"></app-barra-superior>
 <div id="page-search">
   <div class="container">
+    <div class="miga-buscador mb-5">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item white">
+                <a href="/">
+                    Inicio
+                </a>
+            </li>
+          <li class='breadcrumb-item activo'>
+            <div class="image-icon">
+                <div class="govco-icon govco-icon-shortr-arrow mx-1"></div>
+                <a class="breadcrumb-text" href="/buscador">Buscador</a>
+              </div>
+          </li>
+        </ol>
+      </nav>
+    </div>
     <govco-buscador-2 seed="{{busqueda}}" solobusqueda="" filtros="true" categoriabusqueda="{{paramtrofiltros}}"></govco-buscador-2>
   </div>
 </div>
-
