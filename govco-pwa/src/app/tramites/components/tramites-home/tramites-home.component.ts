@@ -25,6 +25,7 @@ export class TramitesHomeComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log('ha iniciado tramites')
     this.servicioHeader.estadoHeader(false,false);
     this.bottomService.seleccionandoItem(1);
     this.bottomService.ajustandoPantalla(true);

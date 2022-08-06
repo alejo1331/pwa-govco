@@ -19,8 +19,7 @@ export class GeolocalizacionFormularioComponent implements OnInit {
   listaMunicipios: MunicipioInterface[] = [];
   opcionTodosDepartamentos: DepartamentoInterface[] = [];
   opcionTodosMunicipios: MunicipioInterface[] = [];
-  estadoPermiso: string | null;
-  datosUbicacion: [string, string];
+  datosUbicacion: [string, string]
   cerrarModal: [string, string];
 
   @Output() closedModal = new EventEmitter<[string, string]>();
@@ -43,11 +42,6 @@ export class GeolocalizacionFormularioComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.estadoPermiso = localStorage.getItem("permisoGeolocalizacion")
-    if (this.estadoPermiso == null) {
-      localStorage.setItem("permisoGeolocalizacion", "false")
-    }
-
     this.cerrarModal = ["translate(100%)", 'translate(0%)'];
 
     this.opcionTodosMunicipios = [{
@@ -158,54 +152,64 @@ export class GeolocalizacionFormularioComponent implements OnInit {
   @HostListener('window:load')
   onLoad() {
     const modalVisto = sessionStorage.getItem('modalVisto');
+    const dep = localStorage.getItem("codigoDepartamento");
+    const mun = localStorage.getItem("codigoMunicipio");
 
-    if (this.estadoPermiso == 'true') {
-      const dep = localStorage.getItem("codigoDepartamento");
-      const mun = localStorage.getItem("codigoMunicipio");
+    if (dep && mun) {
+      this.ServicioGeolocalizacion.ubicacion(dep, mun);
+      this.resetFormulario(dep, mun);
+    }
 
-      if (dep && mun) {
-        this.ServicioGeolocalizacion.ubicacion(dep, mun);
-        this.ServicioGeolocalizacion.cacheJsonMunicipiosPorDepartamento(dep)
-          .then(existe => {
-            if (existe) {
-              this.ServicioGeolocalizacion.getCacheJsonMunicipiosPorDepartamento(dep)
-                .then((municipios: MunicipioInterface[]) => {
-                  this.listaMunicipios = municipios;
-                  this.registerForm.reset({
-                    codigoDepartamento: dep,
-                    codigoMunicipio: mun
-                  });
-                })
-            } else {
-              this.ServicioGeolocalizacion.getMunicipiosPorDepartamento(dep)
-                .subscribe((municipios: MunicipioInterface[]) => {
-                  this.listaMunicipios = municipios;
-                  this.registerForm.reset({
-                    codigoDepartamento: dep,
-                    codigoMunicipio: mun
-                  });
-                });
-            }
-          })
-      } else {
-        this.getGeolocalizacion(true);
-      }
-    } else if (modalVisto != 'true') {
+    if (modalVisto != 'true') {
       setTimeout(() => {
         let IngresarUbicacion = this.dialog.open(ConfirmacionUbicacionComponent, {
           width: '280px'
         });
         IngresarUbicacion.afterClosed().subscribe(resultado => {
           sessionStorage.setItem('modalVisto', 'true');
-
           if (resultado) {
-            this.getGeolocalizacion(false);
+            this.getGeolocalizacion(false); 
             this.closedModal.emit(['translate(0%)', 'translate(-100%)']);
           }
         });
-
       }, 1000);
-    }
+    } 
+  }
+
+  resetFormulario(codigoDepartamento: string, codigoMunicipio: string) {
+    this.ServicioGeolocalizacion.cacheJsonMunicipiosPorDepartamento(codigoDepartamento)
+      .then(existe => {
+        if (existe) {
+          this.ServicioGeolocalizacion.getCacheJsonMunicipiosPorDepartamento(codigoDepartamento)
+            .then((municipios: MunicipioInterface[]) => {
+              this.listaMunicipios = municipios;
+              this.registerForm.reset({
+                codigoDepartamento: codigoDepartamento,
+                codigoMunicipio: codigoMunicipio
+              });
+            })
+        } else {
+          this.ServicioGeolocalizacion.getMunicipiosPorDepartamento(codigoDepartamento)
+            .subscribe((municipios: MunicipioInterface[]) => {
+              this.listaMunicipios = municipios;
+              this.registerForm.reset({
+                codigoDepartamento: codigoDepartamento,
+                codigoMunicipio: codigoMunicipio
+              });
+            },
+              error => {
+                this.listaMunicipios = [{
+                  codigo: '',
+                  nombre: 'null',
+                  codigoDepartamento: codigoDepartamento,
+                  departamento: {
+                    codigo: codigoDepartamento,
+                    nombre: ''
+                  }
+                }];
+              });
+        }
+      })
   }
 
   getGeolocalizacion(MostrarEnBarraGelocalizacion: boolean) {
@@ -218,7 +222,7 @@ export class GeolocalizacionFormularioComponent implements OnInit {
                 if (MostrarEnBarraGelocalizacion == true) {
                   this.ServicioGeolocalizacion.ubicacion(ubicacion.codigoDepartamento, ubicacion.codigoMunicipio);
                 }
-                localStorage.setItem("permisoGeolocalizacion", "true")
+                localStorage.setItem("permisoGeolocalizacion", "permitido")
                 localStorage.setItem("codigoDepartamento", ubicacion.codigoDepartamento);
                 localStorage.setItem("codigoMunicipio", ubicacion.codigoMunicipio);
                 this.listaMunicipios = ubicacion.municipios;
@@ -242,7 +246,7 @@ export class GeolocalizacionFormularioComponent implements OnInit {
   errorGeolocalitation(err: any) {
     switch (err.code) {
       case err.PERMISSION_DENIED:
-        localStorage.setItem("permisoGeolocalizacion", "false")
+        localStorage.setItem("permisoGeolocalizacion", "bloqueado")
         alert('No se ha permitido el acceso a la posición del usuario. '
           + 'Se ha bloqueado el servicio de geolocalización');
         break;
