@@ -104,6 +104,17 @@ export class AppComponent implements OnInit, AfterContentChecked {
     this.appGeolocalizacion.top = '0em';
   }
 
+  @HostListener('click',['$event']) onClick(event: Event){
+    const path = event.path || (event.composedPath && event.composedPath());
+    const tramites = (document.getElementsByTagName("tramites-mas-consultados") as HTMLCollectionOf<HTMLElement>)[0]
+    
+    path.forEach((element:any) => {
+      if(element == tramites){
+        this.cambiarEstilo = true;
+      }
+    });
+  }
+
   @HostListener('touchstart', ['$event']) onTouchStart(event: any): void {
     this.touchMoveInicial = event.changedTouches[0].screenY;
   }

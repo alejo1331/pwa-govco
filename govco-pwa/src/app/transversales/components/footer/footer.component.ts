@@ -79,20 +79,10 @@ export class FooterComponent implements OnInit {
   }
 
   facebook() {
-      location.href = 'fb://page/80681696914';
-
-      // location.href = 'https://m.facebook.com/80681696914/';
-
-
-    // const facebookId: string = 'fb://page/80681696914';
-    // const urlPage: string = 'https://m.facebook.com/80681696914/';
-
-    // try {
-    //   startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(facebookId)));
-    // } catch (Exception e) {
-    //   startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
-    // }
-
+    location.href = 'fb://page/80681696914';
+    setTimeout(() => {
+      location.href = 'https://m.facebook.com/80681696914/';
+    }, 500);
   }
 
 }

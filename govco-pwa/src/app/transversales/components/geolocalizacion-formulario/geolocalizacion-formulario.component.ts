@@ -135,11 +135,16 @@ export class GeolocalizacionFormularioComponent implements OnInit {
     this.closedModal.emit(this.cerrarModal);
     const codigoDepartamento = String(localStorage.getItem("codigoDepartamento"));
     const codigoMunicipio = String(localStorage.getItem("codigoMunicipio"));
-    this.getMunicipiosPorDepartamento(codigoDepartamento)
-    this.registerForm.reset({
-      codigoDepartamento: codigoDepartamento,
-      codigoMunicipio: codigoMunicipio
-    });
+    this.ServicioGeolocalizacion.getCacheJsonMunicipiosPorDepartamento(codigoDepartamento)
+      .then((municipios: MunicipioInterface[]) => {
+        this.listaMunicipios = municipios;
+        setTimeout(() => {
+          this.registerForm.reset({
+            codigoDepartamento: codigoDepartamento,
+            codigoMunicipio: codigoMunicipio
+          });
+        }, 300);
+      })
   }
 
   guardarUbicacion(form: any) {
