@@ -1,4 +1,4 @@
-import { Component, EventEmitter, HostListener, OnInit, Output, Inject } from '@angular/core';
+import { Component, EventEmitter, HostListener, OnInit, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { ConsultaUbicacionInterface } from '../../models/geolocalizacion/consulta-ubicacion-interface';
@@ -63,10 +63,6 @@ export class GeolocalizacionFormularioComponent implements OnInit {
     this.getDepartamentos();
 
     this.ServicioGeolocalizacion.coordenadas.subscribe(msg => this.datosUbicacion = msg);
-  }
-
-  resetForm(codigoDepartamento: string, codigoMunicipio: string) {
-    console.log('resetForm', codigoDepartamento, codigoMunicipio)
   }
 
   getDepartamentos() {
@@ -135,16 +131,7 @@ export class GeolocalizacionFormularioComponent implements OnInit {
     this.closedModal.emit(this.cerrarModal);
     const codigoDepartamento = String(localStorage.getItem("codigoDepartamento"));
     const codigoMunicipio = String(localStorage.getItem("codigoMunicipio"));
-    this.ServicioGeolocalizacion.getCacheJsonMunicipiosPorDepartamento(codigoDepartamento)
-      .then((municipios: MunicipioInterface[]) => {
-        this.listaMunicipios = municipios;
-        setTimeout(() => {
-          this.registerForm.reset({
-            codigoDepartamento: codigoDepartamento,
-            codigoMunicipio: codigoMunicipio
-          });
-        }, 300);
-      })
+    this.resetFormulario(codigoDepartamento, codigoMunicipio);
   }
 
   guardarUbicacion(form: any) {
@@ -173,60 +160,34 @@ export class GeolocalizacionFormularioComponent implements OnInit {
         IngresarUbicacion.afterClosed().subscribe(resultado => {
           sessionStorage.setItem('modalVisto', 'true');
           if (resultado) {
-            this.getGeolocalizacion(false); 
+            this.getGeolocalizacion();
             this.closedModal.emit(['translate(0%)', 'translate(-100%)']);
           }
         });
       }, 1000);
-    } 
+    }
   }
 
   resetFormulario(codigoDepartamento: string, codigoMunicipio: string) {
-    this.ServicioGeolocalizacion.cacheJsonMunicipiosPorDepartamento(codigoDepartamento)
-      .then(existe => {
-        if (existe) {
-          this.ServicioGeolocalizacion.getCacheJsonMunicipiosPorDepartamento(codigoDepartamento)
-            .then((municipios: MunicipioInterface[]) => {
-              this.listaMunicipios = municipios;
-              this.registerForm.reset({
-                codigoDepartamento: codigoDepartamento,
-                codigoMunicipio: codigoMunicipio
-              });
-            })
-        } else {
-          this.ServicioGeolocalizacion.getMunicipiosPorDepartamento(codigoDepartamento)
-            .subscribe((municipios: MunicipioInterface[]) => {
-              this.listaMunicipios = municipios;
-              this.registerForm.reset({
-                codigoDepartamento: codigoDepartamento,
-                codigoMunicipio: codigoMunicipio
-              });
-            },
-              error => {
-                this.listaMunicipios = [{
-                  codigo: '',
-                  nombre: 'null',
-                  codigoDepartamento: codigoDepartamento,
-                  departamento: {
-                    codigo: codigoDepartamento,
-                    nombre: ''
-                  }
-                }];
-              });
-        }
+    this.ServicioGeolocalizacion.getCacheJsonMunicipiosPorDepartamento(codigoDepartamento)
+      .then((municipios: MunicipioInterface[]) => {
+        this.listaMunicipios = municipios;
+        setTimeout(() => {
+          this.registerForm.reset({
+            codigoDepartamento: codigoDepartamento,
+            codigoMunicipio: codigoMunicipio
+          });
+        }, 300);
       })
   }
 
-  getGeolocalizacion(MostrarEnBarraGelocalizacion: boolean) {
+  getGeolocalizacion() {
     setTimeout(() => {
       if (this.ServicioGeolocalizacion.getEstadoServicioGeolocalizacion()) {
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition((data: any) => {
             this.ServicioGeolocalizacion.getUbicacionActual(data.coords.latitude, data.coords.longitude)
               .subscribe((ubicacion: ConsultaUbicacionInterface) => {
-                if (MostrarEnBarraGelocalizacion == true) {
-                  this.ServicioGeolocalizacion.ubicacion(ubicacion.codigoDepartamento, ubicacion.codigoMunicipio);
-                }
                 localStorage.setItem("permisoGeolocalizacion", "permitido")
                 localStorage.setItem("codigoDepartamento", ubicacion.codigoDepartamento);
                 localStorage.setItem("codigoMunicipio", ubicacion.codigoMunicipio);
