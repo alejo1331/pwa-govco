@@ -35,7 +35,7 @@ export class BottomMenuComponent implements OnInit, AfterViewInit {
     }
   }
 
-  ajustePantalla(){
-    this.bottomMenu.ajustandoPantalla(true);
+  ajustePantalla(estado: boolean){
+    this.bottomMenu.ajustandoPantalla(estado);
   }
 }
