@@ -1,4 +1,4 @@
-import { Component, HostListener, ViewChild, OnInit, AfterContentChecked} from '@angular/core';
+import { Component, HostListener, ViewChild, OnInit, AfterContentChecked } from '@angular/core';
 import { MatSidenav, MatSidenavContent } from '@angular/material/sidenav';
 import { SidenavService } from './transversales/services/sidenav-service/sidenav-service.service';
 import { AppService } from './app.service';
@@ -55,11 +55,9 @@ export class AppComponent implements OnInit, AfterContentChecked {
         this.appService.previousUrl = this.appService.currentUrl;
         this.appService.currentUrl = event.url;
       });
-    setTimeout(() => {
-      this.bottomService.ajustePantalla.subscribe(estado => {
-        this.cambiarEstilo = estado;
-      })
-    }, 100);
+    this.bottomService.ajustePantalla.subscribe(estado => {
+      this.cambiarEstilo = estado;
+    })
   }
 
   ngOnInit(): void {
@@ -104,12 +102,12 @@ export class AppComponent implements OnInit, AfterContentChecked {
     this.appGeolocalizacion.top = '0em';
   }
 
-  @HostListener('click',['$event']) onClick(event: Event){
+  @HostListener('click', ['$event']) onClick(event: Event) {
     const path = event.path || (event.composedPath && event.composedPath());
     const tramites = (document.getElementsByTagName("tramites-mas-consultados") as HTMLCollectionOf<HTMLElement>)[0]
-    
-    path.forEach((element:any) => {
-      if(element == tramites){
+
+    path.forEach((element: any) => {
+      if (element == tramites) {
         this.cambiarEstilo = true;
       }
     });
@@ -122,12 +120,12 @@ export class AppComponent implements OnInit, AfterContentChecked {
   @HostListener('touchmove', ['$event']) onTouchMove(event: any): void {
     const posicionInicial = this.touchMoveInicial;
     this.touchMoveFinal = event.changedTouches[0].screenY;
-      if (this.platform.IOS || this.platform.SAFARI){
-          this.touchMoveInicial = posicionInicial;
-          this.appGeolocalizacion = (document.getElementsByClassName("barra-geolocalizacion-pwa-govco") as HTMLCollectionOf<HTMLElement>)[0].style;
-          this.appGeolocalizacion.position = 'sticky';
-      }
-      this.appGeolocalizacion.transition = '0.6s';
+    if (this.platform.IOS || this.platform.SAFARI) {
+      this.touchMoveInicial = posicionInicial;
+      this.appGeolocalizacion = (document.getElementsByClassName("barra-geolocalizacion-pwa-govco") as HTMLCollectionOf<HTMLElement>)[0].style;
+      this.appGeolocalizacion.position = 'sticky';
+    }
+    this.appGeolocalizacion.transition = '0.6s';
     if (this.touchMoveInicial < this.touchMoveFinal) {
       this.touchMoveDiferencia = this.touchMoveFinal - this.touchMoveInicial;
       if (this.touchMoveDiferencia >= 50) {
