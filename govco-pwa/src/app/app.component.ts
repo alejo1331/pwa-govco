@@ -34,10 +34,6 @@ export class AppComponent implements OnInit, AfterContentChecked {
   touchMoveFinal: number = 0;
   touchMoveDiferencia: number = 0;
 
-  clicAdelante: HTMLElement | null;
-  clicAtras: HTMLElement | null;
-  clicSlide: HTMLElement | null;
-
   prueba: any;
 
   public parametroBuscador: string;
@@ -59,12 +55,12 @@ export class AppComponent implements OnInit, AfterContentChecked {
         this.appService.previousUrl = this.appService.currentUrl;
         this.appService.currentUrl = event.url;
       });
-  }
-
-  ngOnInit(): void {
     this.bottomService.ajustePantalla.subscribe(estado => {
       this.cambiarEstilo = estado;
     })
+  }
+
+  ngOnInit(): void {
     this.appGeolocalizacion = (document.getElementsByTagName("app-geolocalizacion") as HTMLCollectionOf<HTMLElement>)[0].style;
     this.appGeolocalizacionFormulario = (document.getElementsByTagName("app-geolocalizacion-formulario") as HTMLCollectionOf<HTMLElement>)[0].style;
     this.matSidenavContent = (document.getElementsByTagName("mat-sidenav-container") as HTMLCollectionOf<HTMLElement>)[0].style;
@@ -72,9 +68,6 @@ export class AppComponent implements OnInit, AfterContentChecked {
 
   ngAfterContentChecked(): void {
     this.sidenavService.setSidnav(this.sidenav);
-    this.clicAdelante = document.getElementById('adelante');
-    this.clicAtras = document.getElementById('atras');
-    this.clicSlide = document.querySelector('.contenedor-img.activo');
   }
 
   estadoMenu(estado: boolean) {
@@ -109,6 +102,17 @@ export class AppComponent implements OnInit, AfterContentChecked {
     this.appGeolocalizacion.top = '0em';
   }
 
+  @HostListener('click', ['$event']) onClick(event: Event) {
+    const path = event.path || (event.composedPath && event.composedPath());
+    const tramites = (document.getElementsByTagName("tramites-mas-consultados") as HTMLCollectionOf<HTMLElement>)[0]
+
+    path.forEach((element: any) => {
+      if (element == tramites) {
+        this.cambiarEstilo = true;
+      }
+    });
+  }
+
   @HostListener('touchstart', ['$event']) onTouchStart(event: any): void {
     this.touchMoveInicial = event.changedTouches[0].screenY;
   }
@@ -116,12 +120,12 @@ export class AppComponent implements OnInit, AfterContentChecked {
   @HostListener('touchmove', ['$event']) onTouchMove(event: any): void {
     const posicionInicial = this.touchMoveInicial;
     this.touchMoveFinal = event.changedTouches[0].screenY;
-      if (this.platform.IOS || this.platform.SAFARI){
-          this.touchMoveInicial = posicionInicial;
-          this.appGeolocalizacion = (document.getElementsByClassName("barra-geolocalizacion-pwa-govco") as HTMLCollectionOf<HTMLElement>)[0].style;
-          this.appGeolocalizacion.position = 'sticky';
-      }
-      this.appGeolocalizacion.transition = '0.6s';
+    if (this.platform.IOS || this.platform.SAFARI) {
+      this.touchMoveInicial = posicionInicial;
+      this.appGeolocalizacion = (document.getElementsByClassName("barra-geolocalizacion-pwa-govco") as HTMLCollectionOf<HTMLElement>)[0].style;
+      this.appGeolocalizacion.position = 'sticky';
+    }
+    this.appGeolocalizacion.transition = '0.6s';
     if (this.touchMoveInicial < this.touchMoveFinal) {
       this.touchMoveDiferencia = this.touchMoveFinal - this.touchMoveInicial;
       if (this.touchMoveDiferencia >= 50) {

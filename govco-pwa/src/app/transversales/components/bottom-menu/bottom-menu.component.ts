@@ -34,4 +34,8 @@ export class BottomMenuComponent implements OnInit, AfterViewInit {
       this.router.navigate(['/']);
     }
   }
+
+  ajustePantalla(estado: boolean){
+    this.bottomMenu.ajustandoPantalla(estado);
+  }
 }

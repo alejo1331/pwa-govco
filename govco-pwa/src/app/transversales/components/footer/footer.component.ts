@@ -21,7 +21,7 @@ export class FooterComponent implements OnInit {
   infAcercaDelSitio: PanelCuartaColumna;
   telefonoNacional: string;
   tituloTelefonoNacional: string;
-  telefonoLocal : string;
+  telefonoLocal: string;
   tituloTelefonoLocal: string;
   lineaAnticorrupcion: string;
   tituloLineaAnticorrupcion: string;
@@ -35,23 +35,23 @@ export class FooterComponent implements OnInit {
   marginAccordionThree: boolean = false;
 
   constructor(
-    protected infoFooter: FooterServiceService, 
+    protected infoFooter: FooterServiceService,
     protected servicioSideNav: SidenavService,
     protected servicioHeader: HeaderService,
     public bottomService: BottomMenuService
-    ) {}
+  ) { }
 
   ngOnInit(): void {
 
-    this.servicioHeader.estadoHeader(false,true);
+    this.servicioHeader.estadoHeader(false, true);
     this.bottomService.seleccionandoItem(0);
-    this.servicioSideNav.seleccionandoItem(true,'acercaPortal');
+    this.servicioSideNav.seleccionandoItem(true, 'acercaPortal');
 
-    this.infoFooter.getInformacionFooter().subscribe((footer:FooterInterface) =>{
+    this.infoFooter.getInformacionFooter().subscribe((footer: FooterInterface) => {
       this.infGeneral = footer.data.panelSegundaColumna;
 
       this.infContacto = footer.data.panelTerceraColumna;
-      this.tituloTelefonoNacional= footer.data.panelTerceraColumna.telefonoNacional.split(':')[0];
+      this.tituloTelefonoNacional = footer.data.panelTerceraColumna.telefonoNacional.split(':')[0];
       this.telefonoNacional = footer.data.panelTerceraColumna.telefonoNacional.split(':')[1];
       this.tituloTelefonoLocal = footer.data.panelTerceraColumna.telefonoLocal.split(':')[0];
       this.telefonoLocal = footer.data.panelTerceraColumna.telefonoLocal.split(':')[1];
@@ -74,8 +74,15 @@ export class FooterComponent implements OnInit {
     this.marginAccordionThree = (this.estadoAccordionThree?.toLowerCase() === 'true');
   }
 
-  desactivarItem(){
-    this.servicioSideNav.seleccionandoItem(false,'null');
+  desactivarItem() {
+    this.servicioSideNav.seleccionandoItem(false, 'null');
+  }
+
+  facebook() {
+    location.href = 'fb://page/80681696914';
+    setTimeout(() => {
+      location.href = 'https://m.facebook.com/80681696914/';
+    }, 500);
   }
 
 }

@@ -271,3 +271,6 @@ select-search-1 a{
   content: '\e95b';
 }
 
+.govco-icon-shortr-arrow::before {
+	content: '\e91c'
+}

@@ -21,6 +21,31 @@
 
   .miga-buscador{
       .breadcrumb{
+        background-color: transparent;
+        padding: 0px !important;
+        margin-bottom: 15px !important;
+        line-height: 1.1;
+        font-family: "Montserrat", sans-serif !important;
+        font-size: 1rem;
+            .breadcrumb-item {
+              span {
+                  font-size: 14px;
+                  font-weight: 500;
+              }
+              .image-icon{
+                display: inline-flex;
+              }
+              .breadcrumb-text {
+                  color: #004FBF;
+                  font-weight: 600;
+                  &::first-letter{
+                      text-transform: capitalize;
+                  }
+              }
+              .govco-icon {
+                  font-size: 1.1rem;
+              }
+          }
           li{
               &:not(.activo){
                   a{
@@ -88,4 +113,6 @@ top: 20px;
   }
 }
 
-
+.breadcrumb-item+.breadcrumb-item::before {
+  content: none;
+}
