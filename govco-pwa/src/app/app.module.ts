@@ -20,13 +20,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { SidenavModule  } from './sidenav/sidenav.module';
 import { SidenavService } from './transversales/services/sidenav-service/sidenav-service.service';
 import { NoticiasModule } from './noticias/noticias.module';
-import { ParticipaModule } from './participa/participa.module';
 import { EntidadesEstadoModule } from './entidades-estado/entidades-estado.module';
 import { SobreNosotrosModule } from './sobre-nosotros/sobre-nosotros.module';
 import { AvisoDeConstruccionModule } from './aviso-de-construccion/aviso-de-construccion.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BuscadorModule } from './buscador/buscador.module';
 import {PlatformModule} from '@angular/cdk/platform';
+import { ParticipaModule } from './participa/components/participa/Participa.Module';
 import { registerLocaleData } from '@angular/common';
 
 registerLocaleData(es)
@@ -35,6 +35,7 @@ registerLocaleData(es)
   declarations: [
     AppComponent
   ],
+
   imports: [
     BrowserModule,
     HttpClientModule,

@@ -241,17 +241,15 @@ body {
   margin-left: auto;
 }
 
+select-search-1 a, 
+#selectordenamiento_arrow,
 .btn-slider.btn-slider-rigth,
-.btn-slider.btn-slider-left{
+.btn-slider.btn-slider-left {
   text-decoration: none;
 }
 
 .contenedorBuscador {
   z-index: 1;
-}
-
-select-search-1 a{
-  text-decoration: none;
 }
 
 .fa-chevron-up:before {
@@ -274,3 +272,9 @@ select-search-1 a{
 .govco-icon-shortr-arrow::before {
 	content: '\e91c'
 }
+
+.breadcrumb-item::before {
+  content: none !important;
+}
+
+
