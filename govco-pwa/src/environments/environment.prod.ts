@@ -14,22 +14,13 @@ export const environment = {
   //Transversales
   urlApiFooter: 'https://api-interno.www.gov.co/api/cross',
   //Noticias o Actualidad
-  clientID: "GOVCONoticias",
   apiNoticiasDetalle: "https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api/noticias/",
   serverCategoriaSubcategoriaUrl: 'https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api/categorias-subcategorias/',
   //Entidades
   serverIntegracion: 'https://api-interno.www.gov.co/api/integracion-sedes/IntegracionSedes/',
   //Tu opinion cuenta o Participacion
-  //production: true,
-  clientIDOpinion: "GOVCOOpinion",
-  authIssuer: 'https://qaautenticaciondigital.and.gov.co',
-  keyCaptcha: "6LeCqOcUAAAAAMu9McR1zoUH0z6wDj_dekAODW5h",
-  //apiUrl: "http://100.24.232.62:8088/api/",
   apiCross: "https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api/cross/",
   apiUtils: "https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api/utils/",
-
-
-
   
   urlApiTramites: "https://aws-api-interno.www.gov.co/api/ficha-tramites-y-servicios",
   serverUrlNoticias: "https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api/noticias/",

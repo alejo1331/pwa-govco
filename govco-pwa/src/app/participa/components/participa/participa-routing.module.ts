@@ -5,7 +5,7 @@ import { ParticipaComponent } from './participa.component';
 
 const routes: Routes = [
   {
-    path: '', component: ParticipaComponent
+    path: 'participa', component: ParticipaComponent
   }
 ];
 
