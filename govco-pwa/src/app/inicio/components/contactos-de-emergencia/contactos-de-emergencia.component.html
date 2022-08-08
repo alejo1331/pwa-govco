@@ -11,7 +11,7 @@
                       <div class="content-govco">
                           <ul>
                               <li *ngFor="let coontEmer of contactos" class="emergency-contact-item">                                    
-                                    <a href="tel: {{coontEmer.numero}}" class="{{coontEmer.icono}} image-icon">
+                                    <a href="tel: {{coontEmer.numero.replace('#','%23')}}" class="{{coontEmer.icono}} image-icon">
                                         <span class="material-symbols-outlined govco-icon-contact"> call </span>
                                         {{coontEmer.numero}}
                                     </a>

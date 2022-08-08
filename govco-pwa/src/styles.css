@@ -13,10 +13,6 @@ body {
   margin: 0;
 }
 
-::-webkit-scrollbar {
-  display: none;
-}
-
 .mat-drawer-content {
   position: relative;
   z-index: 1;
@@ -68,6 +64,10 @@ body {
   overflow: scroll;
   height: calc(100% - 8rem);
   padding-bottom: 100px;
+}
+
+.govco-pwa-content::-webkit-scrollbar {
+  display: none;
 }
 
 .govco-pwa-content-2 {
