@@ -1,0 +1,43 @@
+<div class="row pb-3">
+    <div class="col-12">
+        <h1 *ngIf="filtro">Resultados para "{{filtro}}"</h1>
+        <span>Mostrando {{resultadosBuscador?.length}} resultado(s).</span>
+    </div>
+</div>
+
+<div class="row" *ngIf="resultadosBuscador?.length == 0">
+    <div class="col-12">
+        <h3 class="text-center">
+            No se encontraron resultados.
+        </h3>
+    </div>
+</div>
+<!-- routerLink="/recurso/{{recurso.nivel==='dos'?hyphenateUrlParams(recurso.nombreNivelUno+'/'+recurso.nombreNivelDos+'/dos/'+recurso.idNivel):hyphenateUrlParams(recurso.nombreNivelUno+'/'+recurso.nombreNivelDos+'/'+recurso.nombreNivelTres+'/tres/'+recurso.idNivel)}}" -->
+<div class="row" *ngFor="let resultado of resultadosBuscador">
+    <div class="col-12" *ngIf="resultado.nombreNivelUno">
+        <a routerLink="/categoria/{{hyphenateUrlParams(resultado.nombreNivelUno+'/'+resultado.idNivelUno)}}">
+            <h1>{{resultado.nombreNivelUno}}</h1>
+        </a>
+    </div>
+    <div class="col-12" *ngIf="resultado.nombreNivelDos">
+        <a routerLink="/recurso/{{hyphenateUrlParams(resultado.nombreNivelUno+'/'+resultado.nombreNivelDos+'/dos/'+resultado.idNivelDos)}}">
+            <h2>{{resultado.nombreNivelDos}}</h2>
+        </a>
+    </div>
+    <div class="col-12" *ngIf="resultado.nombreNivelTres">
+      <a routerLink="/recurso/{{hyphenateUrlParams(resultado.nombreNivelUno+'/'+resultado.nombreNivelDos+'/'+resultado.nombreNivelTres+'/tres/'+resultado.idNivelTres)}}">
+          <h3>{{resultado.nombreNivelTres}}</h3>
+      </a>
+  </div>
+    <div class="col-12">
+        <a routerLink="/recurso/{{resultado.nivel==='dos'?hyphenateUrlParams(resultado.nombreNivelUno+'/'+resultado.nombreNivelDos+'/dos/'+resultado.idNivel):hyphenateUrlParams(resultado.nombreNivelUno+'/'+resultado.nombreNivelDos+'/'+resultado.nombreNivelTres+'/tres/'+resultado .idNivel)}}">
+            <span class="font-weight-bold">{{resultado.nombre}}</span>
+        </a>
+    </div>
+    <div class="col-12">
+        <p>{{resultado.descripcion}}</p>
+    </div>
+    <div class="col-12">
+        <div class="item-separator"></div>
+    </div>
+</div>

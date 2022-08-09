@@ -28,6 +28,7 @@ import { BuscadorModule } from './buscador/buscador.module';
 import {PlatformModule} from '@angular/cdk/platform';
 import { ParticipaModule } from './participa/components/participa/Participa.Module';
 import { registerLocaleData } from '@angular/common';
+import { BibliotecaModule } from './biblioteca/biblioteca.module';
 import { RegistroModule } from './registro/registro.module';
 
 registerLocaleData(es)
@@ -66,7 +67,8 @@ registerLocaleData(es)
     SobreNosotrosModule,
     AvisoDeConstruccionModule,
     NgbModule,
-    BuscadorModule
+    BuscadorModule,
+    BibliotecaModule
   ],
   providers: [
     SidenavService, 
