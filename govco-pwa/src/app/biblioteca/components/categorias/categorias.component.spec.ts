@@ -1,4 +1,8 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { SearchPipe } from '../../pipes/search.pipe';
+import { CategoriasService } from '../../services/categorias-service/categorias-service.service';
 
 import { CategoriasComponent } from './categorias.component';
 
@@ -8,7 +12,9 @@ describe('CategoriasComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CategoriasComponent ]
+      imports:[RouterTestingModule, HttpClientTestingModule],
+      declarations: [ CategoriasComponent, SearchPipe],
+      providers: [CategoriasService]
     })
     .compileComponents();
   });
@@ -19,7 +25,10 @@ describe('CategoriasComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+  it('should create', 
+    inject([CategoriasService], (categoriasService: CategoriasService) => {
+      fixture = TestBed.createComponent(CategoriasComponent);
+      component = fixture.debugElement.componentInstance;
+      expect(component).toBeTruthy();
+    })); 
 });

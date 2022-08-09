@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing';
-import { SafePipe } from 'src/app/pipes/safe.pipe';
+import { SafePipe } from '../../pipes/safe.pipe';
 import {NgbModal, NgbModalRef, NgbActiveModal, NgbModule} from "@ng-bootstrap/ng-bootstrap";
 
 import { ModalComponent } from './modal.component';

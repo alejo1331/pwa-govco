@@ -19,7 +19,7 @@ import { GlobalConstants } from '../common/global-constants';
 import { LoadingComponent } from './loading/components/loading/loading.component';
 
 @NgModule({
-  declarations: [ModalComponent, HomeComponent, SafePipe, SearchPipe, CategoriasComponent, RecursosComponent, ResultadosComponent, WordLimitPipe, LoadingComponent],
+  declarations: [ModalComponent, LoadingComponent],
   imports: [
     CommonModule,
     NgbModalModule, 
@@ -29,6 +29,6 @@ import { LoadingComponent } from './loading/components/loading/loading.component
   ],
   providers: [ModalComponent,CategoriasService, BuscadorService, { provide: NgbDateParserFormatter, useClass: DatepickerFormat }, GlobalConstants],
   entryComponents: [ModalComponent],
-  exports: [HomeComponent, SearchPipe, WordLimitPipe, LoadingComponent]
+  exports: [ SearchPipe, WordLimitPipe, LoadingComponent]
 })
 export class SharedModule { }
