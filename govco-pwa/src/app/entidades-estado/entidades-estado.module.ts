@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { EntidadesEstadoRoutingModule } from './entidades-estado-routing.module';
 import { EntidadesEstadoComponent } from './components/entidades-estado/entidades-estado.component';
 import { AvisoDeConstruccionModule } from '../aviso-de-construccion/aviso-de-construccion.module';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { SharedModule } from './shared/shared.module';
 
 
 @NgModule({
@@ -14,7 +14,8 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
   imports: [
     CommonModule,
     AvisoDeConstruccionModule,
-    EntidadesEstadoRoutingModule
+    EntidadesEstadoRoutingModule,
+    SharedModule
   ],
   exports: [
     EntidadesEstadoComponent
