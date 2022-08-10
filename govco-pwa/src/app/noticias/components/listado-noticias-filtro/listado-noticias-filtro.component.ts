@@ -1,7 +1,7 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { NoticiaPublicadaModel } from 'src/app/noticias/models/noticiaPublicadaModel';
 import { FiltrosNoticiasModel } from 'src/app/noticias/models/FiltrosNoticiasModel';
-import { esResponsive } from 'src/app/noticias/utils/utils';
+import { esResponsive, isMobile } from 'src/app/noticias/utils/utils';
 import { NoticiasServiceService } from 'src/app/noticias/services/noticias-service/noticias-service.service';
 
 @Component({
@@ -159,8 +159,12 @@ export class ListadoNoticiasFiltroComponent implements OnInit, OnChanges {
 
   setFocusGrupoNoticias(){
     setTimeout(() => {
-      document.getElementById("contenedor-noticias-focus")?.focus();
-      window.scrollTo(0, 300);
+      let box = document.getElementById('govco-header');
+      document.getElementById('contenedor-noticias-focus')!.style["scrollMarginTop"] = "0px";
+      if (isMobile() || !esResponsive()) {
+        document.getElementById('contenedor-noticias-focus')!.style["scrollMarginTop"] = (box!.offsetHeight) + "px";
+      }
+      document.getElementById('contenedor-noticias-focus')!.scrollIntoView();
     }, 1000);
   }
 

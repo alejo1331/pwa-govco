@@ -168,7 +168,7 @@ export class ParticipaComponent implements OnInit {
 
   setFocusGrupoNoticias() {
     setTimeout(() => {
-      var box = document.getElementById('govco-header');
+      let box = document.getElementById('govco-header');
       document.getElementById('contenedor-temas-participacion-focus')!.style["scrollMarginTop"] = "0px";
       if (isMobile() || !esResponsive()) {
         document.getElementById('contenedor-temas-participacion-focus')!.style["scrollMarginTop"] = (box!.offsetHeight) + "px";
@@ -178,7 +178,7 @@ export class ParticipaComponent implements OnInit {
   }
 
   focoSeccionParticipa() {
-    var box = document.getElementById('govco-header');
+    let box = document.getElementById('govco-header');
     document.getElementById('seccionParticipa')!.style["scrollMarginTop"] = "0px";
     if (isMobile() || !esResponsive()) {
       document.getElementById('seccionParticipa')!.style["scrollMarginTop"] = (box!.offsetHeight) + "px";
