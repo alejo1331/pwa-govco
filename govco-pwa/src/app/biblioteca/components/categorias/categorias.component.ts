@@ -6,6 +6,12 @@ import { PublicacionesService } from '../../services/publicaciones-service/publi
 import { ValidarUrlService } from '../../services/validar-url-service/validar-url-service.service';
 import Categoria from '../../shared/models/categoria';
 import SeccionNivelUno from '../../shared/models/seccion-niveles';
+import SeccionNivel from '../../shared/models/seccion-niveles';
+import NivelHijo from '../../shared/models/seccion-niveles';
+import NivelUno from '../../shared/models/seccion-niveles';
+import NivelDos from '../../shared/models/seccion-niveles';
+import NivelTres from '../../shared/models/seccion-niveles';
+import RecursosPriorizados from '../../shared/models/seccion-niveles';
 
 declare var $: any;
 
@@ -83,7 +89,8 @@ export class CategoriasComponent implements OnInit {
   // }
 
   private obtenerSeccionNivelUnoPortal(nivel: string) {
-    this.publicacionesService.obtenerSeccionNivelUnoPortal(nivel).subscribe((data) => {
+    this.publicacionesService.obtenerSeccionNivelUnoPortal(nivel).subscribe((data:SeccionNivelUno) => {
+      console.log('seccionNivelUno',data)
       this.seccionNivelUno = data
       //this.headerService.setTitle(this.seccionNivelUno.nivelUno.nombre);
 
