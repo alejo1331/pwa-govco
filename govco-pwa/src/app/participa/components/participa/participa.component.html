@@ -81,8 +81,8 @@
             </div>
           </div>
           <div class="fechas-participacion">
-            <span><b>Desde:</b> {{ejercicio.fechaCreacion}}</span>
-            <span><b>Hasta:</b> {{ejercicio.fechaFinalizacion}}</span>
+            <span><b>Desde:</b> {{ ejercicio.fechaCreacion | date:"dd 'de' MMMM 'de' yyyy" }}</span>
+            <span><b>Hasta:</b> {{ ejercicio.fechaFinalizacion | date:"dd 'de' MMMM 'de' yyyy" }}</span>
           </div>
           <div class="info-container">
             <h3>{{(ejercicio.nombre.length>60)?ejercicio.nombre.substring(0,60)+"...":ejercicio.nombre}}</h3>
