@@ -235,13 +235,13 @@ body {
 
 .container {
   width: 100%;
-  padding-right: 16px !important;
-  padding-left: 16px !important;
+  padding-right: 15px !important;
+  padding-left: 15px !important;
   margin-right: auto;
   margin-left: auto;
 }
 
-select-search-1 a, 
+select-search-1 a,
 #selectordenamiento_arrow,
 .btn-slider.btn-slider-rigth,
 .btn-slider.btn-slider-left {
