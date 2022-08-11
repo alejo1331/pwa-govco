@@ -28,6 +28,7 @@ import { BuscadorModule } from './buscador/buscador.module';
 import {PlatformModule} from '@angular/cdk/platform';
 import { ParticipaModule } from './participa/components/participa/Participa.Module';
 import { registerLocaleData } from '@angular/common';
+import { RegistroModule } from './registro/registro.module';
 
 registerLocaleData(es)
 
@@ -51,6 +52,7 @@ registerLocaleData(es)
     ServiciosModule,
     TransversalesModule,
     PlatformModule,
+    RegistroModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the application is stable

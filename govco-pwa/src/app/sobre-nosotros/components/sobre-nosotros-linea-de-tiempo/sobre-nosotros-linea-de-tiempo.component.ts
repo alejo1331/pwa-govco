@@ -20,6 +20,7 @@ export class SobreNosotrosLineaDeTiempoComponent implements OnInit {
   estadoInicialTeclado: boolean = true;
   sobreNosotros: SobreNosotrosModel;
   lineaTiempo: any[] = [];
+  posicionActual = 1;
 
   @ViewChild('contenedor') contenedor: ElementRef<HTMLElement> | any;
   @ViewChild('labelRadio') labelRadio: ElementRef<HTMLElement> | any;
@@ -148,6 +149,7 @@ export class SobreNosotrosLineaDeTiempoComponent implements OnInit {
     this.estadoBotonAtras = left == this.varLeft ? false : true;
     this.estadoBotonAdelante = true;
     this.slideMove--;
+    this.posicionActual--;
     this.adicionarVisibilidadAccesibleCheck();
     this.adicionarVisibilidadAccesibleLabel();
     document.getElementById("checkbox_" + (this.fechaSeleccionada - 1))?.click();
@@ -281,6 +283,10 @@ export class SobreNosotrosLineaDeTiempoComponent implements OnInit {
     left = left * -1;
     this.estadoBotonAdelante = this.esResponsive() ? left < width ? true : false : left >= width ? false : true;
     this.slideMove++;
+    this.posicionActual++;
+    if (this.esResponsive()) {
+      this.estadoBotonAdelante = this.lineaTiempo.length > this.posicionActual ? true : false;
+    }
     this.adicionarVisibilidadAccesibleCheck();
     this.adicionarVisibilidadAccesibleLabel();
     document.getElementById("checkbox_" + (this.fechaSeleccionada + 1))?.click();

@@ -13,7 +13,7 @@ import { NosotrosModel } from '../models/nosotros.model';
 export class SobreNosotrosService {
     urlCross: string = environment.apiCrossUrl;
     urlHome: string = environment.serverUrlHome;
-    urlHomeAdmin: string = environment.serverUrlHomeAdm;
+    urlHomeAdmin: string = environment.serverUrlHomeAdmP;
 
     constructor(private http: HttpClient) { }
 
