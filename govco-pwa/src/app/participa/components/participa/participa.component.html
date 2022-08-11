@@ -76,6 +76,7 @@
           <div class="image-container">
             <img class="img" [src]="ejercicio.imagen" alt="Imagen decorativa"
               (error)="$any($event.target).src = 'https://govco-prod-webutils.s3.amazonaws.com/uploads/2022-04-19/0afed651-6c25-48ee-85d0-46aceeff88a9-Default_image_Background.svg'" />
+            <div class="shading-card-participacion"></div>
             <div [ngClass]="ejercicio.estado=='Activo'?'estado-participacion-activo':'estado-participacion-finalizado'">
               Estado: {{ejercicio.estado}}
             </div>

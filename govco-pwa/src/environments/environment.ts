@@ -23,6 +23,6 @@ export const environment = {
   apiCross: "http://100.24.232.62:8091/api/",
   apiUtils: "http://100.24.232.62:8184/api/",
 
-  serverUrlNoticias: "https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api/noticias/",
+  serverUrlNoticias: "https://api-interno.www.gov.co/api/noticias/",
   urlApiTramites: "https://aws-api-interno.www.gov.co/api/ficha-tramites-y-servicios"
 };

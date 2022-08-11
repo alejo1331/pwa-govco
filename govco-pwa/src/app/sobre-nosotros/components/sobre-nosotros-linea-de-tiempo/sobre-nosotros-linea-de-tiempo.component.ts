@@ -48,7 +48,6 @@ export class SobreNosotrosLineaDeTiempoComponent implements OnInit {
       .subscribe((data: any) => {
         if (this.validarModeloLineaTemporal(data)) {
           this.lineaTiempo = data.lineaTemporal;
-          this.lineaTiempo = this.lineaTiempo.slice(0, 6);
           setTimeout(() => {
             this.esResponsive() ? this.calcularWidthLineaTiempoResponsive() : this.calcularWidthLineaTiempo();
             this.mostrarVisibilidadAccesible();
