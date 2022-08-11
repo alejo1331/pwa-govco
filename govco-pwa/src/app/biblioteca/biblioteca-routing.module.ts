@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { ExtraOptions, RouterModule, Routes } from '@angular/router';
 import { CategoriasComponent } from './components/categorias/categorias.component';
-import { HomeComponent } from './components/home/home.component';
+import { BibliotecaComponent } from './components/home/biblioteca.component';
 import { RecursosComponent } from './components/recursos/recursos.component';
 import { ResultadosComponent } from './components/resultados/resultados.component';
 
@@ -12,16 +12,19 @@ const routerOptions: ExtraOptions = {
   scrollOffset: [0, 64]
 };
 
-const routes: Routes = [
-  { path: '', component: HomeComponent, pathMatch: 'full' },
-  { path: 'categoria/:categoria/:id', component: CategoriasComponent },
-  { path: 'recurso/:nivel1/:nivel2/:nivel/:recurso', component: RecursosComponent },
-  { path: 'recurso/:nivel1/:nivel2/:nivel3/:nivel/:recurso', component: RecursosComponent },
-  { path: 'resultados', component: ResultadosComponent, pathMatch: 'prefix' },
-];
+const routes: Routes = [{
+  path: 'biblioteca',
+  children: [
+    { path: '', component: BibliotecaComponent },
+    { path: 'categoria/:categoria/:id', component: CategoriasComponent },
+    { path: 'recurso/:nivel1/:nivel2/:nivel/:recurso', component: RecursosComponent },
+    { path: 'recurso/:nivel1/:nivel2/:nivel3/:nivel/:recurso', component: RecursosComponent },
+    { path: 'resultados', component: ResultadosComponent, pathMatch: 'prefix' },
+  ]
+}];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, routerOptions)],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
 export class BibliotecaRoutingModule { }

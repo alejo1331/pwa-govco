@@ -8,8 +8,8 @@ export class SafePipe implements PipeTransform {
 
   constructor(private sanitizer: DomSanitizer) { }
   public transform(value: any, type: any) {
+    let embedUrl = '';
     if (value) {
-      let embedUrl = '';
       if (type == 1 || type == undefined) {
         if (value.includes('youtu.be')) {
           const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
@@ -40,5 +40,6 @@ export class SafePipe implements PipeTransform {
       }
       return this.sanitizer.bypassSecurityTrustResourceUrl(embedUrl);
     }
+    return this.sanitizer.bypassSecurityTrustResourceUrl(embedUrl);
   }
 }

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import * as saveAs from 'file-saver';
-import { HeaderService } from '../../services/header-service/header-service.service';
+import { HeaderBibliotecaService } from '../../services/header-service/header-biblioteca-service.service';
 import { HighlightcodeService } from '../../services/highlight-code-service/highlight-code-service.service';
 import { RecursosService } from '../../services/recursos-service/recursos-service.service';
 import { ValidarUrlService } from '../../services/validar-url-service/validar-url-service.service';
@@ -36,7 +36,7 @@ export class RecursosComponent implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute,
     private recursosServices: RecursosService,
-    private headerService: HeaderService,
+    private headerService: HeaderBibliotecaService,
     private modalService: NgbModal,
     private validarUrlService: ValidarUrlService,
     private highlightcodeService: HighlightcodeService) { }

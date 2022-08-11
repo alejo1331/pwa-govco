@@ -2,19 +2,22 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import Categoria from '../../shared/models/categoria';
 import SeccionInicio from '../../shared/models/seccion-inicio';
-import  { HeaderService } from '../../services/header-service/header-service.service';
+import  { HeaderBibliotecaService } from '../../services/header-service/header-biblioteca-service.service';
 import  { TituloService } from '../../services/titulo-service/titulo-service.service';
 import  { ValidarUrlService } from '../../services/validar-url-service/validar-url-service.service';
 import  { PublicacionesService } from '../../services/publicaciones-service/publicaciones-service.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalComponent } from '../../shared/modal/modal.component';
+import { BottomMenuService } from 'src/app/transversales/services/bottom-menu/bottom-menu.service';
+import { HeaderService } from 'src/app/transversales/services/header-service/header.service';
+import { SidenavService } from 'src/app/transversales/services/sidenav-service/sidenav-service.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: 'app-biblioteca',
+  templateUrl: './biblioteca.component.html',
+  styleUrls: ['./biblioteca.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class BibliotecaComponent implements OnInit {
   query: string = '';
   titulo: ModalTitulo = new ModalTitulo();
   datosHome: Categoria[];
@@ -24,16 +27,23 @@ export class HomeComponent implements OnInit {
   codigo: any;
   constructor(private publicacionesServices: PublicacionesService,
     public router: Router,
-    private headerService: HeaderService,
+    private headerBibliotecaService: HeaderBibliotecaService,
     private tituloService: TituloService,
     private validarUrlService: ValidarUrlService,
-    private modalService: NgbModal) { }
+    private modalService: NgbModal,
+    public bottomService: BottomMenuService,
+    protected servicioHeader: HeaderService,
+    protected servicioSideNav: SidenavService) { }
 
   ngOnInit() {
     this.getPublicacionesRapidas();
     this.getTitulo();
     this.obtenerSeccionInicioPortal();
-    this.headerService.setTitle("Biblioteca");
+    this.headerBibliotecaService.setTitle("Biblioteca");
+    this.servicioHeader.estadoHeader(true, true);
+    this.bottomService.seleccionandoItem(0);
+    this.bottomService.ajustandoPantalla(false);
+    this.servicioSideNav.seleccionandoItem(false, 'null');
   }
 
   getTitulo() {

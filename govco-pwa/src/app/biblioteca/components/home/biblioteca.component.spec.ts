@@ -4,22 +4,22 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { SearchPipe } from '../../pipes/search.pipe';
 import { PublicacionesService } from '../../services/publicaciones-service/publicaciones-service.service';
 
-import { HomeComponent } from './home.component';
+import { BibliotecaComponent } from './biblioteca.component';
 
 describe('HomeComponent', () => {
-  let component: HomeComponent;
-  let fixture: ComponentFixture<HomeComponent>;
+  let component: BibliotecaComponent;
+  let fixture: ComponentFixture<BibliotecaComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HomeComponent, SearchPipe ],
+      declarations: [ BibliotecaComponent, SearchPipe ],
       imports: [ HttpClientTestingModule, RouterTestingModule ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HomeComponent);
+    fixture = TestBed.createComponent(BibliotecaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

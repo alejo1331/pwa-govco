@@ -18,7 +18,7 @@ export class RecursosService {
     descargarArchivoComprimido: "recursos/descargarComprimidoDeArchivosPorTarea/"
   }
 
-  constructor(private http: HttpClient,private httpClient: HttpClient, handler: HttpBackend) {
+  constructor(private http: HttpClient, private httpClient: HttpClient, handler: HttpBackend) {
     this.httpClient = new HttpClient(handler);
   }
 
@@ -50,11 +50,13 @@ export class RecursosService {
     });
   }
 
-  ObtenerSeccionNivelPortal(idNivel:string,nivel: string): Observable<any>{
-    if(nivel==="dos"){
+  ObtenerSeccionNivelPortal(idNivel: string, nivel: string): Observable<any> {
+    if (nivel === "dos") {
       return this.httpClient.get<any>(`${API_URL_BIBLIOTECA}SeccionNivelDos/ObtenerSeccionNivelDosPortal?idSeccion=` + idNivel);
-    }else if (nivel ==="tres"){
+    } else if (nivel === "tres") {
       return this.httpClient.get<any>(`${API_URL_BIBLIOTECA}SeccionNivelTres/ObtenerSeccionNivelTresPortal?idSeccion=` + idNivel);
+    } else {
+      return this.httpClient.get<any>(`${API_URL_BIBLIOTECA}SeccionNivelCuatro/ObtenerSeccionNivelTresPortal?idSeccion=` + idNivel);
     }
   }
 }

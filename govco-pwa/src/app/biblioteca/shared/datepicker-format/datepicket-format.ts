@@ -23,14 +23,14 @@ export function toInteger(value: any): number {
       if (value) {
         const dateParts = value.trim().split('/');
         if (dateParts.length === 1 && isNumber(dateParts[0])) {
-          return { year: toInteger(dateParts[0]), month: null, day: null };
+          return { year: toInteger(dateParts[0]), month: -99 , day: -99 };
         } else if (dateParts.length === 2 && isNumber(dateParts[0]) && isNumber(dateParts[1])) {
-          return { year: toInteger(dateParts[0]), month: toInteger(dateParts[1]), day: null };
+          return { year: toInteger(dateParts[0]), month: toInteger(dateParts[1]), day: -99 };
         } else if (dateParts.length === 3 && isNumber(dateParts[0]) && isNumber(dateParts[1]) && isNumber(dateParts[2])) {
           return { year: toInteger(dateParts[0]), month: toInteger(dateParts[1]), day: toInteger(dateParts[2]) };
         }
       }
-      return null;
+      return { year: -99 , month: -99 , day: -99 };
     }
   
     format(date: NgbDateStruct): string {

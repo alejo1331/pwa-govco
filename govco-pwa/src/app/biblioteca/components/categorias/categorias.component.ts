@@ -1,17 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CategoriasService } from '../../services/categorias-service/categorias-service.service';
-import { HeaderService } from '../../services/header-service/header-service.service';
+import { HeaderBibliotecaService } from '../../services/header-service/header-biblioteca-service.service';
 import { PublicacionesService } from '../../services/publicaciones-service/publicaciones-service.service';
 import { ValidarUrlService } from '../../services/validar-url-service/validar-url-service.service';
 import Categoria from '../../shared/models/categoria';
 import SeccionNivelUno from '../../shared/models/seccion-niveles';
-import SeccionNivel from '../../shared/models/seccion-niveles';
-import NivelHijo from '../../shared/models/seccion-niveles';
-import NivelUno from '../../shared/models/seccion-niveles';
-import NivelDos from '../../shared/models/seccion-niveles';
-import NivelTres from '../../shared/models/seccion-niveles';
-import RecursosPriorizados from '../../shared/models/seccion-niveles';
 
 declare var $: any;
 
@@ -27,14 +21,15 @@ export class CategoriasComponent implements OnInit {
   // importantes: ArchivosPublicacion[] = [];
   importante = {};
   datos: any[];
-  seccionNivelUno:SeccionNivelUno
+  seccionNivelUno: SeccionNivelUno;
+
   categoria: string;
   query: string = '';
   cargando: boolean = true;
 
   constructor(private categoriasService: CategoriasService,
     private activatedRoute: ActivatedRoute,
-    private headerService: HeaderService,
+    private headerService: HeaderBibliotecaService,
     private validarUrlService: ValidarUrlService,
     private publicacionesService: PublicacionesService) { }
 
@@ -89,10 +84,8 @@ export class CategoriasComponent implements OnInit {
   // }
 
   private obtenerSeccionNivelUnoPortal(nivel: string) {
-    this.publicacionesService.obtenerSeccionNivelUnoPortal(nivel).subscribe((data:SeccionNivelUno) => {
-      console.log('seccionNivelUno',data)
-      this.seccionNivelUno = data
-      //this.headerService.setTitle(this.seccionNivelUno.nivelUno.nombre);
+    this.publicacionesService.obtenerSeccionNivelUnoPortal(nivel).subscribe((data: SeccionNivelUno) => {
+      this.seccionNivelUno = data;
 
     }, (error) => {
 
@@ -103,7 +96,7 @@ export class CategoriasComponent implements OnInit {
 
   }
 
-  hyphenateUrlParams(str:string){
+  hyphenateUrlParams(str: string) {
     return str.split(' ').join('-').toLowerCase();
   }
 

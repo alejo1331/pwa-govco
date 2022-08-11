@@ -4,7 +4,7 @@ import { BehaviorSubject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class HeaderService {
+export class HeaderBibliotecaService {
   private titleSource = new BehaviorSubject('Biblioteca');
   currentTitle = this.titleSource.asObservable();
   
