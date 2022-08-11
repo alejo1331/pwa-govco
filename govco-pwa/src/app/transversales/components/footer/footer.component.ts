@@ -64,7 +64,8 @@ export class FooterComponent implements OnInit {
 
   @HostListener('click')
   onClick() {
-    this.estadoAccordionOne = String(document.getElementById('accordionPanelOne')?.getAttribute('aria-expanded'));
+    setTimeout(() => {
+      this.estadoAccordionOne = String(document.getElementById('accordionPanelOne')?.getAttribute('aria-expanded'));
     this.marginAccordionOne = (this.estadoAccordionOne?.toLowerCase() === 'true');
 
     this.estadoAccordionTwo = String(document.getElementById('accordionPanelTwo')?.getAttribute('aria-expanded'));
@@ -72,6 +73,7 @@ export class FooterComponent implements OnInit {
 
     this.estadoAccordionThree = String(document.getElementById('accordionPanelThree')?.getAttribute('aria-expanded'));
     this.marginAccordionThree = (this.estadoAccordionThree?.toLowerCase() === 'true');
+    }, 5);
   }
 
   desactivarItem() {
