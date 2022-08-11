@@ -27,7 +27,7 @@ h1.titulo-footer-pwa-govco {
   padding-left: 1rem;
   font-family: 'Work Sans', sans-serif;
   font-weight: 600;
-  font-size: 0.9em;
+  font-size: 0.88em;
   color: #000000;
   margin-bottom: 0;
 }
@@ -103,7 +103,7 @@ a.texto-item-info-contacto-pwa-govco {
 .text-button-accordion-pwa-govco {
   font-family: 'Montserrat', sans-serif;
   font-weight: 600;
-  font-size: 0.65em;
+  font-size: 0.5em;
   color: #000000;
   margin-left: 0.5rem;
 }
@@ -113,7 +113,7 @@ a.texto-item-info-contacto-pwa-govco {
 }
 
 .expandmore-accordion-pwa-govco {
-  font-size: 1.25em;
+  font-size: 1em;
   color: #000000;
   -webkit-transition: 0.4s;
   -o-transition: 0.4s;
@@ -134,7 +134,7 @@ a.texto-item-info-contacto-pwa-govco {
 }
 
 .caja-icono-pwa-govco .material-symbols-outlined {
-  font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 20;
+  font-variation-settings: 'FILL' 1, 'wght' 600, 'GRAD' 0, 'opsz' 20;
 }
 
 .icono-accesibilidad-accordion-pwa-govco {
@@ -153,7 +153,7 @@ a.contenido-contacto-pwa-govco {
 }
 
 a.contenido-contacto-pwa-govco {
-  font-size: 0.9em;
+  font-size: 0.88em;
 }
 
 a.contenido-item-correo-contacto-pwa-govco,
