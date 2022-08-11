@@ -4,6 +4,8 @@ import { Subject } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import { ModalSitioNoDisponibleComponent } from '../components/participa/modal-sitio-no-disponible/modal-sitio-no-disponible.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +17,10 @@ export class ValidarUrlService {
   public loading$: Observable<boolean> = this.loadingSubject.asObservable();
   url_apiUtils: string = environment.apiUtils;
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    public dialog: MatDialog
+    ) { }
 
   private validate(url: string) {    
     return this.http.get(this.url_apiUtils+`validateurl?url=${url}`)
@@ -31,9 +36,11 @@ export class ValidarUrlService {
 
   public openLink(url:string){
     this.validate(url).subscribe( resp => {
-      if(resp){ 
+      if (resp) { 
         window.open(url, "target='_blank'");
-      }       
+      } else {
+        this.dialog.open(ModalSitioNoDisponibleComponent);
+      }
     });
   }
 

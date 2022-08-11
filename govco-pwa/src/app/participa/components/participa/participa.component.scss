@@ -315,4 +315,17 @@
     }
   }
 
+::ng-deep .cdk-overlay-backdrop {
+  opacity: 3;
+  backdrop-filter: blur(6px);
+}
+
+::ng-deep .cdk-overlay-pane {
+  max-width: 600px !important;
+}
+
+::ng-deep .mat-dialog-container {
+  border-radius: 20px !important;
+  padding: 16px !important;
+}
   
