@@ -70,12 +70,16 @@ export class GeolocalizacionFormularioComponent implements OnInit {
       switch (existe) {
         case true:
           this.ServicioGeolocalizacion.getCacheJsonDepartamentos().then((departamentos: DepartamentoInterface[]) => {
-            this.listaDepartamentos = this.opcionTodosDepartamentos.concat(departamentos);
+            setTimeout(() => {
+              this.listaDepartamentos = this.opcionTodosDepartamentos.concat(departamentos);
+            }, 300);
           })
           break;
         case false:
           this.ServicioGeolocalizacion.getDepartamentos().subscribe((departamentos: DepartamentoInterface[]) => {
-            this.listaDepartamentos = this.opcionTodosDepartamentos.concat(departamentos);
+            setTimeout(() => {
+              this.listaDepartamentos = this.opcionTodosDepartamentos.concat(departamentos);
+            }, 300);
           })
           break;
       }
@@ -83,20 +87,27 @@ export class GeolocalizacionFormularioComponent implements OnInit {
   }
 
   getMunicipiosPorDepartamento(codigoDepartamento: string) {
-    this.registerForm.controls['codigoMunicipio'].setValue('')
+    this.registerForm.reset({
+      codigoDepartamento: codigoDepartamento,
+      codigoMunicipio: ''
+    });
     if (codigoDepartamento != 'TodosLosDepartamentos') {
       this.ServicioGeolocalizacion.cacheJsonMunicipiosPorDepartamento(codigoDepartamento)
         .then(existe => {
           if (existe) {
             this.ServicioGeolocalizacion.getCacheJsonMunicipiosPorDepartamento(codigoDepartamento)
               .then((municipios: MunicipioInterface[]) => {
-                this.listaMunicipios = municipios;
+                setTimeout(() => {
+                  this.listaMunicipios = municipios;
+                }, 300);
               })
           } else {
             this.ServicioGeolocalizacion.getMunicipiosPorDepartamento(codigoDepartamento)
               .subscribe((
                 municipios: MunicipioInterface[]) => {
-                this.listaMunicipios = municipios;
+                setTimeout(() => {
+                  this.listaMunicipios = municipios;
+                }, 300);
               },
                 error => {
                   this.listaMunicipios = [{
