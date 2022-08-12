@@ -21,6 +21,8 @@ export class GeolocalizacionFormularioComponent implements OnInit {
   opcionTodosMunicipios: MunicipioInterface[] = [];
   datosUbicacion: [string, string]
   cerrarModal: [string, string];
+  departLocalStorage: string;
+  municiLocalStorage: string;
 
   @Output() closedModal = new EventEmitter<[string, string]>();
   @Output() closedContent = new EventEmitter<string>();
@@ -57,7 +59,7 @@ export class GeolocalizacionFormularioComponent implements OnInit {
     this.opcionTodosDepartamentos = [{
       codigo: 'TodosLosDepartamentos',
       nombre: 'Todos',
-      municipios: ["nul"]
+      municipios: ["null"]
     }];
 
     this.getDepartamentos();
@@ -70,12 +72,16 @@ export class GeolocalizacionFormularioComponent implements OnInit {
       switch (existe) {
         case true:
           this.ServicioGeolocalizacion.getCacheJsonDepartamentos().then((departamentos: DepartamentoInterface[]) => {
-            this.listaDepartamentos = this.opcionTodosDepartamentos.concat(departamentos);
+            setTimeout(() => {
+              this.listaDepartamentos = this.opcionTodosDepartamentos.concat(departamentos);
+            }, 100);
           })
           break;
         case false:
           this.ServicioGeolocalizacion.getDepartamentos().subscribe((departamentos: DepartamentoInterface[]) => {
-            this.listaDepartamentos = this.opcionTodosDepartamentos.concat(departamentos);
+            setTimeout(() => {
+              this.listaDepartamentos = this.opcionTodosDepartamentos.concat(departamentos);
+            }, 100);
           })
           break;
       }
@@ -83,20 +89,27 @@ export class GeolocalizacionFormularioComponent implements OnInit {
   }
 
   getMunicipiosPorDepartamento(codigoDepartamento: string) {
-    this.registerForm.controls['codigoMunicipio'].setValue('')
+    this.registerForm.reset({
+      codigoDepartamento: codigoDepartamento,
+      codigoMunicipio: ''
+    });
     if (codigoDepartamento != 'TodosLosDepartamentos') {
       this.ServicioGeolocalizacion.cacheJsonMunicipiosPorDepartamento(codigoDepartamento)
         .then(existe => {
           if (existe) {
             this.ServicioGeolocalizacion.getCacheJsonMunicipiosPorDepartamento(codigoDepartamento)
               .then((municipios: MunicipioInterface[]) => {
-                this.listaMunicipios = municipios;
+                setTimeout(() => {
+                  this.listaMunicipios = municipios;
+                }, 100);
               })
           } else {
             this.ServicioGeolocalizacion.getMunicipiosPorDepartamento(codigoDepartamento)
               .subscribe((
                 municipios: MunicipioInterface[]) => {
-                this.listaMunicipios = municipios;
+                setTimeout(() => {
+                  this.listaMunicipios = municipios;
+                }, 100);
               },
                 error => {
                   this.listaMunicipios = [{
@@ -115,6 +128,17 @@ export class GeolocalizacionFormularioComponent implements OnInit {
     } else {
       this.listaMunicipios = this.opcionTodosMunicipios;
       this.registerForm.controls['codigoMunicipio'].setValue('TodosLosMunicipios')
+    }
+  }
+
+  abrirFormulario() {
+    const departamento = localStorage.getItem("codigoDepartamento");
+    const municipio = localStorage.getItem("codigoMunicipio");
+    this.departLocalStorage = String(departamento)
+    this.municiLocalStorage = String(municipio)
+
+    if (departamento && municipio) {
+      this.resetFormulario(departamento, municipio);
     }
   }
 
@@ -144,12 +168,12 @@ export class GeolocalizacionFormularioComponent implements OnInit {
   @HostListener('window:load')
   onLoad() {
     const modalVisto = sessionStorage.getItem('modalVisto');
-    const dep = localStorage.getItem("codigoDepartamento");
-    const mun = localStorage.getItem("codigoMunicipio");
+    const departamento = localStorage.getItem("codigoDepartamento");
+    const municipio = localStorage.getItem("codigoMunicipio");
 
-    if (dep && mun) {
-      this.ServicioGeolocalizacion.ubicacion(dep, mun);
-      this.resetFormulario(dep, mun);
+    if (departamento && municipio) {
+      this.ServicioGeolocalizacion.ubicacion(departamento, municipio);
+      this.resetFormulario(departamento, municipio);
     }
 
     if (modalVisto != 'true') {

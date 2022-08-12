@@ -9,6 +9,7 @@ import { HeaderService } from './transversales/services/header-service/header.se
 import { BottomMenuService } from './transversales/services/bottom-menu/bottom-menu.service';
 import { Platform } from '@angular/cdk/platform';
 import { GeolocalizacionService } from './transversales/services/geolocalizacion/geolocalizacion.service';
+import { GeolocalizacionFormularioComponent } from './transversales/components/geolocalizacion-formulario/geolocalizacion-formulario.component';
 
 @Component({
   selector: 'app-root',
@@ -21,6 +22,8 @@ export class AppComponent implements OnInit, AfterContentChecked {
   @ViewChild('sidenav') sidenav!: MatSidenav;
   @ViewChild(MatSidenavContent) sidenavcontent!: MatSidenavContent;
   @ViewChild(BarraSuperiorComponent) barraSuperior: any;
+  @ViewChild(GeolocalizacionFormularioComponent) formularioGeolocalizador: any;
+
 
   barraSuperiorGeneral: boolean = true;
   statusMenu: boolean = false;
@@ -95,6 +98,7 @@ export class AppComponent implements OnInit, AfterContentChecked {
     this.appGeolocalizacionFormulario.transform = modalAndContect[0];
     this.matSidenavContent.transition = '0.6s';
     this.matSidenavContent.transform = modalAndContect[1];
+    this.formularioGeolocalizador.abrirFormulario();
   }
 
   estadoEfectoTransicion(estilo: boolean) {
