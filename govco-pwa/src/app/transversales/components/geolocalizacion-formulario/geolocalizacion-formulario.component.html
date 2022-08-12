@@ -11,11 +11,12 @@
             cercana a tu ubicación.</p>
         <form [formGroup]="registerForm" (ngSubmit)="guardarUbicacion(registerForm.value)" class="formulario-pwa-govco">
             <label class="label-pwa-govco" for="listadoDepartmentos">Departamento*</label>
-            <select (change)="getMunicipiosPorDepartamento($any($event.target).value)" formControlName="codigoDepartamento"
-                class="select-pwa-govco texto-select-pwa-govco" id=" listadoDepartmentos"
-                [ngClass]="{ 'seleccionado': itemSeleccionado('codigoDepartamento')}">
+            <select (change)="getMunicipiosPorDepartamento($any($event.target).value)"
+                formControlName="codigoDepartamento" class="select-pwa-govco texto-select-pwa-govco"
+                id=" listadoDepartmentos" [ngClass]="{ 'seleccionado': itemSeleccionado('codigoDepartamento')}">
                 <option value="" disabled>Departamento</option>
-                <option *ngFor="let departmentos of listaDepartamentos" value="{{ departmentos.codigo }}" >
+                <option *ngFor="let departmentos of listaDepartamentos"
+                    [selected]="departmentos.codigo === departLocalStorage" value="{{ departmentos.codigo }}">
                     {{departmentos.nombre}}
                 </option>
             </select>
@@ -23,12 +24,14 @@
             <select formControlName="codigoMunicipio" class="select-pwa-govco texto-select-pwa-govco"
                 id="listadoMunicipios" [ngClass]="{ 'seleccionado': itemSeleccionado('codigoMunicipio')}">
                 <option value="" disabled>Municipio</option>
-                <option *ngFor="let municipios of listaMunicipios" value="{{ municipios.codigo }}">
+                <option *ngFor="let municipios of listaMunicipios"
+                    [selected]="municipios.codigo === municiLocalStorage" value="{{ municipios.codigo }}">
                     {{municipios.nombre.toUpperCase()}}
                 </option>
             </select>
             <button class="boton-pwa-govco texto-button-pwa-govco"
-                [ngClass]="{ 'off': !itemSeleccionado('codigoMunicipio') || !itemSeleccionado('codigoDepartamento')}">Guardar ubicación</button>
+                [ngClass]="{ 'off': !itemSeleccionado('codigoMunicipio') || !itemSeleccionado('codigoDepartamento')}">Guardar
+                ubicación</button>
         </form>
     </section>
 </div>
