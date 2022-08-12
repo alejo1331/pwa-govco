@@ -12,7 +12,7 @@ export class ActualidadPrincipalService {
   url_apiCross: string = environment.apiCrossUrl;
   url_apiCategoriasSubcategorias: string = environment.serverCategoriaSubcategoriaUrl;
   url_apiEntidades: string = environment.serverEntidades;
-  url_apiNoticias: string = environment.serverUrl;
+  url_apiNoticias: string = environment.serverUrlNoticia;
 
   private urls: any = {
     noticiasPaginadas: 'Noticias/GetNoticiasPublicadas',
