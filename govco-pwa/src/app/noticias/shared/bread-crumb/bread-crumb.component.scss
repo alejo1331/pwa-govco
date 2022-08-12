@@ -1,9 +1,10 @@
 .breadcrumb {
     background-color: #ffffff;
-    padding-top: 24px;
-    padding-left: 0;
-    padding-right: 0;
+    padding: 0;
+    margin-top: 24px;
+    margin-bottom: 15px;
     .breadcrumb-item {
+        padding: 0;
         &::before {
             content: none !important;
         }
