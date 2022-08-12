@@ -45,14 +45,14 @@
                                 class="row d-flex align-items-end justify-content-center">
                                 <div class="col">
                                     <a (click)="abrirRecurso(noticias)">
-                                        <img width="60" height="80" [src]="noticias.externo===1 ? 'assets/images/recursos/pdf-externo-biblioteca.svg' : 'assets/images/recursos/pdf-biblioteca.svg'" *ngIf="noticias.tipoRecurso?.includes('pdf')">
-                                        <img width="60" height="80" src="assets/images/recursos/video-externo-biblioteca.svg" *ngIf="noticias.tipoRecurso?.includes('video')">
-                                        <img width="60" height="80" [src]="noticias.externo===1 ? 'assets/images/recursos/xls-externo-biblioteca.svg' : 'assets/images/recursos/xls-biblioteca.svg'" *ngIf="noticias.tipoRecurso?.includes('excel')">
-                                        <img width="60" height="80" [src]="noticias.externo===1 ? 'assets/images/recursos/doc-externo-biblioteca.svg' : 'assets/images/recursos/doc-biblioteca.svg'" *ngIf="noticias.tipoRecurso?.includes('word')">
-                                        <img width="60" height="80" [src]="noticias.externo===1 ? 'assets/images/recursos/ppt-externo-biblioteca.svg' : 'assets/images/recursos/ppt-biblioteca.svg'" *ngIf="noticias.tipoRecurso?.includes('ppt')">
-                                        <img width="60" height="80" [src]="noticias.externo===1 ? 'assets/images/recursos/img-externo-biblioteca.svg' : 'assets/images/recursos/img-biblioteca.svg'" *ngIf="noticias.tipoRecurso?.includes('image')">
-                                        <img width="60" height="80" [src]="noticias.externo===1 ? 'assets/images/recursos/mmp-externo-biblioteca.svg' : 'assets/images/recursos/mmp-biblioteca.svg'" *ngIf="noticias.tipoRecurso?.includes('project')">
-                                        <img width="60" height="80" src="assets/images/recursos/url-externo-biblioteca.svg" *ngIf="noticias.tipoRecurso?.includes('url')">
+                                        <img width="60" height="80" [src]="noticias.externo===1 ? 'assets/images/pdf-externo-biblioteca.svg' : 'assets/images/pdf-biblioteca.svg'" *ngIf="noticias.tipoRecurso?.includes('pdf')">
+                                        <img width="60" height="80" src="assets/images/video-externo-biblioteca.svg" *ngIf="noticias.tipoRecurso?.includes('video')">
+                                        <img width="60" height="80" [src]="noticias.externo===1 ? 'assets/images/xls-externo-biblioteca.svg' : 'assets/images/xls-biblioteca.svg'" *ngIf="noticias.tipoRecurso?.includes('excel')">
+                                        <img width="60" height="80" [src]="noticias.externo===1 ? 'assets/images/doc-externo-biblioteca.svg' : 'assets/images/doc-biblioteca.svg'" *ngIf="noticias.tipoRecurso?.includes('word')">
+                                        <img width="60" height="80" [src]="noticias.externo===1 ? 'assets/images/ppt-externo-biblioteca.svg' : 'assets/images/ppt-biblioteca.svg'" *ngIf="noticias.tipoRecurso?.includes('ppt')">
+                                        <img width="60" height="80" [src]="noticias.externo===1 ? 'assets/images/img-externo-biblioteca.svg' : 'assets/images/img-biblioteca.svg'" *ngIf="noticias.tipoRecurso?.includes('image')">
+                                        <img width="60" height="80" [src]="noticias.externo===1 ? 'assets/images/mmp-externo-biblioteca.svg' : 'assets/images/mmp-biblioteca.svg'" *ngIf="noticias.tipoRecurso?.includes('project')">
+                                        <img width="60" height="80" src="assets/images/url-externo-biblioteca.svg" *ngIf="noticias.tipoRecurso?.includes('url')">
                                         <em *ngIf="noticias.tipoRecurso?.includes('zip')"
                                         class="far fa-file-zip-o fa-5x"></em>
                                         <em *ngIf="noticias.tipoRecurso?.includes('audio')"
@@ -98,7 +98,7 @@
                     </div>
                 </section>
                 <div class="text-right see-more" *ngIf="categoria.nombre !== 'Implemento'">
-                    <a class="btn" routerLink="/categoria/{{hyphenateUrlParams(categoria.nombre+'/'+categoria.id)}}">
+                    <a class="btn" routerLink="/biblioteca/categoria/{{hyphenateUrlParams(categoria.nombre+'/'+categoria.id)}}">
                         {{seccionInicio.inicio.textoHipervinculo}} <span class="sr-only"> sobre la categoría {{categoria.nombre}}</span>
                         <span class="govco-icon govco-icon-right-arrow"></span>
                     </a>
