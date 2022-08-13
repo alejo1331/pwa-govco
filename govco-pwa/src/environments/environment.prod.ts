@@ -3,8 +3,10 @@ export const environment = {
   //General
   serverEntidades: 'https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api/entidades/',
   serverUrl: 'https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api/entidades/',
+  serverUrlNoticia: 'https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api/noticias/',
   urlApiEntidades: 'https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api/entidades',
   apiUrl: "https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api/participacion/",
+  apiUrlUrna: "https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api/participacion/v2/",
 
   apiCrossUrl: "https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api/cross/",
   severApiCross: "https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api/cross/",
@@ -24,5 +26,5 @@ export const environment = {
   apiUtils: "https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api/utils/",
   
   urlApiTramites: "https://aws-api-interno.www.gov.co/api/ficha-tramites-y-servicios",
-  serverUrlNoticias: "https://api-interno.www.gov.co/api/noticias/",
+  serverUrlNoticias: "https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api/noticias/",
 };

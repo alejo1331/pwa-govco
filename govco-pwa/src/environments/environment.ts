@@ -1,10 +1,12 @@
 export const environment = {
   production: true,
   //General
-  serverEntidades: 'http://100.24.232.62:8085/api/',
+  serverEntidades: 'https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api/entidades/',
   serverUrl: 'http://100.24.232.62:8085/api/',
+  serverUrlNoticia: 'https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api/noticias/',
   urlApiEntidades: 'https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api/entidades',
-  apiUrl: "http://100.24.232.62:8088/api/",
+  apiUrl: "https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api/participacion/",
+  apiUrlUrna: "https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api/participacion/v2/",
 
   apiCrossUrl: "https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api/cross/",
   severApiCross: "http://100.24.232.62:8091/api/",
@@ -15,14 +17,14 @@ export const environment = {
   //Transversales
   urlApiFooter: 'https://api-interno.www.gov.co/api/cross',
   //Noticias o Actualidad
-  apiNoticiasDetalle: "http://100.24.232.62:8093/api/",
-  serverCategoriaSubcategoriaUrl: 'http://100.24.232.62:8087/api/',
+  apiNoticiasDetalle: "https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api/noticias/",
+  serverCategoriaSubcategoriaUrl: 'https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api/categorias-subcategorias/',
   //Entidades
   serverIntegracion: 'https://aws-api-interno.www.gov.co/api/integracion-sedes/IntegracionSedes/',
   //Tu opinion cuenta o Participacion
   apiCross: "http://100.24.232.62:8091/api/",
   apiUtils: "http://100.24.232.62:8184/api/",
 
-  serverUrlNoticias: "https://api-interno.www.gov.co/api/noticias/",
+  serverUrlNoticias: "https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api/noticias/",
   urlApiTramites: "https://aws-api-interno.www.gov.co/api/ficha-tramites-y-servicios"
 };

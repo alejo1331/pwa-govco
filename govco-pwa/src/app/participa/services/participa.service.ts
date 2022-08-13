@@ -4,7 +4,7 @@ import { ParticipaModel } from '../models/participa.model';
 import { OpinionModel } from '../models/opinion.model';
 import { environment } from 'src/environments/environment';
 
-const API_URL = environment.apiUrl;
+const API_URL = environment.apiUrlUrna;
  const ARI_CROSS = environment.apiCross;
 
 @Injectable({
