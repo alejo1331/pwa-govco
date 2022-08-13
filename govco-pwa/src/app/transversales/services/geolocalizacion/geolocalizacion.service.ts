@@ -33,7 +33,7 @@ export class GeolocalizacionService {
 
   cacheJsonDepartamentos(){
     let url = this.urlApiEntidades + '/GeoLocalizacion/ObtenerDepartamentos';
-    return this.servicioCache.cacheStorege(url, 'geolocalizacion-json', 'departamentos', '.json').then(data => { return data })
+    return this.servicioCache.cacheStorege(url, 'geolocalizacion', 'departamentos', '.json').then(data => { return data })
   }
 
   getCacheJsonDepartamentos(){
