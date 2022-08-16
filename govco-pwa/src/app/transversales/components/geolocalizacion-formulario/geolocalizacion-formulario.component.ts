@@ -196,14 +196,18 @@ export class GeolocalizacionFormularioComponent implements OnInit {
 
   resetFormulario(codigoDepartamento: string, codigoMunicipio: string) {
     if (codigoDepartamento == 'TodosLosDepartamentos') {
-      this.listaDepartamentos = this.opcionTodosDepartamentos;
-      this.listaMunicipios = this.opcionTodosMunicipios;
-      this.registerForm.controls['codigoDepartamento'].setValue('TodosLosDepartamentos');
-      this.registerForm.controls['codigoMunicipio'].setValue('TodosLosMunicipios');
+      this.ServicioGeolocalizacion.getCacheJsonDepartamentos().then((departamentos: DepartamentoInterface[]) => {
+        setTimeout(() => {
+          this.listaDepartamentos = this.opcionTodosDepartamentos.concat(departamentos);
+          this.listaMunicipios = this.opcionTodosMunicipios;
+          this.registerForm.controls['codigoDepartamento'].setValue('TodosLosDepartamentos');
+          this.registerForm.controls['codigoMunicipio'].setValue('TodosLosMunicipios');
+        }, 100);
+      })
+
     } else {
       this.ServicioGeolocalizacion.getCacheJsonMunicipiosPorDepartamento(codigoDepartamento)
-      .then((municipios: MunicipioInterface[]) => {
-
+        .then((municipios: MunicipioInterface[]) => {
           this.listaMunicipios = municipios;
           setTimeout(() => {
             this.registerForm.reset({
@@ -212,7 +216,7 @@ export class GeolocalizacionFormularioComponent implements OnInit {
             });
           }, 300);
 
-      })
+        })
     }
   }
 

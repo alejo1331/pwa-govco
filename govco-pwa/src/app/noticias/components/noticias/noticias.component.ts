@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HeaderService } from 'src/app/transversales/services/header-service/header.service';
-import { SidenavService } from 'src/app/transversales/services/sidenav-service/sidenav-service.service';
+import { BottomMenuService } from 'src/app/transversales/services/bottom-menu/bottom-menu.service';
+
 
 @Component({
   selector: 'app-noticias',
@@ -8,13 +8,14 @@ import { SidenavService } from 'src/app/transversales/services/sidenav-service/s
   styleUrls: ['./noticias.component.css']
 })
 export class NoticiasComponent implements OnInit {
+  bottomService: BottomMenuService;
 
   constructor(
-    
+
   ) { }
 
   ngOnInit(): void {
-    
+    this.bottomService.ajustandoPantalla(false);
   }
 
 }

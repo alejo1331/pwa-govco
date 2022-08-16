@@ -46,6 +46,7 @@ export class FooterComponent implements OnInit {
     this.servicioHeader.estadoHeader(false, true);
     this.bottomService.seleccionandoItem(0);
     this.servicioSideNav.seleccionandoItem(true, 'acercaPortal');
+    this.bottomService.ajustandoPantalla(false);
 
     this.infoFooter.getInformacionFooter().subscribe((footer: FooterInterface) => {
       this.infGeneral = footer.data.panelSegundaColumna;
