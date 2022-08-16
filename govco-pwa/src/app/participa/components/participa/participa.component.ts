@@ -67,9 +67,7 @@ export class ParticipaComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    window.addEventListener("load", () => {
-      this.home();
-    });
+    this.home();
   }
 
   iniciarCargaDatos() {

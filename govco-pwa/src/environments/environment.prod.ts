@@ -14,6 +14,8 @@ export const environment = {
   serverUrlHome: "https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api/home",
   serverUrlHomeAdm: "https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api/home",
   serverUrlHomeAdmP: "https://preapi-interno.www.gov.co/api/home",
+  //Nosotros
+  serverUrlHomeSNosotros: "https://preapi-interno.www.gov.co/api/home",
   //Transversales
   urlApiFooter: 'https://api-interno.www.gov.co/api/cross',
   //Noticias o Actualidad

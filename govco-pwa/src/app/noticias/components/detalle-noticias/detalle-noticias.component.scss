@@ -1,9 +1,12 @@
 .formatted-news {
     word-break: break-word !important;
+    color: #4b4b4b;
+    font-family: "Montserrat", sans-serif;
 }
 
-p {
-    color: red !important;
+.loading-content p {
+    color: #4b4b4b;
+    font-family: "Montserrat", sans-serif;
 }
 
 .detalle-container.news {
@@ -44,6 +47,10 @@ p {
 
 .titulo-detalle {
     font-size: 1.125rem !important;
+}
+
+::ng-deep .detalle-container.news .info-container .news-title {
+    font-size: 1rem;
 }
 
 

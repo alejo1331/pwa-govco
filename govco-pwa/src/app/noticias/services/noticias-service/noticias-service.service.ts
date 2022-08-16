@@ -62,6 +62,7 @@ export class NoticiasServiceService {
   // Obtiene el detalle de la noticia con las noticias relacionadas a esta
   getNoticiasPorId(id: string): Observable<NoticiasDetalleModel> {
     const params = new HttpParams().set('codigo', id);
+    console.log('this.urlDetalleNoticia', this.urlDetalleNoticia)
     return this.http.get<NoticiasDetalleModel>(`${this.urlDetalleNoticia}Noticias/ObtenerSeccionDetalleNoticia`, {params})
   }
 

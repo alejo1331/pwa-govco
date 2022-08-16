@@ -1,5 +1,5 @@
 .content-participa-pwa {
-  padding: 0 15px;
+  margin: 0.938rem 0 5.625rem 0;
 }
 
 .contenedor-seccion-video{
@@ -88,7 +88,8 @@
       -webkit-box-orient: vertical;
   }
   
-  .contenedor-filtros-participa{
+  .contenedor-filtros-participa{    
+    margin-bottom: -4rem;
     .titulo-lista-participa{
       color:#004884;
       font: normal normal 600 24px/48px Montserrat;
