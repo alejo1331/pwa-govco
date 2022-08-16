@@ -1,5 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
+
+const API_URL_BIBLIOTECA = environment.serverBiblioteca;
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +10,7 @@ import { Injectable } from '@angular/core';
 export class ParametricasService {
 
   private urlTiempoEtiqueta = {
-    getTiempoEtiquetaNuevo: 'parametricas/getTiempoEtiquetaNuevo'
+    getTiempoEtiquetaNuevo: `${API_URL_BIBLIOTECA}parametricas/getTiempoEtiquetaNuevo`
   }
   constructor(private http: HttpClient) { }
 
