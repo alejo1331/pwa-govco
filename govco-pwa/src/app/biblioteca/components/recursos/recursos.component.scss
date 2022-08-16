@@ -1,0 +1,49 @@
+.item-separator {
+    border-bottom: 2px solid #dddddd;
+  }
+  
+  .list-files {
+    position: relative;
+    min-width: 30vh;
+    min-height: 30vh;
+    background-color: aliceblue;
+    margin-right: 11px;
+    margin-bottom: 11px;
+  }
+  
+  .masthead {
+    height: 6vh;
+    min-height: 330px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+  pre {
+    overflow: auto;
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+  }
+  
+  .h2 {
+    text-transform: lowercase;
+  
+    &::first-letter{
+      text-transform: uppercase;
+    }
+  }
+  
+  
+  .bd-example-modal-lg .modal-dialog{
+    display: table;
+    position: absolute;
+    margin: 0 auto;
+    top: calc(50% - 24px);
+  }
+  
+  .bd-example-modal-lg .modal-dialog .modal-content{
+    background-color: transparent;
+    border: none;
+  }
+  

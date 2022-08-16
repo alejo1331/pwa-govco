@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { BibliotecaRoutingModule } from './biblioteca-routing.module';
@@ -18,19 +18,11 @@ import { CategoriasService } from './services/categorias-service/categorias-serv
 import { BuscadorService } from './services/buscador-service/buscador-service.service';
 import { DatepickerFormat } from './shared/datepicker-format/datepicket-format';
 import { GlobalConstants } from './common/global-constants';
+import { CoreModule } from './core/core.module';
 
 
 @NgModule({
   declarations: [
-    ModalComponent,
-    BibliotecaComponent,
-    CategoriasComponent,
-    ResultadosComponent,
-    RecursosComponent,
-    LoadingComponent,
-    SafePipe, 
-    SearchPipe, 
-    WordLimitPipe
   ],
   imports: [
     BibliotecaRoutingModule,
@@ -38,10 +30,11 @@ import { GlobalConstants } from './common/global-constants';
     NgbModalModule, 
     NgbModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    CoreModule
   ],
-  providers: [ModalComponent,CategoriasService, BuscadorService, { provide: NgbDateParserFormatter, useClass: DatepickerFormat }, GlobalConstants],
-  entryComponents: [ModalComponent],
-  exports: [BibliotecaComponent,SearchPipe, WordLimitPipe, LoadingComponent]
+  providers: [],
+  entryComponents: [],
+  exports: []
 })
 export class BibliotecaModule { }

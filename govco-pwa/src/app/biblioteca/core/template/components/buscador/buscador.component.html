@@ -1,0 +1,47 @@
+<div class="row p-2 back-green search-form" *ngIf="router.url !== '/'">
+    <div class="col-12 ">
+        <h2 class="sr-only">Buscador:</h2>
+        <h2 class="text-white pt-3">Filtra los artículos de tu interés</h2>
+    </div>
+
+    <!-- Formulario-->
+    <form class="col-12">
+        <div class="row justify-content-start">
+            <div class="form-group  col-lg-3 col-12">
+                <label for="date" class="text-white  ">Por fecha:</label>
+                <div class="select-govco">
+                    <div class="input-group calendar">
+                        <input class="form-control" placeholder="aaaa/mm/dd" name="dp" (keyup.enter)="onChangeDate($event)" (focusout)="onChangeDate($event)" (dateSelect)="onChangeDate($event)"
+                            ngbDatepicker #d="ngbDatepicker" id="date">
+                        <div class="input-group-append">
+                            <button (click)="d.toggle()"
+                                type="button">
+                                <em class="far fa-calendar-alt"></em>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group  col-lg-3 col-12">
+                <label for="contenido" class="text-white">Por contenido:</label>
+                <div class="select-govco" *ngIf="tcontenidos">
+                    <select class="selectpicker form-control" title="Tipo de contenido" id="contenido"
+                        (change)="onChangeContenido($any($event.target).value)">
+                        <option value="">Seleccione un tipo de contenido</option>
+                        <option *ngFor="let tcon of tcontenidos" [value]="tcon.id">{{tcon?.nombre}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group  col-lg-3 col-12">
+                <label for="seccion" class="text-white">Por sección:</label>
+                <div class="select-govco" *ngIf="categorias">
+                    <select class="form-control selectpicker" title="Sección" id="seccion"
+                        (change)="onChangeSeccion($any($event.target).value)">
+                        <option value="">Seleccione una categoría</option>
+                        <option *ngFor="let cat of categorias" [value]="cat.id">{{cat?.nombre}}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

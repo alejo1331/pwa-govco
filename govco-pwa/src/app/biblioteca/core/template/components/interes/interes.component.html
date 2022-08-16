@@ -1,0 +1,48 @@
+<div *ngIf="!router.url.includes('resultados') && router.url !== '/' && showSection">
+    <div *ngIf="articulosInteres && articulosInteres.length == 0">
+        <div class="row">
+            <div class="col form-group">
+                <h3>No hay publicaciones de interes</h3>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="articulosInteres && articulosInteres.length > 0">
+        <div class="row">
+            <div class="col form-group">
+                <h3>Esto te puede interesar...</h3>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 col-12 mb-3" *ngFor="let interes of articulosInteres; let i=index">
+                <div class="card-govco card" *ngIf="i < 3 || showAll">
+                    <div class="card-body p-0 d-flex flex-column">
+                        <div class="d-flex flex-direction-row justify-content-between align-items-center">
+                            <p class="card-title-b card-title">{{interes.recurso}}</p>
+                            <img class="w-25" src="{{interes.imagen}}" alt="Imagen de la categoría {{interes.categoria}}">
+                        </div>
+                        <h4 class="title-interes card-subtitle my-3">{{interes.publicacion}}</h4>
+                        <p class="card-text">{{interes.descripcion | wordLimit: 13}}</p>
+                        <p class="mb-0 card-text tags"><b>Temas relacionados:</b></p>
+                        <p class="card-text">{{interes.tags}}</p>
+                        <div class="mt-auto">
+                            <div class="d-flex justify-content-between">
+                                <p class="text-capitalize">{{interes.fecha | date: 'LLL d, y'}}</p> |
+                                <p>{{interes.tiempoLectura}}</p>
+                            </div>
+                            <p class="p-0 text-right">
+                                <a class="btn" routerLink="/recurso/{{interes.ruta}}" >ME INTERESA</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-right text-uppercase mr-3 pb-2">
+            <a (click)="mostrarTodo()"
+                *ngIf="!showAll && articulosInteres?.length > 3" class="btn">Mostrar
+                todo</a>
+            <a (click)="mostrarTodo()" *ngIf="showAll" class="btn">Ocultar</a>
+        </div>
+    </div>
+</div>

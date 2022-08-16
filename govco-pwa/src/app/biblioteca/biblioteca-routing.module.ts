@@ -4,6 +4,7 @@ import { CategoriasComponent } from './components/categorias/categorias.componen
 import { BibliotecaComponent } from './components/home/biblioteca.component';
 import { RecursosComponent } from './components/recursos/recursos.component';
 import { ResultadosComponent } from './components/resultados/resultados.component';
+import { TemplateComponent } from './core/template/template.component';
 
 const routerOptions: ExtraOptions = {
   useHash: false,

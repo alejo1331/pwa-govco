@@ -1,0 +1,177 @@
+.cards-cat {
+    position: relative;
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: flex;
+    -ms-flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(129, 171, 255, 0.3);
+    border-radius: 2rem;
+    padding: 0.5rem;
+    margin-bottom: 10px;
+    -webkit-box-shadow: 0px 0px 0.3rem rgba(75, 75, 75, 0.3);
+    box-shadow: 0px 0px 0.3rem rgba(75, 75, 75, 0.3);
+  }
+  
+  .vl {
+    border-left: 2px solid #004884;
+    height: 100%;
+    position: absolute;
+    left: 100%;
+    z-index: 1;
+  }
+  
+  .new-notification {
+    height: auto;
+    width: auto;
+  }
+  
+  .spacing-rcs {
+    line-height: 1.5;
+  }
+  
+  
+  .nivel-uno{
+    font-weight: 700;
+    font-size: 1rem;
+  }
+  
+  .nivel-dos{
+    font-weight: 600;
+    font-size: 0.875rem;
+  }
+  
+  .nivel-tres{
+    margin-left: 10px;
+  }
+  
+  
+  
+  
+  .logo-nivel-uno{
+    // background: url(../../../../../assets/iconodefecto.PNG);
+    width: 24px;
+    height: 24px;
+    background-size:     cover;                      /* <------ */
+      background-repeat:   no-repeat;
+      background-position: center center;
+  }
+  
+  
+  .menu-btn{
+    display: none;
+    cursor: pointer;
+    margin-left: 10px;
+    z-index: 1;
+  }
+  
+  .background-menu{
+    background: #fff;
+  }
+  
+  #menu>div>ul{
+    // border-top: 2px solid #004884;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 700px;
+  }
+  
+  @media screen   and (max-width:922px){
+    .menu-btn{
+        display: block;
+        // position: fixed;
+    }
+  
+    #menu{
+        display: block;
+        position: absolute;
+        top:52px;
+        left:0;
+        z-index: 1000;
+        height: 100%;
+        width: auto;
+        padding: 15px;
+        transition: transform .5s ease-in-out;
+        transform: translateX(-600px);
+    }
+  
+    #menu>div>ul{
+      border: 2px solid #004884;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      height: 700px;
+    }
+    #menu.show{
+      transform: translateX(-20px);
+    }
+    // .nav-main ul.nav-menu.show{
+    //     transform: translateX(-20px);
+  
+    // }
+  
+    // .nav-main ul.nav-menu{
+    //     padding: 20px;
+    //     font-size: 14px;
+    // }
+  
+    // .nav-main ul.nav-menu-right{
+    //     margin-right: 40px;
+    // }
+  }
+  
+  
+  /* width */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background:#E6EFFD;
+    width: 8px;
+    height: 100%;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #004884;
+    border-radius: 12px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #013e70;
+  }
+  
+  .flecha-collapse{
+    border-bottom: 0 !important;
+    color: #004884 !important;
+    z-index: 1000;
+    position: relative;
+    right: 80px;
+  
+  }
+  
+  .flecha-collapse:hover{
+    background: #ffffff00 !important;
+  }
+  
+  .flecha-collapse .icono {
+      transition: all ease-in-out 300ms;
+      transform-origin:  50% 75%;
+  }
+  
+  .flecha-collapse.collapsed .icono {
+      transform: rotate(180deg);
+      transition: all ease-in-out 300ms;
+      transform-origin:  75% 50%;
+  }
+  
+  
+  

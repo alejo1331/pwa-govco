@@ -1,0 +1,69 @@
+<div class="vl"></div>
+<div class="form-group p-2 mt-3  mb-0 d-flex">
+  <div class="menu-btn m-2">
+    <i class="fas fa-bars fa-2x" (click)="show()"></i>
+  </div>
+    <div class="input-group">
+        <input class="form-control py-2 border-right-0 border" type="search" value="search" placeholder="Buscar"
+            [(ngModel)]="query" (ngModelChange)="onChangeSearch($event)" (keyup.enter)="buscar()">
+        <span class="input-group-append">
+            <a (click)="buscar()" class="input-group-text input-button"><em class="fa fa-search"></em></a>
+        </span>
+    </div>
+
+</div>
+<nav class="navbar-expand flex-md-column flex-row mt-3 " id="menu">
+    <div class="collapse navbar-collapse background-menu" id="navbarNavDropdown">
+        <ul class="flex-md-column flex-row sidebar-nav w-100 justify-content-between">
+            <li class="nav-item" routerLinkActive="activo" [routerLinkActiveOptions]="{exact: true}" *ngIf="inicio">
+                <a class="nav-link pl-0 d-flex justify-content-between align-items-center" routerLink="/" (click)="show()">
+                  <span class="ml-3  d-flex nivel-uno"><div [style.background-image]="'url('+replaceUrl(inicio.imagen)+') '" class="logo-nivel-uno mt-1 mr-2"></div>{{inicio.nombre}}</span>
+                </a>
+            </li>
+            <li id="AA_LI_{{i}}" class="nav-item " *ngFor="let item of arbol;let i=index">
+              <div class="d-flex ">
+                <a class="nav-link col-12 pl-0 py-0 d-flex justify-content-between align-items-center"
+                    routerLink="categoria/{{hyphenateUrlParams(item.nombre+'/'+item.id)}}"
+                    routerLinkActive="activo"
+                    (click)="show()">
+                      <span class="ml-3  d-flex nivel-uno"><div [style.background-image]="'url('+replaceUrl(item.imagen)+') '" class="logo-nivel-uno mt-1 mr-2"></div>{{item.nombre}}</span>
+
+                </a>
+                <a class="flecha-collapse p-0 m-0 collapsed"
+                  data-toggle="collapse"
+                  [attr.data-target]="'#AA_'+i"
+                  *ngIf="item.listaSeccionesNivelDos.length>0">
+                    <i class="fas fa-chevron-up icono mr-4"></i>
+                </a>
+                </div>
+
+                <ul class="sidebar-subnav collapse" id="AA_{{i}}" aria-labelledby="headingOne" [attr.data-parent]="'#AA_LI_'+i">
+                    <li  id="AB_LI_{{j}}" class="nav-item" *ngFor="let subItem of item.listaSeccionesNivelDos;let j =index">
+                        <div class="d-flex">
+                          <a routerLink="recurso/{{hyphenateUrlParams(item.nombre+'/'+subItem.nombreRecurso+'/dos/'+subItem.id)}}" routerLinkActive="activo"
+                              class="nav-link col-12 pl-0 py-0 d-flex justify-content-between align-items-center" (click)="show()">
+                              <span class="ml-5 spacing-rcs nivel-dos">{{subItem.nombreRecurso}}</span>
+
+                          </a>
+                          <a class="flecha-collapse collapsed mr-3"
+                              data-toggle="collapse"
+                              [attr.data-target]="'#AB_'+j"
+                              *ngIf="subItem.listaSeccionesNivelTres.length>0">
+                                <i class="fas fa-chevron-up icono mr-4"></i>
+                            </a>
+                        </div>
+                        <ul id="AB_{{j}}" class="collapse sidebar-subnav" aria-labelledby="headingOne" [attr.data-parent]="'#AB_LI_'+j">
+                          <li class="nav-item" *ngFor="let subItem2 of subItem.listaSeccionesNivelTres">
+                              <a routerLink="recurso/{{hyphenateUrlParams(item.nombre+'/'+subItem.nombreRecurso+'/'+subItem2.nombreRecurso+'/tres/'+subItem2.id)}}" routerLinkActive="activo"
+                                  class="nav-link pl-0 py-0 d-flex justify-content-between align-items-center" (click)="show()">
+                                  <div class="nivel-tres ml-3"><span class="ml-4 spacing-rcs">{{subItem2.nombreRecurso}}</span></div>
+                              </a>
+                          </li>
+                      </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>
+
