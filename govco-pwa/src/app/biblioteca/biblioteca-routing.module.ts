@@ -15,6 +15,7 @@ const routerOptions: ExtraOptions = {
 
 const routes: Routes = [{
   path: 'biblioteca',
+  component: TemplateComponent ,
   children: [
     { path: '', component: BibliotecaComponent },
     { path: 'categoria/:categoria/:id', component: CategoriasComponent },

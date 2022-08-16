@@ -12,7 +12,7 @@ import { LoadingComponent } from '../shared/loading/components/loading/loading.c
 import { InteresComponent } from './template/components/interes/interes.component';
 import { SharedModule } from '../shared/shared.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { BuscadorComponent } from './template/components/buscador/buscador.component';
+import { BuscadorBibliotecaComponent } from './template/components/buscador/buscador-biblioteca.component';
 
 
 
@@ -22,7 +22,7 @@ import { BuscadorComponent } from './template/components/buscador/buscador.compo
     SidebarComponent,
     MainComponent,
     InteresComponent,
-    BuscadorComponent
+    BuscadorBibliotecaComponent
   ],
   imports: [
     CommonModule,

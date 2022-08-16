@@ -8,11 +8,11 @@ import Categoria from 'src/app/biblioteca/shared/models/categoria';
 declare var $: any;
 
 @Component({
-  selector: 'app-buscador',
-  templateUrl: './buscador.component.html',
-  styleUrls: ['./buscador.component.scss']
+  selector: 'app-buscador-biblioteca',
+  templateUrl: './buscador-biblioteca.component.html',
+  styleUrls: ['./buscador-biblioteca.component.scss']
 })
-export class BuscadorComponent implements OnInit {
+export class BuscadorBibliotecaComponent implements OnInit {
 
   categorias: Categoria[];
   tcontenidos: any[];
