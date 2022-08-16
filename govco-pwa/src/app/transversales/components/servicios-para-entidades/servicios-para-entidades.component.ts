@@ -20,6 +20,7 @@ export class ServiciosParaEntidadesComponent implements OnInit {
     this.servicioHeader.estadoHeader(true, true);
     this.bottomService.seleccionandoItem(0);
     this.servicioSideNav.seleccionandoItem(true,'serviciosEntidades');
+    this.bottomService.ajustandoPantalla(false);
   }
 
 }

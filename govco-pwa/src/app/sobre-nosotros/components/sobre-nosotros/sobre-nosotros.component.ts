@@ -36,7 +36,8 @@ export class SobreNosotrosComponent implements OnInit {
     this.servicioHeader.estadoHeader(true,true);
     this.bottomService.seleccionandoItem(0);
     this.servicioSideNav.seleccionandoItem(true,'sobreNosotros');
-    
+    this.bottomService.ajustandoPantalla(false);
+
     this.sobreNosotrosService.getTitleAndDescription(this.codigo)
       .subscribe((resp) => {
         this.title = resp.data.titulo;
