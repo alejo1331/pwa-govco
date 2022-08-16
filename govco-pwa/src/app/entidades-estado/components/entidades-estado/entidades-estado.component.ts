@@ -26,11 +26,11 @@ export class EntidadesEstadoComponent implements OnInit {
   estiloFijo:any = {position:'fixed',top:this.posicionTop, height:'90px'};
 
   objeto:any;
-  constructor(private serviceEntidades:EntidadesService, 
+  constructor(private serviceEntidades:EntidadesService,
     protected servicioSideNav: SidenavService,
     protected servicioHeader: HeaderService,
     public bottomService: BottomMenuService) {
-    
+
   }
 
   ngOnInit() {
@@ -39,6 +39,7 @@ export class EntidadesEstadoComponent implements OnInit {
     this.servicioHeader.estadoHeader(true,true);
     this.bottomService.seleccionandoItem(0);
     this.servicioSideNav.seleccionandoItem(true,'entidadesEstado');
+    this.bottomService.ajustandoPantalla(false);
   }
 
   ngAfterViewInit(){
@@ -70,7 +71,7 @@ export class EntidadesEstadoComponent implements OnInit {
 
   activarDesacticarMenuCollapse(){
     var seccion = document.getElementById("seccion_"+this.objeto.rama.items[0].titulo)!;
-    
+
       seccion.style.marginTop = "0px";
       this.estadoContenedor=false;
   }
@@ -116,7 +117,7 @@ export class EntidadesEstadoComponent implements OnInit {
       document.getElementById('seccion_'+id)?.scrollIntoView();
     }, 100);
 
-   
+
   }
 
   isHeaderFixed() {
