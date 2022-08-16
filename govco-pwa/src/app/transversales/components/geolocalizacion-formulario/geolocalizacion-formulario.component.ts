@@ -7,6 +7,7 @@ import { MunicipioInterface } from '../../models/geolocalizacion/municipio-inter
 import { GeolocalizacionService } from '../../services/geolocalizacion/geolocalizacion.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmacionUbicacionComponent } from './components/confirmacion-ubicacion/confirmacion-ubicacion.component';
+import { CacheStorageService } from '../../services/cache-storage-service/cache-storage.service';
 
 @Component({
   selector: 'app-geolocalizacion-formulario',
@@ -40,6 +41,7 @@ export class GeolocalizacionFormularioComponent implements OnInit {
 
   constructor(
     protected ServicioGeolocalizacion: GeolocalizacionService,
+    protected ServicioCache: CacheStorageService,
     public dialog: MatDialog) {
   }
 
@@ -88,7 +90,7 @@ export class GeolocalizacionFormularioComponent implements OnInit {
     });
   }
 
-  getMunicipiosPorDepartamento(codigoDepartamento: string) {
+  async getMunicipiosPorDepartamento(codigoDepartamento: string) {
     this.registerForm.reset({
       codigoDepartamento: codigoDepartamento,
       codigoMunicipio: ''
@@ -127,7 +129,7 @@ export class GeolocalizacionFormularioComponent implements OnInit {
         })
     } else {
       this.listaMunicipios = this.opcionTodosMunicipios;
-      this.registerForm.controls['codigoMunicipio'].setValue('TodosLosMunicipios')
+      this.registerForm.controls['codigoMunicipio'].setValue('TodosLosMunicipios');
     }
   }
 
@@ -193,16 +195,25 @@ export class GeolocalizacionFormularioComponent implements OnInit {
   }
 
   resetFormulario(codigoDepartamento: string, codigoMunicipio: string) {
-    this.ServicioGeolocalizacion.getCacheJsonMunicipiosPorDepartamento(codigoDepartamento)
+    if (codigoDepartamento == 'TodosLosDepartamentos') {
+      this.listaDepartamentos = this.opcionTodosDepartamentos;
+      this.listaMunicipios = this.opcionTodosMunicipios;
+      this.registerForm.controls['codigoDepartamento'].setValue('TodosLosDepartamentos');
+      this.registerForm.controls['codigoMunicipio'].setValue('TodosLosMunicipios');
+    } else {
+      this.ServicioGeolocalizacion.getCacheJsonMunicipiosPorDepartamento(codigoDepartamento)
       .then((municipios: MunicipioInterface[]) => {
-        this.listaMunicipios = municipios;
-        setTimeout(() => {
-          this.registerForm.reset({
-            codigoDepartamento: codigoDepartamento,
-            codigoMunicipio: codigoMunicipio
-          });
-        }, 300);
+
+          this.listaMunicipios = municipios;
+          setTimeout(() => {
+            this.registerForm.reset({
+              codigoDepartamento: codigoDepartamento,
+              codigoMunicipio: codigoMunicipio
+            });
+          }, 300);
+
       })
+    }
   }
 
   getGeolocalizacion() {
