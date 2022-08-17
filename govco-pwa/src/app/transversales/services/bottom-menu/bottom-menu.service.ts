@@ -14,8 +14,8 @@ export class BottomMenuService {
   private pantalla = new BehaviorSubject<boolean>(false);
   public ajustePantalla = this.pantalla.asObservable();
 
-  public ajustandoPantalla(ajustePantalla: boolean): void {
-    this.pantalla.next(ajustePantalla);
+  public async ajustandoPantalla(ajustePantalla: boolean) {
+    await this.pantalla.next(ajustePantalla);
   }
 
   public seleccionandoItem(seleccionado: number): void {
