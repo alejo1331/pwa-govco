@@ -59,7 +59,7 @@ export class AppComponent implements OnInit, AfterContentChecked {
         this.appService.currentUrl = event.url;
       });
     this.bottomService.ajustePantalla.subscribe(estado => {
-      this.cambiarEstilo = estado;
+        this.cambiarEstilo = estado;
     })
   }
 

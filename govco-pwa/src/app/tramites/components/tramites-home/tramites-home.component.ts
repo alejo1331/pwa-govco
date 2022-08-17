@@ -27,7 +27,7 @@ export class TramitesHomeComponent implements OnInit {
   ngOnInit() {
     this.servicioHeader.estadoHeader(false,false);
     this.bottomService.seleccionandoItem(1);
-    this.bottomService.ajustandoPantalla(false);
+    this.bottomService.ajustandoPantalla(true);
     this.servicioSideNav.seleccionandoItem(false,'null');
   }
 
