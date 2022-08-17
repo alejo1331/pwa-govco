@@ -63,7 +63,6 @@ body {
   position: relative;
   overflow: scroll;
   height: calc(100% - 8rem);
-  padding-bottom: 100px;
 }
 
 .govco-pwa-content::-webkit-scrollbar {
