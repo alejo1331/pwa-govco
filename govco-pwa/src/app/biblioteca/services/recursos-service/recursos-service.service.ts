@@ -44,7 +44,7 @@ export class RecursosService {
 
 
   descargarArchivos(ids: string): Observable<any> {
-    return this.http.get("Recursos/DescargarComprimidoDeArchivos?ids=" + ids, {
+    return this.http.get(`${API_URL_BIBLIOTECA}Recursos/DescargarComprimidoDeArchivos?ids=` + ids, {
       responseType: 'blob',
       headers: new HttpHeaders().append('angular-show-loading', 'true')
     });
