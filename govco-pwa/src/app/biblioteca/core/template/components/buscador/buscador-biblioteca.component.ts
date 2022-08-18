@@ -25,7 +25,6 @@ export class BuscadorBibliotecaComponent implements OnInit {
     private buscadorService: BuscadorService) {
     this.getCategorias();
     this.getTContenidos();
-    this.onInitElements();
   }
 
   ngOnInit() {
@@ -42,17 +41,6 @@ export class BuscadorBibliotecaComponent implements OnInit {
       this.fechaPublicacion = fecha
     );
 
-  }
-
-  ngAfterViewChecked () {
-    if (this.tcontenidos) {  // <-- IMPORTANT!
-      //noinspection TypeScriptUnresolvedFunction
-      // $('select').selectpicker();
-    }
-}
-
-  private onInitElements() {
-    // $('select').selectpicker();
   }
 
   getCategorias() {
@@ -82,9 +70,9 @@ export class BuscadorBibliotecaComponent implements OnInit {
   }
 
   onChangeDate(e: any) {
-    if(e.year){
+    if (e.year) {
       this.buscadorService.setFecha(new Date(e.year, e.month - 1, e.day).toUTCString());
-    }else{
+    } else {
       this.buscadorService.setFecha("");
     }
     this.router.navigate(['/biblioteca/resultados/']);
