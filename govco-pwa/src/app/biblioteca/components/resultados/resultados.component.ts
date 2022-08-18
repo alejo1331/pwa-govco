@@ -56,7 +56,7 @@ export class ResultadosComponent implements OnInit {
   }
 
   private onInitElements() {
-    $('select').selectpicker();
+    // $('select').selectpicker();
   }
 
   getResultados() {

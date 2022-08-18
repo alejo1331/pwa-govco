@@ -47,12 +47,12 @@ export class BuscadorBibliotecaComponent implements OnInit {
   ngAfterViewChecked () {
     if (this.tcontenidos) {  // <-- IMPORTANT!
       //noinspection TypeScriptUnresolvedFunction
-      $('select').selectpicker();
+      // $('select').selectpicker();
     }
 }
 
   private onInitElements() {
-    $('select').selectpicker();
+    // $('select').selectpicker();
   }
 
   getCategorias() {

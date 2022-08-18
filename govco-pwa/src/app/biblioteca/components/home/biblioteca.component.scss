@@ -442,3 +442,18 @@ $color-orange-contrast:rgb(251, 194, 0);
   .page-content h3{
     color: #004884;
   }
+
+  .page-content p{
+    font-family: "Work Sans",sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    color: #004884;
+  }
+
+  .intro{
+    font-size: .875rem !important;
+  }
+
+  .col img{
+    cursor: pointer;
+  }

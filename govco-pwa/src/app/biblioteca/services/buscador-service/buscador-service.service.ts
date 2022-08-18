@@ -13,7 +13,7 @@ const API_URL_BIBLIOTECA = environment.serverBiblioteca;
 export class BuscadorService {
 
   private urlBuscador = {
-    getResultados: "buscador"
+    getResultados: `${API_URL_BIBLIOTECA}buscador`
   }
 
   private searchSource = new BehaviorSubject('');

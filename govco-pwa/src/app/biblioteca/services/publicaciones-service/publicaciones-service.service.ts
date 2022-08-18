@@ -16,12 +16,12 @@ const API_URL_BIBLIOTECA = environment.serverBiblioteca;
 export class PublicacionesService {
 
   private urlPublicaciones = {
-    getTags: "publicaciones/gettags",
-    getPublicaciones: "publicaciones/getpublicaciones",
-    getPublicacionesDestacadas: "publicaciones/getpublicacionesdestacadas",
-    getPublicacionesByCategoria: "publicaciones/getpublicacionesbycategoria",
-    getTContenidos: "publicaciones/gettcontenidos",
-    getPublicacionesRapidas: "publicaciones/getpublicacionesrapidas"
+    getTags: `${API_URL_BIBLIOTECA}publicaciones/gettags`,
+    getPublicaciones: `${API_URL_BIBLIOTECA}publicaciones/getpublicaciones`,
+    getPublicacionesDestacadas: `${API_URL_BIBLIOTECA}publicaciones/getpublicacionesdestacadas`,
+    getPublicacionesByCategoria: `${API_URL_BIBLIOTECA}publicaciones/getpublicacionesbycategoria`,
+    getTContenidos: `${API_URL_BIBLIOTECA}publicaciones/gettcontenidos`,
+    getPublicacionesRapidas: `${API_URL_BIBLIOTECA}publicaciones/getpublicacionesrapidas`
   }
 
   constructor(private http: HttpClient,

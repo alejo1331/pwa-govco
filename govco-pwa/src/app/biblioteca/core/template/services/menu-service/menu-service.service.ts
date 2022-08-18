@@ -19,7 +19,7 @@ export class MenuService {
     }
 
   getMenu(): Observable<Menu[]> {
-    return this.http.get<Menu[]>("menu")
+    return this.http.get<Menu[]>(`${API_URL_BIBLIOTECA}menu`)
     .pipe(
       map((data) => {
         this.utilsService.newItem(data);

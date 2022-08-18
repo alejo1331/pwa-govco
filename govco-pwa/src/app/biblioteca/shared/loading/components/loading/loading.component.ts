@@ -24,8 +24,10 @@ export class LoadingComponent implements OnInit {
     });       
   }
 
-  ngOnDestroy() {
-    this.loadingSubscription.unsubscribe();
+  ngOnDestroy(): void {
+    if (this.loadingSubscription) {
+      this.loadingSubscription.unsubscribe();
+    }
   }
 
 }

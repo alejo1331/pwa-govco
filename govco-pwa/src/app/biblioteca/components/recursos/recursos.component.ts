@@ -83,7 +83,7 @@ export class RecursosComponent implements OnInit {
     this.pesoTotal=0;
   }
   private onInitElements() {
-    $('select').selectpicker();
+    // $('select').selectpicker();
   }
 
   getInfoByRecurso(recurso: string) {

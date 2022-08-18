@@ -50,7 +50,7 @@ export class CategoriasComponent implements OnInit {
   }
 
   private onInitElements() {
-    $('select').selectpicker();
+    // $('select').selectpicker();
   }
 
   private getInfoCategoria(categoria: string) {

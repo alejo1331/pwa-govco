@@ -174,4 +174,45 @@
   }
   
   
-  
+  .sidebar-nav{
+    padding: 0;
+    list-style: none;
+    font-weight: bolder;
+  }
+
+  .sidebar-nav li{
+    text-indent: 20px;
+    line-height: 40px;
+  }
+
+  .activo {
+    text-decoration: none;
+    color: #007bff;
+    background: #E5EEFB;
+}
+
+.sidebar-nav li a {
+  display: block;
+  text-decoration: none;
+  color: #004884;
+  border-bottom: 1px solid #dddddd;
+}
+
+.nav-link {
+  min-height: 48px!important;
+}
+
+.nav-link span {
+  text-indent: 0;
+}
+
+.sidebar-subnav {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-weight: 400;
+}
+
+.show {
+  transition: opacity 400ms;
+}

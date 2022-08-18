@@ -14,8 +14,8 @@ export class RecursosService {
 
   private urlRecursos = {
     getInfoByRecurso: "recursos/getinfobyrecurso/",
-    getRecursosInteresByCategoria: "recursos/getrecursosinteresbycategoria/",
-    descargarArchivoComprimido: "recursos/descargarComprimidoDeArchivosPorTarea/"
+    getRecursosInteresByCategoria: `${API_URL_BIBLIOTECA}recursos/getrecursosinteresbycategoria/`,
+    descargarArchivoComprimido: `${API_URL_BIBLIOTECA}recursos/descargarComprimidoDeArchivosPorTarea/`
   }
 
   constructor(private http: HttpClient, private httpClient: HttpClient, handler: HttpBackend) {

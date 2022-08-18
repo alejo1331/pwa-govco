@@ -58,7 +58,7 @@ export class SidebarComponent implements OnInit {
 
   buscar() {
     this.buscadorService.buscar(this.query);
-    this.router.navigate(['/resultados/'], {queryParams: {busqueda: this.query}});
+    this.router.navigate(['/biblioteca/resultados/'], {queryParams: {busqueda: this.query}});
   }
 
   onChangeSearch(data: any) {

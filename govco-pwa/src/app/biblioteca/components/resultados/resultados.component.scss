@@ -1,3 +1,8 @@
+* {
+  // font-family: "Montserrat",sans-serif;
+  font-size: 1rem;
+  color: #004884;
+}
 .image-icon {
     color: white;
   }
@@ -17,3 +22,10 @@
     font-size: 1.125rem !important;
     font-weight: 300 !important;
   }
+
+  .item-separator {
+    margin-top: 0!important;
+    margin-bottom: 20px!important;
+    border-bottom: 2px solid #dddddd;
+    border-radius: 0!important;
+}

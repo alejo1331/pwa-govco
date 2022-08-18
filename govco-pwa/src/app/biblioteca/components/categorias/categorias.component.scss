@@ -1,3 +1,8 @@
+*{
+  font-size: 1rem;
+  color: #004884;
+}
+
 .card-govco {
     min-height: 218px;
     background-color: #e3edfa;
@@ -136,4 +141,31 @@
       padding-top: 40px;
     }
   }
-  
+
+
+  h2{
+    font-weight: 300!important;
+    font-size: 2.0625rem;
+  }
+
+  .salto-linea{
+    white-space: pre-wrap;
+    font-family: "Work Sans",sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .page__content{
+    padding: 2%;
+    border-radius: 10px;
+  }
+
+  .row div div h3 a{
+    color: #3772ff;
+    text-decoration: none;
+  }
+
+  .see-more a{
+    align-items: center;
+    color: #3772ff;
+  }
