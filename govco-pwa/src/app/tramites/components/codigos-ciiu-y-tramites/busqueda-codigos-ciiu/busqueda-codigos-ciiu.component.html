@@ -1,0 +1,53 @@
+<div class="wrapper">
+    <div class="container">
+        <div class="row mb-4 justify-row-responsive">
+            <div class="col-12 col-sm-12 col-md-12">
+                <p class="aviso-ciiu">
+                    La información esta relacionada en las siguientes ciudades: Armenia, Manizales, Pereira, Bogotá,
+                    Ipiales, Dosquebradas,Santa Marta, Valledupar, Buga, Palmira, Ibagué.
+                </p>
+            </div>
+        </div>
+        <div class="row mb-2 justify-row-responsive mb-5">
+            <div class="col-xs-12 col-md-3">
+                <select-search-1 id-select="selectdepartamento" label-select="Departamento"
+                    aria-label-select="Escoge un departamento" aria-label-validation=""
+                    (clicEmitEvent)="changed($event)" [list]=Departamentos [seleccionado]=seleccionado
+                    place-holder="Escoge un departamento" #selectdepartamento>
+                </select-search-1>
+            </div>
+            <div class="col-xs-12 col-md-3">
+                <select-search-1 id-select="selectmunicipio" label-select="Municipio"
+                    aria-label-select="Escoge un municipio"
+                    aria-label-validation="Para seleccionar un municipio primero debe escoger un departamento"
+                    (clicEmitEvent)="changedMunicipio($event)" [list]=Municipios [seleccionado]=seleccionado
+                    place-holder="Escoge un municipio" #selectmunicipio>
+                </select-search-1>
+            </div>
+            <div class="col-xs-12 col-md-6 ">
+                <label class="text-ciiu">Busca actividad económica</label>
+                <div class="ng-autocomplete">
+                    <ng-autocomplete [data]="codigoActividades" [searchKeyword]="keyword"
+                        (selected)='selectEvent($event)' (inputChanged)='onChangeSearch($any($event))'
+                        (inputCleared)='clearEventStatic()' (inputFocused)='onFocused($event)'
+                        [itemTemplate]="itemTemplate" [notFoundTemplate]="notFoundTemplate"
+                        placeholder="Digita el código o las palabras de la actividad" [disabled]=HabilitarBusqueda>
+                    </ng-autocomplete>
+                    <ng-template #itemTemplate let-item>
+                        <a [innerHTML]="item.codigo" style="display: inline-block;"></a>
+                        <p style="display: inline-block;color: #4B4B4B">|</p><a [innerHTML]="item.nombre"
+                            style="display: inline-block;"></a>
+                    </ng-template>
+                    <ng-template #notFoundTemplate let-notFound>
+
+                        No hay resultados
+                    </ng-template>
+                    <button type="submit" class="btn-search-ciiu" (click)='renderizarTabla()'
+                        style="background-color: white;" [disabled]="HabilitarBtnBusqueda"><span
+                            class="govco-icon govco-icon-search-cn"
+                            style="color: #3366CC; font-size: 36px;"></span></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

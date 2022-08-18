@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { TramitesHomeComponent } from './components/tramites-home/tramites-home.component';
+import { CodigosCiiuYTramitesComponent } from './components/codigos-ciiu-y-tramites/codigos-ciiu-y-tramites.component';
 
 
 const routes: Routes = [{
@@ -10,6 +11,10 @@ const routes: Routes = [{
     {
       path: '',
       component: TramitesHomeComponent
+    },
+    {
+      path: 'codigos',
+      component: CodigosCiiuYTramitesComponent
     },
   ]
 }];
