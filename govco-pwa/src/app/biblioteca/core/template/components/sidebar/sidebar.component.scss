@@ -216,3 +216,9 @@
 .show {
   transition: opacity 400ms;
 }
+
+@media (min-width: 360px) {
+  .input-group-append{
+    height: 38px;
+  }
+}

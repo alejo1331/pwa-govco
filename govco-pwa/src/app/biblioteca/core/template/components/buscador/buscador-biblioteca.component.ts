@@ -73,12 +73,12 @@ export class BuscadorBibliotecaComponent implements OnInit {
 
   onChangeContenido(contenidoId: string) {
     this.buscadorService.setContenido(contenidoId);
-    this.router.navigate(['/resultados/']);
+    this.router.navigate(['/biblioteca/resultados/']);
   }
 
   onChangeSeccion(seccionId: string) {
     this.buscadorService.setSeccion(seccionId);
-    this.router.navigate(['/resultados/']);
+    this.router.navigate(['/biblioteca/resultados/']);
   }
 
   onChangeDate(e: any) {
@@ -87,7 +87,7 @@ export class BuscadorBibliotecaComponent implements OnInit {
     }else{
       this.buscadorService.setFecha("");
     }
-    this.router.navigate(['/resultados/']);
+    this.router.navigate(['/biblioteca/resultados/']);
   }
 
 }
