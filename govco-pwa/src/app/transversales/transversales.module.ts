@@ -12,6 +12,7 @@ import { TransversalesRoutingModule } from './transversales.routing';
 import { BarraSuperiorComponent } from './components/barra-superior/barra-superior.component';
 import { GeolocalizacionFormularioComponent } from './components/geolocalizacion-formulario/geolocalizacion-formulario.component';
 import { ServiciosParaEntidadesComponent } from './components/servicios-para-entidades/servicios-para-entidades.component';
+import { CardsServiciosParaEntidadesComponent } from './components/servicios-para-entidades/cards-servicios-para-entidades/cards-servicios-para-entidades.component';
 import { AvisoDeConstruccionModule } from '../aviso-de-construccion/aviso-de-construccion.module';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ConfirmacionUbicacionComponent } from './components/geolocalizacion-formulario/components/confirmacion-ubicacion/confirmacion-ubicacion.component';
@@ -36,6 +37,7 @@ import { ConfirmacionUbicacionComponent } from './components/geolocalizacion-for
     BarraSuperiorComponent,
     GeolocalizacionFormularioComponent,
     ServiciosParaEntidadesComponent,
+    CardsServiciosParaEntidadesComponent,
     ConfirmacionUbicacionComponent
   ],
   exports: [

@@ -28,5 +28,8 @@ export const environment = {
   apiUtils: "http://100.24.232.62:8184/api/",
 
   serverUrlNoticias: "https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api/noticias/",
-  urlApiTramites: "https://aws-api-interno.www.gov.co/api/ficha-tramites-y-servicios"
+  urlApiTramites: "https://aws-api-interno.www.gov.co/api/ficha-tramites-y-servicios",
+
+  //URL plan de integracion
+  urlPlanIntegracion: "https://admin.www.gov.co/Autenticacion/Autenticacion/RegistroAutoridad",
 };
