@@ -40,3 +40,4 @@ export const environment = {
   UrlAPIConsultaCIIU: 'https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api/ficha-tramites-y-servicios/ConsultaCIIU/',
   auditoriaurl: 'https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api/auditoria/Auditoria/'
 };
+
