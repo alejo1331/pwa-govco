@@ -1,63 +1,44 @@
-.image-icon {
-    display: flex;
-    align-items: center
+
+$white: #fff;
+.banner{
+    background: #004884;
+    padding-top: 6em;
+    height: 333px;
+    @media (max-width: 768px) {
+        padding-top: 3.5rem;
+        height: 100%;
+        margin-top: -2rem;
+        padding-bottom: 5px
+    }
 }
-
-.breadcrumb {
-    background-color: transparent !important;
-    padding-bottom: 0;
-
-    .breadcrumb-item {
-        padding-left: 0rem;
-        span {
-            font-size: 0.875rem;
-            font-weight: 500;
-        }
-
-        a {
+.container{
+    h1{
+        color: $white;
+        font-size: 32px;
+        font-weight: 600;
+        margin-top: 2rem;
+    }
+    p{
+        color: $white;
+        font-size: 20px;
+        font-weight: normal;
+        font-family: "Montserrat";
+        width: 730px;
+        margin: 1em 0;
+        margin-top: 26px !important;
+        @media only screen and (max-device-width: 767px) {
             font-size: 14px;
-            font-family: "Work Sans", sans-serif;
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        a:hover {
-            font-size: 0.875rem;
-        }
-
-        .breadcrumb-text {
-            position: relative;
-            font-size: 14px !important;
-            font-family: "Work Sans", sans-serif;
-        }
-
-        .govco-icon {
-            font-size: 1.1rem;
-            color: #004884;
-        }
-
-        .item-link {
-            color: #3772FC;
-        }
-
-        .breadcrumb-home:hover {
-            color: #3772FF;
+            width: 100%;
         }
     }
-}
-
-.white {
-
-    a,
-    .breadcrumb-text,
-    .govco-icon {
-        color: #fff !important;
-    }
-
-    .breadcrumb-text {
-        font-size: 14px !important;
-        font-weight: 500;
-        font-family: "Work Sans", sans-serif;
-        line-height: 1.4;
+    @media only screen and (max-device-width: 767px) {
+        h1{
+            padding-top: 35px;
+            font-size: 24px;
+            width: 100%;
+        }
+        p{
+            font-size: 14px;
+        }
     }
 }
