@@ -1,2 +1,33 @@
-<app-aviso-de-construccion></app-aviso-de-construccion>
-
+<govco-accesibility-bar></govco-accesibility-bar>
+<div class="container-servicios">
+    <div class="encabezado">
+        <div class="container">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+                <app-bread-crumb [codigo]=codigo></app-bread-crumb>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-12">
+                <h2 tabindex="0">{{this.title}}</h2>
+                <span class="resumen" tabindex="0">{{this.description}}</span>
+            </div>
+        </div>
+    </div>
+    <!--Seccion 1 ¿Qué deseas hacer?-->
+    <div class="container contenedor-seccion-hacer" *ngIf="loadData" (keyup)="salir($event)">
+        <a class="descripcion-skipe skip-link my-4" href="javascript:void(0)"
+            aria-label="A continuación encontrará la sección de los accesos a los servicios para entidades de GOV.CO.  Si en algún momento desea salir de la sección presione la tecla escape.">A
+            continuación encontrará la sección de los accesos a los servicios para entidades de GOV.CO. Si en algún
+            momento desea salir de la sección presione la tecla escape.</a>
+        <div tabindex="0" class="titulo-seccion">
+            <h3 class="titulo-que-hacer">¿Qué deseas hacer?</h3>
+        </div>
+        <div class="contenido-seccion">
+            <app-cards-servicios-para-entidades></app-cards-servicios-para-entidades>
+        </div>
+    </div>
+    <div class="container fin-seccion">
+        <a id="salir-seccion-hacer" href="javascript:void(0)" aria-label="Ha salido de la sección que deseas hacer"
+            class="descripcion-skipe skip-link my-2">Ha salido de la sección de los accesos a los servicios para
+            entidades de GOV.CO.</a>
+    </div>
+    <!--Fin sección 1-->
+</div>
