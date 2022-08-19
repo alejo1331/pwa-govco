@@ -40,7 +40,6 @@ import { SafePipe } from './pipes/safe.pipe';
     BarraSuperiorComponent,
     GeolocalizacionFormularioComponent,
     ServiciosParaEntidadesComponent,
-
     ConfirmacionUbicacionComponent,
     CajaHerramientasComponent,
     BreadCrumbComponent,

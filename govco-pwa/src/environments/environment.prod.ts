@@ -31,6 +31,7 @@ export const environment = {
   serverBiblioteca:"https://preapi-interno.www.gov.co/api/biblioteca/",
   serverUrlWebApi:"https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api/biblioteca/",
 
+
   urlApiTramites: "https://aws-api-interno.www.gov.co/api/ficha-tramites-y-servicios",
   serverUrlNoticias: "https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api/noticias/",
 
