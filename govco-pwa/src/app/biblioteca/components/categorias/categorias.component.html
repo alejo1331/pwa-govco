@@ -1,0 +1,53 @@
+<div *ngIf="seccionNivelUno">
+  <div class="row">
+    <div class="col-md-12 p-5 text-center">
+      <div class="form-group">
+        <h2>{{seccionNivelUno.nivelUno.nombre | uppercase}}</h2>
+      </div>
+      <div class="form-group">
+        <p class="salto-linea">{{seccionNivelUno.nivelUno.descripcion}}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="seccionNivelUno.recursosPriorizados.length==0">
+    <div class="col pb-5 text-center">
+      <p>No hay publicaciones</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12 col-lg-6 item-important-left">
+      <div *ngFor="let recurso of seccionNivelUno.recursosPriorizados | search: query ">
+        <!-- to do  -->
+        <!-- <span class="| slice:0:3"></span> -->
+        <!-- end, to do -->
+        <h3><a (click)="abrirRecurso(recurso)">{{recurso.nombre}}</a></h3>
+        <p class="intro mt-2">{{recurso.descripcion}}</p>
+        <div class="text-right see-more">
+          <a class="btn"
+            routerLink="/biblioteca/recurso/{{recurso.nivel==='dos'?hyphenateUrlParams(recurso.nombreNivelUno+'/'+recurso.nombreNivelDos+'/dos/'+recurso.idNivel):hyphenateUrlParams(recurso.nombreNivelUno+'/'+recurso.nombreNivelDos+'/'+recurso.nombreNivelTres+'/tres/'+recurso.idNivel)}}">
+            {{seccionNivelUno.nivelUno.textoHipervinculo}}
+            <span class="govco-icon govco-icon-right-arrow"></span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12 col-lg-6 item-important-right mt-6">
+      <div *ngFor="let recurso of seccionNivelUno.recursosPriorizados | search: query">
+        <!-- to do  -->
+        <!-- <span class="| slice:3:6"></span> -->
+        <!-- end, to do -->
+        <h3><a (click)="abrirRecurso(recurso)">{{recurso.nombre}}</a></h3>
+        <p class="intro mt-2">{{recurso.descripcion}}</p>
+        <div class="text-right see-more">
+          <a class="btn"
+            routerLink="/biblioteca/recurso/{{recurso.nivel==='dos'?hyphenateUrlParams(recurso.nombreNivelUno+'/'+recurso.nombreNivelDos+'/dos/'+recurso.idNivel):hyphenateUrlParams(recurso.nombreNivelUno+'/'+recurso.nombreNivelDos+'/'+recurso.nombreNivelTres+'/tres/'+recurso.idNivel)}}">
+            {{seccionNivelUno.nivelUno.textoHipervinculo}}
+            <span class="govco-icon govco-icon-right-arrow"></span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

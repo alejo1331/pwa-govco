@@ -26,6 +26,10 @@ export const environment = {
   //Tu opinion cuenta o Participacion
   apiCross: "http://100.24.232.62:8091/api/",
   apiUtils: "http://100.24.232.62:8184/api/",
+  //Biblioteca
+  // serverBiblioteca:"https://preapi-interno.www.gov.co/api/biblioteca/",
+  serverBiblioteca:"https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api/biblioteca/",
+  serverUrlWebApi:"https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api/biblioteca/",
 
   serverUrlNoticias: "https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api/noticias/",
   urlApiTramites: "https://aws-api-interno.www.gov.co/api/ficha-tramites-y-servicios"
