@@ -1,0 +1,92 @@
+<main class="caja-herramientas">
+    <div class="header-caja-herramientas pb-4">
+        <div class="container pt-5">
+            <app-bread-crumb class="breadcrumb-dark" title="Caja de herramientas"></app-bread-crumb>
+            <div class="ch-header mt-2">
+                <section class="row" title="Encabezado de página">
+                    <div class="col-md-9">
+                        <div class="mb-5">
+                            <h1>Caja de herramientas</h1>
+                            <span>Aquí encontrará un espacio con contenidos claros y oportunos que permitirán comprender
+                                las guías y lineamientos establecidos por MinTIC, con el propósito de apoyar los planes
+                                de transformación digital y el proceso de vinculación a Servicios Ciudadanos Digitales
+                                (SCD) e integración al portal www.gov.co</span>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <div class="container mb-4 pt-5">
+        <article class="article-portal-govco">
+            <h2>Portal GOV.CO</h2>
+            <div class="row">
+                <div class="col-md-9">
+                    <p>Encuentre en este espacio toda la información relacionada con el proceso de integración de
+                        trámites, OPA´s, Consultas de Informacion Pública, Sedes Electrónicas Ventanillas Únicas y
+                        Portales de Programas Transversales.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6" *ngFor="let item of listPortal">
+                    <div class="card">
+                        <div class="img-portal-gov">
+                            <img class="img-fluid " [src]="item.img" alt="Card image caption">
+                        </div>
+                        <div class="card-body  pt-4 p-0">
+                            <a [href]="item.url" target="_blank">
+                                <h3 class="card-title">{{item.title}}</h3>
+                            </a>
+                            <p class="card-text descripcion">{{item.description}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+        <article class="mt-5 article-servicios-ciudadanos">
+            <h2>Servicios Ciudadanos Digitales</h2>
+            <div class="row">
+                <div class="col-md-9">
+                    <p>En esta sección se exponen los conceptos generales que describen el proceso de vinculación a los
+                        Servicios Ciudadanos Digitales.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6" *ngFor="let item of listServicios">
+                    <div class="card card-servicios">
+                        <div class="row mt-2">
+                            <div class="img-servicios col-md-6 pr-3 ">
+                                <img [src]="item.img" alt="Card image caption">
+                            </div>
+
+                            <div class="card-body col-md-6 pl-m-0 pr-m-0">
+                                <div class="card-text">
+                                    <a [href]="item.url" target="_blank">
+                                        <h3>{{item.title}}</h3>
+                                    </a>
+                                    <p class=" descripcion">{{item.description}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </div>
+
+    <div class="page-content">
+        <div class="container-video">
+            <div class="container pt-4 pb-4">
+                <div class="row ">
+                    <div class="col-12 col-md-6 d-flex flex-column justify-content-center">
+                        <h3 class="mb-4">{{dataVideo.title}}</h3>
+                        <p>{{dataVideo.description}}</p>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <iframe width="100%" height="270px" [src]="dataVideo.urlVideo | safe" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen crossorigin="anonymous"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

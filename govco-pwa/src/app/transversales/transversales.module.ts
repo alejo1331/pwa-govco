@@ -15,6 +15,9 @@ import { ServiciosParaEntidadesComponent } from './components/servicios-para-ent
 import { AvisoDeConstruccionModule } from '../aviso-de-construccion/aviso-de-construccion.module';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ConfirmacionUbicacionComponent } from './components/geolocalizacion-formulario/components/confirmacion-ubicacion/confirmacion-ubicacion.component';
+import { CajaHerramientasComponent } from './components/caja-herramientas/caja-herramientas.component';
+import { BreadCrumbComponent } from './shared/bread-crumb/components/bread-crumb/bread-crumb.component';
+import { SafePipe } from './pipes/safe.pipe';
 
 
 @NgModule({
@@ -36,7 +39,10 @@ import { ConfirmacionUbicacionComponent } from './components/geolocalizacion-for
     BarraSuperiorComponent,
     GeolocalizacionFormularioComponent,
     ServiciosParaEntidadesComponent,
-    ConfirmacionUbicacionComponent
+    ConfirmacionUbicacionComponent,
+    CajaHerramientasComponent,
+    BreadCrumbComponent,
+    SafePipe
   ],
   exports: [
     GeolocalizacionComponent,
