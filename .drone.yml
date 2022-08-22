@@ -43,7 +43,7 @@ steps:
   commands:
   - cd ./govco-pwa/
   - npm install -g @angular/cli
-  - npm i
+  - npm i --save-dev @types/select2
   - ng build --prod
   when:
     branch:
@@ -57,7 +57,7 @@ steps:
   commands:
   - cd ./govco-pwa/
   - npm install -g @angular/cli
-  - npm i
+  - npm i --save-dev @types/select2
   - ng build --prod
   when:
     branch:
