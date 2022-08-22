@@ -1,5 +1,6 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationStart, Event, Router } from '@angular/router';
+import { AppService } from 'src/app/app.service';
 import { BottomMenuService } from '../../services/bottom-menu/bottom-menu.service';
 import { HeaderService } from '../../services/header-service/header.service';
 import { SidenavService } from '../../services/sidenav-service/sidenav-service.service';
@@ -12,13 +13,26 @@ import { SidenavService } from '../../services/sidenav-service/sidenav-service.s
 export class BottomMenuComponent implements OnInit, AfterViewInit {
 
   contadorClic: number;
+  currentRoute: string;
 
   constructor(
     public bottomMenu: BottomMenuService,
     protected servicioSideNav: SidenavService,
     protected servicioHeader: HeaderService,
-    private router: Router
-  ) { }
+    private router: Router,
+    public appService : AppService,
+  ) { 
+    this.currentRoute = "";
+    this.router.events.subscribe((event: Event) => {
+      if (event instanceof NavigationStart) {
+        if (event.url != '/tramites/codigos' && event.url != '/servicios') {
+          this.appService.setSelectedServiceOption(0);
+        } else if (event.url == '/tramites/codigos') {
+          this.appService.setSelectedServiceOption(2);
+        }
+      }
+    })
+  }
 
   ngOnInit() {
     this.contadorClic = 0;
