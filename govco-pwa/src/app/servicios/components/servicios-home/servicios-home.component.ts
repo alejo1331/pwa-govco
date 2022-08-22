@@ -12,16 +12,23 @@ import { SidenavService } from 'src/app/transversales/services/sidenav-service/s
 })
 export class ServiciosHomeComponent implements OnInit {
 
-  anteriorUrl:any
+  anteriorUrl:any;
+  itemSelected:number;
+  urlItems = [
+    "https://www.gov.co/home/",
+    "https://carpetaciudadana.and.gov.co/",
+    "/tramites/codigos"
+  ];
 
   constructor(
     public router: Router,
-    appService : AppService,
+    public appService : AppService,
     public bottomService : BottomMenuService,
     protected servicioHeader: HeaderService,
     protected servicioSideNav: SidenavService
   ) {
-    this.anteriorUrl = appService.currentUrl
+    this.anteriorUrl = appService.currentUrl;
+    this.itemSelected = appService.getSelectedServiceOption();
    }
 
   ngOnInit() {
@@ -35,7 +42,16 @@ export class ServiciosHomeComponent implements OnInit {
     this.bottomService.quitarActive()
   }
 
-  inactivaItemGovco(){
-    document.querySelector('.govco-candybox-element.govco-active')?.classList.remove('govco-active');
+  navigateTo(dataItem:number, target:string, routing:number) {
+    this.itemSelected = dataItem;
+    this.appService.setSelectedServiceOption(this.itemSelected);
+    let url = this.urlItems[this.itemSelected];
+    setTimeout(() => {
+      if (routing) {
+        this.router.navigate([url]);
+      } else {
+        window.open(url, target);
+      } 
+    }, 100);       
   }
 }

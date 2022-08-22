@@ -13,8 +13,8 @@
   </div>
   <div class="govco-servicios-content">
 
-    <a href="https://www.gov.co/home/">
-      <div class="govco-candybox-element govco-active">
+    <a>
+      <div class="govco-candybox-element" [class.govco-active]="itemSelected == 0" (click)="navigateTo(0, '_self', 0)">
         <div class="govco-candybox-icon govco-homepage">
         <span>
           <img src="../../../../assets/icons-fonts/GOV.CO.svg" alt="Icono GOVCO">
@@ -24,8 +24,8 @@
       </div>
     </a>
 
-    <a href="https://carpetaciudadana.and.gov.co/" target="_blank">
-      <div class="govco-candybox-element" (click)="inactivaItemGovco()">
+    <a>
+      <div class="govco-candybox-element" [class.govco-active]="itemSelected == 1" (click)="navigateTo(1, '_blank', 0)">
         <div class="govco-candybox-icon">
           <span>
             <img src="../../../../assets/icons-fonts/folder-user.svg" alt="Icono de carpeta de usuario">
@@ -35,8 +35,8 @@
       </div>
     </a>
 
-    <a href="https://www.gov.co/ficha-tramites-y-servicios/codigos-ciiu-y-tramites/">
-      <div class="govco-candybox-element" (click)="inactivaItemGovco()">
+    <a>
+      <div class="govco-candybox-element" [class.govco-active]="itemSelected == 2" (click)="navigateTo(2, '_self', 1)">
         <div class="govco-candybox-icon">
           <span class="">CIIU</span>
         </div>
