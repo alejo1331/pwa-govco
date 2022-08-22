@@ -552,3 +552,11 @@ input::placeholder {
 ::ng-deep .ng-dropdown-wrapper .ng-dropdown-menu li:active {
     background-color: #3366CC !important;
 }
+
+::ng-deep .container-form-ciiu .contenedor-select-dropdown i {
+    font: normal normal normal 14px/1 FontAwesome;
+}
+
+::ng-deep .container-form-ciiu .contenedor-select-dropdown i::before {
+    font-size: .688rem;
+}
