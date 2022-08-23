@@ -1,0 +1,25 @@
+<div>
+    <app-banner-principal codigo="momentosdevida"></app-banner-principal>
+    <div class="container-xl mt-4 mt-lg-5" (keyup)="salir($event)" tabindex="0" aria-label="A continuación encontrará la lista de momentos de vida.  Si en algún momento desea salir de la sección presione escape.">
+        <div class="d-flex flex-column">
+            <div class="row">
+                <div *ngFor="let categoria of categorias|slice:0:show; let i = index"
+                    class="col-sm-12 col-md-4 col-lg-3">
+                    
+                    <app-card-categorias id_="{{'categorias_' + i}}" [categoria]="categoria"></app-card-categorias>
+                    
+                </div>
+            </div>
+            <button *ngIf="mostrarBoton()" role="button" class="btn btn-round btn-categories m-auto"
+                (click)="mostrarCategorias()">{{nombreBoton}}</button>
+        </div>
+        <a id="salir-categorias" tabindex="0" aria-label="Ha salido de la lista de momentos de vida"></a>
+    </div>
+    <seccion-actualidad></seccion-actualidad>
+  </div>
+  <div class="container pb-1">
+    <seccion-ciiu></seccion-ciiu>
+  </div>
+  <temas-de-interes></temas-de-interes>
+  <govco-iteraccion-component module="Momento de Vida" nombretramite="Sección General Momentos de Vida" itemid="01"></govco-iteraccion-component>
+  

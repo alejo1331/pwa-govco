@@ -1,7 +1,6 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { NavigationStart, Event, Router } from '@angular/router';
 import { AppService } from 'src/app/app.service';
-import { BottomMenuService } from '../../services/bottom-menu/bottom-menu.service';
 import { HeaderService } from '../../services/header-service/header.service';
 import { SidenavService } from '../../services/sidenav-service/sidenav-service.service';
 
@@ -16,7 +15,6 @@ export class BottomMenuComponent implements OnInit, AfterViewInit {
   currentRoute: string;
 
   constructor(
-    public bottomMenu: BottomMenuService,
     protected servicioSideNav: SidenavService,
     protected servicioHeader: HeaderService,
     private router: Router,
@@ -47,9 +45,5 @@ export class BottomMenuComponent implements OnInit, AfterViewInit {
     } else {
       this.router.navigate(['/']);
     }
-  }
-
-  ajustePantalla(estado: boolean){
-    this.bottomMenu.ajustandoPantalla(estado);
   }
 }
