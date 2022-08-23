@@ -8,6 +8,9 @@ import { ValidarUrlService } from '../../services/validar-url-service/validar-ur
 import { PublicacionesService } from '../../services/publicaciones-service/publicaciones-service.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalComponent } from '../../shared/modal/modal.component';
+import { SidenavService } from 'src/app/transversales/services/sidenav-service/sidenav-service.service';
+import { HeaderService } from 'src/app/transversales/services/header-service/header.service';
+import { BottomMenuService } from 'src/app/transversales/services/bottom-menu/bottom-menu.service';
 
 @Component({
   selector: 'app-biblioteca',
@@ -18,20 +21,38 @@ export class BibliotecaComponent implements OnInit {
   query: string = '';
   titulo: ModalTitulo = new ModalTitulo();
   datosHome: Categoria[];
-  seccionInicio:SeccionInicio;
+  seccionInicio: SeccionInicio;
   tiempoEtiqueta: number;
   multimedia: any;
   codigo: any;
-  
+
   constructor(private publicacionesServices: PublicacionesService,
     public router: Router,
     private headerBibliotecaService: HeaderBibliotecaService,
     private tituloService: TituloService,
     private validarUrlService: ValidarUrlService,
     private modalService: NgbModal,
-    ) { }
+    protected servicioSideNav: SidenavService,
+    protected servicioHeader: HeaderService,
+    public bottomService: BottomMenuService
+  ) { }
 
   ngOnInit() {
+    // servicioHeader.estadoHeader(a, b)       a -> true = header seccion internas
+    //                                         a -> false = header general
+    //                                         b -> Muestra/Oculta  Header
+    //bottomService.seleccionandoItem(0)       0 -> Activa boton incio del menu inferior
+    //                                         1, 2, 3 -> Tramites, Ingresa
+    //servicioSideNav.seleccionandoItem(a, b)  a -> Activa o inactiva menu lateral
+    //                                         b -> String con el valor del item a seleccionar
+    //bottomService.ajustandoPantalla(true)    true -> Agrega clase de css para ajustar 
+    //                                                 la pantalla cuando en la seccion  
+    //                                                 consultada no tiene header
+    this.servicioHeader.estadoHeader(true, true);
+    this.bottomService.seleccionandoItem(0);
+    this.servicioSideNav.seleccionandoItem(true, 'serviciosEntidades');
+    this.bottomService.ajustandoPantalla(false);
+
     this.getPublicacionesRapidas();
     this.getTitulo();
     this.obtenerSeccionInicioPortal();
@@ -117,7 +138,7 @@ export class BibliotecaComponent implements OnInit {
     return className;
   }
 
-  hyphenateUrlParams(str:string){
+  hyphenateUrlParams(str: string) {
     return str.split(' ').join('-').toLowerCase();
   }
 
