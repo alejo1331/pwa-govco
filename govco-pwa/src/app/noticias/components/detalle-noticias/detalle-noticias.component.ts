@@ -29,6 +29,7 @@ export class DetalleNoticiasComponent implements OnInit {
     window.scrollTo(0, 0);
     this.servicioHeader.estadoHeader(true, true);
     this.bottomService.seleccionandoItem(0);
+    this.bottomService.ajustandoPantalla(false);
     this.servicioSideNav.seleccionandoItem(true, 'noticias');
 
     this.activatedRoute.url.subscribe(() => {

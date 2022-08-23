@@ -55,6 +55,7 @@ export class ActualidadPrincipalComponent implements OnInit {
 
     this.servicioHeader.estadoHeader(true, true);
     this.bottomService.seleccionandoItem(0);
+    this.bottomService.ajustandoPantalla(false);
     this.servicioSideNav.seleccionandoItem(true, 'noticias');
 
     this.activatedRouter.url.subscribe(() => {
