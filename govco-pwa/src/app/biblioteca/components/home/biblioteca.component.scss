@@ -374,7 +374,7 @@ $color-orange-contrast:rgb(251, 194, 0);
   
   .page-header {
     background-color: transparent;
-    padding: 2%;
+    padding: 2% 0;
     border-radius: 10px;
     h2 {
         font-weight: 300 !important;
@@ -394,8 +394,10 @@ $color-orange-contrast:rgb(251, 194, 0);
   }
   
   h3{
-    font-size: 1.125rem !important;
+    font-size: .75rem !important;
     font-weight: 700 !important;
+    font-family: "Montserrat",sans-serif;
+    line-height: 1.2;
   }
 
   .see-more{
@@ -429,12 +431,14 @@ $color-orange-contrast:rgb(251, 194, 0);
 
   .page-header h2{
     color: #004884;
-    font-size: 2.0625rem;
+    font-size: 1.125rem;
+    line-height: 1.2;
+    font-family: "Montserrat",sans-serif;
   }
 
   .page-header p{
     font-family: "Work Sans",sans-serif;
-    font-size: 1rem;
+    font-size: .75rem;
     font-weight: 400;
     color: #004884;
   }
@@ -445,7 +449,7 @@ $color-orange-contrast:rgb(251, 194, 0);
 
   .page-content p{
     font-family: "Work Sans",sans-serif;
-    font-size: 1rem;
+    font-size: .75rem;
     font-weight: 400;
     color: #004884;
   }
