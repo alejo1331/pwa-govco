@@ -1,0 +1,108 @@
+<div class="row mb-5 justify-row-responsive">
+    <div class="col-md-12">
+        <div class="table-responsive">
+            <table class="table">
+                <thead class="table-head-ciiu">
+                    <tr>
+                        <th scope="col" class="th-order-content-arrow text-left" style="width: 105px;">
+                            <div [hidden]="ordenar" style="display: inline-block;">
+                                <a role="button" title="Ascendente" (click)="Ordenar('codigo')"
+                                    style="display: inline-block;">
+                                    <svg width="16" height="16" fill="#004884" class="bi bi-dash" viewBox="0 0 16 16"
+                                        style="opacity: 0.4;">
+                                        <path fill-rule="evenodd"
+                                            d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
+                                    </svg>
+                                </a>
+                            </div>
+                            <div [hidden]="descendente" style="display: inline-block;">
+                                <a role="button" title="Descendente" (click)="Ordenar('codigo')"
+                                    style="display: inline-block;">
+                                    <svg width="16" height="16" fill="#004884" class="bi bi-arrow-down"
+                                        viewBox="0 0 16 16" style="opacity: 0.4;">
+                                        <path fill-rule="evenodd"
+                                            d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z" />
+                                    </svg>
+                                </a>
+                            </div>
+                            <div [hidden]="ascendente" style="display: inline-block;">
+                                <a role="button" title="Ascendente" (click)="Ordenar('codigo')">
+                                    <svg width="16" height="16" fill="#004884" class="bi bi-arrow-up"
+                                        viewBox="0 0 16 16" style="opacity: 0.4;">
+                                        <path fill-rule="evenodd"
+                                            d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z" />
+                                    </svg>
+                                </a>
+                            </div>
+                            <div class="tituloTabla">
+                                Código
+                            </div>
+                        </th>
+                        <th scope="col" class="th-order-content-arrow text-left">
+                            <div [hidden]="ordenarNombre" style="display: inline-block;">
+                                <a role="button" title="Ascendente" (click)="Ordenar('nombre')"
+                                    style="display: inline-block;">
+                                    <svg width="16" height="16" fill="#004884" class="bi bi-dash" viewBox="0 0 16 16"
+                                        style="opacity: 0.4;">
+                                        <path fill-rule="evenodd"
+                                            d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
+                                    </svg>
+                                </a>
+                            </div>
+                            <div [hidden]="descendenteNombre" style="display: inline-block;">
+                                <a role="button" title="Descendente" (click)="Ordenar('nombre')"
+                                    style="display: inline-block;">
+                                    <svg width="16" height="16" fill="#004884" class="bi bi-arrow-down"
+                                        viewBox="0 0 16 16" style="opacity: 0.4;">
+                                        <path fill-rule="evenodd"
+                                            d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z" />
+                                    </svg>
+                                </a>
+                            </div>
+                            <div [hidden]="ascendenteNombre" style="display: inline-block;">
+                                <a role="button" title="Ascendente" (click)="Ordenar('nombre')">
+                                    <svg width="16" height="16" fill="#004884" class="bi bi-arrow-up"
+                                        viewBox="0 0 16 16" style="opacity: 0.4;">
+                                        <path fill-rule="evenodd"
+                                            d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z" />
+                                    </svg>
+                                </a>
+                            </div>
+                            <div class="tituloTabla">
+                                Nombre de la actividad
+                            </div>
+                        </th>
+                        <th scope="col" style="width: 23%;">
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="text-center" *ngFor="let codigo of data | paginate : {
+                        itemsPerPage: pageSize,
+                        currentPage: page,
+                        totalItems: totalRegistros
+                      };">
+                        <td class="text-right contenidoTabla">
+                            {{codigo.codigo}}
+                        </td>
+                        <td class="text-left contenidoTabla">
+                            {{codigo.nombre}}
+                        </td>
+                        <td class="text-left">
+                            <app-modal-ver-nota [MunicipioSeleccioando]="MunicipioSeleccionado"
+                                [DepartamentoSeleccionado]="DepartamentoSeleccionado" [IdCodigo]="codigo.id"
+                                [codigo]="codigo.codigo" [tieneTramites]="codigo.tieneTramites"></app-modal-ver-nota>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <pagination-controls (pageChange)="onPaginatorChange($event)"
+                (pageBoundsCorrection)="onPaginatorChange($event)" [maxSize]="6" [directionLinks]="true"
+                [autoHide]="false" [responsive]="true" previousLabel="Anterior" nextLabel="Siguiente"
+                screenReaderPaginationLabel="Paginador" screenReaderPageLabel="Página"
+                screenReaderCurrentLabel="Usted está en la página">
+            </pagination-controls>
+        </div>
+
+    </div>
+</div>

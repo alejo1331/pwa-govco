@@ -5,9 +5,12 @@ import { TramitesRoutingModule } from './tramites-routing.module';
 import { AvisoDeConstruccionModule } from '../aviso-de-construccion/aviso-de-construccion.module';
 import { CodigosCiiuYTramitesComponent } from './components/codigos-ciiu-y-tramites/codigos-ciiu-y-tramites.component';
 import { BusquedaCodigosCiiuComponent } from './components/codigos-ciiu-y-tramites/busqueda-codigos-ciiu/busqueda-codigos-ciiu.component';
-import {AutocompleteLibModule} from 'angular-ng-autocomplete';
+import {LoadingService} from './services/loading.service'
+import { AutocompleteLibModule } from 'angular-ng-autocomplete';
+import { NgxPaginationModule } from 'ngx-pagination';
 import { NgSelectModule } from 'ng-custom-select';
 import { NgSelect2Module } from 'ng-select2';
+import { TablaCodigosCiiuComponent } from './components/codigos-ciiu-y-tramites/tabla-codigos-ciiu/tabla-codigos-ciiu.component';
 
 @NgModule({
   imports: [
@@ -16,14 +19,16 @@ import { NgSelect2Module } from 'ng-select2';
     TramitesRoutingModule,
     AutocompleteLibModule,
     NgSelectModule,
-    NgSelect2Module
+    NgSelect2Module,
+    NgxPaginationModule,
   ],
   declarations: [
     TramitesHomeComponent,
     CodigosCiiuYTramitesComponent,
     BusquedaCodigosCiiuComponent,
+    TablaCodigosCiiuComponent,
   ],
   exports: [TramitesHomeComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class TramitesModule { }

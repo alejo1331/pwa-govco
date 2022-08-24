@@ -39,7 +39,6 @@
                             style="display: inline-block;"></a>
                     </ng-template>
                     <ng-template #notFoundTemplate let-notFound>
-
                         No hay resultados
                     </ng-template>
                     <button type="submit" class="btn-search-ciiu" (click)='renderizarTabla()'
@@ -49,5 +48,24 @@
                 </div>
             </div>
         </div>
+        <!-- No hay resultados -->
+        <div *ngIf="habilitar">
+            <!-- Tabla de resultados -->
+            <div class="row justify-row-responsive">
+                <div class="col-xs-12 col-md-2 offset-md-10">
+                    <select-1 id-select="selectresulpag" label-select="Resultados pág." aria-label-select=""
+                        aria-label-validation="" (clicEmitEvent)="selectQtyPages($event)" [list]=optionsSelect
+                        [seleccionado]=seleccionadoPaginas place-holder="Escoge" #selectresulpag>
+                    </select-1>
+                </div>
+            </div>
+            <app-tabla-codigos-ciiu [MunicipioSeleccionado]="MunicipioSeleccionado"
+                [DepartamentoSeleccionado]="DepartamentoSeleccionado" [CodigosCIIU]="codigoActividadesTabla"
+                [totalRegistros]="totalRegistros" [page]="page" [pageSize]="pageSize" [filtroBusqueda]="filtroBusqueda">
+            </app-tabla-codigos-ciiu>
+        </div>
+        <!-- <div *ngIf="muestraMensaje">
+            <app-mensaje-sin-datos-ciiu></app-mensaje-sin-datos-ciiu>
+        </div> -->
     </div>
 </div>

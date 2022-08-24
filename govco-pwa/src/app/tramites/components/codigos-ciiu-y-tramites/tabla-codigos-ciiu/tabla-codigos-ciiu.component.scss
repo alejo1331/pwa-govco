@@ -1,0 +1,103 @@
+.table-head-ciiu{
+    background-color: #E6EFFD;
+    text-align: center;
+}
+
+.tituloTabla{
+    display: inline-block;
+    text-align: left;
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    font-family: "Work Sans" !important;
+    letter-spacing: 0px;
+    color: #004884;
+    opacity: 1;
+    padding-left: 10px;
+}
+.contenidoTabla{
+    font-size: 16px !important;
+    font-weight: normal !important;
+    font-family: "Work Sans" !important;
+    letter-spacing: 0px;
+    color: #4B4B4B;
+    opacity: 1;
+}
+::ng-deep pagination-controls pagination-template .ngx-pagination li.pagination-previous span::before {
+    content: none !important;
+}
+
+::ng-deep pagination-controls pagination-template .ngx-pagination li.pagination-previous a::before {
+    content: none !important;
+}
+
+::ng-deep pagination-controls pagination-template .ngx-pagination li.pagination-next span::after {
+    content: none !important;
+}
+
+::ng-deep pagination-controls pagination-template .ngx-pagination li.pagination-next a::after {
+    content: none !important;
+}
+
+::ng-deep pagination-controls pagination-template .ngx-pagination .pagination-previous.disabled span{
+    text-align: right;
+    text-decoration: underline;
+    font-size: 14px !important;
+    font-weight: normal !important;
+    font-family: "Work Sans" !important;
+    letter-spacing: 0px;
+    color: #BABABA;
+    opacity: 1;
+}
+
+::ng-deep pagination-controls pagination-template .ngx-pagination li.pagination-previous a{
+    text-align: right;
+    text-decoration: underline;
+    font-size: 14px !important;
+    font-weight: normal !important;
+    font-family: "Work Sans" !important;
+    letter-spacing: 0px;
+    color: #3366CC !important;
+    opacity: 1;
+}
+
+::ng-deep pagination-controls pagination-template .ngx-pagination li.pagination-next a{
+    text-align: right;
+    text-decoration: underline;
+    font-size: 14px !important;
+    font-weight: normal !important;
+    font-family: "Work Sans" !important;
+    letter-spacing: 0px;
+    color: #3366CC !important;
+    opacity: 1;
+}
+
+::ng-deep pagination-controls pagination-template .ngx-pagination .pagination-next.disabled span{
+    text-align: right;
+    text-decoration: underline;
+    font-size: 14px !important;
+    font-weight: normal !important;
+    font-family: "Work Sans" !important;
+    letter-spacing: 0px;
+    color: #BABABA;
+    opacity: 1;
+}
+
+@media only screen and (max-device-width: 767px) {
+    .table td{
+        font-size: 14px;
+        padding-right: 0px;
+    }
+    .table th div{
+        font-size: 14px;
+        display: contents;
+    }
+    .th-order-content-arrow{
+        min-width: 110px !important;;
+    }
+    ::ng-deep .ngx-pagination.responsive .small-screen {
+        display: inline-block;
+        font-size: small;
+        text-align: center;
+        display: contents !important;
+    }
+}
