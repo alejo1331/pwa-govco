@@ -1,0 +1,23 @@
+<div class="container-banner-principal">
+    <div class="container">
+        <app-level-two-bread-crumbs title="Momentos de vida"  [categoria]="categoria"></app-level-two-bread-crumbs>
+        <div class="contenedor-cuerpo-banner">
+            <div class="contenedor-icono-banner">
+                <div class="contenedor-icono-detalle  ">
+                    <img [src]="categoria" class="img-detalle">
+                    <!-- <img [src]="categoria | iconoPipe" class="img-detalle"> -->
+                    
+                </div>
+            </div>
+                <div class="contenedor-titulo-banner">
+                    <h2 tabindex="0" [attr.aria-label]="categoria.nombre" class="titulo-detalle">{{categoria.nombre}}</h2>
+                </div>
+                <div class="contenedor-descripcion-banner">
+                    <p tabindex="0" [attr.aria-label]="categoria.descripcionCorta" class="description-banner-detalle">
+                        {{categoria.descripcionCorta}}</p>
+                </div>
+        </div>
+    </div>
+  </div>
+
+

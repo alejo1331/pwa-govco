@@ -1,7 +1,7 @@
 <main class="caja-herramientas">
     <div class="header-caja-herramientas pb-4">
-        <div class="container pt-5">
-            <app-bread-crumb class="breadcrumb-dark" title="Caja de herramientas"></app-bread-crumb>
+        <div class="container">
+            <app-level-one-bread-crumbs title="Caja de herramientas" ></app-level-one-bread-crumbs>
             <div class="ch-header mt-2">
                 <section class="row" title="Encabezado de página">
                     <div class="col-md-9">
@@ -83,7 +83,9 @@
                         <p>{{dataVideo.description}}</p>
                     </div>
                     <div class="col-12 col-md-6">
-                        <iframe width="100%" height="270px" [src]="dataVideo.urlVideo | safe" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen crossorigin="anonymous"></iframe>
+                        <iframe width="100%" height="270px" [src]="dataVideo.urlVideo | safe" frameborder="0"
+                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen crossorigin="anonymous"></iframe>
                     </div>
                 </div>
             </div>

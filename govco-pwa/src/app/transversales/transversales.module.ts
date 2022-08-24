@@ -17,8 +17,14 @@ import { AvisoDeConstruccionModule } from '../aviso-de-construccion/aviso-de-con
 import { MatDialogModule } from '@angular/material/dialog';
 import { ConfirmacionUbicacionComponent } from './components/geolocalizacion-formulario/components/confirmacion-ubicacion/confirmacion-ubicacion.component';
 import { CajaHerramientasComponent } from './components/caja-herramientas/caja-herramientas.component';
-import { BreadCrumbComponent } from './shared/bread-crumb/components/bread-crumb/bread-crumb.component';
+import { LevelOneBreadCrumbsComponent } from './shared/components/level-one-bread-crumbs/level-one-bread-crumbs.component';
 import { SafePipe } from './pipes/safe.pipe';
+import { BannerSeccionesInternasComponent } from './shared/components/banner-secciones-internas/banner-secciones-internas.component';
+import { BannerDetalleInternasDosComponent } from './shared/components/banner-detalle-internas-dos/banner-detalle-internas-dos.component';
+import { LevelTwoBreadCrumbsComponent } from './shared/components/level-two-bread-crumbs/level-two-bread-crumbs.component';
+import { MaxContentPipe } from '../categorias/pipes/max-content.pipe';
+import { IconoPipePipe } from '../categorias/pipes/icono-pipe.pipe';
+
 
 
 @NgModule({
@@ -43,10 +49,13 @@ import { SafePipe } from './pipes/safe.pipe';
     CardsServiciosParaEntidadesComponent,
     ConfirmacionUbicacionComponent,
     CajaHerramientasComponent,
-    BreadCrumbComponent,
     SafePipe,
     CardsServiciosParaEntidadesComponent,
-    ConfirmacionUbicacionComponent
+    ConfirmacionUbicacionComponent,
+    BannerSeccionesInternasComponent,
+    BannerDetalleInternasDosComponent,
+    LevelOneBreadCrumbsComponent,
+    LevelTwoBreadCrumbsComponent
   ],
   exports: [
     GeolocalizacionComponent,
@@ -55,7 +64,9 @@ import { SafePipe } from './pipes/safe.pipe';
     FooterComponent,
     BottomMenuComponent,
     BarraSuperiorComponent,
-    GeolocalizacionFormularioComponent
+    GeolocalizacionFormularioComponent,
+    BannerSeccionesInternasComponent,
+    BannerDetalleInternasDosComponent
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })

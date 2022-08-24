@@ -1,1 +1,34 @@
-<p>detalle-momentos works!</p>
+<app-banner-detalle-internas-dos [categoria]="categoria"></app-banner-detalle-internas-dos>
+<div tabindex="0" [attr.aria-label]="'Esta es la información relacionada con el momento de vida '+nombreTramite">
+  <div class="container-fluid contenedor-fluid-tramites">
+    <div class="container">
+      <!-- seccion: llave que usa el web-api para traer la información por sección
+            id_: este prop se usa como prefijo en algunos elementos del componete para evitar colisiones entre eventos, en caso de que en una misma vista exista dos veces el mismo componete.
+            codigo-categoria: este prop se usa para filtrar por categoría los tramites que carga el componente, donde se implemente este componete se debe enviar un codigo de categoría válido
+          -->
+
+      <tramites-mas-consultados id_="momentosdevida" seccion="LoMasConsultadoDetalleMomentoVida"
+        [codigoCategoria]="idRecurso"></tramites-mas-consultados>
+    </div>
+  </div>
+  <div class="container" tabindex="0"
+    [attr.aria-label]="' A continuación encontrará la sección de los trámites destacados del momento de vida'+nombreTramite">
+    <seccion-lo-mas-destacado seccion="LoMasDestacadoTramites" [codigoCategoria]="idRecurso"></seccion-lo-mas-destacado>
+  </div>
+</div>
+<div class="contenedor-buscador-momentos" *ngIf="categoria.item !== '' || categoria.item!== null ">
+  <govco-buscador-detalle-momentos seed="" solobusqueda="tramites" filtros="true" categoriabusqueda='tramites'
+    [categoriaNombre]=nombreTramite [nombreMomentos]=categoria.item></govco-buscador-detalle-momentos>
+</div>
+
+
+<!-- seccion: llave que usa el web-api para traer la información por sección
+  categoria-texto: este prop se usa para concatenar el nombre de la categoria en el titulo del web componet
+  codigo-categoria: este prop se usa para filtrar por categoría los tramites que carga el componente, donde se implemente este componete se debe enviar un codigo de categoría válido -->
+
+<seccion-actualidad *ngIf="estadoCargaActualidad" seccion="detallemomentodevida" [codigoCategoria]=idRecurso
+  [categoriaTexto]=nombreTramite></seccion-actualidad>
+
+<temas-de-interes></temas-de-interes>
+<govco-iteraccion-component module="Momento de Vida" [itemid]="idRecurso" [nombretramite]="nombreTramite">
+</govco-iteraccion-component>
