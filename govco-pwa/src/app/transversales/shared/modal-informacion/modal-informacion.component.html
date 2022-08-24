@@ -1,0 +1,47 @@
+<div class="modal-header mt-4">
+  <div class="icon-error mb-2"><p>X</p></div>
+  <h4 class="modal-title" *ngIf="detail=='UserNotExists'">Usuario no Registrado</h4>
+  <h4 class="modal-title" *ngIf="detail=='undefined'">Señor Usuario</h4>
+  <h4 class="modal-title" *ngIf="detail=='LoginLoa1'">Error Nivel Autenticación</h4>
+</div>
+<div class="modal-body">
+  <div *ngIf="detail=='UserNotExists'">
+    <p>El usuario que has digitado no se encuentra registrado.</p>
+    <p>Te sugerimos:</p>
+    <p>Verifica los datos digitados y vuelve a intentarlo. Registrate como usuario con los datos digitados.</p>
+  </div>
+  <div *ngIf="detail=='undefined'">
+    <p>Para poder hacer uso de los servicios ofrecidos por el portal, debe permitirle a este el acceso a sus datos.</p>
+  </div>
+  <div *ngIf="detail=='LoginLoa1'">
+    <p class="text-justify">
+      Ya te encuentras autenticado con correo electrónico en alguna de las plataformas del estado.
+      En el portal Gov.co solo es posible autenticarse con Documento de Identidad. Te sugerimos lo siguiente:
+    </p>
+    <br>
+    <p class="text-left">
+      - Ir a la plataforma del estado en la que ya estás autenticado.<br>
+      - Cerrar Sesión.<br>
+      - Volver a Iniciar sesión en Gov.Co con Documento de Identidad.
+    </p>
+  </div>
+  <div class="row mt-4 justify-content-md-center">
+
+    <div class="buttons col-md-5 col-sm-12  text-center">
+      <button id="button" type="button" class="btn btn-round btn-high" (click)="direccionar('/login')">
+        VOLVER
+      </button>
+    </div>
+    <div class="buttons col-md-6  col-sm-12 " *ngIf="detail=='UserNotExists'">
+      <button id="button" type="button" class="btn btn-round  btn-middle btn-registrar-usuario" (click)="direccionar('/registro')" >
+        REGISTRAR USUARIO
+      </button>
+    </div>
+
+
+  </div>
+  </div>
+
+<div class="modal-footer">
+  <!-- <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button> -->
+</div>

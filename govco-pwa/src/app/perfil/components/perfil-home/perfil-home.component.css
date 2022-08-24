@@ -1,3 +1,6 @@
 .govco-pwa-perfil-content{
-  height: inherit;
+  height: 100%;
+  background-color: #3366CC;
+  position: absolute;
+  width: 100%;
 }
