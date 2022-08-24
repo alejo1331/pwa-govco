@@ -1,4 +1,4 @@
-import { NgModule,CUSTOM_ELEMENTS_SCHEMA, LOCALE_ID } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule} from '@angular/common/http';
 import es from '@angular/common/locales/es';
@@ -31,6 +31,8 @@ import { registerLocaleData } from '@angular/common';
 import { BibliotecaModule } from './biblioteca/biblioteca.module';
 import { RegistroModule } from './registro/registro.module';
 import { CategoriasModule } from './categorias/categorias.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RecaptchaModule } from "ng-recaptcha";
 
 
 registerLocaleData(es)
@@ -56,6 +58,9 @@ registerLocaleData(es)
     TransversalesModule,
     PlatformModule,
     RegistroModule,
+    FormsModule,
+    ReactiveFormsModule,
+    RecaptchaModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the application is stable
@@ -74,10 +79,11 @@ registerLocaleData(es)
     CategoriasModule
   ],
   providers: [
-    SidenavService, 
+    SidenavService,
     {provide: LOCALE_ID, useValue: 'es-ES'}
   ],
   bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 
 })
 export class AppModule { }

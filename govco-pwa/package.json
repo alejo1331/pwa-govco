@@ -33,6 +33,7 @@
     "g": "^2.0.1",
     "jquery": "^3.6.0",
     "ng-custom-select": "^2.0.4",
+    "ng-recaptcha": "^6.0.2",
     "ng-select2": "^1.4.1",
     "ngx-bootstrap": "^8.0.0",
     "ngx-bootstrap-modal": "^2.0.1",

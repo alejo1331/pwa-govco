@@ -19,6 +19,9 @@ import { ConfirmacionUbicacionComponent } from './components/geolocalizacion-for
 import { CajaHerramientasComponent } from './components/caja-herramientas/caja-herramientas.component';
 import { BreadCrumbComponent } from './shared/bread-crumb/components/bread-crumb/bread-crumb.component';
 import { SafePipe } from './pipes/safe.pipe';
+import { ModalInformacionComponent } from './shared/modal-informacion/modal-informacion.component';
+import { RecaptchaModule } from "ng-recaptcha";
+import { LoginComponent } from './components/login/login.component';
 
 
 @NgModule({
@@ -29,7 +32,8 @@ import { SafePipe } from './pipes/safe.pipe';
     ReactiveFormsModule,
     MatToolbarModule,
     TransversalesRoutingModule,
-    MatDialogModule
+    MatDialogModule,
+    RecaptchaModule
   ],
   declarations: [
     BuscadorComponent,
@@ -44,6 +48,8 @@ import { SafePipe } from './pipes/safe.pipe';
     ConfirmacionUbicacionComponent,
     CajaHerramientasComponent,
     BreadCrumbComponent,
+    ModalInformacionComponent,
+    LoginComponent,
     SafePipe,
     CardsServiciosParaEntidadesComponent,
     ConfirmacionUbicacionComponent
@@ -55,7 +61,8 @@ import { SafePipe } from './pipes/safe.pipe';
     FooterComponent,
     BottomMenuComponent,
     BarraSuperiorComponent,
-    GeolocalizacionFormularioComponent
+    GeolocalizacionFormularioComponent,
+    LoginComponent,
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })
