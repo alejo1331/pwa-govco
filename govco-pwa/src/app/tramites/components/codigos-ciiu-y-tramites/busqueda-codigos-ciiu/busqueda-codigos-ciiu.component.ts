@@ -45,7 +45,7 @@ export class BusquedaCodigosCiiuComponent implements OnInit {
   public totalRegistros: number = 0;
   optionsSelect = [{codigo:10,nombre:10}, {codigo:25,nombre:25}, {codigo:50,nombre:50}];
 
-  constructor(private service: BackendApiService, private router : Router) { }
+  constructor( private service: BackendApiService, private router: Router, private loadingService: LoadingService) { }
 
   ngOnInit (): void {
     this.habilitar = false;
@@ -55,13 +55,13 @@ export class BusquedaCodigosCiiuComponent implements OnInit {
       allowClear: true,
       width: "100%"
     }
-    // this.loadingService.startLoading();
+    this.loadingService.startLoading();
   }
 
   cargarDepartamentos() {
     this.service.getListDepartamento().subscribe(data => {
       this.Departamentos = data;
-      // this.loadingService.stopLoading();
+      this.loadingService.stopLoading();
     });
   }
 
@@ -69,16 +69,16 @@ export class BusquedaCodigosCiiuComponent implements OnInit {
     this.service.getListMunicipio(Id).subscribe(data => {
       this.HabilitarSelect = false;
       this.Municipios = data;
-      // this.loadingService.stopLoading();
+      this.loadingService.stopLoading();
     });
   }
   
   startLoading(e:any) {
-    // this.loadingService.startLoading();
+    this.loadingService.startLoading();
   }
 
   stopLoading(e:any) {
-    // this.loadingService.stopLoading();
+    this.loadingService.stopLoading();
   }
 
   public changed(e:any): void {
@@ -90,7 +90,7 @@ export class BusquedaCodigosCiiuComponent implements OnInit {
       this.DepartamentoSeleccionado = e.detail.codigo;
       this.HabilitarSelect = false;
       this.CargarMunicipios(this.DepartamentoSeleccionado);
-      // this.loadingService.startLoading();
+      this.loadingService.startLoading();
     }
   }
 
@@ -191,14 +191,14 @@ clearEventStatic() {
         this.totalRegistros = res.totalRecords;
         this.habilitar = true;
         this.muestraMensaje = false;
-        // this.loadingService.stopLoading();
+        this.loadingService.stopLoading();
       }
         else {
           this.habilitar = false;
           this.muestraMensaje = true;
           this.codigoActividadesTabla = [];
           this.codigoActividades = [];
-          // this.loadingService.stopLoading();
+          this.loadingService.stopLoading();
         }
       }).catch(e=>{
         this.habilitar=false;
@@ -235,7 +235,7 @@ async cargarActividadesValidadasAsync(request:requestCodigo) {
  public renderizarTabla() {
   if(!(this.filtroBusqueda.length > 0))
     return false;
-  // this.loadingService.startLoading();    
+  this.loadingService.startLoading();    
   let historico = new requestHistoricoBusqueda();
   historico.texto = this.filtroBusqueda;
   let request = new requestCodigo();
@@ -249,7 +249,33 @@ async cargarActividadesValidadasAsync(request:requestCodigo) {
   this.clearEventStatic2();
   this.insertarHistoricoAsync(historico);
   const response = Promise.resolve(this.cargarActividadesValidadasPromise(request));
-}
+  }
+
+  selectQtyPages(dato: any) {
+    if(!(this.filtroBusqueda.length > 0))
+      return false;
+    this.habilitar = false;
+    this.muestraMensaje = false;
+    this.codigoActividadesTabla = [];
+    this.pageSize = dato.detail.codigo;
+    this.seleccionadoPaginas = dato.detail;
+    if(dato.detail.codigo == 50)
+      this.optionsSelect = [{codigo:50,nombre:50}, {codigo:10,nombre:10}, {codigo:25,nombre:25}];
+    else if(dato.detail.codigo == 25)
+      this.optionsSelect = [{codigo:25,nombre:25}, {codigo:10,nombre:10}, {codigo:50,nombre:50}];
+    else
+      this.optionsSelect = [{codigo:10,nombre:10}, {codigo:25,nombre:25}, {codigo:50,nombre:50}];
+    let request = new requestCodigo();
+    request.IdDepartamento = this.DepartamentoSeleccionado;
+    request.IdMunicipio = this.MunicipioSeleccionado;
+    request.filtro = this.filtroBusqueda;
+    request.descending = this.desc;
+    request.fieldOrder = this.columnOrder;
+    request.pageSize = dato.detail.codigo;
+    request.numPage = this.page;
+    this.cargarActividadesValidadasPromise(request);
+    this.loadingService.startLoading();
+  }
 }
 
  
