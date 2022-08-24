@@ -2,7 +2,9 @@ import { Injectable, EventEmitter } from '@angular/core';
 import { Subject } from 'rxjs/internal/Subject';
 
 
-@Injectable()
+@Injectable(
+  {providedIn: 'root'}
+)
 export class LoadingService {
 
   isLoading = false;
