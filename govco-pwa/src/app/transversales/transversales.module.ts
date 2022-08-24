@@ -22,6 +22,7 @@ import { SafePipe } from './pipes/safe.pipe';
 import { ModalInformacionComponent } from './shared/modal-informacion/modal-informacion.component';
 import { RecaptchaModule } from "ng-recaptcha";
 import { LoginComponent } from './components/login/login.component';
+import { RegistroComponent } from './components/registro/registro.component';
 
 
 @NgModule({
@@ -50,6 +51,7 @@ import { LoginComponent } from './components/login/login.component';
     BreadCrumbComponent,
     ModalInformacionComponent,
     LoginComponent,
+    RegistroComponent,
     SafePipe,
     CardsServiciosParaEntidadesComponent,
     ConfirmacionUbicacionComponent

@@ -29,7 +29,6 @@ import {PlatformModule} from '@angular/cdk/platform';
 import { ParticipaModule } from './participa/components/participa/Participa.Module';
 import { registerLocaleData } from '@angular/common';
 import { BibliotecaModule } from './biblioteca/biblioteca.module';
-import { RegistroModule } from './registro/registro.module';
 import { CategoriasModule } from './categorias/categorias.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RecaptchaModule } from "ng-recaptcha";
@@ -57,7 +56,6 @@ registerLocaleData(es)
     ServiciosModule,
     TransversalesModule,
     PlatformModule,
-    RegistroModule,
     FormsModule,
     ReactiveFormsModule,
     RecaptchaModule,
