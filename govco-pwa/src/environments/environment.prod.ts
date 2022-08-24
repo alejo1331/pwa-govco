@@ -28,8 +28,8 @@ export const environment = {
   apiUtils: "https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api/utils/",
 
   //Biblioteca
-  serverBiblioteca:"https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api/biblioteca/",
-  serverUrlWebApi:"https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api/biblioteca/",
+  serverBiblioteca:"https://api-interno.www.gov.co/api/biblioteca/",
+  serverUrlWebApi:"https://api-interno.www.gov.co/api/biblioteca/",
 
 
   urlApiTramites: "https://aws-api-interno.www.gov.co/api/ficha-tramites-y-servicios",

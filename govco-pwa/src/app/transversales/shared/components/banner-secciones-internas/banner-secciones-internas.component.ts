@@ -18,7 +18,6 @@ export class BannerSeccionesInternasComponent implements OnInit {
   ngOnInit(): void {
     this.categoriasService.getTitleAndDescription(this.codigo)
     .subscribe((resp) => {
-      console.log("olii",resp)
       if(this.codigo){
         this.title = resp.data.titulo;
         this.description = resp.data.descripcion;

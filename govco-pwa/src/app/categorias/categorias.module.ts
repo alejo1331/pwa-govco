@@ -6,9 +6,8 @@ import { BreadcumbMomentosComponent } from './components/breadcumb-momentos/brea
 import { CardCategoriasComponent } from './components/card-categorias/card-categorias.component';
 import { DetalleMomentosComponent } from './components/detalle-momentos/detalle-momentos.component';
 import { MomentosDeVidaComponent } from './components/momentos-de-vida/momentos-de-vida.component';
-import { MaxContentPipe } from './pipes/max-content.pipe';
-import { IconoPipePipe } from './pipes/icono-pipe.pipe';
 import { TransversalesModule } from '../transversales/transversales.module';
+import { PipesModule } from '../pipes/pipes.module';
 
 
 @NgModule({
@@ -16,20 +15,17 @@ import { TransversalesModule } from '../transversales/transversales.module';
     BreadcumbMomentosComponent,
     CardCategoriasComponent,
     DetalleMomentosComponent,
-    MomentosDeVidaComponent,
-    MaxContentPipe,
-    IconoPipePipe,
+    MomentosDeVidaComponent
   ],
   imports: [
     CommonModule,
     CategoriasRoutingModule,
-    TransversalesModule
+    TransversalesModule,
+    PipesModule
   ],
   exports: [
     CardCategoriasComponent,
-    MomentosDeVidaComponent,
-    MaxContentPipe,
-    IconoPipePipe
+    MomentosDeVidaComponent
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })

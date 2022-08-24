@@ -22,10 +22,7 @@ import { SafePipe } from './pipes/safe.pipe';
 import { BannerSeccionesInternasComponent } from './shared/components/banner-secciones-internas/banner-secciones-internas.component';
 import { BannerDetalleInternasDosComponent } from './shared/components/banner-detalle-internas-dos/banner-detalle-internas-dos.component';
 import { LevelTwoBreadCrumbsComponent } from './shared/components/level-two-bread-crumbs/level-two-bread-crumbs.component';
-import { MaxContentPipe } from '../categorias/pipes/max-content.pipe';
-import { IconoPipePipe } from '../categorias/pipes/icono-pipe.pipe';
-
-
+import { PipesModule } from '../pipes/pipes.module';
 
 @NgModule({
   imports: [
@@ -35,7 +32,8 @@ import { IconoPipePipe } from '../categorias/pipes/icono-pipe.pipe';
     ReactiveFormsModule,
     MatToolbarModule,
     TransversalesRoutingModule,
-    MatDialogModule
+    MatDialogModule,
+    PipesModule
   ],
   declarations: [
     BuscadorComponent,
@@ -66,7 +64,9 @@ import { IconoPipePipe } from '../categorias/pipes/icono-pipe.pipe';
     BarraSuperiorComponent,
     GeolocalizacionFormularioComponent,
     BannerSeccionesInternasComponent,
-    BannerDetalleInternasDosComponent
+    BannerDetalleInternasDosComponent,
+    LevelOneBreadCrumbsComponent,
+    LevelTwoBreadCrumbsComponent
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })

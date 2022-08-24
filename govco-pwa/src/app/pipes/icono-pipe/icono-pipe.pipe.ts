@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { CategoriasInterface } from '../models/categorias-interface';
+import { IconoPipeInterface } from '../models/icono-pipe-interface';
 
 @Pipe({
   name: 'iconoPipe',
@@ -7,9 +7,9 @@ import { CategoriasInterface } from '../models/categorias-interface';
 })
 export class IconoPipePipe implements PipeTransform {
 
-  transform(categoria: CategoriasInterface): string {
-    if(categoria.icono != 'url' && categoria.icono != '' && categoria.icono != null){
-      return categoria.icono;
+  transform(pipe: IconoPipeInterface): string {
+    if(pipe.icono != 'url' && pipe.icono != '' && pipe.icono != null){
+      return pipe.icono;
     }
     return 'https://govco-prod-webutils.s3.amazonaws.com/uploads/2021-10-26/d8f3f555-6765-451f-8ea8-d8109692f458-CAT_DEFAULT-80px.svg'
   }
