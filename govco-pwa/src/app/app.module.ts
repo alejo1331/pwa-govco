@@ -30,6 +30,8 @@ import { ParticipaModule } from './participa/components/participa/Participa.Modu
 import { registerLocaleData } from '@angular/common';
 import { BibliotecaModule } from './biblioteca/biblioteca.module';
 import { RegistroModule } from './registro/registro.module';
+import { CategoriasModule } from './categorias/categorias.module';
+
 
 registerLocaleData(es)
 
@@ -68,7 +70,8 @@ registerLocaleData(es)
     AvisoDeConstruccionModule,
     NgbModule,
     BuscadorModule,
-    BibliotecaModule
+    BibliotecaModule,
+    CategoriasModule
   ],
   providers: [
     SidenavService, 

@@ -33,6 +33,8 @@ export const environment = {
 
   serverUrlNoticias: "https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api/noticias/",
   urlApiTramites: "https://aws-api-interno.www.gov.co/api/ficha-tramites-y-servicios",
+  //Categorias-Subcategorias o momentos de vida
+  serverCategorias: "https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api/categorias-subcategorias/",
 
   //URL plan de integracion
   urlPlanIntegracion: "https://admin.www.gov.co/Autenticacion/Autenticacion/RegistroAutoridad",

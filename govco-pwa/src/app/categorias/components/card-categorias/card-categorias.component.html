@@ -1,0 +1,14 @@
+<a id="{{id_}}" [attr.aria-label]="categoria.nombre + categoria.descripcionCorta"  [routerLink]="['/', categoria.id]" [title]="'Ir a '+ categoria.nombre">
+
+    <div   class="card_categorias-container mb-4">
+    
+        <img [src]="categoria | iconoPipe" class="card_categorias-container-img" alt="Imagen decorativa">
+    
+        <div>
+            <h2  class="card_categorias-title">{{categoria.nombre}}</h2>
+            <div class="container-description line-clamp">
+                <p class="card_categorias-description">{{categoria.descripcionCorta }}</p>
+            </div>
+        </div>
+    </div>
+</a>
