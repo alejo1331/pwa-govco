@@ -15,25 +15,23 @@ $color-dark-blue: #004884;
     span {
       color: white;
       font-size: 20px;
-      font-family: "Montserrat", sans-serif !important;
-      font-weight: 400 !important;
+      font-family: "Montserrat-Regular", sans-serif !important;
     }
   }
 
   article {
     h2 {
       font-size: 1.125rem;
-      font-weight: 600 !important;
-      font-family: "Montserrat", sans-serif;
+      font-family: "Montserrat-Bold", sans-serif;
       color: #004884;
+      margin-bottom: 15px;
     }
 
     p {
       color: #4B4B4B;
       font-size: .75rem;
       word-spacing: 0.26em;
-      letter-spacing: 0.37px;
-      margin: 12px 0;
+      font-family: "WorkSans-Regular",sans-serif;
     }
 
     .card {
