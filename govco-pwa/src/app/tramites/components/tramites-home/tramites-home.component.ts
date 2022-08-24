@@ -8,7 +8,7 @@ import { BottomMenuService } from '../../../transversales/services/bottom-menu/b
 @Component({
   selector: 'app-tramites-home',
   templateUrl: './tramites-home.component.html',
-  styleUrls: ['./tramites-home.component.css']
+  styleUrls: ['./tramites-home.component.scss']
 })
 export class TramitesHomeComponent implements OnInit {
 
