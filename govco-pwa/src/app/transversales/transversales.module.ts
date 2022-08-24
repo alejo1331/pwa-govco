@@ -26,6 +26,7 @@ import { PipesModule } from '../pipes/pipes.module';
 import { ModalInformacionComponent } from './shared/modal-informacion/modal-informacion.component';
 import { RecaptchaModule } from "ng-recaptcha";
 import { LoginComponent } from './components/login/login.component';
+import { RegistroComponent } from './components/registro/registro.component';
 
 
 @NgModule({
@@ -55,6 +56,7 @@ import { LoginComponent } from './components/login/login.component';
     CajaHerramientasComponent,
     ModalInformacionComponent,
     LoginComponent,
+    RegistroComponent,
     SafePipe,
     CardsServiciosParaEntidadesComponent,
     ConfirmacionUbicacionComponent,
