@@ -17,10 +17,10 @@
                 <a routerLink="null" (click)="clickHome()"  (click)="desactivarItem()"><img src="../../../assets/logos/transversales/GOVCO.svg" alt="logo de gov.co"></a>
 
             </div>
-            <span class="caja-buscador-pwa-govco" *ngIf="barraSuperiorInterna">
+            <a href="/buscador"span class="caja-buscador-pwa-govco" *ngIf="barraSuperiorInterna">
                 <span class="icono-buscador-pwa-govco"
-                    style="background-image: url(../../../../assets/icons-fonts/search_FILL0_wght500_GRAD0_opsz20.svg);"></span>
-            </span>
+                style="background-image: url(../../../../assets/icons-fonts/search_FILL0_wght500_GRAD0_opsz20.svg);"></span>
+            </a>
         </div>
         <div class="govco-pwa-buscador-header">
           <govco-buscador-home no-shadow="true" id="home1" *ngIf="!barraSuperiorInterna" class="app-buscador-pwa-govco"></govco-buscador-home>
