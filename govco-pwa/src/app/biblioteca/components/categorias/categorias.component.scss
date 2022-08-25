@@ -144,14 +144,14 @@
 
 
   h2{
-    font-weight: 300!important;
-    font-size: 2.0625rem;
+    font-family: 'Montserrat-Light';
+    font-size: 1.125rem;
   }
 
   .salto-linea{
     white-space: pre-wrap;
     font-family: "Work Sans",sans-serif;
-    font-size: 1rem;
+    font-size: .75rem;
     font-weight: 400;
   }
 
@@ -163,9 +163,16 @@
   .row div div h3 a{
     color: #3772ff;
     text-decoration: none;
+    font-family: 'Montserrat-Regular';
+    font-size: 14.5px;
   }
 
   .see-more a{
     align-items: center;
     color: #3772ff;
+  }
+
+  p.intro {
+    font-size: 0.625rem;
+    font-family: 'WorkSans-Regular';
   }

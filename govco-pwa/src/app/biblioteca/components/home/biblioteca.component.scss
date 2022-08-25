@@ -396,7 +396,7 @@ $color-orange-contrast:rgb(251, 194, 0);
   h3{
     font-size: .75rem !important;
     font-weight: 700 !important;
-    font-family: "Montserrat",sans-serif;
+    font-family: "Montserrat-Bold",sans-serif;
     line-height: 1.2;
   }
 
@@ -418,6 +418,10 @@ $color-orange-contrast:rgb(251, 194, 0);
     display: flex;
     color: #3772ff;
     padding: 0;
+  }
+
+  a {
+    font-family: "Montserrat-Regular",sans-serif;
   }
 
   a:not([href]):not([class]) {
@@ -455,9 +459,15 @@ $color-orange-contrast:rgb(251, 194, 0);
   }
 
   .intro{
-    font-size: .875rem !important;
+    font-size: .875rem;
   }
 
   .col img{
     cursor: pointer;
+  }
+
+  @media only screen and (max-device-width: 767px) {
+    p.intro {
+      font-size: 0.625rem !important;
+    }
   }
