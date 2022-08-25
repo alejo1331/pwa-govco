@@ -9,8 +9,7 @@
     <section class="govco-pwa-header">
       <app-barra-superior (outEstadoMenu)="estadoMenu($event)"></app-barra-superior>
     </section>
-<!-- [ngClass]="{'govco-pwa-content-2': cambiarEstilo}" -->
-    <section id="topScroll" class="govco-pwa-content">
+    <section id="topScroll" class="govco-pwa-content" [ngClass]="{'govco-pwa-content-2': cambiarEstilo}">
       <app-geolocalizacion (click)="formularioGeolocalizacion(['translate(0%)', 'translate(-100%)'])"
         class="app-geolocalizacion-pwa-govco">
       </app-geolocalizacion>
