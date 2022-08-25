@@ -1,0 +1,313 @@
+<div class="login" id="contenedor-registro">
+  <div class="container login-container">
+    <!-- <app-bread-crumb  title="Registrar nuevo usuario"></app-bread-crumb> -->
+
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <div class="login-container_title">
+          <h1>Bienvenido a GOV.CO</h1>
+          <h3>¡No más vueltas!</h3>
+          <p>
+            Con tu registro, tendrás total acceso a la gestión de trámites y servicios, así como a la Carpeta Ciudadana Digital.
+          </p>
+        </div>
+        <div class="login-container_box">
+          <label>Por eso ten en cuenta que:</label>
+          <div class="login-container_box-steps">
+            <p>
+              Debes tener a la mano tu cédula de ciudadanía para realizar el registro.
+            </p>
+          </div>
+          <span >
+            <img src="https://govco-prod-webutils.s3.amazonaws.com/uploads/2021-11-11/e6bd2967-ceb7-4176-b672-152a0e9af522-card.png" alt="card" width="30px" height="24px">
+          </span>
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-12">
+        <div class="login-form">
+          <h3>Registrar nuevo usuario</h3>
+          <form
+            [formGroup]="registrationForm"
+            class="login-form_form"
+          >
+            <div class="group-gap">
+              <div class="d-block my-3">
+                <div class="form-group hidden">
+                  <label>Tipo de identificación de usuario</label>
+                  <select
+                    (change)="selectChangeHandler($event)"
+                    class="form-control select"
+                    style="width: 100%;"
+                    id="userID"
+                    formControlName="userID"
+                    [ngClass]="{ 'is-invalid': submitted && f.userID.errors }"
+                  >
+                    <option value="" disabled selected>Escoger</option>
+                    <option
+                      *ngFor="let userType of users"
+                      [value]="userType.Sigla"
+                    >
+                      {{ userType.Nombre }}
+                    </option>
+                  </select>
+                  <div
+                    *ngIf="submitted && f.userID.errors"
+                    class="invalid-feedback"
+                  >
+                    <div *ngIf="f.userID.errors.required" class="error">
+                      Campo obligatorio
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>Cédula de Ciudadanía</label>
+                  <input
+                  *ngIf="this.f.userID.value == 'EM'"
+                    type="text"
+                    formControlName="user"
+                    placeholder="Digite: Correo Electrónico"
+                    class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f.user.errors }"
+                  />
+                  <input
+                    type="text"
+                    class="form-control"
+                    *ngIf="this.f.userID.value === ''"
+                  />
+                  <input
+                  *ngIf="this.f.userID.value == 'CC'"
+                  type="text"
+                  placeholder="Digite: Cédula de Ciudadanía"
+                  onkeypress="return (event.charCode >= 48 && event.charCode <= 57)"
+                  formControlName="user"
+                  class="form-control"
+                  [ngClass]="{ 'is-invalid': submitted && f.user.errors }"
+                />
+                  <div
+                    *ngIf="submitted && f.user.errors"
+                    class="invalid-feedback"
+                  >
+                    <div *ngIf="f.user.errors.required" class="error">
+                      Campo obligatorio
+                    </div>
+                    <div *ngIf="this.selectedID == 'EM'">
+                      <div *ngIf="f.user.errors.pattern" class="error">
+                        Ingrese un formato válido
+                      </div>
+                    </div>
+                    <div *ngIf="this.selectedID == 'CC'">
+                      <div *ngIf="f.user.errors.pattern" class="error">
+                        Ingrese solo números
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <re-captcha
+                (resolved)="getResponceCapcha($event)"
+                [siteKey]="siteKeyCaptcha"
+              ></re-captcha>
+              <div class="error" *ngIf="this.registrationForm.controls.recaptcha.hasError('required') && (this.registrationForm.controls.recaptcha.dirty || this.registrationForm.controls.recaptcha.touched)">
+                Captcha es obligatorio
+              </div>
+            </div>
+            <div id="checkbox-active-1" class="contenedor-checkbox">
+              <!-- <label class="chk-govco form-group">
+
+              </label> -->
+              <input
+                  type="checkbox"
+                  formControlName="tratamiento"
+                  id="checkbox_1"
+                  [ngClass]="{ 'is-invalid': submitted && f.tratamiento.errors }"
+                  data-toggle="modal"
+                  data-target="#tratamiento-de-datos"
+                />
+                Autorizo el tratamiento de datos personales
+                <label class="govco-icon" for="checkbox_1"> </label>
+              <div *ngIf="submitted && f.tratamiento.errors">
+                <div *ngIf="f.tratamiento.errors.required" class="errorToast">
+                  <span class="govco-icon govco-icon-x-p"></span>
+                  Error al registrar: Falta autorizar tratamiento de datos
+                </div>
+              </div>
+            </div>
+            <div id="checkbox-active-2" class="contenedor-checkbox">
+              <input
+                type="checkbox"
+                formControlName="terminos"
+                id="checkbox_2"
+                [ngClass]="{ 'is-invalid': submitted && f.terminos.errors }"
+                data-toggle="modal"
+                data-target="#condiciones"
+              />
+              Acepto términos y condiciones
+              <label for="checkbox_2"> </label>
+              <label class="chk-govco form-group">
+
+                <div class="chk-govco__indicator"></div>
+              </label>
+              <div *ngIf="submitted && f.terminos.errors">
+                <div *ngIf="f.terminos.errors.required" class="errorToast">
+                  <span class="govco-icon govco-icon-x-p"></span>
+                  Error al registrar: Falta aceptar los términos y condiciones.
+                </div>
+              </div>
+              <div *ngIf="submitted && f.terminos.errors && f.tratamiento.errors">
+                <div *ngIf="f.terminos.errors.required && f.tratamiento.errors.required" class="errorToast">
+                  <span class="govco-icon govco-icon-x-p"></span>
+                  Error al registrar: Falta autorizar tratamiento de datos y los términos y condiciones
+                </div>
+              </div>
+            </div>
+            <div class="buttons">
+              <button id="button" type="button" class="btn btn-round btn-high" (click)="validate()">
+                Continuar
+              </button>
+              <!-- <a href="/login" class="btn btn-round btn-middle">
+                INICIAR SESIÓN
+              </a> -->
+            </div>
+            <div class="content-btn-registrate mt-5">
+              <p class="texto">¿Ya estás registrado en GOV.CO?</p>
+              <p class="btn-registro"><a href="/login">Iniciar sesión</a></p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+<div id="condiciones" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">
+          x
+        </button>
+        <h4 class="modal-title">Condiciones de uso</h4>
+      </div>
+      <div class="modal-body">
+        <p style="text-align: justify;">
+          Apreciado Usuario: el sitio web del -MINISTERIO DE TECNOLOGÍAS DE LA
+          INFORMACIÓN Y LAS COMUNICACIONES con sede en Bogotá, Colombia-.
+          www.mintic.gov.co (en adelante el Sitio Web) tiene como función
+          principal proveer información y servicios, así como divulgar y promover
+          normas y directrices del - MINISTERIO DE TECNOLOGÍAS DE LA INFORMACIÓN
+          Y LAS COMUNICACIONES DE LA REPÚBLICA DE COLOMBIA- (en adelante
+          MINTIC). <br />
+          <br />
+          Por medio del Sitio Web, MINTIC publica, entre otros, los temas y
+          actividades que tienen que ver con su misión, su visión, objetivos y
+          las funciones que le corresponden. Adicionalmente, por este medio la
+          entidad da a conocer información sobre Políticas, planes, programas y
+          proyectos institucionales, Trámites; Servicios; Indicadores de
+          Gestión; Planes y Programas; Publicaciones; Normas; Convocatorias;
+          Información presupuestal y de contratación; páginas recomendadas, y,
+          en general, información relacionada con el gobierno y la entidad o de
+          los programas que desarrollan las entidades si es el caso.
+          Adicionalmente, permite la opción de solicitar trámites en línea y
+          ofrece herramientas de interacción para los usuarios del sitio.
+          <br />
+          <br />
+          MINTIC no persigue ningún lucro, ganancia o interés comercial con los
+          contenidos o links que se publican en su Sitio Web y en las páginas
+          web de otras dependencias o entidades adscritas y vinculadas, a los
+          cuales se accede a través del Sitio Web.
+          <br />
+          <br />
+          MINTIC solicita al Usuario de esta página, que lea detallada y
+          juiciosamente estas condiciones de uso (en adelante las Condiciones de
+          Uso) y la política de privacidad de este Sitio Web, antes de iniciar
+          su exploración o utilización. Si el Usuario no está de acuerdo con
+          estas Condiciones de Uso o con cualquier disposición de la Política de
+          Privacidad, le sugerimos que se abstenga de acceder o navegar por el
+          Sitio Web de nuestra entidad. 1. Definiciones Para facilitar la
+          comprensión de estas Condiciones de Uso del Sitio Web, se hace
+          necesario aclarar el significado de las siguientes palabras: a.
+          Contenidos. Implican todas las formas de información o datos que se
+          divulgan en la página web, entre los que se encuentran: textos,
+          imágenes, fotos, logos, diseños, animaciones. b. Derechos de Propiedad
+          Intelectual. incluye lo relativo a marcas, nombres comerciales, logos,
+          enseñas, lemas, nombres de dominio, secretos empresariales,
+          saber-hacer, diseños industriales, patentes, modelos de utilidad y
+          derecho de autor. c. Foro. Servicio automatizado de mensajes, a menudo
+          moderado por un propietario, a través del cual los suscriptores
+          reciben mensajes dejados por otros suscriptores por un tema dado. Los
+          mensajes se envían por correo electrónico. d. Internet. Herramienta de
+          comunicación con decenas de miles de redes de computadoras unidas por
+          el protocolo TCP/IP. Sobre esta red se pueden utilizar múltiples
+          servicios como por ejemplo correos electrónicos, www, etc.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="tratamiento-de-datos" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">
+          x
+        </button>
+        <h4 class="modal-title">Política de tratamiento de datos personales</h4>
+      </div>
+      <div class="modal-body">
+        <p style="text-align: justify;">
+          La protección de los datos personales está consagrada en el artículo
+          15 de la Constitución Política como el derecho fundamental que tienen
+          todas las personas a conservar su intimidad personal y familiar y su
+          buen nombre, lo mismo que conocer, actualizar y rectificar las
+          informaciones que se hayan recogido sobre ellos en bancos de datos y
+          en archivos de las entidades públicas y privadas. A su vez, el
+          articulo 20 ibídem garantiza a toda persona el derecho fundamental de
+          informar y recibir información veraz e imparcial.
+          <br><br>
+          En desarrollo de los preceptos constitucionales antes citados, el Congreso de la República
+          expidió la Ley 1266 de 2008, con el objeto desarrollar el derecho
+          constitucional que tienen todas las personas a conocer, actualizar y
+          rectificar las informaciones que se hayan recogido sobre ellas en
+          bancos de datos personales.
+          <br><br>
+          A su turno, el artículo 17 de la Ley Estatutaria 1581 de 2012, “Régimen General de Protección de Datos
+          Personales, y el articulo 2 2.2. 25. 3.1. del Decreto 1074 de 2015,
+          “Decreto Único Reglamentario del Sector Comercio Industria y Turismo”,
+          consagraron la necesidad de garantizar de forma integral la protección
+          y el ejercicio del derecho fundamental de Habeas Data y estableció
+          dentro de los deberes de los responsables del tratamiento de datos
+          personales. desarrollar políticas para este derecho.
+          <br><br>
+          La Ley 1712 de 2014, sobre transparencia y derecho de acceso a la información pública
+          nacional, adiciona nuevos principios, conceptos y procedimientos para
+          el ejercicio y garantía del referido derecho; junto con lo dispuesto
+          en el Libro 2. Parte VIII, Título IV “Gestión de la Información
+          Clasificada y Reservada” del Decreto 1080 de 2015, ”por medio del cual
+          se expide el Decreto Reglamentario Único del Sector Cultura”, que
+          establece disposiciones sobre el acceso a datos personales en posesión
+          de los sujetos obligados.   <br><br> A través del Decreto 1083 de 2015, “Decreto
+          Único Reglamentario del Sector Función Pública”, (modificado por el
+          Decreto 1499 de 2017) se promueve el mejoramiento continuo de las
+          entidades públicas del país, garantizando un adecuado ambiente de
+          control mediante la definición de responsabilidades en relación con
+          las líneas de defensa del Modelo Estándar de Control Interno. Mediante
+          Resolución No 1905 de 2019, se actualizó el Modelo Integrado de
+          Gestión (MIG) del Ministerio/Fondo Único de Tecnologías de la
+          Información y las Comunicaciones, acogiendo los lineamientos del
+          Decreto 1499 de 2017 y estableciendo el Comité MIG como la instancia
+          orientadora del Modelo, en donde se tratan los temas referentes a las
+          dimensiones y políticas de gestión y desempeño Institucional.   <br><br> De
+          acuerdo con el numeral 14 del artículo 9 de la misma resolución,
+          corresponde al Comité MIG aprobar y hacer seguimiento a las políticas
+          de gestión y directrices en materia de Estrategia de gobierno digital
+          y Seguridad de la Información en la Entidad.
+        </p>
+      </div>
+      <div class="modal-footer">
+        <a href="https://www.mintic.gov.co/portal/715/articles-62124_politica_tratamiento_datos_personales_u20200917.pdf" download="resolucion.txt" target="_blank">DESCARGAR RESOLUCIÓN 924 DE 2020</a>
+      </div>
+    </div>
+  </div>
+</div>

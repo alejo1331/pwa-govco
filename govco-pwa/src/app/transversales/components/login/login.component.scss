@@ -1,0 +1,239 @@
+@import "https://cdn.www.gov.co/assets/css/styles.css";
+
+.login {
+  background: #fff;
+  padding: 4em 0;
+  margin-bottom: -2em;
+
+  &-container {
+    &_title {
+      h1 {
+        font-size: 40px;
+        line-height: 46px;
+        font-weight: 500;
+        color: #004884;
+
+      }
+      h3 {
+        font-size: 24px;
+        line-height: 46px;
+        font-weight: 500;
+        color: #004884;
+        margin-top: 25px;
+      }
+      p {
+        font-family: "Montserrat", sans-serif;
+        font-size: 18px;
+        line-height: 30px;
+        color: #004884;
+
+      }
+    }
+    &_box {
+      border: 1px solid #ffab00;
+      border-radius: 5px;
+      margin-top: 3em;
+      label {
+        color: #004884;
+        background: #ffab00;
+        padding: 1em;
+        width: 100%;
+        border-radius: 5px 5px 0 0;
+        font-weight: 700;
+        font-size: 18px;
+      }
+
+      &-steps {
+        display: flex;
+        align-items: center;
+        width: 506px;
+        margin: 1em auto;
+        span {
+          width: 70px;
+          height: 70px;
+          background: #ffab00;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .govco-icon-email::before {
+          font-size: 53px;
+        }
+        p {
+          font-size: 1rem;
+          margin: 0 1em;
+          width: 430px;
+          color: white;
+
+          strong {
+            font-size: 18px;
+            color: white;
+          }
+        }
+      }
+    }
+  }
+  &-form {
+    background: white;
+    padding: 2em;
+    border: 2px solid #e6effd;
+    border-radius: 10px;
+    width: 460px;
+    margin: 0 auto;
+    text-align: center;
+
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    h3 {
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 1em;
+    }
+
+    &_form {
+      .captcha {
+        margin: 1em 0;
+      }
+      .dis {
+        opacity: 0.5;
+        pointer-events: none;
+      }
+      button {
+        margin: 2em 0;
+      }
+      .form-group {
+        text-align: left;
+        margin-bottom: 2em;
+        label {
+          font-size: 1rem;
+          color: #4b4b4b;
+          font-family: "Work Sans", sans-serif;
+        }
+        .error {
+          color: #a80521;
+          font-family: "Work Sans", sans-serif;
+          font-size: 14px;
+        }
+        .errorCaptcha {
+          border: 1px solid #a80521;
+          width: 304px;
+        }
+        .form-control {
+          border-radius: 5px;
+          height: 40px;
+          border: 1px solid #bababa;
+        }
+        .is-invalid {
+          border-color: #a80521;
+        }
+      }
+      .buttons {
+        .btn-high {
+          height: 40px;
+          font-weight: 500;
+          font-size: 15px;
+          font-family: "Work Sans", sans-serif;
+          width: 165px;
+          padding: 0;
+          display: flex;
+          align-items: center;
+          margin: 0 auto !important;
+          justify-content: center;
+          &:hover {
+            font-size: 15px !important;
+            color: #fff !important;
+            box-shadow: none !important;
+            background-color: #004884 !important;
+          }
+        }
+        a {
+          width: 261px;
+          padding: 0;
+          height: 40px;
+          font-size: 15px;
+          font-weight: 500;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin: 2em auto 0 !important;
+          font-family: "Work Sans", sans-serif;
+
+          &:hover {
+            font-size: 15px !important;
+            color: #fff !important;
+            box-shadow: none !important;
+            background-color: #004884 !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+.content-btn-registrate{
+  .texto {
+    color: #4B4B4B;
+    font-size: 14px;
+    margin-bottom: 0px;
+  }
+
+  .btn-registro{
+    a{
+      cursor: pointer;
+      font-size: 15px;
+      text-decoration: underline;
+      color: #004884;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .login {
+    padding: 1em 0;
+    &-container {
+      &_title{
+        p{
+          font-size: 15px;
+          line-height: 25px;
+        }
+      }
+      &_box {
+        label{
+          font-size: 16px;
+        }
+        &-steps {
+          width: 100%;
+          margin: 0 10px;
+          span {
+            width: 50px;
+            height: 40px;
+          }
+          .govco-icon-user-p {
+            font-size: 18px;
+          }
+          .govco-icon-email::before {
+            font-size: 30px;
+          }
+          p {
+            strong {
+              font-size: 14px;
+            }
+            width: 100%;
+            padding: 0 10px;
+            margin: 10px 0;
+            font-size: 13px;
+          }
+        }
+      }
+    }
+    &-form {
+      width: 100%;
+      margin: 2em 0;
+      padding: 1em;
+      h3{
+        font-size: 1.5rem;
+      }
+
+    }
+  }
+}
