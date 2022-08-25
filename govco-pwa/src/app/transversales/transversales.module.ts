@@ -40,7 +40,6 @@ import { RegistroComponent } from './components/registro/registro.component';
     MatDialogModule,
     PipesModule,
     RecaptchaModule
-
   ],
   declarations: [
     BuscadorComponent,
@@ -73,6 +72,7 @@ import { RegistroComponent } from './components/registro/registro.component';
     BottomMenuComponent,
     BarraSuperiorComponent,
     GeolocalizacionFormularioComponent,
+
     BannerSeccionesInternasComponent,
     BannerDetalleInternasDosComponent,
     LevelOneBreadCrumbsComponent,
