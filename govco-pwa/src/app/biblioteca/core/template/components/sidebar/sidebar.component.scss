@@ -1,11 +1,6 @@
 .cards-cat {
     position: relative;
-    display: -ms-flexbox;
-    display: -webkit-box;
     display: flex;
-    -ms-flex-direction: column;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
     flex-direction: column;
     min-width: 0;
     word-wrap: break-word;
@@ -15,10 +10,9 @@
     border-radius: 2rem;
     padding: 0.5rem;
     margin-bottom: 10px;
-    -webkit-box-shadow: 0px 0px 0.3rem rgba(75, 75, 75, 0.3);
     box-shadow: 0px 0px 0.3rem rgba(75, 75, 75, 0.3);
   }
-  
+
   .vl {
     border-left: 2px solid #004884;
     height: 100%;
@@ -26,34 +20,34 @@
     left: 100%;
     z-index: 1;
   }
-  
+
   .new-notification {
     height: auto;
     width: auto;
   }
-  
+
   .spacing-rcs {
     line-height: 1.5;
   }
-  
-  
+
+
   .nivel-uno{
     font-weight: 700;
     font-size: 1rem;
   }
-  
+
   .nivel-dos{
     font-weight: 600;
     font-size: 0.875rem;
   }
-  
+
   .nivel-tres{
     margin-left: 10px;
   }
-  
-  
-  
-  
+
+
+
+
   .logo-nivel-uno{
     // background: url(../../../../../assets/iconodefecto.PNG);
     width: 24px;
@@ -62,32 +56,32 @@
       background-repeat:   no-repeat;
       background-position: center center;
   }
-  
-  
+
+
   .menu-btn{
     display: none;
     cursor: pointer;
     margin-left: 10px;
     z-index: 1;
   }
-  
+
   .background-menu{
     background: #fff;
   }
-  
+
   #menu>div>ul{
     // border-top: 2px solid #004884;
     overflow-y: scroll;
     overflow-x: hidden;
     height: 700px;
   }
-  
+
   @media screen   and (max-width:922px){
     .menu-btn{
         display: block;
         // position: fixed;
     }
-  
+
     #menu{
         display: block;
         position: absolute;
@@ -100,7 +94,7 @@
         transition: transform .5s ease-in-out;
         transform: translateX(-600px);
     }
-  
+
     #menu>div>ul{
       border: 2px solid #004884;
       overflow-y: scroll;
@@ -112,68 +106,68 @@
     }
     // .nav-main ul.nav-menu.show{
     //     transform: translateX(-20px);
-  
+
     // }
-  
+
     // .nav-main ul.nav-menu{
     //     padding: 20px;
     //     font-size: 14px;
     // }
-  
+
     // .nav-main ul.nav-menu-right{
     //     margin-right: 40px;
     // }
   }
-  
-  
+
+
   /* width */
   ::-webkit-scrollbar {
     width: 8px;
   }
-  
+
   /* Track */
   ::-webkit-scrollbar-track {
     background:#E6EFFD;
     width: 8px;
     height: 100%;
   }
-  
+
   /* Handle */
   ::-webkit-scrollbar-thumb {
     background: #004884;
     border-radius: 12px;
   }
-  
+
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
     background: #013e70;
   }
-  
+
   .flecha-collapse{
     border-bottom: 0 !important;
     color: #004884 !important;
     z-index: 1000;
     position: relative;
     right: 80px;
-  
+
   }
-  
+
   .flecha-collapse:hover{
     background: #ffffff00 !important;
   }
-  
+
   .flecha-collapse .icono {
       transition: all ease-in-out 300ms;
       transform-origin:  50% 75%;
   }
-  
+
   .flecha-collapse.collapsed .icono {
       transform: rotate(180deg);
       transition: all ease-in-out 300ms;
       transform-origin:  75% 50%;
   }
-  
-  
+
+
   .sidebar-nav{
     padding: 0;
     list-style: none;
@@ -221,4 +215,15 @@
   .input-group-append{
     height: 38px;
   }
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+   height: 14px;
+   width: 14px;
+   display: block;
+   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAn0lEQVR42u3UMQrDMBBEUZ9WfQqDmm22EaTyjRMHAlM5K+Y7lb0wnUZPIKHlnutOa+25Z4D++MRBX98MD1V/trSppLKHqj9TTBWKcoUqffbUcbBBEhTjBOV4ja4l4OIAZThEOV6jHO8ARXD+gPPvKMABinGOrnu6gTNUawrcQKNCAQ7QeTxORzle3+sDfjJpPCqhJh7GixZq4rHcc9l5A9qZ+WeBhgEuAAAAAElFTkSuQmCC);
+
+  background-repeat: no-repeat;
+  background-size: 14px;
 }
