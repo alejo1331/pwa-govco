@@ -6,7 +6,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-modal-informacion',
   templateUrl: './modal-informacion.component.html',
-  styleUrls: ['./modal-informacion.component.css']
+  styleUrls: ['./modal-informacion.component.scss']
 })
 export class ModalInformacionComponent implements OnInit {
   @Input() detail:any;
