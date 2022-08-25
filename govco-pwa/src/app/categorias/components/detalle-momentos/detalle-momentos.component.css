@@ -1,0 +1,16 @@
+.contenedor-fluid-tramites{
+    background: #F6F8F9 0% 0% no-repeat padding-box;
+    box-shadow: 4px 5px 8px #0048844d;
+    padding: 1px;
+  }
+  
+  .contenedor-buscador-momentos {
+    background: linear-gradient(90deg, #f6f8f9 30%, white 50%);
+  }
+  
+  @media screen and (max-width: 992px) {
+    .contenedor-buscador-momentos {
+      background: none;
+    }  
+  }
+  

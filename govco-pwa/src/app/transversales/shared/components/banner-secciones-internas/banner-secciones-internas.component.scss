@@ -1,0 +1,41 @@
+.container-banner {
+    width: 100%;
+    height: 254px;
+    background: #004884 0% 0% no-repeat padding-box;
+    opacity: 1;
+}
+
+.titulo {
+    text-align: left;
+    font-family: "Montserrat", sans-serif;
+    font-size: 2.5rem;
+    font-weight: 600;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    opacity: 1;
+}
+
+.description-banner {
+    text-align: left;
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.25rem ;
+    font-weight: normal;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    opacity: 1;
+}
+
+@media screen and (max-width: 992px) {
+
+    .container-banner {
+      display: flex;
+      height: auto;
+    }
+    .titulo {
+        font-size: 20px;
+    }
+
+    .description-banner {
+        font-size: 14px;
+    }
+}

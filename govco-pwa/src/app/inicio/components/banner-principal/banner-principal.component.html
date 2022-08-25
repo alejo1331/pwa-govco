@@ -22,8 +22,8 @@
               </p>
             </div>
             <div class="see-aux pb-3" *ngIf="banner.estadoBotonAuxiliar">
-              <a href="{{banner.urlBotonAuxiliar}}" class="btn btn-round"
-                target="{{ banner.urlExterna == 1 ? '_blank' : ''}}" role="button">{{banner.textoBotonAuxiliar}}</a>
+              <a routerLink="/categorias-subcategorias" class="btn btn-round"
+                role="button">{{banner.textoBotonAuxiliar}}</a>
             </div>
           </div>
         </div>

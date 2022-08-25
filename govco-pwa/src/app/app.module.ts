@@ -31,6 +31,7 @@ import { registerLocaleData } from '@angular/common';
 import { BibliotecaModule } from './biblioteca/biblioteca.module';
 import { RegistroModule } from './registro/registro.module';
 import { CategoriasModule } from './categorias/categorias.module';
+import { PipesModule } from './pipes/pipes.module';
 
 
 registerLocaleData(es)
@@ -71,7 +72,8 @@ registerLocaleData(es)
     NgbModule,
     BuscadorModule,
     BibliotecaModule,
-    CategoriasModule
+    CategoriasModule,
+    PipesModule
   ],
   providers: [
     SidenavService, 
