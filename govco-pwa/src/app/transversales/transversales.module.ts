@@ -23,6 +23,11 @@ import { BannerSeccionesInternasComponent } from './shared/components/banner-sec
 import { BannerDetalleInternasDosComponent } from './shared/components/banner-detalle-internas-dos/banner-detalle-internas-dos.component';
 import { LevelTwoBreadCrumbsComponent } from './shared/components/level-two-bread-crumbs/level-two-bread-crumbs.component';
 import { PipesModule } from '../pipes/pipes.module';
+import { ModalInformacionComponent } from './shared/modal-informacion/modal-informacion.component';
+import { RecaptchaModule } from "ng-recaptcha";
+import { LoginComponent } from './components/login/login.component';
+import { RegistroComponent } from './components/registro/registro.component';
+
 
 @NgModule({
   imports: [
@@ -33,7 +38,8 @@ import { PipesModule } from '../pipes/pipes.module';
     MatToolbarModule,
     TransversalesRoutingModule,
     MatDialogModule,
-    PipesModule
+    PipesModule,
+    RecaptchaModule
   ],
   declarations: [
     BuscadorComponent,
@@ -47,6 +53,9 @@ import { PipesModule } from '../pipes/pipes.module';
     CardsServiciosParaEntidadesComponent,
     ConfirmacionUbicacionComponent,
     CajaHerramientasComponent,
+    ModalInformacionComponent,
+    LoginComponent,
+    RegistroComponent,
     SafePipe,
     CardsServiciosParaEntidadesComponent,
     ConfirmacionUbicacionComponent,
@@ -63,10 +72,12 @@ import { PipesModule } from '../pipes/pipes.module';
     BottomMenuComponent,
     BarraSuperiorComponent,
     GeolocalizacionFormularioComponent,
+
     BannerSeccionesInternasComponent,
     BannerDetalleInternasDosComponent,
     LevelOneBreadCrumbsComponent,
-    LevelTwoBreadCrumbsComponent
+    LevelTwoBreadCrumbsComponent,
+    LoginComponent,
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })

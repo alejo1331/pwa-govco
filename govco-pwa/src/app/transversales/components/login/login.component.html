@@ -1,0 +1,108 @@
+<div class="login" id="contenedor-login">
+  <div class="container login-container">
+    <!--<app-bread-crumb   title="Iniciar sesión"></app-bread-crumb> -->
+
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <div class="login-container_title">
+          <h1 class="mt-5">Bienvenido a GOV.CO</h1>
+          <h3>¡No más vueltas!</h3>
+          <p>
+            Accede a la gestión de tus trámites y servicios y cuéntanos cómo ha sido tu experiencia usando nuestro portal.
+          </p>
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-12">
+        <div class="login-form">
+          <h3>Inicio de sesión</h3>
+          <form
+            [formGroup]="registrationForm"
+            class="login-form_form"
+          >
+            <div class="group-gap">
+              <div class="d-block my-3">
+                <div class="form-group hidden">
+                  <label [ngClass]="{ 'error': submitted && f.userID.errors }">Tipo de identificación de usuario</label>
+                  <select (change)="selectChangeHandler($event)" class="form-control select" style="width: 100%" id="userID" formControlName="userID" [ngClass]="{ 'is-invalid': submitted && f.userID.errors }">
+                    <option value="" disabled selected>Escoger</option>
+                    <option *ngFor="let userType of users" [value]="userType.Sigla" >
+                      {{ userType.Nombre }}
+                    </option>
+                  </select>
+                  <div
+                    *ngIf="submitted && f.userID.errors"
+                    class="invalid-feedback"
+                  >
+                    <div *ngIf="f.userID.errors.required" class="error">Campo obligatorio</div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>Cédula de Ciudadanía</label>
+                  <input
+                  *ngIf="this.f.userID.value == 'EM'"
+                    type="text"
+                    formControlName="user"
+                    placeholder="Digite: Correo Electrónico"
+                    class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f.user.errors }"
+                  />
+                  <input
+                    type="text"
+                    class="form-control"
+                    *ngIf="this.f.userID.value === ''"
+                  />
+                  <input
+                  *ngIf="this.f.userID.value == 'CC'"
+                  type="text"
+                  placeholder="Digite: Cédula de Ciudadanía"
+                  onkeypress="return (event.charCode >= 48 && event.charCode <= 57)"
+                  formControlName="user"
+                  class="form-control"
+                  [ngClass]="{ 'is-invalid': submitted && f.user.errors }"
+                />
+                  <div
+                    *ngIf="submitted && f.user.errors"
+                    class="invalid-feedback"
+                  >
+                    <div *ngIf="f.user.errors.required" class="error">
+                      Campo obligatorio
+                    </div>
+                    <div *ngIf="this.selectedID == 'EM'">
+                      <div *ngIf="f.user.errors.pattern" class="error">
+                        Ingrese un formato válido
+                      </div>
+                    </div>
+                    <div *ngIf="this.selectedID == 'CC'">
+                      <div *ngIf="f.user.errors.pattern" class="error">
+                        Ingrese solo números
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <re-captcha
+                (resolved)="getResponceCapcha($event)"
+                [siteKey]="siteKeyCaptcha"
+              ></re-captcha>
+              <div class="error" *ngIf="this.registrationForm.controls.recaptcha.hasError('required') && (this.registrationForm.controls.recaptcha.dirty || this.registrationForm.controls.recaptcha.touched)">
+                Captcha es obligatorio
+              </div>
+            </div>
+            <div class="buttons">
+              <button id="button" type="button" class="btn btn-round btn-high" (click)="validate()">
+                Continuar
+              </button>
+            </div>
+            <div class="content-btn-registrate mt-5">
+              <p class="texto">¿Aún no tienes una cuenta en GOV.CO?</p>
+              <p class="btn-registro"><a href="/registro">Regístrate</a></p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
