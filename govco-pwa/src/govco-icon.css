@@ -26,3 +26,7 @@
     font-family: "Govco Icon";
     font-size: 2rem
 }
+
+.govco-icon-right-arrow::before {
+    content: '\e916'
+}
