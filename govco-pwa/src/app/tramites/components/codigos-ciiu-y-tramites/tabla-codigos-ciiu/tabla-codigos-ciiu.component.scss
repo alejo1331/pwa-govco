@@ -1,9 +1,9 @@
-.table-head-ciiu{
+.table-head-ciiu {
     background-color: #E6EFFD;
     text-align: center;
 }
 
-.tituloTabla{
+.tituloTabla {
     display: inline-block;
     text-align: left;
     font-size: 16px !important;
@@ -14,7 +14,8 @@
     opacity: 1;
     padding-left: 10px;
 }
-.contenidoTabla{
+
+.contenidoTabla {
     font-size: 16px !important;
     font-weight: normal !important;
     font-family: "Work Sans" !important;
@@ -22,81 +23,165 @@
     color: #4B4B4B;
     opacity: 1;
 }
-::ng-deep pagination-controls pagination-template .ngx-pagination li.pagination-previous span::before {
-    content: none !important;
+
+.ngx-pagination::after {
+    clear: both;
 }
 
-::ng-deep pagination-controls pagination-template .ngx-pagination li.pagination-previous a::before {
-    content: none !important;
+.ngx-pagination::before,
+.ngx-pagination::after {
+    content: ' ';
+    display: table;
 }
 
-::ng-deep pagination-controls pagination-template .ngx-pagination li.pagination-next span::after {
-    content: none !important;
+::ng-deep pagination-controls pagination-template .ngx-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2em;
 }
 
+::ng-deep pagination-controls pagination-template .ngx-pagination li {
+    width: 40px;
+    height: 40px;
+    line-height: 2;
+    font-weight: 700;
+    text-align: center;
+}
+
+::ng-deep pagination-controls pagination-template .ngx-pagination li:hover {
+    background: #e6effd;
+    justify-content: center;
+    border-radius: 4px;
+  }
+
+::ng-deep  pagination-controls pagination-template .ngx-pagination li a:hover {
+    background: none;
+    text-decoration: none;
+  }
+
+::ng-deep pagination-controls pagination-template .ngx-pagination li span {
+    font-size: 16px;
+    color: #0b457f;
+    font-family: Work Sans, sans-serif;
+}
+
+::ng-deep pagination-controls pagination-template .ngx-pagination .current {
+    background: #3366cc;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+}
+
+::ng-deep pagination-controls pagination-template .ngx-pagination .current:hover {
+    background: #3366cc;
+    color: #fff;
+  }
+
+::ng-deep pagination-controls pagination-template .ngx-pagination .current span {
+    color: #fff;
+}
+
+::ng-deep pagination-controls pagination-template .ngx-pagination li.pagination-previous,
+::ng-deep pagination-controls pagination-template .ngx-pagination li.pagination-next {
+    width: auto;
+    height: auto;
+}
+
+::ng-deep pagination-controls pagination-template .ngx-pagination li.pagination-previous:hover,
+::ng-deep pagination-controls pagination-template .ngx-pagination li.pagination-next:hover {
+    background: none;
+    width: auto;
+    cursor: pointer;
+  }
+
+::ng-deep pagination-controls pagination-template .ngx-pagination .pagination-previous.disabled,
+::ng-deep pagination-controls pagination-template .ngx-pagination .pagination-next.disabled {
+    color: #bababa !important;
+}
+
+::ng-deep pagination-controls pagination-template .ngx-pagination .pagination-previous.disabled::before {
+    content: "\e916" !important;
+    display: none;
+}
+
+::ng-deep pagination-controls pagination-template .ngx-pagination .pagination-next.disabled::after {
+    content: "\e916" !important;
+    display: none;
+}
+
+
+::ng-deep pagination-controls pagination-template .ngx-pagination .pagination-previous.disabled span,
+::ng-deep pagination-controls pagination-template .ngx-pagination .pagination-next.disabled span {
+    text-align: right;
+    text-decoration: underline;
+    font-size: 14px !important;
+    font-weight: normal !important;
+    font-family: "Work Sans" !important;
+    letter-spacing: 0px;
+    color: #BABABA;
+    opacity: 1;
+}
+
+::ng-deep pagination-controls pagination-template .ngx-pagination li.pagination-previous a,
+::ng-deep pagination-controls pagination-template .ngx-pagination li.pagination-next a {
+    text-align: right;
+    text-decoration: underline;
+    font-size: 14px !important;
+    font-weight: normal !important;
+    font-family: "Work Sans" !important;
+    letter-spacing: 0px;
+    color: #3366CC !important;
+    opacity: 1;
+}
+
+::ng-deep pagination-controls pagination-template .ngx-pagination li.pagination-previous span::before,
+::ng-deep pagination-controls pagination-template .ngx-pagination li.pagination-previous a::before,
+::ng-deep pagination-controls pagination-template .ngx-pagination li.pagination-next span::after,
 ::ng-deep pagination-controls pagination-template .ngx-pagination li.pagination-next a::after {
     content: none !important;
 }
 
-::ng-deep pagination-controls pagination-template .ngx-pagination .pagination-previous.disabled span{
-    text-align: right;
-    text-decoration: underline;
-    font-size: 14px !important;
-    font-weight: normal !important;
-    font-family: "Work Sans" !important;
-    letter-spacing: 0px;
-    color: #BABABA;
-    opacity: 1;
+
+::ng-deep .btn {
+    position: relative !important;
+    line-height: 1.42;
 }
 
-::ng-deep pagination-controls pagination-template .ngx-pagination li.pagination-previous a{
-    text-align: right;
-    text-decoration: underline;
-    font-size: 14px !important;
-    font-weight: normal !important;
-    font-family: "Work Sans" !important;
-    letter-spacing: 0px;
-    color: #3366CC !important;
-    opacity: 1;
-}
-
-::ng-deep pagination-controls pagination-template .ngx-pagination li.pagination-next a{
-    text-align: right;
-    text-decoration: underline;
-    font-size: 14px !important;
-    font-weight: normal !important;
-    font-family: "Work Sans" !important;
-    letter-spacing: 0px;
-    color: #3366CC !important;
-    opacity: 1;
-}
-
-::ng-deep pagination-controls pagination-template .ngx-pagination .pagination-next.disabled span{
-    text-align: right;
-    text-decoration: underline;
-    font-size: 14px !important;
-    font-weight: normal !important;
-    font-family: "Work Sans" !important;
-    letter-spacing: 0px;
-    color: #BABABA;
-    opacity: 1;
+::ng-deep .btn-low,
+.btn-low-mix-govco {
+    color: #3772FF !important;
+    text-decoration: underline !important;
+    font-weight: 500;
+    font-size: 1rem;
+    padding: 0;
+    background-color: transparent;
+    cursor: pointer;
 }
 
 @media only screen and (max-device-width: 767px) {
-    .table td{
+    .table td {
         font-size: 14px;
         padding-right: 0px;
     }
-    .table th div{
+
+    .table th div {
         font-size: 14px;
         display: contents;
     }
-    .th-order-content-arrow{
-        min-width: 110px !important;;
+
+    .th-order-content-arrow {
+        min-width: 110px !important;
+        ;
     }
+
     ::ng-deep .ngx-pagination.responsive .small-screen {
         display: inline-block;
-        font-size: small;
+        font-size: 16px;
+        color: #004884;
         text-align: center;
         display: contents !important;
     }

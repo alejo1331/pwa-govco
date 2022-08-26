@@ -46,8 +46,8 @@ export const environment = {
   //Ficha tramite
   serverUrlFichaTramite: 'https://aws-api-interno.www.gov.co/api/ficha-tramites-y-servicios/',
   //Auth
-  authIssuer: 'https://autenticaciondigital.and.gov.co',
-  clientID: "GOVCOHome",
+  authIssuer: 'https://qaautenticaciondigital.and.gov.co',
+  clientID: "govcomovilQA",
   authWebApi:"https://api-interno.www.gov.co/api/roles-y-permisos/RolesPerfiles/Usuarios",
 
   //captcha

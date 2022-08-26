@@ -37,6 +37,10 @@ export class BackendApiService {
     return this.http.get<Municipio[]>( this.restUrl+"Municipio/"+Id );
   }
 
+  getCodigoCIIU(Id:number): Observable<CodigoCIIU>{
+    return this.http.get<CodigoCIIU>( this.restUrl+"codigoCIIU/ObtenerCodigoCIIUAngular/"+Id );
+  }
+
   getActividadesEconomicas(filtro:string): Observable<CodigoCIIU[]>{
     return this.http.get<CodigoCIIU[]>( this.restUrl+"codigoCIIU/ObtenerActividadesEconomicas/"+filtro);
   }
