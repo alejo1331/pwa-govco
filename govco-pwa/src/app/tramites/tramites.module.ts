@@ -20,6 +20,7 @@ import { DownloadComponent } from './components/ficha-tramite/download/download.
 import { VentanillasComponent } from './components/ficha-tramite/ventanillas/ventanillas.component';
 import { ModalVerNotaComponent } from './components/codigos-ciiu-y-tramites/modal-ver-nota/modal-ver-nota.component';
 import { MensajeSinDatosCiiuComponent } from './components/codigos-ciiu-y-tramites/mensaje-sin-datos-ciiu/mensaje-sin-datos-ciiu.component';
+import { TransversalesModule } from '../transversales/transversales.module';
 
 @NgModule({
   imports: [
@@ -30,7 +31,8 @@ import { MensajeSinDatosCiiuComponent } from './components/codigos-ciiu-y-tramit
     NgSelectModule,
     NgSelect2Module,
     NgxPaginationModule,
-    CarouselModule
+    CarouselModule,
+    TransversalesModule
   ],
   declarations: [
     TramitesHomeComponent,
