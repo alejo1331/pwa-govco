@@ -1,0 +1,88 @@
+.download-box{
+    background: #F6F8F9;
+    padding: 1rem 0 3rem;
+
+    &-container{
+        display: flex;
+        background: #fff;
+        padding: 3em;
+        align-items: center;
+        border-radius: 5px;
+
+        .btn-download{
+            font-size: 15px;
+            border: 1.5px solid #3772FF;
+            font-family: "Work Sans", sans-serif;
+            font-weight: 500;
+            padding: 0.5em 1em;
+            color: #3772ff !important;
+            &:hover{
+                background: #004884;
+                color: #fff !important;
+                border: 1.5px solid #004884;
+            }
+        }
+    }
+    &-info{
+        display: flex;
+        align-items: center;
+        &_icon{
+            background: #004884;
+            height: 70px;
+            width: 70px;
+            border-radius: 50%;
+            margin: 1em;
+        }
+        &_text{
+            max-width: 560px;
+            p{
+                font-size: 1rem;
+                color: #004884;
+                margin: 0;
+            }
+        }
+    }
+    @media screen and (max-width: 768px){
+        padding:0;
+        margin: 0;
+
+        &-container{
+            display: block;
+            padding: 2em;
+        }
+        &-info{
+            display: block;
+            padding: 0;
+            &_icon{
+                width: 58px;
+                height: 58px;
+                margin: 1em 0;
+            }
+            &_text{
+                h3{
+                    font-size: 18px;
+                    margin: 1em 0;
+                }
+                p{
+                    margin-bottom: 2em;
+                }
+
+            }
+        }
+        .p-2{
+            padding: 0 !important;
+            .btn-download{
+                font-size: 15px;
+                border: 1.5px solid #3772FF;
+                background-color: white;
+                font-family: "Montserrat",sans-serif;
+                border-radius: 30px;
+ 
+                &:hover{
+                    background: #004884;
+                    border: 1.5px solid #004884;
+                }
+            }
+        }
+    }
+}

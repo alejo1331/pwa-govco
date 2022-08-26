@@ -9,12 +9,13 @@
     <section class="govco-pwa-header">
       <app-barra-superior (outEstadoMenu)="estadoMenu($event)"></app-barra-superior>
     </section>
-
-    <section id="topScroll" class="govco-pwa-content" [ngClass]="{'govco-pwa-content-2': cambiarEstilo}">
+<!-- [ngClass]="{'govco-pwa-content-2': cambiarEstilo}" -->
+    <section id="topScroll" class="govco-pwa-content">
       <app-geolocalizacion (click)="formularioGeolocalizacion(['translate(0%)', 'translate(-100%)'])"
         class="app-geolocalizacion-pwa-govco">
       </app-geolocalizacion>
       <router-outlet></router-outlet>
+
     </section>
 
     <section class="govco-pwa-bottom-menu">
