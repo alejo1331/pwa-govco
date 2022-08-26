@@ -18,6 +18,8 @@ import { CategoriasComponent } from './components/ficha-tramite/categorias/categ
 import { BannerCiiuComponent } from './components/ficha-tramite/banner-ciiu/banner-ciiu.component';
 import { DownloadComponent } from './components/ficha-tramite/download/download.component';
 import { VentanillasComponent } from './components/ficha-tramite/ventanillas/ventanillas.component';
+import { ModalVerNotaComponent } from './components/codigos-ciiu-y-tramites/modal-ver-nota/modal-ver-nota.component';
+import { MensajeSinDatosCiiuComponent } from './components/codigos-ciiu-y-tramites/mensaje-sin-datos-ciiu/mensaje-sin-datos-ciiu.component';
 
 @NgModule({
   imports: [
@@ -41,6 +43,8 @@ import { VentanillasComponent } from './components/ficha-tramite/ventanillas/ven
     BannerCiiuComponent,
     DownloadComponent,
     VentanillasComponent,
+    ModalVerNotaComponent,
+    MensajeSinDatosCiiuComponent,
   ],
   exports: [TramitesHomeComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

@@ -13,7 +13,7 @@ const routes: Routes = [{
       component: TramitesHomeComponent
     },
     {
-      path: 'codigos',
+      path: 'codigos-ciiu-y-tramites',
       component: CodigosCiiuYTramitesComponent
     },
   ]
