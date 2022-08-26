@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BottomMenuService } from 'src/app/transversales/services/bottom-menu/bottom-menu.service';
 import { HeaderService } from 'src/app/transversales/services/header-service/header.service';
+import { ServiciosService } from 'src/app/transversales/services/servicios/servicios.service';
 import { SidenavService } from 'src/app/transversales/services/sidenav-service/sidenav-service.service';
 
 @Component({
@@ -18,7 +19,8 @@ export class CodigosCiiuYTramitesComponent implements OnInit {
   constructor(
     protected servicioHeader: HeaderService,
     public bottomService: BottomMenuService,
-    protected servicioSideNav: SidenavService
+    protected servicioSideNav: SidenavService,
+    private serviciosService: ServiciosService
     ) { }
 
   ngOnInit(): void {
@@ -36,6 +38,12 @@ export class CodigosCiiuYTramitesComponent implements OnInit {
     this.bottomService.seleccionandoItem(3);
     this.bottomService.ajustandoPantalla(false);
     this.servicioSideNav.seleccionandoItem(false,'null');
+
+    this.serviciosService.getTitleAndDescription("Consulta CIIU")
+      .subscribe((resp) => {
+        this.title = resp.data.titulo;
+        this.description = resp.data.descripcion;
+      })
   }
 
 }

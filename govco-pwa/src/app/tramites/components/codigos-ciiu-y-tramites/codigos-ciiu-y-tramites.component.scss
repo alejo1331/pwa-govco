@@ -1,0 +1,50 @@
+$white: #fff;
+
+.banner {
+    background: #004884;
+    padding-top: 6em;
+    height: 333px;
+
+    @media (max-width: 768px) {
+        padding-top: 3.5rem;
+        height: 100%;
+        margin-top: -2rem;
+        padding-bottom: 5px
+    }
+}
+
+.container {
+    h1 {
+        color: $white;
+        font-size: 32px;
+        font-weight: 600;
+        margin-top: 2rem;
+    }
+
+    p {
+        color: $white;
+        font-size: 20px;
+        font-weight: normal;
+        font-family: "Montserrat";
+        width: 730px;
+        margin: 1em 0;
+        margin-top: 26px !important;
+
+        @media only screen and (max-device-width: 767px) {
+            font-size: 14px;
+            width: 100%;
+        }
+    }
+
+    @media only screen and (max-device-width: 767px) {
+        h1 {
+            padding-top: 35px;
+            font-size: 24px;
+            width: 100%;
+        }
+
+        p {
+            font-size: 14px;
+        }
+    }
+}
