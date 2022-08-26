@@ -33,6 +33,7 @@ import { CategoriasModule } from './categorias/categorias.module';
 import { PipesModule } from './pipes/pipes.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RecaptchaModule } from "ng-recaptcha";
+import { PWAModule } from './pwa/pwa.module';
 
 
 
@@ -77,7 +78,8 @@ registerLocaleData(es)
     BuscadorModule,
     BibliotecaModule,
     CategoriasModule,
-    PipesModule
+    PipesModule,
+    PWAModule
   ],
   providers: [
     SidenavService,
