@@ -43,6 +43,8 @@ export const environment = {
   UrlAPIConsultaCIIU: 'https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api/ficha-tramites-y-servicios/ConsultaCIIU/',
   auditoriaurl: 'https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api/auditoria/Auditoria/',
 
+  //Ficha tramite
+  serverUrlFichaTramite: 'https://aws-api-interno.www.gov.co/api/ficha-tramites-y-servicios/',
   //Auth
   authIssuer: 'https://autenticaciondigital.and.gov.co',
   clientID: "GOVCOHome",
