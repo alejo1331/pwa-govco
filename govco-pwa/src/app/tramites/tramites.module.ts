@@ -11,6 +11,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { NgSelectModule } from 'ng-custom-select';
 import { NgSelect2Module } from 'ng-select2';
 import { TablaCodigosCiiuComponent } from './components/codigos-ciiu-y-tramites/tabla-codigos-ciiu/tabla-codigos-ciiu.component';
+import { ModalVerNotaComponent } from './components/codigos-ciiu-y-tramites/modal-ver-nota/modal-ver-nota.component';
+import { MensajeSinDatosCiiuComponent } from './components/codigos-ciiu-y-tramites/mensaje-sin-datos-ciiu/mensaje-sin-datos-ciiu.component';
 
 @NgModule({
   imports: [
@@ -27,6 +29,8 @@ import { TablaCodigosCiiuComponent } from './components/codigos-ciiu-y-tramites/
     CodigosCiiuYTramitesComponent,
     BusquedaCodigosCiiuComponent,
     TablaCodigosCiiuComponent,
+    ModalVerNotaComponent,
+    MensajeSinDatosCiiuComponent,
   ],
   exports: [TramitesHomeComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

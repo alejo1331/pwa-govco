@@ -23,9 +23,9 @@ export class BottomMenuComponent implements OnInit, AfterViewInit {
     this.currentRoute = "";
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationStart) {
-        if (event.url != '/tramites/codigos' && event.url != '/servicios') {
+        if (event.url != '/tramites/codigos-ciiu-y-tramites' && event.url != '/servicios') {
           this.appService.setSelectedServiceOption(0);
-        } else if (event.url == '/tramites/codigos') {
+        } else if (event.url == '/tramites/codigos-ciiu-y-tramites') {
           this.appService.setSelectedServiceOption(2);
         }
       }
