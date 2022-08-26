@@ -14,7 +14,7 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'ficha-tramites-y-servicios',
+    path: 'aviso-de-construccion',
     children: [
       {
         path: ':id',

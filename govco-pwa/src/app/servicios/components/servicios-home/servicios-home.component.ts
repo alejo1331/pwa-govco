@@ -17,7 +17,7 @@ export class ServiciosHomeComponent implements OnInit {
   urlItems = [
     "https://www.gov.co/home/",
     "https://carpetaciudadana.and.gov.co/",
-    "/tramites/codigos-ciiu-y-tramites"
+    "/ficha-tramites-y-servicios/codigos-ciiu-y-tramites"
   ];
 
   constructor(

@@ -5,7 +5,7 @@ import { CodigosCiiuYTramitesComponent } from './components/codigos-ciiu-y-trami
 
 
 const routes: Routes = [{
-  path: 'tramites',
+  path: 'ficha-tramites-y-servicios',
   children: [
 
     {
