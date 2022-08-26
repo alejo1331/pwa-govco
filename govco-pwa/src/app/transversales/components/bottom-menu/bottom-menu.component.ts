@@ -23,11 +23,12 @@ export class BottomMenuComponent implements OnInit, AfterViewInit {
     this.currentRoute = "";
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationStart) {
+        // preguntar
         if (event.url != '/tramites/codigos' && event.url != '/servicios') {
           this.appService.setSelectedServiceOption(0);
         } else if (event.url == '/tramites/codigos') {
           this.appService.setSelectedServiceOption(2);
-        }
+        } 
       }
     })
   }

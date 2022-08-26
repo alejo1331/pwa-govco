@@ -8,7 +8,7 @@ import { BottomMenuService } from '../../../transversales/services/bottom-menu/b
 @Component({
   selector: 'app-tramites-home',
   templateUrl: './tramites-home.component.html',
-  styleUrls: ['./tramites-home.component.css']
+  styleUrls: ['./tramites-home.component.scss']
 })
 export class TramitesHomeComponent implements OnInit {
 
@@ -35,9 +35,9 @@ export class TramitesHomeComponent implements OnInit {
     //bottomService.ajustandoPantalla(true)    true -> Agrega clase de css para ajustar 
     //                                                 la pantalla cuando en la seccion  
     //                                                 consultada no tiene header
-    this.servicioHeader.estadoHeader(false,false);
+    this.servicioHeader.estadoHeader(false,true);
     this.bottomService.seleccionandoItem(1);
-    this.bottomService.ajustandoPantalla(true);
+    this.bottomService.ajustandoPantalla(false);
     this.servicioSideNav.seleccionandoItem(false,'null');
   }
 

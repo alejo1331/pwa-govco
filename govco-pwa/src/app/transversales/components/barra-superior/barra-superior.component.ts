@@ -25,6 +25,7 @@ export class BarraSuperiorComponent implements OnInit {
 
   ngOnInit(): void {
     this.servicioHeader.ocultandoHeader.subscribe(([estilo, estado]) => {
+      console.log(estilo, estado); // preguntar
       this.ocultar = estado;
       this.barraSuperiorInterna = estilo;
     })

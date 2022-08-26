@@ -1,0 +1,37 @@
+<div class="carousel carousel-list">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2>Trámites destacados</h2>
+            </div>
+            <div class="carousel-container">
+                <div class="box-slider">
+                    <owl-carousel-o [options]="customOptions">
+                        <ng-template
+                            carouselSlide
+                            *ngFor="
+                            let tramite of listSlider;
+                            let index = index;
+                            let isFirst = first
+                            "
+                        >
+                            <div class="row contenedor-fila">
+                                <div class="col-6 p-0" *ngFor="let item of tramite">
+                
+                                    <div class="tramites-servicios" *ngFor="let i of item">
+                                        <div class="title">
+                                            <a
+                                                class="title-titles "
+                                                href="/ficha-tramites-y-servicios/T{{i.id}}"
+                                                >{{ i.nombre }}</a>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </owl-carousel-o>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

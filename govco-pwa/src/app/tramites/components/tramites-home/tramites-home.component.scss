@@ -1,0 +1,48 @@
+// .govco-pwa-tramites-content{
+//   height: 100vh;
+//   margin: 0 16px 0 16px;
+// }
+
+// a{
+//   color: #000000;
+// }
+
+$white: #fff;
+.banner{
+    background: #004884;
+    padding-top: 6em;
+    height: 307px;
+    @media (max-width: 768px) {
+        padding-top: 3.5rem;
+        height: 264px;
+        margin-top: -2rem;
+    }
+}
+
+.container{
+  h1{
+      color: $white;
+      font-size: 32px;
+      font-weight: 600;
+      margin-top: 2rem;
+  }
+  p{
+      color: $white;
+      font-size: 20px;
+      width: 730px;
+      margin: 1em 0;
+      @media only screen and (max-device-width: 767px) {
+          font-size: 16px;
+          width: 100%;
+      }
+  }
+  @media only screen and (max-device-width: 767px) {
+      h1{
+          font-size: 24px;
+          width: 130px;
+      }
+      p{
+          font-size: 14px;
+      }
+  }
+}

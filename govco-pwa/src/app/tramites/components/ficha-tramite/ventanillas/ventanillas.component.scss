@@ -1,0 +1,43 @@
+.ventanilla-box {
+    background: #f6f8f9;
+    padding: 1rem 0 2rem;
+    &-container {
+      background: #fff;
+      display: flex;
+      border: 1px solid #fff;
+      margin-bottom: 2em;
+      padding: 0;
+      height: 212px;
+      &-info {
+        padding: 0;
+        img {
+          height: 100%;
+        }
+      }
+      &-text {
+        padding-top: 4em;
+        p {
+          color: #4b4b4b;
+          font-size: 14px;
+        }
+      }
+      @media screen and (max-width: 768px) {
+        display: block;
+        height: auto;
+        margin: 0;
+        &-info {
+          padding: 0;
+          img {
+            width: 100%;
+          }
+        }
+        &-text{
+            padding: 2em;
+            h3{
+                font-size: 16px;
+            }
+        }
+      }
+    }
+}
+  
