@@ -44,8 +44,8 @@ export const environment = {
   auditoriaurl: 'https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api/auditoria/Auditoria/',
 
   //Auth
-  authIssuer: 'https://autenticaciondigital.and.gov.co',
-  clientID: "GOVCOHome",
+  authIssuer: 'https://qaautenticaciondigital.and.gov.co',
+  clientID: "govcomovilQA",
   authWebApi:"https://api-interno.www.gov.co/api/roles-y-permisos/RolesPerfiles/Usuarios",
 
   //captcha
