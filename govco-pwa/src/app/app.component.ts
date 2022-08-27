@@ -10,6 +10,11 @@ import { BottomMenuService } from './transversales/services/bottom-menu/bottom-m
 import { Platform } from '@angular/cdk/platform';
 import { GeolocalizacionService } from './transversales/services/geolocalizacion/geolocalizacion.service';
 import { GeolocalizacionFormularioComponent } from './transversales/components/geolocalizacion-formulario/geolocalizacion-formulario.component';
+import { SwUpdate } from '@angular/service-worker';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalClasicoComponent } from './modal-natvivo/components/modal-clasico/modal-clasico.component';
+import { ModalService } from './modal-natvivo/services/modal.service';
+import { ModalInterface } from './modal-natvivo/models/modal-interface';
 
 @Component({
   selector: 'app-root',
@@ -37,6 +42,8 @@ export class AppComponent implements OnInit, AfterContentChecked {
   touchMoveFinal: number = 0;
   touchMoveDiferencia: number = 0;
 
+  modalClasico: ModalInterface;
+
   prueba: any;
 
   public parametroBuscador: string;
@@ -49,7 +56,10 @@ export class AppComponent implements OnInit, AfterContentChecked {
     protected servicioHeader: HeaderService,
     public bottomService: BottomMenuService,
     public platform: Platform,
-    protected ServicioGeolocalizacion: GeolocalizacionService
+    protected ServicioGeolocalizacion: GeolocalizacionService,
+    private swUpdate: SwUpdate,
+    public dialog: MatDialog,
+    protected modalService: ModalService
   ) {
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
@@ -59,8 +69,13 @@ export class AppComponent implements OnInit, AfterContentChecked {
         this.appService.currentUrl = event.url;
       });
     this.bottomService.ajustePantalla.subscribe(estado => {
-        this.cambiarEstilo = estado;
-    })
+      this.cambiarEstilo = estado;
+    });
+    this.modalService.siguienteModal.subscribe(estado => {
+      if (estado == true) {
+        this.updatePWA();
+      }
+    });
   }
 
   ngOnInit(): void {
@@ -71,6 +86,35 @@ export class AppComponent implements OnInit, AfterContentChecked {
 
   ngAfterContentChecked(): void {
     this.sidenavService.setSidnav(this.sidenav);
+  }
+
+  updatePWA() {
+    //inicio - contruccion modal natico clasico
+    this.modalClasico = {
+      campoTitulo: "Actualizacion del app",
+      campoTexto: "Govco tiene una nueva version, descargala!",
+      botonCancelar: "CANCELAR",
+      botonAceptar: "ACEPTAR"
+    };
+    this.modalService.clasico(this.modalClasico);
+    //fin - contruccion modal natico clasico
+
+    const modalVisto = sessionStorage.getItem('modalVisto');
+
+    if (modalVisto == 'true') {
+      if (this.swUpdate.isEnabled) {
+        this.swUpdate.available.subscribe(() => {
+          let respuestaModalClasico = this.dialog.open(ModalClasicoComponent, {
+            width: '280px'
+          });
+          respuestaModalClasico.afterClosed().subscribe(resultado => {
+            if (resultado == true) {
+              this.swUpdate.activateUpdate().then(() => window.location.reload());
+            }
+          });
+        });
+      }
+    }
   }
 
   estadoMenu(estado: boolean) {
