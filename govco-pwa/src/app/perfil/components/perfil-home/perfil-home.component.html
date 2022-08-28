@@ -1,6 +1,53 @@
-<section class="govco-pwa-perfil-content">
-  <div class="algo" style="margin-top: 8.25rem;">
+<section *ngIf="!userData" class="govco-pwa-perfil-content">
+  <div style="margin-top: 8.25rem;">
     <button routerLink="/login" class="boton-pwa-govco-unfill texto-button-pwa-govco">Inicia sesión</button>
     <button routerLink="/registro" class="boton-pwa-govco-fill texto-button-pwa-govco-fill" style="margin-top: 2.5rem;">Regístrate</button>
+  </div>
+</section>
+
+<section *ngIf="userData" class="govco-pwa-perfil-content">
+  <div style="margin-top: 2.5rem;">
+    <div class="govco-pwa-perfil-card">
+      <div class="govco-pwa-perfil-data d-flex">
+        <div class="govco-pwa-perfil-icon">
+          <span class="material-symbols-outlined">
+            account_circle
+          </span>
+        </div>
+        <div class="govco-pwa-perfil-information">
+          <span>{{userName}}</span>
+          <span>{{userData.TipoIdentificacion}} {{userData.Identificacion}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="govco-pwa-perfil-options">
+      <div class="govco-pwa-perfil-options-card d-flex">
+        <a>
+          <div class="govco-pwa-perfil-options-card-icon">
+            <span class="material-symbols-outlined">
+              edit_note
+            </span>
+          </div>
+          <div class="govco-pwa-perfil-data-options">
+            <span>Datos de Autenticación</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="govco-pwa-perfil-options-card d-flex" style="margin-top: 16px;">
+        <a>
+          <div class="govco-pwa-perfil-options-card-icon">
+            <span class="material-symbols-outlined">
+              logout
+            </span>
+          </div>
+          <div class="govco-pwa-perfil-data-options">
+            <span>Cerrar sesión</span>
+          </div>
+        </a>
+      </div>
+
+    </div>
+
   </div>
 </section>
