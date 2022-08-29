@@ -46,8 +46,8 @@ export const environment = {
   serverUrlFichaTramite: 'http://100.24.232.62:8084/api/',
   //Auth
   authIssuer: 'https://qaautenticaciondigital.and.gov.co',
-  clientID: "PruebaGovco",
-  authWebApi: "http://100.24.232.62:8185/api/RolesPerfiles/Usuarios",
+  clientID: "govcomovilQA",
+  authWebApi:"https://api-interno.www.gov.co/api/roles-y-permisos/RolesPerfiles/Usuarios",
 
   //captcha
   keyCaptcha: "6LeCqOcUAAAAAMu9McR1zoUH0z6wDj_dekAODW5h",

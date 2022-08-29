@@ -16,7 +16,7 @@ import { ModalInformacionComponent } from "../../shared/modal-informacion/modal-
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  serProfile: object;
+  userProfile: object;
   disable = true;
   errorCaptcha = false;
   submitted = false;

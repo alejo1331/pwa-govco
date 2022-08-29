@@ -14,9 +14,13 @@ export const authConfig: AuthConfig = {
 
   responseType: 'code',
 
-  redirectUri: window.location.origin + '/',
+  // TODO: Descomentar para paso a Producción
+  // redirectUri: window.location.origin + '/',
+  // postLogoutRedirectUri: window.location.origin + '/',
 
-  postLogoutRedirectUri: window.location.origin + '/',
+  // TODO: Descomentar para paso a procucción
+  redirectUri: 'https://m.www.gov.co',
+  postLogoutRedirectUri: 'https://m.www.gov.co/',
 
 
   // Scope qa
