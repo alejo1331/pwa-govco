@@ -23,7 +23,7 @@ export class OidcService {
 
   private navigateToLoginPage() {
     // TODO: Remember current URL
-    this.router.navigateByUrl('/should-login');
+    this.router.navigateByUrl('/login');
   }
 
 constructor(
