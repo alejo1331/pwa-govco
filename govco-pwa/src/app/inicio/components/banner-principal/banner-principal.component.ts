@@ -14,6 +14,8 @@ export class BannerPrincipalComponent implements OnInit {
   imagen: string;
   descripcionImagen: string;
   storage: any;
+  urlBotonAuxiliar: string;
+
   constructor(private bannerService: BannerService) {
   }
 
@@ -27,6 +29,18 @@ export class BannerPrincipalComponent implements OnInit {
         (data: BannerInterface) => {
           if (data.succeeded) {
             this.banner = data.data;
+            console.log("banner", data.data.urlBotonAuxiliar)
+            switch (data.data.urlBotonAuxiliar) {
+              case 'https://carpetaciudadana.and.gov.co/':
+                this.urlBotonAuxiliar = 'https://carpetaciudadana.and.gov.co/';
+                break;
+              case 'https://qa-govco-and.xyz/categorias-subcategorias':
+                this.urlBotonAuxiliar = "/categorias-subcategorias"
+                break;
+              case '':
+                this.urlBotonAuxiliar = "/categorias-subcategorias"
+                break;
+            }
             this.ramdonImagen(data.data)
           } else {
             console.log("Errors: " + data.error + " Message: " + data.mensaje);
