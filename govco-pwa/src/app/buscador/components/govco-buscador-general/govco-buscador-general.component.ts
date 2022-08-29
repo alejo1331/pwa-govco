@@ -29,7 +29,7 @@ export class BuscadorGeneralComponent implements OnInit {
   ngOnInit() {
     this.servicioHeader.estadoHeader(true, true);
     this.bottomService.seleccionandoItem(0);
-    this.servicioSideNav.seleccionandoItem(true, 'entidadesEstado');
+    this.servicioSideNav.seleccionandoItem(true, 'noticias');
     this.navegador = this.getBrowserName();
     if (this.navegador != 'ie') {
       this.actRoute.paramMap.subscribe(params => {
