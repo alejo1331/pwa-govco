@@ -117,6 +117,7 @@ export class AppComponent implements OnInit, AfterContentChecked {
           console.log(this.LoginGovCo);
           this.userName = claims['name'];
           console.log(`${this.userName} datos desde el claims[name]`);
+          this.router.navigate(['/']);
         }
       }
     });
