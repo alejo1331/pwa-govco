@@ -25,7 +25,7 @@ import { SobreNosotrosModule } from './sobre-nosotros/sobre-nosotros.module';
 import { AvisoDeConstruccionModule } from './aviso-de-construccion/aviso-de-construccion.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BuscadorModule } from './buscador/buscador.module';
-import {PlatformModule} from '@angular/cdk/platform';
+import { PlatformModule } from '@angular/cdk/platform';
 import { ParticipaModule } from './participa/components/participa/Participa.Module';
 import { registerLocaleData } from '@angular/common';
 import { BibliotecaModule } from './biblioteca/biblioteca.module';
@@ -33,7 +33,7 @@ import { CategoriasModule } from './categorias/categorias.module';
 import { PipesModule } from './pipes/pipes.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RecaptchaModule } from "ng-recaptcha";
-import { PWAModule } from './pwa/pwa.module';
+import { ModalNatvivoModule } from './modal-natvivo/modal-natvivo.module';
 
 
 
@@ -79,7 +79,7 @@ registerLocaleData(es)
     BibliotecaModule,
     CategoriasModule,
     PipesModule,
-    PWAModule
+    ModalNatvivoModule
   ],
   providers: [
     SidenavService,

@@ -1,0 +1,9 @@
+<h1 mat-dialog-title class="govco-titulo-ubicacion">{{campoTitulo}}</h1>
+<div mat-dialog-content class="govco-texto-ubicacion">
+  {{campoTexto}}
+</div>
+<div mat-dialog-actions class="govco-botones-ubicacion">
+  <button mat-button mat-dialog-close>{{botonCancelar}}</button>
+  <button mat-button mat-dialog-close cdkFocusInitial [mat-dialog-close]= "true">{{botonAceptar}}</button>
+</div>
+

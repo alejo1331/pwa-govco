@@ -6,8 +6,10 @@ import { DepartamentoInterface } from '../../models/geolocalizacion/departamento
 import { MunicipioInterface } from '../../models/geolocalizacion/municipio-interface';
 import { GeolocalizacionService } from '../../services/geolocalizacion/geolocalizacion.service';
 import { MatDialog } from '@angular/material/dialog';
-import { ConfirmacionUbicacionComponent } from './components/confirmacion-ubicacion/confirmacion-ubicacion.component';
 import { CacheStorageService } from '../../services/cache-storage-service/cache-storage.service';
+import { ModalService } from 'src/app/modal-natvivo/services/modal.service';
+import { ModalInterface } from 'src/app/modal-natvivo/models/modal-interface';
+import { ModalClasicoComponent } from 'src/app/modal-natvivo/components/modal-clasico/modal-clasico.component';
 
 @Component({
   selector: 'app-geolocalizacion-formulario',
@@ -24,6 +26,8 @@ export class GeolocalizacionFormularioComponent implements OnInit {
   cerrarModal: [string, string];
   departLocalStorage: string;
   municiLocalStorage: string;
+
+  modalClasico: ModalInterface;
 
   @Output() closedModal = new EventEmitter<[string, string]>();
   @Output() closedContent = new EventEmitter<string>();
@@ -42,7 +46,9 @@ export class GeolocalizacionFormularioComponent implements OnInit {
   constructor(
     protected ServicioGeolocalizacion: GeolocalizacionService,
     protected ServicioCache: CacheStorageService,
-    public dialog: MatDialog) {
+    public dialog: MatDialog,
+    protected modalService: ModalService
+  ) {
   }
 
   ngOnInit(): void {
@@ -63,6 +69,16 @@ export class GeolocalizacionFormularioComponent implements OnInit {
       nombre: 'Todos',
       municipios: ["null"]
     }];
+
+    //inicio - contruccion modal natico clasico
+    this.modalClasico = {
+      campoTitulo: "Ingresa tu ubicación",
+      campoTexto: "Podrás encontrar trámites, servicios e información según tu ubicación",
+      botonCancelar: "CANCELAR",
+      botonAceptar: "INGRESAR"
+    };
+    this.modalService.clasico(this.modalClasico);
+    //fin - contruccion modal natico clasico
 
     this.getDepartamentos();
 
@@ -180,17 +196,20 @@ export class GeolocalizacionFormularioComponent implements OnInit {
 
     if (modalVisto != 'true') {
       setTimeout(() => {
-        let IngresarUbicacion = this.dialog.open(ConfirmacionUbicacionComponent, {
+        let IngresarUbicacion = this.dialog.open(ModalClasicoComponent, {
           width: '280px'
         });
         IngresarUbicacion.afterClosed().subscribe(resultado => {
           sessionStorage.setItem('modalVisto', 'true');
+          this.modalService.activarSiguienteModal(true);
           if (resultado) {
             this.getGeolocalizacion();
             this.closedModal.emit(['translate(0%)', 'translate(-100%)']);
           }
         });
       }, 1000);
+    }else{
+      this.modalService.activarSiguienteModal(true);
     }
   }
 
