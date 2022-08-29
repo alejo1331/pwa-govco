@@ -37,7 +37,7 @@ export class BannerPrincipalComponent implements OnInit {
               case 'https://qa-govco-and.xyz/categorias-subcategorias':
                 this.urlBotonAuxiliar = "/categorias-subcategorias"
                 break;
-              case '':
+              case 'https://beta.www.gov.co/categorias-subcategorias/':
                 this.urlBotonAuxiliar = "/categorias-subcategorias"
                 break;
             }
