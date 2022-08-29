@@ -4,3 +4,89 @@
   position: absolute;
   width: 100%;
 }
+
+.govco-pwa-perfil-card{
+  width: 90%;
+  height: 74px;
+  background-color: #004884;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 0.313rem;
+}
+
+.govco-pwa-perfil-data{
+  padding: 16px;
+  align-items: center;
+}
+
+.govco-pwa-perfil-icon{
+  display: flex;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+  background-color: #fff;
+  text-align: center;
+}
+
+.material-symbols-outlined {
+  color: #004884;
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 500,
+  'GRAD' 0,
+  'opsz' 48
+}
+
+.govco-pwa-perfil-information{
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column
+}
+.govco-pwa-perfil-information span {
+  color: white;
+  font-family: "Work Sans",sans-serif;
+  letter-spacing: 0.01px;
+}
+
+.govco-pwa-perfil-options{
+  margin-top: 40px;
+  width: 100%;
+}
+
+.govco-pwa-perfil-options-card{
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 44px;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.govco-pwa-perfil-options-card-icon{
+  padding-left: 16px;
+  display: flex;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.govco-pwa-perfil-data-options{
+  color: #000000;
+  font-family: "Work Sans",sans-serif;
+  letter-spacing: 0.01px;
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+}
+
+a {
+  display: flex;
+  text-decoration: none;
+}

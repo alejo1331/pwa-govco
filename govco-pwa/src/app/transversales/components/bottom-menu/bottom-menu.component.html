@@ -21,7 +21,8 @@
       <a class="link" routerLink="/perfil">
         <div>
           <span class="material-symbols-outlined">person</span>
-          <p>Ingresa</p>
+          <p *ngIf="userData">Perfil</p>
+          <p *ngIf="userData == null">Ingresa</p>
         </div>
       </a>
     </li>
