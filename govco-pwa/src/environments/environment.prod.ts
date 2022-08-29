@@ -21,6 +21,10 @@ export const environment = {
   //Noticias o Actualidad
   apiNoticiasDetalle: "https://api-interno.www.gov.co/api/noticias/",
   serverCategoriaSubcategoriaUrl: 'https://api-interno.www.gov.co/api/categorias-subcategorias/',
+  codNoticias: 'actualidadprincipal',
+  codParticipa: 'tuopinioncuenta',
+  codSobreNosotros: 'sobrenosotros',
+  codEntidades: 'paraentidades',
   //Entidades
   serverIntegracion: 'https://aws-api-interno.www.gov.co/api/integracion-sedes/IntegracionSedes/entidad/',
   //Tu opinion cuenta o Participacion

@@ -102,6 +102,9 @@
                         "production": {
                             "browserTarget": "govco-pwa:build:production"
                         },
+                        "preproduction": {
+                            "browserTarget": "govco-pwa:build:preproduction"
+                        },
                         "development": {
                             "browserTarget": "govco-pwa:build:development"
                         }

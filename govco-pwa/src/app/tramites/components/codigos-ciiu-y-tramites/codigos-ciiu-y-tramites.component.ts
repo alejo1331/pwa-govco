@@ -3,6 +3,7 @@ import { BottomMenuService } from 'src/app/transversales/services/bottom-menu/bo
 import { HeaderService } from 'src/app/transversales/services/header-service/header.service';
 import { ServiciosService } from 'src/app/transversales/services/servicios/servicios.service';
 import { SidenavService } from 'src/app/transversales/services/sidenav-service/sidenav-service.service';
+import { environment } from "src/environments/environment";
 
 @Component({
   selector: 'app-codigos-ciiu-y-tramites',
@@ -11,7 +12,7 @@ import { SidenavService } from 'src/app/transversales/services/sidenav-service/s
 })
 export class CodigosCiiuYTramitesComponent implements OnInit {
 
-  Codigo: string = 'sobrenosotros';
+  Codigo: string = environment.codSobreNosotros;
   description: string = 'Esta consulta le permite identificar los trámites asociados a la actividad económica CIIU de su empresa o emprendimiento.';
   title: string = 'Codigo CIIU';
   title2: string = 'Consulta de trámites por actividad económica - CIIU';

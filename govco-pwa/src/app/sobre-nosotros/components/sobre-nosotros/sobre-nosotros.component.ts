@@ -7,6 +7,7 @@ import { ConoceModel, } from '../../models/conoce.model';
 import { NosotrosModel } from '../../models/nosotros.model';
 import { SobreNosotrosModel } from '../../models/sobre-nosotros.model';
 import { SobreNosotrosService } from '../../services/sobre-nosotros.service';
+import { environment } from "src/environments/environment";
 
 @Component({
   selector: 'app-sobre-nosotros',
@@ -15,7 +16,7 @@ import { SobreNosotrosService } from '../../services/sobre-nosotros.service';
 })
 export class SobreNosotrosComponent implements OnInit {
 
-  codigo: string = 'sobrenosotros';
+  codigo: string = environment.codSobreNosotros;
   dataNosotros: NosotrosModel;
   description: string;
   infoConoce: ConoceModel;
