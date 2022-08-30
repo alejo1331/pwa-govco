@@ -209,6 +209,9 @@
 
 .bread-crumb-main{
     display: inline-block;
+    @media  screen and (max-width: 768px) {
+        margin-top: 14px;
+    }
 }
 
 ::ng-deep .image-icon{
