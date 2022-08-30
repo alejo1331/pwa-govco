@@ -13,6 +13,7 @@ import { CIIUTramite } from '../../../../models/ciiutramite';
 
 //Service
 import { BackendApiService } from '../../../../services/backend-api.service';
+import { BreadCrumbService } from '../../../../services/bread-crumb.service';
 
 @Component({
   selector: 'app-detalle-consulta-ciiu',
@@ -38,7 +39,7 @@ export class DetalleConsultaCiiuComponent implements OnInit {
 
   constructor( private service: BackendApiService, private route: ActivatedRoute, protected servicioHeader: HeaderService,
     public bottomService: BottomMenuService,
-    protected servicioSideNav: SidenavService) { 
+    protected servicioSideNav: SidenavService, private breadCrumbService: BreadCrumbService) { 
     
     this.idCodigo = Number(this.route.snapshot.paramMap.get("idCodigo"));
     this.idDepartamento = this.route.snapshot.paramMap.get("dpto")!;
@@ -50,6 +51,7 @@ export class DetalleConsultaCiiuComponent implements OnInit {
     objeto.IdDepartamento = this.idDepartamento;
     objeto.IdMunicipio = this.idMunicipio;
     this.request = objeto;
+    this.breadCrumbService.setTittleCiiu("Código CIIU "+this.route.snapshot.paramMap.get("codigo"));
   }
 
   ngOnInit (): void {
