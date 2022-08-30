@@ -206,3 +206,13 @@
         text-align: right;
     }
 }
+
+.bread-crumb-main{
+    display: inline-block;
+}
+
+::ng-deep .image-icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -1,0 +1,118 @@
+.breadcrumb {
+    // margin: 1.1em 0;
+    z-index: 1;
+    background-color: transparent;
+    padding: 0px;
+    .breadcrumb-item {
+      a{
+        text-align: left;
+        text-decoration: underline;
+        font: normal normal normal 14px/21px Work Sans;
+        letter-spacing: 0px;
+        color: #3366CC !important;
+        opacity: 1;
+        @media screen and (max-width: 768px) {
+          font-size: 14px;
+         }
+      }
+      a:hover {
+        color: #004884;
+      }
+      span {
+        font-size: 14px;
+        font-weight: 500;
+      }
+      .breadcrumb-text {
+        text-align: left;
+        font: 400 14px/21px Work Sans;
+        letter-spacing: 0px;
+        color: #282C34 !important;
+        opacity: 1;
+        &::first-letter {
+          text-transform: capitalize;
+        }
+      }
+      .mobile{
+        display: block;
+        @media screen and (max-width: 768px) {
+         display: none;
+        }
+      }
+      .govco-icon {
+        font-size: 1.1rem;
+        color: #004884 !important;
+      }
+    }
+    .active.white.mobile{
+      @media (max-width: 768px) {
+        position: absolute;
+        left: 3em;
+        margin-top: 0;
+      }
+     
+    }
+    .breadcrumb-item.white{
+      @media (max-width: 768px) {
+        position: absolute;
+        margin-top: 0;
+      }
+     
+    }
+    .white {
+      a, .breadcrumb-text, .govco-icon{
+        color: #fff !important;
+      }
+    }
+    .breadcrumb .breadcrumb-item + .active {
+      background-color: transparent !important;
+    }
+  }
+
+  ol.breadcrumb{
+    margin-bottom: 0;
+  }
+  
+  .breadcrumb-item.active.brdCiiu{
+    background: #fff !important;
+    @media screen and (max-width: 768px) {
+      // position: relative;
+      //margin-top: 30px;
+      //background: #F6F8F9 !important;
+      .breadcrumb-text{
+        font-size: 14px;
+      }
+    }
+  }
+  .breadcrumb .breadcrumb-item.active.brdCiiu{
+    top: 32px;
+    padding-bottom: 5px;
+    z-index: 1;
+    background: #fff !important;
+    @media screen and (max-width: 513px) {
+      // position: relative;
+      // top: 66px;
+      //background: #F6F8F9 !important;
+    }
+    @media screen and (max-width: 369px) {
+      // position: relative;
+      // top: 85px;
+      //background: #F6F8F9 !important;
+    }
+    @media screen and (max-width: 326px) {
+      font-size: 14px;
+      // position: relative;
+      // top: 79px;
+      //background: #F6F8F9 !important;
+    }
+  }
+  
+  .breadcrumb-item.active.white.brdConsultaCiiu{
+    @media screen and (max-width: 768px) {
+      position: absolute;
+      margin-top: 30px;
+    }
+  }
+  
+  .tramite-tittle {
+    text-decoration: none !important;
+  }
