@@ -1,16 +1,18 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
 import { NavigationStart, Event, Router } from '@angular/router';
 import { AppService } from 'src/app/app.service';
 import { HeaderService } from '../../services/header-service/header.service';
 import { SidenavService } from '../../services/sidenav-service/sidenav-service.service';
 import { PerfilService } from '../../services/perfil/perfil.service';
+import { BottomMenuService } from '../../services/bottom-menu/bottom-menu.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-bottom-menu',
   templateUrl: './bottom-menu.component.html',
   styleUrls: ['./bottom-menu.component.css']
 })
-export class BottomMenuComponent implements OnInit, AfterViewInit {
+export class BottomMenuComponent implements OnInit, AfterViewInit, OnDestroy {
 
   contadorClic: number;
   currentRoute: string;
@@ -21,7 +23,8 @@ export class BottomMenuComponent implements OnInit, AfterViewInit {
     protected servicioHeader: HeaderService,
     private router: Router,
     public appService : AppService,
-    public perfilService : PerfilService
+    public perfilService : PerfilService,
+    private bottomMenuService : BottomMenuService
   ) {
     this.userData = perfilService.checkLoginUser()
     this.currentRoute = "";
@@ -37,6 +40,10 @@ export class BottomMenuComponent implements OnInit, AfterViewInit {
     })
   }
 
+  loginSubscription: Subscription = this.bottomMenuService.LoginNotifier.subscribe(notified => {
+    this.userData = this.perfilService.checkLoginUser()
+  });
+
   ngOnInit() {
     this.contadorClic = 0;
   }
@@ -50,5 +57,9 @@ export class BottomMenuComponent implements OnInit, AfterViewInit {
     } else {
       this.router.navigate(['/']);
     }
+  }
+
+  ngOnDestroy() {
+    this.loginSubscription.unsubscribe();
   }
 }
