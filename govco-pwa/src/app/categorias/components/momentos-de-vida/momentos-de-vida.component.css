@@ -25,3 +25,15 @@
     border-radius: 24px;
     opacity: 1;
 }
+
+::ng-deep textarea {
+    font-family: 'Montserrat-Regular' !important;
+}
+
+::ng-deep .govco-icon-check-cn::before {
+    content: '\e961';
+}
+
+::ng-deep .govco-icon-x-cn::before {
+    content: '\e908';
+}

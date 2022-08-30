@@ -46,13 +46,14 @@ export const environment = {
 
   UrlAPIConsultaCIIU: 'https://preapi-interno.www.gov.co/api/ficha-tramites-y-servicios/ConsultaCIIU/',
   auditoriaurl: 'https://preapi-interno.www.gov.co/api/auditoria/Auditoria/',
+  serverValidateUrl: 'https://preapi-interno.www.gov.co/api/utils/validateurl',
   
   //Ficha tramite
   serverUrlFichaTramite: 'https://preapi-interno.www.gov.co/api/ficha-tramites-y-servicios/',
   //Auth
-  authIssuer: 'https://preautenticaciondigital.and.gov.co',
+  authIssuer: 'https://qaautenticaciondigital.and.gov.co',
   clientID: "govcomovilQA",
-  authWebApi:"https://preapi-interno.www.gov.co/api/RolesPerfiles/RolesPerfiles/Usuarios",
+  authWebApi:"https://api-interno.www.gov.co/api/roles-y-permisos/RolesPerfiles/Usuarios",
 
   //captcha
   keyCaptcha: "6LeCqOcUAAAAAMu9McR1zoUH0z6wDj_dekAODW5h",
