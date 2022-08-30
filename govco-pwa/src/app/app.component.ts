@@ -117,7 +117,7 @@ export class AppComponent implements OnInit, AfterContentChecked {
           console.log(this.LoginGovCo);
           this.userName = claims['name'];
           console.log(`${this.userName} datos desde el claims[name]`);
-          location.reload()
+          this.notifyLoginChange();
         }
       }
     });
@@ -139,6 +139,11 @@ export class AppComponent implements OnInit, AfterContentChecked {
     });
   }
 
+
+  notifyLoginChange(){
+    this.bottomService.notifyLogin();
+
+  }
 
   clearSessionData(){
     localStorage.removeItem('_grecaptcha');
