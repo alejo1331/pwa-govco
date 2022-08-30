@@ -46,7 +46,8 @@ export const environment = {
 
   UrlAPIConsultaCIIU: 'https://api-interno.www.gov.co/api/ficha-tramites-y-servicios/ConsultaCIIU/',
   auditoriaurl: 'https://api-interno.www.gov.co/api/auditoria/Auditoria/',
-  
+  serverValidateUrl: 'https://api-interno.www.gov.co/api/utils/validateurl',
+
   //Ficha tramite
   serverUrlFichaTramite: 'https://api-interno.www.gov.co/api/ficha-tramites-y-servicios/',
   //Auth

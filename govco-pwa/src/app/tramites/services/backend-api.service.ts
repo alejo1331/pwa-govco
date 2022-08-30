@@ -12,6 +12,10 @@ import { environment } from 'src/environments/environment';
 import { requestCodigo } from '../models/request-codigociiu';
 import { requestHistoricoBusqueda } from '../models/request-historico-busqueda';
 import { responseCodigoPaginated } from '../models/response-codigo-paginated';
+import { PageRequestTramite } from '../models/page-request-tramite';
+import { CIIUTramite } from '../models/ciiutramite';
+import { Response } from '../models/response';
+import { PreguntaTramite } from '../models/pregunta-tramite';
 
 @Injectable({
   providedIn: 'root'
@@ -51,5 +55,17 @@ export class BackendApiService {
 
   insertarHistoricoDeBusquedaCIIU(request: requestHistoricoBusqueda){
     return this.http.post(this.auditoriUrl+"BuscadorCIIU/HistoricoBusqueda",request,{responseType: 'text'});
+  }
+
+  obtenerTramitesObligatorios( request: PageRequestTramite ): Observable<Response<CIIUTramite[]>>{
+    return this.http.post<Response<CIIUTramite[]>>(this.restUrl+"CIIUTramite/obligatorios", request, this.httpOptions);
+  }
+
+  obtenerTramitesCondicionados( request: PageRequestTramite ): Observable<PreguntaTramite[]>{
+    return this.http.post<PreguntaTramite[]>(this.restUrl+"PreguntaText/tramites", request, this.httpOptions);
+  }
+
+  TotalTramitesObligatorios( request: PageRequestTramite ): Observable<number>{
+    return this.http.post<number>(this.restUrl+"CIIUTramite/obligatorios/total", request, this.httpOptions);
   }
 }
