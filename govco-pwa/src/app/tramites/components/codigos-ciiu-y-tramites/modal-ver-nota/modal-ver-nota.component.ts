@@ -1,12 +1,12 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
-import { PageRequestTramite } from '../../../models/page-request-tramite';
 
 //Services
 import { BackendApiService } from '../../../services/backend-api.service';
 
 //Models
 import { CodigoCIIU } from '../../../models/codigo-ciiu';
+import { PageRequestTramite } from '../../../models/page-request-tramite';
 
 @Component({
   selector: 'app-modal-ver-nota',
@@ -25,15 +25,17 @@ export class ModalVerNotaComponent implements OnInit {
   @Input() tieneTramites: boolean;
   @Input() IdCodigo: number;
   @Input() DepartamentoSeleccionado: string;
-  @Input() MunicipioSeleccionado: string;
-
+  @Input() MunicipioSeleccioando: string;
 
   request: PageRequestTramite;
   public habilitar: boolean;
   public url: any;
   public titulo: string;
 
-  constructor(private modalService: NgbModal, private service: BackendApiService) { }
+  constructor( private modalService: NgbModal, private service: BackendApiService ) { 
+    this.url = "/ficha-tramites-y-servicios/detalle-consulta-ciiu";
+    this.titulo= "Detalle consulta CIIU";
+  }
 
   ngOnInit(): void {
   }
@@ -46,6 +48,10 @@ export class ModalVerNotaComponent implements OnInit {
     });
 
     this.CargarCodigoCIIU(Id);
+  }
+
+  openLg(content:any) {
+    this.modalService.open(content, { size: 'lg' });
   }
 
   private getDismissReason(reason: any): string {

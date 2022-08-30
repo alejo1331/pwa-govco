@@ -16,6 +16,13 @@ const routes: Routes = [{
       path: 'codigos-ciiu-y-tramites',
       component: CodigosCiiuYTramitesComponent
     },
+    {
+      path:  'detalle-consulta-ciiu/:idCodigo/:dpto/:municipio/:codigo',
+      loadChildren: () => import('./components/detalle-consulta-ciiu/detalle-consulta-ciiu.module').then(m => m.DetalleConsultaCiiuModule),
+      data: {
+        title: 'Detalle consulta CIIU'
+      }
+    },
   ]
 }];
 

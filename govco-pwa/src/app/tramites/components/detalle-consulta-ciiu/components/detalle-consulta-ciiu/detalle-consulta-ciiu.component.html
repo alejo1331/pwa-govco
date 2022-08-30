@@ -1,0 +1,92 @@
+<app-aviso-ciiu></app-aviso-ciiu>
+<div class="banner">
+    <div class="container">
+        <h1>Código {{codigoCiiuT?.codigo}}</h1>
+        <h2>
+            {{codigoCiiuT?.nombre}}
+        </h2>
+    </div>
+</div>
+<div class="wrapper">
+    <div class="container">
+        <div class="row mb-2 justify-row-responsive mt-5">
+            <div class="col-xs-12 col-md-12">
+                <h3><img class="iconodisponible" src="assets/images/consultaciiu/Numero1.svg" alt="tr">&nbsp;Trámites
+                    obligatorios</h3>
+                <p>Grupo de trámites relacionados a la actividad económica seleccionada y que debes realizar de forma
+                    obligatoria en tu proceso de formalización empresarial</p>
+            </div>
+        </div>
+        <div class="row justify-content-center results-filter">
+            <div class="col-8 col-md-4 offset-md-5">
+                <div class="search-counter">
+                    <label class="text-resultados"> {{numeroPagina()}} de {{totalRegistros}} resultados</label>
+                    <div *ngIf="page == 1; then desactivado; else activado"></div>
+                    <ng-template #desactivado>
+                        <a disabled class="btn-symbolic-govco align-column-govco disabled"
+                            style="display: inline-block;"><span
+                                class="govco-icon govco-icon-shortl-arrow disabled"></span></a>
+                    </ng-template>
+                    <ng-template #activado>
+                        <a class="btn-symbolic-govco align-column-govco" style="display: inline-block;"
+                            (click)="cambiarAnterior()"><span class="govco-icon govco-icon-shortl-arrow "></span></a>
+                    </ng-template>
+                    <div *ngIf="page == numeroPaginas; then desactivadoDerecha; else activadoDerecha"></div>
+                    <ng-template #desactivadoDerecha>
+                        <a disabled class="btn-symbolic-govco align-column-govco disabled"
+                            style="display: inline-block;"><span
+                                class="govco-icon govco-icon-shortr-arrow disabled"></span></a>
+                    </ng-template>
+                    <ng-template #activadoDerecha>
+                        <a class="btn-symbolic-govco align-column-govco" style="display: inline-block;"
+                            (click)="cambiarSiguiente()"><span class="govco-icon govco-icon-shortr-arrow "></span></a>
+                    </ng-template>
+                </div>
+            </div>
+        </div>
+        <app-paginador-tramites-obligatorios [idCodigo]="idCodigo" [idDepartamento]="idDepartamento"
+            [idMunicipio]="idMunicipio" [page]="page" [pageSize]="pageSize"></app-paginador-tramites-obligatorios>
+        <div class="govco-center">
+            <nav aria-label="Page navigation example" class="pager-govco paginador">
+                <ul class="pagination">
+                    <li [class]="page == 1 ? 'page-item disabled': 'page-item' ">
+                        <a class="page-link" (click)="cambiarAnterior()" tabindex="-1" aria-disabled="true">Anterior</a>
+                    </li>
+                    <li *ngFor="let pagina of createRange(numeroPaginas)"
+                        [class]="page === pagina ? 'page-item active': 'page-item number' ">
+                        <a class="page-link" (click)="establecerPagina(pagina)" aria-disabled="true">{{pagina}}</a>
+                    </li>
+                    <li [class]="numeroPaginas == page ? 'page-item disabled': 'page-item' ">
+                        <a class="page-link" (click)="cambiarSiguiente()">Siguiente</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <br>
+        <br>
+        <div *ngIf="preguntasLng != 0; then preguntasCondicionantes"></div>
+        <ng-template #preguntasCondicionantes>
+            <div class="row mb-3 justify-row-responsive">
+                <div class="col-xs-12 col-md-12">
+                    <h3><img class="iconodisponible" src="assets/images/consultaciiu/numero2.svg"
+                            alt="tr">&nbsp;Preguntas condicionantes</h3>
+                    <p>Trámites adicionales que dependen del cumplimiento de las situaciones referidas a continuación:
+                    </p>
+                </div>
+            </div>
+            <!-- Preguntas condicionantes -->
+
+            <div *ngFor="let item of Condicionados">
+                <div *ngIf="item.numeroTramites > 0">
+                    <app-preguntas-condicionantes-ciiu [tramitePregunta]="item"></app-preguntas-condicionantes-ciiu>
+                </div>
+            </div>
+        </ng-template>
+        <br>
+        <br>
+    </div>
+</div>
+
+
+
+<app-nota-legal-ciiu></app-nota-legal-ciiu>
