@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,9 +10,9 @@ export class BottomMenuService {
   public lastPointer: any;
   public backItem: any;
   public backPointerItem: any;
-
   private pantalla = new BehaviorSubject<boolean>(false);
   public ajustePantalla = this.pantalla.asObservable();
+  LoginNotifier: Subject<null> = new Subject<null>();
 
   public async ajustandoPantalla(ajustePantalla: boolean) {
     await this.pantalla.next(ajustePantalla);
@@ -74,4 +74,7 @@ export class BottomMenuService {
     });
   }
 
+  notifyLogin() {
+    this.LoginNotifier.next();
+  }
 }
