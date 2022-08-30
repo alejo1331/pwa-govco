@@ -19,8 +19,8 @@ export const authConfig: AuthConfig = {
   // postLogoutRedirectUri: window.location.origin + '/',
 
   // TODO: Descomentar para paso a procucción
-  redirectUri: 'https://m.www.gov.co',
-  postLogoutRedirectUri: 'https://m.www.gov.co/',
+  redirectUri: environment.URLgovco,
+  postLogoutRedirectUri: environment.URLgovco,
 
 
   // Scope qa
@@ -36,7 +36,7 @@ export const authConfig: AuthConfig = {
 
   useSilentRefresh: true,
 
-  silentRefreshRedirectUri: 'https://m.www.gov.co' + '/silent-refresh.html',
+  silentRefreshRedirectUri: environment.URLgovco +' silent-refresh.html',
 
   showDebugInformation: true,
 
@@ -94,8 +94,8 @@ export const authConfigRegister: AuthConfig = {
 
   // postLogoutRedirectUri: window.location.origin + '/',
 
-  redirectUri: 'https://m.www.gov.co',
-  postLogoutRedirectUri: 'https://m.www.gov.co/',
+  redirectUri: environment.URLgovco,
+  postLogoutRedirectUri: environment.URLgovco,
 
 
   // Scope qa
@@ -111,7 +111,7 @@ export const authConfigRegister: AuthConfig = {
 
   useSilentRefresh: true,
 
-  silentRefreshRedirectUri: 'https://m.www.gov.co' + '/silent-refresh.html',
+  silentRefreshRedirectUri: environment.URLgovco +' silent-refresh.html',
 
   showDebugInformation: true,
 
@@ -164,8 +164,8 @@ export const authConfigSilent: AuthConfig = {
 
   // postLogoutRedirectUri: window.location.origin + '/',
 
-  redirectUri: 'https://m.www.gov.co',
-  postLogoutRedirectUri: 'https://m.www.gov.co/',
+  redirectUri: environment.URLgovco,
+  postLogoutRedirectUri: environment.URLgovco,
 
 
   // Scope qa
@@ -181,7 +181,7 @@ export const authConfigSilent: AuthConfig = {
 
   useSilentRefresh: true,
 
-  silentRefreshRedirectUri: 'https://m.www.gov.co' + '/silent-refresh.html',
+  silentRefreshRedirectUri: environment.URLgovco +' silent-refresh.html',
 
   showDebugInformation: true,
 
