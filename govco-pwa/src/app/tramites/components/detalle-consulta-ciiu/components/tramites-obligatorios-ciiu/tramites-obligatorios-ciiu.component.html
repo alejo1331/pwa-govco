@@ -1,0 +1,75 @@
+<div class="row mb-1 justify-row-responsive">
+    <div class="contenedor-tramite col-sm-12 col-md-5 mt-2" style="padding-left: 30px;">
+        <div>
+            <p class="tituloContenedor mb-1">TRÁMITE / SERVICIO</p>
+            <a href="{{tramite.tramite.urlTramiteGOVCO}}">
+                <h3 class="tituloTramite">{{tramite.tramite.nombre}}</h3>
+            </a>
+            <span class="tituloEntidad">Entidad:
+                <a (click)="validateUrlService.validateUrl(tramite.tramite.urlEntidad)">
+                    <span class="tituloEntidadDetalle">{{tramite.tramite.institucionNombre}}</span>
+                </a>
+            </span>
+            <p class="descripcionTramite">{{tramite.tramite.proposito}}</p>
+        </div>
+    </div>
+    <div class="col-md-3 info-tramite align-self-center" id="infoAdicional">
+        <div>
+            <div *ngIf="tramite.tramite.realizadoMediosElectronicos == 'TOTALMENTE'; then OnLine; else OffLine"></div>
+            <ng-template #OnLine>
+                <span class="infoTramite"><img class="iconodisponible"
+                        src="assets/images/tramites-servicios/tramitelinea.svg" alt="transaccional" />
+                    &nbsp;<a class="textoOnline">Trámite en línea</a>
+                </span>
+            </ng-template>
+            <ng-template #OffLine>
+                <div
+                    *ngIf="tramite.tramite.realizadoMediosElectronicos == 'NO_DISPONIBLE'; then presencial; else semiPresencial">
+                </div>
+                <ng-template #presencial>
+                    <span class="toface">
+                        <img class="iconodisponible" src="assets/images/tramite_presencial48px.svg" alt="transaccional"
+                            style="height: 18px;" />
+                        &nbsp; Trámite presencial
+                    </span>
+                </ng-template>
+                <ng-template #semiPresencial>
+                    <span class="toface">
+                        <img class="iconodisponible" src="assets/images/tramite_presencial48px.svg" alt="transaccional"
+                            style="height: 18px;" />
+                        <img class="iconodisponible" src="assets/images/tramites-servicios/tramitelinea.svg"
+                            alt="transaccional" style="padding-left: 2px;" />
+                        Trámite semipresencial
+                    </span>
+                </ng-template>
+            </ng-template>
+            <br>
+            <div *ngIf="tramite.tramite.costo == 0 ; then sinCosto; else conCosto"></div>
+            <ng-template #sinCosto>
+                <span class="infoTramite"><img class="iconodisponible"
+                        src="assets/images/tramites-servicios/sincosto.svg" alt="tramite sin costo" />
+                    &nbsp; Trámite sin costo
+                </span>
+            </ng-template>
+            <ng-template #conCosto>
+                <span class="price"><img class="iconodisponible" src="assets/images/tramites-servicios/costo.svg"
+                        alt="tramite con costo" />&nbsp; Trámite con
+                    costo
+                </span>
+            </ng-template>
+            <br>
+            <div *ngIf="tramite.tramite.obtencionInmediata === 'SI' ; then inmediato; else tiempoAprox"></div>
+            <ng-template #inmediato>
+                <span><img class="iconodisponible" src="assets/images/tramites-servicios/duracion.svg"
+                        alt="Duración">&nbsp; Duración: Obtención inmediata
+                </span>
+            </ng-template>
+            <ng-template #tiempoAprox>
+                <span class="infoTramite"><img class="iconodisponible"
+                        src="assets/images/tramites-servicios/duracion.svg" alt="Duración">
+                    &nbsp; Duración: <span class="infoTramiteDetalle"> {{tramite.tramite.tiempoObtencion}} aprox.</span>
+                </span>
+            </ng-template>
+        </div>
+    </div>
+</div>

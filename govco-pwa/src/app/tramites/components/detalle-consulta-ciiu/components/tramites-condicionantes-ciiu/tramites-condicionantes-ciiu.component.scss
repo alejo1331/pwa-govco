@@ -1,0 +1,134 @@
+.toface {
+    text-align: left;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: "Work Sans";
+    letter-spacing: 0px;
+    color: #4B4B4B;
+    opacity: 1;
+    .govco-icon {
+        color: #3366CC;
+    }
+}
+
+.tituloContenedor{
+    letter-spacing: 0px;
+    color: #004884;
+    opacity: 1;
+    text-align: left;
+    font-size: 18px;
+    font-weight: 600;
+    font-family: "Work Sans";
+}
+.tituloTramite{
+    text-align: left;
+    text-decoration: underline;
+    letter-spacing: 0px;
+    color: #3366CC;
+    opacity: 1;
+    font-size: 18px;
+    font-weight: 600;
+    font-family: "Montserrat";
+}
+
+.tituloEntidad{
+    text-align: left;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: "Work Sans";
+    letter-spacing: 0px;
+    color: #4B4B4B;
+    opacity: 1;
+}
+a {
+    cursor: pointer !important;
+  }
+.tituloEntidadDetalle{
+    text-align: left;
+    text-decoration: underline;
+    font-size: 14px;
+    font-weight: normal;
+    font-family: "Work Sans";
+    letter-spacing: 0px;
+    color: #3366CC;
+    opacity: 1;
+}
+
+.descripcionTramite{
+    font-size: 16px;
+    font-weight: normal;
+    font-family: "Work Sans";
+    text-align: justify;
+    max-height: 48px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    letter-spacing: 0px;
+    color: #4B4B4B;
+    opacity: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.infoTramite{
+    text-align: left;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: "Work Sans";
+    letter-spacing: 0px;
+    color: #4B4B4B;
+    opacity: 1;
+}
+
+.iconodisponible {
+    max-width: 25px;
+  }
+
+.infoTramiteDetalle{
+    text-align: left;
+    font-size: 14px;
+    font-weight: normal;
+    font-family: "Work Sans";
+    letter-spacing: 0px;
+    color: #4B4B4B;
+}
+
+@media screen and (max-width: 768px) {
+    #infoAdicional{
+        display: none;
+    }
+    .tituloContenedor{
+        text-align: left;
+        font-size: 13px;
+        letter-spacing: 0px;
+    }
+    .tituloTramite{
+        text-align: left;
+        text-decoration: underline;
+        font-size: 14px;
+    }
+    .descripcionTramite{
+        text-align: left;
+        font-size: 14px;
+        letter-spacing: 0px;
+    }
+    .tituloEntidad{
+        text-align: left;
+        font-size: 13px;
+        letter-spacing: 0px;
+    }
+    .tituloEntidadDetalle{
+        text-align: left;
+        text-decoration: underline;
+        font-size: 13px;
+        letter-spacing: 0px;
+    }
+}
+
+.textoOnline{
+    text-decoration: underline !important; 
+    color: #4B4B4B !important;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: "Work Sans";
+}
