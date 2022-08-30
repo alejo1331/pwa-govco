@@ -50,6 +50,7 @@ export const environment = {
   authIssuer: 'https://qaautenticaciondigital.and.gov.co',
   clientID: "govcomovilQA",
   authWebApi:"https://api-interno.www.gov.co/api/roles-y-permisos/RolesPerfiles/Usuarios",
+  URLgovco : 'https://m.www.gov.co/',
 
   //captcha
   keyCaptcha: "6LeCqOcUAAAAAMu9McR1zoUH0z6wDj_dekAODW5h",
