@@ -19,7 +19,7 @@ export const authConfig: AuthConfig = {
   // postLogoutRedirectUri: window.location.origin + '/',
 
   // TODO: Descomentar para paso a procucción
-  redirectUri: environment.URLgovco,
+  redirectUri: environment.URLgovco+'signin-oidc',
   postLogoutRedirectUri: environment.URLgovco,
 
 
@@ -94,7 +94,7 @@ export const authConfigRegister: AuthConfig = {
 
   // postLogoutRedirectUri: window.location.origin + '/',
 
-  redirectUri: environment.URLgovco,
+  redirectUri: environment.URLgovco+'signin-oidc',
   postLogoutRedirectUri: environment.URLgovco,
 
 
@@ -164,7 +164,7 @@ export const authConfigSilent: AuthConfig = {
 
   // postLogoutRedirectUri: window.location.origin + '/',
 
-  redirectUri: environment.URLgovco,
+  redirectUri: environment.URLgovco+'signin-oidc',
   postLogoutRedirectUri: environment.URLgovco,
 
 
