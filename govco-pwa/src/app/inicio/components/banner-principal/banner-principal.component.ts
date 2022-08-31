@@ -29,7 +29,6 @@ export class BannerPrincipalComponent implements OnInit {
         (data: BannerInterface) => {
           if (data.succeeded) {
             this.banner = data.data;
-            console.log("banner", data.data.urlBotonAuxiliar)
             switch (data.data.urlBotonAuxiliar) {
               case 'https://carpetaciudadana.and.gov.co/':
                 this.urlBotonAuxiliar = 'https://carpetaciudadana.and.gov.co/';
@@ -40,6 +39,7 @@ export class BannerPrincipalComponent implements OnInit {
               case 'https://beta.www.gov.co/categorias-subcategorias/':
                 this.urlBotonAuxiliar = "/categorias-subcategorias"
                 break;
+            }
             }
             this.ramdonImagen(data.data)
           } else {
