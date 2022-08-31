@@ -10,6 +10,8 @@ import { PreguntasCondicionantesCiiuComponent } from './components/preguntas-con
 import { TramitesCondicionantesCiiuComponent } from './components/tramites-condicionantes-ciiu/tramites-condicionantes-ciiu.component';
 import { NotaLegalCiiuComponent } from './components/nota-legal-ciiu/nota-legal-ciiu.component';
 import { ConfirmModalComponent } from './components/confirm-modal/confirm-modal.component';
+import { BreadCrumbComponent } from './components/bread-crumb/bread-crumb.component';
+import { WordLimitPipe } from '../../pipes/word-limit/word-limit.pipe';
 
 
 
@@ -23,7 +25,9 @@ import { ConfirmModalComponent } from './components/confirm-modal/confirm-modal.
     PreguntasCondicionantesCiiuComponent,
     TramitesCondicionantesCiiuComponent,
     NotaLegalCiiuComponent,
-    ConfirmModalComponent
+    ConfirmModalComponent,
+    BreadCrumbComponent,
+    WordLimitPipe,
   ],
   imports: [
     CommonModule,

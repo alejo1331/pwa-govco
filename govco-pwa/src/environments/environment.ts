@@ -50,9 +50,10 @@ export const environment = {
   //Ficha tramite
   serverUrlFichaTramite: 'http://100.24.232.62:8084/api/',
   //Auth
-  authIssuer: 'https://qaautenticaciondigital.and.gov.co',
-  clientID: "govcomovilQA",
+  authIssuer: 'https://d36tbrftj1zuu.cloudfront.net',
+  clientID: "govcomovil1QA",
   authWebApi:"https://api-interno.www.gov.co/api/roles-y-permisos/RolesPerfiles/Usuarios",
+  URLgovco : 'https://d36tbrftj1zuu.cloudfront.net/',
 
   //captcha
   keyCaptcha: "6LeCqOcUAAAAAMu9McR1zoUH0z6wDj_dekAODW5h",
