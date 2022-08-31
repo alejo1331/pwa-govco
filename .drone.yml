@@ -48,6 +48,7 @@ steps:
   when:
     branch:
     - develop
+    - devops
     event:
     - push
     - merge
@@ -84,6 +85,7 @@ steps:
   when:
     branch:
     - develop
+    - devops
     event:
     - push
     - merge
