@@ -109,8 +109,10 @@ export class AppComponent implements OnInit, AfterContentChecked {
     this.oidcService.runInitialLoginSequence();
 
     this.oauthService.loadDiscoveryDocumentAndTryLogin().then(_ => {
-      debugger;
+      console.log('------------INICIO---------');
       var claims = this.oauthService.getIdentityClaims();
+      console.log(claims)
+      console.log('------------INICIO---------');
       if (claims) {
         if (claims['LOA'] == 'loa:2') {
           this.LoginGovCo(claims);
