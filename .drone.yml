@@ -48,7 +48,6 @@ steps:
   when:
     branch:
     - develop
-    - devops
     event:
     - push
     - merge
@@ -122,10 +121,11 @@ steps:
       from_secret: SECRET_S3_QA_OP
     region:
       from_secret: REGION_S3
-    strip_prefix: govco-pwa/dist/govco-pwa
+    # strip_prefix: govco-pwa/dist/govco-pwa
+    strip_prefix: govco-pwa/src
     delete: true
     # source: ./govco-pwa/dist/govco-pwa/**/*
-    source: ./govco-pwa/dist/govco-pwa/favicon.ico
+    source: ./govco-pwa/src/favicon.ico
     target: /
   when:
     branch:
