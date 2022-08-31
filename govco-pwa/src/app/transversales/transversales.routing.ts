@@ -7,6 +7,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { DatosUsuarioComponent } from './components/datos-usuario/datos-usuario.component';
 import { LogoutComponent } from './components/logout/logout.component';
+import { SigninOidcComponent } from './components/signin-oidc/signin-oidc.component';
 
 
 const routes: Routes = [
@@ -16,7 +17,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'registro', component: RegistroComponent},
   { path: 'logout', component: LogoutComponent},
-  { path: 'datosusuario', component: DatosUsuarioComponent}
+  { path: 'datosusuario', component: DatosUsuarioComponent},
+  { path: 'signin-oidc', component: SigninOidcComponent}
 ];
 
 @NgModule({
