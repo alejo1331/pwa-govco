@@ -3,6 +3,7 @@ import { BottomMenuService } from '../../services/bottom-menu/bottom-menu.servic
 import { HeaderService } from '../../services/header-service/header.service';
 import { SidenavService } from '../../services/sidenav-service/sidenav-service.service';
 import { ServiciosService } from '../../services/servicios/servicios.service'
+import { environment } from "src/environments/environment";
 
 @Component({
   selector: 'app-servicios-para-entidades',
@@ -14,7 +15,7 @@ export class ServiciosParaEntidadesComponent implements OnInit {
   loadData: boolean;
   title: string;
   description: string;
-  codigo: string = 'paraentidades'
+  codigo: string = environment.codEntidades;
 
   constructor(private serviciosService: ServiciosService,
     protected servicioSideNav: SidenavService,

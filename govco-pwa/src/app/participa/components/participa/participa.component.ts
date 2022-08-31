@@ -9,6 +9,7 @@ import { EjerciciosService } from '../../services/ejercicios.service';
 import { ParticipaService } from '../../services/participa.service';
 import { ValidarUrlService } from '../../services/validar-url.service';
 import { esResponsive, isMobile } from '../../utils/utils';
+import { environment } from "src/environments/environment";
 
 @Component({
   selector: 'app-participa',
@@ -39,6 +40,7 @@ export class ParticipaComponent implements OnInit {
   mostrarTemas: boolean = false;
   listaFiltros: any = [{ codigo: "Fecha inicio - Más reciente", nombre: "Fecha inicio - más reciente" }, { codigo: "Fecha inicio - Más antigua", nombre: "Fecha inicio - más antigua" }, { codigo: "Alfabéticamente Z - A", nombre: "Alfabéticamente z - a" }, { codigo: "Alfabéticamente A - Z", nombre: "Alfabéticamente a - z" }];
   seleccionado: any = this.listaFiltros[0];
+  codParticipa: string = environment.codParticipa;
 
   constructor(
     private ejerciciosService: EjerciciosService,

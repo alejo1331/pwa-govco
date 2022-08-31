@@ -24,7 +24,7 @@ export class ParticipaService {
 
   // Servicio para obtener el titulo y la descripcion de tu opinion cuenta
   getTitleAndDescription() {
-    const params = new HttpParams().set('codigo', 'tuopinioncuenta');
+    const params = new HttpParams().set('codigo', environment.codParticipa);
     return this.http.get<OpinionModel>(`${ARI_CROSS}cross/ObtenerTituloPagina`, { params })
   }
 }

@@ -6,6 +6,7 @@ import { ActualidadPrincipalService } from 'src/app/noticias/services/actualidad
 import { SidenavService } from 'src/app/transversales/services/sidenav-service/sidenav-service.service';
 import { HeaderService } from 'src/app/transversales/services/header-service/header.service';
 import { BottomMenuService } from 'src/app/transversales/services/bottom-menu/bottom-menu.service';
+import { environment } from "src/environments/environment";
 
 
 @Component({
@@ -38,6 +39,7 @@ export class ActualidadPrincipalComponent implements OnInit {
   estadoComboCategoria: boolean = true;
   idCategoriaParam: string | null = "";
   nombreCategoriaParam: string = "";
+  codNoticias: string = environment.codNoticias;
 
 
 

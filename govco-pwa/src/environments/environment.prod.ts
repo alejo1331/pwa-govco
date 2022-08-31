@@ -21,6 +21,10 @@ export const environment = {
   //Noticias o Actualidad
   apiNoticiasDetalle: "https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api/noticias/",
   serverCategoriaSubcategoriaUrl: 'https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api/categorias-subcategorias/',
+  codNoticias: 'actualidadprincipal',
+  codParticipa: 'tuopinioncuenta',
+  codSobreNosotros: 'sobrenosotros',
+  codEntidades: 'paraentidades',
   //Entidades
   serverIntegracion: 'https://api-interno.www.gov.co/api/integracion-sedes/IntegracionSedes/',
   //Tu opinion cuenta o Participacion
