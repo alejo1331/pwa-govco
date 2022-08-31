@@ -44,7 +44,7 @@ steps:
   - cd ./govco-pwa/
   - npm install -g @angular/cli
   - npm i --save-dev @types/select2
-  - ng build --prod
+  - ng build --configuration="preproduction"
   when:
     branch:
     - develop
@@ -58,7 +58,7 @@ steps:
   - cd ./govco-pwa/
   - npm install -g @angular/cli
   - npm i --save-dev @types/select2
-  - ng build --prod
+  - ng build --configuration="preproduction"
   when:
     branch:
     - stage
