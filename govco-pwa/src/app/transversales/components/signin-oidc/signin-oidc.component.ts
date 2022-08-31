@@ -11,7 +11,9 @@ export class SigninOidcComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit() {
-    this.router.navigate(['/']);
+    console.log('------------INICIO---------');
+    this.router.navigate(['/acerca-del-portal']);
+    console.log('------------FIN---------');
   }
 
 }
