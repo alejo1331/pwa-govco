@@ -121,11 +121,9 @@ steps:
       from_secret: SECRET_S3_QA_OP
     region:
       from_secret: REGION_S3
-    # strip_prefix: govco-pwa/dist/govco-pwa
-    strip_prefix: /govco-pwa/src
+    strip_prefix: govco-pwa/dist/govco-pwa
     delete: true
-    # source: ./govco-pwa/dist/govco-pwa/**/*
-    source: ./govco-pwa/src/favicon.ico
+    source: ./govco-pwa/dist/govco-pwa/**/*
     target: /
   when:
     branch:
@@ -145,11 +143,9 @@ steps:
       from_secret: SECRET_S3_PRE
     region:
       from_secret: REGION_S3
-    # strip_prefix: govco-pwa/dist/govco-pwa
-    strip_prefix: /govco-pwa/src
+    strip_prefix: govco-pwa/dist/govco-pwa
     delete: true
-    # source: ./govco-pwa/dist/govco-pwa/**/*
-    source: ./govco-pwa/src/favicon.ico
+    source: ./govco-pwa/dist/govco-pwa/**/*
     target: /
   when:
     branch:
