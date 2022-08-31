@@ -1,0 +1,52 @@
+<div id="accordion">
+    <div class="box-ayuda">
+      <div
+        class="box-ayuda-header"
+        id="headingOne"
+        data-toggle="collapse"
+        data-target="#collapseOne"
+        aria-expanded="true"
+        aria-controls="collapseOne"
+      >
+        <h2 class="mb-0">
+          <button  aria-label="¿Tienes dudas?" class="btn box-ayuda-header-title">¿Tienes dudas?</button>
+        </h2>
+        <div class="icon"></div>
+      </div>
+  
+      <div
+        id="collapseOne"
+        class="collapse"
+        aria-labelledby="headingOne"
+        data-parent="#accordion"
+      >
+        <div class="card-body box-ayuda-body"  *ngFor="let canal of canalesSeguimiento; let i = index">
+            <div *ngIf="canal.Tipo === 'ENTIDAD'">
+              <span class="card-body box-ayuda-body-title">Sobre la entidad</span>
+            </div>
+            <div *ngIf="canal.Tipo === 'TRAMITE'">
+              <span class="card-body box-ayuda-body-title">Sobre el trámite</span>
+            </div>
+            <div *ngIf="canal.Correo != null" tabindex="0"
+                 [attr.aria-label]="'Correo electrónico ' + canal.Correo"  
+                 class="box-ayuda-body-info">
+                 <div class="container-icono-ayuda">
+                    <img src="https://govco-prod-webutils.s3.amazonaws.com/uploads/2022-06-03/dafc13cb-aff3-4383-aa3e-f8e8bd73a2aa-Icon_mail.svg" alt="">
+                 </div>
+                <!-- <span class="govco-icon govco-icon-email"></span> -->
+                <p>{{canal.Correo}}</p>
+            </div>
+            <div *ngIf="canal.Telefono != null" tabindex="0" 
+                [attr.aria-label]="'Telefono' + canal.Telefono"
+                class="box-ayuda-body-info phone">
+                <div class="container-icono-ayuda">
+                  <img src="https://govco-prod-webutils.s3.amazonaws.com/uploads/2022-06-03/e7702a0c-bf98-4a09-9b09-f36d94b9cf68-Icon_tel.svg" alt="">
+               </div>
+              <!-- <span class="govco-icon govco-icon-call-center"></span> -->
+              <p>{{canal.Telefono}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

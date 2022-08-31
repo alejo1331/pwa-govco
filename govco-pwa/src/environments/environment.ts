@@ -44,6 +44,7 @@ export const environment = {
 
   //Ficha tramite
   serverUrlFichaTramite: 'http://100.24.232.62:8084/api/',
+  _serverUrlFichaTramite: 'https://preapi-interno.www.gov.co/api/ficha-tramites-y-servicios/',
   //Auth
   authIssuer: 'https://qaautenticaciondigital.and.gov.co',
   clientID: "PruebaGovco",
@@ -51,5 +52,9 @@ export const environment = {
 
   //captcha
   keyCaptcha: "6LeCqOcUAAAAAMu9McR1zoUH0z6wDj_dekAODW5h",
+
+  serverValidateUrl: 'http://100.24.232.62:8184/api/validateurl',
+
+
 };
 

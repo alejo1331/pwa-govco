@@ -1,0 +1,34 @@
+.area-servicio{
+    margin-top: 40px !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    // align-items: center;
+    margin-bottom: 3rem;
+    @media screen and (max-width: 768px) {
+      margin-top: 30px !important;
+      display: block;
+      // margin: 0 !important;
+      }
+  }
+  .mobile{
+    display: block;
+    @media screen and (max-width: 768px) {
+     display: none;
+    }
+  }
+  .experience{
+    .btn-symbolic-govco {
+      border: none;
+      background: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+  
+  @media (min-width: 991px) {
+    .area-servicio {
+      align-items: center;
+    }
+  }

@@ -1,0 +1,64 @@
+<section class="container-detalle">
+    <div class="row">
+        <div class="col-md-12"  (click)="showBotonLeer()">
+            <p class="descripcion-tramite" tabindex="0" [attr.aria-label]="contenidoLeido"  (focus)="showExpended()"  >    
+                {{contenidoDescripcion}}
+                <br>
+                <a *ngIf="caracteresCategoria"  class="control-contenido">{{nombreExpanded}}</a>
+            </p>
+        </div>
+    </div>
+    <div class="row tramites-col mt-5">
+        <div class="contariner-detalle-titulo" >
+            <div class="col d-flex">
+                <div>
+                    <img [src]="urlIconoTipoTramite" class="icono-tramite" >
+                </div>
+                <div tabindex="0" >
+                    <span>Tipo de tramite</span>
+                    <p>{{data.Tipotramite}}</p>
+                    <!-- <p>{{nombreTipoTramite}}</p> -->
+                </div>
+            </div>
+        </div>
+        <div class="contariner-detalle-titulo">
+            <div class="col d-flex">
+                <div>
+                    <img [src]='urlIconoCostoTramite' class="icono-tramite" alt="icono costo">
+                </div>
+                <div tabindex="0">
+                    <span>¿Tiene costo?</span>
+                    <p>{{infoDescripcionTramite?.Costo | titlecase}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="contariner-detalle-titulo">
+            <div class="col d-flex">
+                <div>
+                    <img src="https://govco-prod-webutils.s3.amazonaws.com/uploads/2022-06-03/5af4e88d-bd5d-4dcc-b153-b3f8cb01c0f9-Icon_tiempo.svg" class="icono-tramite" alt="icono tiempo">
+                </div>
+                <div tabindex="0">
+                    <span>Duración proceso</span>
+                    <p>{{infoDescripcionTramite?.TiempoObtencion | titlecase}}</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="contariner-detalle-titulo">
+            <div class="col d-flex">
+                <div>
+                    <img src="https://govco-prod-webutils.s3.amazonaws.com/uploads/2022-06-03/dea35c34-2859-4512-80ea-33bd6d9fcae5-Icon_Calendar.svg" class="icono-tramite" alt="icono calendario">
+                </div>
+                <div tabindex="0">
+                    <span>¿Cuándo hacerlo?</span>
+                    <p *ngIf="showBotonFechas">
+                        <a tabindex="0" class="enlace-fechas" (click)="getFechas()">Ver fechas</a>   
+                    </p>
+                    <p *ngIf="!showBotonFechas">
+                       En cualquier fecha 
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

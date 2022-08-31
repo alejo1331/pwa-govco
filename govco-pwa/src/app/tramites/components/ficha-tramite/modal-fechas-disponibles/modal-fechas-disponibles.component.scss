@@ -1,0 +1,301 @@
+.active {
+    background-color: #E5EEFB !important;
+  }
+  $color-dark-blue: #004884;
+  $color-hawkes-blue:#E6EFFD;
+  .titulo_popuptramite{
+      color: #0B457F !important;
+      font-weight: bold;
+      font-size: 20px;
+  }
+  .hr-popuptramites{
+      left: 0px;
+      top: 11%;
+      right: 0px;
+      height: 8%;
+      width: 100%;
+      color: #0B457F;
+      text-align: center;
+      border-top: 2px !important;
+      border-top-style: solid !important;
+      border-top-color: #0061EA !important;
+      background-color: #E5EEFB;
+      display: block;
+      position: relative;
+  }
+  .iconodisponible{
+      max-width: 25px;
+  }
+  .paginacion {
+      text-align: center;
+  }
+  .no-records{
+    margin: auto;
+    text-align: center;
+    margin-top: 10px;
+  }
+  .contenedor {
+    width: 11em;
+    overflow: scroll;
+    color: #005BCB !important;
+  }
+  .puntos-atencion-tramite {
+    .modal-body{
+      .contenedor {
+        width: 100%;
+        overflow: hidden;
+      }
+    }
+  }
+  
+  .icon-alert{
+    width: 30px;
+    height: 30px !important;
+    overflow: hidden;
+    max-height: 30px;
+    display: table-cell;
+  }
+  .title-alert{
+    display: table-cell;
+    vertical-align: top;
+    padding-top: 12px;
+    padding-left: 10px;
+  }
+  .head-norma{
+    display: inline-block;
+  }
+  .head-norma table{
+    background: #E6EFFD;
+  }
+  
+  .title-icon-left{
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    width: 50% !important;
+  }
+  .title-icon-rigth{
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+  }
+  
+  .icon-descarga{
+   text-align: center !important; 
+   a {
+     &:hover { text-decoration: none !important; } 
+   }
+  }
+  
+  @media (min-width: 768px) {
+    .title-icon-left{
+      width: 70% !important;
+    }
+    .title-icon-rigth{
+      width: 70% !important;
+    }
+  }
+  
+  @media (min-width: 992px) {
+    .icon-descarga{
+      width: 40% !important;
+     }
+     .title-icon-left{
+      margin-left: 10px;
+    }
+    .title-doc-rigth{
+      margin-left: -10px !important;
+    }
+    .strong-doc-rigth{
+      margin-left: -15px;
+    }
+    .txt-documento{
+      text-align: left !important;
+    }
+  }
+  .icon-down-norma{
+    color: #3870F6 !important;
+  }
+  .txt-documento{
+    vertical-align: auto !important;
+  }
+  
+  //Order by
+  .order-movile{
+    display: none;
+  }
+  
+  .text-order{
+    display: table-cell;
+    font-family: "Work Sans",sans-serif;
+  
+  }
+  .icon-order{
+    vertical-align: bottom;
+    display: table-cell;
+  }
+  .icon-order i{
+    color: #BABABA !important;
+    margin-right: 10px;
+  }
+  .icon-order-punto i{
+    color: #BABABA !important;
+    margin-right: 10px;
+  }
+  .text-order-punto{
+    vertical-align: top;
+    font-family: "Work Sans",sans-serif;
+  }
+  .order-puntos:hover{
+    cursor: pointer !important;
+  }
+  
+  @media (max-width: 767px) {
+    .order-movile{
+      margin-top: 10px;
+      display: block;
+      margin-left: 1em;
+    }
+  }
+  
+  
+  h2{
+    font-weight: 600;
+    font-size: 20px;
+    margin: 0;
+  }
+  .buscador {
+    position: relative;
+    border: 1px solid #BABABA;
+    border-radius: 2rem;
+    overflow: hidden;
+    display: flex;
+    input{
+        border-radius: 2em;
+        border: unset;
+    }
+    .govco-icon-search-cn {
+        position: absolute;
+        right: 0.1em;
+        top: 2px;
+        bottom: 0;
+        line-height: 2rem;
+        color: #36c;
+    }
+    .content-search{
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: unset;
+        cursor: pointer;
+        padding: unset;
+        border: unset;
+        margin: 1px 6px;
+        border-radius: 50%;
+        line-height: 3rem;
+    }
+  }
+  .close{
+    opacity: 1;
+    width: 100%;
+    text-align: right;
+    margin-right: 0em;
+  
+    &:focus {
+        outline: none !important;
+    }
+    span {
+        color: #0061EA;
+        font-weight: bold;
+        &:hover {
+            color: $color-dark-blue;
+        }
+    }
+  }
+  .modal-body {
+    padding: 0 1em;
+  
+    .normativas{
+        padding: 0.5rem 1rem;
+        .textofilas{
+            padding: 0;
+            border: unset;
+            width: 50%;
+            display: inline-block;
+  
+            .normativa{
+                padding: 0.5rem;
+                border-bottom: 1px solid #E5EEFB;
+                margin: 0 0.2rem;
+            }
+        }
+    }
+  }
+  table {
+    thead {
+        background: $color-hawkes-blue;
+        align-items: center;
+        padding: 0 1rem;
+        display: flex;
+        justify-content: space-between;
+        th {
+            border: none;
+            padding: 0;
+            font-family: "Work Sans",sans-serif;
+            text-align: left;
+            &:nth-of-type(1)
+            {
+                width: 15%;
+               
+            }
+            &:nth-of-type(2)
+            {
+                width: 15%;
+            }
+            &:nth-of-type(3)
+            {
+                width: 70%;
+            }
+            
+            strong {
+                font-size: 0.875rem;
+            }
+        }
+    }
+    tbody {
+        tr {
+            border-bottom: 2px solid #E5EEFB;
+            td {
+                padding: 1rem 0.5rem;
+                font-size: 14px;
+     
+                text-align: left;
+                color: #4B4B4B;
+                font-family: "Work Sans",sans-serif;
+                text-transform: capitalize !important;
+                word-break: break-word;
+                word-wrap: break-word;
+  
+                &:nth-of-type(1)
+                {
+                    width: 15%;
+                    padding-left: 3rem;
+                    @media screen and (max-width: 768px) {
+                        padding: 0 0.5rem;
+                    }
+                }
+                &:nth-of-type(2)
+                {
+                    width: 15%;
+                    padding-left: 1rem;
+                    @media screen and (max-width: 768px) {
+                        padding: 0 0.5rem;
+                    }
+                }
+                &:nth-of-type(3)
+                {
+                    width: 70%;
+                }
+                
+            }
+        }
+    }
+  }
+  

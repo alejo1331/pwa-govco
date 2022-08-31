@@ -1,0 +1,16 @@
+<section>
+    <div class="ficha">
+
+        <div class="pb-2 mt-4">
+            <govco-label-integrado tipoelemento="FICHA" [buscar]=data?.IdTramite></govco-label-integrado>
+            <h1  class="title">{{ data?.NombreEstandarizado  }}</h1>
+        </div>
+        <div class="ficha-entity container row">
+            <span class="ficha-entity-title pr-lg-2 pr-md-2">Entidad responsable:</span>
+            <a [attr.aria-label]="'Entidad responsable' + data?.Entidad" [href]="data?.PaginaWeb" (click)="validateUrl(data?.PaginaWeb, $event)" class="ficha-entity-link">
+                <span  class="entity-name">{{ data?.Entidad | titlecase}}</span>
+            </a>
+        </div>
+    </div>
+    
+</section>

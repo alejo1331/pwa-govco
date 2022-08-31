@@ -1,0 +1,94 @@
+.container-detalle{
+    margin-bottom: 40px;
+
+    h2{
+        font-size: 20px;
+        font-weight: 700;
+    }
+    
+    p{
+        text-align: left;
+        font: normal 14px/21px Work Sans;
+        letter-spacing: 0px;
+        color: #737373;
+        opacity: 1;
+    }
+
+    .descripcion-tramite {
+        text-align: left;
+        font: normal 16px/24px Work Sans;
+        letter-spacing: 0px;
+        color: #4B4B4B;
+        opacity: 1;
+
+        .control-contenido {
+            text-align: left;
+            text-decoration: underline;
+            font: normal 16px/9px Work Sans;
+            letter-spacing: -0.32px;
+            color: #3366CC;
+            opacity: 1;
+        }
+
+        .control-contenido:hover{
+            color: #004884;
+        }
+
+    }
+    
+    .control-contenido :hover {
+        color: #004884;
+    }
+
+
+    .contariner-detalle-titulo{
+        span{
+            color: #4B4B4B;
+            font-size: 16px;
+            font-family: "Work Sans";
+            font-weight: 600;
+            
+        }
+        p{
+            a{
+                text-align: left;
+                text-decoration: underline;
+                font: normal 16px/9px Work Sans;
+                letter-spacing: -0.32px;
+                color: #3366CC;
+                opacity: 1;
+            }
+        }
+    }
+
+    .enlace-fechas:hover{
+        color: #004884 !important;
+    }
+
+
+    .contariner-detalle-texto{
+        p{
+            color: #4B4B4B;
+            font-size: 16px;
+            font-family: "Work Sans";
+            font-weight: normal;
+        }
+
+        a{
+            text-decoration: underline;
+            color: #3366CC;
+        }
+        
+    }    
+}
+
+.icono-tramite {
+    margin-right: 4px;
+}
+
+
+@media (max-width: 992px) {
+    .tramites-col {
+        display: block !important;
+    }
+}

@@ -1,0 +1,56 @@
+.modal-header{
+    // padding-top: 200px;
+}
+
+.modal-body{
+    color: #4B4B4B !important;
+    font-family: "Work Sans", sans-serif;
+    font-size: 14px;
+}
+.modal-header{
+    text-align: left;
+    display: block;
+    padding-bottom: 0px;
+    .modal-title{
+        .titulo{
+            font-family: Montserrat;
+            text-align: left;
+            font-size: 24px;
+            color: #004884;
+            font-weight: 600;
+            margin-bottom: 0rem;
+        }
+        
+        .sub-titulo{
+            font-size: 16px;
+            color: #4B4B4B;
+
+        }
+    }
+
+    .icon-error{
+        text-align: end;
+        cursor: pointer;
+    }
+}
+.modal-body{
+   .contenedor-tutoriales{
+       border: 1px solid #E6EFFD;
+       border-radius: 5px;
+
+       .item-tutorial{
+            
+            text-align: center;
+            width: 252px;
+            height: 100px;margin: 23px;
+            display: block;
+
+            img{
+                cursor: pointer;
+            }
+            p{
+                cursor: pointer;
+            }
+       }
+   }
+}
