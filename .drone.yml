@@ -62,6 +62,7 @@ steps:
   when:
     branch:
     - stage
+    - devops
     event:
     - push
     - merge
