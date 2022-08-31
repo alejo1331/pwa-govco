@@ -36,7 +36,7 @@ export const authConfig: AuthConfig = {
 
   useSilentRefresh: true,
 
-  silentRefreshRedirectUri: environment.URLgovco +'silent-refresh.html',
+  silentRefreshRedirectUri: environment.URLgovco +'/silent-refresh.html',
 
   showDebugInformation: true,
 
@@ -111,7 +111,7 @@ export const authConfigRegister: AuthConfig = {
 
   useSilentRefresh: true,
 
-  silentRefreshRedirectUri: environment.URLgovco +'silent-refresh.html',
+  silentRefreshRedirectUri: environment.URLgovco +'/silent-refresh.html',
 
   showDebugInformation: true,
 
@@ -181,7 +181,7 @@ export const authConfigSilent: AuthConfig = {
 
   useSilentRefresh: true,
 
-  silentRefreshRedirectUri: environment.URLgovco +'silent-refresh.html',
+  silentRefreshRedirectUri: environment.URLgovco +'/silent-refresh.html',
 
   showDebugInformation: true,
 
