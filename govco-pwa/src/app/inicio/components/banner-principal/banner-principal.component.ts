@@ -40,7 +40,6 @@ export class BannerPrincipalComponent implements OnInit {
                 this.urlBotonAuxiliar = "/categorias-subcategorias"
                 break;
             }
-            }
             this.ramdonImagen(data.data)
           } else {
             console.log("Errors: " + data.error + " Message: " + data.mensaje);
