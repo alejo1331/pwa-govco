@@ -18,7 +18,9 @@ export class ModalClasicoComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<ModalClasicoComponent>,
     protected modalService: ModalService
-  ) { }
+  ) { 
+    dialogRef.disableClose = true;
+  }
 
   ngOnInit(): void {
     this.modalService.modalClasico.subscribe((data: ModalInterface) => {

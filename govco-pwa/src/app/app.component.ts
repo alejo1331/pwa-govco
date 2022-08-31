@@ -111,8 +111,7 @@ export class AppComponent implements OnInit, AfterContentChecked {
     this.oauthService.loadDiscoveryDocumentAndTryLogin().then(_ => {
       var claims = this.oauthService.getIdentityClaims();
       if (claims) {
-        if (claims['LOA'] == 'loa:2')
-        {
+        if (claims['LOA'] == 'loa:2') {
           this.LoginGovCo(claims);
           console.log(this.LoginGovCo);
           this.userName = claims['name'];
@@ -140,12 +139,12 @@ export class AppComponent implements OnInit, AfterContentChecked {
   }
 
 
-  notifyLoginChange(){
+  notifyLoginChange() {
     this.bottomService.notifyLogin();
 
   }
 
-  clearSessionData(){
+  clearSessionData() {
     localStorage.removeItem('_grecaptcha');
     localStorage.removeItem('PKCE_verifier');
     localStorage.removeItem('nonce');
@@ -230,7 +229,7 @@ export class AppComponent implements OnInit, AfterContentChecked {
     //fin - contruccion modal natico clasico
 
     const modalVisto = sessionStorage.getItem('modalVisto');
-
+    
     if (modalVisto == 'true') {
       if (this.swUpdate.isEnabled) {
         this.swUpdate.available.subscribe(() => {
