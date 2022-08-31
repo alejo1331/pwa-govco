@@ -31,7 +31,6 @@ export const environment = {
   apiCross: "http://100.24.232.62:8091/api/",
   apiUtils: "http://100.24.232.62:8184/api/",
   //Biblioteca
-  // serverBiblioteca:"https://preapi-interno.www.gov.co/api/biblioteca/",
   serverBiblioteca:"https://api-interno.www.gov.co/api/biblioteca/",
   serverUrlWebApi:"https://api-interno.www.gov.co/api/biblioteca/",
 
@@ -58,4 +57,3 @@ export const environment = {
   //captcha
   keyCaptcha: "6LeCqOcUAAAAAMu9McR1zoUH0z6wDj_dekAODW5h",
 };
-
