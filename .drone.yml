@@ -134,6 +134,30 @@ steps:
     - push
     - merge
 
+- name: upload_to_aws_s3_pre
+  image: plugins/s3
+  settings:
+    bucket: 
+      from_secret: BUCKET_PRE
+    access_key: 
+      from_secret: ACCESS_KEY_S3_PRE
+    secret_key: 
+      from_secret: SECRET_S3_PRE
+    region:
+      from_secret: REGION_S3
+    # strip_prefix: govco-pwa/dist/govco-pwa
+    strip_prefix: govco-pwa/src
+    delete: true
+    # source: ./govco-pwa/dist/govco-pwa/**/*
+    source: ./govco-pwa/src/favicon.ico
+    target: /
+  when:
+    branch:
+    - devops
+    event:
+    - push
+    - merge
+
 - name: slack_notify
   image: plugins/slack
   settings:
