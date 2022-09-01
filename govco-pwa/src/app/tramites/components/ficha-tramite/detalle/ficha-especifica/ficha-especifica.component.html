@@ -25,21 +25,21 @@
   
   <div (keyup)="salirAcordeon($event)" tabindex="0"
   aria-label="A continuación encontrará la sección de la información detallada del trámite.  Si en algún momento desea salir de la sección presione la tecla escape.">
-    <!-- <app-fichaespecifica-accordion *ngIf="audiencias" [data]="audiencias" [tramite]="infoBasicaTramite"
+    <app-fichaespecifica-accordion *ngIf="audiencias" [data]="audiencias" [tramite]="infoBasicaTramite"
       (cargarMomentosAudiencia)="cargarMomentosAudiencia($event)" (cargarDetalleMomento)="cargarDetalleMomento($event)">
-    </app-fichaespecifica-accordion> -->
+    </app-fichaespecifica-accordion>
     <div class="container">
       <div class="col-lg-10 col-sm-12 p-0">
-        <!-- <app-fichaespecifica-resultado [itemid]="idTramite" [infoTramite]="infoBasicaTramite">
-        </app-fichaespecifica-resultado> -->
+        <app-fichaespecifica-resultado [itemid]="idTramite" [infoTramite]="infoBasicaTramite">
+        </app-fichaespecifica-resultado>
         <div class="mb-5">
-          <!-- <app-legislacion-asociada [data]="infoBasicaTramite"></app-legislacion-asociada> -->
+          <app-legislacion-asociada [data]="infoBasicaTramite"></app-legislacion-asociada>
         </div>
-        <!-- <app-btn-puntos-atencion areaServicio=true *ngIf="infoBasicaTramite" [data]="infoBasicaTramite">
-        </app-btn-puntos-atencion> -->
-        <!-- <app-btn-tramite-linea class="" [data]="infoBasicaTramite"></app-btn-tramite-linea> -->
+        <app-btn-puntos-atencion [areaServicio]="true" *ngIf="infoBasicaTramite" [data]="infoBasicaTramite">
+        </app-btn-puntos-atencion>
+        <app-btn-tramite-linea class="" [data]="infoBasicaTramite"></app-btn-tramite-linea>
       </div>
-      <!-- <app-fichaespecifica-footer [data]="infoBasicaTramite"></app-fichaespecifica-footer> -->
+      <app-fichaespecifica-footer [data]="infoBasicaTramite"></app-fichaespecifica-footer>
     </div>
     <a id="salir-seccion-acordeon" tabindex="0" aria-label="Ha salido de la sección"></a>
   </div>

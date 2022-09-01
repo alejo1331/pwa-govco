@@ -55,8 +55,5 @@ export const environment = {
   //captcha
   keyCaptcha: "6LeCqOcUAAAAAMu9McR1zoUH0z6wDj_dekAODW5h",
 
-  serverValidateUrl: 'http://100.24.232.62:8184/api/validateurl',
-
-
 };
 

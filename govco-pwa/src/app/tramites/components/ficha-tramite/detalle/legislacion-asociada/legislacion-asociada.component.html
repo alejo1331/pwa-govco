@@ -1,0 +1,93 @@
+<section>
+    <div id="accordion">
+      <div class="legislacion">
+        <div
+          class="legislacion-header"
+          id="headingOne"
+          (click)="getNormatividadById()"
+          data-toggle="collapse"
+          data-target="#collapseOne"
+          aria-expanded="true"
+          aria-controls="collapseOne"
+        >
+          <h2 class="mb-0 pl-4">
+            <button class="btn legislacion-header-title">
+              Legislación asociada
+            </button>
+          </h2>
+          <div class="icon"></div>
+        </div>
+    
+        <div
+          id="collapseOne"
+          class="collapse"
+          aria-labelledby="headingOne"
+          data-parent="#accordion"
+        >
+          <div class="card-body legislacion-body">
+            <div class="legislacion-body-header">
+              <th class="legislacion-body-header-title w-30">
+                <span class="govco-icon govco-icon-right-arrow" ></span>
+                Documento
+              </th>
+              <th class="legislacion-body-header-title">
+                Descarga
+              </th>
+              <th class="legislacion-body-header-title">
+                Selección
+              </th>
+            </div>
+            <div class="legislacion-body-normativas">
+                <!-- |filter:serchText | paginate: { itemsPerPage: 2, currentPage: p} -->
+              <ng-container
+                *ngFor="let normas of normatividad1; let i = index"
+              >
+                <div class="legislacion-body-normativas-text">
+                  <td class="legislacion-body-normativas-text-info">
+                    {{ normas.TipoNorma }} {{ normas.NumeroNorma }} de {{
+                    normas.AnoNorma }} ({{ normas.Articulos }})
+                  </td>
+                  <td class="icon-descarga">
+                    <a
+                      [href]="normas.UrlDescarga ?  normas.UrlDescarga : normas.UrlNorma"
+                    >
+                      <img
+                        src="assets/icon-fichatramite/descarga.svg"
+                        alt="descarga"
+                      />
+                    </a>
+                  </td>
+                  <td class="checkbox">
+                    <div class="checkbox-govco">
+                      <input type="checkbox" id="{{normas.NumeroNorma}}" (change)="changeEvent(normas, $event)" value="{{normas.UrlDescarga ?  normas.UrlDescarga : normas.UrlNorma}}" />
+                      <label
+                        class="label-checkbox m-auto govco-icon "
+                        for="{{normas.NumeroNorma}}"
+                      >
+                   
+                      </label>
+                    </div>
+                  </td>
+                </div>
+              </ng-container>
+            </div>
+            <div class="paginacion">
+              <pagination-controls
+                (pageChange)="p = $event"
+                previousLabel=""
+                nextLabel=""
+                [maxSize]="5"
+                [autoHide]="true"
+              ></pagination-controls>
+            </div>
+            <div class="legislacion-body-button">
+              <button [ngClass]="{disabled: (toggleBool === true) ? true : false}"   (click)="allDownload()">Descargar Selección</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  
+  

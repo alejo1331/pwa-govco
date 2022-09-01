@@ -1,4 +1,5 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule } from '@angular/common';
 import { TramitesHomeComponent } from './components/tramites-home//tramites-home.component';
 import { TramitesRoutingModule } from './tramites-routing.module';
@@ -28,7 +29,8 @@ import { ModalAlertasComponent } from './components/ficha-tramite/detalle/modal-
 import { LineaAvanceComponent } from './components/ficha-tramite/detalle/linea-avance/linea-avance.component';
 import { FichaespecificaHeaderComponent } from './components/ficha-tramite/detalle/fichaespecifica-header/fichaespecifica-header.component';
 import { FichaespecificaDetalleComponent } from './components/ficha-tramite/detalle/fichaespecifica-detalle/fichaespecifica-detalle.component';
-import { ConfirmModalComponent } from './components/ficha-tramite/confirm-modal/confirm-modal.component';
+import { ConfirmModalComponent } from './components/detalle-consulta-ciiu/components/confirm-modal/confirm-modal.component';
+// import { ConfirmModalComponent } from './components/ficha-tramite/confirm-modal/confirm-modal.component';
 import { BtnPuntosAtencionComponent } from './components/ficha-tramite/btn-puntos-atencion/btn-puntos-atencion.component';
 import { PuntosAtencionModalComponent } from './components/ficha-tramite/puntos-atencion-modal/puntos-atencion-modal.component';
 import { MapaModalComponent } from './components/ficha-tramite/mapa-modal/mapa-modal.component';
@@ -39,9 +41,14 @@ import { TutorialesComponent } from './components/ficha-tramite/detalle/tutorial
 import { ModalTutorialesComponent } from './components/ficha-tramite/detalle/modal-tutoriales/modal-tutoriales.component';
 import { AyudaComponent } from './components/ficha-tramite/detalle/ayuda/ayuda.component';
 import { AtencionComponent } from './components/ficha-tramite/detalle/atencion/atencion.component';
+import { FichaespecificaAccordionComponent } from './components/ficha-tramite/detalle/fichaespecifica-accordion/fichaespecifica-accordion.component';
+import { FichaespecificaResultadoComponent } from './components/ficha-tramite/detalle/fichaespecifica-resultado/fichaespecifica-resultado.component';
+import { LegislacionAsociadaComponent } from './components/ficha-tramite/detalle/legislacion-asociada/legislacion-asociada.component';
+import { FichaespecificaFooterComponent } from './components/ficha-tramite/detalle/fichaespecifica-footer/fichaespecifica-footer.component';
 
 @NgModule({
   imports: [
+    NgbModule,
     CommonModule,
     AvisoDeConstruccionModule,
     TramitesRoutingModule,
@@ -83,6 +90,10 @@ import { AtencionComponent } from './components/ficha-tramite/detalle/atencion/a
     ModalTutorialesComponent,
     AyudaComponent,
     AtencionComponent,
+    FichaespecificaAccordionComponent,
+    FichaespecificaResultadoComponent,
+    LegislacionAsociadaComponent,
+    FichaespecificaFooterComponent,
   ],
   exports: [TramitesHomeComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
