@@ -8,7 +8,7 @@ import { TipoFichaTramite, DatosBaseFichaTramite, TipoEnlace,
          PuntosAtencionNoSuite, DocumentacionRequerida, Contacto } from '../models/tipo-ficha-tramite';
 import { map } from 'rxjs/operators';
 
-const API_URL = environment._serverUrlFichaTramite;
+const API_URL = environment.serverUrlFichaTramite;
 const API_URL_AUDITORIA = environment.auditoriaurl;
 
 @Injectable({
