@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { BottomMenuService } from 'src/app/transversales/services/bottom-menu/bottom-menu.service';
 import { HeaderService } from 'src/app/transversales/services/header-service/header.service';
 import { SidenavService } from 'src/app/transversales/services/sidenav-service/sidenav-service.service';
@@ -168,6 +168,13 @@ export class MomentosDeVidaComponent implements OnInit {
         return true
       } else return false
     } else return false
+  }
+  
+  @HostListener('click')onClick(){
+    var seccionCiuu = (document.getElementsByClassName('enlace-ciiu') as HTMLCollectionOf<HTMLElement>)[0];
+    var clicSeccionCiuu = (seccionCiuu.getElementsByTagName('a'))[0];
+    clicSeccionCiuu.target = "_self"
+    clicSeccionCiuu.href = '/ficha-tramites-y-servicios/codigos-ciiu-y-tramites';
   }
 
 }
