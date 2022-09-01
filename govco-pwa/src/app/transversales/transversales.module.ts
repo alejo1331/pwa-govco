@@ -14,8 +14,6 @@ import { GeolocalizacionFormularioComponent } from './components/geolocalizacion
 import { ServiciosParaEntidadesComponent } from './components/servicios-para-entidades/servicios-para-entidades.component';
 import { CardsServiciosParaEntidadesComponent } from './components/servicios-para-entidades/cards-servicios-para-entidades/cards-servicios-para-entidades.component';
 import { AvisoDeConstruccionModule } from '../aviso-de-construccion/aviso-de-construccion.module';
-import { MatDialogModule } from '@angular/material/dialog';
-import { ConfirmacionUbicacionComponent } from './components/geolocalizacion-formulario/components/confirmacion-ubicacion/confirmacion-ubicacion.component';
 import { CajaHerramientasComponent } from './components/caja-herramientas/caja-herramientas.component';
 import { LevelOneBreadCrumbsComponent } from './shared/components/level-one-bread-crumbs/level-one-bread-crumbs.component';
 import { SafePipe } from './pipes/safe.pipe';
@@ -27,6 +25,7 @@ import { ModalInformacionComponent } from './shared/modal-informacion/modal-info
 import { RecaptchaModule } from "ng-recaptcha";
 import { LoginComponent } from './components/login/login.component';
 import { RegistroComponent } from './components/registro/registro.component';
+import { ModalNatvivoModule } from '../modal-natvivo/modal-natvivo.module';
 
 
 @NgModule({
@@ -37,9 +36,9 @@ import { RegistroComponent } from './components/registro/registro.component';
     ReactiveFormsModule,
     MatToolbarModule,
     TransversalesRoutingModule,
-    MatDialogModule,
     PipesModule,
-    RecaptchaModule
+    RecaptchaModule,
+    ModalNatvivoModule
   ],
   declarations: [
     BuscadorComponent,
@@ -51,14 +50,12 @@ import { RegistroComponent } from './components/registro/registro.component';
     GeolocalizacionFormularioComponent,
     ServiciosParaEntidadesComponent,
     CardsServiciosParaEntidadesComponent,
-    ConfirmacionUbicacionComponent,
     CajaHerramientasComponent,
     ModalInformacionComponent,
     LoginComponent,
     RegistroComponent,
     SafePipe,
     CardsServiciosParaEntidadesComponent,
-    ConfirmacionUbicacionComponent,
     BannerSeccionesInternasComponent,
     BannerDetalleInternasDosComponent,
     LevelOneBreadCrumbsComponent,

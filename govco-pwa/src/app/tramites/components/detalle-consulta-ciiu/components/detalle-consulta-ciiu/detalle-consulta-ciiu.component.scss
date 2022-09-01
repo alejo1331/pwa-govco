@@ -1,0 +1,221 @@
+
+.banner{
+    //background: #F6F8F9;
+    background: white;
+    padding-top: 3em;
+    height: auto;
+    padding-bottom: 10px;
+    @media (max-width: 768px) {
+        //background-color: #F6F8F9;
+        background: white;
+        padding-top: 5px;
+        height: auto;
+        margin-top: -2rem;
+        padding-bottom: 5px
+    }
+    @media (max-width: 320px) {
+        //background-color: #F6F8F9;
+        background: white;
+        padding-top: 20px;
+        height: auto;
+        margin-top: -2rem;
+        padding-bottom: 5px
+    }
+}
+.container{
+    h1{
+        //background-color: #F6F8F9;
+        background: white;
+        text-align: left;
+        font-size: 32px;
+        font-weight: 600;
+        font-family: "Montserrat";
+        letter-spacing: 0px;
+        color: #004884;
+        opacity: 1;
+        margin-top: 40px;
+    }
+    h2{
+        text-align: left;
+        font-size: 20px;
+        font-weight: 500;
+        font-family: "Montserrat";
+        letter-spacing: 0px;
+        color: #004884;
+        opacity: 1;
+    }
+    h3{
+        text-align: left;
+        font-size: 20px;
+        font-weight: 600;
+        font-family: "Montserrat";
+        letter-spacing: 0px;
+        color: #004884;
+        opacity: 1;
+        .iconodisponible {
+            max-width: 25px;
+          }
+    }
+    p{
+        text-align: left;
+        font-size: 16px;
+        font-weight: normal;
+        font-family: "Work Sans";
+        letter-spacing: 0px;
+        color: #4B4B4B;
+        opacity: 1;
+        width: 730px;
+        margin: 1em 0;
+        @media only screen and (max-device-width: 767px) {
+            font-size: 16px;
+            width: 100%;
+        }
+    }
+    @media only screen and (max-device-width: 767px) {
+        h1{
+            font-size: 24px;
+            width: 100%;
+        }
+        h2{
+            font-size: 14px;
+        }
+        p{
+            font-size: 16px;
+        }
+    }
+}
+
+.text-resultados{
+    text-align: left;
+    font-size: 14px;
+    font-weight: normal;
+    font-family: "Work Sans";
+    letter-spacing: 0px;
+    color: #4B4B4B;
+    opacity: 1;
+    vertical-align: text-bottom;
+}
+
+.btn-symbolic-govco {
+    margin: auto !important;
+    font-weight: bold;
+    text-decoration: none !important;
+  }
+
+.btn-symbolic-govco .govco-icon{
+    font-size: 30px !important;
+}
+
+.page-item{
+    font-family: "Montserrat",sans-serif;
+    font-size: 1rem;
+    color: #004884;
+  }
+
+.page-item.disabled .page-link{
+    text-align: right;
+    text-decoration: underline;
+    border-style: hidden;
+    letter-spacing: 0px;
+    color: #BABABA;
+    opacity: 1;
+    @media only screen and (max-device-width: 767px) {
+        font-size: small;
+    }
+}
+
+.page-item .page-link{
+    text-align: right;
+    text-decoration: underline;
+    border-style: hidden;
+    letter-spacing: 0px;
+    color: #3366CC;
+    opacity: 1;
+    @media only screen and (max-device-width: 767px) {
+        font-size: small;
+    }
+}
+
+.page-item.number .page-link{
+    text-align: left;
+    text-decoration: none;
+    font: normal normal medium 16px/19px Work Sans;
+    letter-spacing: 0px;
+    color: #0B457F !important;
+    opacity: 1;
+    @media only screen and (max-device-width: 767px) {
+        font-size: small;
+    }
+}
+
+.page-item.active .page-link{
+    background-color: #3366CC;
+    text-align: left;
+    text-decoration: none;
+    letter-spacing: 0px;
+    color: white !important;
+    opacity: 1;
+    border-radius: 4px;
+    @media only screen and (max-device-width: 767px) {
+        font-size: small;
+    }
+}
+
+.page-link:hover {
+    text-decoration: none;
+    background-color: #E6EFFD;
+    border-color: #E6EFFD;
+    border-radius: 4px;
+}
+.pagination{
+    display: flex;
+    align-content: flex-start;
+    @media only screen and (max-device-width: 767px) {
+        display: inline-flex;
+        align-items: center;
+        align-content: center;
+        align-self: center;
+        text-align: center;
+    }
+}
+@media only screen and (max-device-width: 767px) {
+    .pager-govco.paginador{
+        display: block;
+        align-items: center;
+        align-content: center;
+        align-self: center;
+        text-align: center;
+    }
+    .govco-icon.govco-icon-shortl-arrow.disabled{
+        font-size: large;
+    }
+    .govco-icon.govco-icon-shortl-arrow{
+        font-size: large;
+    }
+    .govco-icon.govco-icon-shortr-arrow.disabled{
+        font-size: large;
+    }
+    .govco-icon.govco-icon-shortr-arrow{
+        font-size: large;
+    }
+    .search-counter{
+        display: flow-root;
+        align-content: end;
+        align-items: end;
+        align-self: end;
+        text-align: right;
+    }
+}
+
+.bread-crumb-main{
+    display: inline-block;
+    @media  screen and (max-width: 768px) {
+        margin-top: 14px;
+    }
+}
+
+::ng-deep .image-icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -1,0 +1,106 @@
+
+.contenedor-panel-title{
+    width: 80%;
+}
+
+.headerPanel{
+    background-color: white;
+    min-height: 70px;
+    display: flex;
+    h3{
+        color: #004884;
+        text-align: left;
+        margin: 20px auto 20px auto;
+        white-space: normal;
+        font-size: 18px;
+        font-weight: 600;
+        font-family: "Montserrat";
+
+        &:hover{
+            text-decoration: none !important;
+        }
+    }
+
+    span{
+        margin: 0px;
+        background-color: #004884;
+        color: white;
+        border-radius: 15px;
+        width: 27px;
+        height: 27px;
+        display: block;
+        line-height: 27px;
+        margin: 23px 0px 0px 38px;
+        font-weight: bold;
+    }
+    .icon {
+        margin: 0;
+        width: 19px;
+        height: 14px;
+        background-image: url("../../../../../../assets/images/spr-icons-govco.png");
+        background-position: 11% 14%;
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    @media screen and (max-width: 768px) {
+        align-items: center;
+        padding: 0.5rem 1em;
+        height: auto;
+        h3{
+            font-size: 14px;
+            margin: 0;
+        }
+        span{
+            margin: 0 1em;
+        }
+        }
+}
+.collapse{
+    .icon{
+        margin: auto;
+        width: 19px;
+        height: 14px;                                    
+        background-image: url("../../../../../../assets/images/spr-icons-govco.png");
+        background-position: 11% 14%;
+        transform: rotate(0deg);
+    }
+}
+
+.bodyPanel{
+    background-color: #F6F8F9;
+    padding: 0px !important;
+}
+
+.btn-link{
+    &:hover{
+        text-decoration: none;
+    }
+    .icon{
+        margin: auto;
+        width: 19px;
+        height: 14px;                                    
+        background-image: url("../../../../../../assets/images/spr-icons-govco.png");
+        background-position: 11% 14%;
+        transform: rotate(180deg);
+    }
+}
+.collapsed{
+    .icon{
+        margin: auto;
+        width: 19px;
+        height: 14px;                                    
+        background-image: url("../../../../../../assets/images/spr-icons-govco.png");
+        background-position: 11% 14%;
+        transform: rotate(0deg);
+    }
+}
+
+::ng-deep .accordion {
+    .card {
+        border: 2px solid #E6EFFD;
+      .card-body {
+        padding: 1rem;
+        background-color: #F6F8F9;
+      }
+    }
+  }

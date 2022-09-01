@@ -1,0 +1,24 @@
+<div class="row justify-row-responsive">
+    <div class="col-md-8 col-sm-12">
+        <ngb-accordion #acc="ngbAccordion" [destroyOnHide]='false'>
+            <ngb-panel>
+                <ng-template ngbPanelHeader>
+                    <div class="d-flex align-items-center justify-content-between headerPanel">
+                        <h3 class="m-0" style="padding-right: 20px;line-height: 1.5;">
+                            {{tramitePregunta.pregunta.descripcion}}</h3>
+                        <button ngbPanelToggle class="btn btn-link p-0">
+                            <div class="icon"></div>
+                        </button>
+                    </div>
+                </ng-template>
+                <ng-template ngbPanelContent>
+                    <div class="bodyPanel">
+                        <div *ngFor="let dato of tramitePregunta.tramites">
+                            <app-tramites-condicionantes-ciiu [tramite]="dato"></app-tramites-condicionantes-ciiu>
+                        </div>
+                    </div>
+                </ng-template>
+            </ngb-panel>
+        </ngb-accordion>
+    </div>
+</div>

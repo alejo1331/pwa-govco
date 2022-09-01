@@ -5,6 +5,8 @@ import { CajaHerramientasComponent } from './components/caja-herramientas/caja-h
 import { ServiciosParaEntidadesComponent } from './components/servicios-para-entidades/servicios-para-entidades.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegistroComponent } from './components/registro/registro.component';
+import { DatosUsuarioComponent } from './components/datos-usuario/datos-usuario.component';
+import { LogoutComponent } from './components/logout/logout.component';
 
 
 const routes: Routes = [
@@ -12,7 +14,9 @@ const routes: Routes = [
   { path: 'servicios-para-entidades', component: ServiciosParaEntidadesComponent },
   { path: 'caja-de-herramientas', component: CajaHerramientasComponent },
   { path: 'login', component: LoginComponent},
-  { path: 'registro', component: RegistroComponent}
+  { path: 'registro', component: RegistroComponent},
+  { path: 'logout', component: LogoutComponent},
+  { path: 'datosusuario', component: DatosUsuarioComponent}
 ];
 
 @NgModule({

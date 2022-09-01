@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { UtilsService } from './utils.service';
-
+import { UtilsService } from '../services/utils.service';
 
 const API_URL = environment.serverValidateUrl;
 

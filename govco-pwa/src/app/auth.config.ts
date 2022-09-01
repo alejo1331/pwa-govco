@@ -14,9 +14,13 @@ export const authConfig: AuthConfig = {
 
   responseType: 'code',
 
-  redirectUri: window.location.origin + '/',
+  // TODO: Descomentar para paso a Producción
+  // redirectUri: window.location.origin + '/',
+  // postLogoutRedirectUri: window.location.origin + '/',
 
-  postLogoutRedirectUri: window.location.origin + '/',
+  // TODO: Descomentar para paso a procucción
+  redirectUri: environment.URLgovco,
+  postLogoutRedirectUri: environment.URLgovco,
 
 
   // Scope qa
@@ -32,7 +36,7 @@ export const authConfig: AuthConfig = {
 
   useSilentRefresh: true,
 
-  silentRefreshRedirectUri: window.location.origin + '/silent-refresh.html',
+  silentRefreshRedirectUri: environment.URLgovco +' silent-refresh.html',
 
   showDebugInformation: true,
 
@@ -86,9 +90,12 @@ export const authConfigRegister: AuthConfig = {
 
   responseType: 'code',
 
-  redirectUri: window.location.origin + '/',
+  // redirectUri: window.location.origin + '/',
 
-  postLogoutRedirectUri: window.location.origin + '/',
+  // postLogoutRedirectUri: window.location.origin + '/',
+
+  redirectUri: environment.URLgovco,
+  postLogoutRedirectUri: environment.URLgovco,
 
 
   // Scope qa
@@ -104,7 +111,7 @@ export const authConfigRegister: AuthConfig = {
 
   useSilentRefresh: true,
 
-  silentRefreshRedirectUri: window.location.origin + '/silent-refresh.html',
+  silentRefreshRedirectUri: environment.URLgovco +' silent-refresh.html',
 
   showDebugInformation: true,
 
@@ -153,9 +160,12 @@ export const authConfigSilent: AuthConfig = {
 
   responseType: 'code',
 
-  redirectUri: window.location.origin + '/',
+  // redirectUri: window.location.origin + '/',
 
-  postLogoutRedirectUri: window.location.origin + '/',
+  // postLogoutRedirectUri: window.location.origin + '/',
+
+  redirectUri: environment.URLgovco,
+  postLogoutRedirectUri: environment.URLgovco,
 
 
   // Scope qa
@@ -171,7 +181,7 @@ export const authConfigSilent: AuthConfig = {
 
   useSilentRefresh: true,
 
-  silentRefreshRedirectUri: window.location.origin + '/silent-refresh.html',
+  silentRefreshRedirectUri: environment.URLgovco +' silent-refresh.html',
 
   showDebugInformation: true,
 

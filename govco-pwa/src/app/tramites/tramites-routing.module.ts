@@ -6,7 +6,7 @@ import { GeneralComponent } from './components/ficha-tramite/detalle/general/gen
 
 
 const routes: Routes = [{
-  path: 'tramites',
+  path: 'ficha-tramites-y-servicios',
   children: [
 
     {
@@ -20,6 +20,13 @@ const routes: Routes = [{
     {
       path: ':id',
       component: GeneralComponent
+    },
+    {
+      path:  'detalle-consulta-ciiu/:idCodigo/:dpto/:municipio/:codigo',
+      loadChildren: () => import('./components/detalle-consulta-ciiu/detalle-consulta-ciiu.module').then(m => m.DetalleConsultaCiiuModule),
+      data: {
+        title: 'Detalle consulta CIIU'
+      }
     },
   ]
 }];

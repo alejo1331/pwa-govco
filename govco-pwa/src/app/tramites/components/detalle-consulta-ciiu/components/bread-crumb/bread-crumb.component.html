@@ -1,0 +1,51 @@
+<nav class="breadcrumb">
+    <ol class="breadcrumb">
+        <li *ngIf="titleCiiu == ''"
+            [class]=" title == '' || title == 'Consulta CIIU'  ? 'breadcrumb-item white':'breadcrumb-item'">
+            <a href="/">
+                Inicio
+            </a>
+        </li>
+        <li *ngIf="title == 'Consulta CIIU'" [class]="'breadcrumb-item active white brdConsultaCiiu'">
+            <div class="image-icon">
+                <div class="govco-icon govco-icon-shortr-arrow mx-1"></div>
+                <span class="breadcrumb-text item-link" style="font-size: 16px;font-weight: 600;">Consulta CIIU</span>
+            </div>
+        </li>
+        <li *ngIf="title != '' && title != 'Consulta CIIU'"
+            [class]="title != '' ? 'breadcrumb-item active':'breadcrumb-item'">
+            <div class="image-icon">
+                <div class="govco-icon govco-icon-shortr-arrow mx-1 "></div>
+                <a class="breadcrumb-text item-link  tramite-tittle">{{ title | wordLimit:3 }}</a>
+            </div>
+        </li>
+        <li *ngIf="titleCiiu != ''"
+            [class]=" title == '' || title == 'Consulta CIIU'  ? 'breadcrumb-item active brdCiiu':'breadcrumb-item'">
+            <a href="/">
+                Inicio
+            </a>
+        </li>
+        <li *ngIf="titleCiiu != ''"
+            [class]="title == '' || title == 'Consulta CIIU' ? 'breadcrumb-item active brdCiiu':'breadcrumb-item'">
+            <div class="image-icon">
+                <div class="govco-icon govco-icon-shortr-arrow mx-1"></div>
+                <a href="/ficha-tramites-y-servicios/" class="breadcrumb-text item-link">Trámites y servicios</a>
+            </div>
+        </li>
+        <li *ngIf="titleCiiu != ''" [class]="titleCiiu != '' ? 'breadcrumb-item active brdCiiu':'breadcrumb-item'">
+            <div class="image-icon">
+                <div class="govco-icon govco-icon-shortr-arrow mx-1"></div>
+                <a href="/ficha-tramites-y-servicios/codigos-ciiu-y-tramites" class="breadcrumb-text item-link">Consulta
+                    CIIU</a>
+            </div>
+        </li>
+        <li *ngIf="titleCiiu != ''" [class]="titleCiiu != '' ? 'breadcrumb-item active brdCiiu':'breadcrumb-item'">
+            <div class="image-icon">
+                <div class="govco-icon govco-icon-shortr-arrow mx-1"></div>
+                <span class="breadcrumb-text item-link" style="font-size: 16px;font-weight: 600;">{{ titleCiiu |
+                    wordLimit:3 }}</span>
+            </div>
+        </li>
+
+    </ol>
+</nav>
