@@ -45,17 +45,17 @@ $white: #fff;
         p {
             font-size: 14px;
         }
-
-        ::ng-deep .breadcrumb {
-            display: block;
-            .breadcrumb-item {
-                .breadcrumb-text {
-                    position: relative;
-                    font-size: 16px !important;
-                    font-family: "Work Sans", sans-serif;
-                    font-weight: 600;
-                }
-            }
-        }
+        // to do
+        // ::ng-deep .breadcrumb {
+        //     display: block;
+        //     .breadcrumb-item {
+        //         .breadcrumb-text {
+        //             position: relative;
+        //             font-size: 16px !important;
+        //             font-family: "Work Sans", sans-serif;
+        //             font-weight: 600;
+        //         }
+        //     }
+        // }
     }
 }
