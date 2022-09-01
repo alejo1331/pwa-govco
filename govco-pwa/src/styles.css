@@ -343,3 +343,7 @@ select-search-1 a,
 .breadcrumb-item::before {
   content: none !important;
 }
+
+.modal-backdrop {
+  display: none;
+}
