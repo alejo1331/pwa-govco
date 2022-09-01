@@ -21,13 +21,16 @@ export const environment = {
   //Noticias o Actualidad
   apiNoticiasDetalle: "https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api/noticias/",
   serverCategoriaSubcategoriaUrl: 'https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api/categorias-subcategorias/',
+  codNoticias: 'actualidadprincipal',
+  codParticipa: 'tuopinioncuenta',
+  codSobreNosotros: 'sobrenosotros',
+  codEntidades: 'paraentidades',
   //Entidades
   serverIntegracion: 'https://aws-api-interno.www.gov.co/api/integracion-sedes/IntegracionSedes/',
   //Tu opinion cuenta o Participacion
   apiCross: "http://100.24.232.62:8091/api/",
   apiUtils: "http://100.24.232.62:8184/api/",
   //Biblioteca
-  // serverBiblioteca:"https://preapi-interno.www.gov.co/api/biblioteca/",
   serverBiblioteca:"https://api-interno.www.gov.co/api/biblioteca/",
   serverUrlWebApi:"https://api-interno.www.gov.co/api/biblioteca/",
 
@@ -47,13 +50,12 @@ export const environment = {
   serverUrlFichaTramite: 'http://100.24.232.62:8084/api/',
   _serverUrlFichaTramite: 'https://preapi-interno.www.gov.co/api/ficha-tramites-y-servicios/',
   //Auth
-  authIssuer: 'https://d36tbrftj1zuu.cloudfront.net',
+  authIssuer: 'https://qaautenticaciondigital.and.gov.co',
   clientID: "govcomovil1QA",
-  authWebApi:"https://api-interno.www.gov.co/api/roles-y-permisos/RolesPerfiles/Usuarios",
-  URLgovco : 'https://d36tbrftj1zuu.cloudfront.net/',
+  authWebApi:"https://preapi-interno.www.gov.co/api/roles-y-permisos/RolesPerfiles/Usuarios",
+  URLgovco : 'https://d2j6v7nsh41twk.cloudfront.net/',
 
   //captcha
   keyCaptcha: "6LeCqOcUAAAAAMu9McR1zoUH0z6wDj_dekAODW5h",
 
 };
-

@@ -109,7 +109,10 @@ export class AppComponent implements OnInit, AfterContentChecked {
     this.oidcService.runInitialLoginSequence();
 
     this.oauthService.loadDiscoveryDocumentAndTryLogin().then(_ => {
+      console.log('------------INICIO---------');
       var claims = this.oauthService.getIdentityClaims();
+      console.log(claims)
+      console.log('------------INICIO---------');
       if (claims) {
         if (claims['LOA'] == 'loa:2') {
           this.LoginGovCo(claims);
@@ -229,7 +232,7 @@ export class AppComponent implements OnInit, AfterContentChecked {
     //fin - contruccion modal natico clasico
 
     const modalVisto = sessionStorage.getItem('modalVisto');
-    
+
     if (modalVisto == 'true') {
       if (this.swUpdate.isEnabled) {
         this.swUpdate.available.subscribe(() => {

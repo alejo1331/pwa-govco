@@ -20,6 +20,6 @@ export class CategoriaService {
 
   //Categorias
   ObtenerCategorias(): Observable<CategoriaModel[]> {
-    return this.http.get<CategoriaModel[]>(this.url_categorias + this.service+"Categoria/Activas");
+    return this.http.get<CategoriaModel[]>(this.url_categorias + this.service+"CategoriasSubcategorias/Categoria/Activas");
   }
 }
