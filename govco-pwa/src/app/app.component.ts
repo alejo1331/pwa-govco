@@ -223,10 +223,10 @@ export class AppComponent implements OnInit, AfterContentChecked {
   updatePWA() {
     //inicio - contruccion modal natico clasico
     this.modalClasico = {
-      campoTitulo: "Actualizacion del app",
-      campoTexto: "Govco tiene una nueva version, descargala!",
+      campoTitulo: "Actualización",
+      campoTexto: "Nueva versión de GOV.CO disponible.",
       botonCancelar: "CANCELAR",
-      botonAceptar: "ACEPTAR"
+      botonAceptar: "ACTUALIZAR"
     };
     this.modalService.clasico(this.modalClasico);
     //fin - contruccion modal natico clasico
