@@ -1,16 +1,17 @@
-.check-ciiu{
+.check-ciiu {
     color: #004884;
     font-size: 24px;
     position: relative;
     padding-top: 5px;
 }
 
-a.btn.disabled, fieldset:disabled a.btn {
+a.btn.disabled,
+fieldset:disabled a.btn {
     // pointer-events: none;
     white-space: nowrap;
 }
 
-.btnModal{
+.btnModal {
     text-align: center;
     font-size: 15px !important;
     font-weight: 500 !important;
@@ -19,12 +20,13 @@ a.btn.disabled, fieldset:disabled a.btn {
     color: #3366CC !important;
     text-transform: uppercase;
     opacity: 1;
+
     @media only screen and (max-device-width: 767px) {
         font-size: 14px !important;
     }
 }
 
-.btnModalDisabled{
+.btnModalDisabled {
     text-align: center;
     font-size: 15px !important;
     font-weight: 500 !important;
@@ -34,12 +36,13 @@ a.btn.disabled, fieldset:disabled a.btn {
     color: #BABABA !important;
     opacity: 1;
     padding-left: 0px;
+
     @media only screen and (max-device-width: 767px) {
         font-size: 14px !important;
     }
 }
 
-.tituloModal{
+.tituloModal {
     text-align: left;
     font-size: 20px !important;
     font-weight: 600 !important;
@@ -49,7 +52,7 @@ a.btn.disabled, fieldset:disabled a.btn {
     opacity: 1;
 }
 
-.subtituloModal{
+.subtituloModal {
     text-align: left;
     font-size: 16px !important;
     font-weight: 700 !important;
@@ -60,7 +63,7 @@ a.btn.disabled, fieldset:disabled a.btn {
     opacity: 1;
 }
 
-.tituloContenidoModal{
+.tituloContenidoModal {
     display: -webkit-box;
     text-align: left;
     font-size: 16px !important;
@@ -71,7 +74,7 @@ a.btn.disabled, fieldset:disabled a.btn {
     opacity: 1;
 }
 
-.descripcionContenidoModal{
+.descripcionContenidoModal {
     text-align: left;
     font-size: 14px !important;
     font-weight: normal !important;
@@ -81,7 +84,7 @@ a.btn.disabled, fieldset:disabled a.btn {
     opacity: 1;
 }
 
-.btnClose{
+.btnClose {
     font-size: inherit;
     color: #3366CC !important;
     opacity: 1;
@@ -89,29 +92,64 @@ a.btn.disabled, fieldset:disabled a.btn {
 
 .iconodisponible {
     max-width: 25px;
-  }
+}
 
-  ::ng-deep .modal-lg { 
-    max-width: 90% !important;
+::ng-deep .modal-body {
+    height: 25rem;
+}
+
+::ng-deep .modal-open .modal {
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+::ng-deep .modal-dialog{
+    height: 95%;
+}
+
+::ng-deep .modal-lg {
+    max-width: 100% !important;
 }
 
 ::ng-deep .modal .modal-content {
-  border-radius: 10px;
+    border-radius: 10px;
+    height: 100%;
+    border: 1px solid #cddce2;
 }
 
 ::ng-deep .modal .modal-header {
-  border: none !important;
+    border: none !important;
 }
 
-::ng-deep .scroll-light-govco{
+::ng-deep .scroll-light-govco {
     overflow-y: scroll;
+    &::-webkit-scrollbar-thumb {
+        background-color: #004884;
+        border: 2px solid #E6EFFD;
+        border-radius: 11px;
+        -webkit-box-shadow: inset 0 0 1px 1px #e6effd;
+        box-shadow: inset 0 0 1px 1px #e6effd;
+    }
+}
+::ng-deep .scroll-light-govco::-webkit-scrollbar {
+    width: 0.7em;
+    padding: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #e6effd;
+    border-radius: 11px;
 }
 
 ::ng-deep .modal h3 {
     font-size: 1.125rem;
     font-weight: 700;
-  }
+}
 
-::ng-deep .descripcionContenidoModal{
+::ng-deep .descripcionContenidoModal {
     list-style: none;
+}
+
+::ng-deep a{
+    white-space: nowrap;
 }
