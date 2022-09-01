@@ -64,7 +64,6 @@ export class GeneralComponent implements OnInit, OnDestroy {
       }
 
       if (idTramiteTemp != null && idTramiteTemp != 'null') {
-        this.tramite.tipo = '601'
         this.fichaTramiteService.GetTipoFichaTramite(idTramiteTemp)
         .subscribe( data => {
           this.tramite.tipo = data.StatusCode;

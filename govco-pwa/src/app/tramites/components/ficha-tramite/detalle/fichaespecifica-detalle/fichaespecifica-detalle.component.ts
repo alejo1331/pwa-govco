@@ -94,12 +94,12 @@ export class FichaespecificaDetalleComponent implements OnInit {
 
   showModalFechas(data:any) {
 
-    // const modal = this.modalService.open(ModalFechasDisponiblesComponent, {
-    //   size: 'lg',
-    //   backdrop: 'static',
-    //   keyboard: false
-    // });
-    // modal.componentInstance.fechas = data;
+    const modal = this.modalService.open(ModalFechasDisponiblesComponent, {
+      size: 'lg',
+      backdrop: 'static',
+      keyboard: false
+    });
+    modal.componentInstance.fechas = data;
     
   }
 
