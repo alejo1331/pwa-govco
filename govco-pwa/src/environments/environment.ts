@@ -48,7 +48,6 @@ export const environment = {
 
   //Ficha tramite
   serverUrlFichaTramite: 'http://100.24.232.62:8084/api/',
-  _serverUrlFichaTramite: 'https://preapi-interno.www.gov.co/api/ficha-tramites-y-servicios/',
   //Auth
   authIssuer: 'https://qaautenticaciondigital.and.gov.co',
   clientID: "govcomovil1QA",
