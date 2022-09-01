@@ -94,13 +94,17 @@ fieldset:disabled a.btn {
     max-width: 25px;
 }
 
+::ng-deep .modal-body {
+    height: 25rem;
+}
+
 ::ng-deep .modal-open .modal {
     overflow-x: hidden;
     overflow-y: hidden;
 }
 
 ::ng-deep .modal-dialog{
-    height: 97%;
+    height: 95%;
 }
 
 ::ng-deep .modal-lg {
@@ -144,4 +148,8 @@ fieldset:disabled a.btn {
 
 ::ng-deep .descripcionContenidoModal {
     list-style: none;
+}
+
+::ng-deep a{
+    white-space: nowrap;
 }
