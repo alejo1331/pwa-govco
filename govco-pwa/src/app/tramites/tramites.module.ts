@@ -45,6 +45,7 @@ import { FichaespecificaAccordionComponent } from './components/ficha-tramite/de
 import { FichaespecificaResultadoComponent } from './components/ficha-tramite/detalle/fichaespecifica-resultado/fichaespecifica-resultado.component';
 import { LegislacionAsociadaComponent } from './components/ficha-tramite/detalle/legislacion-asociada/legislacion-asociada.component';
 import { FichaespecificaFooterComponent } from './components/ficha-tramite/detalle/fichaespecifica-footer/fichaespecifica-footer.component';
+import { OrderModule } from 'ngx-order-pipe';
 
 @NgModule({
   imports: [
@@ -58,7 +59,8 @@ import { FichaespecificaFooterComponent } from './components/ficha-tramite/detal
     NgxPaginationModule,
     CarouselModule,
     TransversalesModule,
-    FormsModule
+    FormsModule,
+    OrderModule
   ],
   declarations: [
     TramitesHomeComponent,
