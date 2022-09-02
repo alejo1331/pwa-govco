@@ -1,0 +1,173 @@
+<div class="puntos-atencion-tramite">
+    <div class="modal-header row">
+        <button type="button" class="close" (click)="closeModal()"><span class="material-icons">clear</span></button>
+
+            <div class="col-sm-12 col-md-12 col-lg-3">
+                <ng-container *ngIf="puntosAtencion">
+                    <h2>Puntos de Atención</h2>
+                </ng-container>
+                <ng-container *ngIf="normatividad">
+                    <h2>Legislación Asociada</h2>
+                </ng-container>
+            </div>
+
+            <div class="col-sm-12 col-md-12 col-lg-7 pr-5">
+                <ng-container *ngIf="puntosAtencion">
+                <div class="buscador">
+                    <input class="form-control" type="text" aria-label="Buscar" placeholder="Buscar" [(ngModel)]="serchText">
+                    <button class="content-search"><span class="govco-icon govco-icon-search-cn icon-color-blue"></span></button>
+                </div>
+                </ng-container>
+            </div>
+            <div *ngIf="puntosAtencion" class="order-movile">
+                <th [class.active]="order == 'PuntoAtencionNombre'"
+                (click)="setOrder('PuntoAtencionNombre')"
+                class="textofilas order-puntos">
+                    <span [hidden]="reversePunto" class="icon-order-punto">
+                        <i class="material-icons">arrow_downward</i>
+                    </span>
+                    <span [hidden]="!reversePunto" class="icon-order-punto">
+                        <i class="material-icons">arrow_upward</i>
+                    </span>
+                    <span class="text-order-punto">Punto</span>
+                </th> 
+                <th [class.active]="order == 'Departamento'"
+                (click)="setOrder('Departamento')" 
+                class="textofilas order-puntos">
+                    <span [hidden]="reverseDepartamento" class="icon-order">
+                        <i class="material-icons">arrow_downward</i>
+                    </span>
+                    <span [hidden]="!reverseDepartamento" class="icon-order">
+                        <i class="material-icons">arrow_upward</i>
+                    </span>
+                    <span class="text-order">Departamento / Municipio</span>
+                </th>
+            </div>
+            <div *ngIf="normatividad" class="order-movile">
+                <th class="textofilas order-puntos">
+                    <span class="text-order-punto">&nbsp;Descargar&nbsp;</span>
+                </th>
+                <th class="textofilas order-puntos">
+                    <span class="icon-order">
+                        &nbsp;
+                    </span>
+                    <span class="text-order">|&nbsp;Documento</span>
+                </th>
+            </div>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-12">
+                <div *ngIf="puntosAtencion" >
+                  <small *ngIf="puntosAtencion.length == 0">Tramite no contiene puntos de atención</small>
+                </div>
+                <table class="table table-responsive" *ngIf="puntosAtencion">
+                    <!-- |filter:serchText | paginate: { itemsPerPage: 5, currentPage: p} -->
+                    <ng-container  *ngFor="let punto of puntosAtencion; let i = index">
+                    <thead *ngIf="i == 0" >
+                        <th [class.active]="order == 'PuntoAtencionNombre'"
+                        (click)="setOrder('PuntoAtencionNombre')"
+                        class="textofilas order-puntos">
+                            <span [hidden]="reversePunto" class="icon-order-punto">
+                                <i class="material-icons">arrow_downward</i>
+                            </span>
+                            <span [hidden]="!reversePunto" class="icon-order-punto">
+                                <i class="material-icons">arrow_upward</i>
+                            </span>
+                            <span class="text-order-punto">Punto</span>
+                        </th>
+                        <th [class.active]="order == 'Departamento'"
+                        (click)="setOrder('Departamento')" 
+                        class="textofilas order-puntos">
+                            <span [hidden]="reverseDepartamento" class="icon-order">
+                                <i class="material-icons">arrow_downward</i>
+                            </span>
+                            <span [hidden]="!reverseDepartamento" class="icon-order">
+                                <i class="material-icons">arrow_upward</i>
+                            </span>
+                            <span class="text-order">Departamento / Municipio</span>
+                        </th>
+                        <th class="textofilas" >Dirección</th>
+                        <th class="textofilas" >Horario</th>
+                        <th class="textofilas" >Teléfono</th>
+                        <th class="textofilas" >Ver Mapa</th>
+                    </thead>
+                    </ng-container>
+                    <tbody>
+                        <!--  |orderBy: order:reverseDepartamento:true |orderBy: order:reversePunto:true |filter:serchText | paginate: { itemsPerPage: 5, currentPage: p} -->
+                        <ng-container  *ngFor="let punto of puntosAtencion; let i = index">
+                        <tr>
+                            <!-- <td>{{ punto.PuntoAtencionNombre }}</td>
+                            <td>{{ punto.Departamento }} / {{ punto.Municipio }}</td>
+                            <td>{{ punto.PuntoAtencionDireccion}}</td>
+                            <td>{{ punto.HorarioAtencion }}</td> -->
+                            <!-- <td>{{ punto.PuntoAtencionTelefono }}</td> -->
+                            <td>
+                                <!-- (click)="printCoordenadas(punto.Latitud.replace(',','.'), punto.Longitud.replace(',','.'), punto.PuntoAtencionDireccion)" -->
+                                <a >
+                                    <span class="govco-icon govco-icon-pin"></span>
+                                </a>
+                            </td>
+                        </tr>
+                        </ng-container>
+                    </tbody>
+                </table>
+                <div class="col-lg-6 col-sm-6 head-norma" >
+                    <table class="table table-responsive" *ngIf="normatividad">
+                        <!-- |filter:serchText | paginate: { itemsPerPage: 6, currentPage: p} -->
+                        <ng-container  *ngFor="let normas of normatividad; let i = index">
+                        <thead *ngIf="i == 0" class="col-lg-6 col-sm-6 header-table-norma">
+                            <th class="title-icon-left"><strong>Descargar</strong></th>
+                            <th class="title-doc-left"><strong>Documento</strong></th>
+                        </thead>
+                        </ng-container>
+                    </table>
+                </div>
+                <div class="col-lg-6 col-sm-6 head-norma" >
+                    <table class="table table-responsive" *ngIf="normatividad">
+                        <!-- |filter:serchText | paginate: { itemsPerPage: 6, currentPage: p} -->
+                        <ng-container  *ngFor="let normas of normatividad; let i = index">
+                        <thead *ngIf="i == 0" class="col-lg-6 col-sm-6 header-table-norma">
+                            <th class="title-icon-rigth"><strong>Descargar</strong></th>
+                            <th class="title-doc-rigth"><strong class="strong-doc-rigth">Documento</strong></th>
+                        </thead>
+                        </ng-container>
+                    </table>
+                </div>
+                <div *ngIf="normatividad">
+                  <div class="alert alert-primary" *ngIf="normatividad.length == 0" role="alert">
+                    <div class="icon-alert">
+                      <span class="govco-icon govco-icon-info-cp"></span>
+                    </div>
+                    <div class="title-alert">
+                      No se ha encontrado información sobre la normatividad para el tramite.
+                    </div>
+                  </div>
+                </div>
+                <div class="normativas" *ngIf="normatividad">
+                    <!-- |filter:serchText | paginate: { itemsPerPage: 6, currentPage: p} -->
+                    <ng-container  *ngFor="let normas of normatividad; let i = index">
+                        <div class="textofilas">
+                            <div class="normativa">
+                                <td class="textofilas icon-descarga">
+                                    <!-- <a [href]="normas.UrlDescarga ?  normas.UrlDescarga : normas.UrlNorma" (click)="validateUrl(normas.UrlDescarga ?  normas.UrlDescarga : normas.UrlNorma, $event)" >
+                                        <span class="govco-icon govco-icon-down-arrow-n icon-down-norma"></span>
+                                    </a> -->
+                                    <a  >
+                                        <span class="govco-icon govco-icon-down-arrow-n icon-down-norma"></span>
+                                    </a>
+                                </td>
+                                <td class="textofilas txt-documento">
+                                    <!-- {{ normas.TipoNorma }} {{ normas.NumeroNorma }} de {{ normas.AnoNorma }} ({{ normas.Articulos }}) -->
+                                </td>
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+                <div class="paginacion">
+                    <pagination-controls (pageChange)="p = $event" previousLabel="" nextLabel="" [maxSize]="9" [autoHide]="true"></pagination-controls>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

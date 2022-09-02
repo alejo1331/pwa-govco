@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { TramitesHomeComponent } from './components/tramites-home/tramites-home.component';
 import { CodigosCiiuYTramitesComponent } from './components/codigos-ciiu-y-tramites/codigos-ciiu-y-tramites.component';
+import { GeneralComponent } from './components/ficha-tramite/detalle/general/general.component';
 
 
 const routes: Routes = [{
@@ -15,6 +16,10 @@ const routes: Routes = [{
     {
       path: 'codigos-ciiu-y-tramites',
       component: CodigosCiiuYTramitesComponent
+    },
+    {
+      path: ':id',
+      component: GeneralComponent
     },
     {
       path:  'detalle-consulta-ciiu/:idCodigo/:dpto/:municipio/:codigo',

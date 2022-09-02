@@ -1,0 +1,7 @@
+<div *ngIf="tramite.tipo == '601'" class="pad">
+    <app-ficha-especifica *ngIf="tramite.tipo" [informacionFicha]="tramite">
+    </app-ficha-especifica>
+</div>
+<div *ngIf="tramite.tipo == '603'" class="pad">
+    <app-ficha-no-suite  [tipoFicha]="tramite.tipo" [informacionFicha]="tramite"></app-ficha-no-suite>
+</div>

@@ -1,0 +1,35 @@
+.box-tutorial {
+    background: #f6f8f9;
+    border: none !important;
+    position: relative;
+    width: 287px;
+    margin: 0 auto;
+    height: 59px;
+    align-items: center;
+    display: flex;
+    text-align: left;
+    padding: 1rem;
+    // justify-content: center;
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 4px 5px 0px rgba(186,186,186,0.3);
+    -moz-box-shadow: 0px 4px 5px 0px rgba(186,186,186,0.3);
+    box-shadow: 0px 4px 5px 0px rgba(186,186,186,0.3);
+    @media (max-width: 991px) {
+      width: 100%;
+    }
+    &:hover {
+      -webkit-box-shadow: 0px 4px 5px 0px rgba(51, 102, 204, 0.26);
+      -moz-box-shadow: 0px 4px 5px 0px rgba(51, 102, 204, 0.26);
+      box-shadow: 0px 4px 5px 0px rgba(51, 102, 204, 0.26);
+      border: 1px solid #3366cc !important;
+      background: #fff;
+    }
+    &-title{
+        color: #004884;
+        font-size: 16px;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 600;
+        margin: 0;
+        cursor: pointer;
+    }
+}
