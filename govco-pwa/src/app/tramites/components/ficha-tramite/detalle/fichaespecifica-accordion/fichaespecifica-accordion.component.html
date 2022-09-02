@@ -8,13 +8,12 @@
                 </h2>
                 </div>
                 <div class="container">
-                    <ul ngbNav #nav="ngbNav" [(activeId)]="active">
+                    <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
                         <li [ngbNavItem]="j + 1" *ngFor="let itemAudiencia of data; let j = index">
                             <a ngbNavLink>
                                 <img [src]="urlIconos(itemAudiencia.detalle)" >
                                 {{itemAudiencia.detalle}}
                             </a>
-                            
                             <ng-template ngbNavContent>
                                 <h1 aria-label="¿Qué necesito para hacer mi trámite?"
                                     class="descripcion-accordion">¿Qué necesito para hacer mi trámite?</h1>
@@ -91,7 +90,7 @@
                         </li>
                     </ul>
                 </div>
-                <ngb-tabset (tabChange)="beforeChange($event)" >
+                <!-- <ngb-tabset (tabChange)="beforeChange($event)" > -->
                     
                     <!-- <ngb-tab *ngFor="let itemAudiencia of data; let j = index">
                         
@@ -178,7 +177,7 @@
                             </div>
                         </ng-template>
                     </ngb-tab> -->
-                </ngb-tabset>
+                <!-- </ngb-tabset> -->
            
         </div>
     </div>
