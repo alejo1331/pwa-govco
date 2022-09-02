@@ -7,8 +7,94 @@
                     Elige tu perfil y conoce la información específica del trámite:
                 </h2>
                 </div>
+                <div class="container">
+                    <ul ngbNav #nav="ngbNav" [(activeId)]="active">
+                        <li [ngbNavItem]="j + 1" *ngFor="let itemAudiencia of data; let j = index">
+                            <a ngbNavLink>
+                                <img [src]="urlIconos(itemAudiencia.detalle)" >
+                                {{itemAudiencia.detalle}}
+                            </a>
+                            
+                            <ng-template ngbNavContent>
+                                <h1 aria-label="¿Qué necesito para hacer mi trámite?"
+                                    class="descripcion-accordion">¿Qué necesito para hacer mi trámite?</h1>
+                                    <ngb-accordion [closeOthers]="true" #acc="ngbAccordion"  
+                                    (panelChange)="tooggleAccordian($event, itemAudiencia.detalle)">
+                                        <ngb-panel *ngFor="let momento of itemAudiencia.momentos; let i = index"
+                                            [id]="'panel-'+i">
+                                            <ng-template ngbPanelTitle>
+                                                <div class="headerPanel"
+                                                    (click)="dataDetalleMomentoAudiencia(itemAudiencia.detalle, momento.MomentoId)">
+                                                    <div class="ml-lg-3 contenedor-numero"><span>{{i+1}}</span></div>
+                                                    <h3 [id]="'btn-panel-'+i"
+                                                        class="contenedor-panel-title contenido-responsive ml-2"> {{
+                                                        momento.Descripcion }}</h3>
+                                                    <div class="icon"
+                                                        (click)="dataDetalleMomentoAudiencia(itemAudiencia.detalle, momento.MomentoId)">
+                                                    </div>
+                                                </div>
+
+                                            </ng-template>
+                                            <ng-template ngbPanelContent>
+                                                <ngx-skeleton-loader appearance="line" count="3" *ngIf="!momento.acciones"
+                                                    [theme]="{
+                                                    height: '12px',
+                                                    'background-color': '#888cc93d'
+                                                    }"> </ngx-skeleton-loader>
+
+                                                <div *ngFor="let accion of momento.acciones">
+                                                    <div class="contenedor-ficha-accordion"
+                                                        *ngFor="let tipoAccion of accion | keyvalue">
+
+                                                        <div *ngIf="tipoAccion.key === 'VERIFICACION_INST'">
+                                                            <app-accion-verificacion *ngIf="tipoAccion.value"
+                                                                [data]="tipoAccion.value"></app-accion-verificacion>
+                                                        </div>
+
+                                                        <div *ngIf="tipoAccion.key === 'PAGO'">
+                                                            <app-accion-pago *ngIf="tipoAccion.value"
+                                                                [data]="tipoAccion.value"></app-accion-pago>
+                                                        </div>
+
+                                                        <div *ngIf="tipoAccion.key === 'SOLICITUD'">
+                                                            <app-accion-solicitud *ngIf="tipoAccion.value"
+                                                                [data]="tipoAccion.value"></app-accion-solicitud>
+                                                        </div>
+
+                                                        <div *ngIf="tipoAccion.key === 'DOCUMENTO'">
+                                                            <app-accion-documento *ngIf="tipoAccion.value"
+                                                                [data]="tipoAccion.value"></app-accion-documento>
+                                                        </div>
+
+                                                        <div *ngIf="tipoAccion.key === 'FORMULARIO'">
+                                                            <app-accion-formulario *ngIf="tipoAccion.value"
+                                                                [data]="tipoAccion.value" [tramite]="tramite">
+                                                            </app-accion-formulario>
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+
+                                                <div *ngIf="momento.acciones">
+                                                    <app-accion-excepcion *ngIf="momento.acciones.EXCEPCION"
+                                                        [data]="momento.acciones.EXCEPCION"></app-accion-excepcion>
+                                                </div>
+
+
+                                            </ng-template>
+
+                                        </ngb-panel>
+
+                                </ngb-accordion>
+                            </ng-template>
+                        </li>
+                    </ul>
+                </div>
                 <ngb-tabset (tabChange)="beforeChange($event)" >
-                    <ngb-tab *ngFor="let itemAudiencia of data; let j = index">
+                    
+                    <!-- <ngb-tab *ngFor="let itemAudiencia of data; let j = index">
+                        
                             <ng-template ngbTabTitle container="body">
                                 <img [src]="urlIconos(itemAudiencia.detalle)" >
                                 <span role="tablist" aria-describedby="tab tipo usuario"
@@ -20,7 +106,6 @@
                             <div class="container">
                                 <h1 aria-label="¿Qué necesito para hacer mi trámite?" tabindex="0"
                                     class="descripcion-accordion">¿Qué necesito para hacer mi trámite?</h1>
-                                    <!-- #acc="ngbAccordion" -->
                                 <ngb-accordion [closeOthers]="true" #acc="ngbAccordion"  
                                     (panelChange)="tooggleAccordian($event, itemAudiencia.detalle)">
                                     <ngb-panel *ngFor="let momento of itemAudiencia.momentos; let i = index"
@@ -92,7 +177,7 @@
                                 </ngb-accordion>
                             </div>
                         </ng-template>
-                    </ngb-tab>
+                    </ngb-tab> -->
                 </ngb-tabset>
            
         </div>

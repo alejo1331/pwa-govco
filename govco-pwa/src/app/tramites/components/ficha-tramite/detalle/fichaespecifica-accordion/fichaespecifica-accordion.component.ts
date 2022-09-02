@@ -8,6 +8,7 @@ import { NgbAccordionConfig } from '@ng-bootstrap/ng-bootstrap';
 })
 export class FichaespecificaAccordionComponent implements OnInit {
 
+  active = 1;
   @Input() data: any[];
   @Input() tramite: any;
   @Output() cargarDetalleMomento =  new EventEmitter<any>();
@@ -23,6 +24,7 @@ export class FichaespecificaAccordionComponent implements OnInit {
 
   ngOnInit(): void {
     this.IE = this.isIE();
+    console.log(this.data)
   }
 
   isIE() {
