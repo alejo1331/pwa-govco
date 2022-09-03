@@ -66,6 +66,12 @@ export class RegistroComponent implements OnInit {
     });
   }
 
+  ngOnDestroy() {
+    const modals = document.querySelectorAll('.modal .modal-header .close');
+    console.log(modals)
+    modals.forEach(modal => (<HTMLElement>modal).click());
+  }
+
   getResponceCapcha(captchaResponse: string) {
     var response = captchaResponse;
     if (response.length == 0) {

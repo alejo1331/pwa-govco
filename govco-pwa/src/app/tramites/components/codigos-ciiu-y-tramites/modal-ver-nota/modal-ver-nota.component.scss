@@ -146,10 +146,10 @@ fieldset:disabled a.btn {
     font-weight: 700;
 }
 
-::ng-deep .descripcionContenidoModal {
+.container-modal-ver-nota ::ng-deep .descripcionContenidoModal {
     list-style: none;
 }
 
-::ng-deep a{
+::ng-deep a.link-modal-ver-nota {
     white-space: nowrap;
 }
