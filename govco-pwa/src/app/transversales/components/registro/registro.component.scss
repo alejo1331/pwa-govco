@@ -241,7 +241,7 @@
 }
 @media screen and (max-width: 768px) {
   .login {
-    padding: 1em 0;
+    padding: 3em 0;
     &-container {
       &_title{
         p{
@@ -290,11 +290,21 @@
   }
 }
 
+::ng-deep .modal-open .modal {
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+::ng-deep  .modal.show .modal-dialog {
+  -webkit-transform: none;
+  transform: none;
+  height: 100%;
+}
+
 .modal-dialog {
-  top: 4em;
   max-width: 828px;
   .modal-content {
-    height: 650px;
+    height: 98%;
     padding-bottom: 3em;
     .modal-header {
       display: block;

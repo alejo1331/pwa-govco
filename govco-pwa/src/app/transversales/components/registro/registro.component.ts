@@ -5,6 +5,9 @@ import { OAuthService } from "angular-oauth2-oidc";
 import { environment } from "src/environments/environment";
 import { TipoIdentificacionModel } from '../../models/auth/tipoidentificacion.model';
 import { AuthService } from '../../services/auth/auth.service';
+import { SidenavService } from '../../services/sidenav-service/sidenav-service.service';
+import { HeaderService } from '../../services/header-service/header.service';
+import { BottomMenuService } from '../../services/bottom-menu/bottom-menu.service';
 
 @Component({
   selector: 'app-registro',
@@ -24,9 +27,28 @@ export class RegistroComponent implements OnInit {
 
   constructor(public fb: FormBuilder,
     private oauthService: OAuthService,
-    private authService: AuthService) { }
+    private authService: AuthService,
+    public bottomService: BottomMenuService,
+    protected servicioHeader: HeaderService,
+    protected servicioSideNav: SidenavService
+    ) { }
 
   ngOnInit() {
+    // servicioHeader.estadoHeader(a, b)       a -> true = header seccion internas
+    //                                         a -> false = header general
+    //                                         b -> Muestra/Oculta  Header
+    //bottomService.seleccionandoItem(0)       0 -> Activa boton incio del menu inferior
+    //                                         1, 2, 3 -> Tramites, Ingresa
+    //servicioSideNav.seleccionandoItem(a, b)  a -> Activa o inactiva menu lateral
+    //                                         b -> String con el valor del item a seleccionar
+    //bottomService.ajustandoPantalla(true)    true -> Agrega clase de css para ajustar 
+    //                                                 la pantalla cuando en la seccion  
+    //                                                 consultada no tiene header
+    this.servicioHeader.estadoHeader(false, true);
+    this.bottomService.seleccionandoItem(2);
+    this.bottomService.ajustandoPantalla(false);
+    this.servicioSideNav.seleccionandoItem(false, 'null');
+
     this.authService.getTiposIdentificacionEventos().subscribe((data: TipoIdentificacionModel[]) => { // Success
       this.users = data;
     },
