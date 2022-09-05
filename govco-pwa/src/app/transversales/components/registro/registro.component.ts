@@ -41,8 +41,8 @@ export class RegistroComponent implements OnInit, OnDestroy {
     //                                         1, 2, 3 -> Tramites, Ingresa
     //servicioSideNav.seleccionandoItem(a, b)  a -> Activa o inactiva menu lateral
     //                                         b -> String con el valor del item a seleccionar
-    //bottomService.ajustandoPantalla(true)    true -> Agrega clase de css para ajustar 
-    //                                                 la pantalla cuando en la seccion  
+    //bottomService.ajustandoPantalla(true)    true -> Agrega clase de css para ajustar
+    //                                                 la pantalla cuando en la seccion
     //                                                 consultada no tiene header
     this.servicioHeader.estadoHeader(false, true);
     this.bottomService.seleccionandoItem(2);
@@ -129,10 +129,6 @@ export class RegistroComponent implements OnInit, OnDestroy {
 
       this.oauthService.initLoginFlow();
     }
-  }
-
-  ngOnDestroy(){
-    document.body.classList.remove('modal-open');
   }
 
 }

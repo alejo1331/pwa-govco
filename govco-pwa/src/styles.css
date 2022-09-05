@@ -94,6 +94,7 @@ body {
   background-color: #FFFFFF;
   position: relative;
   overflow: scroll;
+  -webkit-overflow-scrolling: auto;
   height: calc(100% - 8rem);
 }
 
@@ -347,3 +348,4 @@ select-search-1 a,
 .modal-backdrop {
   display: none;
 }
+
