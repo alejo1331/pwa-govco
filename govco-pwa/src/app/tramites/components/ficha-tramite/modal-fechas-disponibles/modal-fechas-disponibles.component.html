@@ -48,7 +48,7 @@
                 </div>
                 <table class="table table-responsive" *ngIf="fechas">
                     <!-- |filter:serchText | paginate: { itemsPerPage: 5, currentPage: p}; -->
-                    <ng-container  *ngFor="let punto of fechas  let i = index">
+                    <ng-container  *ngFor="let punto of fechas; let i = index">
                     <thead *ngIf="i == 0" >
                         <th [class.active]="order == 'PuntoAtencionNombre'"
                         (click)="setOrder('PuntoAtencionNombre')"
