@@ -66,16 +66,11 @@ export class FichaespecificaDetalleComponent implements OnInit {
   }
 
   showBotonFecha(){
-    this.fichaTramiteService.GetFechasByTramite(this.data.IdTramite).subscribe(  (resp)=> {
-      if(resp.length != 0) {
-        return this.showBotonFechas = true
-      } else {
-        return this.showBotonFechas = false;
-      }
-    });
+    this.fichaTramiteService.GetFechasByTramite(this.data.IdTramite).subscribe( 
+      (resp: any)=> {
+        this.showBotonFechas = resp.fechasEspecificas.length > 0;
+    }, error => console.log(error));
   }
-
- 
 
   showModal(data: { tipo: string; data: any; }) {
 
