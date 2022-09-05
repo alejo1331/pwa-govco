@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { authConfigRegister } from "../../../auth.config";
 import { OAuthService } from "angular-oauth2-oidc";
@@ -14,7 +14,7 @@ import { BottomMenuService } from '../../services/bottom-menu/bottom-menu.servic
   templateUrl: './registro.component.html',
   styleUrls: ['./registro.component.scss']
 })
-export class RegistroComponent implements OnInit {
+export class RegistroComponent implements OnInit, OnDestroy {
   disable = true;
   errorCaptcha = false;
   submitted = false;
@@ -129,6 +129,10 @@ export class RegistroComponent implements OnInit {
 
       this.oauthService.initLoginFlow();
     }
+  }
+
+  ngOnDestroy(){
+    document.body.classList.remove('modal-open');
   }
 
 }
