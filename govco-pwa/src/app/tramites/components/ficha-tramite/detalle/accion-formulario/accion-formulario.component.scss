@@ -1,4 +1,42 @@
 .nombredocumento a{
     color: #007bff !important;
+}
+
+.iconodisponible{
+    max-width: 24px;
+    margin-right: 8px;
+    margin-left: 8px;
+    margin-top: -2px;
+}
+
+app-accion-formulario{
+  .titulocondicion{
+      font-size: 18px;
+      font-weight: 600;
+      font-family: Montserrat;
   }
-  
+
+  .card-body{
+      .contenedor-accion-formulario{
+          
+          margin: 35px 10px 0px 10px;
+
+          .titulocondicion-secundario{
+              font-size: 16px;
+              font-weight: 600;
+              font-family: Montserrat;
+          }
+
+          .nombredocumento{
+              a{
+                  color: #3366CC !important;
+                  font-size: 16px;
+              }
+          }
+
+          .anotacion-adional{
+              color: #4b4b4b;
+          }
+      }
+  }
+}
