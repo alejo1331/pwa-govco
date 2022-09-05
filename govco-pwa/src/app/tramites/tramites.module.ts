@@ -46,6 +46,13 @@ import { FichaespecificaResultadoComponent } from './components/ficha-tramite/de
 import { LegislacionAsociadaComponent } from './components/ficha-tramite/detalle/legislacion-asociada/legislacion-asociada.component';
 import { FichaespecificaFooterComponent } from './components/ficha-tramite/detalle/fichaespecifica-footer/fichaespecifica-footer.component';
 import { OrderModule } from 'ngx-order-pipe';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { AccionVerificacionComponent } from './components/ficha-tramite/detalle/accion-verificacion/accion-verificacion.component';
+import { AccionPagoComponent } from './components/ficha-tramite/detalle/accion-pago/accion-pago.component';
+import { AccionSolicitudComponent } from './components/ficha-tramite/detalle/accion-solicitud/accion-solicitud.component';
+import { AccionDocumentoComponent } from './components/ficha-tramite/detalle/accion-documento/accion-documento.component';
+import { AccionFormularioComponent } from './components/ficha-tramite/detalle/accion-formulario/accion-formulario.component';
+import { AccionExcepcionComponent } from './components/ficha-tramite/detalle/accion-excepcion/accion-excepcion.component';
 
 @NgModule({
   imports: [
@@ -60,7 +67,8 @@ import { OrderModule } from 'ngx-order-pipe';
     CarouselModule,
     TransversalesModule,
     FormsModule,
-    OrderModule
+    OrderModule,
+    NgxSkeletonLoaderModule
   ],
   declarations: [
     TramitesHomeComponent,
@@ -96,6 +104,12 @@ import { OrderModule } from 'ngx-order-pipe';
     FichaespecificaResultadoComponent,
     LegislacionAsociadaComponent,
     FichaespecificaFooterComponent,
+    AccionVerificacionComponent,
+    AccionPagoComponent,
+    AccionSolicitudComponent,
+    AccionDocumentoComponent,
+    AccionFormularioComponent,
+    AccionExcepcionComponent,
   ],
   exports: [TramitesHomeComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

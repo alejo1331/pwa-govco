@@ -1,0 +1,12 @@
+.canal-enlace p{
+    color: #007BFF !important;
+  }
+  .btn-puntos-atencion{
+    @media screen and (max-width: 768px) {
+      width: 179px;
+      font-size: 10px;
+      border: none;
+      text-decoration: underline !important;
+    }
+    
+  }

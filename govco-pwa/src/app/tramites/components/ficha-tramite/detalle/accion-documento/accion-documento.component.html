@@ -1,0 +1,16 @@
+<div  *ngIf="dataAccion.length > 0" class="documento-panel contenedor-accion-documento">
+    <h3 class="titulocondicion">Documento</h3>
+
+    <div class="card-body">
+      <div *ngFor="let accion of dataAccion" class="documento-descripcion">
+          <h3 class="ordenAccion">{{accion.Orden}}</h3>
+          <div *ngFor="let item of accion.data">
+              <h4 class="titulocondicion-secundario">{{item.DocumentoNombre}}: {{item.Cantidad}} {{item.UnidadCantidad}} {{item.Observacion}}</h4>
+             
+              <p *ngIf="item.DocumentoAnotacionAdicional != null" class="leyendadocumento">
+                  Anotaciones adicionales: {{item.DocumentoAnotacionAdicional}}
+              </p>
+          </div>
+      </div>
+    </div>
+</div>

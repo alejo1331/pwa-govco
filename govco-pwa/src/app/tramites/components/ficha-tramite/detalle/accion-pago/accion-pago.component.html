@@ -1,0 +1,65 @@
+<div  *ngIf="dataAccion.length > 0">
+    <h4 class="titulocondicion">Pago</h4>
+          <div class="govco-table-v1 govco-table-basic-v1 adjustText" >
+              <div *ngFor="let accion of dataAccion">
+                  <h4 class="ordenAccion">{{accion.Orden}}</h4>
+                  <table class="table table-striped" >
+                      <ng-container >
+                          <thead >
+                              <th style="width:37%">Descripción</th>
+                              <th style="width:15%">Tipo Moneda</th>
+                              <th style="width:10%">Tipo Valor</th>
+                              <th style="width:18%">Cantidad</th>
+                              <th style="width:20%">Valor</th>
+                          </thead>
+                          <tbody>
+                              <tr *ngFor="let pago of accion.data">
+                                  <td>{{pago.Orden}} - {{ pago.Descripcion }}</td>
+                                  <td>{{ pago.Moneda }}</td>
+                                  <td>{{ pago.TipoValor }}</td>
+                                  <td>{{ pago.CantidadSmlv }}</td>
+                                  <td>{{ pago.Valor | currency:'':'' }}</td>
+                              </tr>
+                          </tbody>
+                      </ng-container>
+                  </table>
+                  <br>
+                  
+                  <div *ngIf="accion.PagoEnlineaUrl" >
+                      <p>
+                        <b>Información del medio de pago:</b>
+                      </p>
+                      <p >
+                          <a  (click)="validateUrlService.validateUrl(accion.PagoEnlineaUrl)" target="_blank"> Pago en línea</a>
+                      </p>
+                      <p *ngIf="accion.PagoDispInstDescripcion">
+                          En la entidad solicitante: {{accion.PagoDispInstDescripcion}}
+                      </p>
+                  </div>
+                  <br>
+                  <p *ngIf="accion.entidadesPago.length > 0">En entidad bancaria:</p>
+                  <table *ngIf="accion.entidadesPago.length > 0" class="table table-striped tablainterna" >
+                      <ng-container >
+                          <thead >
+                              <th><strong>Entidad recaudadora</strong></th>
+                              <th><strong>Tipo cuenta</strong></th>
+                              <th><strong>Número de cuenta</strong></th>
+                              <th><strong>Nombre de cuenta</strong></th>
+                              <th><strong>Código de recaudo</strong></th>
+                          </thead>
+                          <tbody>
+                              <tr *ngFor="let pago of accion.entidadesPago">
+                                  <td>{{pago.NombreEntidad}}</td>
+                                  <td>{{ pago.TipoCuenta }}</td>
+                                  <td>{{ pago.NumeroCuenta }}</td>
+                                  <td>{{ pago.NombreCuenta }}</td>
+                                  <td>{{ pago.CodigoRecaudo }}</td>
+                              </tr>
+                          </tbody>
+                      </ng-container>
+                  </table>
+  
+              </div>
+      </div>
+  </div>
+  

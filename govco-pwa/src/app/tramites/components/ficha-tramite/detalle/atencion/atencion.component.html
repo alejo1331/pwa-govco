@@ -1,10 +1,10 @@
-<div
-    tabindex="0"
-    aria-label="Puntos de atención. Abrirá una ventana emergente con la información de los puntos de atención disponibles para el trámite."
-    class="content-tramite-linea" *ngIf="showComponent">
-    <div class="box-tutorial" (click)="getPuntosAtencion()">
-      <p class="box-tutorial-title">
+<div class="content-tramite-linea" 
+     *ngIf="showComponent">    
+    <div class="pb-2 tramiteCard-v1">
+        <a (click)="getPuntosAtencion()" tabindex="0"
+        aria-label="Puntos de atención. Abrirá una ventana emergente con la información de los puntos de atención disponibles para el trámite." class="btn btn-round btn-accion">
         Puntos de atención
-      </p>
+            <img class="icono-accion ml-2" src="https://govco-prod-webutils.s3.amazonaws.com/uploads/2022-06-03/5c1e7dc9-21a5-47d6-a1c8-a67cc6195183-Icon_arrow.svg" alt="puntos atención">
+        </a>    
     </div>
-   </div>
+</div>

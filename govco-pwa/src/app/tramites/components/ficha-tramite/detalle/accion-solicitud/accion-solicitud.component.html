@@ -1,0 +1,60 @@
+<div  *ngIf="dataAccion.length > 0">
+    <h4 class="titulocondicion">Canal de atención</h4>
+    <div class="card-body">
+    <div *ngFor="let accion of dataAccion">
+        <h4 class="ordenAccion">{{accion.Orden}}</h4>
+            <p>{{accion.AtencionDescripcion}}</p>
+            <div class="govco-table-v1 govco-table-basic-v1" >
+            <table class="table table-striped" *ngIf="accion.data.length > 0">
+                <ng-container >
+                    <thead >
+                        <th>Medio</th>
+                        <th>Detalle</th>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let canal of accion.data; let i = index">
+                            <td class="">{{canal.TipoCanal | uppercase}}</td>
+                            <td >
+                                <a *ngIf="canal.TipoCanal === 'CORREO'" href="mailto:{{ canal.Correo }}" target="_blank">
+                                   {{canal.Correo}}
+                                </a>
+                                <a class="btn btn-round btn-puntos-atencion" *ngIf="canal.TipoCanal === 'PRESENCIAL'" (click)="getPuntosAtencion(accion.IdTramite, accion.Orden, accion.AccionCondicionId)">
+                                    VER LOS PUNTOS DE ATENCIÓN
+                                </a>
+                                <a *ngIf="canal.TipoCanal === 'WEB'" [href]="canal.UrlCanalWeb" (click)="validateUrl(canal.UrlCanalWeb, $event)">
+                                    <h6>{{canal.NombreCanalWeb  }}</h6>
+                                </a>
+                                <h6 *ngIf="canal.TipoCanal === 'TELEFONICO' && canal.ExtensionTelFijo == null">{{canal.TipoTelefono}} {{canal.NumeroTelefono}}, Horario de Atención: {{canal.HorarioAtencionTelef}}</h6>
+                                <h6 *ngIf="canal.TipoCanal === 'TELEFONICO' && canal.ExtensionTelFijo != null">{{canal.TipoTelefono}} {{canal.NumeroTelefono}} ext. {{canal.ExtensionTelFijo}}, Horario de Atención: {{canal.HorarioAtencionTelef}}</h6>
+
+                            </td>
+                        </tr>
+                    </tbody>
+                </ng-container>
+            </table>
+            <table class="table table-striped" >
+                <ng-container >
+                    <thead >
+                        <th  >Medio</th>
+                        <th  >Detalle</th>
+                    </thead>
+                    <tbody>
+                        <tr >
+                            <td class="">Presencial</td>
+                            <td >
+                                <a 
+                                    class="btn btn-round btn-puntos-atencion"
+                                    (click)="getPuntosAtencion(accion.IdTramite, accion.Orden, accion.AccionCondicionId)">
+                                    VER LOS PUNTOS DE ATENCIÓN
+                                </a>                                
+                            </td>
+                        </tr>
+                    </tbody>
+                </ng-container>
+            </table>
+          </div>
+    </div>
+  </div>
+</div>
+
+

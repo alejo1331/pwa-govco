@@ -1,0 +1,17 @@
+
+<div class="container-condiciones" *ngIf="dataAccion.length > 0">
+    <h4 class="titulocondicion">Condiciones</h4>
+    <div class="card-body body-container-condiciones">
+      <div class="texto-condiciones">
+        No debe presentar ningún soporte ya que la institución verificará que usted la cumpla
+      </div>
+      <div *ngFor="let accion of dataAccion">
+        <h4 class="ordenAccion">{{accion.Orden}}</h4>
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12" *ngFor="let item of accion.data">
+            <p class="leyendadocumento" >{{item.VerificacionInstDescripcion}}</p>
+          </div>
+      </div>
+      </div>
+    </div>
+  </div>

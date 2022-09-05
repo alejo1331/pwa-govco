@@ -13,18 +13,6 @@
     opacity: 1;
 }
 
-.active {
-    background-color: white !important;
-    border-radius: 8px 8px 0 0;
-    color: #004884 !important;
-    font-weight: 600;
-}
-
-.nav-link {
-    color: white;
-    font-weight: 600;
-}
-
 
 
 .contenedor-accordion {
@@ -60,3 +48,51 @@
 }
 
 
+.contenedor-numero {
+    margin: 0;
+    background-color: #004884;
+    border-radius: 15px;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none !important;
+    height: fit-content;
+}
+
+.contenedor-numero span {
+    color: #fff;
+    line-height: 27px;
+    font-weight: 700;
+}
+
+.contenedor-panel-title {
+    text-decoration: none !important;
+}
+
+.headerPanel {
+    display: flex;   
+}
+
+.headerPanel h3 {
+    text-align: left;
+    font: 600 20px/28px Montserrat;
+    color: #000;
+    opacity: 1;
+    margin: 0 auto;
+    white-space: normal;
+    text-decoration: none !important;
+}
+
+.icon {
+    margin: auto;
+    width: 30px;
+    height: 14px;
+    background-image: url("/assets/images/spr-icons-govco.png");
+    background-position: 11% 14%;
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+    margin-right: 20px;
+    position: absolute;
+    right: 0px;
+  }
