@@ -1,0 +1,49 @@
+<div class="encabezado-subacordeon">
+    <div class="title-subacordeon">
+      <i class="material-icons">error</i>
+      <h4 class="titulocondicion title-exception">Si se identifica con alguno de estos casos, adicionalmente debe:</h4>
+    </div>
+  </div>
+  <div class="excepciones card-body">
+    <ngb-accordion #acc="ngbAccordion">
+      <ngb-panel *ngFor="let accion of data" >
+            <ng-template ngbPanelTitle >
+              <div class="headerPanel">
+                <p>*{{ accion.Excepcion }}</p>
+                <div class="icon"></div>
+              </div>
+              
+  
+            </ng-template>
+            <ng-template ngbPanelContent>
+  
+              <div *ngFor="let excepcion of accion | keyvalue" class="contenedor-accion-excepcion">
+                <div *ngIf="excepcion.key === 'VERIFICACION_INST'">
+                  <app-accion-verificacion [data]="excepcion.value"></app-accion-verificacion>
+                </div>
+  
+                <div *ngIf="excepcion.key === 'PAGO'">
+                  <app-accion-pago  [data]="excepcion.value"></app-accion-pago>
+                </div>
+  
+                <div *ngIf="excepcion.key === 'SOLICITUD'">
+                    <app-accion-solicitud   [data]="excepcion.value"></app-accion-solicitud>
+                </div>
+  
+                <div *ngIf="excepcion.key === 'DOCUMENTO'">
+                    <app-accion-documento   [data]="excepcion.value"></app-accion-documento>
+                </div>
+  
+                <div *ngIf="excepcion.key === 'FORMULARIO'">
+                    <app-accion-formulario   [data]="excepcion.value"></app-accion-formulario>
+                </div>
+              </div>
+  
+  
+  
+            </ng-template>
+  
+        </ngb-panel>
+      </ngb-accordion>
+  </div>
+  

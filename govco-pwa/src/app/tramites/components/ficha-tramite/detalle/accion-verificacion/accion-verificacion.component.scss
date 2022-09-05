@@ -1,0 +1,32 @@
+.container-condiciones{
+    background: #fff;
+    border: 1px solid #FFAB00;
+    border-radius: 10px;
+    padding: 18px;
+    margin: 10px;
+  
+    .body-container-condiciones{
+      .leyendadocumento::before {
+          content: '- ';
+      }
+    }
+  }
+  
+  .container-condiciones .card-body{
+    background: #fff !important;
+  }
+  
+  .container-condiciones .titulocondicion{
+    color:  #4B4B4B;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: Montserrat;
+  }
+  
+  .container-condiciones .leyendadocumento, .container-condiciones .texto-condiciones{
+    font-size: 14px;
+    font-weight: normal;
+    font-family: Montserrat;
+    font-style: italic !important;
+    color: #4B4B4B;
+  }

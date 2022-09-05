@@ -1,5 +1,4 @@
 <div class="content-tramite-linea" 
-     
      *ngIf="data?.EnLinea && data?.UrlTramiteEnLinea">    
     <div class="pb-2 tramiteCard-v1"  (click)="validateUrl(data.UrlTramiteEnLinea, $event)">
         <a [href]="data.UrlTramiteEnLinea" tabindex="0"
@@ -7,5 +6,5 @@
             {{nombreAccion}}
             <img class="icono-accion ml-2" src="https://govco-prod-webutils.s3.amazonaws.com/uploads/2022-06-03/5c1e7dc9-21a5-47d6-a1c8-a67cc6195183-Icon_arrow.svg" alt="transaccional">
         </a>    
-        </div>
+    </div>
 </div>
