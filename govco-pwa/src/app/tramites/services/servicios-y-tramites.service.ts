@@ -6,7 +6,7 @@ import { TramitesDestacadosModel } from '../models/TramitesDestacados.model';
 
 const API_URL = environment.serverUrl;
 const API_URL_FICHA = environment.serverUrlFichaTramite;
-const API_URL_HOME = 'http://100.24.232.62:8080/api/';
+const API_URL_HOME = environment.serverUrlHome;
 
 @Injectable({
   providedIn: 'root'
@@ -32,7 +32,7 @@ export class ServiciosYTramitesService {
   }
 
   getListEstadoDestacados(): Observable<any> {
-    return this.http.get<any>(`${API_URL_HOME}MapaDeSitio/ObtenerSeccionTramitesDestacados`);
+    return this.http.get<any>(`${API_URL_HOME}/MapaDeSitio/ObtenerSeccionTramitesDestacados`);
   }
 
 }
