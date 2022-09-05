@@ -20,7 +20,7 @@
             <span aria-hidden="true" class="btnClose">&times;</span>
         </button>
     </div>
-    <div class="modal-body " style="background-color: #F6F8F9;">
+    <div class="modal-body container-modal-ver-nota" style="background-color: #F6F8F9;">
         <div class="col-md-12 mt-3 scroll-light-govco" style="height: 93%;">
 
             <h3 class="subtitle-govco">
@@ -60,9 +60,9 @@
 &nbsp;&nbsp;
 <div *ngIf="tieneTramites == false; then tramiteOff; else tramiteOn"></div>
 <ng-template #tramiteOff>
-    <a href="" title="" class="btn btn-low-inactive disabled btnModalDisabled" disabled>VER TRÁMITES</a>
+    <a href="" title="" class="btn btn-low-inactive disabled btnModalDisabled link-modal-ver-nota" disabled>VER TRÁMITES</a>
 </ng-template>
 <ng-template #tramiteOn>
     <a routerLink="{{url}}/{{IdCodigo}}/{{DepartamentoSeleccionado}}/{{MunicipioSeleccioando}}/{{codigo}}"
-        title="{{titulo}}" class="btn btn-low btnModal">VER TRÁMITES</a>
+        title="{{titulo}}" class="btn btn-low btnModal link-modal-ver-nota">VER TRÁMITES</a>
 </ng-template>
