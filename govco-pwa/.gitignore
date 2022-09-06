@@ -45,6 +45,8 @@ govco-pwa.key
 192.168.1.120.crt
 192.168.1.106.key
 192.168.1.106.crt
+192.168.101.9.key
+192.168.101.9.crt
 
 # compiled output
 /dist
