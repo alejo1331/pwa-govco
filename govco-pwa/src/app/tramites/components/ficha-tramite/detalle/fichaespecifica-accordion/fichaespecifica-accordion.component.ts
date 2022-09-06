@@ -4,7 +4,8 @@ import { NgbAccordionConfig } from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-fichaespecifica-accordion',
   templateUrl: './fichaespecifica-accordion.component.html',
-  styleUrls: ['./fichaespecifica-accordion.component.scss']
+  styleUrls: ['./fichaespecifica-accordion.component.scss'],
+  providers: [NgbAccordionConfig]
 })
 export class FichaespecificaAccordionComponent implements OnInit {
 
@@ -19,12 +20,12 @@ export class FichaespecificaAccordionComponent implements OnInit {
   constructor(
     config: NgbAccordionConfig
   ) {
-    config.type = 'white';
+    // config.type = 'white';
   }
 
   ngOnInit(): void {
     this.IE = this.isIE();
-    console.log(this.data)
+    // console.log(this.data)
   }
 
   isIE() {
