@@ -1,0 +1,128 @@
+<div class="contenedor-seguimiento">
+    <div class="card-body">
+        <div tabindex="0">
+            <h3>¿Dónde se puede hacer el seguimiento a la solicitud?</h3>
+            <div class="govco-table-v1 govco-table-basic-v1 adjustText texto-seguimiento">
+                <div class="div" *ngIf="data">
+                    <div class="row">
+                        <div *ngFor="let canal of data; let i = index" class="col-6">
+                            <div>
+                                <h3 class="textofilas"
+                                    *ngIf="canal.TipoCanal != 'TELEFONICO' && canal.TipoCanal != 'CORREO'  ">
+                                    {{canal.TipoCanal | titlecase}}</h3>
+                                <a tabindex="0" class="link-web" *ngIf="canal.TipoCanal === 'PRESENCIAL'"
+                                    (click)="getPuntosAtencion()">
+                                    Ver los puntos de atención
+                                </a>
+                                <a tabindex="0" class="link-web" *ngIf="canal.TipoCanal === 'WEB'" [href]="canal.UrlCanalWeb"
+                                    (click)="validateUrl(canal.UrlCanalWeb, $event)">
+                                    {{canal.NombreCanalWeb}}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<h3 tabindex="0" aria-label="¿Dónde puedo saber más acerca del trámite?" class="mt-5 mb-2">¿Dónde puedo saber más acerca del trámite?</h3>
+<div class="contenedor-saberMas">
+    <div>
+        <div>
+            <div class="govco-table-v1 govco-table-basic-v1 adjustText">
+            </div>
+            <div *ngIf="!esResponsive()">
+                <table class="table table-personalizada" *ngIf="data"><!--Table en modo Desktop-->
+                        <thead tabindex="0" class="thead-seguimiento">
+                            <tr id="columna-personalizada">
+                                <th scope="col" class="textofilastable">Medio</th>
+                                <th scope="col" class="textofilastable">Detalle</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr tabindex="0" *ngFor="let canal of dataInpersonal; let i = index">
+                                <td class="container-columna-desktop">
+                                    <div class="d-flex">
+                                        <div class="container-icono-tabla mr-2">
+                                            <img [src]="urlIconos(canal.TipoCanal)" alt="">
+                                        </div>
+                                        <!-- <span class="titulo-canal pt-1">{{canal.TipoCanal=='TELEFONICO'?'Telefónico':canal.TipoCanal | titlecase}}</span> -->
+                                        <span class="titulo-canal pt-1">{{canal.Indice=='REDES'?'Redes':canal.Indice | titlecase}}</span>
+                                    </div>
+                                </td>
+                                <td class="textofilas">
+                                    <a class="enlace-correo" *ngIf="canal.TipoCanal === 'Correo electrónico:'" href="mailto:{{ canal.Correo }}"
+                                        target="_blank">
+                                        {{canal.Correo}}
+                                    </a>
+                                    <a class="link-web" *ngIf="canal.TipoCanal === 'REDES'" [href]="canal.UrlCanalWeb"
+                                        (click)="validateUrl(canal.UrlCanalWeb, $event)">
+                                        {{canal.NombreCanalWeb}}
+                                    </a>
+                                    <p class="seguimiento-telefonico"
+                                        *ngIf="canal.TipoCanal === 'TELEFONICO' && canal.ExtensionTelFijo != null">
+                                        {{canal.TipoTelefono}} {{canal.NumeroTelefono}} {{canal.ExtensionTelFijo}},
+                                        Horario de Atención: {{canal.HorarioAtencionTelef}}</p>
+                                    <p class="seguimiento-telefonico"
+                                        *ngIf="canal.TipoCanal === 'TELEFONICO' && canal.ExtensionTelFijo == null">
+                                        {{canal.TipoTelefono}} {{canal.NumeroTelefono}}, Horario de Atención:
+                                        {{canal.HorarioAtencionTelef}}</p>
+                                    <p tabindex="0" aria-label="Ver tutoriales.  Abrirá una nueva ventana emergente con los recursos de apoyo para realizar  el trámite." *ngIf="canal.TipoCanal === 'Aprenda con tutoriales'" class="texto-tutoriales" (click)="open()">
+                                        {{canal.Correo}}
+                                    </p>
+    
+                                </td>
+                            </tr>
+                        </tbody>
+                    
+                </table><!--Fin de table en modo desktop-->
+            </div>
+            <table *ngIf="esResponsive()" class="table"> <!--Table en modo Responsive-->
+                <thead>
+                    <th class="col title-table-responsive">Medio</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let canal of dataInpersonal; let i = index">
+                        <td class="">
+                            <div class="row">
+                                <div class="col-2">
+                                    <div class="container-icono-tabla">
+                                        <img [src]="urlIconos(canal.TipoCanal)" alt="">
+                                    </div>
+                                </div>
+                                <div class="col-10">
+                                    <!-- <span class="titulo-canal">{{canal.TipoCanal=='TELEFONICO'?'Telefónico':canal.TipoCanal | titlecase}}</span> -->
+                                    <span class="titulo-canal pt-1">{{canal.Indice | titlecase}}</span>
+                                    <a class="enlace-correo" *ngIf="canal.TipoCanal === 'Correo electrónico:'" href="mailto:{{ canal.Correo }}"
+                                                target="_blank">
+                                                {{canal.Correo}}
+                                            </a>
+                                            <a class="link-web" *ngIf="canal.TipoCanal === 'REDES'" [href]="canal.UrlCanalWeb"
+                                                (click)="validateUrl(canal.UrlCanalWeb, $event)">
+                                                {{canal.NombreCanalWeb}}
+                                            </a>
+                                            <p class="seguimiento-telefonico"
+                                                *ngIf="canal.TipoCanal === 'TELEFONICO' && canal.ExtensionTelFijo != null">
+                                                {{canal.TipoTelefono}} {{canal.NumeroTelefono}} {{canal.ExtensionTelFijo}},
+                                                Horario de Atención: {{canal.HorarioAtencionTelef}}</p>
+                                            <p class="seguimiento-telefonico"
+                                                *ngIf="canal.TipoCanal === 'TELEFONICO' && canal.ExtensionTelFijo == null">
+                                                {{canal.TipoTelefono}} {{canal.NumeroTelefono}}, Horario de Atención:
+                                                {{canal.HorarioAtencionTelef}}</p>
+                                            <p *ngIf="canal.TipoCanal === 'Aprenda con tutoriales'"  class="texto-tutoriales" (click)="open()">
+                                                {{canal.Correo}}
+                                            </p>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table><!--Fin de Table en modo Responsive-->
+        </div>
+    </div>
+</div>
+
+
+
+

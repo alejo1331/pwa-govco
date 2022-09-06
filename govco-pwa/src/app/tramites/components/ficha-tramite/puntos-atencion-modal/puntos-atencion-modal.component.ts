@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, HostListener } from '@angular/core';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { OrderPipe } from 'ngx-order-pipe';
 import { UtilsService } from 'src/app/tramites/services/utils.service';
@@ -12,8 +12,8 @@ import { MapaModalComponent } from '../mapa-modal/mapa-modal.component';
 })
 export class PuntosAtencionModalComponent implements OnInit {
 
-  @Input() puntosAtencion: string;
-  @Input() normatividad: string;
+  @Input() puntosAtencion: any;
+  @Input() normatividad: any;
 
   p = 1;
   serchText: any;
@@ -21,6 +21,13 @@ export class PuntosAtencionModalComponent implements OnInit {
   reverseDepartamento = false;
   reversePunto = false;
   sortedCollection: any[];
+
+  windowWidth = window.innerWidth;
+
+  @HostListener('window:resize', ['$event'])
+  onWindowResize() {
+    this.windowWidth = window.innerWidth;
+  }
 
   constructor(
     private modalService: NgbModal,
@@ -33,6 +40,7 @@ export class PuntosAtencionModalComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log(this.puntosAtencion, this.normatividad, this.sortedCollection)
   }
 
   printCoordenadas(latitud:any, longitud:any, direccion:any){
