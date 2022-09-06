@@ -1,5 +1,51 @@
+* {
+  font-family: "Montserrat",sans-serif !important;
+  font-size: 1rem;
+  color: #004884;
+}
+
 .infodocumento{
     width: 100%;
     display: block;
   }
+
+  .card-body .documento-descripcion {
+    margin: 35px 10px 0;
+  }
+
+::ng-deep .titulocondicion {
+    font-size: 18px;
+    font-weight: 700;
+    font-family: Montserrat;
+}
+
+.titulocondicion {
+    display: block;
+    font-size: 14px;
+    color: #004884;
+    text-align: left;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.card-body .documento-descripcion .titulocondicion-secundario {
+  font-size: 16px;
+  font-weight: 700;
+  font-family: Montserrat;
+}
+
+::ng-deep .card-body .documento-descripcion .leyendadocumento {
+  font-size: 16px;
+  font-weight: 400;
+  font-family: Work Sans;
+  color: #4b4b4b;
+  line-height: 22px;
+}
+
+.leyendadocumento {
+  text-align: left;
+  font-weight: 400;
+  line-height: 21px;
+  margin: 0 0 10px;
+}
   

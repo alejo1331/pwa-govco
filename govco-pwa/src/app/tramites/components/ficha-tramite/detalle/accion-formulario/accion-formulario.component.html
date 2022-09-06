@@ -1,61 +1,64 @@
-<div  *ngIf="dataAccion.length > 0">
+<div *ngIf="dataAccion.length > 0">
 
-    <h3 class="titulocondicion">Formulario</h3>
-    <div class="card-body">
-      <div class="govco-table-v1 govco-table-basic-v1 adjustText" >
+  <h3 class="titulocondicion">Formulario</h3>
+  <div class="card-body">
+    <div class="govco-table-v1 govco-table-basic-v1 adjustText">
       <div *ngFor="let accion of dataAccion">
 
         <div class="contenedor-accion-formulario" *ngFor="let item of accion.data">
 
           <h3 class="titulocondicion-secundario">{{item.FormularioNombre}}</h3>
-          
-            <table class="table table-striped" *ngIf="accion.data.length > 0">
-                <ng-container >
-                    <thead >
-                        <th scope="col" class="textofilas">Disponible para ser</th>
-                        <th scope="col" class="textofilas" *ngIf="item.FormularioAnotacion">Anotación adicional</th>
-                        <th scope="col" class="textofilas"
-                        *ngIf="tramite && tramite.Tipotramite!= 'Realizar trámite en línea' && accion.AccCondPtoAtencions">Reclamar de forma presencial</th>
-                    </thead>
-                    <tbody>
-                        <tr >
-                          <td width="70">
-                            <p class="nombredocumento">
-                           
-                              <a *ngIf="item.FormularioUrl" (click)="validateUrl(item.FormularioUrl, $event)" target="_blank">
-                                Transaccional
-                                <img class="iconodisponible" src="assets/icon-fichatramite/transaccional.svg" alt="transaccional">
-                              </a>
-                            
-                              <a *ngIf="item.FormularioUrlDescarga" [href]="item.FormularioUrlDescarga" (click)="validateUrl(item.FormularioUrlDescarga, $event)">
-                                Descargar
-                                <img class="iconodisponible" src="assets/icons-fonts/descarga.svg" alt="descargable">
-                              </a>
-                            </p>
-                          </td>
-                          <td width="70" *ngIf="item.FormularioAnotacion">
-                            <p class="anotacion-adional">
-                              {{item.FormularioAnotacion}}
-                            </p>
-                          </td>
-                          <td 
-                            *ngIf="tramite && tramite.Tipotramite!= 'Realizar trámite en línea' && accion.AccCondPtoAtencions"
-                            width="70">
-                            <p class="nombredocumento" *ngIf="tramite && tramite.Tipotramite!= 'Realizar trámite en línea'">
-                              <a  (click)="getPuntosAtencion(tramite.IdTramite, accion.Orden, accion.AccionCondicionId)">
-                                En los puntos de atención indicados por la institución
-                              </a>
-                            </p>
-                          </td>
-                        </tr>
-                    </tbody>
-                </ng-container>
-              </table>
-        
+
+          <table class="table table-striped" *ngIf="accion.data.length > 0">
+            <ng-container>
+              <thead>
+                <th scope="col" class="textofilas">Disponible para ser</th>
+                <th scope="col" class="textofilas" *ngIf="item.FormularioAnotacion">Anotación adicional</th>
+                <th scope="col" class="textofilas"
+                  *ngIf="tramite && tramite.Tipotramite!= 'Realizar trámite en línea' && accion.AccCondPtoAtencions">
+                  Reclamar de forma presencial</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td width="70">
+                    <p class="nombredocumento">
+
+                      <a *ngIf="item.FormularioUrl" (click)="validateUrl(item.FormularioUrl, $event)" target="_blank">
+                        Transaccional
+                        <img class="iconodisponible" src="assets/icon-fichatramite/transaccional.svg"
+                          alt="transaccional">
+                      </a>
+
+                      <a *ngIf="item.FormularioUrlDescarga" [href]="item.FormularioUrlDescarga"
+                        (click)="validateUrl(item.FormularioUrlDescarga, $event)">
+                        Descargar
+                        <img class="iconodisponible" src="assets/icons-fonts/descarga.svg" alt="descargable">
+                      </a>
+                    </p>
+                  </td>
+                  <td width="70" *ngIf="item.FormularioAnotacion">
+                    <p class="anotacion-adional">
+                      {{item.FormularioAnotacion}}
+                    </p>
+                  </td>
+                  <td *ngIf="tramite && tramite.Tipotramite!= 'Realizar trámite en línea' && accion.AccCondPtoAtencions"
+                    width="70">
+                    <p class="nombredocumento" *ngIf="tramite && tramite.Tipotramite!= 'Realizar trámite en línea'">
+                      <a class="texto-presencial"
+                        (click)="getPuntosAtencion(tramite.IdTramite, accion.Orden, accion.AccionCondicionId)">
+                        En los puntos de atención indicados por la institución
+                      </a>
+                    </p>
+                  </td>
+                </tr>
+              </tbody>
+            </ng-container>
+          </table>
+
         </div>
 
 
       </div>
     </div>
-    </div>
+  </div>
 </div>
