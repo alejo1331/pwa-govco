@@ -15,7 +15,8 @@
                             href="#tab{{j+1}}"
                             role="tab"
                             aria-controls="tab{{j+1}"
-                            [attr.aria-selected]="j == 0">
+                            [attr.aria-selected]="j == 0"
+                            (click)="eventoTabAudiencia(itemAudiencia)">
                             <img [src]="urlIconos(itemAudiencia.detalle)" >
                             <span>{{itemAudiencia.detalle}}</span></a>
                         </li>
@@ -23,7 +24,7 @@
                     <div class="tab-content" id="myTabContent">
                       <div class="container" style="background: #FFFFFF;">
                         <div *ngFor="let itemAudiencia of data; let j = index"
-                        class="tab-pane fade show" id="tab{{j+1}}" role="tabpanel"
+                        class="tab-pane fade" [class.show]="j == 0" id="tab{{j+1}}" role="tabpanel"
                         [ngClass]="{ 'active': j == 0 }">
                             <h1 aria-label="¿Qué necesito para hacer mi trámite?"
                             class="descripcion-accordion">¿Qué necesito para hacer mi trámite?</h1>
