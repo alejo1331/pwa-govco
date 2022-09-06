@@ -80,14 +80,19 @@
                                         <span class="govco-icon govco-icon-pin"></span>
                                     </a>
                                 </td>
-                                <td colspan="2" *ngIf="windowWidth <= 760">
+                                <td colspan="2" *ngIf="windowWidth <= 760" class="td-font">
                                     <p>
-                                        <b>PUNTO:</b> {{ punto.PuntoAtencionNombre }}<br>
-                                        <b>DEPARTAMENTO / MUNICIPIO:</b> {{ punto.Departamento }}<br>
-                                        <b>DIRECCIÓN:</b> {{ punto.PuntoAtencionDireccion }}<br>
-                                        <b>HORARIO:</b> {{ punto.HorarioAtencion }}<br>
-                                        <b>TELÉFONO:</b> {{ punto.PuntoAtencionTelefono }}
+                                        <b class="td-label">PUNTO:</b> {{ punto.PuntoAtencionNombre }}<br>
+                                        <b  class="td-label">DEPARTAMENTO / MUNICIPIO:</b> {{ punto.Departamento }}<br>
+                                        <b  class="td-label">DIRECCIÓN:</b> {{ punto.PuntoAtencionDireccion }}<br>
+                                        <b  class="td-label">HORARIO:</b> {{ punto.HorarioAtencion }}<br>
+                                        <b  class="td-label">TELÉFONO:</b> {{ punto.PuntoAtencionTelefono }}
                                     </p>
+                                    <div style="text-align: right;">
+                                        <a (click)="printCoordenadas(punto.Latitud.replace(',','.'), punto.Longitud.replace(',','.'), punto.PuntoAtencionDireccion)">
+                                            <b class="td-label">VER MAPA: </b>
+                                        </a>
+                                    </div>
                                 </td>
                             </tr>
                         </ng-container>

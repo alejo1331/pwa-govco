@@ -146,10 +146,14 @@
     cursor: pointer !important;
   }
   
-  // @media (max-width: 767px) {
-  //   .order-movile{
-  //     margin-top: 10px;
-  //     display: block;
-  //     margin-left: 1em;
-  //   }
-  // }
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: rgba(229,238,251,.5);
+}
+
+.td-label {
+  color: #004884;
+}
+
+.td-font {
+  font-size: 14px !important;
+}
