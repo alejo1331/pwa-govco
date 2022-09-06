@@ -2,6 +2,10 @@
     color: #007bff !important;
 }
 
+.titulocondicion-secundario {
+  font-size: 14px;
+}
+
 .iconodisponible{
     max-width: 24px;
     margin-right: 8px;
@@ -11,7 +15,7 @@
 
 app-accion-formulario{
   .titulocondicion{
-      font-size: 18px;
+      font-size: 16px;
       font-weight: 600;
       font-family: Montserrat;
   }

@@ -51,8 +51,6 @@ export class ServiciosYTramitesListComponent implements OnInit {
       tramites,
       estados
     }) => {
-
-      console.log(estados, tramites)
       if (tramites['succeeded']) {
         this.tramitesList = tramites["data"];
         this.agrupaItems(tramites["data"]);
