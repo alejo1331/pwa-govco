@@ -96,3 +96,20 @@
     position: absolute;
     right: 0px;
   }
+
+  ::ng-deep .ficha_detalles-v1 .tabs-govco-v1 .tab-content .card .collapse .contenedor-ficha-accordion {
+    margin: 35px 23px 0;
+  }
+
+  ::ng-deep .ficha_detalles-v1 .tabs-govco-v1 h3 {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  ::ng-deep .ficha_detalles-v1 .tabs-govco-v1 .tab-content .card .card-body {
+    padding: 0;
+  }
+
+  ::ng-deep .ficha_detalles-v1 .tabs-govco-v1 .tab-content .card .collapse {
+    background-color: #f6f8f9;
+  }

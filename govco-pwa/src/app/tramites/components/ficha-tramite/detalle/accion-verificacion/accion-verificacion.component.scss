@@ -25,8 +25,15 @@
   
   .container-condiciones .leyendadocumento, .container-condiciones .texto-condiciones{
     font-size: 14px;
-    font-weight: normal;
+    font-weight: 400;
     font-family: Montserrat;
     font-style: italic !important;
     color: #4B4B4B;
+  }
+
+  .leyendadocumento {
+    text-align: left;
+    font-weight: 400;
+    line-height: 21px;
+    margin: 0 0 10px;
   }
