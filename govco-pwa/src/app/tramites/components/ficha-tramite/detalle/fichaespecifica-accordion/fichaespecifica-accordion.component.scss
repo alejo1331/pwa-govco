@@ -40,13 +40,6 @@
   opacity: 1;
 }
 
-@media (max-width:768px) {
-  .contenedor-panel-title {
-      // width: 70%;
-  }
-}
-
-
 .contenedor-numero {
   margin: 0;
   background-color: #004884;
@@ -120,6 +113,8 @@
   flex-wrap: nowrap;
   overflow-x: auto;
   overflow-y: hidden;
+  padding-left: 15px;
+  padding-right: 15px;
 
 }
 
