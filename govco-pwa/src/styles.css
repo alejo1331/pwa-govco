@@ -26,11 +26,31 @@
   src: url('assets/fonts/Montserrat/Montserrat-Light.ttf');
 }
 
+/* Montserrat-Italic */
+@font-face {
+  font-family: 'Montserrat-Italic';
+  src: url('assets/fonts/Montserrat/Montserrat-Italic.ttf');
+}
+
 /* WorkSans-Regular */
 @font-face {
   font-family: 'WorkSans-Regular';
   font-weight: '400';
   src: url('assets/fonts/Work_Sans/static/WorkSans-Regular.ttf');
+}
+
+/* WorkSans-Medium */
+@font-face {
+  font-family: 'WorkSans-Medium';
+  font-weight: '400';
+  src: url('assets/fonts/Work_Sans/static/WorkSans-Medium.ttf');
+}
+
+/* WorkSans-Bold */
+@font-face {
+  font-family: 'WorkSans-Bold';
+  font-weight: '700';
+  src: url('assets/fonts/Work_Sans/static/WorkSans-Bold.ttf');
 }
 
 html {

@@ -19,14 +19,18 @@
   .container-condiciones .titulocondicion{
     color:  #4B4B4B;
     font-size: 16px;
-    font-weight: bold;
-    font-family: Montserrat;
+    font-family: 'Montserrat-Bold';
   }
   
   .container-condiciones .leyendadocumento, .container-condiciones .texto-condiciones{
     font-size: 14px;
-    font-weight: normal;
-    font-family: Montserrat;
-    font-style: italic !important;
+    font-family: 'Montserrat-Italic';
     color: #4B4B4B;
+  }
+
+  .leyendadocumento {
+    text-align: left;
+    font-weight: 400;
+    line-height: 21px;
+    margin: 0 0 10px;
   }
