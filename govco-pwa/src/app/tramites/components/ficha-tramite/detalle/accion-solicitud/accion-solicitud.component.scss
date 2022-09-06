@@ -1,41 +1,63 @@
 .canal-enlace p{
-    color: #007BFF !important;
-  }
-  .btn-puntos-atencion{
-    @media screen and (max-width: 768px) {
-      width: 179px;
-      font-size: 10px;
-      border: none;
-      text-decoration: underline !important;
-    }
-    
-  }
-
-  .titulocondicion {
-    font-family: "Montserrat",sans-serif;
-    display: block;
-    font-size: 14px;
-    color: #004884;
-    text-align: left;
-    margin-bottom: 10px;
-    font-weight: 600;
-  }
-
-  .ordenAccion {
-    display: none;
-  }
-
-  p.texto-descripcion {
-    font-family: "Work Sans",sans-serif;
-    font-size: 1rem;
-    font-weight: 400;
-    color: #004884;
-  }
-  @media only screen and (max-device-width: 767px){
-    p.texto-descripcion {
-      font-family: "Work Sans",sans-serif;
-      font-size: .75rem;
-      font-weight: 400;
-    }
+  color: #007BFF !important;
+}
+.btn-puntos-atencion{
+  @media screen and (max-width: 768px) {
+    width: 179px;
+    font-size: 10px;
+    border: none;
+    text-decoration: underline !important;
   }
   
+}
+
+.titulocondicion {
+  font-family: "Montserrat",sans-serif;
+  display: block;
+  font-size: 14px;
+  color: #004884;
+  text-align: left;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.ordenAccion {
+  display: none;
+}
+
+p.texto-descripcion {
+  font-family: "Work Sans",sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #004884;
+}
+
+.govco-table-basic-v1 {
+  table {
+    th {
+      color: #004884;
+    }
+    tbody td {
+      color: #4b4b4b;
+      font-family: 'WorkSans-Regular';
+      a {
+        color: #36c;
+        font-family: 'WorkSans-Medium';
+        font-weight: 500!important;
+        padding: 0.375rem 0.7rem;
+        h6 {
+          color: #007bff;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-device-width: 767px){
+  p.texto-descripcion {
+    font-family: "Work Sans",sans-serif;
+    font-size: .75rem;
+    font-weight: 400;
+  }
+}

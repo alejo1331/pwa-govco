@@ -63,31 +63,32 @@
 }
 
 .headerPanel {
-  display: flex;
+    display: flex;
+    align-items: center;
 }
 
 .headerPanel h3 {
-  text-align: left;
-  font: 600 20px/28px Montserrat;
-  color: #000;
-  opacity: 1;
-  margin: 0 auto;
-  white-space: normal;
-  text-decoration: none !important;
+    text-align: left;
+    font: 600 16px/28px Montserrat;
+    color: #000;
+    opacity: 1;
+    margin: 0 auto;
+    white-space: normal;
+    text-decoration: none !important;
 }
 
 .icon {
-  margin: auto;
-  width: 30px;
-  height: 14px;
-  background-image: url("/assets/images/spr-icons-govco.png");
-  background-position: 11% 14%;
-  -webkit-transform: rotate(0deg);
-  transform: rotate(0deg);
-  margin-right: 20px;
-  position: absolute;
-  right: 0px;
-}
+    margin: auto;
+    width: 30px;
+    height: 14px;
+    background-image: url("/assets/images/spr-icons-govco.png");
+    background-position: 11% 14%;
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+    margin-right: 5px;
+    position: absolute;
+    right: 0px;
+  }
 
 ::ng-deep .ficha_detalles-v1 .tabs-govco-v1 .tab-content .card .collapse .contenedor-ficha-accordion {
   margin: 35px 23px 0;
