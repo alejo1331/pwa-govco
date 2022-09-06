@@ -22,13 +22,13 @@
     <a id="salir-seccion-tramite" tabindex="0" aria-label="Ha salido de la sección"></a>
     <!--Final del row-->
   </div>
-  
+
   <div (keyup)="salirAcordeon($event)" tabindex="0"
   aria-label="A continuación encontrará la sección de la información detallada del trámite.  Si en algún momento desea salir de la sección presione la tecla escape.">
     <app-fichaespecifica-accordion *ngIf="audiencias" [data]="audiencias" [tramite]="infoBasicaTramite"
       (cargarMomentosAudiencia)="cargarMomentosAudiencia($event)" (cargarDetalleMomento)="cargarDetalleMomento($event)">
     </app-fichaespecifica-accordion>
-    <div class="container">
+    <!-- <div class="container"> -->
       <div class="col-lg-10 col-sm-12 p-0">
         <app-fichaespecifica-resultado [itemid]="idTramite" [infoTramite]="infoBasicaTramite">
         </app-fichaespecifica-resultado>
@@ -40,7 +40,7 @@
         <app-btn-tramite-linea class="" [data]="infoBasicaTramite"></app-btn-tramite-linea>
       </div>
       <app-fichaespecifica-footer [data]="infoBasicaTramite"></app-fichaespecifica-footer>
-    </div>
+    <!-- </div> -->
     <a id="salir-seccion-acordeon" tabindex="0" aria-label="Ha salido de la sección"></a>
   </div>
   <div class="experience">
