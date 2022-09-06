@@ -5,7 +5,7 @@
             <h2>¿Qué resultado obtengo luego de hacer mi trámite?</h2>
             <p *ngIf="resultado">{{resultado.ResultadoObtiene}}</p> 
         </div> 
-        <p *ngIf="resultado.ObservacionTiempoObtencion"><b>Observaciones: </b>{{resultado.ObservacionTiempoObtencion}}</p> 
-        <app-seguimiento-solicitud [data]="canalesSeguimiento" [dataInpersonal]="canalesMedios" [infoTramite]="dataTutoriales" [itemid]="itemid"></app-seguimiento-solicitud>  
+        <p *ngIf="resultado.ObservacionTiempoObtencion"><b>Observaciones: </b>{{resultado.ObservacionTiempoObtencion}}</p>
+        <app-seguimiento-solicitud [data]="canalesSeguimiento" [dataInpersonal]="canalesMedios" [infoTramite]="dataTutoriales" [itemid]="itemid"></app-seguimiento-solicitud> 
     </div>
 </section>
