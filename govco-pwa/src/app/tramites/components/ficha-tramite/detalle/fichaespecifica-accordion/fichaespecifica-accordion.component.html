@@ -21,6 +21,7 @@
                         </li>
                     </ul>
                     <div class="tab-content" id="myTabContent">
+                      <div class="container" style="background: #FFFFFF;">
                         <div *ngFor="let itemAudiencia of data; let j = index"
                         class="tab-pane fade show" id="tab{{j+1}}" role="tabpanel"
                         [ngClass]="{ 'active': j == 0 }">
@@ -92,6 +93,9 @@
                                 </ngb-panel>
                             </ngb-accordion>
                         </div>
+
+                      </div>
+
                     </div>
 
         </div>

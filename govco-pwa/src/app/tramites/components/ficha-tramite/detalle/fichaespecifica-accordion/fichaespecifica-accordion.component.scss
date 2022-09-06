@@ -40,13 +40,6 @@
   opacity: 1;
 }
 
-@media (max-width:768px) {
-  .contenedor-panel-title {
-      // width: 70%;
-  }
-}
-
-
 .contenedor-numero {
   margin: 0;
   background-color: #004884;
@@ -107,6 +100,7 @@
 
 ::ng-deep .ficha_detalles-v1 .tabs-govco-v1 .tab-content .card .card-body {
   padding: 0;
+  overflow-x: auto;
 }
 
 ::ng-deep .ficha_detalles-v1 .tabs-govco-v1 .tab-content .card .collapse {
@@ -119,6 +113,8 @@
   flex-wrap: nowrap;
   overflow-x: auto;
   overflow-y: hidden;
+  padding-left: 15px;
+  padding-right: 15px;
 
 }
 
