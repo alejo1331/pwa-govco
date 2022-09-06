@@ -70,12 +70,12 @@
                         <!--  |orderBy: order:reverseDepartamento:true |orderBy: order:reversePunto:true |filter:serchText | paginate: { itemsPerPage: 5, currentPage: p} -->
                         <ng-container *ngIf="puntosAtencion">
                             <tr *ngFor="let punto of puntosAtencion;">
-                                <td *ngIf="windowWidth > 760">{{ punto.PuntoAtencionNombre }}</td>
-                                <td *ngIf="windowWidth > 760">{{ punto.Departamento }} / {{ punto.Municipio }}</td>
-                                <td *ngIf="windowWidth > 760">{{ punto.PuntoAtencionDireccion}}</td>
-                                <td *ngIf="windowWidth > 760">{{ punto.HorarioAtencion }}</td> 
-                                <td *ngIf="windowWidth > 760">{{ punto.PuntoAtencionTelefono }}</td>
-                                <td *ngIf="windowWidth > 760">
+                                <td *ngIf="windowWidth > 760" class="td-font">{{ punto.PuntoAtencionNombre }}</td>
+                                <td *ngIf="windowWidth > 760" class="td-font">{{ punto.Departamento }} / {{ punto.Municipio }}</td>
+                                <td *ngIf="windowWidth > 760" class="td-font">{{ punto.PuntoAtencionDireccion}}</td>
+                                <td *ngIf="windowWidth > 760" class="td-font">{{ punto.HorarioAtencion }}</td> 
+                                <td *ngIf="windowWidth > 760" class="td-font">{{ punto.PuntoAtencionTelefono }}</td>
+                                <td *ngIf="windowWidth > 760" class="td-font">
                                     <a (click)="printCoordenadas(punto.Latitud.replace(',','.'), punto.Longitud.replace(',','.'), punto.PuntoAtencionDireccion)">
                                         <span class="govco-icon govco-icon-pin"></span>
                                     </a>
