@@ -1,0 +1,52 @@
+.ficha {
+	govco-label-integrado {
+		margin-bottom: -30px;
+		margin-top: 50px;
+		display: block;
+	}
+
+	.title {
+		font-size: 24px;
+		color: #004884;
+		font-weight: 600;
+		max-width: 730px;
+		margin: 1.5em 0;
+		line-height: 36px;
+	}
+
+	&-entity {
+		display: flex;
+		align-items: center;
+
+		&-title {
+			font-size: 14px;
+			color: #4b4b4b;
+			font-family: "Work Sans", sans-serif;
+
+			@media screen and (max-width: 768px) {
+				font-size: 13px;
+			}
+		}
+
+		&-link {
+			padding: 0 5px;
+
+			h3 {
+				color: #3366cc !important;
+				font-size: 14px;
+				text-decoration: underline;
+				margin: 0;
+				font-weight: 400;
+			}
+		}
+	}
+
+	&-update {
+		font-size: 14px;
+		text-transform: capitalize;
+		color: #4b4b4b;
+		margin: 1em 0;
+		padding: 0;
+		font-family: "Work Sans", sans-serif;
+	}
+}

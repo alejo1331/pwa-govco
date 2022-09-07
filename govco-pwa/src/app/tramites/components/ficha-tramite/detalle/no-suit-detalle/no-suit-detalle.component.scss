@@ -1,0 +1,40 @@
+.container-detalle {
+    background-color: #F6F8F9;
+    padding: 27px;
+    margin-bottom: 40px;
+
+    h3 {
+        font-size: 20px;
+    }
+
+    p {
+        font-size: 16px;
+        font-weight: normal;
+        font-family: "Work Sans";
+        color: #4B4B4B;
+        line-height: 22px;
+    }
+
+    .contariner-detalle-titulo {
+        span {
+            color: #4B4B4B;
+            font-size: 16px;
+            font-family: "Work Sans";
+            font-weight: 600;
+        }
+    }
+
+    .contariner-detalle-texto {
+        p {
+            color: #4B4B4B;
+            font-size: 16px;
+            font-family: "Work Sans";
+            font-weight: normal;
+        }
+
+        a {
+            text-decoration: underline;
+            color: #3366CC;
+        }
+    }
+}
