@@ -66,6 +66,20 @@ steps:
     - push
     - merge
 
+- name: nodejs_build_QA_OP
+  image: node:16.14.0
+  commands:
+  - cd ./govco-pwa/
+  - npm install -g @angular/cli
+  - npm i --save-dev @types/select2
+  - ng build --configuration="preproduction"
+  when:
+    branch:
+    - release_operaciones
+    event:
+    - push
+    - merge
+
 - name: upload_to_aws_s3_dev
   image: plugins/s3
   settings:
@@ -110,7 +124,7 @@ steps:
     - push
     - merge
 
-- name: upload_to_aws_s3_qa_op
+- name: upload_to_aws_s3_QA_OP
   image: plugins/s3
   settings:
     bucket: 
