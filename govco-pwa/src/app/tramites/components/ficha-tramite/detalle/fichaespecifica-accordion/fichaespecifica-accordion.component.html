@@ -7,25 +7,28 @@
                     Elige tu perfil y conoce la información específica del trámite:
                 </h2>
                 </div>
-                <div class="container">
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item" *ngFor="let itemAudiencia of data; let j = index">
-                            <a class="nav-link" 
+                            <a class="nav-link"
                             [ngClass]="{ 'active': j == 0 }"
-                            data-toggle="tab" 
-                            href="#tab{{j+1}}" 
-                            role="tab" 
-                            aria-controls="tab{{j+1}" 
-                            [attr.aria-selected]="j == 0">{{itemAudiencia.detalle}}</a>
+                            data-toggle="tab"
+                            href="#tab{{j+1}}"
+                            role="tab"
+                            aria-controls="tab{{j+1}"
+                            [attr.aria-selected]="j == 0"
+                            (click)="eventoTabAudiencia(itemAudiencia)">
+                            <img [src]="urlIconos(itemAudiencia.detalle)" >
+                            <span>{{itemAudiencia.detalle}}</span></a>
                         </li>
                     </ul>
                     <div class="tab-content" id="myTabContent">
+                      <div class="container" style="background: #FFFFFF;">
                         <div *ngFor="let itemAudiencia of data; let j = index"
-                        class="tab-pane fade show" id="tab{{j+1}}" role="tabpanel"
+                        class="tab-pane fade" [class.show]="j == 0" id="tab{{j+1}}" role="tabpanel"
                         [ngClass]="{ 'active': j == 0 }">
                             <h1 aria-label="¿Qué necesito para hacer mi trámite?"
                             class="descripcion-accordion">¿Qué necesito para hacer mi trámite?</h1>
-                            <ngb-accordion [closeOthers]="true" #acc="ngbAccordion"  
+                            <ngb-accordion [closeOthers]="true" #acc="ngbAccordion"
                             (panelChange)="tooggleAccordian($event, itemAudiencia.detalle)">
                                 <ngb-panel *ngFor="let momento of itemAudiencia.momentos; let i = index"
                                     [id]="'panel-'+i">
@@ -91,8 +94,11 @@
                                 </ngb-panel>
                             </ngb-accordion>
                         </div>
+
+                      </div>
+
                     </div>
-                </div>
+
         </div>
     </div>
 </section>

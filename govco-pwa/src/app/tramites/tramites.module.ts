@@ -53,6 +53,9 @@ import { AccionSolicitudComponent } from './components/ficha-tramite/detalle/acc
 import { AccionDocumentoComponent } from './components/ficha-tramite/detalle/accion-documento/accion-documento.component';
 import { AccionFormularioComponent } from './components/ficha-tramite/detalle/accion-formulario/accion-formulario.component';
 import { AccionExcepcionComponent } from './components/ficha-tramite/detalle/accion-excepcion/accion-excepcion.component';
+import { SeguimientoSolicitudComponent } from './components/ficha-tramite/detalle/seguimiento-solicitud/seguimiento-solicitud.component';
+import { NoSuitHeaderComponent } from './components/ficha-tramite/detalle/no-suit-header/no-suit-header.component';
+import { NoSuitDetalleComponent } from './components/ficha-tramite/detalle/no-suit-detalle/no-suit-detalle.component';
 
 @NgModule({
   imports: [
@@ -110,6 +113,9 @@ import { AccionExcepcionComponent } from './components/ficha-tramite/detalle/acc
     AccionDocumentoComponent,
     AccionFormularioComponent,
     AccionExcepcionComponent,
+    SeguimientoSolicitudComponent,
+    NoSuitHeaderComponent,
+    NoSuitDetalleComponent
   ],
   exports: [TramitesHomeComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

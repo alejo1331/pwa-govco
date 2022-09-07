@@ -6,7 +6,22 @@
   
   }
   .encabezado-subacordeon{
-  
+    background-color: #004884;
+    .title-subacordeon {
+      display: flex;
+      align-items: center;
+      height: 71px;
+      i {
+        color: #fff;
+        margin: auto 0 auto auto;
+      }
+      h4 {
+        margin: auto auto auto 10px!important;
+        color: #fff;
+        font-size: 16px;
+        font-family: 'Montserrat-Bold';
+      }
+    }
   }
   .subacordeon-star{
     width: 30px;

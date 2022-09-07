@@ -22,7 +22,7 @@ export class MapaModalComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    // this.mapInitializer();
+    this.mapInitializer();
   }
 
   mapInitializer(): void {

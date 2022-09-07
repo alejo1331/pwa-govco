@@ -90,6 +90,28 @@
                                 "output": "index.html"
                             } 
                         },
+                        "staging": {
+                            "budgets": [{
+                                    "type": "initial",
+                                    "maximumWarning": "1mb",
+                                    "maximumError": "2mb"
+                                },
+                                {
+                                    "type": "anyComponentStyle",
+                                    "maximumWarning": "200kb",
+                                    "maximumError": "220kb"
+                                }
+                            ],
+                            "fileReplacements": [{
+                                "replace": "src/environments/environment.ts",
+                                "with": "src/environments/environment.staging.ts"
+                            }],
+                            "outputHashing": "all",
+                            "index": {
+                                "input": "src/index.staging.html",
+                                "output": "index.html"
+                            } 
+                        },
                         "development": {
                             "buildOptimizer": false,
                             "optimization": false,
@@ -129,6 +151,22 @@
                                 "input": "src/index.preprod.html",
                                 "output": "index.html"
                             } 
+                        },
+                        "stagingServe": {
+                            "buildOptimizer": false,
+                            "optimization": false,
+                            "vendorChunk": true,
+                            "extractLicenses": false,
+                            "sourceMap": true,
+                            "namedChunks": true,
+                            "fileReplacements": [{
+                                "replace": "src/environments/environment.ts",
+                                "with": "src/environments/environment.staging.ts"
+                            }],
+                            "index": {
+                                "input": "src/index.staging.html",
+                                "output": "index.html"
+                            } 
                         }
                     },
                     "defaultConfiguration": "production"
@@ -141,6 +179,9 @@
                         },
                         "preproduction": {
                             "browserTarget": "govco-pwa:build:preproductionServe"
+                        },
+                        "staging": {
+                            "browserTarget": "govco-pwa:build:stagingServe"
                         },
                         "development": {
                             "browserTarget": "govco-pwa:build:development"

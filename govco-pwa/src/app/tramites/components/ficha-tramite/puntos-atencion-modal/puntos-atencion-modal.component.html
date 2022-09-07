@@ -3,12 +3,8 @@
         <button type="button" class="close" (click)="closeModal()"><span class="material-icons">clear</span></button>
 
             <div class="col-sm-12 col-md-12 col-lg-3">
-                <ng-container *ngIf="puntosAtencion">
-                    <h2>Puntos de Atención</h2>
-                </ng-container>
-                <ng-container *ngIf="normatividad">
-                    <h2>Legislación Asociada</h2>
-                </ng-container>
+                <h2 *ngIf="puntosAtencion">Puntos de Atención</h2>
+                <h2 *ngIf="normatividad">Legislación Asociada</h2>
             </div>
 
             <div class="col-sm-12 col-md-12 col-lg-7 pr-5">
@@ -19,31 +15,8 @@
                 </div>
                 </ng-container>
             </div>
-            <div *ngIf="puntosAtencion" class="order-movile">
-                <th [class.active]="order == 'PuntoAtencionNombre'"
-                (click)="setOrder('PuntoAtencionNombre')"
-                class="textofilas order-puntos">
-                    <span [hidden]="reversePunto" class="icon-order-punto">
-                        <i class="material-icons">arrow_downward</i>
-                    </span>
-                    <span [hidden]="!reversePunto" class="icon-order-punto">
-                        <i class="material-icons">arrow_upward</i>
-                    </span>
-                    <span class="text-order-punto">Punto</span>
-                </th> 
-                <th [class.active]="order == 'Departamento'"
-                (click)="setOrder('Departamento')" 
-                class="textofilas order-puntos">
-                    <span [hidden]="reverseDepartamento" class="icon-order">
-                        <i class="material-icons">arrow_downward</i>
-                    </span>
-                    <span [hidden]="!reverseDepartamento" class="icon-order">
-                        <i class="material-icons">arrow_upward</i>
-                    </span>
-                    <span class="text-order">Departamento / Municipio</span>
-                </th>
-            </div>
-            <div *ngIf="normatividad" class="order-movile">
+            
+            <!-- <div *ngIf="normatividad" class="order-movile">
                 <th class="textofilas order-puntos">
                     <span class="text-order-punto">&nbsp;Descargar&nbsp;</span>
                 </th>
@@ -53,62 +26,79 @@
                     </span>
                     <span class="text-order">|&nbsp;Documento</span>
                 </th>
-            </div>
+            </div> -->
     </div>
     <div class="modal-body">
         <div class="row">
             <div class="col-md-12">
-                <div *ngIf="puntosAtencion" >
+                <div *ngIf="puntosAtencion">
                   <small *ngIf="puntosAtencion.length == 0">Tramite no contiene puntos de atención</small>
                 </div>
-                <table class="table table-responsive" *ngIf="puntosAtencion">
+                <table class="table table-responsive table-striped" *ngIf="puntosAtencion">
                     <!-- |filter:serchText | paginate: { itemsPerPage: 5, currentPage: p} -->
-                    <ng-container  *ngFor="let punto of puntosAtencion; let i = index">
-                    <thead *ngIf="i == 0" >
-                        <th [class.active]="order == 'PuntoAtencionNombre'"
-                        (click)="setOrder('PuntoAtencionNombre')"
-                        class="textofilas order-puntos">
-                            <span [hidden]="reversePunto" class="icon-order-punto">
-                                <i class="material-icons">arrow_downward</i>
-                            </span>
-                            <span [hidden]="!reversePunto" class="icon-order-punto">
-                                <i class="material-icons">arrow_upward</i>
-                            </span>
-                            <span class="text-order-punto">Punto</span>
-                        </th>
-                        <th [class.active]="order == 'Departamento'"
-                        (click)="setOrder('Departamento')" 
-                        class="textofilas order-puntos">
-                            <span [hidden]="reverseDepartamento" class="icon-order">
-                                <i class="material-icons">arrow_downward</i>
-                            </span>
-                            <span [hidden]="!reverseDepartamento" class="icon-order">
-                                <i class="material-icons">arrow_upward</i>
-                            </span>
-                            <span class="text-order">Departamento / Municipio</span>
-                        </th>
-                        <th class="textofilas" >Dirección</th>
-                        <th class="textofilas" >Horario</th>
-                        <th class="textofilas" >Teléfono</th>
-                        <th class="textofilas" >Ver Mapa</th>
-                    </thead>
+                    <ng-container *ngFor="let punto of puntosAtencion; let i = index">
+                        <thead *ngIf="i == 0" >
+                            <th [class.active]="order == 'PuntoAtencionNombre'"
+                            (click)="setOrder('PuntoAtencionNombre')"
+                            class="textofilas order-puntos">
+                                <span [hidden]="reversePunto" class="icon-order-punto">
+                                    <i class="material-icons">arrow_downward</i>
+                                </span>
+                                <span [hidden]="!reversePunto" class="icon-order-punto">
+                                    <i class="material-icons">arrow_upward</i>
+                                </span>
+                                <span class="text-order-punto">Punto</span>
+                            </th>
+                            <th [class.active]="order == 'Departamento'"
+                            (click)="setOrder('Departamento')" 
+                            class="textofilas order-puntos">
+                                <span [hidden]="reverseDepartamento" class="icon-order">
+                                    <i class="material-icons">arrow_downward</i>
+                                </span>
+                                <span [hidden]="!reverseDepartamento" class="icon-order">
+                                    <i class="material-icons">arrow_upward</i>
+                                </span>
+                                <span class="text-order">Departamento / Municipio</span>
+                            </th>
+                            <th class="textofilas" *ngIf="windowWidth > 760">Dirección</th>
+                            <th class="textofilas" *ngIf="windowWidth > 760">Horario</th>
+                            <th class="textofilas" *ngIf="windowWidth > 760">Teléfono</th>
+                            <th class="textofilas" *ngIf="windowWidth > 760">Ver Mapa</th>
+                        </thead>
                     </ng-container>
                     <tbody>
                         <!--  |orderBy: order:reverseDepartamento:true |orderBy: order:reversePunto:true |filter:serchText | paginate: { itemsPerPage: 5, currentPage: p} -->
-                        <ng-container  *ngFor="let punto of puntosAtencion; let i = index">
-                        <tr>
-                            <!-- <td>{{ punto.PuntoAtencionNombre }}</td>
-                            <td>{{ punto.Departamento }} / {{ punto.Municipio }}</td>
-                            <td>{{ punto.PuntoAtencionDireccion}}</td>
-                            <td>{{ punto.HorarioAtencion }}</td> -->
-                            <!-- <td>{{ punto.PuntoAtencionTelefono }}</td> -->
-                            <td>
-                                <!-- (click)="printCoordenadas(punto.Latitud.replace(',','.'), punto.Longitud.replace(',','.'), punto.PuntoAtencionDireccion)" -->
-                                <a >
-                                    <span class="govco-icon govco-icon-pin"></span>
-                                </a>
-                            </td>
-                        </tr>
+                        <ng-container *ngIf="puntosAtencion">
+                            <tr *ngFor="let punto of puntosAtencion;">
+                                <td *ngIf="windowWidth > 760" class="td-font">{{ punto.PuntoAtencionNombre }}</td>
+                                <td *ngIf="windowWidth > 760" class="td-font">{{ punto.Departamento }} / {{ punto.Municipio }}</td>
+                                <td *ngIf="windowWidth > 760" class="td-font">{{ punto.PuntoAtencionDireccion}}</td>
+                                <td *ngIf="windowWidth > 760" class="td-font">{{ punto.HorarioAtencion }}</td> 
+                                <td *ngIf="windowWidth > 760" class="td-font">{{ punto.PuntoAtencionTelefono }}</td>
+                                <td *ngIf="windowWidth > 760" class="td-font">
+                                    <a (click)="printCoordenadas(punto.Latitud.replace(',','.'), punto.Longitud.replace(',','.'), punto.PuntoAtencionDireccion)">
+                                        <img src="/assets/icon-fichatramite/icon-pin.png" alt="ver mapa" width="18" height="16">
+                                    </a>
+                                </td>
+                                <td colspan="2" *ngIf="windowWidth <= 760" class="td-font">
+                                    <p>
+                                        <b class="td-label">PUNTO:</b> {{ punto.PuntoAtencionNombre }}<br>
+                                        <b  class="td-label">DEPARTAMENTO / MUNICIPIO:</b> {{ punto.Departamento }}<br>
+                                        <b  class="td-label">DIRECCIÓN:</b> {{ punto.PuntoAtencionDireccion }}<br>
+                                        <b  class="td-label">HORARIO:</b> {{ punto.HorarioAtencion }}<br>
+                                        <b  class="td-label">TELÉFONO:</b> {{ punto.PuntoAtencionTelefono }}
+                                    </p>
+                                    <div style="text-align: right;">
+                                        <a (click)="printCoordenadas(punto.Latitud.replace(',','.'), punto.Longitud.replace(',','.'), punto.PuntoAtencionDireccion)">
+                                            <b class="td-label">VER MAPA: </b>
+                                            <img src="/assets/icon-fichatramite/icon-pin.png" alt="ver mapa" width="18" height="16">
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </ng-container>
+                        <ng-container *ngIf="normatividad">
+                            <!-- por ajustar -->
                         </ng-container>
                     </tbody>
                 </table>
@@ -116,10 +106,10 @@
                     <table class="table table-responsive" *ngIf="normatividad">
                         <!-- |filter:serchText | paginate: { itemsPerPage: 6, currentPage: p} -->
                         <ng-container  *ngFor="let normas of normatividad; let i = index">
-                        <thead *ngIf="i == 0" class="col-lg-6 col-sm-6 header-table-norma">
-                            <th class="title-icon-left"><strong>Descargar</strong></th>
-                            <th class="title-doc-left"><strong>Documento</strong></th>
-                        </thead>
+                            <thead *ngIf="i == 0" class="col-lg-6 col-sm-6 header-table-norma">
+                                <th class="title-icon-left"><strong>Descargar</strong></th>
+                                <th class="title-doc-left"><strong>Documento</strong></th>
+                            </thead>
                         </ng-container>
                     </table>
                 </div>
@@ -150,15 +140,15 @@
                         <div class="textofilas">
                             <div class="normativa">
                                 <td class="textofilas icon-descarga">
-                                    <!-- <a [href]="normas.UrlDescarga ?  normas.UrlDescarga : normas.UrlNorma" (click)="validateUrl(normas.UrlDescarga ?  normas.UrlDescarga : normas.UrlNorma, $event)" >
+                                    <a [href]="normas.UrlDescarga ?  normas.UrlDescarga : normas.UrlNorma" (click)="validateUrl(normas.UrlDescarga ?  normas.UrlDescarga : normas.UrlNorma, $event)" >
                                         <span class="govco-icon govco-icon-down-arrow-n icon-down-norma"></span>
-                                    </a> -->
+                                    </a>
                                     <a  >
                                         <span class="govco-icon govco-icon-down-arrow-n icon-down-norma"></span>
                                     </a>
                                 </td>
                                 <td class="textofilas txt-documento">
-                                    <!-- {{ normas.TipoNorma }} {{ normas.NumeroNorma }} de {{ normas.AnoNorma }} ({{ normas.Articulos }}) -->
+                                    {{ normas.TipoNorma }} {{ normas.NumeroNorma }} de {{ normas.AnoNorma }} ({{ normas.Articulos }})
                                 </td>
                             </div>
                         </div>

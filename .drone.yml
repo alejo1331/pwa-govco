@@ -66,6 +66,20 @@ steps:
     - push
     - merge
 
+- name: nodejs_build_QA_OP
+  image: node:16.14.0
+  commands:
+  - cd ./govco-pwa/
+  - npm install -g @angular/cli
+  - npm i --save-dev @types/select2
+  - ng build --configuration="preproduction"
+  when:
+    branch:
+    - release_operaciones
+    event:
+    - push
+    - merge
+
 - name: upload_to_aws_s3_dev
   image: plugins/s3
   settings:
@@ -110,27 +124,27 @@ steps:
     - push
     - merge
 
-# - name: upload_to_aws_s3_qa_op
-#   image: plugins/s3
-#   settings:
-#     bucket: 
-#       from_secret: BUCKET_QA_OP
-#     access_key: 
-#       from_secret: ACCESS_KEY_S3_QA_OP
-#     secret_key: 
-#       from_secret: SECRET_S3_QA_OP
-#     region:
-#       from_secret: REGION_S3
-#     strip_prefix: govco-pwa/dist/govco-pwa
-#     delete: true
-#     source: ./govco-pwa/dist/govco-pwa/**/*
-#     target: /
-#   when:
-#     branch:
-#     - release_operaciones
-#     event:
-#     - push
-#     - merge
+- name: upload_to_aws_s3_QA_OP
+  image: plugins/s3
+  settings:
+    bucket: 
+      from_secret: BUCKET_QA_OP
+    access_key: 
+      from_secret: ACCESS_KEY_S3_QA_OP
+    secret_key: 
+      from_secret: SECRET_S3_QA_OP
+    region:
+      from_secret: REGION_S3
+    strip_prefix: govco-pwa/dist/govco-pwa
+    delete: true
+    source: ./govco-pwa/dist/govco-pwa/**/*
+    target: /
+  when:
+    branch:
+    - release_operaciones
+    event:
+    - push
+    - merge
 
 # - name: upload_to_aws_s3_pre
 #   image: plugins/s3

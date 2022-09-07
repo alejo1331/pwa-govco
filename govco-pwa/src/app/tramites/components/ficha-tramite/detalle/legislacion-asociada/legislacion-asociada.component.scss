@@ -107,10 +107,42 @@
             margin-top: -1em;
             .checkbox-govco {
               margin-bottom: 0;
+              input {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+                height: initial;
+                width: initial;
+                margin-bottom: 0;
+                display: none;
+                cursor: pointer;
+              }
               .label-checkbox {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+                position: relative;
+                cursor: pointer;
+                margin-bottom: 0px;
+                display: initial;
                 &:before {
                   border: 3px solid #3366cc;
                   margin-top: 1px;
+                  -webkit-box-sizing: border-box;
+                  -moz-box-sizing: border-box;
+                  box-sizing: border-box;
+                  margin: 0;
+                  padding: 0;
+                  content: '';
+                  -webkit-appearance: none;
+                  background-color: transparent;
+                  padding: 8px;
+                  display: inline-block;
+                  position: relative;
+                  vertical-align: middle;
+                  cursor: pointer;
+                  margin-right: 5px;
+                  border-radius: 5px;
                 }
                 .govco-icon{
                   color: #004884;
@@ -188,4 +220,8 @@
       }
     }
   }
-  
+
+  section{
+    padding-left: 15px;
+    padding-right: 15px;
+  }

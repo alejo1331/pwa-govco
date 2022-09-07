@@ -1,0 +1,28 @@
+<div class="container-detalle">
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Descripción</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <p>{{dataTratmite?.Descripcion}}</p>
+        </div>
+    </div>
+    <div class="row contariner-detalle-titulo">
+        <div class="col-md-6">
+            <span>¿Cuando puedo realizarlo?</span>
+        </div>
+        <div class="col-md-6">
+            <span>¿A donde ir?</span>
+        </div>
+    </div>
+    <div class="row contariner-detalle-texto">
+        <div class="col-md-6">
+            <a (click)="getFechas()">Ver las fechas disponibles</a>
+        </div>
+        <div class="col-md-6">
+            <a (click)="getPuntosAtencion()">Ver todos los puntos de atención</a>
+        </div>
+    </div>
+</div>

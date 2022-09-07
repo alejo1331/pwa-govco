@@ -1,0 +1,19 @@
+<div class="ficha">
+    <div class="pb-2">
+        <govco-label-integrado tipoelemento="FICHA-NO-SUIT" [buscar]=informacionFicha.id>
+        </govco-label-integrado>
+        <h1 class="title">
+            {{ data.Nombre }}
+        </h1>
+    </div>
+    <div class="ficha-entity mb-4">
+        <span class="ficha-entity-title">Entidad:</span>
+        <a [href]="data.UrlServicioEnLinea" (click)="validateUrl(data.UrlServicioEnLinea, $event)"
+            class="ficha-entity-link">
+            <h3 class="entity-name">
+                {{ data.NombreEntidad}}
+            </h3>
+        </a>
+    </div>
+    <div class="col-lg-3 col-sm-12"></div>
+</div>
