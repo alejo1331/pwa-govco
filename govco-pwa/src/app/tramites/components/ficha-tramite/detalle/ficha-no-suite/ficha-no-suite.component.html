@@ -1,1 +1,64 @@
-<p>ficha-no-suite works!</p>
+<div id="fichaContainer" class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <app-no-suit-header *ngIf="dataBase" [informacionFicha]="informacionFicha" [data]="dataBase">
+            </app-no-suit-header>
+        </div>
+        <div class="col-md-8">
+            <app-no-suit-detalle [informacionFicha]="informacionFicha" (eventoGetPuntos)="eventoGetPuntos()"
+                [dataTratmite]="dataBase">
+            </app-no-suit-detalle>
+            <div class="tramiteCard-v1">
+                <div class="text-intro">
+                    <h3>Resultado que se obtiene</h3>
+                    <p>{{dataBase?.ResultadoOtroServicio}}</p>
+                </div>
+            </div>
+            <div class="tramiteCard-v1">
+                <div class="text-intro">
+                    <h3>Recuerde</h3>
+                    <ng-container *ngFor="let consideracion of consideraciones">
+                        <p>{{ consideracion.CondicionesAdicionales }}</p>
+                    </ng-container>
+                </div>
+                <p><b>Observaciones: </b>{{dataBase?.Consideraciones}}</p>
+            </div>
+            <div class="row mb-5 mt-5">
+                <div class="content-tramite-linea col">
+                    <div class="pb-2 tramiteCard-v1">
+                        <a (click)="validateUrl(dataBase.UrlServicioEnLinea, $event)"
+                            class="btn btn-round btn-tramite-linea">
+                            <img class="iconodisponible" src="assets/images/tramite_linea48px.svg" alt="transaccional">
+                            HACER TRÁMITE EN LÍNEA</a>
+                    </div>
+                </div>
+                <div class="p-2 contenendor-puntos col">
+                    <a (click)="showModal(puntosAtencion)" class="btn btn-round btn-middle">VER LOS PUNTOS DE
+                        ATENCIÓN</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-sm-12 area-servicio">
+            <div class="content-tramite-linea col">
+                <div class="pb-2 tramiteCard-v1">
+                    <a (click)="validateUrl(dataBase.UrlServicioEnLinea, $event)"
+                        class="btn btn-round btn-tramite-linea">
+                        <img class="iconodisponible" src="assets/images/tramite_linea48px.svg" alt="transaccional">
+                        HACER TRÁMITE EN LÍNEA</a>
+                </div>
+            </div>
+            <app-tutoriales [infoTramite]="informacionFicha">
+            </app-tutoriales>
+            <app-ayuda [itemid]="informacionFicha.id">
+            </app-ayuda>
+            <govco-interaccion-2 module="Tramites" [itemid]="informacionFicha.id">
+            </govco-interaccion-2>
+        </div>
+
+    </div>
+</div>
+
+<div class="experience">
+    <govco-tu-experiencia module="Tramites" [itemid]="informacionFicha.id">
+    </govco-tu-experiencia>
+</div>
