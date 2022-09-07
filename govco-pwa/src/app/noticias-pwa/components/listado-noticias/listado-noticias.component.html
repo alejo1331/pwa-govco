@@ -1,0 +1,27 @@
+<div class="container-noticia-listado">
+    <h2>Actualidad</h2>
+    <p>Entérate de todas las noticias del Estado colombiano.</p>
+
+    <div class="container-tarjeta-noticias" *ngFor="let noticia of dataNoticias">
+        <app-tarjeta-informativa
+        [imagen]="noticia.imagen"
+        [descripcionImagen]="noticia.descripcionImagen"
+        [url]="noticia.url"
+        [descripcioUrl]="noticia.descripcioUrl"
+        [titulo]="noticia.titulo">
+        </app-tarjeta-informativa>    
+        <div class="container-etiqueta-noticias">
+            <app-etiqueta estado="informative">
+                <span class="material-symbols-outlined">
+                    calendar_today
+                </span>
+                10 de mayo de 2022
+            </app-etiqueta>
+        </div>
+        <div class="container-boton-noticias">
+            <app-boton [symbol]="true" (click)="shareNews(noticia)"></app-boton>
+        </div>
+    </div>
+
+    <app-boton>Ver más noticias</app-boton>
+</div>
