@@ -115,7 +115,7 @@ import { NoSuitDetalleComponent } from './components/ficha-tramite/detalle/no-su
     AccionExcepcionComponent,
     SeguimientoSolicitudComponent,
     NoSuitHeaderComponent,
-    NoSuitDetalleComponent
+    NoSuitDetalleComponent,
   ],
   exports: [TramitesHomeComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
