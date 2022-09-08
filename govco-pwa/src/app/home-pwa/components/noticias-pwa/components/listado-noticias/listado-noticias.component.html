@@ -19,7 +19,11 @@
             </app-etiqueta>
         </div>
         <div class="container-boton-noticias">
-            <app-boton [symbol]="true" (click)="shareNews(noticia)"></app-boton>
+            <app-boton [symbol]="true" (click)="shareNews(noticia)">
+                <span class="material-symbols-outlined">
+                    share
+                </span>
+            </app-boton>
         </div>
     </div>
 

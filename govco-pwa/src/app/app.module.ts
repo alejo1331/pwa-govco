@@ -35,7 +35,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RecaptchaModule } from "ng-recaptcha";
 import { ModalNatvivoModule } from './modal-natvivo/modal-natvivo.module';
 import { BibliotecaPwaModule } from './biblioteca-pwa/biblioteca-pwa.module';
-import { NoticiasPwaModule } from './noticias-pwa/noticias-pwa.module';
+import { HomePwaModule } from './home-pwa/home-pwa.module';
 
 
 
@@ -83,7 +83,7 @@ registerLocaleData(es)
     PipesModule,
     ModalNatvivoModule,
     BibliotecaPwaModule,
-    NoticiasPwaModule
+    HomePwaModule
   ],
   providers: [
     SidenavService,
