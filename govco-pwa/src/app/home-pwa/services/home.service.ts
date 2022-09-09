@@ -12,8 +12,15 @@ export class HomeService {
   constructor(private http: HttpClient) { }
 
   
-  getNoticias(): Observable<ObtenerBannerNoticiaRespuesta> {
-    const noticias = environment.serverUrlNoticia + 'Administracion/ObtenerBannerNoticia?codigo=&codigoCategoria=';
-    return this.http.get<ObtenerBannerNoticiaRespuesta>(noticias);
+  obtenerNoticias(): Observable<ObtenerBannerNoticiaRespuesta> {
+    // console.log('getNoticias')
+    // try {
+      const noticias = environment.serverUrlNoticia + 'Administracion/ObtenerBannerNoticia?codigo=&codigoCategoria=';
+      console.log(noticias)
+      return this.http.get<ObtenerBannerNoticiaRespuesta>(noticias);
+    // } catch (error) {
+    //   console.log("Error ObtenerBannerNoticiaRespuesta --> "+error);
+    //   return null;
+    // }
   }
 }
