@@ -29,10 +29,11 @@ export class FichaNoSuiteComponent implements OnInit, OnChanges {
               private modalService: NgbModal,
               private breadCrumbService: BreadCrumbService,
               private validateUrlService: ValidateUrlService, 
-              private utilsService: UtilsService,) {
-
+    private utilsService: UtilsService, ) {
   }
-  ngOnInit(): void {}
+  ngOnInit (): void {
+    console.log(this.informacionFicha.id)
+  }
 
   ngOnChanges() {
     if (this.tipoFicha == '603' &&  this.tipoFicha != undefined) {
@@ -40,7 +41,7 @@ export class FichaNoSuiteComponent implements OnInit, OnChanges {
         this.numeroId = this.route.snapshot.params.id.substr(1,20);
         this.fichaTramiteService.GetNotSuiteTramiteById(this.route.snapshot.params.id).subscribe(data =>{
           this.dataBase = data;
-          this.breadCrumbService.setTittle( this.dataBase.Nombre);
+          this.breadCrumbService.setTittle( this.dataBase.Nombre );
         });
         this.fichaTramiteService.GetConsideracionesAdicionalesById(this.route.snapshot.params.id).subscribe(data =>{
           this.consideraciones = data;

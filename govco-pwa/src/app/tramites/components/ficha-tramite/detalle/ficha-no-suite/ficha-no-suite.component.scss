@@ -59,13 +59,20 @@
 	}
 
 	h3 {
+		font-family: "Montserrat-Bold", sans-serif;
 		margin-bottom: 20px;
 		font-size: 20px;
+		color: #004884;
 	}
 
 	p, b {
 		color: #4B4B4B;
 		font-size: 16px;
+		font-family: "WorkSans-Regular";
+	}
+
+	b {
+		font-family: "Montserrat", sans-serif;
 	}
 
 }
@@ -77,6 +84,7 @@
 		display: flex;
 		font-weight: 600;
 		justify-content: center;
+		font-family: "Montserrat",sans-serif;
 	}
 
 	.btn-tramite-linea {
@@ -113,6 +121,41 @@
 	}
 }
 
+.tramite-nopadding{
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
 .card-component {
 	margin: auto !important;
+}
+
+.btn-middle {
+	font-weight: 600;
+	border: 1.5px solid #3772FF;
+	background-color: white;
+	margin: 0px;
+	font-size: 0.93rem;
+	font-family: "Montserrat",sans-serif;
+	color: #3772FF !important;
+	box-shadow: none;
+	padding: 0.5em 1em;
+	cursor: pointer;
+}
+
+.btn-round {
+	border-radius: 30px !important;
+	margin: 0 !important;
+  }
+
+  @media (max-width: 768px) {
+	.fichaContainerButtons{
+		display: block;
+		text-align: center;
+	}
+}
+
+::ng-deep .area-servicio{
+	padding-left: 15px;
+	padding-right: 15px;
 }
