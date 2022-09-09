@@ -1,3 +1,7 @@
+<div class="container container-bread-crumb">
+    <app-bread-crumb class="bread-crumb-main"></app-bread-crumb>
+</div>
+
 <div id="fichaContainer" class="container">
     <div class="row">
         <div class="col-md-12">
@@ -23,7 +27,7 @@
                 </div>
                 <p><b>Observaciones: </b>{{dataBase?.Consideraciones}}</p>
             </div>
-            <div class="row mb-5 mt-5">
+            <div class="row mb-5 mt-5 fichaContainerButtons">
                 <div class="content-tramite-linea col">
                     <div class="pb-2 tramiteCard-v1">
                         <a (click)="validateUrl(dataBase.UrlServicioEnLinea, $event)"
@@ -39,7 +43,7 @@
             </div>
         </div>
         <div class="col-lg-4 col-sm-12 area-servicio">
-            <div class="content-tramite-linea col">
+            <div class="content-tramite-linea col tramite-nopadding">
                 <div class="pb-2 tramiteCard-v1">
                     <a (click)="validateUrl(dataBase.UrlServicioEnLinea, $event)"
                         class="btn btn-round btn-tramite-linea">
