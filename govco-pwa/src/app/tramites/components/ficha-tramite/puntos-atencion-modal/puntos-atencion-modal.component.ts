@@ -16,7 +16,7 @@ export class PuntosAtencionModalComponent implements OnInit {
   @Input() normatividad: any;
 
   p = 1;
-  serchText: any;
+  serchText: string;
   order = 'PuntoAtencionNombre';
   reverseDepartamento = false;
   reversePunto = false;
