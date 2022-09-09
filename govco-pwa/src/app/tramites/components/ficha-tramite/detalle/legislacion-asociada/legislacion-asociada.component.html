@@ -38,9 +38,9 @@
               </th>
             </div>
             <div class="legislacion-body-normativas">
-                <!-- |filter:serchText | paginate: { itemsPerPage: 2, currentPage: p} -->
+                <!-- |filter:serchText  -->
               <ng-container
-                *ngFor="let normas of normatividad1; let i = index"
+                *ngFor="let normas of normatividad1 | paginate: { itemsPerPage: 2, currentPage: p}; let i = index"
               >
                 <div class="legislacion-body-normativas-text">
                   <td class="legislacion-body-normativas-text-info">
@@ -76,7 +76,7 @@
                 (pageChange)="p = $event"
                 previousLabel=""
                 nextLabel=""
-                [maxSize]="5"
+                [maxSize]="2"
                 [autoHide]="true"
               ></pagination-controls>
             </div>
