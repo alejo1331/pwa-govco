@@ -38,6 +38,7 @@
     "ng-custom-select": "^2.0.4",
     "ng-recaptcha": "^6.0.2",
     "ng-select2": "^1.4.1",
+    "ng2-search-filter": "^0.5.1",
     "ngx-bootstrap": "^8.0.0",
     "ngx-bootstrap-modal": "^2.0.1",
     "ngx-bs-modal": "^2.0.1",

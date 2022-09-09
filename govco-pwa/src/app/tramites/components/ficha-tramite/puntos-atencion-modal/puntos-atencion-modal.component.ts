@@ -16,7 +16,7 @@ export class PuntosAtencionModalComponent implements OnInit {
   @Input() normatividad: any;
 
   p = 1;
-  serchText: any;
+  serchText: string;
   order = 'PuntoAtencionNombre';
   reverseDepartamento = false;
   reversePunto = false;
@@ -36,11 +36,11 @@ export class PuntosAtencionModalComponent implements OnInit {
     private utilsService: UtilsService,
     private orderPipe: OrderPipe
   ) {
-    this.sortedCollection = orderPipe.transform(this.puntosAtencion, 'PuntoAtencionNombre');
+    
   }
 
   ngOnInit(): void {
-    console.log(this.puntosAtencion, this.normatividad, this.sortedCollection)
+    this.sortedCollection = this.orderPipe.transform(this.puntosAtencion, 'PuntoAtencionNombre');
   }
 
   printCoordenadas(latitud:any, longitud:any, direccion:any){

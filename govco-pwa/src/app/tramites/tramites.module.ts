@@ -30,12 +30,12 @@ import { LineaAvanceComponent } from './components/ficha-tramite/detalle/linea-a
 import { FichaespecificaHeaderComponent } from './components/ficha-tramite/detalle/fichaespecifica-header/fichaespecifica-header.component';
 import { FichaespecificaDetalleComponent } from './components/ficha-tramite/detalle/fichaespecifica-detalle/fichaespecifica-detalle.component';
 import { ConfirmModalComponent } from './components/detalle-consulta-ciiu/components/confirm-modal/confirm-modal.component';
-// import { ConfirmModalComponent } from './components/ficha-tramite/confirm-modal/confirm-modal.component';
 import { BtnPuntosAtencionComponent } from './components/ficha-tramite/btn-puntos-atencion/btn-puntos-atencion.component';
 import { PuntosAtencionModalComponent } from './components/ficha-tramite/puntos-atencion-modal/puntos-atencion-modal.component';
 import { MapaModalComponent } from './components/ficha-tramite/mapa-modal/mapa-modal.component';
 import { ModalFechasDisponiblesComponent } from './components/ficha-tramite/modal-fechas-disponibles/modal-fechas-disponibles.component';
 import { FormsModule } from '@angular/forms';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { BtnTramiteLineaComponent } from './components/ficha-tramite/btn-tramite-linea/btn-tramite-linea.component';
 import { TutorialesComponent } from './components/ficha-tramite/detalle/tutoriales/tutoriales.component';
 import { ModalTutorialesComponent } from './components/ficha-tramite/detalle/modal-tutoriales/modal-tutoriales.component';
@@ -71,7 +71,8 @@ import { NoSuitDetalleComponent } from './components/ficha-tramite/detalle/no-su
     TransversalesModule,
     FormsModule,
     OrderModule,
-    NgxSkeletonLoaderModule
+    NgxSkeletonLoaderModule,
+    Ng2SearchPipeModule,
   ],
   declarations: [
     TramitesHomeComponent,
@@ -115,7 +116,7 @@ import { NoSuitDetalleComponent } from './components/ficha-tramite/detalle/no-su
     AccionExcepcionComponent,
     SeguimientoSolicitudComponent,
     NoSuitHeaderComponent,
-    NoSuitDetalleComponent
+    NoSuitDetalleComponent,
   ],
   exports: [TramitesHomeComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
