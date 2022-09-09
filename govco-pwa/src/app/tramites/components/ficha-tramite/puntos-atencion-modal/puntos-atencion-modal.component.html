@@ -22,7 +22,6 @@
                   <small *ngIf="puntosAtencion.length == 0">Tramite no contiene puntos de atención</small>
                 </div>
                 <table class="table table-responsive table-striped" *ngIf="puntosAtencion">
-                    <!-- |filter:serchText | paginate: { itemsPerPage: 5, currentPage: p} -->
                     <ng-container *ngFor="let punto of puntosAtencion; let i = index">
                         <thead *ngIf="i == 0" >
                             <th [class.active]="order == 'PuntoAtencionNombre'"
@@ -56,7 +55,7 @@
                     <tbody>
                         <!--  |orderBy: order:reverseDepartamento:true |orderBy: order:reversePunto:true |filter:serchText | paginate: { itemsPerPage: 5, currentPage: p} -->
                         <ng-container *ngIf="puntosAtencion">
-                            <tr *ngFor="let punto of puntosAtencion | paginate: { itemsPerPage: 2, currentPage: p}">
+                            <tr *ngFor="let punto of puntosAtencion | filter:serchText | paginate: { itemsPerPage: 2, currentPage: p}">
                                 <td *ngIf="windowWidth > 760" class="td-font">{{ punto.PuntoAtencionNombre }}</td>
                                 <td *ngIf="windowWidth > 760" class="td-font">{{ punto.Departamento }} / {{ punto.Municipio }}</td>
                                 <td *ngIf="windowWidth > 760" class="td-font">{{ punto.PuntoAtencionDireccion}}</td>
