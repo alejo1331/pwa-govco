@@ -3,13 +3,15 @@ import { CommonModule } from '@angular/common';
 import { BotonComponent } from './components/boton/boton.component';
 import { EtiquetaComponent } from './components/etiqueta/etiqueta.component';
 import { TarjetaInformativaComponent } from './components/tarjeta-informativa/tarjeta-informativa.component';
+import { CarruselDosComponent } from './components/carrusel-dos/carrusel-dos.component';
 
 
 @NgModule({
   declarations: [
     BotonComponent,
     EtiquetaComponent,
-    TarjetaInformativaComponent
+    TarjetaInformativaComponent,
+    CarruselDosComponent
   ],
   imports: [
     CommonModule
@@ -17,7 +19,8 @@ import { TarjetaInformativaComponent } from './components/tarjeta-informativa/ta
   exports: [
     BotonComponent,
     EtiquetaComponent,
-    TarjetaInformativaComponent
+    TarjetaInformativaComponent,
+    CarruselDosComponent
   ],
 })
 export class BibliotecaPwaModule { }
