@@ -40,6 +40,7 @@ export class LegislacionAsociadaComponent implements OnInit {
   }
 
   changeEvent(option: any, event: any) {
+    console.log(option, event)
     if (event.target.checked) {
         this.toggleBool= false;
         this.selectedItemsList.push(option.UrlDescarga);
