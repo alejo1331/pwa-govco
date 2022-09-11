@@ -33,7 +33,7 @@
                                 <span [hidden]="!reversePunto" class="icon-order-punto">
                                     <i class="material-icons">arrow_upward</i>
                                 </span>
-                                <span class="text-order-punto">Punto</span>
+                                <span class="text-order-punto txt-order">Punto</span>
                             </th>
                             <th [class.active]="order == 'Departamento'"
                             (click)="setOrder('Departamento')" 
@@ -44,7 +44,7 @@
                                 <span [hidden]="!reverseDepartamento" class="icon-order">
                                     <i class="material-icons">arrow_upward</i>
                                 </span>
-                                <span class="text-order">Departamento / Municipio</span>
+                                <span class="text-order txt-order">Departamento / Municipio</span>
                             </th>
                             <th class="textofilas" *ngIf="windowWidth > 760">Dirección</th>
                             <th class="textofilas" *ngIf="windowWidth > 760">Horario</th>
