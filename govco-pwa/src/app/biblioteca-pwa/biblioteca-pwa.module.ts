@@ -12,7 +12,7 @@ import { CarruselUnoComponent } from './components/carrusel-uno/carrusel-uno.com
     BotonComponent,
     EtiquetaComponent,
     TarjetaInformativaComponent,
-    CarruselUnoComponent
+    CarruselUnoComponent,
     CarruselDosComponent
   ],
   imports: [
@@ -22,7 +22,7 @@ import { CarruselUnoComponent } from './components/carrusel-uno/carrusel-uno.com
     BotonComponent,
     EtiquetaComponent,
     TarjetaInformativaComponent,
-    CarruselUnoComponent
+    CarruselUnoComponent,
     CarruselDosComponent
   ],
 })
