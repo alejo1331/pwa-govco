@@ -3,6 +3,12 @@
   color: #004884;
 }
 
+.modal-header .close {
+  color: #0061ea;
+  font-weight: 700;
+  z-index: 10;
+}
+
 .active {
     background-color: #E6EFFD !important;
   }
@@ -43,10 +49,81 @@
     color: #005BCB !important;
   }
   .puntos-atencion-tramite {
+    .modal-header {
+      border: 0;
+      h2 {
+        font-family: 'Montserrat-SemiBold';
+        font-size: 16px;
+        font-weight: 600 !important;
+      }
+      .close {
+        padding: 1rem;
+        span {
+          color: #0061ea;
+          font-weight: 700;
+        }
+      }
+      .buscador {
+        position: relative;
+        border: 1px solid #BABABA;
+        border-radius: 2rem;
+        overflow: hidden;
+        display: flex;
+        input {
+          border-radius: 2em;
+          border: unset;
+          font-family: 'Montserrat-Regular';
+          font-size: 16px;
+        }
+        .content-search {
+          appearance: unset;
+          cursor: pointer;
+          padding: unset;
+          border: unset;
+          margin: 1px 6px;
+          border-radius: 50%;
+          span {
+            position: absolute;
+            right: 0.1em;
+            top: 2px;
+            bottom: 0;
+            line-height: 2rem;
+          }
+        }
+      }
+    }
     .modal-body{
+      padding: 0 1rem;
       .contenedor {
         width: 100%;
         overflow: hidden;
+      }
+      table {
+        th.active {
+          background-color: #e6effd!important;
+        }
+        th {
+          // display: block;
+          border: 0;
+          padding: 0;
+          i {
+            font-size: 18px;
+            font-weight: bold;
+          }
+          .txt-order {
+            color: #004884;
+            font-family: 'WorkSans-Bold';
+            font-size: 16px;
+          }
+        }
+        td {
+          font-family: 'WorkSans-Medium';
+          font-size: 14px;
+          font-weight: 500 !important;
+          b {
+            font-family: 'WorkSans-Bold';
+          }
+        }
       }
     }
   }
@@ -94,6 +171,16 @@
     }
     .title-icon-rigth{
       width: 70% !important;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .puntos-atencion-tramite .modal-header .close {
+      position: absolute;
+      top: 0;
+      right: 0;
+      margin: 0;
+      z-index: 2;
     }
   }
   
@@ -161,6 +248,10 @@
 
 .td-font {
   font-size: 14px !important;
+}
+
+.textofilas {
+  color: #004884 !important;
 }
 
 .govco-icon-pin {
