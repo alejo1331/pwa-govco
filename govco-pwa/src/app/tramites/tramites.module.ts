@@ -56,6 +56,8 @@ import { AccionExcepcionComponent } from './components/ficha-tramite/detalle/acc
 import { SeguimientoSolicitudComponent } from './components/ficha-tramite/detalle/seguimiento-solicitud/seguimiento-solicitud.component';
 import { NoSuitHeaderComponent } from './components/ficha-tramite/detalle/no-suit-header/no-suit-header.component';
 import { NoSuitDetalleComponent } from './components/ficha-tramite/detalle/no-suit-detalle/no-suit-detalle.component';
+import { BreadCrumbComponent } from './components/detalle-consulta-ciiu/components/bread-crumb/bread-crumb.component';
+import { WordLimitPipe } from './pipes/word-limit/word-limit.pipe';
 
 @NgModule({
   imports: [
@@ -117,6 +119,8 @@ import { NoSuitDetalleComponent } from './components/ficha-tramite/detalle/no-su
     SeguimientoSolicitudComponent,
     NoSuitHeaderComponent,
     NoSuitDetalleComponent,
+    BreadCrumbComponent,
+    WordLimitPipe
   ],
   exports: [TramitesHomeComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

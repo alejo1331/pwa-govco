@@ -26,8 +26,8 @@ import { WordLimitPipe } from '../../pipes/word-limit/word-limit.pipe';
     TramitesCondicionantesCiiuComponent,
     NotaLegalCiiuComponent,
     // ConfirmModalComponent,
-    BreadCrumbComponent,
-    WordLimitPipe,
+    // BreadCrumbComponent,
+    // WordLimitPipe,
   ],
   imports: [
     CommonModule,

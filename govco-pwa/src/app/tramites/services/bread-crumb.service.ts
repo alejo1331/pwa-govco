@@ -21,12 +21,12 @@ getTittle(): Observable<string> {
 getTittleCiiu(): Observable<string> {
   return this.tittleChangeCiiu.asObservable();
 }
-setTittle(title: string) {
-  this.tittleChange.next(title);
+async setTittle(title: string) {
+  await this.tittleChange.next(title);
 }
 
-setTittleCiiu(tittleCiiu: string) {
-  this.tittleChangeCiiu.next(tittleCiiu);
+async setTittleCiiu(tittleCiiu: string) {
+  await this.tittleChangeCiiu.next(tittleCiiu);
 }
 
 
