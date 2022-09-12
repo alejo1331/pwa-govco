@@ -55,7 +55,7 @@ export class BottomMenuComponent implements OnInit, AfterViewInit, OnDestroy {
     if (document.querySelector('#topScroll')!.scrollTop > 10) {
       document.querySelector('#topScroll')!.scrollTop = 0;
     } else {
-      this.router.navigate([url]);
+      this.router.navigateByUrl(url);
     }
   }
 

@@ -11,7 +11,7 @@ import { SidenavService } from 'src/app/transversales/services/sidenav-service/s
   templateUrl: './general.component.html',
   styleUrls: ['./general.component.scss']
 })
-export class GeneralComponent implements OnInit, OnDestroy {
+export class GeneralComponent implements OnInit {
   tramite: any = {
     id: '',
     tipo: null,
@@ -42,10 +42,6 @@ export class GeneralComponent implements OnInit, OnDestroy {
         this.loadData()
       }
     });
-  }
-
-  ngOnDestroy(): void {
-    this.eventoRoute.unsubscribe();
   }
 
   loadData() {
