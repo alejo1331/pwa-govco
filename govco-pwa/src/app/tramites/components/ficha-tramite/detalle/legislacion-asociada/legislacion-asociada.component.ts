@@ -57,7 +57,16 @@ export class LegislacionAsociadaComponent implements OnInit {
   allDownload(){
     this.normatividad1.forEach((e: any) => {
       if (e.checked) { // por ajustar
-        self.open(e.UrlDescarga || e.UrlNorma, "_self")
+        window.open(e.UrlDescarga || e.UrlNorma)
+        
+        // const link = document.createElement('a');
+        // link.setAttribute('target', '_self');
+        // link.setAttribute('href', e.UrlDescarga || e.UrlNorma);
+        // document.body.appendChild(link);
+        // link.click();
+        // link.remove();
+        // console.log(e.UrlDescarga, e.UrlNorma, 'mostranding')
+        // self.open(e.UrlDescarga || e.UrlNorma, "_self")
       }
     })
   }
