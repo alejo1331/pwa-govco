@@ -264,7 +264,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 2em;
+  margin: 2em 0;
+  padding-left: 10px;
 }
 
 ::ng-deep pagination-controls pagination-template .ngx-pagination ul {
