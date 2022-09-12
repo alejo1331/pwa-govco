@@ -12,6 +12,7 @@ import { NotaLegalCiiuComponent } from './components/nota-legal-ciiu/nota-legal-
 import { ConfirmModalComponent } from './components/confirm-modal/confirm-modal.component';
 import { BreadCrumbComponent } from './components/bread-crumb/bread-crumb.component';
 import { WordLimitPipe } from '../../pipes/word-limit/word-limit.pipe';
+import { TramitesModule } from '../../tramites.module';
 
 
 
@@ -32,7 +33,12 @@ import { WordLimitPipe } from '../../pipes/word-limit/word-limit.pipe';
   imports: [
     CommonModule,
     DetalleConsultaCiiuRoutingModule,
-    NgbModule
+    NgbModule,
+    TramitesModule
+  ],
+  exports:[
+    // BreadCrumbComponent,
+    // WordLimitPipe,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

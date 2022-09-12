@@ -6,7 +6,7 @@ import { TramitesRoutingModule } from './tramites-routing.module';
 import { AvisoDeConstruccionModule } from '../aviso-de-construccion/aviso-de-construccion.module';
 import { CodigosCiiuYTramitesComponent } from './components/codigos-ciiu-y-tramites/codigos-ciiu-y-tramites.component';
 import { BusquedaCodigosCiiuComponent } from './components/codigos-ciiu-y-tramites/busqueda-codigos-ciiu/busqueda-codigos-ciiu.component';
-import {LoadingService} from './services/loading.service'
+import { LoadingService } from './services/loading.service'
 import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgSelectModule } from 'ng-custom-select';
@@ -122,7 +122,11 @@ import { WordLimitPipe } from './pipes/word-limit/word-limit.pipe';
     BreadCrumbComponent,
     WordLimitPipe
   ],
-  exports: [TramitesHomeComponent],
+  exports: [
+    TramitesHomeComponent,
+    BreadCrumbComponent,
+    WordLimitPipe
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class TramitesModule { }
