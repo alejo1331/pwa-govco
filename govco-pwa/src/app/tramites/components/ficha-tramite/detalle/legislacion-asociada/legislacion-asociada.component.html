@@ -59,12 +59,16 @@
                   </td>
                   <td class="checkbox">
                     <div class="checkbox-govco">
-                      <input type="checkbox" id="{{normas.NumeroNorma}}" (change)="changeEvent(normas, $event)" value="{{normas.UrlDescarga ?  normas.UrlDescarga : normas.UrlNorma}}" />
+                      <input 
+                      type="checkbox" 
+                      id="normas-checkbox-{{i}}-{{p}}" 
+                      (change)="changeEvent($event, i, p)" 
+                      value="{{normas.UrlDescarga ?  normas.UrlDescarga : normas.UrlNorma}}"
+                      [checked]="normas.checked" />
                       <label
                         class="label-checkbox m-auto govco-icon "
-                        for="{{normas.NumeroNorma}}"
+                        for="normas-checkbox-{{i}}-{{p}}"
                       >
-                   
                       </label>
                     </div>
                   </td>
@@ -81,7 +85,10 @@
               ></pagination-controls>
             </div>
             <div class="legislacion-body-button">
-              <button [ngClass]="{disabled: (toggleBool === true) ? true : false}"   (click)="allDownload()">Descargar Selección</button>
+              
+              <button 
+               [ngClass]="{disabled: !someSelected }"
+              (click)="allDownload()">Descargar Selección</button>
             </div>
           </div>
         </div>
