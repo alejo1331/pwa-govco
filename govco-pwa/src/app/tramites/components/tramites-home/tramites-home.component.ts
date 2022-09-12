@@ -4,6 +4,7 @@ import { HeaderService } from 'src/app/transversales/services/header-service/hea
 import { SidenavService } from 'src/app/transversales/services/sidenav-service/sidenav-service.service';
 import { AppService } from '../../../app.service';
 import { BottomMenuService } from '../../../transversales/services/bottom-menu/bottom-menu.service';
+import { BreadCrumbService } from '../../services/bread-crumb.service';
 
 @Component({
   selector: 'app-tramites-home',
@@ -19,7 +20,8 @@ export class TramitesHomeComponent implements OnInit {
     appService: AppService,
     public bottomService: BottomMenuService,
     protected servicioHeader: HeaderService,
-    protected servicioSideNav: SidenavService
+    protected servicioSideNav: SidenavService,
+    private breadCrumbService: BreadCrumbService
   ) {
     this.anteriorUrl = appService.currentUrl
   }
@@ -39,6 +41,7 @@ export class TramitesHomeComponent implements OnInit {
     this.bottomService.seleccionandoItem(1);
     this.bottomService.ajustandoPantalla(false);
     this.servicioSideNav.seleccionandoItem(false,'null');
+    this.breadCrumbService.setTittle('')
   }
 
   backUrl() {

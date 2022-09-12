@@ -1,4 +1,7 @@
-<div id="fichaContainer" class="container">
+<div class="container container-bread-crumb">
+  <app-bread-crumb class="bread-crumb-main"></app-bread-crumb>
+</div> 
+<div id="fichaContainer" class="container"> 
     <div class="row">
       <div class="col-lg-8 col-sm-12" (keyup)="salir($event)" tabindex="0"
         [attr.aria-label]="'A continuación encontrará sección de la información resumen del trámite' + nombreTramite + '.Si en algún momento desea salir de la sección presione la tecla escape.'">
