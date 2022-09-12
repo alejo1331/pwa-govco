@@ -4,6 +4,7 @@ import { BotonComponent } from './components/boton/boton.component';
 import { EtiquetaComponent } from './components/etiqueta/etiqueta.component';
 import { TarjetaInformativaComponent } from './components/tarjeta-informativa/tarjeta-informativa.component';
 import { CarruselDosComponent } from './components/carrusel-dos/carrusel-dos.component';
+import { CarruselUnoComponent } from './components/carrusel-uno/carrusel-uno.component';
 
 
 @NgModule({
@@ -11,6 +12,7 @@ import { CarruselDosComponent } from './components/carrusel-dos/carrusel-dos.com
     BotonComponent,
     EtiquetaComponent,
     TarjetaInformativaComponent,
+    CarruselUnoComponent
     CarruselDosComponent
   ],
   imports: [
@@ -20,6 +22,7 @@ import { CarruselDosComponent } from './components/carrusel-dos/carrusel-dos.com
     BotonComponent,
     EtiquetaComponent,
     TarjetaInformativaComponent,
+    CarruselUnoComponent
     CarruselDosComponent
   ],
 })
