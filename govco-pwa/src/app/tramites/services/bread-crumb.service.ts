@@ -8,10 +8,10 @@ export class BreadCrumbService {
 
   tittle: string;
   tittleCiiu: string;
-  tittleChange: BehaviorSubject<string> = new BehaviorSubject<string>('');
-  titleObserver = this.tittleChange.asObservable();
-  tittleChangeCiiu: BehaviorSubject<string> = new BehaviorSubject<string>('');
-  titleObserverCiiu = this.tittleChangeCiiu.asObservable();
+  private tittleChange: BehaviorSubject<string> = new BehaviorSubject<string>('');
+  public titleObserver = this.tittleChange.asObservable();
+  private tittleChangeCiiu: BehaviorSubject<string> = new BehaviorSubject<string>('');
+  public titleObserverCiiu = this.tittleChangeCiiu.asObservable();
 
 constructor() { }
 
@@ -21,12 +21,14 @@ getTittle(): Observable<string> {
 getTittleCiiu(): Observable<string> {
   return this.tittleChangeCiiu.asObservable();
 }
-setTittle(title: string) {
-  this.tittleChange.next(title);
+async setTittle(title: string) {
+  await this.tittleChange.next(title);
+  console.log("Service setTittle",title)
 }
 
-setTittleCiiu(tittleCiiu: string) {
-  this.tittleChangeCiiu.next(tittleCiiu);
+async setTittleCiiu(tittleCiiu: string) {
+  await this.tittleChangeCiiu.next(tittleCiiu);
+  console.log("Service setTittle",tittleCiiu)
 }
 
 

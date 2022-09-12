@@ -159,3 +159,10 @@
 	padding-left: 15px;
 	padding-right: 15px;
 }
+
+.bread-crumb-main{
+    display: inline-block;
+    @media  screen and (max-width: 768px) {
+        margin-top: 14px;
+    }
+}

@@ -32,7 +32,6 @@ export class FichaNoSuiteComponent implements OnInit, OnChanges {
     private utilsService: UtilsService, ) {
   }
   ngOnInit (): void {
-    console.log(this.informacionFicha.id)
   }
 
   ngOnChanges() {

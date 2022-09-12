@@ -5,6 +5,10 @@
     padding: 0px;
     .breadcrumb-item {
       padding-left: 0;
+      .image-icon{
+        display: inline-flex;
+        align-items: center;
+      }
       a{
         text-align: left;
         text-decoration: underline;

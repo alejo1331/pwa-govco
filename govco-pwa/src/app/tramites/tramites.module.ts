@@ -6,7 +6,7 @@ import { TramitesRoutingModule } from './tramites-routing.module';
 import { AvisoDeConstruccionModule } from '../aviso-de-construccion/aviso-de-construccion.module';
 import { CodigosCiiuYTramitesComponent } from './components/codigos-ciiu-y-tramites/codigos-ciiu-y-tramites.component';
 import { BusquedaCodigosCiiuComponent } from './components/codigos-ciiu-y-tramites/busqueda-codigos-ciiu/busqueda-codigos-ciiu.component';
-import {LoadingService} from './services/loading.service'
+import { LoadingService } from './services/loading.service'
 import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgSelectModule } from 'ng-custom-select';
@@ -56,6 +56,8 @@ import { AccionExcepcionComponent } from './components/ficha-tramite/detalle/acc
 import { SeguimientoSolicitudComponent } from './components/ficha-tramite/detalle/seguimiento-solicitud/seguimiento-solicitud.component';
 import { NoSuitHeaderComponent } from './components/ficha-tramite/detalle/no-suit-header/no-suit-header.component';
 import { NoSuitDetalleComponent } from './components/ficha-tramite/detalle/no-suit-detalle/no-suit-detalle.component';
+import { BreadCrumbComponent } from './components/detalle-consulta-ciiu/components/bread-crumb/bread-crumb.component';
+import { WordLimitPipe } from './pipes/word-limit/word-limit.pipe';
 
 @NgModule({
   imports: [
@@ -117,8 +119,14 @@ import { NoSuitDetalleComponent } from './components/ficha-tramite/detalle/no-su
     SeguimientoSolicitudComponent,
     NoSuitHeaderComponent,
     NoSuitDetalleComponent,
+    BreadCrumbComponent,
+    WordLimitPipe
   ],
-  exports: [TramitesHomeComponent],
+  exports: [
+    TramitesHomeComponent,
+    BreadCrumbComponent,
+    WordLimitPipe
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class TramitesModule { }
