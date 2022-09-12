@@ -392,3 +392,16 @@
   background-color: transparent;
   cursor: pointer;
 }
+
+// checkbox selected
+
+.checkbox-govco input:checked+label:after {
+  content: "\e959";
+  transform: none;
+  color: #004884;
+  font-size: 20px;
+  left: 1px;
+  top: 8px;
+  border: 0;
+  position: absolute;
+}

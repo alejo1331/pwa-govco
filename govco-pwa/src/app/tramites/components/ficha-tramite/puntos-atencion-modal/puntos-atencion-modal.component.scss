@@ -3,6 +3,12 @@
   color: #004884;
 }
 
+.modal-header .close {
+  color: #0061ea;
+  font-weight: 700;
+  z-index: 10;
+}
+
 .active {
     background-color: #E6EFFD !important;
   }
@@ -97,7 +103,7 @@
           background-color: #e6effd!important;
         }
         th {
-          display: block;
+          // display: block;
           border: 0;
           padding: 0;
           i {
@@ -242,6 +248,10 @@
 
 .td-font {
   font-size: 14px !important;
+}
+
+.textofilas {
+  color: #004884 !important;
 }
 
 .govco-icon-pin {

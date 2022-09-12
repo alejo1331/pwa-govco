@@ -46,27 +46,27 @@
                                 </span>
                                 <span class="text-order txt-order">Departamento / Municipio</span>
                             </th>
-                            <th class="textofilas" *ngIf="windowWidth > 760">Dirección</th>
-                            <th class="textofilas" *ngIf="windowWidth > 760">Horario</th>
-                            <th class="textofilas" *ngIf="windowWidth > 760">Teléfono</th>
-                            <th class="textofilas" *ngIf="windowWidth > 760">Ver Mapa</th>
+                            <th class="textofilas" *ngIf="windowWidth > 650">Dirección</th>
+                            <th class="textofilas" *ngIf="windowWidth > 650">Horario</th>
+                            <th class="textofilas" *ngIf="windowWidth > 650">Teléfono</th>
+                            <th class="textofilas" *ngIf="windowWidth > 650">Ver Mapa</th>
                         </thead>
                     </ng-container>
                     <tbody>
                         <!--  |orderBy: order:reverseDepartamento:true |orderBy: order:reversePunto:true |filter:serchText | paginate: { itemsPerPage: 5, currentPage: p} -->
                         <ng-container *ngIf="puntosAtencion">
                             <tr *ngFor="let punto of puntosAtencion | filter:serchText | paginate: { itemsPerPage: 2, currentPage: p}">
-                                <td *ngIf="windowWidth > 760" class="td-font">{{ punto.PuntoAtencionNombre }}</td>
-                                <td *ngIf="windowWidth > 760" class="td-font">{{ punto.Departamento }} / {{ punto.Municipio }}</td>
-                                <td *ngIf="windowWidth > 760" class="td-font">{{ punto.PuntoAtencionDireccion}}</td>
-                                <td *ngIf="windowWidth > 760" class="td-font">{{ punto.HorarioAtencion }}</td> 
-                                <td *ngIf="windowWidth > 760" class="td-font">{{ punto.PuntoAtencionTelefono }}</td>
-                                <td *ngIf="windowWidth > 760" class="td-font">
+                                <td *ngIf="windowWidth > 650" class="td-font">{{ punto.PuntoAtencionNombre }}</td>
+                                <td *ngIf="windowWidth > 650" class="td-font">{{ punto.Departamento }} / {{ punto.Municipio }}</td>
+                                <td *ngIf="windowWidth > 650" class="td-font">{{ punto.PuntoAtencionDireccion}}</td>
+                                <td *ngIf="windowWidth > 650" class="td-font">{{ punto.HorarioAtencion }}</td> 
+                                <td *ngIf="windowWidth > 650" class="td-font">{{ punto.PuntoAtencionTelefono }}</td>
+                                <td *ngIf="windowWidth > 650" class="td-font">
                                     <a (click)="printCoordenadas(punto.Latitud.replace(',','.'), punto.Longitud.replace(',','.'), punto.PuntoAtencionDireccion)">
                                         <img src="/assets/icon-fichatramite/icon-pin.png" alt="ver mapa" width="18" height="16">
                                     </a>
                                 </td>
-                                <td colspan="2" *ngIf="windowWidth <= 760" class="td-font">
+                                <td colspan="2" *ngIf="windowWidth <= 650" class="td-font">
                                     <p>
                                         <b class="td-label">PUNTO:</b> {{ punto.PuntoAtencionNombre }}<br>
                                         <b  class="td-label">DEPARTAMENTO / MUNICIPIO:</b> {{ punto.Departamento }}<br>

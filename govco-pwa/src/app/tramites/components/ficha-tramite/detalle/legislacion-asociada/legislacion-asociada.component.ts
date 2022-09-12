@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 import { FichaTramiteService } from 'src/app/tramites/services/ficha-tramite.service';
 
 @Component({
@@ -7,6 +8,12 @@ import { FichaTramiteService } from 'src/app/tramites/services/ficha-tramite.ser
   styleUrls: ['./legislacion-asociada.component.scss']
 })
 export class LegislacionAsociadaComponent implements OnInit {
+
+  constructor(
+    private fichaTramiteService: FichaTramiteService,
+    private fb: FormBuilder
+  ) { }
+
   @Input() data: any;
   urlTramite: string;
   @Input() normatividad: string;
@@ -14,48 +21,45 @@ export class LegislacionAsociadaComponent implements OnInit {
   IdTramite: any;
   p = 1;
   serchText: any;
-  normatividad1: any[];
+  normatividad1: any[] = [];
   download: any[];
   showUp = false;
   toggleBool=true;
   value: any;
   selectedItemsList: any[] = [];
   checkedIDs = [];
-  checkbox: any;
-
-  constructor(
-    private fichaTramiteService: FichaTramiteService,
-  ) { }
 
   ngOnInit(): void {
-    this.checkbox = this.getNormatividadById();
+    this.getNormatividadById();
   }
 
   getNormatividadById() {
     this.fichaTramiteService
       .GetNormatividadById(this.data.IdTramite)
-      .subscribe((n: any) => {
-        this.normatividad1 = n;
+      .subscribe((norm: any) => {
+        this.normatividad1 = norm.map((n: any) => {
+          return { ...n, checked: false }
+        });
       }, error => console.log(error));
   }
 
-  changeEvent(option: any, event: any) {
-    if (event.target.checked) {
-        this.toggleBool= false;
-        this.selectedItemsList.push(option.UrlDescarga);
+  changeEvent(event: any, index: number, p: number) {
+    this.normatividad1[2*(p-1) + index].checked = event.target.checked
+  }
+
+  get someSelected() {
+    for (const i of this.normatividad1) {
+      if (i.checked) return true
     }
-    else {
-        this.toggleBool= true;
-        for(var i=0 ; i < this.normatividad1.length; i++) {
-          if(this.selectedItemsList[i] == option.UrlDescarga) {
-            this.selectedItemsList.splice(i,1);
-         }
-       }
-    }
+    return false
   }
 
   allDownload(){
-    this.selectedItemsList.forEach(e =>  self.open(e),"_self")
+    this.normatividad1.forEach((e: any) => {
+      if (e.checked) { // por ajustar
+        self.open(e.UrlDescarga || e.UrlNorma, "_self")
+      }
+    })
   }
 
 }
