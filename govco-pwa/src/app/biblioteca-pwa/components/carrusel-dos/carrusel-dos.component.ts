@@ -10,8 +10,8 @@ export class CarruselDosComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    $('.multi-item-carousel .carousel-item').each(function(){
-      var next = $(this).next();
+    $('#carruselDosTemasInteres .carousel-item').each(function(){
+      let next = $(this).next();
       if (!next.length) {
         next = $(this).siblings(':first');
       }
