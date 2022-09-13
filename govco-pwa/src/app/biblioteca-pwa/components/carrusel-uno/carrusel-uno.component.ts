@@ -35,7 +35,7 @@ export class CarruselUnoComponent implements OnInit {
   ngOnInit(): void {
     this.carruselServe.getTramitesMasConsultadosAsync().subscribe((info: CarruselUnoInterface) => {
       this.tramites = info.data;
-      // this.construirCarrucel();
+      this.construirCarrucel();
     })
   }
 

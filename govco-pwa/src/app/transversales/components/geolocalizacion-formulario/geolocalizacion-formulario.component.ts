@@ -70,16 +70,6 @@ export class GeolocalizacionFormularioComponent implements OnInit {
       municipios: ["null"]
     }];
 
-    //inicio - contruccion modal natico clasico
-    this.modalClasico = {
-      campoTitulo: "Ingresa tu ubicación",
-      campoTexto: "Podrás encontrar trámites, servicios e información según tu ubicación",
-      botonCancelar: "CANCELAR",
-      botonAceptar: "INGRESAR"
-    };
-    this.modalService.clasico(this.modalClasico);
-    //fin - contruccion modal natico clasico
-
     this.getDepartamentos();
 
     this.ServicioGeolocalizacion.coordenadas.subscribe(msg => this.datosUbicacion = msg);
@@ -195,6 +185,15 @@ export class GeolocalizacionFormularioComponent implements OnInit {
     }
 
     if (modalVisto != 'true') {
+      //inicio - contruccion modal natico clasico
+      this.modalClasico = {
+        campoTitulo: "Ingresa tu ubicación",
+        campoTexto: "Podrás encontrar trámites, servicios e información según tu ubicación",
+        botonCancelar: "CANCELAR",
+        botonAceptar: "INGRESAR"
+      };
+      this.modalService.clasico(this.modalClasico);
+      //fin - contruccion modal natico clasico
       setTimeout(() => {
         let IngresarUbicacion = this.dialog.open(ModalClasicoComponent, {
           width: '280px'
@@ -208,7 +207,7 @@ export class GeolocalizacionFormularioComponent implements OnInit {
           }
         });
       }, 1000);
-    }else{
+    } else {
       this.modalService.activarSiguienteModal(true);
     }
   }

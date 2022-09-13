@@ -23,12 +23,10 @@ getTittleCiiu(): Observable<string> {
 }
 async setTittle(title: string) {
   await this.tittleChange.next(title);
-  console.log("Service setTittle",title)
 }
 
 async setTittleCiiu(tittleCiiu: string) {
   await this.tittleChangeCiiu.next(tittleCiiu);
-  console.log("Service setTittle",tittleCiiu)
 }
 
 

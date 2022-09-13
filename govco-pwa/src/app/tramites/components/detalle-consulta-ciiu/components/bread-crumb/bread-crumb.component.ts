@@ -25,14 +25,11 @@ export class BreadCrumbComponent implements OnInit {
   tittleChange() {
     this.breadCrumbService.titleObserver.subscribe((tittle)=> {
         this.title = tittle;
-      
-        console.log('TS tittle ' + tittle);
     } );
   }
   tittleChangeCiiu() {
     this.breadCrumbService.titleObserverCiiu.subscribe((tittleCiiu)=> {
         this.titleCiiu = tittleCiiu;
-        console.log("TS tittleCiiu",tittleCiiu)
     } );
   }
 

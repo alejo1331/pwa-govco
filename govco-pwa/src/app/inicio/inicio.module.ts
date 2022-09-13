@@ -7,7 +7,6 @@ import { MenuContextualComponent } from './components/menu-contextual/menu-conte
 import { BannerPrincipalComponent } from './components/banner-principal/banner-principal.component';
 import { ContactosDeEmergenciaComponent } from './components/contactos-de-emergencia/contactos-de-emergencia.component';
 import { CarpetaCiudadanaComponent } from './components/carpeta-ciudadana/carpeta-ciudadana.component';
-import { BibliotecaPwaModule } from '../biblioteca-pwa/biblioteca-pwa.module';
 
 
 @NgModule({
@@ -15,7 +14,6 @@ import { BibliotecaPwaModule } from '../biblioteca-pwa/biblioteca-pwa.module';
     CommonModule,
     AvisoDeConstruccionModule,
     InicioRoutingModule,
-    BibliotecaPwaModule
   ],
   declarations: [
     HomeComponent, 
