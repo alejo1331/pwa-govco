@@ -26,7 +26,8 @@
                         <thead *ngIf="i == 0" >
                             <th [class.active]="order == 'PuntoAtencionNombre'"
                             (click)="setOrder('PuntoAtencionNombre')"
-                            class="textofilas order-puntos">
+                            class="textofilas order-puntos"
+                            [ngClass]="{'display-th': windowWidth <= 650}">
                                 <span [hidden]="reversePunto" class="icon-order-punto">
                                     <i class="material-icons">arrow_downward</i>
                                 </span>
@@ -37,7 +38,8 @@
                             </th>
                             <th [class.active]="order == 'Departamento'"
                             (click)="setOrder('Departamento')" 
-                            class="textofilas order-puntos">
+                            class="textofilas order-puntos"
+                            [ngClass]="{'display-th': windowWidth <= 650}">
                                 <span [hidden]="reverseDepartamento" class="icon-order">
                                     <i class="material-icons">arrow_downward</i>
                                 </span>
