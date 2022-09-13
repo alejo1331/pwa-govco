@@ -33,13 +33,13 @@ export class LegislacionAsociadaComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.platform.isBrowser) {
-      this.checkBoxClass = 'android-browser';
+      this.checkBoxClass = 'browser';
     } 
     else if (this.platform.IOS) {
       this.checkBoxClass = 'ios';
     }
     else if (this.platform.ANDROID) {
-      this.checkBoxClass = 'android-browser';
+      this.checkBoxClass = 'android';
     }
     this.getNormatividadById();
     

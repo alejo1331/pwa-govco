@@ -406,10 +406,15 @@
 
 .ios input:checked+label:after {
   left: 1px;
+  top: 6px !important;
+}
+
+.android input:checked+label:after {
+  left: 1px;
   top: 0px !important;
 }
 
-.android-browser input:checked+label:after {
+.browser input:checked+label:after {
   left: 1px;
   top: 8px !important;
 }
