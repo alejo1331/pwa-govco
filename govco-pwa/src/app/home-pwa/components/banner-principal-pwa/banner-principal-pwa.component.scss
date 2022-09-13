@@ -1,12 +1,12 @@
 .container-banner-principal{
     background-color: #1D4BA9;
-    padding: 50px 15px 90px 15px;
+    padding: 60px 16px 92px 16px;
     .container-title{
-        padding-bottom: 20px;
+        padding-bottom: 24px;
         h1{
-            font-size: 50px;
+            font-size: 48px;
             font-family: 'Montserrat-SemiBold';
-            font-weight: 600;
+            line-height: 60px;
             color: #fff;
         }
     }
@@ -16,7 +16,8 @@
         margin-bottom: 0;
     }
     .texto-principal{
-        font-size: 1.2rem;
+        font-size: 1rem;
+        line-height: 24px;
         margin-bottom: 20px;
         
     }
@@ -28,10 +29,11 @@
         background-color: #fff;
     }
     .container-textos{
-        margin-top: 20px;
-        margin-bottom: 20px;
+        margin-top: 24px;
+        margin-bottom: 24px;
         .texto-secundario{
-            font-size: 1rem; 
+            font-size: 14px;
+            line-height: 20px; 
         }
     }
 }
