@@ -402,6 +402,8 @@
   font-size: 20px;
   border: 0;
   position: absolute;
+  left: 1;
+  top: 8px;
 }
 
 .ios input:checked+label:after {
@@ -412,9 +414,4 @@
 .android input:checked+label:after {
   left: 1px;
   top: 0px !important;
-}
-
-.browser input:checked+label:after {
-  left: 1px;
-  top: 8px !important;
 }

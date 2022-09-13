@@ -32,10 +32,8 @@ export class LegislacionAsociadaComponent implements OnInit {
   checkBoxClass: string = ''
 
   ngOnInit(): void {
-    if (this.platform.isBrowser) {
-      this.checkBoxClass = 'browser';
-    } 
-    else if (this.platform.IOS) {
+    
+    if (this.platform.IOS) {
       this.checkBoxClass = 'ios';
     }
     else if (this.platform.ANDROID) {
