@@ -1,0 +1,67 @@
+::ng-deep .container-btn-puntos {
+    text-align: center;
+    margin: 0px 0px 1rem;
+    display: block;
+}
+
+::ng-deep  #btn-puntos {
+    width: 100%;
+}
+
+::ng-deep  .img-btn-tramite-linea {
+    margin-bottom: 5%;
+
+}
+
+::ng-deep  .ie-margin-left {
+    margin-left: 15px !important;
+}
+
+::ng-deep .all {
+    #btn-puntos {
+        color: #ddfb00 !important;
+        border-color: #ddfb00 !important;
+        background-color: #000000 !important;
+    }
+}
+
+::ng-deep .btn-puntos-atencion {
+    background-color: #fff;
+}
+
+::ng-deep .btn-accion {
+    // height: 42px;
+    background: #3366CC 0% 0% no-repeat padding-box;
+    margin-top: 20px;
+    border-radius: 25px;
+    text-align: center;
+    font: normal 16px/9px Work Sans;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    opacity: 1;
+}
+
+::ng-deep .btn-accion:hover {
+    background: #004884 0% 0% no-repeat padding-box;
+    // border: 2px solid #004884;
+}
+
+::ng-deep .icono-accion {
+    filter: invert(83%) sepia(93%) saturate(1018%) hue-rotate(184deg) brightness(126%) contrast(95%);
+    width: 24px;
+}
+
+::ng-deep .content-tramite-linea .btn {
+    height: 50px;
+    align-items: center;
+    display: flex;
+    font-weight: 600;
+    justify-content: center;
+}
+
+
+@media (max-width:768px) {
+    ::ng-deep .btn-accion {
+        width: 100%;
+    }
+}

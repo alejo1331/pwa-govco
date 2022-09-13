@@ -1,0 +1,157 @@
+.tarjetas-link {
+  display: block;
+}
+
+::ng-deep .contenedor-pwa {
+  padding: 0 11.5px;
+}
+
+::ng-deep .titulo-tramites {
+  h2 {
+    color: #004884;
+    font: normal normal 600 1.5rem/3.25rem Montserrat !important;
+
+  }
+}
+
+::ng-deep .tarjeta-pwa {
+  margin-top: 10px;
+  width: auto;
+  height: 100px;
+  align-items: center;
+  display: flex;
+  border: 2px solid #E6EFFD;
+  background: #fff;
+  border-radius: 4px;
+  padding: 14px;
+
+  img {
+    width: 48px;
+    height: 48px;
+  }
+
+  span {
+    font-family: "Work Sans", sans-serif;
+    font-size: 0.875rem;
+    color: #004884;
+    font-weight: 500;
+    text-decoration: underline !important;
+    margin-left: 16px;
+  }
+}
+
+::ng-deep .tarjeta-vacia {
+  margin-top: 10px;
+  width: auto;
+  height: 100px;
+  align-items: center;
+  display: flex;
+  border-radius: 5px;
+  padding: 8px;
+}
+
+::ng-deep .carousel-control-prev:hover {
+  color: rgb(10, 10, 10) !important;
+  // text-decoration: none !important;
+  outline: 0 !important;
+  opacity: .9 !important;
+}
+
+.arrow-left-pwa {
+  position: relative;
+  left: 0px;
+}
+
+.arrow-rigth-pwa {
+  position: relative;
+  left: 0px;
+}
+
+::ng-deep .carousel-inner {
+  padding-bottom: 5px;
+}
+
+::ng-deep #tarjetaPwa0 {
+  transition: -webkit-transform .6s ease-in-out;
+  transition: transform .6s ease-in-out;
+  transition: transform .6s ease-in-out, -webkit-transform .6s ease-in-out;
+}
+
+::ng-deep #tarjetaPwa1 {
+  transition: -webkit-transform .8s ease-in-out;
+    transition: transform .8s ease-in-out;
+    transition: transform .8s ease-in-out,-webkit-transform .8s ease-in-out;
+}
+
+::ng-deep #tarjetaPwa3 {
+  transition: -webkit-transform 1s ease-in-out;
+    transition: transform 1s ease-in-out;
+    transition: transform 1s ease-in-out,-webkit-transform 1s ease-in-out;
+}
+
+::ng-deep .carousel-item {
+  margin-right: 10px;
+
+  // position: relative;
+  // display: none;
+  // float: left;
+  // width: 100%;
+  // margin-right: -100%;
+  // -webkit-backface-visibility: hidden;
+  // backface-visibility: hidden;
+  // transition: -webkit-transform .6s ease-in-out;
+  // transition: transform .6s ease-in-out;
+  // transition: transform .6s ease-in-out,-webkit-transform .6s ease-in-out;
+}
+
+// ::ng-deep .carousel-item.active {
+//   // display: block !important;
+//   // background-color: #00498400 !important;
+// }
+
+.arrow-carousel i {
+  color: #000;
+}
+
+.controles-accesibles {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: auto;
+}
+
+.controles-accesibles:has(.screen-reader-text:focus) {
+  height: 60px;
+}
+
+.descripcion-carrusel {
+
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 0;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  width: 0;
+  word-wrap: normal !important;
+}
+
+.descripcion-carrusel:focus {
+  display: flex !important;
+  align-items: center;
+  background-color: #f1f1f1;
+  border-radius: 3px;
+  box-shadow: 0 0 2px 2px rgb(0 0 0 / 60%);
+  clip: auto !important;
+  -webkit-clip-path: none;
+  clip-path: none;
+  color: #21759b;
+  font-size: .875rem;
+  font-weight: 700;
+  height: auto;
+  padding: 5px;
+  text-decoration: none;
+  width: auto;
+}

@@ -18,7 +18,7 @@ export class FichaNoSuiteComponent implements OnInit, OnChanges {
   @Input('tipoFicha') tipoFicha: string;
   @Input() informacionFicha: any;
   dataBase: any;
-  consideraciones = [] as any;
+  consideracionesA: any = [] ;
   puntosAtencion = [] as any;
   documentacion: DocumentacionRequerida[] = [];
   numeroId: any;
@@ -32,9 +32,6 @@ export class FichaNoSuiteComponent implements OnInit, OnChanges {
     private utilsService: UtilsService, ) {
   }
   ngOnInit (): void {
-  }
-
-  ngOnChanges() {
     if (this.tipoFicha == '603' &&  this.tipoFicha != undefined) {
       this.route.paramMap.subscribe(params => {
         this.numeroId = this.route.snapshot.params.id.substr(1,20);
@@ -43,7 +40,9 @@ export class FichaNoSuiteComponent implements OnInit, OnChanges {
           this.breadCrumbService.setTittle( this.dataBase.Nombre );
         });
         this.fichaTramiteService.GetConsideracionesAdicionalesById(this.route.snapshot.params.id).subscribe(data =>{
-          this.consideraciones = data;
+          if(data['StatusCode'] != 604){
+            this.consideracionesA = data;
+          }
         });
         this.fichaTramiteService.GetPuntosAtencionNoSuitById(this.route.snapshot.params.id).subscribe(data =>{
          this.getDatosPuntosAtencion(data);
@@ -54,6 +53,10 @@ export class FichaNoSuiteComponent implements OnInit, OnChanges {
       });
 
     }
+  }
+
+  ngOnChanges() {
+    
   }
   async getDatosPuntosAtencion(data:any) {
     for (const item of data) {

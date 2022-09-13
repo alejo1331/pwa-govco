@@ -1,0 +1,19 @@
+<div class="mt-5 mb-5 ">
+    <div class="d-flex align-items-center justify-content-between">
+        <a class="arrow-carousel arrow-left-pwa" tabIndex={-1}
+            href="{{'#carruselUno'+id_}}" role="button" data-slide="prev">
+            <i class="fa fa-chevron-left fa-lg"></i>
+            <span class="sr-only">Mostrar anteriores</span>
+        </a>
+        <div id="{{'carruselUno'+id_}}" class="carousel slide w-100" data-interval="false">
+            <div class="carousel-inner">
+                <div id="{{idTarjetas}}"></div>
+            </div>
+        </div>
+        <a class="arrow-carousel arrow-rigth-pwa" tabIndex={-1} (click)= "clic()"
+            href="{{'#carruselUno'+id_}}" role="button" data-slide="next">
+            <i class="fa fa-chevron-right fa-lg"></i>
+            <span class="sr-only">Mostrar siguientes</span>
+        </a>
+    </div>
+</div>
