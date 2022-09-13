@@ -1,3 +1,4 @@
+import { Platform } from '@angular/cdk/platform';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { FichaTramiteService } from 'src/app/tramites/services/ficha-tramite.service';
@@ -11,7 +12,7 @@ export class LegislacionAsociadaComponent implements OnInit {
 
   constructor(
     private fichaTramiteService: FichaTramiteService,
-    private fb: FormBuilder
+    public platform: Platform
   ) { }
 
   @Input() data: any;
@@ -28,9 +29,18 @@ export class LegislacionAsociadaComponent implements OnInit {
   value: any;
   selectedItemsList: any[] = [];
   checkedIDs = [];
+  checkBoxClass: string = ''
 
   ngOnInit(): void {
+    
+    if (this.platform.IOS) {
+      this.checkBoxClass = 'ios';
+    }
+    else if (this.platform.ANDROID) {
+      this.checkBoxClass = 'android';
+    }
     this.getNormatividadById();
+    
   }
 
   getNormatividadById() {
@@ -70,5 +80,7 @@ export class LegislacionAsociadaComponent implements OnInit {
       }
     })
   }
+
+
 
 }
