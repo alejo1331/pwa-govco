@@ -35,3 +35,11 @@
       align-items: center;
     }
   }
+
+  ::ng-deep .govco-icon-check-cn::before {
+    content: '\e961';
+  }
+
+  ::ng-deep .govco-icon-x-cn::before {
+    content: '\e908';
+  }
