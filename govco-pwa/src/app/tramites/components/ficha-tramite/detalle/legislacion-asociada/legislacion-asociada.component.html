@@ -58,7 +58,10 @@
                     </a>
                   </td>
                   <td class="checkbox">
-                    <div class="checkbox-govco">
+                    <div class="checkbox-govco" [ngClass]="{
+                      'ios': checkBoxClass == 'ios',
+                      'android-browser': checkBoxClass == 'android-browser'
+                    }">
                       <input 
                       type="checkbox" 
                       id="normas-checkbox-{{i}}-{{p}}" 
