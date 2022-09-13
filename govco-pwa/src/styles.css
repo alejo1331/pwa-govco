@@ -1,6 +1,8 @@
 /* ESTILOS GLOBALES DE USO DEL ESPACIO */
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&family=Work+Sans:wght@400;500;600&display=swap');
+/* @import "../node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.carousel.min.css";
+@import "../node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.theme.default.min.css"; */
 
 /* Montserrat-Regular */
 @font-face {
@@ -378,4 +380,50 @@ select-search-1 a,
     max-width: 100vmin !important;
   }
 }
+
+.owl-theme .owl-nav {
+  position: absolute !important;
+  top: 42% !important;
+  width: 100% !important;
+}
+
+.owl-theme .owl-nav .owl-prev {
+  content: '<';
+  font-size: 60px;
+  position: absolute;
+  left: 0;
+}
+
+.owl-theme .owl-nav .owl-next {
+  content: '>';
+  font-size: 60px;
+  position: absolute;
+  right: 0;
+  background: none;
+  color: red;
+}
+
+.owl-theme .owl-nav .owl-next.disabled,
+.owl-theme .owl-nav .owl-prev.disabled {
+  background: none;
+}
+
+.owl-dots {
+  padding-top: 15px;
+}
+
+.owl-dots .owl-dot span {
+  width: 15px !important;
+  height: 15px !important;
+  border: 1px solid #BABABA !important;
+}
+
+.owl-dots .owl-dot.active {
+  background-color: transparent !important;
+}
+
+.owl-dots .owl-dot.active span {
+  background-color: #4B4B4B !important;
+}
+
 
