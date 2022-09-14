@@ -1,1 +1,28 @@
-<p>carrusel-dos works!</p>
+<div class="container-carrusel">
+  <div id="carruselDosTemasInteres" class="carousel slide multi-item-carousel" data-ride="carousel" data-interval="false">
+    <ol class="carousel-indicators">
+      <li data-target="#carruselDosTemasInteres" [attr.data-slide-to]="i" [class.active]="i==0" *ngFor="let item of carruselItems; let i = index"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item" [class.active]="i==0" *ngFor="let item of carruselItems; let i = index">
+        <div class="container-tarjeta">
+          <a [href]="item.urlDestino">
+            <div class="container-img">
+              <img [src]="item.urlImagen" [alt]="item.titulo">
+            </div>
+            <span></span>
+            <div class="container-text">
+              <h2>{{item.titulo}}</h2>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-target="#carruselDosTemasInteres" data-slide="prev">
+    <span class="sr-only">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-target="#carruselDosTemasInteres" data-slide="next">
+    <span class="sr-only">Next</span>
+  </button>
+</div>

@@ -18,7 +18,7 @@ export class SeccionActualidadComponent implements OnInit {
   constructor(private homeService: HomeService) { }
 
   ngOnInit(): void {
-    this.homeService.getNoticias().subscribe(
+    this.homeService.obtenerNoticias().subscribe(
       (data: ObtenerBannerNoticiaRespuesta) => {
         if (data.succeeded) {
           this.titulo = data.data.banner.titulo;

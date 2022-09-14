@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ObtenerBannerNoticiaRespuesta } from '../models/NoticiasModel';
+import { ObtenerTemasInteresRespuesta } from '../models/TemasInteresModel';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -10,10 +11,14 @@ import { environment } from 'src/environments/environment';
 export class HomeService {
 
   constructor(private http: HttpClient) { }
-
   
-  getNoticias(): Observable<ObtenerBannerNoticiaRespuesta> {
+  obtenerNoticias(): Observable<ObtenerBannerNoticiaRespuesta> {
     const noticias = environment.serverUrlNoticia + 'Administracion/ObtenerBannerNoticia?codigo=&codigoCategoria=';
     return this.http.get<ObtenerBannerNoticiaRespuesta>(noticias);
+  }
+
+  obtenerTemasInteres(): Observable<ObtenerTemasInteresRespuesta> {
+    const temasInteres = environment.serverUrlHome + '/TemasDeInteres';
+    return this.http.get<ObtenerTemasInteresRespuesta>(temasInteres);
   }
 }
