@@ -1,5 +1,7 @@
 <div class="container-temas-interes">
     <h2>{{titulo}}</h2>
     
-    <app-carrusel-dos [carruselItems]="dataTemasInteres" *ngIf="dataTemasInteres.length"></app-carrusel-dos>
+    <div *ngIf="dataTemasInteres.length">
+        <app-carrusel-dos [carruselItems]="dataTemasInteres"></app-carrusel-dos>
+    </div>
 </div>

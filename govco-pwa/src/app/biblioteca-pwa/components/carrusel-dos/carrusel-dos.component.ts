@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CarruselItem } from '../../models/CarruselDosModel';
 
 @Component({
@@ -6,18 +6,14 @@ import { CarruselItem } from '../../models/CarruselDosModel';
   templateUrl: './carrusel-dos.component.html',
   styleUrls: ['./carrusel-dos.component.scss']
 })
-export class CarruselDosComponent implements OnInit {
+export class CarruselDosComponent {
 
   @Input() carruselItems: CarruselItem[];
 
   constructor() { }
 
-  ngOnInit(): void {
-    
-  }
-
   ngAfterViewInit():void {
-    $('#carruselDosTemasInteres .carousel-item').each(function(){
+    $('#carruselDosTemasInteres .carousel-item').each(function() {
       let next = $(this).next();
       if (!next.length) {
         next = $(this).siblings(':first');
@@ -31,5 +27,6 @@ export class CarruselDosComponent implements OnInit {
       }
     });
 
+    $('.carousel-indicators li[data-target="#carruselDosTemasInteres"].active').trigger('click')
   }
 }
