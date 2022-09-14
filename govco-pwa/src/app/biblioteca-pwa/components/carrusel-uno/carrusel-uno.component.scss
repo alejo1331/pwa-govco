@@ -15,9 +15,8 @@
 }
 
 ::ng-deep .tarjeta-pwa {
-  margin-top: 10px;
   width: auto;
-  height: 100px;
+  height: 6rem;
   align-items: center;
   display: flex;
   border: 2px solid #E6EFFD;
@@ -59,34 +58,52 @@
 
 .arrow-left-pwa {
   position: relative;
-  left: 0px;
+  left: 17px;
 }
 
 .arrow-rigth-pwa {
   position: relative;
-  left: 0px;
+  left: -17px;
+}
+
+.contenedor-flechas {
+  transform: translate(0px, -11.5rem);
 }
 
 ::ng-deep .carousel-inner {
   padding-bottom: 5px;
 }
 
+::ng-deep #tarjetas-carrusel-pwa{
+  display: flex;
+  flex-direction: column;
+}
+
 ::ng-deep #tarjetaPwa0 {
+  // margin-top: 16px;
   transition: -webkit-transform .6s ease-in-out;
   transition: transform .6s ease-in-out;
   transition: transform .6s ease-in-out, -webkit-transform .6s ease-in-out;
 }
 
 ::ng-deep #tarjetaPwa1 {
+  // margin-top: 16px;
   transition: -webkit-transform .8s ease-in-out;
     transition: transform .8s ease-in-out;
     transition: transform .8s ease-in-out,-webkit-transform .8s ease-in-out;
 }
 
-::ng-deep #tarjetaPwa3 {
+::ng-deep #tarjetaPwa2 {
+  // margin-top: 16px;
   transition: -webkit-transform 1s ease-in-out;
     transition: transform 1s ease-in-out;
     transition: transform 1s ease-in-out,-webkit-transform 1s ease-in-out;
+}
+
+::ng-deep #tarjetaPwa0, ::ng-deep #tarjetaPwa1, ::ng-deep #tarjetaPwa2 {
+  margin-top: 16px;
+  width: 17.5rem;
+  margin: 16px auto auto;
 }
 
 ::ng-deep .carousel-item {
@@ -107,6 +124,10 @@
 // ::ng-deep .carousel-item.active {
 //   // display: block !important;
 //   // background-color: #00498400 !important;
+// }
+
+// #carruselUnopwa {
+//   width: 17.5rem !important
 // }
 
 .arrow-carousel i {
