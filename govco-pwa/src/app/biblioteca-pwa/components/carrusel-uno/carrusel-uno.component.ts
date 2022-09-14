@@ -107,17 +107,17 @@ export class CarruselUnoComponent implements OnInit, OnChanges {
     var pagina_Actual = this.paginaActual();
 
     for (var i = 0; i < totalPaginas; i++) {
-      var active;
-      if (pagina_Actual == 0) {
-        active = i > 0 ? "carousel-item" : "carousel-item active";
-      } else {
-        active = i == pagina_Actual ? "carousel-item active" : "carousel-item";
-      }
 
       html += '<div id="' + this.idPagina + i + '" tabindex="0" aria-label="Grupo ' + (i + 1) + ' . Use tab para consultar cada elemento del grupo.">' +
         '<div class="row col-12 px-0 mx-0">';
       var n = 0;
       for (var j = (i * elementosPorPagina); j < (elementosPorPagina * indice); j++) {
+        var active;
+        if (pagina_Actual == 0) {
+          active = i > 0 ? "carousel-item" : "carousel-item active";
+        } else {
+          active = i == pagina_Actual ? "carousel-item active" : "carousel-item";
+        }
         if (this.tramites[j] != undefined) {
           var nombre = (this.tramites[j].nombre.length > 85) ? this.tramites[j].nombre.substring(0, 85) + "..." : this.tramites[j].nombre;
           var icono = this.tramites[j].iconoCategoria != "" ? this.tramites[j].iconoCategoria : "https://govco-prod-webutils.s3.amazonaws.com/uploads/2021-10-26/d8f3f555-6765-451f-8ea8-d8109692f458-CAT_DEFAULT-80px.svg";
@@ -140,6 +140,50 @@ export class CarruselUnoComponent implements OnInit, OnChanges {
     }
     document.querySelector("#" + this.idTarjetas)!.innerHTML = html;
   }
+
+  // construirCarrucel() {
+  //   var html = "";
+  //   document.querySelector("#" + this.idTarjetas)!.innerHTML = "";
+  //   var totalPaginas = this.obetenerNumeroPaginas();
+  //   var elementosPorPagina = this.obetenerElementosPorPagina();
+
+  //   var indice = 1;
+  //   var pagina_Actual = this.paginaActual();
+
+  //   for (var i = 0; i < totalPaginas; i++) {
+  //     var active;
+  //     if (pagina_Actual == 0) {
+  //       active = i > 0 ? "carousel-item" : "carousel-item active";
+  //     } else {
+  //       active = i == pagina_Actual ? "carousel-item active" : "carousel-item";
+  //     }
+
+  //     html += '<div id="' + this.idPagina + i + '" tabindex="0" aria-label="Grupo ' + (i + 1) + ' . Use tab para consultar cada elemento del grupo.">' +
+  //       '<div class="row col-12 px-0 mx-0">';
+  //     var n = 0;
+  //     for (var j = (i * elementosPorPagina); j < (elementosPorPagina * indice); j++) {
+  //       if (this.tramites[j] != undefined) {
+  //         var nombre = (this.tramites[j].nombre.length > 85) ? this.tramites[j].nombre.substring(0, 85) + "..." : this.tramites[j].nombre;
+  //         var icono = this.tramites[j].iconoCategoria != "" ? this.tramites[j].iconoCategoria : "https://govco-prod-webutils.s3.amazonaws.com/uploads/2021-10-26/d8f3f555-6765-451f-8ea8-d8109692f458-CAT_DEFAULT-80px.svg";
+  //         icono = this.codigoCategoria ? '' : `<img src="` + icono + `" alt="" />`;
+  //         html += `<div id="` + this.idOrdenTarjetas + n + `"class=" ` + active + ` col-ms-12 col-md-6 col-lg-4">
+  //               <a role="link" class="tarjetas-link" aria-label="`+ nombre + `" href="/ficha-tramites-y-servicios/T` + this.tramites[j].id + `"><div class="tarjeta-pwa">
+  //                 `+ icono + `
+  //                 <span>`+ nombre + `</span>
+  //               </div></a>
+  //             </div>`;
+  //       }
+  //       n += 1;
+  //       if (n == this.obetenerElementosPorPagina()) {
+  //         n = 0
+  //       }
+  //     }
+  //     html += '</div>' +
+  //       '</div>';
+  //     indice++;
+  //   }
+  //   document.querySelector("#" + this.idTarjetas)!.innerHTML = html;
+  // }
 
   // clic(){
   //   
