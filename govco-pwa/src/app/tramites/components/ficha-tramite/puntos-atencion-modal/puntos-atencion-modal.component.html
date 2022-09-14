@@ -57,7 +57,7 @@
                     <tbody>
                         <!--  |orderBy: order:reverseDepartamento:true |orderBy: order:reversePunto:true |filter:serchText | paginate: { itemsPerPage: 5, currentPage: p} -->
                         <ng-container *ngIf="puntosAtencion">
-                            <tr *ngFor="let punto of puntosAtencion | filter:serchText | paginate: { itemsPerPage: 2, currentPage: p}">
+                            <tr *ngFor="let punto of puntosAtencion | filter:serchText | paginate: { id: 'puntos-atencion', itemsPerPage: 2, currentPage: p}">
                                 <td *ngIf="windowWidth > 650" class="td-font">{{ punto.PuntoAtencionNombre }}</td>
                                 <td *ngIf="windowWidth > 650" class="td-font">{{ punto.Departamento }} / {{ punto.Municipio }}</td>
                                 <td *ngIf="windowWidth > 650" class="td-font">{{ punto.PuntoAtencionDireccion}}</td>
@@ -89,7 +89,13 @@
                 </table>
                 
                 <div class="paginacion">
-                    <pagination-controls (pageChange)="p = $event" previousLabel="" nextLabel="" [maxSize]="5" [autoHide]="true"></pagination-controls>
+                    <pagination-controls 
+                    id="puntos-atencion"
+                    (pageChange)="p = $event" 
+                    previousLabel="" 
+                    nextLabel="" 
+                    [maxSize]="5" 
+                    [autoHide]="true"></pagination-controls>
                 </div>
             </div>
         </div>
