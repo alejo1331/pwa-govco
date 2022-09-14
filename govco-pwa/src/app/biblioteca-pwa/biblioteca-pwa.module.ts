@@ -5,6 +5,7 @@ import { EtiquetaComponent } from './components/etiqueta/etiqueta.component';
 import { TarjetaInformativaComponent } from './components/tarjeta-informativa/tarjeta-informativa.component';
 import { CarruselDosComponent } from './components/carrusel-dos/carrusel-dos.component';
 import { CarruselUnoComponent } from './components/carrusel-uno/carrusel-uno.component';
+import { AcordeonComponent } from './components/acordeon/acordeon.component';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { CarruselUnoComponent } from './components/carrusel-uno/carrusel-uno.com
     EtiquetaComponent,
     TarjetaInformativaComponent,
     CarruselUnoComponent,
-    CarruselDosComponent
+    CarruselDosComponent,
+    AcordeonComponent
   ],
   imports: [
     CommonModule
@@ -23,7 +25,8 @@ import { CarruselUnoComponent } from './components/carrusel-uno/carrusel-uno.com
     EtiquetaComponent,
     TarjetaInformativaComponent,
     CarruselUnoComponent,
-    CarruselDosComponent
+    CarruselDosComponent,
+    AcordeonComponent
   ],
 })
 export class BibliotecaPwaModule { }
