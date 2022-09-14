@@ -140,6 +140,7 @@ export class CarruselUnoComponent implements OnInit, OnChanges {
     }
     document.querySelector("#" + this.idTarjetas)!.innerHTML = html;
   }
+  // TO DO
 
   // construirCarrucel() {
   //   var html = "";
