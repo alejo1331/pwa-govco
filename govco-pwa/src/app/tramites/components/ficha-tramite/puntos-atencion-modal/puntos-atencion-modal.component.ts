@@ -40,6 +40,7 @@ export class PuntosAtencionModalComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log('atencion', this.puntosAtencion)
     this.sortedCollection = this.orderPipe.transform(this.puntosAtencion, 'PuntoAtencionNombre');
   }
 
