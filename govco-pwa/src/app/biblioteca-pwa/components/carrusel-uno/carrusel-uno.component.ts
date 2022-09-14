@@ -25,6 +25,7 @@ export class CarruselUnoComponent implements OnInit, OnChanges {
   n: number = 1;
   m: number = 0;
   j: number = 0;
+  k: number = 0;
 
   ubicacion: any;
 
@@ -56,6 +57,7 @@ export class CarruselUnoComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
+    // this.construirCarrucel();
   }
 
   obtenerSlideActivo() {
@@ -80,16 +82,20 @@ export class CarruselUnoComponent implements OnInit, OnChanges {
     for (var i = 0; i < totalPaginas; i++) {
 
       var idpagina = document.getElementById(this.idPagina + i);
+      console.log("idpagina", idpagina)
+
       if (idpagina) {
-        for (this.j = this.j; this.j < elementosPorPagina * (i + 1); this.j++) {
-          var tarjetasDeLaPagina = document.getElementById(this.idOrdenTarjetas + this.j);
+        for (var j = 0; j < elementosPorPagina * (i + 1); j++) {
+          var tarjetasDeLaPagina = document.getElementById(this.idOrdenTarjetas + j);
+          console.log("tarjetasDeLaPagina", tarjetasDeLaPagina)
+          console.log("pagina Actual", i)
           if (tarjetasDeLaPagina!.classList.contains("active")) {
-            console.log("pagina Actual", i)
-            if (contadorElementos > 2) {
-              return i;
-            } else if (contadorElementos == 3) contadorElementos = 0;
+            // contadorElementos += 1;
+            // if (contadorElementos > 2) {
+            return i;
+            // } else if (contadorElementos == 3) contadorElementos = 0;
           }
-          contadorElementos += 1;
+
         }
       }
     }
@@ -102,28 +108,35 @@ export class CarruselUnoComponent implements OnInit, OnChanges {
     document.querySelector("#" + this.idTarjetas)!.innerHTML = "";
     var totalPaginas = this.obetenerNumeroPaginas();
     var elementosPorPagina = this.obetenerElementosPorPagina();
-
-    var indice = 1;
     var pagina_Actual = this.paginaActual();
 
+    var totalElementos: number = totalPaginas * elementosPorPagina;
+
+    console.log("pagina_Actual", pagina_Actual)
+
     for (var i = 0; i < totalPaginas; i++) {
+      console.log("contador I", i)
 
       html += '<div id="' + this.idPagina + i + '" tabindex="0" aria-label="Grupo ' + (i + 1) + ' . Use tab para consultar cada elemento del grupo.">' +
         '<div class="row col-12 px-0 mx-0">';
       var n = 0;
-      for (var j = (i * elementosPorPagina); j < (elementosPorPagina * indice); j++) {
+      console.log("contador K", this.k)
+      
+      for (this.k = this.k; this.k < elementosPorPagina * (i + 1); this.k++) {
         var active;
         if (pagina_Actual == 0) {
-          active = i > 0 ? "carousel-item" : "carousel-item active";
+          active = elementosPorPagina <= this.k ? "carousel-item" : "carousel-item active";
         } else {
           active = i == pagina_Actual ? "carousel-item active" : "carousel-item";
         }
-        if (this.tramites[j] != undefined) {
-          var nombre = (this.tramites[j].nombre.length > 85) ? this.tramites[j].nombre.substring(0, 85) + "..." : this.tramites[j].nombre;
-          var icono = this.tramites[j].iconoCategoria != "" ? this.tramites[j].iconoCategoria : "https://govco-prod-webutils.s3.amazonaws.com/uploads/2021-10-26/d8f3f555-6765-451f-8ea8-d8109692f458-CAT_DEFAULT-80px.svg";
+        console.log("active", active)
+
+        if (this.tramites[this.k] != undefined) {
+          var nombre = (this.tramites[this.k].nombre.length > 85) ? this.tramites[this.k].nombre.substring(0, 85) + "..." : this.tramites[this.k].nombre;
+          var icono = this.tramites[this.k].iconoCategoria != "" ? this.tramites[this.k].iconoCategoria : "https://govco-prod-webutils.s3.amazonaws.com/uploads/2021-10-26/d8f3f555-6765-451f-8ea8-d8109692f458-CAT_DEFAULT-80px.svg";
           icono = this.codigoCategoria ? '' : `<img src="` + icono + `" alt="" />`;
           html += `<div id="` + this.idOrdenTarjetas + n + `"class=" ` + active + ` col-ms-12 col-md-6 col-lg-4">
-                <a role="link" class="tarjetas-link" aria-label="`+ nombre + `" href="/ficha-tramites-y-servicios/T` + this.tramites[j].id + `"><div class="tarjeta-pwa">
+                <a role="link" class="tarjetas-link" aria-label="`+ nombre + `" href="/ficha-tramites-y-servicios/T` + this.tramites[this.k].id + `"><div class="tarjeta-pwa">
                   `+ icono + `
                   <span>`+ nombre + `</span>
                 </div></a>
@@ -136,9 +149,11 @@ export class CarruselUnoComponent implements OnInit, OnChanges {
       }
       html += '</div>' +
         '</div>';
-      indice++;
     }
     document.querySelector("#" + this.idTarjetas)!.innerHTML = html;
+    if(this.k >= totalElementos){
+      this.k = 0
+    }
   }
   // TO DO
 
