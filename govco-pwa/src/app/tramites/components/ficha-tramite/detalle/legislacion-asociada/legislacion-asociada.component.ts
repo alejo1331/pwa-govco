@@ -50,6 +50,7 @@ export class LegislacionAsociadaComponent implements OnInit {
         this.normatividad1 = norm.map((n: any) => {
           return { ...n, checked: false }
         });
+        console.log(this.normatividad1)
       }, error => console.log(error));
   }
 

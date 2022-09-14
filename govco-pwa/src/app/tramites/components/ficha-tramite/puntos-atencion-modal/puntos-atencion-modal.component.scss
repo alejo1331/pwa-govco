@@ -124,6 +124,7 @@
           font-family: 'WorkSans-Medium';
           font-size: 14px;
           font-weight: 500 !important;
+          border-top: 0;
           b {
             font-family: 'WorkSans-Bold';
           }
@@ -243,6 +244,10 @@
   }
   
 .table-striped tbody tr:nth-of-type(odd) {
+  background-color: initial;
+}
+
+.table-striped tbody tr:nth-of-type(2n+2) {
   background-color: rgba(229,238,251,.5);
 }
 
