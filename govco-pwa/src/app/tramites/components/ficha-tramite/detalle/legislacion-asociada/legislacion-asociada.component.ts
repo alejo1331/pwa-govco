@@ -1,3 +1,4 @@
+import { Platform } from '@angular/cdk/platform';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { FichaTramiteService } from 'src/app/tramites/services/ficha-tramite.service';
@@ -11,7 +12,7 @@ export class LegislacionAsociadaComponent implements OnInit {
 
   constructor(
     private fichaTramiteService: FichaTramiteService,
-    private fb: FormBuilder
+    public platform: Platform
   ) { }
 
   @Input() data: any;
@@ -28,9 +29,18 @@ export class LegislacionAsociadaComponent implements OnInit {
   value: any;
   selectedItemsList: any[] = [];
   checkedIDs = [];
+  checkBoxClass: string = ''
 
   ngOnInit(): void {
+    
+    if (this.platform.IOS) {
+      this.checkBoxClass = 'ios';
+    }
+    else if (this.platform.ANDROID) {
+      this.checkBoxClass = 'android';
+    }
     this.getNormatividadById();
+    
   }
 
   getNormatividadById() {
@@ -57,9 +67,20 @@ export class LegislacionAsociadaComponent implements OnInit {
   allDownload(){
     this.normatividad1.forEach((e: any) => {
       if (e.checked) { // por ajustar
-        self.open(e.UrlDescarga || e.UrlNorma, "_self")
+        window.open(e.UrlDescarga || e.UrlNorma)
+        
+        // const link = document.createElement('a');
+        // link.setAttribute('target', '_self');
+        // link.setAttribute('href', e.UrlDescarga || e.UrlNorma);
+        // document.body.appendChild(link);
+        // link.click();
+        // link.remove();
+        // console.log(e.UrlDescarga, e.UrlNorma, 'mostranding')
+        // self.open(e.UrlDescarga || e.UrlNorma, "_self")
       }
     })
   }
+
+
 
 }

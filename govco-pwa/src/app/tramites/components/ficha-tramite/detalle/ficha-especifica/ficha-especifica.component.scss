@@ -1,36 +1,53 @@
-.area-servicio{
-    margin-top: 40px !important;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    // align-items: center;
-    margin-bottom: 3rem;
-    @media screen and (max-width: 768px) {
-      margin-top: 30px !important;
-      display: block;
-      // margin: 0 !important;
-      padding-left: 15px;
-      padding-right: 15px;
-      }
-  }
-  .mobile{
+.area-servicio {
+  margin-top: 40px !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  // align-items: center;
+  margin-bottom: 3rem;
+
+  @media screen and (max-width: 768px) {
+    margin-top: 30px !important;
     display: block;
-    @media screen and (max-width: 768px) {
-     display: none;
-    }
+    // margin: 0 !important;
+    padding-left: 15px;
+    padding-right: 15px;
   }
-  .experience{
-    .btn-symbolic-govco {
-      border: none;
-      background: none;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+}
+
+.mobile {
+  display: block;
+
+  @media screen and (max-width: 768px) {
+    display: none;
   }
-  
-  @media (min-width: 991px) {
-    .area-servicio {
-      align-items: center;
-    }
+}
+
+.experience {
+  padding-bottom: 60px;
+
+  .btn-symbolic-govco {
+    border: none;
+    background: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media (min-width: 991px) {
+  .area-servicio {
+    align-items: center;
+  }
+}
+
+  ::ng-deep .govco-icon-check-cn::before {
+    content: '\e961';
+  }
+.contenedor-btn {
+  padding: 0 15px;
+}
+
+  ::ng-deep .govco-icon-x-cn::before {
+    content: '\e908';
   }

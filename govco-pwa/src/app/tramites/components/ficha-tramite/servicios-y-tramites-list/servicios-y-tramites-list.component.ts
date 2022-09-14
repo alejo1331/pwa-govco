@@ -21,7 +21,10 @@ export class ServiciosYTramitesListComponent implements OnInit {
     pullDrag: false,
     dots: true,
     navSpeed: 700,
-    navText: [ '' ],
+    navText: [ 
+      '<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAA0ElEQVRIibXVIU4DURCA4Q9EBaLBoJrgKiEcoBfoATCcgBOgOQMXwGFx1VhIkMgmBQEGSJAkQDFvkidoRZn57Wa/TXb3zfD/JnhMcP7sCO9YVuCHeGv4RzY+xkvDPzHNxPexaPgXjjPxEeYN/8ZJJr6Hh4b/4DQT38V9w5c4y8SHuOvw80x8BzcdfpGJDzDr8EtsZT7gusOvsL0Jsu6mkuPfV/6KKP7I0RC3in7TqPSgRaWjIioddlHpuI7GeFa0cKIDvCpamVHp0o8meFp18RepAkYE7nsHmgAAAABJRU5ErkJggg==">', 
+      '<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAA0ElEQVRIic3WIW4CMBQA0DcUAgHB4EhwW8LcHG4exQW4wO6A3Ql2AuQuwCyTLEHiWKYWECgSssBMkzUkYNZP+LbNf8lv+385HZ/onVn/dxywwUMUsEnICt0I4BHbhHzjNgLpY5eQL3QikAF+ErJEOwIZYp+QBVoRyFMCDpijGYGMMmSGegTynCFT1EoDN3jJkAmqpZEKxhnyem7j1cVxid4ULlF+yO8KH3J+TT/QKJk89KGFtorQZhfaro8Hzl3J5PyNzDXuSyfnAkN/qcC35RecbkUnJ/dOewAAAABJRU5ErkJggg==">' 
+    ],
     responsive: {
       0: {
         items: 1

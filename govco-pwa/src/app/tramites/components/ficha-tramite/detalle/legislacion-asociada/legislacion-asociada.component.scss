@@ -400,8 +400,18 @@
   transform: none;
   color: #004884;
   font-size: 20px;
-  left: 1px;
-  top: 8px;
   border: 0;
   position: absolute;
+  left: 1;
+  top: 8px;
+}
+
+.ios input:checked+label:after {
+  left: 1px;
+  top: 6px !important;
+}
+
+.android input:checked+label:after {
+  left: 1px;
+  top: 0px !important;
 }

@@ -13,7 +13,7 @@ import { CarpetaCiudadanaComponent } from './components/carpeta-ciudadana/carpet
   imports: [
     CommonModule,
     AvisoDeConstruccionModule,
-    InicioRoutingModule
+    InicioRoutingModule,
   ],
   declarations: [
     HomeComponent, 
