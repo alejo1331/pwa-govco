@@ -1,4 +1,4 @@
-.container-carrusel {
+.container-carrusel-dos {
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -42,7 +42,7 @@
               width: 232px;
               height: 90px;
               position: absolute;
-              top: 90px;
+              top: 92px;
               background: transparent linear-gradient(180deg, #004884 0%, #17171700 100%) 0% 0% no-repeat padding-box;
               transform: matrix(-1, 0, 0, -1, 0, 0);
             }
@@ -81,7 +81,7 @@
       .active {
         display: flex;
         align-items: center;
-        
+        background-color: initial !important;
         &.carousel-item-left {
           transform: translate3d(-33%, 0, 0);
         }
@@ -181,6 +181,7 @@
       }
       li.active {
         background: #3366CC;
+        background-color: #3366CC !important;
       }
     }
   }

@@ -17,7 +17,6 @@ export class CarruselDosComponent implements OnInit {
   }
 
   ngAfterViewInit():void {
-    console.log('okkkkkkk')
     $('#carruselDosTemasInteres .carousel-item').each(function(){
       let next = $(this).next();
       if (!next.length) {
