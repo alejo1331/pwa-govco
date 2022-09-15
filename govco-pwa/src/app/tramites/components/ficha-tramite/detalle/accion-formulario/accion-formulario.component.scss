@@ -1,110 +1,118 @@
 .nombredocumento a{
-    color: #007bff !important;
+  color: #007bff !important;
 }
 
 .titulocondicion-secundario {
-  font-size: 14px;
+font-size: 14px;
 }
 
 .iconodisponible{
-    max-width: 24px;
-    margin-right: 8px;
-    margin-left: 8px;
-    margin-top: -2px;
+  max-width: 24px;
+  margin-right: 8px;
+  margin-left: 8px;
+  margin-top: -2px;
 }
 
 .govco-table-v1 thead {
-    background-color: #f2f2f2;
-  }
+  background-color: #f2f2f2;
+}
+
+.adjustText{
+word-break: break-word;
+}
 
 .govco-table-v1 thead th {
-    width: 185px;
-    border-bottom: none !important;
-    border-top: none !important;
-    font-family: 'Montserrat-Bold', sans-serif;
-  }
+  width: 185px;
+  border-bottom: none !important;
+  border-top: none !important;
+  font-family: 'Montserrat-Bold', sans-serif;
+}
 
-  .table-striped tbody tr:nth-of-type(2n+1) {
-    background-color: rgba(0,0,0,.05);
-  }
+.table-striped tbody tr:nth-of-type(2n+1) {
+  background-color: rgba(0,0,0,.05);
+}
 
 ::ng-deep .titulocondicion{
-      font-size: 18px;
-      font-weight: 600;
-      font-family: Montserrat;
-  }
-
-  .titulocondicion {
-    display: block;
-    font-size: 14px;
-    color: #004884;
-    text-align: left;
-    margin-bottom: 10px;
+    font-size: 18px;
     font-weight: 600;
-  }
+    font-family: Montserrat;
+}
 
-  .textofilas{
-    font-family: "Montserrat",sans-serif;
-    font-size: 1rem;
-    color: #004884;
-  }
+.titulocondicion {
+  display: block;
+  font-size: 14px;
+  color: #004884;
+  text-align: left;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
 
-  .govco-table-v1 tbody tr td a {
-    text-decoration: underline;
-  }
+.textofilas{
+  font-family: "Montserrat",sans-serif;
+  font-size: 1rem;
+  color: #004884;
+}
 
-  td a, td button.btn-low, td button.btn-low-mix-govco {
-    font-weight: 700 !important;
-  }
+.govco-table-v1 tbody tr td a {
+  text-decoration: underline;
+}
 
-  td a, td button:not(.govco-icon) {
-    font-family: "Work Sans",sans-serif;
-    font-size: 1rem;
-  }
+td a, td button.btn-low, td button.btn-low-mix-govco {
+  font-weight: 700 !important;
+}
 
-  .govco-table-v1 tbody tr td {
-    width: 200px;
-    border-top: none !important;
-    font-size: 16px;
-    font-weight: 400;
-    font-family: Work Sans;
-    color: #4b4b4b;
-    line-height: 22px;
-  }
+td a, td button:not(.govco-icon) {
+  font-family: "Work Sans",sans-serif;
+  font-size: 1rem;
+}
 
-  ::ng-deep .ordenAccion {
-    display: none;
-  }
+.govco-table-v1 tbody tr td {
+  width: 200px;
+  border-top: none !important;
+  font-size: 16px;
+  font-weight: 400;
+  font-family: Work Sans;
+  color: #4b4b4b;
+  line-height: 22px;
+}
 
-  .card-body{
-      .contenedor-accion-formulario{
-          
-          margin: 35px 10px 0px 10px;
+::ng-deep .ordenAccion {
+  display: none;
+}
 
-          .titulocondicion-secundario{
-              font-size: 16px;
-              font-weight: 600;
-              font-family: Montserrat;
-              color: #004884;
-          }
+.card-body{
+    .contenedor-accion-formulario{
+        
+        margin: 35px 10px 0px 10px;
 
-          .nombredocumento{
-            color: #0b457f;
-            text-align: left;
-            font-weight: 700;
-            margin-bottom: 5px;
-              a{
-                  color: #3366CC !important;
-                  font-size: 16px;
-                  font-family: 'WorkSans-Bold', sans-serif;
-              }
-              .texto-presencial{
-                text-decoration: none;
-              }
-          }
+        .titulocondicion-secundario{
+            font-size: 16px;
+            font-weight: 600;
+            font-family: Montserrat;
+            color: #004884;
+        }
 
-          .anotacion-adional{
-              color: #4b4b4b;
-          }
-      }
-  }
+        .nombredocumento{
+          color: #0b457f;
+          text-align: left;
+          font-weight: 700;
+          margin-bottom: 5px;
+            a{
+                color: #3366CC !important;
+                font-size: 16px;
+                font-family: 'WorkSans-Bold', sans-serif;
+            }
+            .texto-presencial{
+              text-decoration: none;
+            }
+        }
+
+        .anotacion-adional{
+            color: #4b4b4b;
+            font-size: 14px;
+            @media only screen and (max-device-width: 767px){
+              font-size: 12px;
+            }
+        }
+    }
+}
