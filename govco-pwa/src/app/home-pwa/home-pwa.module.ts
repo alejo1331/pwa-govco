@@ -9,6 +9,7 @@ import { SeccionTemasInteresComponent } from './components/seccion-temas-interes
 import { BannerPrincipalPwaComponent } from './components/banner-principal-pwa/banner-principal-pwa.component';
 import { BannerCardsComponent } from './components/banner-cards/banner-cards.component';
 import { BannerCardComponent } from './components/banner-cards/banner-card/banner-card.component';
+import { SeccionContactosEmerganciaComponent } from './components/seccion-contactos-emergancia/seccion-contactos-emergancia.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { BannerCardComponent } from './components/banner-cards/banner-card/banne
     SeccionTemasInteresComponent,
     BannerPrincipalPwaComponent,
     BannerCardsComponent,
-    BannerCardComponent
+    BannerCardComponent,
+    SeccionContactosEmerganciaComponent
   ],
   imports: [
   CommonModule,
