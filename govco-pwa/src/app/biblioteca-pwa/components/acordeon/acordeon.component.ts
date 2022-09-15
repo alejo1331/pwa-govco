@@ -12,7 +12,7 @@ export class AcordeonComponent implements OnInit {
       active: false,
       titulo: 'Título #1 del acordeón',
       descripcion: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam gravida.'
-    },
+    }, 
     {
       active: false,
       titulo: 'Título #2 del acordeón',
@@ -31,10 +31,12 @@ export class AcordeonComponent implements OnInit {
   }
 
   activarItem(index:number) {
-    this.items.forEach(function(item){
-      item.active = false;
-    });
     this.items[index].active = !this.items[index].active;
+    this.items.forEach(function(item, indexItem){
+      if (indexItem != index) {
+        item.active = false;
+      }
+    });
   }
 
 }
