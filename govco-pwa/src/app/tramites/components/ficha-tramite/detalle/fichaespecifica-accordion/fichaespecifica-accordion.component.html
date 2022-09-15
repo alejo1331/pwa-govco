@@ -3,101 +3,95 @@
         <div class="tabs-govco-v1  contenedor-general-acordeon ">
             <div tabindex="0" aria-label="Elige tu perfil y conoce la información específica del trámite:"
                 class="container">
-                <h2 class="titulo-requerimientos" >
+                <h2 class="titulo-requerimientos">
                     Elige tu perfil y conoce la información específica del trámite:
                 </h2>
-                </div>
-                    <ul class="nav nav-tabs" id="myTab" role="tablist">
-                        <li class="nav-item" *ngFor="let itemAudiencia of data; let j = index">
-                            <a class="nav-link"
-                            [ngClass]="{ 'active': j == 0 }"
-                            data-toggle="tab"
-                            href="#tab{{j+1}}"
-                            role="tab"
-                            aria-controls="tab{{j+1}"
-                            [attr.aria-selected]="j == 0"
-                            (click)="eventoTabAudiencia(itemAudiencia)">
-                            <img [src]="urlIconos(itemAudiencia.detalle)" >
-                            <span>{{itemAudiencia.detalle}}</span></a>
-                        </li>
-                    </ul>
-                    <div class="tab-content" id="myTabContent">
-                      <div class="container" style="background: #FFFFFF;">
-                        <div *ngFor="let itemAudiencia of data; let j = index"
-                        class="tab-pane fade" [class.show]="j == 0" id="tab{{j+1}}" role="tabpanel"
-                        [ngClass]="{ 'active': j == 0 }">
-                            <h1 aria-label="¿Qué necesito para hacer mi trámite?"
-                            class="descripcion-accordion">¿Qué necesito para hacer mi trámite?</h1>
-                            <ngb-accordion [closeOthers]="true" #acc="ngbAccordion"
+            </div>
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" *ngFor="let itemAudiencia of data; let j = index">
+                    <a class="nav-link" [ngClass]="{ 'active': j == 0 }" data-toggle="tab" href="#tab{{j+1}}" role="tab"
+                        aria-controls="tab{{j+1}" [attr.aria-selected]="j == 0"
+                        (click)="eventoTabAudiencia(itemAudiencia)">
+                        <img [src]="urlIconos(itemAudiencia.detalle)">
+                        <span>{{itemAudiencia.detalle}}</span>
+                        <div class="linea-vertical"></div>
+                    </a>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div class="container" style="background: #FFFFFF;">
+                    <div *ngFor="let itemAudiencia of data; let j = index" class="tab-pane fade" [class.show]="j == 0"
+                        id="tab{{j+1}}" role="tabpanel" [ngClass]="{ 'active': j == 0 }">
+                        <h1 aria-label="¿Qué necesito para hacer mi trámite?" class="descripcion-accordion">¿Qué
+                            necesito para hacer mi trámite?</h1>
+                        <ngb-accordion [closeOthers]="true" #acc="ngbAccordion"
                             (panelChange)="tooggleAccordian($event, itemAudiencia.detalle)">
-                                <ngb-panel *ngFor="let momento of itemAudiencia.momentos; let i = index"
-                                    [id]="'panel-'+i">
-                                    <ng-template ngbPanelTitle>
-                                        <div class="headerPanel"
+                            <ngb-panel *ngFor="let momento of itemAudiencia.momentos; let i = index" [id]="'panel-'+i">
+                                <ng-template ngbPanelTitle>
+                                    <div class="headerPanel"
+                                        (click)="dataDetalleMomentoAudiencia(itemAudiencia.detalle, momento.MomentoId)">
+                                        <div class="ml-lg-3 contenedor-numero"><span>{{i+1}}</span></div>
+                                        <h3 [id]="'btn-panel-'+i"
+                                            class="contenedor-panel-title contenido-responsive ml-2"> {{
+                                            momento.Descripcion }}</h3>
+                                        <div class="icon"
                                             (click)="dataDetalleMomentoAudiencia(itemAudiencia.detalle, momento.MomentoId)">
-                                            <div class="ml-lg-3 contenedor-numero"><span>{{i+1}}</span></div>
-                                            <h3 [id]="'btn-panel-'+i"
-                                                class="contenedor-panel-title contenido-responsive ml-2"> {{
-                                                momento.Descripcion }}</h3>
-                                            <div class="icon"
-                                                (click)="dataDetalleMomentoAudiencia(itemAudiencia.detalle, momento.MomentoId)">
-                                            </div>
                                         </div>
+                                    </div>
 
-                                    </ng-template>
-                                    <ng-template ngbPanelContent>
-                                        <ngx-skeleton-loader appearance="line" count="3" *ngIf="!momento.acciones"
-                                            [theme]="{
+                                </ng-template>
+                                <ng-template ngbPanelContent>
+                                    <ngx-skeleton-loader appearance="line" count="3" *ngIf="!momento.acciones" [theme]="{
                                             height: '12px',
                                             'background-color': '#888cc93d'
                                             }"> </ngx-skeleton-loader>
 
-                                        <div *ngFor="let accion of momento.acciones">
-                                            <div class="contenedor-ficha-accordion"
-                                                *ngFor="let tipoAccion of accion | keyvalue">
+                                    <div *ngFor="let accion of momento.acciones">
+                                        <div class="contenedor-ficha-accordion"
+                                            *ngFor="let tipoAccion of accion | keyvalue">
 
-                                                <div *ngIf="tipoAccion.key === 'VERIFICACION_INST'">
-                                                    <app-accion-verificacion *ngIf="tipoAccion.value"
-                                                        [data]="tipoAccion.value"></app-accion-verificacion>
-                                                </div>
+                                            <div *ngIf="tipoAccion.key === 'VERIFICACION_INST'">
+                                                <app-accion-verificacion *ngIf="tipoAccion.value"
+                                                    [data]="tipoAccion.value"></app-accion-verificacion>
+                                            </div>
 
-                                                <div *ngIf="tipoAccion.key === 'PAGO'">
-                                                    <app-accion-pago *ngIf="tipoAccion.value"
-                                                        [data]="tipoAccion.value"></app-accion-pago>
-                                                </div>
+                                            <div *ngIf="tipoAccion.key === 'PAGO'">
+                                                <app-accion-pago *ngIf="tipoAccion.value" [data]="tipoAccion.value">
+                                                </app-accion-pago>
+                                            </div>
 
-                                                <div *ngIf="tipoAccion.key === 'SOLICITUD'">
-                                                    <app-accion-solicitud *ngIf="tipoAccion.value"
-                                                        [data]="tipoAccion.value"></app-accion-solicitud>
-                                                </div>
+                                            <div *ngIf="tipoAccion.key === 'SOLICITUD'">
+                                                <app-accion-solicitud *ngIf="tipoAccion.value"
+                                                    [data]="tipoAccion.value"></app-accion-solicitud>
+                                            </div>
 
-                                                <div *ngIf="tipoAccion.key === 'DOCUMENTO'">
-                                                    <app-accion-documento *ngIf="tipoAccion.value"
-                                                        [data]="tipoAccion.value"></app-accion-documento>
-                                                </div>
+                                            <div *ngIf="tipoAccion.key === 'DOCUMENTO'">
+                                                <app-accion-documento *ngIf="tipoAccion.value"
+                                                    [data]="tipoAccion.value"></app-accion-documento>
+                                            </div>
 
-                                                <div *ngIf="tipoAccion.key === 'FORMULARIO'">
-                                                    <app-accion-formulario *ngIf="tipoAccion.value"
-                                                        [data]="tipoAccion.value" [tramite]="tramite">
-                                                    </app-accion-formulario>
-                                                </div>
-
+                                            <div *ngIf="tipoAccion.key === 'FORMULARIO'">
+                                                <app-accion-formulario *ngIf="tipoAccion.value"
+                                                    [data]="tipoAccion.value" [tramite]="tramite">
+                                                </app-accion-formulario>
                                             </div>
 
                                         </div>
 
-                                        <div *ngIf="momento.acciones">
-                                            <app-accion-excepcion *ngIf="momento.acciones.EXCEPCION"
-                                                [data]="momento.acciones.EXCEPCION"></app-accion-excepcion>
-                                        </div>
-                                    </ng-template>
-                                </ngb-panel>
-                            </ngb-accordion>
-                        </div>
+                                    </div>
 
-                      </div>
-
+                                    <div *ngIf="momento.acciones">
+                                        <app-accion-excepcion *ngIf="momento.acciones.EXCEPCION"
+                                            [data]="momento.acciones.EXCEPCION"></app-accion-excepcion>
+                                    </div>
+                                </ng-template>
+                            </ngb-panel>
+                        </ngb-accordion>
                     </div>
+
+                </div>
+
+            </div>
 
         </div>
     </div>
