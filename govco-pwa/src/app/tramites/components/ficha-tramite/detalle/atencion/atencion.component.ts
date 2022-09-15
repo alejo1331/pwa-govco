@@ -32,6 +32,7 @@ export class AtencionComponent implements OnInit {
       // Success response
       response => {
           this.showModal({tipo: 'puntos', data:  response});
+          console.log("response",response)
       },
       // Failure response
       error => {
