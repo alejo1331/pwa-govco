@@ -55,7 +55,6 @@
                         </thead>
                     </ng-container>
                     <tbody>
-                        <!--  |orderBy: order:reverseDepartamento:true |orderBy: order:reversePunto:true |filter:serchText | paginate: { itemsPerPage: 5, currentPage: p} -->
                         <ng-container *ngIf="puntosAtencion">
                             <tr *ngFor="let punto of puntosAtencion | filter:serchText | paginate: { id: 'puntos-atencion', itemsPerPage: 2, currentPage: p}">
                                 <td *ngIf="windowWidth > 650" class="td-font">{{ punto.PuntoAtencionNombre }}</td>
