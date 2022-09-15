@@ -1,0 +1,27 @@
+<section class="govco-pwa-contactos-container">
+  <div class="govco-pwa-heading-4">Contactos de emergencia</div>
+  <div class="govco-pwa-descripcion">
+
+    <p >
+      Llama a las líneas de atención correspondientes a tu necesidad.
+    </p>
+  </div>
+
+
+  <div class="govco-pwa-contactos-lista">
+
+    <div class="govco-pwa-contactos-item" *ngFor="let contacto of contactos">
+      <div  class="govco-pwa-item-descipcion">
+        <div class="item-description-numero">{{contacto.numero}}</div>
+        <div class="item-description-titulo">{{contacto.titulo}}</div>
+      </div>
+      <a href="tel: {{contacto.numero.replace('#','%23')}}">
+        <div class="{{contacto.icono}} govco-pwa-item-icon">
+          <span class="material-symbols-outlined govco-icon-contact"> call </span>
+        </div>
+      </a>
+    </div>
+
+  </div>
+
+</section>
