@@ -11,7 +11,7 @@
       <p class="texto-secundario">{{textoSecundario}}</p>
     </div>
     <div class="container-boton">
-      <app-boton [inverted]="true">{{textoBoton}}</app-boton>
+      <app-boton [inverted]="true" (click)="goToLink(urlBoton)">{{textoBoton}}</app-boton>
     </div>
   </div>
 </div>

@@ -23,7 +23,7 @@ export class HomeService {
     return this.http.get<ObtenerTemasInteresRespuesta>(temasInteres);
   }
 
-  getbannerPrincipal():Observable<BannerPrincipalModel>{
+  getBannerPrincipal():Observable<BannerPrincipalModel>{
     return this.http.get<BannerPrincipalModel>(`${environment.serverUrlHomeAdm}/BannerPrincipal`);
   }
 }
