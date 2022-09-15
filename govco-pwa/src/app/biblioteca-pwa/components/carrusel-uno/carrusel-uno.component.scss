@@ -1,3 +1,6 @@
+.container-carrusel-uno {
+  margin: 3rem 0;
+}
 .container-carrusel-uno .tarjetas-link {
   display: block;
 }
@@ -35,18 +38,6 @@
   }
 }
 
-::ng-deep .container-carrusel-uno .tarjeta-vacia {
-  margin-top: 10px;
-  width: auto;
-  height: 100px;
-  align-items: center;
-  display: flex;
-  border-radius: 5px;
-  padding: 8px;
-}
-
-
-
 .container-carrusel-uno .arrow-left-pwa {
   position: relative;
   left: 17px;
@@ -70,58 +61,31 @@
   flex-direction: column;
 }
 
-::ng-deep .container-carrusel-uno #tarjetaPwa0 {
-  // margin-top: 16px;
-  transition: -webkit-transform .6s ease-in-out;
-  transition: transform .6s ease-in-out;
-  transition: transform .6s ease-in-out, -webkit-transform .6s ease-in-out;
-}
-
-::ng-deep .container-carrusel-uno #tarjetaPwa1 {
-  // margin-top: 16px;
-  transition: -webkit-transform .8s ease-in-out;
-  transition: transform .8s ease-in-out;
-  transition: transform .8s ease-in-out, -webkit-transform .8s ease-in-out;
-}
-
-::ng-deep .container-carrusel-uno #tarjetaPwa2 {
-  // margin-top: 16px;
-  transition: -webkit-transform 1s ease-in-out;
-  transition: transform 1s ease-in-out;
-  transition: transform 1s ease-in-out, -webkit-transform 1s ease-in-out;
-}
-
-::ng-deep .container-carrusel-uno #tarjetaPwa0,
-::ng-deep .container-carrusel-uno #tarjetaPwa1,
-::ng-deep .container-carrusel-uno #tarjetaPwa2 {
-  margin-top: 16px;
+::ng-deep .container-carrusel-uno #tarjetaPwa {
   width: 17.5rem;
   margin: 16px auto auto;
 }
 
-::ng-deep .container-carrusel-uno .carousel-item {
-  margin-right: 10px;
-
-  // position: relative;
-  // display: none;
-  // float: left;
-  // width: 100%;
-  // margin-right: -100%;
-  // -webkit-backface-visibility: hidden;
-  // backface-visibility: hidden;
-  // transition: -webkit-transform .6s ease-in-out;
-  // transition: transform .6s ease-in-out;
-  // transition: transform .6s ease-in-out,-webkit-transform .6s ease-in-out;
+::ng-deep .container-carrusel-uno .carrusel-uno-item-left {
+  transform: translate(120%, 0);
 }
 
-// ::ng-deep .carousel-item.active {
-//   // display: block !important;
-//   // background-color: #00498400 !important;
-// }
+::ng-deep .container-carrusel-uno .carrusel-uno-item-right {
+  transform: translate(-120%, 0);
+}
 
-// #carruselUnopwa {
-//   width: 17.5rem !important
-// }
+::ng-deep .container-carrusel-uno .carrusel-uno-item {
+  display: none;
+  float: left;
+  transition: -webkit-transform 0.8s ease-in-out;
+  transition: transform 0.8s ease-in-out;
+  transition: transform 0.8s ease-in-out, -webkit-transform 0.8s ease-in-out;
+}
+
+::ng-deep .container-carrusel-uno .carrusel-uno-item.active {
+  display: block;
+  background-color: #00498400;
+}
 
 .container-carrusel-uno .arrow-carousel i {
   color: #000;
@@ -139,7 +103,6 @@
 }
 
 .container-carrusel-uno .descripcion-carrusel {
-
   border: 0;
   clip: rect(1px, 1px, 1px, 1px);
   -webkit-clip-path: inset(50%);
