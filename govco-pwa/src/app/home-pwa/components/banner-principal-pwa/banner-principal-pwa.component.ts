@@ -31,7 +31,6 @@ export class BannerPrincipalPwaComponent implements OnInit {
         this.textoSecundario = textoAuxiliar.slice(textoIndex + 1, textoLength);
         this.textoBoton = textoBotonAuxiliar;
         this.urlBoton = urlBotonAuxiliar;
-        console.log(urlBotonAuxiliar)
         const imagenAleatoria = listaImagenes[Math.floor( Math.random() * listaImagenes.length )];
         const { urlImagen, textoDescriptivo } = imagenAleatoria;
         this.imagen = urlImagen;

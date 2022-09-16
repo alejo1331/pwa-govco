@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ViewportScroller } from '@angular/common';
-import { Router } from "@angular/router";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-banner-card',
@@ -13,13 +12,17 @@ export class BannerCardComponent implements OnInit {
   @Input() textNameClass: string;
   @Input() tagName: string;
 
-  constructor(private router: Router, private scroller: ViewportScroller) { }
+  constructor(private activateRoute: ActivatedRoute) { }
 
-  ngOnInit(): void {
+  ngOnInit (): void {
+    this.activateRoute.fragment.subscribe( ( value : any ) => {
+      console.log( 'value', value )
+      console.log( 'element', document.getElementById( value ) )
+      this.onClickTag( value );
+    })
   }
 
-  // onClickTag (): void { 
-  //    this.router.navigate( [], { fragment: this.tagName } );
-  //   this.scroller.scrollToAnchor(this.tagName);
-  // }
+  onClickTag (section : any): void { 
+    document.getElementById(section)?.scrollIntoView( { behavior: 'smooth' } )
+  }
 }
