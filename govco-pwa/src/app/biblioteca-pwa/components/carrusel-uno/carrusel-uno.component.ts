@@ -131,7 +131,7 @@ export class CarruselUnoComponent implements OnInit {
     }
     setTimeout(() => {
       elementActive?.classList.remove('active-old');
-      elementNext?.classList.remove('transition-left');
+    }, 800);
       this.paginaSiguiente(indexPrev, indexNext);
     }, 1000);
     setTimeout(() => {
@@ -150,7 +150,6 @@ export class CarruselUnoComponent implements OnInit {
 
   paginaActual(orientacion: number, elementActive: Element | null, elementNext: Element | null, indexNext: number) {
     var paginaActual = Array.from((elementActive?.querySelectorAll('.carrusel-uno-item') as NodeListOf<HTMLElement>)).reverse();
-    var paginaSiguiente = Array.from((elementNext?.querySelectorAll('.carrusel-uno-item') as NodeListOf<HTMLElement>)).reverse();
 
     elementActive?.classList.add('active-old');
     elementActive?.classList.remove('active');
