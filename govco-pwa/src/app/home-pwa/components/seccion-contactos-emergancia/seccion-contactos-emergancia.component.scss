@@ -1,0 +1,91 @@
+
+.govco-pwa-contactos-container{
+  width: 100%;
+  padding: 0 16px 0 16px;
+  margin-top: 40px;
+
+  .govco-pwa-descripcion{
+    margin-top: 24px;
+    font-family: 'WorkSans-Regular';
+  }
+
+  .govco-pwa-contactos-lista{
+    margin-top: 24px;
+
+    .govco-pwa-contactos-item{
+      margin-top: 16px;
+      display: grid;
+      column-gap: 8px;
+      row-gap: 16px;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    }
+
+    .govco-pwa-item-descipcion{
+      grid-column-start: 1;
+      grid-column-end: 6;
+      height: 48px;
+      border: 2px solid #E8EFFC;
+      border-radius: 5px;
+      grid-template-columns: 1fr 5fr;
+      column-gap: 8px;
+      display: grid;
+      font-family: "WorkSans-Medium" ;
+      font-size: 14px;
+      align-content: center;
+      letter-spacing: 0.01px;
+      line-height: normal;
+      .item-description-numero{
+        text-align: center;
+        align-self: center;
+      }
+      .item-description-titulo{
+        padding: 8px 8px 8px 0;
+      }
+    }
+
+    a{
+      text-decoration: none;
+    }
+
+    .govco-pwa-item-icon{
+      border-radius: 4px;
+      background: #E6EFFD 0% 0%;
+      text-align: center;
+      height: 100%;
+    }
+
+    .govco-icon-contact {
+      font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+      color: #004884;
+      padding: 4px;
+
+  }
+
+  .govco-icon-callin-cn {
+      font-size: 1.125rem;
+      font-family: 'Montserrat', sans-serif !important;
+      display: flex;
+      justify-content: center;
+      min-width: 0 !important;
+      align-items: center;
+      font-weight: normal;
+      display: flex;
+      margin-right: 0 !important;
+      font-weight: 800;
+      color: #004884
+  }
+
+  .govco-icon-callin-cn::before {
+      font-family: "Govco Icon";
+      font-size: 1.5rem;
+  }
+
+  }
+}
+
+.govco-pwa-heading-4{
+  font-family: 'Montserrat-SemiBold';
+  font-size: 20px;
+  color: #004884;
+
+}
