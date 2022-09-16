@@ -78,7 +78,7 @@ export class CarruselUnoComponent implements OnInit {
     // }, 800);
     setTimeout(() => {
       this.construirCarrucel(this.k, false);
-    }, 1200);
+    }, 800);
 
 
   }
@@ -91,16 +91,11 @@ export class CarruselUnoComponent implements OnInit {
         paginaSiguiente[i].style.transition = 'transform ' + 0.4 * (i + 1) + 's';
         paginaSiguiente[i].style.transform = 'translate(' + orientacion + '%, 0)';
       }, 1);
-      // setTimeout(() => {
-      //   paginaSiguiente[i].classList.remove('active');
-
-      // }, 1000);
     });
   }
 
   paginaActual(orientacion: number) {
     var paginaSiguiente = Array.from((document.querySelectorAll('.' + this.classOrdenTarjetas + '1') as NodeListOf<HTMLElement>)).reverse();
-    console.log('paginaSiguiente', paginaSiguiente)
     paginaSiguiente.forEach((elemento, i) => {
       paginaSiguiente[i].style.transition = 'transform ' + 0.4 * (i + 1) + 's';
       paginaSiguiente[i].style.transform = 'translate(' + orientacion + '%, 0)';
