@@ -5,7 +5,8 @@ export interface BannerPrincipalModel {
     textoDescriptivo :string,
     textoBuscador  :string,
     textoAuxiliar:string,
-    textoBotonAuxiliar:string,
+    textoBotonAuxiliar: string,
+    urlBotonAuxiliar: string,
     listaImagenes:[{textoDescriptivo:string,urlImagen:string}]
 
 }

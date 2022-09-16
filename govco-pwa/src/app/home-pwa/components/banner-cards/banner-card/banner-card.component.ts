@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-banner-card',
@@ -9,10 +10,17 @@ export class BannerCardComponent implements OnInit {
 
   @Input() iconNameClass: string;
   @Input() textNameClass: string;
+  @Input() tagName: string;
 
-  constructor() { }
+  constructor(private activateRoute: ActivatedRoute) { }
 
-  ngOnInit(): void {
+  ngOnInit (): void {
+    this.activateRoute.fragment.subscribe( ( value : any ) => {
+      this.onClickTag( value );
+    })
   }
 
+  onClickTag (section : any): void { 
+    document.getElementById(section)?.scrollIntoView( { behavior: 'smooth' } )
+  }
 }
