@@ -16,8 +16,6 @@ export class BannerCardComponent implements OnInit {
 
   ngOnInit (): void {
     this.activateRoute.fragment.subscribe( ( value : any ) => {
-      console.log( 'value', value )
-      console.log( 'element', document.getElementById( value ) )
       this.onClickTag( value );
     })
   }
