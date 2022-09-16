@@ -4,11 +4,13 @@ import { of } from 'rxjs';
 import { ConsultaUbicacionInterface } from '../../models/geolocalizacion/consulta-ubicacion-interface';
 import { DepartamentoInterface } from '../../models/geolocalizacion/departamento-interface';
 import { MunicipioInterface } from '../../models/geolocalizacion/municipio-interface';
+import { CacheStorageService } from '../cache-storage-service/cache-storage.service';
 
 import { GeolocalizacionService } from './geolocalizacion.service';
 
 describe('GeolocalizacionService', () => {
   let service: GeolocalizacionService;
+  let cacheStorageService: CacheStorageService;
   let httpClientSpy: { get: jasmine.Spy };
 
   beforeEach(() => {
@@ -16,7 +18,8 @@ describe('GeolocalizacionService', () => {
       imports: [HttpClientTestingModule]
     });
     httpClientSpy = jasmine.createSpyObj('HttpClient', ['get']);
-    service = new GeolocalizacionService(httpClientSpy as any)
+    cacheStorageService = TestBed.inject(CacheStorageService);
+    service = new GeolocalizacionService(httpClientSpy as any, cacheStorageService);
   });
 
   it('should be created', () => {

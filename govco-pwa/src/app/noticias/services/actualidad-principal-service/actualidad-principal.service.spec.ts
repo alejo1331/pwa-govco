@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ActualidadPrincipalServiceService } from './actualidad-principal.service';
+import { ActualidadPrincipalService } from './actualidad-principal.service';
 
-describe('ActualidadPrincipalServiceService', () => {
-  let service: ActualidadPrincipalServiceService;
+describe('ActualidadPrincipalService', () => {
+  let service: ActualidadPrincipalService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(ActualidadPrincipalServiceService);
+    service = TestBed.inject(ActualidadPrincipalService);
   });
 
   it('should be created', () => {

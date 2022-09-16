@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BannerDetalleSeccionesInternasComponent } from './banner-detalle-internas-dos.component';
+import { BannerDetalleInternasDosComponent } from './banner-detalle-internas-dos.component';
 
-describe('BannerDetalleSeccionesInternasComponent', () => {
-  let component: BannerDetalleSeccionesInternasComponent;
-  let fixture: ComponentFixture<BannerDetalleSeccionesInternasComponent>;
+describe('BannerDetalleInternasDosComponent', () => {
+  let component: BannerDetalleInternasDosComponent;
+  let fixture: ComponentFixture<BannerDetalleInternasDosComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BannerDetalleSeccionesInternasComponent ]
+      declarations: [ BannerDetalleInternasDosComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BannerDetalleSeccionesInternasComponent);
+    fixture = TestBed.createComponent(BannerDetalleInternasDosComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
