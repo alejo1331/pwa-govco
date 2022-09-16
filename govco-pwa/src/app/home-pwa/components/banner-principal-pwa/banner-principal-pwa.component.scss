@@ -1,4 +1,7 @@
 .container-banner-principal{
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: cover;
     .background-overlay{
         background: linear-gradient(180deg,rgb(27 74 167 / 90%) 0%, rgb(17 54 128 / 90%) 80%);
         padding: 60px 16px 92px 16px;

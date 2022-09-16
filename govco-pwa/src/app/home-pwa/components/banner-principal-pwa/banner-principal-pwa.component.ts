@@ -33,7 +33,8 @@ export class BannerPrincipalPwaComponent implements OnInit {
         this.urlBoton = urlBotonAuxiliar;
         const imagenAleatoria = listaImagenes[Math.floor( Math.random() * listaImagenes.length )];
         const { urlImagen, textoDescriptivo } = imagenAleatoria;
-        this.imagen = urlImagen;
+        let re = /\ /gi;
+        this.imagen = urlImagen.replace(re, "%20");
         this.descripcionImagen = textoDescriptivo;
       }
     })
