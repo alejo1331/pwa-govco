@@ -21,10 +21,10 @@ export const environment = {
   //Noticias o Actualidad
   apiNoticiasDetalle: "https://preapi-interno.www.gov.co/api/noticias/",
   serverCategoriaSubcategoriaUrl: 'https://preapi-interno.www.gov.co/api/categorias-subcategorias/',
-  codNoticias: 'noticias',
-  codParticipa: 'tu-opinion-cuenta',
-  codSobreNosotros: 'sobre-nosotros',
-  codEntidades: 'servicios-para-entidades',
+  codNoticias: 'actualidadprincipal',
+  codParticipa: 'tuopinioncuenta',
+  codSobreNosotros: 'sobrenosotros',
+  codEntidades: 'paraentidades',
   //Entidades
   serverIntegracion: 'https://preapi-interno.www.gov.co/api/integracion-sedes/IntegracionSedes/entidad/',
   //Tu opinion cuenta o Participacion
