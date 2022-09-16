@@ -108,6 +108,7 @@
   background-color: #ffffff !important;
 }
 
+::ng-deep .container-carrusel-uno .carrusel-uno-item.active,
 ::ng-deep .container-carrusel-uno .carrusel-grupo.active {
   display: block;
   background-color: #00498400;

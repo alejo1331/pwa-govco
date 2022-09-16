@@ -1,11 +1,7 @@
-import { Component, ElementRef, OnInit } from '@angular/core';
-import { GeolocalizacionService } from 'src/app/transversales/services/geolocalizacion/geolocalizacion.service';
+import { Component, OnInit } from '@angular/core';
 import { CarruselUnoInterface } from '../carrusel-uno-interface';
 import { CarruselUnoInterface1 } from '../carrusel-uno-interface-1';
 import { CarruselUnoService } from '../carrusel-uno.service';
-import { EstadoInterface } from '../estado-interface';
-import { PorMunicipioInterface } from '../por-municipio-interface';
-import { TituloInterface } from '../titulo-interface';
 
 @Component({
   selector: 'app-carrusel-uno',
@@ -13,20 +9,16 @@ import { TituloInterface } from '../titulo-interface';
   styleUrls: ['./carrusel-uno.component.scss']
 })
 export class CarruselUnoComponent implements OnInit {
-  data: CarruselUnoInterface1[];
+  tramites: CarruselUnoInterface1[];
   titulo: string = "";
-  estadoTitulo: boolean = false;
-  codigoMunicipio: string | null = "";
-  codigoDepartamento: string | null = "";
-  nombreMunicipio: string = "";
+  codigoMunicipio: any;
+  nombreMunicipio: any = "";
   pagina: number | null;
   textoCarga: string = "Cargando..."
   codigoCategoria: string;
   id_: string = "pwa";
   idTarjetas: string;
   classOrdenTarjetas: string;
-  seccion: string = 'LoMasConsultadoHome';
-  estado: boolean = false;
   // variables contador
   ultimaPagina: number = 0;
   primerPagina: number = 0;
@@ -35,54 +27,16 @@ export class CarruselUnoComponent implements OnInit {
 
   ubicacion: any;
 
-  constructor(
-    protected carruselServe: CarruselUnoService,
-    protected ServicioGeolocalizacion: GeolocalizacionService
-  ) {
+  constructor(protected carruselServe: CarruselUnoService) {
     this.idTarjetas = "tarjetas-carrusel-pwa";
     this.classOrdenTarjetas = "grupo"
   }
 
   ngOnInit(): void {
-    this.codigoDepartamento = localStorage.getItem("codigoDepartamento") != null ? (localStorage.getItem("codigoDepartamento") != 'TodosLosDepartamentos' ? localStorage.getItem("codigoDepartamento") : '') : '';
-    this.codigoMunicipio = localStorage.getItem("codigoMunicipio") != null ? (localStorage.getItem("codigoMunicipio") != 'TodosLosMunicipios' ? localStorage.getItem("codigoMunicipio") : '') : '';
-
-    if (this.codigoMunicipio != '') {
-      this.ServicioGeolocalizacion.getCacheJsonMunicipiosPorDepartamento(String(this.codigoDepartamento))
-        .then((municipios: any) => {
-          this.estadoTitulo = true
-          municipios.forEach((data: any) => {
-             data['codigo'] == this.codigoMunicipio ? this.nombreMunicipio = data['nombre'] : '';
-          });
-        })
-    }
-
     this.ultimaPagina = this.obetenerNumeroPaginas() - 1;
-
-    this.carruselServe.getTramitesMasConsultadosEstado().subscribe((estado: EstadoInterface) => {
-      if (estado.data.activo == 1) {
-        this.estado = true;
-        this.carruselServe.getTramitesMasConsultadosTitulo(this.seccion).subscribe((dataTitulo: TituloInterface) => {
-          this.titulo = dataTitulo.data.titulo;
-        })
-        this.codigoMunicipio == "" ?
-          this.carruselServe.getTramitesMasConsultados().subscribe((info: CarruselUnoInterface) => {
-            this.data = info.data;
-            if (this.data.length > 0) {
-              this.construirCarrucel(0);
-            }
-          })
-          : this.carruselServe.getTramitesMasConsultadosPorMunicipio(this.codigoMunicipio).subscribe((tramitesPorMunicipio: PorMunicipioInterface) => {
-            this.data = tramitesPorMunicipio.data;
-            if (this.data.length > 0) {
-              this.construirCarrucel(0);
-            }
-          });
-      }
-      else {
-        this.estado = false;
-        this.textoCarga = "No hay datos para mostrar."
-      }
+    this.carruselServe.getTramitesMasConsultadosAsync().subscribe((info: CarruselUnoInterface) => {
+      this.tramites = info.data;
+      this.construirCarrucel(0, true);
     })
   }
 
@@ -100,103 +54,87 @@ export class CarruselUnoComponent implements OnInit {
   }
 
   flechaIzquierda() {
-    const elementActive = document.querySelector('.container-tarjetas.active');
-    const indexActive = elementActive?.getAttribute('data-index');
-    const indexNext = indexActive?parseInt(indexActive) + 1 : 1;
-    const elementNext = document.querySelector('.container-tarjetas[data-index="' + indexNext + '"]');
-    this.paginaActual(120, elementActive, elementNext, indexNext);
+    this.paginaActual(120);
     var totalPaginas = this.obetenerNumeroPaginas();
     this.k -= 1;
     if (this.k < 0) {
       this.k = totalPaginas - 1;
     }
     setTimeout(() => {
-      this.construirCarrucel(this.k);
+      this.construirCarrucel(this.k, false);
     }, 800);
   }
 
-  flechaDerecha() {    
-    const elementActive = document.querySelector('.container-tarjetas.active');
-    const indexActive = elementActive?.getAttribute('data-index');
-    let indexPrev = indexActive?parseInt(indexActive): 1;
-    let indexNext = indexPrev?indexPrev + 1 : 1;
-    if (indexNext > 2 ) { indexNext = 0; }
-    const elementNext = document.querySelector('.container-tarjetas[data-index="' + indexNext + '"]');
-    this.paginaActual(-120, elementActive, elementNext, indexNext);
+  flechaDerecha() {
+    this.paginaActual(-120);
 
     var totalPaginas = this.obetenerNumeroPaginas();
     this.k += 1;
     if (this.k >= totalPaginas) {
       this.k = 0;
     }
-    setTimeout(() => {        
-      elementActive?.classList.remove('active-old');
-      elementNext?.classList.remove('transition-left');      
-      this.paginaSiguiente(indexPrev, indexNext);
-    }, 1000);
+    // setTimeout(() => {
+    //   this.paginaSiguiente(-120, 2);
+    // }, 800);
     setTimeout(() => {
-      // this.construirCarrucel(this.k, false);
-    }, 800);
+      this.construirCarrucel(this.k, false);
+    }, 1200);
+
+
   }
 
-  paginaSiguiente(indexPrev:number, indexNext:number) {
-    var paginaSiguiente = Array.from((document.querySelectorAll('.' + this.classOrdenTarjetas + indexNext) as NodeListOf<HTMLElement>));
-    var paginaAnterior = Array.from((document.querySelectorAll('.' + this.classOrdenTarjetas + indexPrev) as NodeListOf<HTMLElement>));
+  paginaSiguiente(orientacion: number, grupo: number) {
+    var paginaSiguiente = Array.from((document.querySelectorAll('.' + this.classOrdenTarjetas + grupo) as NodeListOf<HTMLElement>));
     paginaSiguiente.forEach((elemento, i) => {
-        paginaAnterior[i].removeAttribute('style');
-        paginaSiguiente[i].removeAttribute('style');
-    });
-  }
-
-  paginaActual(orientacion: number, elementActive:Element | null, elementNext:Element | null, indexNext:number) {   
-    var paginaActual = Array.from((elementActive?.querySelectorAll('.carrusel-uno-item') as NodeListOf<HTMLElement>)).reverse();
-    var paginaSiguiente = Array.from((elementNext?.querySelectorAll('.carrusel-uno-item') as NodeListOf<HTMLElement>)).reverse();
-
-    elementActive?.classList.add('active-old');
-    elementActive?.classList.remove('active');
-    elementNext?.classList.add('active', 'transition-left');
-    
-    paginaActual.forEach((elemento, i) => {
-      paginaActual[i].style.transition = 'transform ' + 0.4 * (i + 1) + 's';
-      paginaActual[i].style.transform = 'translate(' + orientacion + '%, 0)';
-      if (indexNext == 0) {
-        paginaSiguiente[i].style.transform = 'translate(180%, 0)';
-      }
+      paginaSiguiente[i].classList.add('active');
       setTimeout(() => {
-        paginaSiguiente[i].style.transition = 'transform ' + 0.4 * (3 - i) + 's';
-        paginaSiguiente[i].style.transform = 'translate(-50%, 0)';
-      }, 60);
+        paginaSiguiente[i].style.transition = 'transform ' + 0.4 * (i + 1) + 's';
+        paginaSiguiente[i].style.transform = 'translate(' + orientacion + '%, 0)';
+      }, 1);
+      // setTimeout(() => {
+      //   paginaSiguiente[i].classList.remove('active');
+
+      // }, 1000);
     });
   }
 
-  construirCarrucel(paginaActual: number) {
+  paginaActual(orientacion: number) {
+    var paginaSiguiente = Array.from((document.querySelectorAll('.' + this.classOrdenTarjetas + '1') as NodeListOf<HTMLElement>)).reverse();
+    console.log('paginaSiguiente', paginaSiguiente)
+    paginaSiguiente.forEach((elemento, i) => {
+      paginaSiguiente[i].style.transition = 'transform ' + 0.4 * (i + 1) + 's';
+      paginaSiguiente[i].style.transform = 'translate(' + orientacion + '%, 0)';
+    });
+  }
+
+  construirCarrucel(paginaActual: number, ngOn: boolean) {
 
     var pagina_Siguiente: number = paginaActual + 1 > this.ultimaPagina ? this.primerPagina : paginaActual + 1;
     var pagina_Anterior: number = paginaActual - 1 < 0 ? this.ultimaPagina : paginaActual - 1;
 
+    var html = "";
     document.getElementById(this.idTarjetas)!.innerHTML = "";
     var elementosPorPagina = this.obetenerElementosPorPagina();
 
     // construccion pagina-anterior, pagina-actual y pagina-siguiente, total 3 paginas
     var totalPaginas = 3;
-    let parent = document.getElementById(this.idTarjetas);
+
     for (var i = 0; i < totalPaginas; i++) {
-      var html = "";
-      const newDiv = document.createElement("div");
-      newDiv.classList.add("container-tarjetas");
-      newDiv.setAttribute("data-index", ''+i+'');
-      if (i == 1) { newDiv.classList.add("active"); }
       for (var n = 0; n < elementosPorPagina; n++) {
-        let posicion: number, microIteracion: string = "", transition: string, transform: string;
+        var active: string, posicion: number, microIteracion: string = "", transition: string, transform: string;
+        // microIteracion = i == 0 ? "" : " ";
+        // transition = `style="transition: transform ` + 0.4 * (n + 1) + `s ease 0s;"`
+        // transform = `style="transform: translate(` + -120 + `%, 0px);"`
+        active = i == 1 ? "carrusel-uno-item active" : "carrusel-uno-item";
         posicion = i == 0 ? n + pagina_Anterior * 3 : (i == 1 ? n + paginaActual * 3 : n + pagina_Siguiente * 3);
 
-        if (this.data[posicion] != undefined) {
-          var nombre = (this.data[posicion].nombre.length > 47) ? this.data[posicion].nombre.substring(0, 47) + "..." : this.data[posicion].nombre;
-          var icono = this.data[posicion].iconoCategoria != "" ? this.data[posicion].iconoCategoria : "https://govco-prod-webutils.s3.amazonaws.com/uploads/2021-10-26/d8f3f555-6765-451f-8ea8-d8109692f458-CAT_DEFAULT-80px.svg";
+        if (this.tramites[posicion] != undefined) {
+          var nombre = (this.tramites[posicion].nombre.length > 85) ? this.tramites[posicion].nombre.substring(0, 85) + "..." : this.tramites[posicion].nombre;
+          var icono = this.tramites[posicion].iconoCategoria != "" ? this.tramites[posicion].iconoCategoria : "https://govco-prod-webutils.s3.amazonaws.com/uploads/2021-10-26/d8f3f555-6765-451f-8ea8-d8109692f458-CAT_DEFAULT-80px.svg";
           icono = this.codigoCategoria ? '' : `<img src="` + icono + `" alt="" />`;
 
-          html += `<div class="` + this.classOrdenTarjetas + i + ` carrusel-uno-item" >
-                      <a role="link" class="tarjetas-link" aria-label="`+ nombre + `" href="/ficha-tramites-y-servicios/T` + this.data[posicion].id + `">
+          html += `<div class="` + this.classOrdenTarjetas + i + ` col-ms-12 col-md-6 col-lg-4 ` + active + `" >
+                      <a role="link" class="tarjetas-link" aria-label="`+ nombre + `" href="/ficha-tramites-y-servicios/T` + this.tramites[posicion].id + `">
                         <div class="tarjeta-pwa"> 
                             `+ icono + `
                             <span>`+ nombre + `</span>
@@ -205,8 +143,7 @@ export class CarruselUnoComponent implements OnInit {
                    </div>`;
         }
       }
-      newDiv.innerHTML = html;
-      parent?.appendChild(newDiv);
+      document.getElementById(this.idTarjetas)!.innerHTML = html;
     }
   }
 
