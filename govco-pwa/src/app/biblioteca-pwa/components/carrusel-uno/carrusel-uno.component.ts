@@ -18,33 +18,35 @@ export class CarruselUnoComponent implements OnInit {
   codigoCategoria: string;
   id_: string = "pwa";
   idTarjetas: string;
-  idOrdenTarjetas: string;
+  classOrdenTarjetas: string;
   // variables contador
-  direccionClic: number = 0;
+  ultimaPagina: number = 0;
+  primerPagina: number = 0;
+  siguientePagina: number = 0;
   k: number = 0;
 
   ubicacion: any;
 
   constructor(protected carruselServe: CarruselUnoService) {
     this.idTarjetas = "tarjetas-carrusel-pwa";
-    this.idOrdenTarjetas = "tarjetaPwa"
+    this.classOrdenTarjetas = "grupo"
   }
 
   ngOnInit(): void {
+    this.ultimaPagina = this.obetenerNumeroPaginas() - 1;
     this.carruselServe.getTramitesMasConsultadosAsync().subscribe((info: CarruselUnoInterface) => {
       this.tramites = info.data;
-      console.log('tramites', this.tramites)
-      this.construirCarrucel(this.direccionClic);
+      this.construirCarrucel(0, true);
     })
   }
 
   obetenerNumeroPaginas(): number {
-    var obj = this;
-    var elementos = 4;
-    var division = obj.tramites.length / elementos;
-    var decimal = division % 1;
-    var res = Number((decimal >= 0.5) ? division.toFixed(0) : (decimal == 0 ? Number(division.toFixed(0)) : Number(division.toFixed(0)) + 1));
-    return res;
+    // var obj = this;
+    // var elementos = 4;
+    // var division = obj.tramites.length / elementos;
+    // var decimal = division % 1;
+    // var res = Number((decimal >= 0.5) ? division.toFixed(0) : (decimal == 0 ? Number(division.toFixed(0)) : Number(division.toFixed(0)) + 1));
+    return 4;
   }
 
   obetenerElementosPorPagina() {
@@ -52,74 +54,105 @@ export class CarruselUnoComponent implements OnInit {
   }
 
   flechaIzquierda() {
+    this.paginaActual(120);
     var totalPaginas = this.obetenerNumeroPaginas();
-    this.direccionClic -= 1;
-    if (this.direccionClic < 0) {
-      this.direccionClic = totalPaginas - 1;
+    this.k -= 1;
+    if (this.k < 0) {
+      this.k = totalPaginas - 1;
     }
-    this.construirCarrucel(this.direccionClic);
-    this.efectoDeslizar('right');
+    setTimeout(() => {
+      this.construirCarrucel(this.k, false);
+    }, 800);
   }
 
   flechaDerecha() {
+    this.paginaActual(-120);
+
     var totalPaginas = this.obetenerNumeroPaginas();
-    this.direccionClic += 1;
-    if (this.direccionClic >= totalPaginas) {
-      this.direccionClic = 0;
+    this.k += 1;
+    if (this.k >= totalPaginas) {
+      this.k = 0;
     }
-    this.construirCarrucel(this.direccionClic);
-    this.efectoDeslizar('left');
+    // setTimeout(() => {
+    //   this.paginaSiguiente(-120, 2);
+    // }, 800);
+    setTimeout(() => {
+      this.construirCarrucel(this.k, false);
+    }, 1200);
+
+
   }
 
-  efectoDeslizar(direccion: string) {
-    var clase = "carrusel-uno-item-" + direccion;
-    var tarjetasDeLaPagina = document.querySelectorAll('.carrusel-uno-item.active')
-    tarjetasDeLaPagina.forEach((elemento, i) => {
-      elemento.classList.add(clase);
+  paginaSiguiente(orientacion: number, grupo: number) {
+    var paginaSiguiente = Array.from((document.querySelectorAll('.' + this.classOrdenTarjetas + grupo) as NodeListOf<HTMLElement>));
+    paginaSiguiente.forEach((elemento, i) => {
+      paginaSiguiente[i].classList.add('active');
       setTimeout(() => {
-        elemento.classList.remove(clase);
-      }, 200 * i);
+        paginaSiguiente[i].style.transition = 'transform ' + 0.4 * (i + 1) + 's';
+        paginaSiguiente[i].style.transform = 'translate(' + orientacion + '%, 0)';
+      }, 1);
+      // setTimeout(() => {
+      //   paginaSiguiente[i].classList.remove('active');
+
+      // }, 1000);
     });
   }
 
-  construirCarrucel(paginaA: number) {
+  paginaActual(orientacion: number) {
+    var paginaSiguiente = Array.from((document.querySelectorAll('.' + this.classOrdenTarjetas + '1') as NodeListOf<HTMLElement>)).reverse();
+    console.log('paginaSiguiente', paginaSiguiente)
+    paginaSiguiente.forEach((elemento, i) => {
+      paginaSiguiente[i].style.transition = 'transform ' + 0.4 * (i + 1) + 's';
+      paginaSiguiente[i].style.transform = 'translate(' + orientacion + '%, 0)';
+    });
+  }
+
+  construirCarrucel(paginaActual: number, ngOn: boolean) {
+
+    var pagina_Siguiente: number = paginaActual + 1 > this.ultimaPagina ? this.primerPagina : paginaActual + 1;
+    var pagina_Anterior: number = paginaActual - 1 < 0 ? this.ultimaPagina : paginaActual - 1;
+
     var html = "";
-    document.querySelector("#" + this.idTarjetas)!.innerHTML = "";
-    var totalPaginas = this.obetenerNumeroPaginas();
+    document.getElementById(this.idTarjetas)!.innerHTML = "";
     var elementosPorPagina = this.obetenerElementosPorPagina();
-    var pagina_Actual = paginaA;
 
-    var totalElementos: number = totalPaginas * elementosPorPagina;
-
+    // construccion pagina-anterior, pagina-actual y pagina-siguiente, total 3 paginas
+    var totalPaginas = 3;
 
     for (var i = 0; i < totalPaginas; i++) {
-      for (this.k = this.k; this.k < elementosPorPagina * (i + 1); this.k++) {
-        var active;
-        if (pagina_Actual == 0) {
-          active = elementosPorPagina <= this.k ? "carrusel-uno-item" : "carrusel-uno-item active";
-        } else {
-          active = i == pagina_Actual ? "carrusel-uno-item active" : "carrusel-uno-item";
-        }
+      for (var n = 0; n < elementosPorPagina; n++) {
+        var active: string, posicion: number, microIteracion: string = "", transition: string, transform: string;
+        // microIteracion = i == 0 ? "" : " ";
+        // transition = `style="transition: transform ` + 0.4 * (n + 1) + `s ease 0s;"`
+        // transform = `style="transform: translate(` + -120 + `%, 0px);"`
+        active = i == 1 ? "carrusel-uno-item active" : "carrusel-uno-item";
+        posicion = i == 0 ? n + pagina_Anterior * 3 : (i == 1 ? n + paginaActual * 3 : n + pagina_Siguiente * 3);
 
-        if (this.tramites[this.k] != undefined) {
-          var nombre = (this.tramites[this.k].nombre.length > 85) ? this.tramites[this.k].nombre.substring(0, 85) + "..." : this.tramites[this.k].nombre;
-          var icono = this.tramites[this.k].iconoCategoria != "" ? this.tramites[this.k].iconoCategoria : "https://govco-prod-webutils.s3.amazonaws.com/uploads/2021-10-26/d8f3f555-6765-451f-8ea8-d8109692f458-CAT_DEFAULT-80px.svg";
+        if (this.tramites[posicion] != undefined) {
+          var nombre = (this.tramites[posicion].nombre.length > 85) ? this.tramites[posicion].nombre.substring(0, 85) + "..." : this.tramites[posicion].nombre;
+          var icono = this.tramites[posicion].iconoCategoria != "" ? this.tramites[posicion].iconoCategoria : "https://govco-prod-webutils.s3.amazonaws.com/uploads/2021-10-26/d8f3f555-6765-451f-8ea8-d8109692f458-CAT_DEFAULT-80px.svg";
           icono = this.codigoCategoria ? '' : `<img src="` + icono + `" alt="" />`;
-          html += `<div id="` + this.idOrdenTarjetas + `"class=" ` + active + ` col-ms-12 col-md-6 col-lg-4">
-                <a role="link" class="tarjetas-link" aria-label="`+ nombre + `" href="/ficha-tramites-y-servicios/T` + this.tramites[this.k].id + `"><div class="tarjeta-pwa">
-                  `+ icono + `
-                  <span>`+ nombre + `</span>
-                </div></a>
-              </div>`;
+
+          html += `<div class="` + this.classOrdenTarjetas + i + ` col-ms-12 col-md-6 col-lg-4 ` + active + `" >
+                      <a role="link" class="tarjetas-link" aria-label="`+ nombre + `" href="/ficha-tramites-y-servicios/T` + this.tramites[posicion].id + `">
+                        <div class="tarjeta-pwa"> 
+                            `+ icono + `
+                            <span>`+ nombre + `</span>
+                        </div>
+                      </a>
+                   </div>`;
         }
       }
-      html += '</div>' +
-        '</div>';
+      document.getElementById(this.idTarjetas)!.innerHTML = html;
     }
-    document.querySelector("#" + this.idTarjetas)!.innerHTML = html;
-    if (this.k >= totalElementos) {
-      this.k = 0
-    }
+  }
+
+  sleep(milliseconds: number) {
+    const date = Date.now();
+    let currentDate = null;
+    do {
+      currentDate = Date.now();
+    } while (currentDate - date < milliseconds);
   }
 
 }

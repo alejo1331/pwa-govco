@@ -61,28 +61,31 @@
   flex-direction: column;
 }
 
-::ng-deep .container-carrusel-uno #tarjetaPwa {
-  width: 17.5rem;
-  margin: 16px auto auto;
-}
-
-::ng-deep .container-carrusel-uno .carrusel-uno-item-left {
+::ng-deep .container-carrusel-uno .carrusel-uno-item-right {
   transform: translate(120%, 0);
 }
 
-::ng-deep .container-carrusel-uno .carrusel-uno-item-right {
+::ng-deep .container-carrusel-uno .carrusel-uno-item-left {
   transform: translate(-120%, 0);
 }
 
 ::ng-deep .container-carrusel-uno .carrusel-uno-item {
+  width: 17.5rem;
+  margin: 16px auto auto;
   display: none;
   float: left;
-  transition: -webkit-transform 0.8s ease-in-out;
-  transition: transform 0.8s ease-in-out;
-  transition: transform 0.8s ease-in-out, -webkit-transform 0.8s ease-in-out;
 }
 
-::ng-deep .container-carrusel-uno .carrusel-uno-item.active {
+::ng-deep .container-carrusel-uno .carrusel-grupo {
+  width: 100%;
+  margin: 16px auto auto;
+  display: none;
+  float: left;
+  background-color: #ffffff !important;
+}
+
+::ng-deep .container-carrusel-uno .carrusel-uno-item.active,
+::ng-deep .container-carrusel-uno .carrusel-grupo.active {
   display: block;
   background-color: #00498400;
 }
