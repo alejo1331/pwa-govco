@@ -13,16 +13,16 @@ export class BannerPrincipalPwaComponent implements OnInit {
   public textoPrimario: string = 'Facilitamos tu busqueda.'
   public textoSecundario: string = ''
   public textoBoton: string = ''
-  public textoPartido2: string = 'Facilitamos tu búsqueda. Encuentra trámites y servicios según tu momento de vida.'
   public imagen: string = '';
   public descripcionImagen: string = '';
+  public urlBoton: string = ''
 
   constructor(private homeService : HomeService) { }
 
   ngOnInit (): void {
-    this.homeService.getbannerPrincipal().subscribe( ( info: BannerPrincipalModel ) => {
+    this.homeService.getBannerPrincipal().subscribe( ( info: BannerPrincipalModel ) => {
       if ( info['succeeded'] ) {
-        const { textoBienvenida, textoBuscador, textoAuxiliar, textoBotonAuxiliar, listaImagenes } = info['data'];
+        const { textoBienvenida, textoBuscador, textoAuxiliar, textoBotonAuxiliar, urlBotonAuxiliar, listaImagenes } = info['data'];
         const textoIndex = textoAuxiliar.indexOf( '.' );
         const textoLength = textoAuxiliar.length;
         this.titleBanner = textoBienvenida;
@@ -30,12 +30,18 @@ export class BannerPrincipalPwaComponent implements OnInit {
         this.textoPrimario = textoAuxiliar.slice(0, textoIndex + 1);
         this.textoSecundario = textoAuxiliar.slice(textoIndex + 1, textoLength);
         this.textoBoton = textoBotonAuxiliar;
+        this.urlBoton = urlBotonAuxiliar;
         const imagenAleatoria = listaImagenes[Math.floor( Math.random() * listaImagenes.length )];
         const { urlImagen, textoDescriptivo } = imagenAleatoria;
-        this.imagen = urlImagen;
+        let re = /\ /gi;
+        this.imagen = urlImagen.replace(re, "%20");
         this.descripcionImagen = textoDescriptivo;
       }
     })
+  }
+
+  goToLink(url: string){
+    window.open( url, "_blank" );
   }
 
 }
