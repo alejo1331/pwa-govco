@@ -74,11 +74,11 @@ export class CarruselUnoComponent implements OnInit {
       this.k = 0;
     }
     // setTimeout(() => {
-    //   this.paginaSiguiente(-120, 2);
+      this.paginaSiguiente(-120, 2);
     // }, 800);
-    setTimeout(() => {
+    // setTimeout(() => {
       this.construirCarrucel(this.k, false);
-    }, 800);
+    // }, 800);
 
 
   }
