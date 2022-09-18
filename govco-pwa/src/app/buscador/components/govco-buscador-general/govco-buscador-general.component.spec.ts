@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { GovcoBuscadorGeneralComponent } from './govco-buscador-general.component';
+import { BuscadorGeneralComponent } from './govco-buscador-general.component';
 
-describe('GovcoBuscadorGeneralComponent', () => {
-  let component: GovcoBuscadorGeneralComponent;
-  let fixture: ComponentFixture<GovcoBuscadorGeneralComponent>;
+describe('BuscadorGeneralComponent', () => {
+  let component: BuscadorGeneralComponent;
+  let fixture: ComponentFixture<BuscadorGeneralComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GovcoBuscadorGeneralComponent ]
+      declarations: [ BuscadorGeneralComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(GovcoBuscadorGeneralComponent);
+    fixture = TestBed.createComponent(BuscadorGeneralComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

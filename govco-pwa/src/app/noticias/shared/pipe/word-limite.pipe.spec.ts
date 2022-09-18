@@ -1,8 +1,8 @@
-import { WordLimitePipe } from './word-limite.pipe';
+import { WordLimitPipe } from './word-limite.pipe';
 
-describe('WordLimitePipe', () => {
+describe('WordLimitPipe', () => {
   it('create an instance', () => {
-    const pipe = new WordLimitePipe();
+    const pipe = new WordLimitPipe();
     expect(pipe).toBeTruthy();
   });
 });
