@@ -33,4 +33,8 @@ export class CarruselUnoService {
   getTramitesMasConsultadosPorMunicipio(codigoCiudad: string | null): Observable<PorMunicipioInterface> {
     return this.http.get<PorMunicipioInterface>(`${this.fichaTramite}LoMasConsultado/ObtenerLoMasConsultado?codigoCiudad=` + codigoCiudad);
   }
+
+  getTramitesMasConsultadosEstadoAsync(){
+    
+  }
 }
