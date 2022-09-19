@@ -1,0 +1,32 @@
+<p mat-dialog-title class="mat-dialog-title">¿Esta página fue útil para ti?</p>
+<div mat-dialog-content class="mat-typography">
+    <div class="opciones">
+        <div class="seleccion">
+            <span class="material-symbols-outlined size-icon" [ngClass]="selected ? 'selected-icon': 'default-icon'">
+                check_circle
+            </span>
+            <p class="text-icon">
+                Si
+            </p>
+        </div>
+
+        <div class="seleccion">
+            <span class="material-symbols-outlined size-icon" [ngClass]="selected ? 'selected-icon': 'default-icon'">
+                cancel
+            </span>
+            <p class="text-icon">
+                No
+            </p>
+        </div>
+    </div>
+    <div class="comentarios-content">
+        <p class="comentarios-text">Escribe tus comentarios</p>
+        <textarea class="aservice-comentarios-textarea" id="aservice-comentarios-textarea"
+            placeholder="Queremos conocer tu experiencia, sugerencias y consejos..."
+            aria-label="area de comentarios"></textarea>
+    </div>
+</div>
+<!-- <div mat-dialog-actions align="end">
+     <button mat-button mat-dialog-close>Cancel</button> 
+ <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Install</button> 
+</div> -->

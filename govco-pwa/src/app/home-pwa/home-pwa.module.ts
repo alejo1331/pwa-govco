@@ -10,7 +10,8 @@ import { BannerPrincipalPwaComponent } from './components/banner-principal-pwa/b
 import { BannerCardsComponent } from './components/banner-cards/banner-cards.component';
 import { BannerCardComponent } from './components/banner-cards/banner-card/banner-card.component';
 import { SeccionContactosEmerganciaComponent } from './components/seccion-contactos-emergancia/seccion-contactos-emergancia.component';
-
+import { BotonRetroalimentacionComponent } from './components/boton-retroalimentacion/boton-retroalimentacion.component';
+import { ServiceAreaContentComponent } from './components/boton-retroalimentacion/service-area-content/service-area-content.component';
 
 @NgModule({
   declarations: [
@@ -20,12 +21,10 @@ import { SeccionContactosEmerganciaComponent } from './components/seccion-contac
     BannerPrincipalPwaComponent,
     BannerCardsComponent,
     BannerCardComponent,
-    SeccionContactosEmerganciaComponent
+    SeccionContactosEmerganciaComponent,
+    BotonRetroalimentacionComponent,
+    ServiceAreaContentComponent,
   ],
-  imports: [
-  CommonModule,
-    HomePwaRoutingModule,
-    BibliotecaPwaModule
-  ]
+  imports: [CommonModule, HomePwaRoutingModule, BibliotecaPwaModule],
 })
-export class HomePwaModule { }
+export class HomePwaModule {}
