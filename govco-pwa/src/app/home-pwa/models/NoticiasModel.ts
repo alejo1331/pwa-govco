@@ -1,7 +1,7 @@
 export interface ObtenerBannerNoticiaRespuesta {
     data: BannerNoticiaDetalle;
     succeeded: boolean;
-    errors: string[];
+    errors: string[] | null;
     message: string;
 }
 
@@ -21,8 +21,7 @@ export interface ListadoActualidadNoticia {
     idCategoria: number;
     idSubCategoria: number;
     textoFecha: string;
-    codigoEntidad: number;
-    urlAmigable: string;
+    codigoEntidad: string;
     estado: string;
 }
 
