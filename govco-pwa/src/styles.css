@@ -136,13 +136,6 @@ body {
   height: 100%;
 }
 
-.caja-icono-pwa-govco {
-  width: 1.5rem;
-  height: 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 
 .material-symbols-outlined {
   font-variation-settings:
@@ -164,13 +157,25 @@ body {
   align-items: center;
 }
 
-.caja-pwa-govco-back-arrow {
-  height: 3em;
-  width: 3em;
+.caja-icono-pwa-govco, 
+.caja-pwa-govco-back-arrow,
+.caja-icono-48-pwa {
+  width: 1.5rem;
+  height: 1.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.caja-pwa-govco-back-arrow {
+  height: 3em;
+  width: 3em;
   margin-left: 1em;
+}
+
+.caja-icono-48-pwa {
+  height: 3em;
+  width: 3em;
 }
 
 .pwa-govco-back-arrow {
@@ -432,5 +437,6 @@ select-search-1 a,
 .owl-dots .owl-dot.active span {
   background-color: #4B4B4B !important;
 }
+
 
 

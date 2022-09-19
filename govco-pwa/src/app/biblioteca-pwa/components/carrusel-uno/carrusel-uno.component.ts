@@ -10,9 +10,10 @@ import { CarruselUnoService } from '../carrusel-uno.service';
 })
 export class CarruselUnoComponent implements OnInit {
   tramites: CarruselUnoInterface1[];
-  titulo: string = "";
-  codigoMunicipio: any;
-  nombreMunicipio: any = "";
+  titulo: string = "Trámites más consultados";
+  codigoMunicipio: string | null= "";
+  codigoDepartamento: string | null= "";
+  nombreMunicipio: string = "";
   pagina: number | null;
   textoCarga: string = "Cargando..."
   codigoCategoria: string;
@@ -33,10 +34,13 @@ export class CarruselUnoComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.codigoMunicipio = localStorage.getItem("codigoDepartamento") != null ? localStorage.getItem("codigoDepartamento") : 'vacio';
+    this.codigoMunicipio = localStorage.getItem("codigoMunicipio") != null ? localStorage.getItem("codigoMunicipio") : 'vacio';
+
     this.ultimaPagina = this.obetenerNumeroPaginas() - 1;
     this.carruselServe.getTramitesMasConsultadosAsync().subscribe((info: CarruselUnoInterface) => {
       this.tramites = info.data;
-      this.construirCarrucel(0, true);
+      this.construirCarrucel(0);
     })
   }
 
@@ -65,7 +69,7 @@ export class CarruselUnoComponent implements OnInit {
       this.k = totalPaginas - 1;
     }
     setTimeout(() => {
-      this.construirCarrucel(this.k, false);
+      this.construirCarrucel(this.k);
     }, 800);
   }
 
@@ -90,7 +94,7 @@ export class CarruselUnoComponent implements OnInit {
     }, 1000);
     setTimeout(() => {
       // this.construirCarrucel(this.k, false);
-    })
+    }, 800);
   }
 
   paginaSiguiente(indexPrev: number, indexNext: number) {
@@ -123,7 +127,7 @@ export class CarruselUnoComponent implements OnInit {
     });
   }
 
-  construirCarrucel(paginaActual: number, ngOn: boolean) {
+  construirCarrucel(paginaActual: number) {
 
     var pagina_Siguiente: number = paginaActual + 1 > this.ultimaPagina ? this.primerPagina : paginaActual + 1;
     var pagina_Anterior: number = paginaActual - 1 < 0 ? this.ultimaPagina : paginaActual - 1;
@@ -141,14 +145,11 @@ export class CarruselUnoComponent implements OnInit {
       newDiv.setAttribute("data-index", '' + i + '');
       if (i == 1) { newDiv.classList.add("active"); }
       for (var n = 0; n < elementosPorPagina; n++) {
-        let posicion: number, microIteracion: string = "", transition: string, transform: string;
-        // microIteracion = i == 0 ? "" : " ";
-        // transition = `style="transition: transform ` + 0.4 * (n + 1) + `s ease 0s;"`
-        // transform = `style="transform: translate(` + -120 + `%, 0px);"`
+        let posicion: number;
         posicion = i == 0 ? n + pagina_Anterior * 3 : (i == 1 ? n + paginaActual * 3 : n + pagina_Siguiente * 3);
 
         if (this.tramites[posicion] != undefined) {
-          var nombre = (this.tramites[posicion].nombre.length > 85) ? this.tramites[posicion].nombre.substring(0, 85) + "..." : this.tramites[posicion].nombre;
+          var nombre = (this.tramites[posicion].nombre.length > 47) ? this.tramites[posicion].nombre.substring(0, 47) + "..." : this.tramites[posicion].nombre;
           var icono = this.tramites[posicion].iconoCategoria != "" ? this.tramites[posicion].iconoCategoria : "https://govco-prod-webutils.s3.amazonaws.com/uploads/2021-10-26/d8f3f555-6765-451f-8ea8-d8109692f458-CAT_DEFAULT-80px.svg";
           icono = this.codigoCategoria ? '' : `<img src="` + icono + `" alt="" />`;
 

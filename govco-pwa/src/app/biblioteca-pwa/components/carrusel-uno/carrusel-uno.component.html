@@ -1,20 +1,24 @@
 <div class="container-carrusel-uno">
+    <div class="titulo-tramites" tabIndex={0}
+        [attr.aria-labe]="nombreMunicipio == '' ? 'A continuación encontrará la sección '+ titulo + '.' : 'A continuación encontrará la sección ' + titulo + ' filtrados por el municipio de ' + nombreMunicipio + '.'">
+        <h2>{{ titulo }}</h2>
+        <h3 *ngIf="titulo != '' ">{{nombreMunicipio}}</h3>
+    </div>
     <div class="carousel slide" data-interval="false">
         <div class="carousel-inner">
             <div id="{{idTarjetas}}"></div>
         </div>
     </div>
     <div class="d-flex align-items-center justify-content-between contenedor-flechas">
-        <a class="arrow-carousel arrow-left-pwa" tabIndex={-1} (click)="flechaIzquierda()"
-            role="button" data-slide="prev">
-            <i class="fa fa-chevron-left fa-lg"></i>
-            <span class="sr-only">Mostrar anteriores</span>
+        <a class="caja-icono-48-pwa" tabIndex={-1} (click)="flechaIzquierda()" role="button" data-slide="prev">
+            <img class="arrow-carousel arrow-left-pwa"
+                src="../../../../assets/icons-fonts/navigate_before_FILL1_wght500_GRAD0_opsz20.svg"
+                alt="Mostrar anteriores">
         </a>
-        <a class="arrow-carousel arrow-rigth-pwa" tabIndex={-1} (click)="flechaDerecha()"
-            role="button" data-slide="next">
-            <i class="fa fa-chevron-right fa-lg"></i>
-            <span class="sr-only">Mostrar siguientes</span>
+        <a class="caja-icono-48-pwa" tabIndex={-1} (click)="flechaDerecha()" role="button" data-slide="next">
+            <img class="arrow-carousel arrow-rigth-pwa"
+                src="../../../../assets/icons-fonts/navigate_next_FILL1_wght500_GRAD0_opsz20.svg"
+                alt="Mostrar siguientes">
         </a>
-
     </div>
 </div>

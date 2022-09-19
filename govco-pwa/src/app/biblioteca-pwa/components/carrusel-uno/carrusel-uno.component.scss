@@ -1,8 +1,9 @@
 .container-carrusel-uno {
-  margin: 3rem 0;
+  margin: 2.5rem 0 0 0;
   width: 100%;
   overflow: hidden;
 }
+
 .container-carrusel-uno .tarjetas-link {
   display: block;
 }
@@ -10,8 +11,17 @@
 ::ng-deep .container-carrusel-uno .titulo-tramites {
   h2 {
     color: #004884;
-    font: normal normal 600 1.5rem/3.25rem Montserrat !important;
+    font-family: 'Montserrat-SemiBold';
+    font-size: 1.25rem;
+    margin-left: 16px;
+  }
 
+  h3 {
+    font-family: 'WorkSans-Bold';
+    color: #3366CC;
+    font-size: 0.875rem;
+    margin: 0 0 16px 16px;
+    text-decoration: underline
   }
 }
 
@@ -31,27 +41,27 @@
   }
 
   span {
-    font-family: "Work Sans", sans-serif;
+    font-family: "WorkSans-Medium";
     font-size: 0.875rem;
-    color: #004884;
-    font-weight: 500;
+    color: #000000;
     text-decoration: underline !important;
     margin-left: 16px;
+    line-height: 1.125rem
   }
 }
 
 .container-carrusel-uno .arrow-left-pwa {
-  position: relative;
-  left: 17px;
+  height: 2.5rem;
+  width: 2.5rem;
 }
 
 .container-carrusel-uno .arrow-rigth-pwa {
-  position: relative;
-  left: -17px;
+  height: 2.5rem;
+  width: 2.5rem;
 }
 
 .container-carrusel-uno .contenedor-flechas {
-  transform: translate(0px, -11.5rem);
+  transform: translate(0px, -11.8rem);
 }
 
 ::ng-deep .container-carrusel-uno .carousel.slide {
@@ -80,7 +90,7 @@
 
 ::ng-deep .container-carrusel-uno .carrusel-uno-item {
   width: 17.5rem;
-  margin: 16px auto auto;
+  margin: 0 auto 16px auto;
   // display: none;
   float: left;
 }
@@ -159,5 +169,5 @@
 }
 
 ::ng-deep .container-carrusel-uno .active {
-  background-color: #ffff!important;
+  background-color: #ffff !important;
 }
