@@ -1,0 +1,36 @@
+.button-container{
+    float: right;
+    margin-right: 20px;
+    .mat-fab {
+        box-sizing: border-box;
+        position: relative;
+        user-select: none;
+        cursor: pointer;
+        outline: none;
+        border: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        white-space: nowrap;
+        text-decoration: none;
+        vertical-align: baseline;
+        margin: 0;
+        min-width: 64px;
+        line-height: 36px;
+        padding: 0 16px;
+        border-radius: 4px;
+        overflow: visible;
+        transform: translate3d(0, 0, 0);
+        transition: background 400ms cubic-bezier(0.25, 0.8, 0.25, 1),box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+        min-width: 0;
+        border-radius: 50%;
+        width: 48px;
+        height: 48px;
+        padding: 0;
+        flex-shrink: 0;
+        background-color: #004884;
+        .material-symbols-outlined{
+            color: #fff;
+        }
+    }
+}
