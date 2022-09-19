@@ -1,16 +1,16 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { CarruselUnoInterface } from './carrusel-uno-interface';
-import { EstadoInterface } from './estado-interface';
-import { TituloInterface } from './titulo-interface';
-import { PorMunicipioInterface } from './por-municipio-interface';
+import { EstadoInterface } from '../../models/tramites-mas-consultados/estado-interface';
+import { GeneralInterface } from '../../models/tramites-mas-consultados/general-interface';
+import { PorMunicipioInterface } from '../../models/tramites-mas-consultados/por-municipio-interface';
+import { TituloInterface } from '../../models/tramites-mas-consultados/titulo-interface';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CarruselUnoService {
+export class TramitesMasConsultadosService {
 
   base_url: string = environment.serverFichaTramite;
   fichaTramite: string = environment.serverUrlFichaTramite;
@@ -18,8 +18,8 @@ export class CarruselUnoService {
 
   constructor(private http: HttpClient) { }
 
-  getTramitesMasConsultados(): Observable<CarruselUnoInterface> {
-    return this.http.get<CarruselUnoInterface>(`${this.base_url}/LoMasConsultado/ObtenerLoMasConsultado`);
+  getTramitesMasConsultados(): Observable<GeneralInterface> {
+    return this.http.get<GeneralInterface>(`${this.base_url}/LoMasConsultado/ObtenerLoMasConsultado`);
   }
 
   getTramitesMasConsultadosEstado(): Observable<EstadoInterface> {

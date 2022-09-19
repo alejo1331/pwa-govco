@@ -1,7 +1,11 @@
-import { Component, ElementRef, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { GeolocalizacionService } from 'src/app/transversales/services/geolocalizacion/geolocalizacion.service';
 import { CarruselUnoInterface } from '../carrusel-uno-interface';
 import { CarruselUnoInterface1 } from '../carrusel-uno-interface-1';
 import { CarruselUnoService } from '../carrusel-uno.service';
+import { EstadoInterface } from '../estado-interface';
+import { PorMunicipioInterface } from '../por-municipio-interface';
+import { TituloInterface } from '../titulo-interface';
 
 @Component({
   selector: 'app-carrusel-uno',
@@ -9,10 +13,11 @@ import { CarruselUnoService } from '../carrusel-uno.service';
   styleUrls: ['./carrusel-uno.component.scss']
 })
 export class CarruselUnoComponent implements OnInit {
-  tramites: CarruselUnoInterface1[];
-  titulo: string = "Trámites más consultados";
-  codigoMunicipio: string | null= "";
-  codigoDepartamento: string | null= "";
+  data: CarruselUnoInterface1[];
+  titulo: string = "";
+  estadoTitulo: boolean = false;
+  codigoMunicipio: string | null = "";
+  codigoDepartamento: string | null = "";
   nombreMunicipio: string = "";
   pagina: number | null;
   textoCarga: string = "Cargando..."
@@ -20,6 +25,8 @@ export class CarruselUnoComponent implements OnInit {
   id_: string = "pwa";
   idTarjetas: string;
   classOrdenTarjetas: string;
+  seccion: string = 'LoMasConsultadoHome';
+  estado: boolean = false;
   // variables contador
   ultimaPagina: number = 0;
   primerPagina: number = 0;
@@ -28,19 +35,54 @@ export class CarruselUnoComponent implements OnInit {
 
   ubicacion: any;
 
-  constructor(protected carruselServe: CarruselUnoService) {
+  constructor(
+    protected carruselServe: CarruselUnoService,
+    protected ServicioGeolocalizacion: GeolocalizacionService
+  ) {
     this.idTarjetas = "tarjetas-carrusel-pwa";
     this.classOrdenTarjetas = "grupo"
   }
 
   ngOnInit(): void {
-    this.codigoMunicipio = localStorage.getItem("codigoDepartamento") != null ? localStorage.getItem("codigoDepartamento") : 'vacio';
-    this.codigoMunicipio = localStorage.getItem("codigoMunicipio") != null ? localStorage.getItem("codigoMunicipio") : 'vacio';
+    this.codigoDepartamento = localStorage.getItem("codigoDepartamento") != null ? (localStorage.getItem("codigoDepartamento") != 'TodosLosDepartamentos' ? localStorage.getItem("codigoDepartamento") : '') : '';
+    this.codigoMunicipio = localStorage.getItem("codigoMunicipio") != null ? (localStorage.getItem("codigoMunicipio") != 'TodosLosMunicipios' ? localStorage.getItem("codigoMunicipio") : '') : '';
+
+    if (this.codigoMunicipio != '') {
+      this.ServicioGeolocalizacion.getCacheJsonMunicipiosPorDepartamento(String(this.codigoDepartamento))
+        .then((municipios: any) => {
+          this.estadoTitulo = true
+          municipios.forEach((data: any) => {
+             data['codigo'] == this.codigoMunicipio ? this.nombreMunicipio = data['nombre'] : '';
+          });
+        })
+    }
 
     this.ultimaPagina = this.obetenerNumeroPaginas() - 1;
-    this.carruselServe.getTramitesMasConsultadosAsync().subscribe((info: CarruselUnoInterface) => {
-      this.tramites = info.data;
-      this.construirCarrucel(0);
+
+    this.carruselServe.getTramitesMasConsultadosEstado().subscribe((estado: EstadoInterface) => {
+      if (estado.data.activo == 1) {
+        this.estado = true;
+        this.carruselServe.getTramitesMasConsultadosTitulo(this.seccion).subscribe((dataTitulo: TituloInterface) => {
+          this.titulo = dataTitulo.data.titulo;
+        })
+        this.codigoMunicipio == "" ?
+          this.carruselServe.getTramitesMasConsultados().subscribe((info: CarruselUnoInterface) => {
+            this.data = info.data;
+            if (this.data.length > 0) {
+              this.construirCarrucel(0);
+            }
+          })
+          : this.carruselServe.getTramitesMasConsultadosPorMunicipio(this.codigoMunicipio).subscribe((tramitesPorMunicipio: PorMunicipioInterface) => {
+            this.data = tramitesPorMunicipio.data;
+            if (this.data.length > 0) {
+              this.construirCarrucel(0);
+            }
+          });
+      }
+      else {
+        this.estado = false;
+        this.textoCarga = "No hay datos para mostrar."
+      }
     })
   }
 
@@ -148,13 +190,13 @@ export class CarruselUnoComponent implements OnInit {
         let posicion: number;
         posicion = i == 0 ? n + pagina_Anterior * 3 : (i == 1 ? n + paginaActual * 3 : n + pagina_Siguiente * 3);
 
-        if (this.tramites[posicion] != undefined) {
-          var nombre = (this.tramites[posicion].nombre.length > 47) ? this.tramites[posicion].nombre.substring(0, 47) + "..." : this.tramites[posicion].nombre;
-          var icono = this.tramites[posicion].iconoCategoria != "" ? this.tramites[posicion].iconoCategoria : "https://govco-prod-webutils.s3.amazonaws.com/uploads/2021-10-26/d8f3f555-6765-451f-8ea8-d8109692f458-CAT_DEFAULT-80px.svg";
+        if (this.data[posicion] != undefined) {
+          var nombre = (this.data[posicion].nombre.length > 47) ? this.data[posicion].nombre.substring(0, 47) + "..." : this.data[posicion].nombre;
+          var icono = this.data[posicion].iconoCategoria != "" ? this.data[posicion].iconoCategoria : "https://govco-prod-webutils.s3.amazonaws.com/uploads/2021-10-26/d8f3f555-6765-451f-8ea8-d8109692f458-CAT_DEFAULT-80px.svg";
           icono = this.codigoCategoria ? '' : `<img src="` + icono + `" alt="" />`;
 
           html += `<div class="` + this.classOrdenTarjetas + i + ` carrusel-uno-item" >
-                      <a role="link" class="tarjetas-link" aria-label="`+ nombre + `" href="/ficha-tramites-y-servicios/T` + this.tramites[posicion].id + `">
+                      <a role="link" class="tarjetas-link" aria-label="`+ nombre + `" href="/ficha-tramites-y-servicios/T` + this.data[posicion].id + `">
                         <div class="tarjeta-pwa"> 
                             `+ icono + `
                             <span>`+ nombre + `</span>
