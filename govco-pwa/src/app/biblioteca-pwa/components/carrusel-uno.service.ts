@@ -16,4 +16,8 @@ export class CarruselUnoService {
   getTramitesMasConsultadosAsync(): Observable<CarruselUnoInterface> {
     return this.http.get<CarruselUnoInterface>(`${this.base_url}/LoMasConsultado/ObtenerLoMasConsultado`);
   }
+
+  getTramitesMasConsultadosEstadoAsync(){
+    
+  }
 }

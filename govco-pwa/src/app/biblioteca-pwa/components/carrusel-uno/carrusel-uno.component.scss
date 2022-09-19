@@ -1,5 +1,7 @@
 .container-carrusel-uno {
   margin: 3rem 0;
+  width: 100%;
+  overflow: hidden;
 }
 .container-carrusel-uno .tarjetas-link {
   display: block;
@@ -52,13 +54,20 @@
   transform: translate(0px, -11.5rem);
 }
 
+::ng-deep .container-carrusel-uno .carousel.slide {
+  width: 400%;
+  margin-left: -150%;
+}
+
 ::ng-deep .container-carrusel-uno .carousel-inner {
   padding-bottom: 5px;
+  display: flex;
+  justify-content: center;
 }
 
 ::ng-deep .container-carrusel-uno #tarjetas-carrusel-pwa {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 }
 
 ::ng-deep .container-carrusel-uno .carrusel-uno-item-right {
@@ -72,22 +81,25 @@
 ::ng-deep .container-carrusel-uno .carrusel-uno-item {
   width: 17.5rem;
   margin: 16px auto auto;
-  display: none;
+  // display: none;
   float: left;
 }
 
 ::ng-deep .container-carrusel-uno .carrusel-grupo {
   width: 100%;
   margin: 16px auto auto;
-  display: none;
+  // display: none;
   float: left;
   background-color: #ffffff !important;
 }
 
-::ng-deep .container-carrusel-uno .carrusel-uno-item.active,
 ::ng-deep .container-carrusel-uno .carrusel-grupo.active {
   display: block;
   background-color: #00498400;
+}
+
+::ng-deep .container-carrusel-uno .carrusel-uno-item.active.transition-left {
+  transform: translate(120%, 0px);
 }
 
 .container-carrusel-uno .arrow-carousel i {
@@ -134,4 +146,18 @@
   padding: 5px;
   text-decoration: none;
   width: auto;
+}
+
+::ng-deep .container-carrusel-uno .container-tarjetas {
+  display: none;
+  flex-direction: column;
+}
+
+::ng-deep .container-carrusel-uno .container-tarjetas.active,
+::ng-deep .container-carrusel-uno .container-tarjetas.active-old {
+  display: flex;
+}
+
+::ng-deep .container-carrusel-uno .active {
+  background-color: #ffff!important;
 }
