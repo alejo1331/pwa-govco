@@ -69,6 +69,11 @@
   margin-left: -150%;
 }
 
+::ng-deep .container-carrusel-uno .carousel.slide {
+  width: 400%;
+  margin-left: -150%;
+}
+
 ::ng-deep .container-carrusel-uno .carousel-inner {
   padding-bottom: 5px;
   display: flex;
@@ -169,5 +174,5 @@
 }
 
 ::ng-deep .container-carrusel-uno .active {
-  background-color: #ffff !important;
+  background-color: #ffff!important;
 }

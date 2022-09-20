@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import { GeolocalizacionService } from 'src/app/transversales/services/geolocalizacion/geolocalizacion.service';
 import { CarruselUnoInterface } from '../carrusel-uno-interface';
 import { CarruselUnoInterface1 } from '../carrusel-uno-interface-1';
@@ -102,7 +102,7 @@ export class CarruselUnoComponent implements OnInit {
   flechaIzquierda() {
     const elementActive = document.querySelector('.container-tarjetas.active');
     const indexActive = elementActive?.getAttribute('data-index');
-    const indexNext = indexActive ? parseInt(indexActive) + 1 : 1;
+    const indexNext = indexActive?parseInt(indexActive) + 1 : 1;
     const elementNext = document.querySelector('.container-tarjetas[data-index="' + indexNext + '"]');
     this.paginaActual(120, elementActive, elementNext, indexNext);
     var totalPaginas = this.obetenerNumeroPaginas();
@@ -115,12 +115,12 @@ export class CarruselUnoComponent implements OnInit {
     }, 800);
   }
 
-  flechaDerecha() {
+  flechaDerecha() {    
     const elementActive = document.querySelector('.container-tarjetas.active');
     const indexActive = elementActive?.getAttribute('data-index');
-    let indexPrev = indexActive ? parseInt(indexActive) : 1;
-    let indexNext = indexPrev ? indexPrev + 1 : 1;
-    if (indexNext > 2) { indexNext = 0; }
+    let indexPrev = indexActive?parseInt(indexActive): 1;
+    let indexNext = indexPrev?indexPrev + 1 : 1;
+    if (indexNext > 2 ) { indexNext = 0; }
     const elementNext = document.querySelector('.container-tarjetas[data-index="' + indexNext + '"]');
     this.paginaActual(-120, elementActive, elementNext, indexNext);
 
@@ -129,9 +129,9 @@ export class CarruselUnoComponent implements OnInit {
     if (this.k >= totalPaginas) {
       this.k = 0;
     }
-    setTimeout(() => {
+    setTimeout(() => {        
       elementActive?.classList.remove('active-old');
-    }, 800);
+      elementNext?.classList.remove('transition-left');      
       this.paginaSiguiente(indexPrev, indexNext);
     }, 1000);
     setTimeout(() => {
@@ -139,22 +139,23 @@ export class CarruselUnoComponent implements OnInit {
     }, 800);
   }
 
-  paginaSiguiente(indexPrev: number, indexNext: number) {
+  paginaSiguiente(indexPrev:number, indexNext:number) {
     var paginaSiguiente = Array.from((document.querySelectorAll('.' + this.classOrdenTarjetas + indexNext) as NodeListOf<HTMLElement>));
     var paginaAnterior = Array.from((document.querySelectorAll('.' + this.classOrdenTarjetas + indexPrev) as NodeListOf<HTMLElement>));
     paginaSiguiente.forEach((elemento, i) => {
-      paginaAnterior[i].removeAttribute('style');
-      paginaSiguiente[i].removeAttribute('style');
+        paginaAnterior[i].removeAttribute('style');
+        paginaSiguiente[i].removeAttribute('style');
     });
   }
 
-  paginaActual(orientacion: number, elementActive: Element | null, elementNext: Element | null, indexNext: number) {
+  paginaActual(orientacion: number, elementActive:Element | null, elementNext:Element | null, indexNext:number) {   
     var paginaActual = Array.from((elementActive?.querySelectorAll('.carrusel-uno-item') as NodeListOf<HTMLElement>)).reverse();
+    var paginaSiguiente = Array.from((elementNext?.querySelectorAll('.carrusel-uno-item') as NodeListOf<HTMLElement>)).reverse();
 
     elementActive?.classList.add('active-old');
     elementActive?.classList.remove('active');
     elementNext?.classList.add('active', 'transition-left');
-
+    
     paginaActual.forEach((elemento, i) => {
       paginaActual[i].style.transition = 'transform ' + 0.4 * (i + 1) + 's';
       paginaActual[i].style.transform = 'translate(' + orientacion + '%, 0)';
@@ -183,10 +184,10 @@ export class CarruselUnoComponent implements OnInit {
       var html = "";
       const newDiv = document.createElement("div");
       newDiv.classList.add("container-tarjetas");
-      newDiv.setAttribute("data-index", '' + i + '');
+      newDiv.setAttribute("data-index", ''+i+'');
       if (i == 1) { newDiv.classList.add("active"); }
       for (var n = 0; n < elementosPorPagina; n++) {
-        let posicion: number;
+        let posicion: number, microIteracion: string = "", transition: string, transform: string;
         posicion = i == 0 ? n + pagina_Anterior * 3 : (i == 1 ? n + paginaActual * 3 : n + pagina_Siguiente * 3);
 
         if (this.data[posicion] != undefined) {
