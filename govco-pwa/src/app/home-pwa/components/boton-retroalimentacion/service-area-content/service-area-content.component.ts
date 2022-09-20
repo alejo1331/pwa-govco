@@ -48,9 +48,5 @@ export class ServiceAreaContentComponent implements OnInit {
     const dialogRef = this.dialog.open(ModalAgradecimientoComponent, {
       disableClose: true,
     });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
-    });
   }
 }
