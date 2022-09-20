@@ -43,10 +43,6 @@ export class BuscadorGeneralComponent implements OnInit {
     this.paramtrofiltros = JSON.stringify(this.categoriasBuscadorService.getParametro());
   }
 
-  ngAfterViewInit() {
-    console.log($('.sc-cdn-paginator'))
-  }
-
   private getBrowserName() {
     const agent = window.navigator.userAgent.toLowerCase()
     switch (true) {
