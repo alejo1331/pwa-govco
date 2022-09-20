@@ -34,3 +34,7 @@
     transform: translate(-50%,-50%);
     width: 91.1%;
 }
+
+.modal-geolocalizacion-pwa-govco .seleccionado {
+    pointer-events: auto !important;
+}
