@@ -16,9 +16,5 @@ export class BotonRetroalimentacionComponent implements OnInit {
     const dialogRef = this.dialog.open(ServiceAreaContentComponent, {
       disableClose: true,
     });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
-    });
   }
 }
