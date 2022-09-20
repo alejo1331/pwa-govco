@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
+import { FormsModule } from '@angular/forms';
 
 import { HomePwaRoutingModule } from './home-pwa-routing.module';
 import { HomePrincipalComponent } from './components/home-principal/home-principal.component';
@@ -16,8 +17,7 @@ import { BotonRetroalimentacionComponent } from './components/boton-retroaliment
 import { ServiceAreaContentComponent } from './components/boton-retroalimentacion/service-area-content/service-area-content.component';
 import { SeccionCarpetaCiudadanaComponent } from './components/seccion-carpeta-ciudadana/seccion-carpeta-ciudadana.component';
 import { FooterComponent } from '../biblioteca-pwa/components/footer/footer.component';
-
-
+import { ModalAgradecimientoComponent } from './components/boton-retroalimentacion/modal-agradecimiento/modal-agradecimiento.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +31,8 @@ import { FooterComponent } from '../biblioteca-pwa/components/footer/footer.comp
     BotonRetroalimentacionComponent,
     ServiceAreaContentComponent,
     SeccionCarpetaCiudadanaComponent,
-    FooterComponent
+    FooterComponent,
+    ModalAgradecimientoComponent,
   ],
   imports: [
     CommonModule,
@@ -39,6 +40,7 @@ import { FooterComponent } from '../biblioteca-pwa/components/footer/footer.comp
     BibliotecaPwaModule,
     MatButtonModule,
     MatDialogModule,
+    FormsModule,
   ],
 })
 export class HomePwaModule {}

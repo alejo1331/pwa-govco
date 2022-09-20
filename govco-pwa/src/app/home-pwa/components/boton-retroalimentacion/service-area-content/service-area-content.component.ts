@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalAgradecimientoComponent } from './../modal-agradecimiento/modal-agradecimiento.component';
 
 @Component({
   selector: 'app-dialog-content-example-dialog',
@@ -8,7 +10,9 @@ import { Component, OnInit } from '@angular/core';
 export class ServiceAreaContentComponent implements OnInit {
   selectedY: boolean = false;
   selectedN: boolean = false;
-  constructor() {}
+  textLarge = '';
+
+  constructor(private dialog: MatDialog) {}
 
   ngOnInit(): void {}
 
@@ -38,5 +42,15 @@ export class ServiceAreaContentComponent implements OnInit {
         .querySelector('.selectionY')
         ?.classList.remove('background-selection');
     }
+  }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(ModalAgradecimientoComponent, {
+      disableClose: true,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 }

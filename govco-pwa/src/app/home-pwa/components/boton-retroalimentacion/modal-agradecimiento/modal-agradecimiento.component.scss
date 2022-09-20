@@ -1,0 +1,45 @@
+.govco-titulo-ubicacion {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    color: #000000DE;
+    margin-bottom: 0.875rem;
+}
+
+.govco-texto-ubicacion {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: #00000099;
+    padding-right: 3rem;
+}
+
+.govco-botones-ubicacion {
+    margin-right: -16px;
+    margin-bottom: -16px;
+    margin-top: 30px;
+    padding: 0;
+}
+
+.govco-botones-ubicacion button {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    color: #6200EE;
+    border: 0;
+    background-color: transparent;
+    padding: 0px;
+    outline: none;
+    text-transform: uppercase;
+}
+
+::ng-deep .cdk-overlay-pane {
+    max-width: 80vw !important;
+}
+
+::ng-deep .mat-dialog-container {
+    min-width: 280px;
+    border: 2px solid #e8effc;
+    border-radius: 4px;
+    padding: 24px 24px 16px 24px;
+}

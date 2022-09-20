@@ -21,13 +21,14 @@
     </div>
     <div class="comentarios-content">
         <p class="comentarios-text">Escribe tus comentarios</p>
-        <textarea class="aservice-comentarios-textarea" id="aservice-comentarios-textarea"
+        <textarea class="aservice-comentarios-textarea" [(ngModel)]="textLarge" id="aservice-comentarios-textarea"
             placeholder="Queremos conocer tu experiencia, sugerencias y consejos..."
             aria-label="area de comentarios"></textarea>
     </div>
 </div>
 <div mat-dialog-actions>
-    <app-boton mat-button [mat-dialog-close]="true" cdkFocusInitial class="button-send-dialog">Enviar Comentarios
+    <app-boton mat-button [mat-dialog-close]="true" cdkFocusInitial class="button-send-dialog"
+        [disabled]="textLarge.length < 10" (click)="openDialog()">Enviar Comentarios
     </app-boton>
 </div>
 
