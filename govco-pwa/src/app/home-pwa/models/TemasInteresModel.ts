@@ -1,13 +1,15 @@
 export interface ObtenerTemasInteresRespuesta {
     data: DataTemasInteresRespuesta;
     succeeded: boolean;
-    errors: string[];
+    errors: string[] | null;
     message: string;
 }
 
 export interface DataTemasInteresRespuesta {
+    estadoSeccion: number;
     contenidoPanelInferior: ContenidoPanelInferior[];
     panelSuperior : PanelSuperior;
+    panelInferior : PanelInferior;
 }
 
 export interface ContenidoPanelInferior {
@@ -35,13 +37,25 @@ export interface PanelSuperior {
     urlLogo: string;
 }
 
+export interface PanelInferior {
+    id: number,
+    estado: number,
+    urlLogo: string, 
+    titulo: string, 
+    descripcion: string, 
+    seccion: number,
+    tipoPanel: number,
+    idMapaSitio: number,
+    mapaDeSitio: MapaDeSitio
+}
+
 export interface MapaDeSitio {
-    id: number;
-    activo: number;
-    bannerInformativo: string;
-    itemsSeccion: string;
-    permiteInactivar: boolean;
-    seccion: number;
-    tipo: number;
-    tituloSeccion: string;
+    id: number,
+    tituloSeccion: string, 
+    itemsSeccion: string, 
+    activo: number,
+    tipo: number,
+    seccion: number,
+    permiteInactivar: boolean,
+    bannerInformativo: string
 }

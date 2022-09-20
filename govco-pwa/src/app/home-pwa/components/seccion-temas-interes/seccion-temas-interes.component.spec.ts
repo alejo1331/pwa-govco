@@ -25,7 +25,7 @@ describe('SeccionTemasInteresComponent', () => {
     homeService = new HomeService(httpClientSpy as any);
   });
 
-  it('should create', () => {
+  it('Debe de crearse correctamente', () => {
     expect(component).toBeTruthy();
   });
 });
