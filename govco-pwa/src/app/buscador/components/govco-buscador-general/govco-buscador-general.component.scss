@@ -116,3 +116,25 @@ top: 20px;
 .breadcrumb-item+.breadcrumb-item::before {
   content: none;
 }
+
+.buscador-general-govco::ng-deep {
+  div.sc-cdn-paginator span.pages {
+    display: flex;
+    span.sc-cdn-paginator {
+      &:nth-child(2) {
+        display: flex;
+        margin-top: 3px;
+        a {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 36px!important;
+          height: 36px!important;
+        }
+      }
+      a {
+        margin-right: 0 !important;
+      }
+    }
+  }
+}
