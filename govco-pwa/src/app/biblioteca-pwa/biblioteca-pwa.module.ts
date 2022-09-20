@@ -27,6 +27,7 @@ import { AcordeonComponent } from './components/acordeon/acordeon.component';
     CarruselUnoComponent,
     CarruselDosComponent,
     AcordeonComponent
+
   ],
 })
 export class BibliotecaPwaModule { }

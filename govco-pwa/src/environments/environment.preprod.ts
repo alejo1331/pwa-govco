@@ -21,10 +21,10 @@ export const environment = {
   //Noticias o Actualidad
   apiNoticiasDetalle: "https://preapi-interno.www.gov.co/api/noticias/",
   serverCategoriaSubcategoriaUrl: 'https://preapi-interno.www.gov.co/api/categorias-subcategorias/',
-  codNoticias: 'noticias',
-  codParticipa: 'tu-opinion-cuenta',
-  codSobreNosotros: 'sobre-nosotros',
-  codEntidades: 'servicios-para-entidades',
+  codNoticias: 'actualidadprincipal',
+  codParticipa: 'tuopinioncuenta',
+  codSobreNosotros: 'sobrenosotros',
+  codEntidades: 'paraentidades',
   //Entidades
   serverIntegracion: 'https://preapi-interno.www.gov.co/api/integracion-sedes/IntegracionSedes/entidad/',
   //Tu opinion cuenta o Participacion
@@ -54,7 +54,7 @@ export const environment = {
   authWebApi:"https://preapi-interno.www.gov.co/api/roles-y-permisos/RolesPerfiles/Usuarios",
   URLgovco : 'https://d2j6v7nsh41twk.cloudfront.net/',
   //WebComponent
-  serverFichaTramite:'https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api/ficha-tramites-y-servicios',
+  serverFichaTramite:'https://preapi-interno.www.gov.co/api/ficha-tramites-y-servicios',
 
   //captcha
   keyCaptcha: "6LeCqOcUAAAAAMu9McR1zoUH0z6wDj_dekAODW5h",
