@@ -35,6 +35,7 @@
 
 ::ng-deep .cdk-overlay-pane {
     max-width: 80vw !important;
+    position: static !important;
 }
 
 ::ng-deep .mat-dialog-container {
