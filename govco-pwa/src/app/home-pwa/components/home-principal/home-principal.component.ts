@@ -1,7 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
+import { MunicipioInterface } from 'src/app/transversales/models/geolocalizacion/municipio-interface';
 import { BottomMenuService } from 'src/app/transversales/services/bottom-menu/bottom-menu.service';
+import { GeolocalizacionService } from 'src/app/transversales/services/geolocalizacion/geolocalizacion.service';
 import { HeaderService } from 'src/app/transversales/services/header-service/header.service';
 import { SidenavService } from 'src/app/transversales/services/sidenav-service/sidenav-service.service';
+import { EspecificoInterface } from '../../models/tramites-mas-consultados/especifico-interface';
+import { EstadoInterface } from '../../models/tramites-mas-consultados/estado-interface';
+import { GeneralInterface } from '../../models/tramites-mas-consultados/general-interface';
+import { PorMunicipioInterface } from '../../models/tramites-mas-consultados/por-municipio-interface';
+import { TituloInterface } from '../../models/tramites-mas-consultados/titulo-interface';
+import { TramitesMasConsultadosService } from '../../services/tramites-mas-consultados-service/tramites-mas-consultados.service';
 
 @Component({
   selector: 'app-home-principal',
@@ -10,13 +18,32 @@ import { SidenavService } from 'src/app/transversales/services/sidenav-service/s
 })
 export class HomePrincipalComponent implements OnInit {
 
+  public dataTramites: EspecificoInterface[];
+  dataTramitesMasConsultados: any;
+  titulo: string = "";
+  icono: string = ''
+  codigoMunicipio: string | null = "";
+  codigoDepartamento: string | null = "";
+  nombreMunicipio: string = "";
+  seccion: string = 'LoMasConsultadoHome';
+
   constructor(
     public bottomService: BottomMenuService,
     protected servicioHeader: HeaderService,
-    protected servicioSideNav: SidenavService
-  ) { }
+    protected servicioSideNav: SidenavService,
+    protected carruselServe: TramitesMasConsultadosService,
+    protected ServicioGeolocalizacion: GeolocalizacionService,
+  ) {
+    this.ServicioGeolocalizacion.coordenadas.subscribe(([codigoDepartamento, codigoMunicipio]) => {
+      if (codigoDepartamento != null && codigoMunicipio != null) {
+        this.getMunicipiosPorDepartamento([codigoDepartamento, codigoMunicipio]);
+        this.dataFichaTramite();
+      }
+    })
+  }
 
   ngOnInit(): void {
+    console.log("inicio ngOnInit")
     // servicioHeader.estadoHeader(a, b)       a -> true = header seccion internas
     //                                         a -> false = header general
     //                                         b -> Muestra/Oculta  Header
@@ -31,6 +58,63 @@ export class HomePrincipalComponent implements OnInit {
     this.bottomService.seleccionandoItem(0);
     this.bottomService.ajustandoPantalla(false);
     this.servicioSideNav.seleccionandoItem(false, 'null');
+
+    this.dataGeolocalizacion();
+    this.dataFichaTramite();
+
+  }
+
+  dataGeolocalizacion() {
+    this.codigoDepartamento = localStorage.getItem("codigoDepartamento") != null ? (localStorage.getItem("codigoDepartamento") != 'TodosLosDepartamentos' ? localStorage.getItem("codigoDepartamento") : '') : '';
+    this.codigoMunicipio = localStorage.getItem("codigoMunicipio") != null ? (localStorage.getItem("codigoMunicipio") != 'TodosLosMunicipios' ? localStorage.getItem("codigoMunicipio") : '') : '';
+
+    if (this.codigoMunicipio != '') {
+      this.getMunicipiosPorDepartamento([String(this.codigoDepartamento), String(this.codigoMunicipio)])
+    }
+
+  }
+
+  getMunicipiosPorDepartamento([codigoDepartamento, codigoMunicipio]: [string, string]) {
+    codigoDepartamento = codigoDepartamento != null ? (codigoDepartamento != 'TodosLosDepartamentos' ? codigoDepartamento : '') : '';
+    codigoMunicipio = codigoMunicipio != null ? (codigoMunicipio != 'TodosLosMunicipios' ? codigoMunicipio : '') : ''
+    if (codigoMunicipio != '') {
+      this.ServicioGeolocalizacion.getCacheJsonMunicipiosPorDepartamento(codigoDepartamento)
+        .then((municipios: any) => {
+          municipios.forEach((data: any) => {
+            data['codigo'] == codigoMunicipio ? this.nombreMunicipio = data['nombre'] : '';
+            // this.inputTramitesMasConsultados();
+          });
+        })
+    }
+  }
+
+  dataFichaTramite() {
+    this.carruselServe.getTramitesMasConsultadosEstado().subscribe((estado: EstadoInterface) => {
+      if (estado.data.activo == 1) {
+
+        this.carruselServe.getTramitesMasConsultadosTitulo(this.seccion).subscribe((dataTitulo: TituloInterface) => {
+          this.titulo = dataTitulo.data.titulo;
+        })
+        this.codigoMunicipio == "" ?
+          this.carruselServe.getTramitesMasConsultados().subscribe((info: GeneralInterface) => {
+            this.dataTramites = info.data;
+            this.inputTramitesMasConsultados();
+          })
+          : this.carruselServe.getTramitesMasConsultadosPorMunicipio(this.codigoMunicipio).subscribe((tramitesPorMunicipio: PorMunicipioInterface) => {
+            this.dataTramites = tramitesPorMunicipio.data;
+            this.inputTramitesMasConsultados();
+          });
+      }
+    })
+  }
+
+  inputTramitesMasConsultados() {
+    this.dataTramitesMasConsultados = {
+      dataTitulo: this.titulo,
+      dataTramites: this.dataTramites,
+      ubicacion: this.nombreMunicipio,
+      codigoMunicipio: this.codigoMunicipio
+    }
   }
 
 }

@@ -1,10 +1,7 @@
+import { EspecificoInterface } from "./especifico-interface";
+
 export interface PorMunicipioInterface {
-    data:
-    {
-        id: number,
-        nombre: string,
-        iconoCategoria: string
-    }[],
+    data: EspecificoInterface[],
     succeeded: boolean,
     errors: string | null,
     message: string | null,

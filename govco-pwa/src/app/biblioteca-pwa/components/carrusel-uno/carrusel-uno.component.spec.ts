@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CarruselUnoComponent } from './carrusel-uno.component';
 
-describe('CarruselUnoComponent', () => {
+describe('CarruselUnoCopyComponent', () => {
   let component: CarruselUnoComponent;
   let fixture: ComponentFixture<CarruselUnoComponent>;
 

@@ -1,9 +1,7 @@
+import { EspecificoInterface } from "./especifico-interface";
+
 export interface GeneralInterface {
-    data: {
-        id: number,
-        nombre: string,
-        iconoCategoria: string
-    }[],
+    data: EspecificoInterface[],
     succeeded: boolean,
     errors: string | null,
     message: string | null,
