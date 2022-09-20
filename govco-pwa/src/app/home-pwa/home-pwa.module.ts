@@ -13,6 +13,8 @@ import { SeccionContactosEmerganciaComponent } from './components/seccion-contac
 import { BotonRetroalimentacionComponent } from './components/boton-retroalimentacion/boton-retroalimentacion.component';
 import { ServiceAreaContentComponent } from './components/boton-retroalimentacion/service-area-content/service-area-content.component';
 import { SeccionCarpetaCiudadanaComponent } from './components/seccion-carpeta-ciudadana/seccion-carpeta-ciudadana.component';
+import { FooterComponent } from '../biblioteca-pwa/components/footer/footer.component';
+
 
 
 @NgModule({
@@ -26,7 +28,8 @@ import { SeccionCarpetaCiudadanaComponent } from './components/seccion-carpeta-c
     SeccionContactosEmerganciaComponent,
     BotonRetroalimentacionComponent,
     ServiceAreaContentComponent,
-    SeccionCarpetaCiudadanaComponent
+    SeccionCarpetaCiudadanaComponent,
+    FooterComponent
   ],
   imports: [CommonModule, HomePwaRoutingModule, BibliotecaPwaModule],
 })
