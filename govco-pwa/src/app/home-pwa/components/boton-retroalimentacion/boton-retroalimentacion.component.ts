@@ -13,7 +13,9 @@ export class BotonRetroalimentacionComponent implements OnInit {
   ngOnInit(): void {}
 
   openDialog() {
-    const dialogRef = this.dialog.open(ServiceAreaContentComponent);
+    const dialogRef = this.dialog.open(ServiceAreaContentComponent, {
+      disableClose: true,
+    });
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log(`Dialog result: ${result}`);
