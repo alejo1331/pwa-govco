@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { HomePwaRoutingModule } from './home-pwa-routing.module';
 import { HomePrincipalComponent } from './components/home-principal/home-principal.component';
@@ -25,6 +27,12 @@ import { ServiceAreaContentComponent } from './components/boton-retroalimentacio
     BotonRetroalimentacionComponent,
     ServiceAreaContentComponent,
   ],
-  imports: [CommonModule, HomePwaRoutingModule, BibliotecaPwaModule],
+  imports: [
+    CommonModule,
+    HomePwaRoutingModule,
+    BibliotecaPwaModule,
+    MatButtonModule,
+    MatDialogModule,
+  ],
 })
 export class HomePwaModule {}

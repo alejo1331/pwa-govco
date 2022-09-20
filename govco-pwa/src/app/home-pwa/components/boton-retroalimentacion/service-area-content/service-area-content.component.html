@@ -1,8 +1,8 @@
 <p mat-dialog-title class="mat-dialog-title">¿Esta página fue útil para ti?</p>
 <div mat-dialog-content class="mat-typography">
-    <div class="opciones">
-        <div class="seleccion">
-            <span class="material-symbols-outlined size-icon" [ngClass]="selected ? 'selected-icon': 'default-icon'">
+    <div class="options">
+        <div class="selectionY" (click)="selectedOption('Y')">
+            <span class="material-symbols-outlined size-icon" [ngClass]="selectedY ? 'selected-icon': 'default-icon'">
                 check_circle
             </span>
             <p class="text-icon">
@@ -10,8 +10,8 @@
             </p>
         </div>
 
-        <div class="seleccion">
-            <span class="material-symbols-outlined size-icon" [ngClass]="selected ? 'selected-icon': 'default-icon'">
+        <div class="selectionN" (click)="selectedOption('N')">
+            <span class="material-symbols-outlined size-icon" [ngClass]="selectedN ? 'selected-icon': 'default-icon'">
                 cancel
             </span>
             <p class="text-icon">
@@ -26,7 +26,13 @@
             aria-label="area de comentarios"></textarea>
     </div>
 </div>
-<!-- <div mat-dialog-actions align="end">
-     <button mat-button mat-dialog-close>Cancel</button> 
- <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Install</button> 
-</div> -->
+<div mat-dialog-actions>
+    <app-boton mat-button [mat-dialog-close]="true" cdkFocusInitial class="button-send-dialog">Enviar Comentarios
+    </app-boton>
+</div>
+
+<app-boton mat-button mat-dialog-close [symbol]="true" [inverted]="true" class="button-close-dialog">
+    <span class="material-symbols-outlined">
+        close
+    </span>
+</app-boton>

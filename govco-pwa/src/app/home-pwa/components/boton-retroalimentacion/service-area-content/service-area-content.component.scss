@@ -8,6 +8,8 @@
   border-radius: 20px;
   padding: 24px 16px;
 }
+
+
 .mat-dialog-title {
   margin-bottom: 24px;
   font-family: "WorkSans-Medium";
@@ -15,61 +17,96 @@
   font-size: 16px;
   line-height: 16px;
 }
-.opciones {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 24px;
-  .seleccion {
-    flex: 50%;
+
+.mat-dialog-content{
+  margin: 0;
+  padding: 0;
+  .options {
     display: flex;
-    align-items: center;
-    height: 44px;
-    border: 2px solid #3366cc;
-    border-radius: 25px;
-    padding-left: 12px;
-    .size-icon {
-      padding-right: 10px;
-      color: #3366cc;
+    gap: 8px;
+    margin-bottom: 24px;
+    .selectionY, .selectionN {
+      flex: 50%;
+      display: flex;
+      align-items: center;
+      height: 44px;
+      border: 2px solid #3366cc;
+      border-radius: 25px;
+      padding-left: 12px;
+      cursor: pointer;
+      .size-icon {
+        padding-right: 10px;
+        color: #3366cc;
+      }
+      .default-icon {
+        font-variation-settings: "FILL" 1, "wght" 500, "GRAD" 0, "opsz" 20;
+      }
+      .text-icon {
+        padding-top: 12px;
+        font-family: "WorkSans-Medium";
+        color: #3366cc;
+      }
+      .selected-icon {
+        font-variation-settings: "FILL" 0, "wght" 500, "GRAD" 0, "opsz" 20;
+        color: #fff;
+      }
     }
-    .default-icon {
-      font-variation-settings: "FILL" 1, "wght" 500, "GRAD" 0, "opsz" 20;
+    .background-selection{
+      background-color: #3366CC;
+      border: 2px solid #4065C5;
+      .text-icon{
+        color: #fff;
+      }
     }
-    .text-icon {
-      padding-top: 12px;
+  }
+  .comentarios-content {
+    .aservice-comentarios-textarea {
+      display: block;
+      border-radius: 5px;
+      color: #000;
+      height: 161px;
+      outline: none;
+      border: 2px solid #737373;
+      padding: 15px 16px 14px 16px;
+      resize: none;
+      width: 100%;
+      box-shadow: none;
+      line-height: 16px;
       font-family: "WorkSans-Medium";
-      color: #3366cc;
+      &:focus {
+        box-shadow: none;
+        border: 2px solid #3366cc;
+      }
+      &::placeholder {
+        color: #737373;
+      }
     }
-    .selected-icon {
-      font-variation-settings: "FILL" 0, "wght" 500, "GRAD" 0, "opsz" 20;
+    .comentarios-text {
+      margin-bottom: 24px;
+      font-family: "WorkSans-Medium";
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 14px;
     }
   }
 }
-.comentarios-content {
-  .aservice-comentarios-textarea {
-    display: block;
-    border-radius: 5px;
-    color: #000;
-    height: 161px;
-    outline: none;
-    border: 2px solid #737373;
-    padding: 15px 16px 14px 16px;
-    resize: none;
-    width: 100%;
-    box-shadow: none;
-    line-height: 16px;
-    font-family: "WorkSans-Medium";
-    &:focus {
-      box-shadow: none;
-    }
-    &::placeholder {
-      color: #737373;
-    }
+
+.mat-dialog-actions{
+  display: block;
+  padding-top: 16px;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+  min-height: fit-content;
+}
+
+.button-close-dialog{
+  position: absolute;
+  right: 20px;
+  margin-top: 42px;
+  ::ng-deep .btn-pwa-govco{
+    background-color: #fff !important;
   }
-  .comentarios-text {
-    margin-bottom: 24px;
-    font-family: "WorkSans-Medium";
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 14px;
+  .material-symbols-outlined{
+    font-variation-settings: "FILL" 0, "wght" 500, "GRAD" 0, "opsz" 24;
   }
 }
