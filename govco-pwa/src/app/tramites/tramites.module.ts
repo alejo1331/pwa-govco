@@ -6,7 +6,7 @@ import { TramitesRoutingModule } from './tramites-routing.module';
 import { AvisoDeConstruccionModule } from '../aviso-de-construccion/aviso-de-construccion.module';
 import { CodigosCiiuYTramitesComponent } from './components/codigos-ciiu-y-tramites/codigos-ciiu-y-tramites.component';
 import { BusquedaCodigosCiiuComponent } from './components/codigos-ciiu-y-tramites/busqueda-codigos-ciiu/busqueda-codigos-ciiu.component';
-import { LoadingService } from './services/loading.service'
+import { LoadingService } from './services/loading.service';
 import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgSelectModule } from 'ng-custom-select';
@@ -58,6 +58,7 @@ import { NoSuitHeaderComponent } from './components/ficha-tramite/detalle/no-sui
 import { NoSuitDetalleComponent } from './components/ficha-tramite/detalle/no-suit-detalle/no-suit-detalle.component';
 import { BreadCrumbComponent } from './components/detalle-consulta-ciiu/components/bread-crumb/bread-crumb.component';
 import { WordLimitPipe } from './pipes/word-limit/word-limit.pipe';
+import { HomePwaModule } from './../home-pwa/home-pwa.module';
 
 @NgModule({
   imports: [
@@ -75,6 +76,7 @@ import { WordLimitPipe } from './pipes/word-limit/word-limit.pipe';
     OrderModule,
     NgxSkeletonLoaderModule,
     Ng2SearchPipeModule,
+    HomePwaModule,
   ],
   declarations: [
     TramitesHomeComponent,
@@ -120,13 +122,9 @@ import { WordLimitPipe } from './pipes/word-limit/word-limit.pipe';
     NoSuitHeaderComponent,
     NoSuitDetalleComponent,
     BreadCrumbComponent,
-    WordLimitPipe
+    WordLimitPipe,
   ],
-  exports: [
-    TramitesHomeComponent,
-    BreadCrumbComponent,
-    WordLimitPipe
-  ],
+  exports: [TramitesHomeComponent, BreadCrumbComponent, WordLimitPipe],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class TramitesModule { }
+export class TramitesModule {}

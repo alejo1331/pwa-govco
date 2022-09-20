@@ -42,5 +42,6 @@ import { ModalAgradecimientoComponent } from './components/boton-retroalimentaci
     MatDialogModule,
     FormsModule,
   ],
+  exports: [BotonRetroalimentacionComponent],
 })
 export class HomePwaModule {}
