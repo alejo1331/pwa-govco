@@ -55,6 +55,13 @@
   src: url('assets/fonts/Work_Sans/static/WorkSans-Bold.ttf');
 }
 
+/* WorkSans-SemiBold */
+@font-face {
+  font-family: 'WorkSans-SemiBold';
+  font-weight: '600';
+  src: url('assets/fonts/Work_Sans/static/WorkSans-SemiBold.ttf');
+}
+
 html {
   font-size: 100%;
   /* 100% = 16px */

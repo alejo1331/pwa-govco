@@ -12,6 +12,8 @@ import { BannerCardComponent } from './components/banner-cards/banner-card/banne
 import { SeccionContactosEmerganciaComponent } from './components/seccion-contactos-emergancia/seccion-contactos-emergancia.component';
 import { BotonRetroalimentacionComponent } from './components/boton-retroalimentacion/boton-retroalimentacion.component';
 import { ServiceAreaContentComponent } from './components/boton-retroalimentacion/service-area-content/service-area-content.component';
+import { SeccionCarpetaCiudadanaComponent } from './components/seccion-carpeta-ciudadana/seccion-carpeta-ciudadana.component';
+
 
 @NgModule({
   declarations: [
@@ -24,6 +26,7 @@ import { ServiceAreaContentComponent } from './components/boton-retroalimentacio
     SeccionContactosEmerganciaComponent,
     BotonRetroalimentacionComponent,
     ServiceAreaContentComponent,
+    SeccionCarpetaCiudadanaComponent
   ],
   imports: [CommonModule, HomePwaRoutingModule, BibliotecaPwaModule],
 })
