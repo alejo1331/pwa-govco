@@ -1,0 +1,95 @@
+.container-carrusel-uno-c {
+    height: 348px;
+    .carousel-item {
+        transition: transform .6s linear;
+        width: 100%;
+    
+        .card-item {
+            width: 280px; 
+            height: 96px;
+            background-color: red;
+            border: 2px solid #E8EFFC;
+            border-radius: 4px;
+            margin: 0 auto;
+            transform: translate(0, 0);
+            transition: transform linear .3s;
+    
+            &.card-0 {
+                transition: none !important;
+                transform: none !important;
+            }
+            &.card-1 {
+                transition-delay: .1s;
+                margin-top: 16px;
+            }
+            &.card-2 {
+                margin-top: 16px;
+                transition-delay: .2s;
+            }
+        }
+    
+        &.carousel-item-next .card-item {
+            transform: translate(100px, 0);
+        }
+    
+        &.carousel-item-prev .card-item {
+            transform: translate(-100px, 0);
+        }
+    
+        &.active {
+            background: none !important;
+    
+            .card-item {
+                &.card-1 {
+                    transition-delay: .2s;
+                }
+                &.card-2 {
+                    transition-delay: .1s;
+                }
+            }
+        }
+    
+        // Left
+        &.active.carousel-item-left .card-item {
+            transform: translate(-100px, 0);
+        }
+    
+        &.carousel-item-next.carousel-item-left .card-item,
+        &.carousel-item-prev.carousel-item-right .card-item {
+            transform: translate(0, 0);
+        }
+    
+        // Right
+        &.active.carousel-item-right .card-item {
+            transform: translate(100px, 0);
+        }
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+        opacity: initial;
+        width: 12%;
+        span {
+            color: #004884;
+            font-size: 40px;
+        }
+    }
+
+    .carousel-indicators {
+        margin-bottom: 0;
+        z-index: 0;
+        li {
+            -moz-border-radius: 50%;
+            -webkit-border-radius: 50%;
+            border-radius: 50%;
+            width: 8px;
+            height: 8px;
+            border: 2px solid #3366CC;
+            opacity: 1;
+        }
+        li.active {
+            background: #3366CC;
+            background-color: #3366CC !important;
+        }
+    }
+}
