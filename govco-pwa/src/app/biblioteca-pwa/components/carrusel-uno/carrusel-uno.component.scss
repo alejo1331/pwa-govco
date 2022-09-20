@@ -79,16 +79,9 @@
                     }
                 }
 
-::ng-deep .container-carrusel-uno .carousel.slide {
-  width: 400%;
-  margin-left: -150%;
-}
-
-::ng-deep .container-carrusel-uno .carousel.slide {
-  width: 400%;
-  margin-left: -150%;
-}
-
+                &.card-0 {
+                    transition: none !important;
+                    transform: none !important;
                 }
 
                 &.card-1 {
@@ -112,6 +105,9 @@
 
             &.active {
                 background: none !important;
+
+                .card-item {
+                    &.card-1 {
                         transition-delay: .2s;
                     }
 
