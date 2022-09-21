@@ -6,6 +6,9 @@ import { TarjetaInformativaComponent } from './components/tarjeta-informativa/ta
 import { CarruselDosComponent } from './components/carrusel-dos/carrusel-dos.component';
 import { CarruselUnoComponent } from './components/carrusel-uno/carrusel-uno.component';
 import { AcordeonComponent } from './components/acordeon/acordeon.component';
+import { NivelDosComponent } from './components/nivel-dos/nivel-dos.component';
+import { FooterComponent } from './components/footer/footer.component';
+
 
 
 @NgModule({
@@ -15,7 +18,9 @@ import { AcordeonComponent } from './components/acordeon/acordeon.component';
     TarjetaInformativaComponent,
     CarruselUnoComponent,
     CarruselDosComponent,
-    AcordeonComponent
+    AcordeonComponent,
+    FooterComponent,
+    NivelDosComponent
   ],
   imports: [
     CommonModule
@@ -26,8 +31,9 @@ import { AcordeonComponent } from './components/acordeon/acordeon.component';
     TarjetaInformativaComponent,
     CarruselUnoComponent,
     CarruselDosComponent,
-    AcordeonComponent
-
+    AcordeonComponent,
+    FooterComponent,
+    NivelDosComponent
   ],
 })
 export class BibliotecaPwaModule { }

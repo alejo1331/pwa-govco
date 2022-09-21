@@ -67,6 +67,13 @@
   src: url('assets/fonts/Work_Sans/static/WorkSans-SemiBold.ttf');
 }
 
+/* WorkSans-Regular */
+@font-face {
+  font-family: 'WorkSans-Regular';
+  font-weight: '600';
+  src: url('assets/fonts/Work_Sans/static/WorkSans-Regular.ttf');
+}
+
 html {
   font-size: 100%;
   /* 100% = 16px */
@@ -162,7 +169,7 @@ body {
   align-items: center;
 }
 
-.caja-icono-pwa-govco, 
+.caja-icono-pwa-govco,
 .caja-pwa-govco-back-arrow,
 .caja-icono-48-pwa {
   width: 1.5rem;
