@@ -21,8 +21,8 @@ import { FooterComponent } from './components/footer/footer.component';
     CarruselDosComponent,
     AcordeonComponent,
     FooterComponent,
-    DesplegableUnoComponent
-    NivelDosComponent
+    DesplegableUnoComponent,
+    NivelDosComponent,
   ],
   imports: [
     CommonModule
@@ -35,8 +35,8 @@ import { FooterComponent } from './components/footer/footer.component';
     CarruselDosComponent,
     AcordeonComponent,
     FooterComponent,
-    DesplegableUnoComponent
-    NivelDosComponent
+    DesplegableUnoComponent,
+    NivelDosComponent,
   ],
 })
 export class BibliotecaPwaModule { }
