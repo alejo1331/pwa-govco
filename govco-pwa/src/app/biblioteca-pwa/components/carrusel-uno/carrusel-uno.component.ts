@@ -31,7 +31,6 @@ export class CarruselUnoComponent implements OnInit, OnChanges {
         this.nombreMunicipio = this.dataCarruselUno.ubicacion;
         this.codigoMunicipio = this.dataCarruselUno.codigoMunicipio;
         this.contenidoTarjetas = this.dataCarruselUno.dataTramites;
-        console.log()
         this.dataCarrusel = this.agruparData([...this.contenidoTarjetas], this.catidadTarjetas);
       }
     }

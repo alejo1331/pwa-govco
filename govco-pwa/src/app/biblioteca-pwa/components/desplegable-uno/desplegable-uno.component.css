@@ -1,0 +1,156 @@
+.modal-desplegable-pwa.espaldar-modal {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    z-index: -1;
+}
+
+.modal-desplegable-pwa.contenedor {
+    width: 100%;
+    height: 100%;
+    z-index: 4;
+    position: fixed;
+    bottom: 0;
+    transform: translate(0, 90%);
+    margin: 0;
+}
+
+.modal-desplegable-pwa .modal-contenido {
+    height: 29.563rem;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    width: 100%;
+    pointer-events: auto;
+    background-color: #F6F8F9;
+    background-clip: padding-box;
+    border-top-right-radius: 1.25rem;
+    border-top-left-radius: 1.25rem;
+    outline: 0;
+}
+
+.modal-desplegable-pwa .header-modal {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+.modal-desplegable-pwa .button {
+    width: 100%;
+    margin: 1rem 0;
+    float: right;
+    font-family: "Montserrat-SemiBold";
+    font-size: 1rem;
+    line-height: 1;
+    color: #004884;
+    cursor: pointer;
+    background-color: transparent;
+    border: 0;
+}
+
+.modal-desplegable-pwa .hr {
+    height: 4px;
+    width: 60px;
+    background-color: #004884;
+    border-radius: 20px;
+    margin-top: 0;
+}
+
+.modal-desplegable-pwa .body-modal {
+    position: relative;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 1rem;
+}
+
+.modal-desplegable-pwa .texto {
+    font-family: "WorkSans-Regular";
+    font-size: 0.875rem;
+    color: #000000;
+}
+
+.modal-desplegable-pwa .govco-servicios-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    column-gap: .5rem;
+    row-gap: .5rem;
+    height: calc(100% - 6rem);
+    ;
+}
+
+.modal-desplegable-pwa .govco-servicios-content a {
+    justify-self: stretch;
+}
+
+.modal-desplegable-pwa .govco-candybox-element {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    background-color: #FFFFFF;
+    width: auto;
+    height: 100%;
+    padding-top: 0.5rem;
+    border-radius: 0.313rem;
+}
+
+.modal-desplegable-pwa .govco-candybox-element.govco-active{
+    border: 2px solid #004884;
+    border-radius: 5px;
+  }
+
+.modal-desplegable-pwa .govco-candybox-element.govco-active .govco-candybox-icon {
+    background-color: #004884;
+}
+
+.modal-desplegable-pwa .govco-candybox-element.govco-active .govco-candybox-icon::after{
+    content: "";
+    background: url("../../../../assets/icons-fonts/activo.svg") no-repeat;
+    width: 20px;
+    height: 20px;
+    float: left;
+    z-index: 5;
+    position: relative;
+    top: -2.75rem;
+    left: 1.938rem;
+  }
+
+.modal-desplegable-pwa .govco-candybox-element p {
+    font-family: 'WorkSans-Medium';
+    font-size: 14px;
+    text-align: center;
+    letter-spacing: 0.02px;
+    line-height: 1;
+    margin-bottom: 0px;
+    margin-top: 8px;
+}
+
+.modal-desplegable-pwa .footer-modal {
+    width: 100%;
+    padding: 0 1rem 1rem 1rem;
+}
+
+.modal-desplegable-pwa .govco-candybox-icon {
+    width: 2.75rem;
+    height: 2.75rem;
+    background-color: #3366CC;
+    border-radius: 22px;
+}
+
+.modal-desplegable-pwa .govco-candybox-icon span {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-desplegable-pwa .govco-candybox-icon img {
+    width: 1.5rem;
+    height: 1.5rem;
+}

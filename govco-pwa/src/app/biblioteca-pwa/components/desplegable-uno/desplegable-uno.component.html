@@ -1,0 +1,70 @@
+<div id="espaldarModal" class="modal-desplegable-pwa espaldar-modal"></div>
+<div class="modal-desplegable-pwa contenedor">
+    <div class="modal-contenido">
+        <div class="header-modal">
+            <button id="modalDesplegable" (click)="abrirModal()" class="button" data-dismiss="modal">
+                <hr class="hr">
+                Selecciona tu perfil
+            </button>
+        </div>
+        <div class="body-modal">
+            <p class="texto">Escoge un perfil para que puedas ver la información especifica del trámite ajustada por
+                completo para ti.</p>
+
+            <div class="govco-servicios-content">
+                <a>
+                    <div class="govco-candybox-element" [class.govco-active]="itemSelected == 0" (click)="seleccionarItem(0)">
+                        <div class="govco-candybox-icon govco-homepage">
+                            <span>
+                                <img src="../../../../assets/icons-fonts/account_circle_FILL1_wght500_GRAD0_opsz20.svg" 
+                                    alt="Ingresar Ciudadano">
+                            </span>
+                        </div>
+                        <p>Ciudadano<br> </p>
+                    </div>
+                </a>
+
+                <a>
+                    <div class="govco-candybox-element" [class.govco-active]="itemSelected == 1" (click)="seleccionarItem(1)">
+                        <div class="govco-candybox-icon">
+                            <span>
+                                <img src="../../../../assets/icons-fonts/badge_FILL0_wght500_GRAD0_opsz20.svg"
+                                    alt="Ingresar Extranjero">
+                            </span>
+                        </div>
+                        <p>Extranjero<br> </p>
+                    </div>
+                </a>
+
+                <a>
+                    <div class="govco-candybox-element" [class.govco-active]="itemSelected == 2" (click)="seleccionarItem(2)">
+                        <div class="govco-candybox-icon">
+                            <span>
+                                <img src="../../../../assets/icons-fonts/apartment_FILL0_wght500_GRAD0_opsz20.svg"
+                                    alt="Ingresar Empresa privada">
+                            </span>
+                        </div>
+                        <p>Empresa<br>privada</p> 
+                    </div>
+                </a>
+
+                <a>
+                    <div class="govco-candybox-element" [class.govco-active]="itemSelected == 3" (click)="seleccionarItem(3)">
+                        <div class="govco-candybox-icon">
+                            <span>
+                                <img src="../../../../assets/icons-fonts/account_balance_FILL0_wght500_GRAD0_opsz20.svg"
+                                    alt="Ingresar Entidad pública">
+                            </span>
+                        </div>
+                        <p>Entidad<br>pública</p>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+        <div class="footer-modal">
+            <app-boton (click)="cerrarModal()">Continuar</app-boton>
+        </div>
+    </div>
+
+</div>
