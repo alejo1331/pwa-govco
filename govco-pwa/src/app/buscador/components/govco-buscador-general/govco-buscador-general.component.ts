@@ -30,8 +30,7 @@ export class BuscadorGeneralComponent implements OnInit {
     this.servicioHeader.estadoHeader(true, true);
     this.bottomService.seleccionandoItem(0);    
 
-    let itemSeleccionado = localStorage.getItem("consumidor") ? localStorage.getItem("consumidor") : '';
-    if (itemSeleccionado == 'entidades') { itemSeleccionado = 'entidadesEstado'; }
+    let itemSeleccionado = localStorage.getItem("consumidor") ? localStorage.getItem("consumidor") == 'entidades' ? 'entidadesEstado' : localStorage.getItem("consumidor") : '';
     this.servicioSideNav.seleccionandoItem(true, itemSeleccionado!);
 
     this.navegador = this.getBrowserName();
