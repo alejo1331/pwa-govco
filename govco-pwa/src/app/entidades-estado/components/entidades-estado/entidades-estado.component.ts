@@ -40,6 +40,7 @@ export class EntidadesEstadoComponent implements OnInit {
     this.bottomService.seleccionandoItem(0);
     this.servicioSideNav.seleccionandoItem(true,'entidadesEstado');
     this.bottomService.ajustandoPantalla(false);
+    localStorage.setItem("consumidor","entidades");
   }
 
   ngAfterViewInit(){
