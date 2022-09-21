@@ -16,7 +16,6 @@ import { SeccionContactosEmerganciaComponent } from './components/seccion-contac
 import { BotonRetroalimentacionComponent } from './components/boton-retroalimentacion/boton-retroalimentacion.component';
 import { ServiceAreaContentComponent } from './components/boton-retroalimentacion/service-area-content/service-area-content.component';
 import { SeccionCarpetaCiudadanaComponent } from './components/seccion-carpeta-ciudadana/seccion-carpeta-ciudadana.component';
-import { FooterComponent } from '../biblioteca-pwa/components/footer/footer.component';
 import { ModalAgradecimientoComponent } from './components/boton-retroalimentacion/modal-agradecimiento/modal-agradecimiento.component';
 
 @NgModule({
@@ -31,7 +30,6 @@ import { ModalAgradecimientoComponent } from './components/boton-retroalimentaci
     BotonRetroalimentacionComponent,
     ServiceAreaContentComponent,
     SeccionCarpetaCiudadanaComponent,
-    FooterComponent,
     ModalAgradecimientoComponent,
   ],
   imports: [
