@@ -10,6 +10,11 @@
   src: url('assets/fonts/Montserrat/Montserrat-Regular.ttf');
 }
 
+@font-face {
+  font-family: 'Montserrat-Medium';
+  src: url('assets/fonts/Montserrat/Montserrat-Medium.ttf');
+}
+
 /* Montserrat-Bold */
 @font-face {
   font-family: 'Montserrat-SemiBold';
