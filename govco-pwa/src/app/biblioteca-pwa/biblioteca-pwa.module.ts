@@ -7,6 +7,7 @@ import { CarruselDosComponent } from './components/carrusel-dos/carrusel-dos.com
 import { CarruselUnoComponent } from './components/carrusel-uno/carrusel-uno.component';
 import { AcordeonComponent } from './components/acordeon/acordeon.component';
 import { NivelDosComponent } from './components/nivel-dos/nivel-dos.component';
+import { DesplegableUnoComponent } from './components/desplegable-uno/desplegable-uno.component';
 import { FooterComponent } from './components/footer/footer.component';
 
 
@@ -20,6 +21,7 @@ import { FooterComponent } from './components/footer/footer.component';
     CarruselDosComponent,
     AcordeonComponent,
     FooterComponent,
+    DesplegableUnoComponent
     NivelDosComponent
   ],
   imports: [
@@ -33,6 +35,7 @@ import { FooterComponent } from './components/footer/footer.component';
     CarruselDosComponent,
     AcordeonComponent,
     FooterComponent,
+    DesplegableUnoComponent
     NivelDosComponent
   ],
 })

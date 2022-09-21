@@ -134,7 +134,8 @@ body {
 .govco-pwa-content {
   background-color: #FFFFFF;
   position: relative;
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
   -webkit-overflow-scrolling: auto;
   height: calc(100% - 8rem);
 }

@@ -43,7 +43,6 @@ export class HomePrincipalComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log("inicio ngOnInit")
     // servicioHeader.estadoHeader(a, b)       a -> true = header seccion internas
     //                                         a -> false = header general
     //                                         b -> Muestra/Oculta  Header
