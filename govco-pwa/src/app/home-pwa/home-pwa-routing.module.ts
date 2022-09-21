@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { NivelTresComponent } from '../biblioteca-pwa/components/nivel-tres/nivel-tres.component';
 import { HomePrincipalComponent } from './components/home-principal/home-principal.component';
 
 
@@ -10,7 +9,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: NivelTresComponent
+        component: HomePrincipalComponent
       }
     ]
   }
