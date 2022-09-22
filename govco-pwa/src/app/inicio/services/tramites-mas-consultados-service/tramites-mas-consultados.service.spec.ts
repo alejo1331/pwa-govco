@@ -4,10 +4,13 @@ import { TramitesMasConsultadosService } from './tramites-mas-consultados.servic
 
 describe('TramitesMasConsultadosService', () => {
   let service: TramitesMasConsultadosService;
+  let httpClientSpy: { get: jasmine.Spy }
+
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(TramitesMasConsultadosService);
+    httpClientSpy = jasmine.createSpyObj('HttpClient', ['get'])
+    service = new TramitesMasConsultadosService(httpClientSpy as any)
   });
 
   it('should be created', () => {

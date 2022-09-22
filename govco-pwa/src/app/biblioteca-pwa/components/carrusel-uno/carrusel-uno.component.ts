@@ -25,7 +25,7 @@ export class CarruselUnoComponent implements OnInit, OnChanges {
 
   ngOnChanges(): void {
     if (this.dataCarrusel != undefined) {
-      if (this.dataCarruselUno.dataTitulo != undefined) {
+      if (this.dataCarruselUno?.dataTitulo != undefined) {
         this.estado = true;
         this.titulo = this.dataCarruselUno.dataTitulo;
         this.nombreMunicipio = this.dataCarruselUno.ubicacion;
