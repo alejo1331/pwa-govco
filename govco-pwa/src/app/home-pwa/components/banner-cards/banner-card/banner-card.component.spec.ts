@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BannerCardComponent } from './banner-card.component';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('BannerCardComponent', () => {
   let component: BannerCardComponent;
@@ -8,9 +9,9 @@ describe('BannerCardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BannerCardComponent ]
-    })
-    .compileComponents();
+      declarations: [BannerCardComponent],
+      imports: [RouterTestingModule],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -19,7 +20,7 @@ describe('BannerCardComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('Debe de crearse correctamente', () => {
     expect(component).toBeTruthy();
   });
 });

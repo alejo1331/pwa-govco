@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ModalAgradecimientoComponent } from './../modal-agradecimiento/modal-agradecimiento.component';
 
 @Component({
-  selector: 'app-dialog-content-example-dialog',
+  selector: 'app-service-area-content',
   templateUrl: './service-area-content.component.html',
   styleUrls: ['./service-area-content.component.scss'],
 })

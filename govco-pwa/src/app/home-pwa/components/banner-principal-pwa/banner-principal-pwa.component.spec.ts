@@ -2,6 +2,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { BannerPrincipalPwaComponent } from './banner-principal-pwa.component';
 
@@ -11,9 +12,9 @@ describe('BannerPrincipalPwaComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BannerPrincipalPwaComponent ]
-    })
-    .compileComponents();
+      declarations: [BannerPrincipalPwaComponent],
+      imports: [HttpClientTestingModule],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -22,7 +23,7 @@ describe('BannerPrincipalPwaComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('Debe de crearse correctamente', () => {
     expect(component).toBeTruthy();
   });
 });
