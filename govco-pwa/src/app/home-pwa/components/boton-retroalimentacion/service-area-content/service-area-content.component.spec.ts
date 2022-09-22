@@ -1,14 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ServiceAreaContentComponent } from './service-area-content.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
-describe('DialogContentExampleDialogComponent', () => {
+describe('ServiceAreaContentComponent', () => {
   let component: ServiceAreaContentComponent;
   let fixture: ComponentFixture<ServiceAreaContentComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ServiceAreaContentComponent],
+      imports: [MatDialogModule],
     }).compileComponents();
   });
 
@@ -18,7 +20,7 @@ describe('DialogContentExampleDialogComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('Debe de crearse correctamente', () => {
     expect(component).toBeTruthy();
   });
 });

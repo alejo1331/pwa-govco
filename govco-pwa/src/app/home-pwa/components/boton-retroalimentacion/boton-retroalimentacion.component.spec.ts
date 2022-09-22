@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BotonRetroalimentacionComponent } from './boton-retroalimentacion.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 describe('BotonRetroalimentacionComponent', () => {
   let component: BotonRetroalimentacionComponent;
@@ -8,9 +9,9 @@ describe('BotonRetroalimentacionComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BotonRetroalimentacionComponent ]
-    })
-    .compileComponents();
+      declarations: [BotonRetroalimentacionComponent],
+      imports: [MatDialogModule],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -19,7 +20,7 @@ describe('BotonRetroalimentacionComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('Debe de crearse correctamente', () => {
     expect(component).toBeTruthy();
   });
 });

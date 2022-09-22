@@ -8,9 +8,8 @@ describe('ModalAgradecimientoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ModalAgradecimientoComponent ]
-    })
-    .compileComponents();
+      declarations: [ModalAgradecimientoComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ describe('ModalAgradecimientoComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('Debe de crearse correctamente', () => {
     expect(component).toBeTruthy();
   });
 });
