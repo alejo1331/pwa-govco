@@ -41,6 +41,7 @@ export class ListadoNoticiasFiltroComponent implements OnInit, OnChanges {
   ngOnInit() {
     this.iniciarCargaDatos();
     window["objeto"]=this;
+    localStorage.setItem("consumidor","noticias");
   }
 
   ngOnChanges(changes:SimpleChanges):void {
