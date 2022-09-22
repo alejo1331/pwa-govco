@@ -1,5 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
-import { MunicipioInterface } from 'src/app/transversales/models/geolocalizacion/municipio-interface';
+import { Component, OnInit } from '@angular/core';
 import { BottomMenuService } from 'src/app/transversales/services/bottom-menu/bottom-menu.service';
 import { GeolocalizacionService } from 'src/app/transversales/services/geolocalizacion/geolocalizacion.service';
 import { HeaderService } from 'src/app/transversales/services/header-service/header.service';
@@ -31,12 +30,12 @@ export class HomePrincipalComponent implements OnInit {
     public bottomService: BottomMenuService,
     protected servicioHeader: HeaderService,
     protected servicioSideNav: SidenavService,
-    protected carruselServe: TramitesMasConsultadosService,
+    protected tramitesService: TramitesMasConsultadosService,
     protected ServicioGeolocalizacion: GeolocalizacionService,
   ) {
     this.ServicioGeolocalizacion.coordenadas.subscribe(([codigoDepartamento, codigoMunicipio]) => {
       if (codigoDepartamento != null && codigoMunicipio != null) {
-        this.getMunicipiosPorDepartamento([codigoDepartamento, codigoMunicipio]);
+        this.dataGeolocalizacion();
         this.dataFichaTramite();
       }
     })
@@ -81,25 +80,24 @@ export class HomePrincipalComponent implements OnInit {
         .then((municipios: any) => {
           municipios.forEach((data: any) => {
             data['codigo'] == codigoMunicipio ? this.nombreMunicipio = data['nombre'] : '';
-            // this.inputTramitesMasConsultados();
           });
         })
     }
   }
 
   dataFichaTramite() {
-    this.carruselServe.getTramitesMasConsultadosEstado().subscribe((estado: EstadoInterface) => {
+    this.tramitesService.getTramitesMasConsultadosEstado().subscribe((estado: EstadoInterface) => {
       if (estado.data.activo == 1) {
 
-        this.carruselServe.getTramitesMasConsultadosTitulo(this.seccion).subscribe((dataTitulo: TituloInterface) => {
+        this.tramitesService.getTramitesMasConsultadosTitulo(this.seccion).subscribe((dataTitulo: TituloInterface) => {
           this.titulo = dataTitulo.data.titulo;
         })
         this.codigoMunicipio == "" ?
-          this.carruselServe.getTramitesMasConsultados().subscribe((info: GeneralInterface) => {
+          this.tramitesService.getTramitesMasConsultados().subscribe((info: GeneralInterface) => {
             this.dataTramites = info.data;
             this.inputTramitesMasConsultados();
           })
-          : this.carruselServe.getTramitesMasConsultadosPorMunicipio(this.codigoMunicipio).subscribe((tramitesPorMunicipio: PorMunicipioInterface) => {
+          : this.tramitesService.getTramitesMasConsultadosPorMunicipio(this.codigoMunicipio).subscribe((tramitesPorMunicipio: PorMunicipioInterface) => {
             this.dataTramites = tramitesPorMunicipio.data;
             this.inputTramitesMasConsultados();
           });

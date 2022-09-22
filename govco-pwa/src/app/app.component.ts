@@ -90,13 +90,13 @@ export class AppComponent implements OnInit, AfterContentChecked {
     this.oauthService.events.subscribe(e => {
       if (e instanceof OAuthErrorEvent) {
         const parm = e.params as OAuthErrorEventParams;
-        if (parm.error == "login_required") {
+        if (parm?.error == "login_required") {
           //TODO : limpiar username
           this.clearSessionData();
 
           this.userName = null;
         }
-        else if (parm.error == "access_denied") {
+        else if (parm?.error == "access_denied") {
           this.router.navigate(['/login', { msg: parm.error, detail: parm.error_description }]);
         }
         console.debug(e);
