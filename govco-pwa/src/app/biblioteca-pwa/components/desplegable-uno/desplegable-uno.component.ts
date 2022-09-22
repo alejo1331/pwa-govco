@@ -50,14 +50,16 @@ export class DesplegableUnoComponent implements OnInit {
 
   @HostListener('touchstart', ['$event']) onTouchStart(event: any): void {
     var button = document.getElementById('modalDesplegable')
-    if (button == event.target) {
+    var hr = (document.getElementsByTagName('hr') as HTMLCollectionOf<HTMLElement>)[1];
+    if (button == event.target || hr == event.target) {
       this.touchMoveInicial = event.changedTouches[0].screenY;
     }
   }
 
   @HostListener('touchmove', ['$event']) onTouchMove(event: any): void {
-    var button = document.getElementById('modalDesplegable')
-    if (button == event.target) {
+    var button = document.getElementById('modalDesplegable');
+    var hr = (document.getElementsByTagName('hr') as HTMLCollectionOf<HTMLElement>)[1];
+    if (button == event.target || hr == event.target) {
       this.touchMoveFinal = event.changedTouches[0].screenY;
 
       if (this.touchMoveInicial < this.touchMoveFinal) {
