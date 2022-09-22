@@ -50,9 +50,9 @@ export const environment = {
   serverUrlFichaTramite: 'https://preapi-interno.www.gov.co/api/ficha-tramites-y-servicios/',
   //Auth
   authIssuer: 'https://preautenticaciondigital.and.gov.co',
-  clientID: "govcomovil1QA",
+  clientID: "govcomovilPRE",
   authWebApi:"https://preapi-interno.www.gov.co/api/roles-y-permisos/RolesPerfiles/Usuarios",
-  URLgovco : 'https://d2j6v7nsh41twk.cloudfront.net/',
+  URLgovco : 'https://pwa-preprod.www.gov.co/',
   //WebComponent
   serverFichaTramite:'https://preapi-interno.www.gov.co/api/ficha-tramites-y-servicios',
 
