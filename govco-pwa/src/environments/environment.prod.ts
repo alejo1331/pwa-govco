@@ -51,10 +51,10 @@ export const environment = {
   //ventanilla unica
   serverSedesElectronicas: "https://api-interno.www.gov.co/api/integracion-sedes",
   //Auth
-  authIssuer: 'https://qaautenticaciondigital.and.gov.co',
-  clientID: "govcomovil1QA",
+  authIssuer: 'https://autenticaciondigital.and.gov.co',
+  clientID: "govcomovilPRO",
   authWebApi:"https://preapi-interno.www.gov.co/api/roles-y-permisos/RolesPerfiles/Usuarios",
-  URLgovco : 'https://d2j6v7nsh41twk.cloudfront.net/',
+  URLgovco : 'https://m.gov.co/',
   //WebComponent
   serverFichaTramite:'https://api-interno.www.gov.co/api/ficha-tramites-y-servicios',
 
