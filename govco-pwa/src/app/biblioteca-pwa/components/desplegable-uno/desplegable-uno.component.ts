@@ -1,4 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
+import { Platform } from '@angular/cdk/platform';
+
 
 @Component({
   selector: 'app-desplegable-uno',
@@ -14,7 +16,10 @@ export class DesplegableUnoComponent implements OnInit {
   itemSelected:number;
 
 
-  constructor() { }
+  constructor(
+    public platform: Platform,
+
+  ) { }
 
   ngOnInit(): void {
   }
@@ -25,14 +30,18 @@ export class DesplegableUnoComponent implements OnInit {
 
   abrirModal() {
     var espaldar = (document.getElementById('espaldarModal') as HTMLElement);
-    espaldar.style.zIndex = '3';
+    espaldar.style.zIndex = '5';
     espaldar.style.opacity = '1';
     espaldar.style.backgroundColor = '#00000080'
     var body = (document.getElementsByTagName('body') as HTMLCollectionOf<HTMLElement>)[0];
     body.style.overscrollBehavior = 'contain';
     var contenedor = (document.querySelector('.modal-desplegable-pwa.contenedor') as HTMLElement);
-    contenedor.style.bottom = '24.5rem';
+    contenedor.style.bottom = '0';
     contenedor.style.transition = '0.6s';
+    if (this.platform.IOS || this.platform.SAFARI) {
+      body.style.position = 'fixed';
+      body.style.overflow = 'hidden';
+    }
   }
 
   cerrarModal() {
@@ -40,12 +49,14 @@ export class DesplegableUnoComponent implements OnInit {
     espaldar.style.zIndex = '-1'
     espaldar.style.opacity = '0';
     var body = (document.getElementsByTagName('body') as HTMLCollectionOf<HTMLElement>)[0];
-    setTimeout(() => {
-      body.style.overscrollBehavior = 'auto'
-    }, 500);
+    setTimeout(() => { body.style.overscrollBehavior = 'auto' }, 500);
     var contenedor = (document.querySelector('.modal-desplegable-pwa.contenedor') as HTMLElement);
-    contenedor.style.bottom = '0';
+    contenedor.style.bottom = '-25.125rem';
     contenedor.style.transition = '0.6s'
+    if (this.platform.IOS || this.platform.SAFARI) {
+      body.style.removeProperty('position')
+      body.style.removeProperty('overflow')
+    }
   }
 
   @HostListener('touchstart', ['$event']) onTouchStart(event: any): void {
@@ -61,7 +72,6 @@ export class DesplegableUnoComponent implements OnInit {
     var hr = (document.getElementsByTagName('hr') as HTMLCollectionOf<HTMLElement>)[1];
     if (button == event.target || hr == event.target) {
       this.touchMoveFinal = event.changedTouches[0].screenY;
-
       if (this.touchMoveInicial < this.touchMoveFinal) {
         this.cerrarModal()
       } else {

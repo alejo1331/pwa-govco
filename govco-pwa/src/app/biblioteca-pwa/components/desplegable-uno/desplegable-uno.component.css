@@ -8,16 +8,15 @@
 
 .modal-desplegable-pwa.contenedor {
     width: 100%;
-    height: 100%;
-    z-index: 4;
+    height: 29.563rem;
+    z-index: 6;
     position: fixed;
-    bottom: 0;
-    transform: translate(0, 90%);
+    bottom: -25.125rem;
     margin: 0;
 }
 
 .modal-desplegable-pwa .modal-contenido {
-    height: 29.563rem;
+    height: 100%;
     display: -ms-flexbox;
     display: flex;
     -ms-flex-direction: column;
