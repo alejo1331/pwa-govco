@@ -41,13 +41,20 @@
   }
 }
 
-  ::ng-deep .govco-icon-check-cn::before {
-    content: '\e961';
-  }
+::ng-deep .govco-icon-check-cn::before {
+  content: '\e961';
+}
+
 .contenedor-btn {
   padding: 0 15px;
 }
 
-  ::ng-deep .govco-icon-x-cn::before {
-    content: '\e908';
+::ng-deep .govco-icon-x-cn::before {
+  content: '\e908';
+}
+
+#fichaContainer::ng-deep {
+  .hydrated {
+    margin: 0!important;
   }
+}

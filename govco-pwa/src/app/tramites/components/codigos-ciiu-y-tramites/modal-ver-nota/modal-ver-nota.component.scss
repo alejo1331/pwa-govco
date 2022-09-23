@@ -153,3 +153,9 @@ fieldset:disabled a.btn {
 ::ng-deep a.link-modal-ver-nota {
     white-space: nowrap;
 }
+
+::ng-deep .header-modal-ver-nota {
+    button.close {
+        position: initial!important;
+    }
+}
