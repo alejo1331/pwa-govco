@@ -52,7 +52,8 @@ export class BottomMenuComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   clickBottomMenu(url: string) {
-    url = window.location.pathname != url ? (url == '/' ? '/home-pwa' : url) : url;
+    // to do 
+    // url = window.location.pathname != url ? (url == '/' ? '/home-pwa' : url) : url;
     if (window.location.pathname != url) {
       this.router.navigateByUrl(url);
     }
