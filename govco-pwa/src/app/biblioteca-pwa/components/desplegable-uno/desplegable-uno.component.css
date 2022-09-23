@@ -17,11 +17,11 @@
 
 .modal-desplegable-pwa .modal-contenido {
     height: 100%;
+    width: 100%;
     display: -ms-flexbox;
     display: flex;
     -ms-flex-direction: column;
     flex-direction: column;
-    width: 100%;
     pointer-events: auto;
     background-color: #F6F8F9;
     background-clip: padding-box;
@@ -64,7 +64,7 @@
     position: relative;
     -ms-flex: 1 1 auto;
     flex: 1 1 auto;
-    padding: 1rem;
+    padding: 1rem 1rem 0 1rem;
 }
 
 .modal-desplegable-pwa .texto {
@@ -79,8 +79,7 @@
     grid-template-rows: 1fr 1fr;
     column-gap: .5rem;
     row-gap: .5rem;
-    height: calc(100% - 6rem);
-    ;
+    height: 13.5rem;
 }
 
 .modal-desplegable-pwa .govco-servicios-content a {
