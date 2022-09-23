@@ -1,0 +1,22 @@
+<div class="container pt-5 pb-5" >      
+    <section class="container-fluid contenedor-seccion-certificados">
+        <h2>Consulta de certificados</h2>
+        <div class="row">
+            <div class="col">
+                <div class="card mt-4">
+                    <div class="card-body">
+                        <h6 class="card-title">Certificados disponibles en descarga online</h6>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item" *ngFor="let item of serviciosOnline" (mouseover)="hover=true" >
+                                <a appValidarUrl href="{{item.url}}" target="_blank">
+                                    <h5 class="m-0">{{item.tramite}}</h5>
+                                    <p>{{item.entidad}}</p>
+                                </a>
+                            </li>
+                          </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>    
+</div>

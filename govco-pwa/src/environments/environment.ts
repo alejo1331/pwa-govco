@@ -48,6 +48,8 @@ export const environment = {
 
   //Ficha tramite
   serverUrlFichaTramite: 'http://100.24.232.62:8084/api/',
+  //ventanilla unica
+  serverSedesElectronicas: "http://100.24.232.62:8084/api/integracion-sedes",
   //Auth
   authIssuer: 'https://qaautenticaciondigital.and.gov.co',
   clientID: "govcomovil1QA",

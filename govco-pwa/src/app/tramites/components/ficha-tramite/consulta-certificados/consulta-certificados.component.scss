@@ -1,0 +1,56 @@
+
+.contenedor-seccion-certificados {
+    h2 {
+        letter-spacing: 0;
+        color: #0B457F;
+        font-weight: 400;
+        margin-bottom: 10px !important; 
+        font-size: 1.8125rem !important; 
+        font-family: 'Montserrat-Regular';
+    }
+
+    .card {
+        border-radius: 6px;
+        box-shadow: 0 0 2px rgb(0 0 0 / 14%), 0 1px 4px -2px rgb(0 0 0 / 20%), 0 1px 4px rgb(0 0 0 / 12%);
+        color: rgba(0,0,0,.87);
+        .card-body {
+            .card-title {
+                font-size: 1.375rem !important;  
+                font-family: "Montserrat", sans-serif;
+                font-weight: 600;
+                color: #004884;
+                line-height: 1.5 !important;
+            }
+
+            .list-group { 
+                li {
+                    background-color: #fff !important;
+                    border: 0;
+                    a {
+                        h5 {
+                            font-family: "Montserrat", sans-serif;
+                            font-size: 1.25rem;
+                            font-weight: 600;
+                            color: #004884;
+                            line-height: 1.5 !important;
+                        }
+                        p {
+                            font-family: "Work Sans", sans-serif;
+                            font-size: 1rem;
+                            font-weight: 400;
+                            color: #004884;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .list-group {
+        li {
+            height: auto !important;
+        }
+    }       
+}

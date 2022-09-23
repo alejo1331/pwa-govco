@@ -59,6 +59,8 @@ import { NoSuitDetalleComponent } from './components/ficha-tramite/detalle/no-su
 import { BreadCrumbComponent } from './components/detalle-consulta-ciiu/components/bread-crumb/bread-crumb.component';
 import { WordLimitPipe } from './pipes/word-limit/word-limit.pipe';
 import { HomePwaModule } from './../home-pwa/home-pwa.module';
+import { ConsultaCertificadosComponent } from './components/ficha-tramite/consulta-certificados/consulta-certificados.component';
+import { VentanillasUnicasComponent } from './components/ficha-tramite/ventanillas-unicas/ventanillas-unicas.component';
 
 @NgModule({
   imports: [
@@ -123,6 +125,8 @@ import { HomePwaModule } from './../home-pwa/home-pwa.module';
     NoSuitDetalleComponent,
     BreadCrumbComponent,
     WordLimitPipe,
+    ConsultaCertificadosComponent,
+    VentanillasUnicasComponent,
   ],
   exports: [TramitesHomeComponent, BreadCrumbComponent, WordLimitPipe],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

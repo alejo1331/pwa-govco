@@ -1,0 +1,71 @@
+<div class="banner-ventanilla-unica">
+    <div class="container">
+        <app-level-one-bread-crumbs title="Ventanillas Únicas"></app-level-one-bread-crumbs>
+    </div>
+    <div class="container pt-2 mb-3">
+        <section class="row" title="Encabezado de página">
+            <div class="col">
+                <div class="mb-5">
+                    <h1 class="text-h1">Ventanillas únicas en Colombia</h1>
+                    <p  class="resumen">
+                        Sitio o canal digital que integra actuaciones administrativas de dos o más 
+                        autoridades que contribuyen a una misma finalidad para atender a un ciudadano, 
+                        usuario o grupo de valor.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+<div class="container container-ventanilla-unica pb-3 mb-5">
+    <div>
+        <div class="container buscador-sedes-container">
+            <govco-buscador-2 class="buscador-sedes" seed={{this.parametroBuscador}} solobusqueda="ventanilla" filtros="false" categoriabusqueda=""></govco-buscador-2>
+        </div>
+    </div>
+    <div class="container-sedes-govco" *ngIf="listSedes" id="container-sedes-govco">
+        <div class="paginador-header row" *ngIf="ventanillas.length > config.itemsPerPage">
+            <div class="col-md-8 col-12 mb-5 d-flex justify-content-between">
+                <div class="resultados">
+                    <span class="text-gris">Mostrando {{ itemMin }} de {{ itemMax }} de {{ ventanillas.length }}
+                        resultados de ventanillas unicas </span>
+                </div>
+                <div class="paginador-container">
+                    <label for="paginador" class="text-gris mr-3">Página</label>
+                    <select [(ngModel)]="pagina" id="paginador" (change)="changePage()">
+                        <option *ngFor="let page of paginador" [value]="page">
+                            {{ page }}
+                        </option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="paginador-header row" *ngIf="ventanillas.length <= config.itemsPerPage">
+            <div class="col-md-8 col-12 mb-5 d-flex justify-content-between">
+                <div class="resultados">
+                    <span class="text-gris">Mostrando {{ config.currentPage }} de {{ ventanillas.length }} resultados de
+                        ventanillas unicas </span>
+                </div>
+            </div>
+        </div>
+        <div class="row" *ngFor="let ventanilla of ventanillas | paginate: config; let i = index">
+            <div class="col-md-6 col-12 mb-4">
+                <p class="titulo-contendor mb-1">VENTANILLA</p>
+                <govco-label-integrado tipoelemento="VENTANILLA" [buscar]=ventanilla.nombreCorto ></govco-label-integrado>
+                <a appValidarUrl [href]="ventanilla.urlDominio" title="Abre en una nueva ventana" target="_blank">
+                    <h3 class="headline-s-govco"><span class="sr-only">
+                            {{ config.itemsPerPage * (config.currentPage -1 ) + (i + 1) }} </span>
+                        {{ ventanilla.nombreLargo }}</h3>
+                </a>
+                <span class="caption"><strong>Entidad responsable:
+                    </strong><span>{{ ventanilla.nombreEntidad }}</span></span>
+                <p class="descripcion">{{ ventanilla.descripcion }}</p>
+            </div>
+        </div>
+        <pagination-controls *ngIf="ventanillas.length > config.itemsPerPage" (pageChange)="onPageChange($event)"
+            (pageBoundsCorrection)="onPageChange($event)" [maxSize]="9" [directionLinks]="true" [autoHide]="false"
+            [responsive]="true" previousLabel="Anterior" nextLabel="Siguiente" screenReaderPaginationLabel="Paginador"
+            screenReaderPageLabel="Página" screenReaderCurrentLabel="Usted está en la página">
+        </pagination-controls>
+    </div>
+</div>
