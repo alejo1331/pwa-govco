@@ -42,16 +42,12 @@ export class ServiciosHomeComponent implements OnInit {
     this.bottomService.quitarActive()
   }
 
-  navigateTo(dataItem:number, target:string, routing:number) {
+  navigateTo(dataItem:number, target:string) {
     this.itemSelected = dataItem;
     this.appService.setSelectedServiceOption(this.itemSelected);
     let url = this.urlItems[this.itemSelected];
     setTimeout(() => {
-      if (routing) {
-        this.router.navigate([url]);
-      } else {
         window.open(url, target);
-      } 
-    }, 100);       
+    }, 100);
   }
 }
