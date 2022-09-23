@@ -16,15 +16,15 @@ export class BottomMenuComponent implements OnInit, AfterViewInit, OnDestroy {
 
   contadorClic: number;
   currentRoute: string;
-  userData : any;
+  userData: any;
 
   constructor(
     protected servicioSideNav: SidenavService,
     protected servicioHeader: HeaderService,
     private router: Router,
-    public appService : AppService,
-    public perfilService : PerfilService,
-    private bottomMenuService : BottomMenuService
+    public appService: AppService,
+    public perfilService: PerfilService,
+    private bottomMenuService: BottomMenuService
   ) {
     this.userData = perfilService.checkLoginUser()
     this.currentRoute = "";
@@ -51,11 +51,13 @@ export class BottomMenuComponent implements OnInit, AfterViewInit, OnDestroy {
   ngAfterViewInit() {
   }
 
-  clickBottomMenu(url:string) {
-    if (window.location.pathname != url){
+  clickBottomMenu(url: string) {
+    // to do 
+    // url = window.location.pathname != url ? (url == '/' ? '/home-pwa' : url) : url;
+    if (window.location.pathname != url) {
       this.router.navigateByUrl(url);
     }
-    else{
+    else {
       if (document.querySelector('#topScroll')!.scrollTop > 10) {
         document.querySelector('#topScroll')!.scrollTop = 0;
       } else {

@@ -42,6 +42,7 @@ export class TramitesHomeComponent implements OnInit {
     this.bottomService.ajustandoPantalla(false);
     this.servicioSideNav.seleccionandoItem(false,'null');
     this.breadCrumbService.setTittle('')
+    this.breadCrumbService.setTittleCiiu('');
   }
 
   backUrl() {
