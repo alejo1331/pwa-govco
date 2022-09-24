@@ -68,6 +68,8 @@ export class ActualidadPrincipalComponent implements OnInit {
     this.bottomService.seleccionandoItem(0);
     this.bottomService.ajustandoPantalla(false);
     this.servicioSideNav.seleccionandoItem(true, 'noticias');
+    (document.getElementById('topScroll') as HTMLElement).style.top = '3.5rem';
+    (document.getElementById('topScroll') as HTMLElement).scrollTop = 0;
 
     this.activatedRouter.url.subscribe(() => {
       this.idCategoriaParam = this.activatedRouter.snapshot.paramMap.get('idCategoria');

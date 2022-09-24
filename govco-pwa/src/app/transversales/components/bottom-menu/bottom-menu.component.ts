@@ -52,14 +52,14 @@ export class BottomMenuComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   clickBottomMenu(url: string) {
-    // to do 
-    // url = window.location.pathname != url ? (url == '/' ? '/home-pwa' : url) : url;
+    if ((document.getElementById('topScroll') as HTMLElement).scrollTop != 0 && window.location.pathname != '/ficha-tramites-y-servicios')
+      url = window.location.pathname != url ? (url == '/' ? window.location.pathname : url) : url;
     if (window.location.pathname != url) {
       this.router.navigateByUrl(url);
     }
     else {
-      if (document.querySelector('#topScroll')!.scrollTop > 10) {
-        document.querySelector('#topScroll')!.scrollTop = 0;
+      if ((document.getElementById('topScroll') as HTMLElement).scrollTop > 10) {
+        (document.getElementById('topScroll') as HTMLElement).scrollTop = 0;
       } else {
         this.router.navigateByUrl(url);
       }

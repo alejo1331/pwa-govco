@@ -30,6 +30,9 @@ export class BuscadorGeneralComponent implements OnInit {
     this.servicioHeader.estadoHeader(true, true);
     this.bottomService.seleccionandoItem(0);
     this.servicioSideNav.seleccionandoItem(true, '');
+    (document.getElementById('topScroll') as HTMLElement).style.top = '3.5rem';
+    (document.getElementById('topScroll') as HTMLElement).scrollTop = 0;
+
     this.navegador = this.getBrowserName();
     if (this.navegador != 'ie') {
       this.actRoute.paramMap.subscribe(params => {

@@ -41,6 +41,8 @@ export class DetalleNoticiasComponent implements OnInit {
     this.bottomService.seleccionandoItem(0);
     this.bottomService.ajustandoPantalla(false);
     this.servicioSideNav.seleccionandoItem(true, 'noticias');
+    (document.getElementById('topScroll') as HTMLElement).style.top = '3.5rem';
+    (document.getElementById('topScroll') as HTMLElement).scrollTop = 0;
 
     this.activatedRoute.url.subscribe(() => {
       this.idRecurso = this.activatedRoute.snapshot.paramMap.get('id')!;

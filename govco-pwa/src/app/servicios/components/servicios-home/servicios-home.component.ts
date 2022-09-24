@@ -36,6 +36,8 @@ export class ServiciosHomeComponent implements OnInit {
     this.bottomService.seleccionandoItem(3);
     this.bottomService.ajustandoPantalla(true);
     this.servicioSideNav.seleccionandoItem(false,'null');
+    (document.getElementById('topScroll') as HTMLElement).style.top = '0';
+    (document.getElementById('topScroll') as HTMLElement).scrollTop = 0;
   }
 
   backUrl(){

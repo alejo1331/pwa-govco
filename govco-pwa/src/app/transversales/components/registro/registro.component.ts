@@ -48,6 +48,8 @@ export class RegistroComponent implements OnInit, OnDestroy {
     this.bottomService.seleccionandoItem(2);
     this.bottomService.ajustandoPantalla(false);
     this.servicioSideNav.seleccionandoItem(false, 'null');
+    (document.getElementById('topScroll') as HTMLElement).style.top = '7.25rem';
+    (document.getElementById('topScroll') as HTMLElement).scrollTop = 0
 
     this.authService.getTiposIdentificacionEventos().subscribe((data: TipoIdentificacionModel[]) => { // Success
       this.users = data;

@@ -41,7 +41,10 @@ export class MomentosDeVidaComponent implements OnInit {
     this.servicioHeader.estadoHeader(true, true);
     this.bottomService.seleccionandoItem(0);
     this.bottomService.ajustandoPantalla(false);
-    // this.servicioSideNav.seleccionandoItem(true, 'noticias');
+    (document.getElementById('topScroll') as HTMLElement).style.top = '3.5rem';
+    (document.getElementById('topScroll') as HTMLElement).scrollTop = 0;
+
+    this.servicioSideNav.seleccionandoItem(true, 'null');
 
     this.listarCategorias();
 

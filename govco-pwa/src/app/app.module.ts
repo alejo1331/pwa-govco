@@ -17,7 +17,6 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { SidenavModule  } from './sidenav/sidenav.module';
 import { SidenavService } from './transversales/services/sidenav-service/sidenav-service.service';
 import { NoticiasModule } from './noticias/noticias.module';
 import { EntidadesEstadoModule } from './entidades-estado/entidades-estado.module';
@@ -36,6 +35,7 @@ import { RecaptchaModule } from "ng-recaptcha";
 import { ModalNatvivoModule } from './modal-natvivo/modal-natvivo.module';
 import { BibliotecaPwaModule } from './biblioteca-pwa/biblioteca-pwa.module';
 import { HomePwaModule } from './home-pwa/home-pwa.module';
+import { TramitesPwaModule } from './tramites-pwa/tramites-pwa.module';
 
 
 
@@ -54,7 +54,6 @@ registerLocaleData(es)
     MatButtonModule,
     MatIconModule,
     AppRoutingModule,
-    SidenavModule,
     InicioModule,
     PerfilModule,
     TramitesModule,
@@ -83,7 +82,8 @@ registerLocaleData(es)
     PipesModule,
     ModalNatvivoModule,
     BibliotecaPwaModule,
-    HomePwaModule
+    HomePwaModule,
+    TramitesPwaModule
   ],
   providers: [
     SidenavService,

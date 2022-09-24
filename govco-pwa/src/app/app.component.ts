@@ -128,7 +128,6 @@ export class AppComponent implements OnInit, AfterContentChecked {
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe((event: any) => {
-        // TODO: document.querySelector('#topScroll')!.scrollTop = 0
         this.appService.previousUrl = this.appService.currentUrl;
         this.appService.currentUrl = event.url;
       });
