@@ -47,6 +47,8 @@ export class FooterComponent implements OnInit {
     this.bottomService.seleccionandoItem(0);
     this.servicioSideNav.seleccionandoItem(true, 'acercaPortal');
     this.bottomService.ajustandoPantalla(false);
+    (document.getElementById('topScroll') as HTMLElement).style.top = '7.25rem';
+    (document.getElementById('topScroll') as HTMLElement).scrollTop = 0;
 
     this.infoFooter.getInformacionFooter().subscribe((footer: FooterInterface) => {
       this.infGeneral = footer.data.panelSegundaColumna;

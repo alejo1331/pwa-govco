@@ -41,6 +41,9 @@ export class TramitesHomeComponent implements OnInit {
     this.bottomService.seleccionandoItem(1);
     this.bottomService.ajustandoPantalla(false);
     this.servicioSideNav.seleccionandoItem(false,'null');
+    (document.getElementById('topScroll') as HTMLElement).style.top = '7.25rem';
+    (document.getElementById('topScroll') as HTMLElement).scrollTop = 0;
+
     this.breadCrumbService.setTittle('')
     this.breadCrumbService.setTittleCiiu('');
   }

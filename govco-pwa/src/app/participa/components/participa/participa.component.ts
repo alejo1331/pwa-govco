@@ -66,6 +66,8 @@ export class ParticipaComponent implements OnInit {
     this.bottomService.seleccionandoItem(0);
     this.servicioSideNav.seleccionandoItem(true, 'participa');
     this.bottomService.ajustandoPantalla(false);
+    (document.getElementById('topScroll') as HTMLElement).style.top = '3.5rem';
+    (document.getElementById('topScroll') as HTMLElement).scrollTop = 0;
 
     this.iniciarFiltro();
     this.iniciarCargaDatos();

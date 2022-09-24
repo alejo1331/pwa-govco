@@ -4,27 +4,24 @@
 /* ESTILOS DEL BOTTOM NAVBAR */
 .govco-pwa-bottom-menu {
   overflow: hidden;
-  /* position: -webkit-sticky;
-  position: -moz-sticky;
-  position: -o-sticky;
-  position: -ms-sticky;
-  position: sticky; */
   width: 100%;
   background-color: grey;
   max-width: 100%;
   z-index: 2;
-  position: sticky;
+  position: -moz-fixed;
+  position: -o-fixed;
+  position: -ms-fixed;
+  position: fixed;
   bottom: 0;
   right: 0;
   left: 0;
 }
 
 .govco-pwa-header{
-  position: -webkit-sticky;
-  position: -moz-sticky;
-  position: -o-sticky;
-  position: -ms-sticky;
-  position: sticky;
+  position: -moz-fixed;
+  position: -o-fixed;
+  position: -ms-fixed;
+  position: fixed;
   top: 0;
   width: 100%;
   max-width: 100%;

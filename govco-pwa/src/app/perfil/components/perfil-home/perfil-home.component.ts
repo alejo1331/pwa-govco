@@ -27,6 +27,8 @@ export class PerfilHomeComponent implements OnInit {
     this.bottomService.seleccionandoItem(2)
     this.bottomService.ajustandoPantalla(false);
     this.servicioSideNav.seleccionandoItem(false, 'null');
+    (document.getElementById('topScroll') as HTMLElement).style.top = '7.25rem';
+    (document.getElementById('topScroll') as HTMLElement).scrollTop = 0;
 
     this.userData = this.perfilService.checkLoginUser()
     this.userData = JSON.parse(this.userData)
