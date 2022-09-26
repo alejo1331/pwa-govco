@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CategoriasService } from '../../services/categorias.service';
 import { BottomMenuService } from 'src/app/transversales/services/bottom-menu/bottom-menu.service';
@@ -44,7 +44,7 @@ export class DetalleMomentosComponent implements OnInit {
     this.servicioHeader.estadoHeader(true, true);
     this.bottomService.seleccionandoItem(0);
     this.bottomService.ajustandoPantalla(false);
-    // this.servicioSideNav.seleccionandoItem(true, 'noticias');
+    this.servicioSideNav.seleccionandoItem(false, 'null');
     (document.getElementById('topScroll') as HTMLElement).style.top = '3.5rem';
     (document.getElementById('topScroll') as HTMLElement).scrollTop = 0;
 
@@ -64,4 +64,13 @@ export class DetalleMomentosComponent implements OnInit {
     window.scroll(0, 0)
   }
 
+  tramitesServicio(event: Event) {
+    var elementos = Array.from(document.getElementsByTagName('a') as HTMLCollectionOf<HTMLElement>)
+
+    elementos.forEach(elemento => {
+      if (event.target == elemento.firstChild) {
+        elemento.setAttribute('target', '_self');
+      }
+    });
+  }
 }
