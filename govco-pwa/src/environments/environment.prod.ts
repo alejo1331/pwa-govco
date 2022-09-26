@@ -54,7 +54,7 @@ export const environment = {
   authIssuer: 'https://autenticaciondigital.and.gov.co',
   clientID: "govcomovilPRO",
   authWebApi:"https://preapi-interno.www.gov.co/api/roles-y-permisos/RolesPerfiles/Usuarios",
-  URLgovco : 'https://m.gov.co/',
+  URLgovco : 'https://m.www.gov.co/',
   //WebComponent
   serverFichaTramite:'https://api-interno.www.gov.co/api/ficha-tramites-y-servicios',
 
