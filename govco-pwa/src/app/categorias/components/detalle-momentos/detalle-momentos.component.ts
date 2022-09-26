@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CategoriasService } from '../../services/categorias.service';
 import { BottomMenuService } from 'src/app/transversales/services/bottom-menu/bottom-menu.service';
@@ -64,4 +64,13 @@ export class DetalleMomentosComponent implements OnInit {
     window.scroll(0, 0)
   }
 
+  tramitesServicio(event: Event) {
+    var elementos = Array.from(document.getElementsByTagName('a') as HTMLCollectionOf<HTMLElement>)
+
+    elementos.forEach(elemento => {
+      if (event.target == elemento.firstChild) {
+        elemento.setAttribute('target', '_self');
+      }
+    });
+  }
 }
