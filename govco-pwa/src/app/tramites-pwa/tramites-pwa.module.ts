@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { TramitesPwaRoutingModule } from './tramites-pwa-routing.module';
 import { TramitesPrincipalComponent } from './components/tramites-principal/tramites-principal.component';
+import { BibliotecaPwaModule } from '../biblioteca-pwa/biblioteca-pwa.module';
 
 
 @NgModule({
@@ -11,7 +12,11 @@ import { TramitesPrincipalComponent } from './components/tramites-principal/tram
   ],
   imports: [
     CommonModule,
-    TramitesPwaRoutingModule
+    TramitesPwaRoutingModule,
+    BibliotecaPwaModule
+  ],
+  exports: [
+
   ]
 })
 export class TramitesPwaModule { }
