@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BottomMenuService } from 'src/app/transversales/services/bottom-menu/bottom-menu.service';
 import { HeaderService } from 'src/app/transversales/services/header-service/header.service';
@@ -28,8 +28,9 @@ export class BuscadorGeneralComponent implements OnInit {
 
   ngOnInit() {
     this.servicioHeader.estadoHeader(true, true);
+    this.bottomService.putOcultandoBottomMenu(false);
     this.bottomService.seleccionandoItem(0);
-    this.servicioSideNav.seleccionandoItem(true, '');
+    this.servicioSideNav.seleccionandoItem(false, '');
     (document.getElementById('topScroll') as HTMLElement).style.top = '3.5rem';
     (document.getElementById('topScroll') as HTMLElement).scrollTop = 0;
 
@@ -64,6 +65,29 @@ export class BuscadorGeneralComponent implements OnInit {
       default:
         return 'other';
     }
+  }
+
+  onClick(event: Event) {
+
+    var elementoPadre: ParentNode | null = (<HTMLElement>event.target).parentNode
+    var elementoHermano = (<HTMLElement>elementoPadre).nextSibling
+    var etiquetas_a = Array.from(document.getElementsByTagName('a') as HTMLCollectionOf<HTMLElement>)
+
+    etiquetas_a.forEach(etiqueta_a => {
+      if (elementoHermano == etiqueta_a) {
+        const idNoticia = etiqueta_a.getAttribute('href')!.replace(/[^0-9]+/g, "")
+        if (idNoticia) {
+          location.href = '/noticias/detalle/' + idNoticia
+        }
+      }
+      if (event.target == etiqueta_a.firstChild) {
+        etiqueta_a.setAttribute('target', '_self');
+      }
+    });
+  }
+
+  @HostListener('window:load') onLoad() {
+    this.bottomService.seleccionandoItem(0);
   }
 
 }

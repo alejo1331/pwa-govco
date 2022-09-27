@@ -39,6 +39,7 @@ export class MomentosDeVidaComponent implements OnInit {
     //                                                 la pantalla cuando en la seccion  
     //                                                 consultada no tiene header
     this.servicioHeader.estadoHeader(true, true);
+    this.bottomService.putOcultandoBottomMenu(false);
     this.bottomService.seleccionandoItem(0);
     this.bottomService.ajustandoPantalla(false);
     (document.getElementById('topScroll') as HTMLElement).style.top = '3.5rem';
@@ -173,7 +174,7 @@ export class MomentosDeVidaComponent implements OnInit {
     } else return false
   }
   
-  @HostListener('click')onClick(){
+  @HostListener('click', ['$event']) onClick(event: Event){
     var seccionCiuu = (document.getElementsByClassName('enlace-ciiu') as HTMLCollectionOf<HTMLElement>)[0];
     var clicSeccionCiuu = (seccionCiuu.getElementsByTagName('a'))[0];
     clicSeccionCiuu.target = "_self"

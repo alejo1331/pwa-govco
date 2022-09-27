@@ -35,6 +35,7 @@ export class ServiciosParaEntidadesComponent implements OnInit {
     //                                                 la pantalla cuando en la seccion  
     //                                                 consultada no tiene header
     this.servicioHeader.estadoHeader(true, true);
+    this.bottomService.putOcultandoBottomMenu(false);
     this.bottomService.seleccionandoItem(0);
     this.servicioSideNav.seleccionandoItem(true,'serviciosEntidades');
     this.bottomService.ajustandoPantalla(false);

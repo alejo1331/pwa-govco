@@ -44,6 +44,7 @@ export class FooterComponent implements OnInit {
   ngOnInit(): void {
 
     this.servicioHeader.estadoHeader(false, true);
+    this.bottomService.putOcultandoBottomMenu(false);
     this.bottomService.seleccionandoItem(0);
     this.servicioSideNav.seleccionandoItem(true, 'acercaPortal');
     this.bottomService.ajustandoPantalla(false);

@@ -7,24 +7,21 @@
             <div class="carousel-container">
                 <div class="box-slider">
                     <owl-carousel-o [options]="customOptions">
-                        <ng-template
-                            carouselSlide
-                            *ngFor="
+                        <ng-template carouselSlide *ngFor="
                             let tramite of listSlider;
                             let index = index;
                             let isFirst = first
-                            "
-                        >
+                            ">
                             <div class="row contenedor-fila">
                                 <div class="col-6 p-0" *ngFor="let item of tramite">
-                
+
                                     <div class="tramites-servicios" *ngFor="let i of item">
                                         <div class="title">
-                                            <a
-                                                class="title-titles "
-                                                routerLink="/ficha-tramites-y-servicios/T{{i.id}}"
-                                                >{{ i.nombre }}</a>
-                                            </div>
+                                            <!-- <a class="title-titles "
+                                                routerLink="/ficha-tramites-y-servicios/T{{i.id}}">{{ i.nombre }}</a> -->
+                                            <a class="title-titles "
+                                                routerLink="/ficha-tramites-y-servicios-pwa/T{{i.id}}">{{ i.nombre }}</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
