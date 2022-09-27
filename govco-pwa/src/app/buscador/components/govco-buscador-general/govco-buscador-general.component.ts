@@ -68,13 +68,14 @@ export class BuscadorGeneralComponent implements OnInit {
   }
 
   onClick(event: Event) {
-
     var elementoPadre: ParentNode | null = (<HTMLElement>event.target).parentNode
     var elementoHermano = (<HTMLElement>elementoPadre).nextSibling
     var etiquetas_a = Array.from(document.getElementsByTagName('a') as HTMLCollectionOf<HTMLElement>)
 
     etiquetas_a.forEach(etiqueta_a => {
       if (elementoHermano == etiqueta_a) {
+        // debugger;
+
         const idNoticia = etiqueta_a.getAttribute('href')!.replace(/[^0-9]+/g, "")
         if (idNoticia) {
           location.href = '/noticias/detalle/' + idNoticia
@@ -82,6 +83,7 @@ export class BuscadorGeneralComponent implements OnInit {
       }
       if (event.target == etiqueta_a.firstChild) {
         etiqueta_a.setAttribute('target', '_self');
+        location.href = String(etiqueta_a.getAttribute('href'));
       }
     });
   }
