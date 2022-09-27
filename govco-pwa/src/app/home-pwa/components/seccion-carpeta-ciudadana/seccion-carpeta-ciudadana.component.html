@@ -3,15 +3,17 @@
   <div class="govco-pwa-carpeta-background">
     <div class="govco-pwa-carpeta-top"></div>
       <div class="govco-pwa-carpeta-header">
-        <img src="../../../../assets/images/carpeta-ciudadana/Banner CCD@3x.png"
-        alt="Banner de carpeta ciudadana digital, mujer con tablet en la mano.">
+        <a href="{{URLccd}}">
+          <img src="../../../../assets/images/carpeta-ciudadana/Banner CCD@3x.png"
+          alt="Banner de carpeta ciudadana digital, mujer con tablet en la mano.">
+        </a>
       </div>
 
     <div class="govco-pwa-carpeta-video">
       <iframe src="https://www.youtube.com/embed/zLIFk1uyH5Q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       <div class="govco-pwa-video-guion">
         <span class="material-symbols-outlined">file_download</span>
-        <a>Descargar guión</a>
+        <a (click)="descargarGuion('')" target="_blank">Descargar guión</a>
       </div>
     </div>
 
@@ -20,7 +22,7 @@
         <p>¿Aún no tienes cuenta?</p>
       </div>
       <div class="see-aux pb-3">
-        <a href="https://www.gov.co/registro" target="_blank"  class="btn btn-round" role="button">Regístrate</a>
+        <a href="{{URLgovco}}registro" target="_blank"  class="btn btn-round" role="button">Regístrate</a>
       </div>
 
     </div>
