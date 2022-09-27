@@ -65,6 +65,7 @@ export class ActualidadPrincipalComponent implements OnInit {
     //                                                 la pantalla cuando en la seccion  
     //                                                 consultada no tiene header
     this.servicioHeader.estadoHeader(true, true);
+    this.bottomService.putOcultandoBottomMenu(false);
     this.bottomService.seleccionandoItem(0);
     this.bottomService.ajustandoPantalla(false);
     this.servicioSideNav.seleccionandoItem(true, 'noticias');

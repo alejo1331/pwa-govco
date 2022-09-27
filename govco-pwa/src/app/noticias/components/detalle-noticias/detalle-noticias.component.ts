@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NoticiasServiceService } from 'src/app/noticias/services/noticias-service/noticias-service.service';
 import { NoticiaPublicadaModel } from 'src/app/noticias/models/noticiaPublicadaModel';
@@ -26,7 +26,14 @@ export class DetalleNoticiasComponent implements OnInit {
     public bottomService: BottomMenuService) { }
 
   ngOnInit() {
-    window.scrollTo(0, 0);
+    
+    this.activatedRoute.url.subscribe(() => {
+      this.idRecurso = this.activatedRoute.snapshot.paramMap.get('id')!;
+      this.estadoCargaActualidad = true;
+      this.obtenerDetalleNoticia();
+    });
+
+    // window.scrollTo(0, 0);
     // servicioHeader.estadoHeader(a, b)       a -> true = header seccion internas
     //                                         a -> false = header general
     //                                         b -> Muestra/Oculta  Header
@@ -37,18 +44,14 @@ export class DetalleNoticiasComponent implements OnInit {
     //bottomService.ajustandoPantalla(true)    true -> Agrega clase de css para ajustar 
     //                                                 la pantalla cuando en la seccion  
     //                                                 consultada no tiene header
+
     this.servicioHeader.estadoHeader(true, true);
+    this.bottomService.putOcultandoBottomMenu(false);
     this.bottomService.seleccionandoItem(0);
     this.bottomService.ajustandoPantalla(false);
     this.servicioSideNav.seleccionandoItem(true, 'noticias');
     (document.getElementById('topScroll') as HTMLElement).style.top = '3.5rem';
     (document.getElementById('topScroll') as HTMLElement).scrollTop = 0;
-
-    this.activatedRoute.url.subscribe(() => {
-      this.idRecurso = this.activatedRoute.snapshot.paramMap.get('id')!;
-      this.estadoCargaActualidad = true;
-      this.obtenerDetalleNoticia();
-    });
   }
 
   obtenerDetalleNoticia() {
@@ -56,10 +59,12 @@ export class DetalleNoticiasComponent implements OnInit {
       (data: NoticiaPublicadaModel) => {
         this.loadingInfo = false;
         this.noticia = data;
-        console.log('this.noticia', this.noticia)
       }
     );
   }
 
+  @HostListener('window:load') onLoad(){
+    this.bottomService.seleccionandoItem(0);
+  }
 
 }

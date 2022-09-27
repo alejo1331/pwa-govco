@@ -10,19 +10,28 @@ export class BottomMenuService {
   public lastPointer: any;
   public backItem: any;
   public backPointerItem: any;
+
   private pantalla = new BehaviorSubject<boolean>(false);
   public ajustePantalla = this.pantalla.asObservable();
+
+  private bottomMenu = new BehaviorSubject<boolean> (false);
+  public getOcultandoBottomMenu = this.bottomMenu.asObservable();
+
   LoginNotifier: Subject<null> = new Subject<null>();
+
+  public async putOcultandoBottomMenu( estado: boolean) {
+    await this.bottomMenu.next(!estado);
+  }
 
   public async ajustandoPantalla(ajustePantalla: boolean) {
     await this.pantalla.next(ajustePantalla);
   }
 
-  public seleccionandoItem(seleccionado: number): void {
+  public async seleccionandoItem(seleccionado: number) {
     const navigation_items_elms: any = document.querySelectorAll(".navigation-bar .list-items .item");
     const navigation_pointer: any = document.querySelector(".navigation-bar .pointer");
 
-    navigation_items_elms.forEach((item: any, index: number) => {
+    await navigation_items_elms.forEach((item: any, index: number) => {
       if (index == seleccionado) {
         navigation_pointer.classList.remove("pointer");
         this.seleccionarItem(navigation_items_elms, navigation_pointer, item, index)

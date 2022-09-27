@@ -37,6 +37,7 @@ export class EntidadesEstadoComponent implements OnInit {
     this.getEntidades();
 
     this.servicioHeader.estadoHeader(true,true);
+    this.bottomService.putOcultandoBottomMenu(false);
     this.bottomService.seleccionandoItem(0);
     this.servicioSideNav.seleccionandoItem(true,'entidadesEstado');
     this.bottomService.ajustandoPantalla(false);

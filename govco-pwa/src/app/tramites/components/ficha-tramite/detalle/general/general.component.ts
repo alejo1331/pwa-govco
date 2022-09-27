@@ -33,6 +33,7 @@ export class GeneralComponent implements OnInit {
 
   ngOnInit(): void {
     this.servicioHeader.estadoHeader(false,true);
+    this.bottomService.putOcultandoBottomMenu(false);
     this.bottomService.seleccionandoItem(1);
     this.bottomService.ajustandoPantalla(false);
     this.servicioSideNav.seleccionandoItem(false,'null');

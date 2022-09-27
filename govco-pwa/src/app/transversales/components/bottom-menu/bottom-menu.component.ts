@@ -17,6 +17,7 @@ export class BottomMenuComponent implements OnInit, AfterViewInit, OnDestroy {
   contadorClic: number;
   currentRoute: string;
   userData: any;
+  ocultar: boolean;
 
   constructor(
     protected servicioSideNav: SidenavService,
@@ -46,6 +47,9 @@ export class BottomMenuComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnInit() {
     this.contadorClic = 0;
+    this.bottomMenuService.getOcultandoBottomMenu.subscribe(estado =>{
+      this.ocultar = estado
+    })
   }
 
   ngAfterViewInit() {

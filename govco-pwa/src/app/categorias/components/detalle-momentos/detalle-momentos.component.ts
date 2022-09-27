@@ -42,6 +42,7 @@ export class DetalleMomentosComponent implements OnInit {
     //                                                 la pantalla cuando en la seccion  
     //                                                 consultada no tiene header
     this.servicioHeader.estadoHeader(true, true);
+    this.bottomService.putOcultandoBottomMenu(false);
     this.bottomService.seleccionandoItem(0);
     this.bottomService.ajustandoPantalla(false);
     this.servicioSideNav.seleccionandoItem(false, 'null');
@@ -72,5 +73,13 @@ export class DetalleMomentosComponent implements OnInit {
         elemento.setAttribute('target', '_self');
       }
     });
+  }
+
+  @HostListener('click', ['$event']) onClick(event: Event) {
+    console.log('evento', event.target)
+    var verMasNoticias: HTMLElement = document.querySelector('.btn.btn-round.link-see-more') as HTMLElement;
+    if (event.target == verMasNoticias) {
+      verMasNoticias.setAttribute('href','/noticias')
+    }
   }
 }
