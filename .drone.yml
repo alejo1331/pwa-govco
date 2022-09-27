@@ -38,7 +38,14 @@ steps:
     - push
     - merge
 
-- name: nodejs_build_DEV
+#  --------------- DEVELOP ---------------
+#   ___   ___ __   __ ___  _     ___   ___ 
+#  |   \ | __|\ \ / /| __|| |   / _ \ | _ \
+#  | |) || _|  \ V / | _| | |__| (_) ||  _/
+#  |___/ |___|  \_/  |___||____|\___/ |_|  
+#
+
+- name: nodejs_build_develop
   image: node:16.14.0
   commands:
   - cd ./govco-pwa/
@@ -52,49 +59,7 @@ steps:
     - push
     - merge
 
-- name: nodejs_build_QA
-  image: node:16.14.0
-  commands:
-  - cd ./govco-pwa/
-  - npm install -g @angular/cli
-  - npm i --save-dev @types/select2
-  - ng build --configuration="staging"
-  when:
-    branch:
-    - stage
-    event:
-    - push
-    - merge
-
-- name: nodejs_build_QA_OP
-  image: node:16.14.0
-  commands:
-  - cd ./govco-pwa/
-  - npm install -g @angular/cli
-  - npm i --save-dev @types/select2
-  - ng build --configuration="preproduction"
-  when:
-    branch:
-    - release_operaciones
-    event:
-    - push
-    - merge
-
-- name: nodejs_build_PRE
-  image: node:16.14.0
-  commands:
-  - cd ./govco-pwa/
-  - npm install -g @angular/cli
-  - npm i --save-dev @types/select2
-  - ng build --configuration="preproduction"
-  when:
-    branch:
-    - release_preproduction
-    event:
-    - push
-    - merge
-
-- name: upload_to_aws_s3_dev
+- name: upload_to_aws_s3_develop
   image: plugins/s3
   settings:
     bucket: 
@@ -112,6 +77,27 @@ steps:
   when:
     branch:
     - develop
+    event:
+    - push
+    - merge
+
+#  ---------- STAGE ----------
+#   ___  _____  _    ___  ___ 
+#  / __||_   _|/_\  / __|| __|
+#  \__ \  | | / _ \| (_ || _| 
+#  |___/  |_|/_/ \_\\___||___|
+#
+
+- name: nodejs_build_stage
+  image: node:16.14.0
+  commands:
+  - cd ./govco-pwa/
+  - npm install -g @angular/cli
+  - npm i --save-dev @types/select2
+  - ng build --configuration="staging"
+  when:
+    branch:
+    - stage
     event:
     - push
     - merge
@@ -138,7 +124,28 @@ steps:
     - push
     - merge
 
-- name: upload_to_aws_s3_QA_OP
+#  ------ QA OPERACIONES ------
+#    ___     _      ___   ___ 
+#   / _ \   /_\    / _ \ | _ \
+#  | (_) | / _ \  | (_) ||  _/
+#   \__\_\/_/ \_\  \___/ |_|  
+#
+
+- name: nodejs_build_qa_op
+  image: node:16.14.0
+  commands:
+  - cd ./govco-pwa/
+  - npm install -g @angular/cli
+  - npm i --save-dev @types/select2
+  - ng build --configuration="preproduction"
+  when:
+    branch:
+    - release_operaciones
+    event:
+    - push
+    - merge
+
+- name: upload_to_aws_s3_qa_op
   image: plugins/s3
   settings:
     bucket: 
@@ -160,7 +167,28 @@ steps:
     - push
     - merge
 
-- name: upload_to_aws_s3_PRE
+#  ------------ PREPRODUCTION ------------
+#   ___  ___  ___  ___  ___   ___   ___  
+#  | _ \| _ \| __|| _ \| _ \ / _ \ |   \ 
+#  |  _/|   /| _| |  _/|   /| (_) || |) |
+#  |_|  |_|_\|___||_|  |_|_\ \___/ |___/ 
+#
+
+- name: nodejs_build_preprod
+  image: node:16.14.0
+  commands:
+  - cd ./govco-pwa/
+  - npm install -g @angular/cli
+  - npm i --save-dev @types/select2
+  - ng build --configuration="preproduction"
+  when:
+    branch:
+    - release_preproduction
+    event:
+    - push
+    - merge
+
+- name: upload_to_aws_s3_preprod
   image: plugins/s3
   settings:
     bucket: 
@@ -181,6 +209,53 @@ steps:
     event:
     - push
     - merge
+
+#  ------ PRODUCTION ------
+#   ___  ___   ___   ___  
+#  | _ \| _ \ / _ \ |   \ 
+#  |  _/|   /| (_) || |) |
+#  |_|  |_|_\ \___/ |___/ 
+#
+
+# - name: nodejs_build_prod
+#   image: node:16.14.0
+#   commands:
+#   - cd ./govco-pwa/
+#   - npm install -g @angular/cli
+#   - npm i --save-dev @types/select2
+#   - ng build --configuration="production"
+#   when:
+#     branch:
+#     - release_production
+#     event:
+#     - push
+#     - merge
+
+# - name: upload_to_aws_s3_prod
+#   image: plugins/s3
+#   settings:
+#     bucket: 
+#       from_secret: BUCKET_PROD
+#     access_key: 
+#       from_secret: ACCESS_KEY_S3_PROD
+#     secret_key: 
+#       from_secret: SECRET_S3_PROD
+#     region:
+#       from_secret: REGION_S3
+#     strip_prefix: govco-pwa/dist/govco-pwa
+#     delete: true
+#     source: ./govco-pwa/dist/govco-pwa/**/*
+#     target: /
+#   when:
+#     branch:
+#     - release_production
+#     event:
+#     - push
+#     - merge
+
+#                                         #
+# --------------------------------------- #
+#                                         #
 
 - name: slack_notify
   image: plugins/slack
