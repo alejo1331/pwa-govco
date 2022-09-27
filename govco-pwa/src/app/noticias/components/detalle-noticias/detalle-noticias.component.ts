@@ -26,6 +26,7 @@ export class DetalleNoticiasComponent implements OnInit {
     public bottomService: BottomMenuService) { }
 
   ngOnInit() {
+    console.log('ha iniciado ngOnInit de detalle noticia')
     
     this.activatedRoute.url.subscribe(() => {
       this.idRecurso = this.activatedRoute.snapshot.paramMap.get('id')!;
