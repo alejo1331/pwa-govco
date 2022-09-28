@@ -66,7 +66,6 @@ export class CajaHerramientasComponent implements OnInit {
 
   ngOnInit(): void {
     this.servicioHeader.estadoHeader(true, true);
-    this.bottomService.putOcultandoBottomMenu(false);
     this.bottomService.seleccionandoItem(0);
     this.servicioSideNav.seleccionandoItem(true,'serviciosEntidades');
     this.bottomService.ajustandoPantalla(false);

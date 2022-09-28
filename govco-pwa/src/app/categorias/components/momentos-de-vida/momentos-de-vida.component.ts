@@ -39,7 +39,6 @@ export class MomentosDeVidaComponent implements OnInit {
     //                                                 la pantalla cuando en la seccion  
     //                                                 consultada no tiene header
     this.servicioHeader.estadoHeader(true, true);
-    this.bottomService.putOcultandoBottomMenu(false);
     this.bottomService.seleccionandoItem(0);
     this.bottomService.ajustandoPantalla(false);
     (document.getElementById('topScroll') as HTMLElement).style.top = '3.5rem';

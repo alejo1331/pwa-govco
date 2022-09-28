@@ -26,8 +26,6 @@ export class DetalleNoticiasComponent implements OnInit {
     public bottomService: BottomMenuService) { }
 
   ngOnInit() {
-    console.log('ha iniciado ngOnInit de detalle noticia')
-    
     this.activatedRoute.url.subscribe(() => {
       this.idRecurso = this.activatedRoute.snapshot.paramMap.get('id')!;
       this.estadoCargaActualidad = true;
@@ -47,7 +45,6 @@ export class DetalleNoticiasComponent implements OnInit {
     //                                                 consultada no tiene header
 
     this.servicioHeader.estadoHeader(true, true);
-    this.bottomService.putOcultandoBottomMenu(false);
     this.bottomService.seleccionandoItem(0);
     this.bottomService.ajustandoPantalla(false);
     this.servicioSideNav.seleccionandoItem(true, 'noticias');
@@ -63,9 +60,4 @@ export class DetalleNoticiasComponent implements OnInit {
       }
     );
   }
-
-  @HostListener('window:load') onLoad(){
-    this.bottomService.seleccionandoItem(0);
-  }
-
 }

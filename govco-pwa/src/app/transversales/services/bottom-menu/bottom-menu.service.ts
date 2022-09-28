@@ -14,7 +14,7 @@ export class BottomMenuService {
   private pantalla = new BehaviorSubject<boolean>(false);
   public ajustePantalla = this.pantalla.asObservable();
 
-  private bottomMenu = new BehaviorSubject<boolean> (false);
+  private bottomMenu = new BehaviorSubject<boolean> (true);
   public getOcultandoBottomMenu = this.bottomMenu.asObservable();
 
   LoginNotifier: Subject<null> = new Subject<null>();
