@@ -108,7 +108,7 @@
                             }],
                             "outputHashing": "all",
                             "index": {
-                                "input": "src/index.preprod.html",
+                                "input": "src/index.staging.html",
                                 "output": "index.html"
                             } 
                         },
@@ -132,7 +132,7 @@
                                 "with": "src/environments/environment.prod.ts"
                             }],
                             "index": {
-                                "input": "src/index.prod.html",
+                                "input": "src/index.html",
                                 "output": "index.html"
                             }
                         },
@@ -164,7 +164,7 @@
                                 "with": "src/environments/environment.staging.ts"
                             }],
                             "index": {
-                                "input": "src/index.preprod.html",
+                                "input": "src/index.staging.html",
                                 "output": "index.html"
                             } 
                         }
