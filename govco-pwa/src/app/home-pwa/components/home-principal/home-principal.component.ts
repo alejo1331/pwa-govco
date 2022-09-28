@@ -65,8 +65,8 @@ export class HomePrincipalComponent implements OnInit {
   }
 
   dataGeolocalizacion() {
-    this.codigoDepartamento = localStorage.getItem("codigoDepartamento") != null ? (localStorage.getItem("codigoDepartamento") != 'TodosLosDepartamentos' ? localStorage.getItem("codigoDepartamento") : '') : '';
-    this.codigoMunicipio = localStorage.getItem("codigoMunicipio") != null ? (localStorage.getItem("codigoMunicipio") != 'TodosLosMunicipios' ? localStorage.getItem("codigoMunicipio") : '') : '';
+    this.codigoDepartamento = localStorage.getItem("codigoDepartamento") != null ? localStorage.getItem("codigoDepartamento") : '';
+    this.codigoMunicipio = localStorage.getItem("codigoMunicipio") != null ? localStorage.getItem("codigoMunicipio") : '';
 
     if (this.codigoMunicipio != '') {
       this.getMunicipiosPorDepartamento([String(this.codigoDepartamento), String(this.codigoMunicipio)])
@@ -75,6 +75,7 @@ export class HomePrincipalComponent implements OnInit {
   }
 
   getMunicipiosPorDepartamento([codigoDepartamento, codigoMunicipio]: [string, string]) {
+    codigoDepartamento == 'TodosLosDepartamentos' ? this.nombreMunicipio = 'Toda Colombia' : ''
     codigoDepartamento = codigoDepartamento != null ? (codigoDepartamento != 'TodosLosDepartamentos' ? codigoDepartamento : '') : '';
     codigoMunicipio = codigoMunicipio != null ? (codigoMunicipio != 'TodosLosMunicipios' ? codigoMunicipio : '') : ''
     if (codigoMunicipio != '') {
@@ -94,9 +95,10 @@ export class HomePrincipalComponent implements OnInit {
         this.tramitesService.getTramitesMasConsultadosTitulo(this.seccion).subscribe((dataTitulo: TituloInterface) => {
           this.titulo = dataTitulo.data.titulo;
         })
-        this.codigoMunicipio == "" ?
+        this.codigoMunicipio == "" || this.codigoMunicipio == "TodosLosMunicipios" ?
           this.tramitesService.getTramitesMasConsultados().subscribe((info: GeneralInterface) => {
             this.dataTramites = info.data;
+            this
             this.inputTramitesMasConsultados();
           })
           : this.tramitesService.getTramitesMasConsultadosPorMunicipio(this.codigoMunicipio).subscribe((tramitesPorMunicipio: PorMunicipioInterface) => {

@@ -20,9 +20,6 @@ export class SeccionContactosEmerganciaComponent implements OnInit {
     this.contactoEmergencia.getContactos()
     .subscribe((data: ContactoEmergenciaModel[]) => {
         this.contactos = data;
-
-        console.log(this.contactos)
-
       },
       (error) => {
         console.error(error);
