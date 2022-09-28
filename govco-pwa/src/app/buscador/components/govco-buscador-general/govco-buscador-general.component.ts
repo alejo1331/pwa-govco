@@ -71,7 +71,6 @@ export class BuscadorGeneralComponent implements OnInit {
     var elementoHermano = (<HTMLElement>elementoPadre).nextSibling
     var etiquetas_a = Array.from(document.getElementsByTagName('a') as HTMLCollectionOf<HTMLElement>)
 
-
     let padre = String((<HTMLElement>elementoPadre).getAttribute('href'));
     let hermano = String((<HTMLElement>elementoHermano).getAttribute('href'));
     let hrefTramites = padre.indexOf('ficha-tramites-y-servicios');
