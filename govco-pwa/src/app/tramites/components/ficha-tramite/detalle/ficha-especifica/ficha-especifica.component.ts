@@ -51,6 +51,7 @@ export class FichaEspecificaComponent implements OnInit {
       this.fichaTramiteService.setTipoAtencionPresencial(this.infoBasicaTramite.TipoAtencionPresencial);
       this.fichaTramiteService.GetTiposAudienciaById(dataTramite.id).subscribe(n => {
         this.audiencias = n;
+        console.log('audiencias', this.audiencias)
         if ( this.audiencias.length > 0 ) {
           this.loadMomentosAudiencia(dataTramite.id, this.audiencias[0].detalle);
         }
@@ -65,6 +66,7 @@ export class FichaEspecificaComponent implements OnInit {
 
   private loadMomentosAudiencia(idTramite: number, audiencias: string ) {
     this.fichaTramiteService.GetMomentosByIdAudiencia(idTramite, audiencias ).subscribe( n => {
+      console.log('audiencias2',n)
       this.audiencias.forEach( (item) => {
         if (item.detalle === audiencias) {
           item.momentos = this.eliminarValoresRepetidosMomentos(n);

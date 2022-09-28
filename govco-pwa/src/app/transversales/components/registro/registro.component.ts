@@ -45,7 +45,6 @@ export class RegistroComponent implements OnInit, OnDestroy {
     //                                                 la pantalla cuando en la seccion
     //                                                 consultada no tiene header
     this.servicioHeader.estadoHeader(false, true);
-    this.bottomService.putOcultandoBottomMenu(false);
     this.bottomService.seleccionandoItem(2);
     this.bottomService.ajustandoPantalla(false);
     this.servicioSideNav.seleccionandoItem(false, 'null');
