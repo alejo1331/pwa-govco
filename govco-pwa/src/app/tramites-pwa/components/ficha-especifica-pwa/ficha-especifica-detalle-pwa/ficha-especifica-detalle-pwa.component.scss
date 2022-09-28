@@ -1,0 +1,16 @@
+.container-detalle {
+    padding: 0px 16px 0px 16px;
+    .contenido-detalle{
+        font-size: 14px;
+        margin-bottom: 48px;
+        .ficha-descripcion{
+            font-family: "WorkSans-Regular";
+            color: #000;
+        }
+        a{
+            font-family: "WorkSans-SemiBold";
+            color: #3366CC;
+            margin-top: 20px;
+        }
+    }
+}

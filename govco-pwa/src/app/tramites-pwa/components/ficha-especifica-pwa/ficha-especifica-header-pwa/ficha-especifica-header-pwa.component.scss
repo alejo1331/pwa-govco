@@ -1,0 +1,38 @@
+.govco-pwa-ficha-titulo{
+    padding: 0px 16px 0px 16px;
+    height: auto;
+    width: 100%;
+    margin-top: 1.5rem;
+    h1{
+      font-family: "Montserrat-SemiBold";
+      color: #004884;
+      font-size: 20px;
+    }
+  }
+
+  .govco-pwa-ficha-subtitulo{
+    padding: 0px 16px 0px 16px;
+    width: 100%;
+    height: auto;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    .texto-entidad{
+      margin-bottom: 0.5rem;
+      p{
+        font-family: "Montserrat-Medium";
+        font-size: 14px;
+        color: #000000;
+        margin: 0;
+        a{
+          color: #3366CC;
+          font-family: "WorkSans-Regular";
+        }
+      }
+    }
+    hr{
+      border: 2px solid #1C4780;
+      width: 88px;
+      height: 0px;
+      margin: 0;
+    }
+  }
