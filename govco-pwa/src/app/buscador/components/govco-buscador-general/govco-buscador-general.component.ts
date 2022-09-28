@@ -28,7 +28,6 @@ export class BuscadorGeneralComponent implements OnInit {
 
   ngOnInit() {
     this.servicioHeader.estadoHeader(true, true);
-    this.bottomService.putOcultandoBottomMenu(false);
     this.bottomService.seleccionandoItem(0);
     this.servicioSideNav.seleccionandoItem(false, '');
     (document.getElementById('topScroll') as HTMLElement).style.top = '3.5rem';
@@ -67,29 +66,32 @@ export class BuscadorGeneralComponent implements OnInit {
     }
   }
 
-  onClick(event: Event) {
+  @HostListener('click', ['$event']) onClick(event: Event) {
     var elementoPadre: ParentNode | null = (<HTMLElement>event.target).parentNode
     var elementoHermano = (<HTMLElement>elementoPadre).nextSibling
     var etiquetas_a = Array.from(document.getElementsByTagName('a') as HTMLCollectionOf<HTMLElement>)
 
-    etiquetas_a.forEach(etiqueta_a => {
-      if (elementoHermano == etiqueta_a) {
-        // debugger;
 
-        const idNoticia = etiqueta_a.getAttribute('href')!.replace(/[^0-9]+/g, "")
-        if (idNoticia) {
-          location.href = '/noticias/detalle/' + idNoticia
-        }
-      }
-      if (event.target == etiqueta_a.firstChild) {
+    let padre = String((<HTMLElement>elementoPadre).getAttribute('href'));
+    let hermano = String((<HTMLElement>elementoHermano).getAttribute('href'));
+    let hrefTramites = padre.indexOf('ficha-tramites-y-servicios');
+    let hrefNoticasProd = hermano.indexOf('www.gov.co/noticias');
+    let hrefNoticasPreProd = hermano.indexOf('beta.www.gov.co/noticias');
+
+    etiquetas_a.forEach(etiqueta_a => {
+      //Tramites y Servicios
+      if (hrefTramites >= 0) {
         etiqueta_a.setAttribute('target', '_self');
         location.href = String(etiqueta_a.getAttribute('href'));
       }
+      //Noticias
+      if (hrefNoticasProd >= 0 || hrefNoticasPreProd >= 0) {
+        if (elementoHermano == etiqueta_a) {
+          const idNoticia = etiqueta_a.getAttribute('href')!.replace(/[^0-9]+/g, "")
+          location.href = '/noticias/detalle/' + idNoticia
+        }
+      }
     });
-  }
-
-  @HostListener('window:load') onLoad() {
-    this.bottomService.seleccionandoItem(0);
   }
 
 }

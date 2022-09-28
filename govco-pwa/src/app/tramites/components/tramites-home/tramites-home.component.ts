@@ -38,7 +38,6 @@ export class TramitesHomeComponent implements OnInit {
     //                                                 la pantalla cuando en la seccion  
     //                                                 consultada no tiene header
     this.servicioHeader.estadoHeader(false,true);
-    this.bottomService.putOcultandoBottomMenu(false);
     this.bottomService.seleccionandoItem(1);
     this.bottomService.ajustandoPantalla(false);
     this.servicioSideNav.seleccionandoItem(false,'null');

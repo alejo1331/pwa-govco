@@ -21,6 +21,8 @@ export class TemplateComponent implements OnInit {
     this.bottomService.seleccionandoItem(0);
     this.bottomService.ajustandoPantalla(false);
     this.servicioSideNav.seleccionandoItem(false, 'null');
+    (document.getElementById('topScroll') as HTMLElement).style.top = '7.25rem';
+    (document.getElementById('topScroll') as HTMLElement).scrollTop = 0;
   }
 
 }
