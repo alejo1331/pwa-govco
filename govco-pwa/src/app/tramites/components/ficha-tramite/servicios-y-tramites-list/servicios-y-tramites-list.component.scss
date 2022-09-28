@@ -13,17 +13,17 @@
     @media screen and (max-width: 768px) {
       margin: 0 1rem;
     }
-  }  
+  }
 
-  
+
 
   .contenedor-fila{
-    margin-left: 0px;
-    margin-right: 0px;
+    margin-left: 40px;
+    margin-right: 40px;
     background-color: white;
 
     // .owl-next.disabled{
-      
+
     //   &::before{
     //     display: none !important;
     //     content: "" !important;
@@ -31,7 +31,7 @@
     // }
   }
 
-  .tramites-servicios { 
+  .tramites-servicios {
     border: 1px solid #D3E6FB;
     height: 95px;
     // padding: 12px;
@@ -59,7 +59,7 @@
         text-overflow: clip;
         overflow: hidden;         /* Para poder hacer salto de linea */
         white-space: pre-wrap;
-  
+
 
         &:hover {
         color: #004884 !important;
@@ -72,7 +72,6 @@
     }
 
     }
-    
   }
 }
 
@@ -98,6 +97,13 @@
     }
   }
 }
+
+::ng-deep .carousel-list .active {
+
+  background-color: #ffff!important;
+
+}
+
 @media screen and (max-width: 768px) {
   .carousel{
     padding: 1em 0em 2rem;
@@ -132,4 +138,3 @@
     }
   }
 }
-
