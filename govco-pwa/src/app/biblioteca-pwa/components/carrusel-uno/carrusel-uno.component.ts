@@ -20,6 +20,7 @@ export class CarruselUnoComponent implements OnInit, OnChanges {
   codigoDepartamento: string | null = "";
   nombreMunicipio: string = "";
   estado: boolean = false;
+  c: number = 0
 
   constructor() { }
 
@@ -31,6 +32,47 @@ export class CarruselUnoComponent implements OnInit, OnChanges {
         this.nombreMunicipio = this.dataCarruselUno.ubicacion;
         this.codigoMunicipio = this.dataCarruselUno.codigoMunicipio;
         this.contenidoTarjetas = this.dataCarruselUno.dataTramites;
+
+
+        this.dataCarruselUno.dataTramites.forEach((contenidoTarjeta, i) => {
+          this.contenidoTarjetas[i].id = contenidoTarjeta.id;
+          var totalPalabras: string[] = contenidoTarjeta.nombre.split(" ")
+          this.contenidoTarjetas[i].nombre = '';
+
+          console.log('total palabras --------------------', totalPalabras.length)
+          var totalCaracteres: number = 0
+
+          totalPalabras.forEach((palabra, m) => {
+            totalCaracteres += palabra.length
+            console.log('totalCaracteres',totalCaracteres)
+            if (totalPalabras.length < 6 && totalCaracteres < 30) {
+              this.contenidoTarjetas[i].nombre += totalPalabras[m] + ' ';
+            }
+            if ((totalPalabras.length >= 6 && totalPalabras.length < 10) && totalCaracteres < 60) {
+              this.contenidoTarjetas[i].nombre += totalPalabras[m] + ' ';
+            }
+            if ((totalPalabras.length >= 10 && totalPalabras.length < 14) && totalCaracteres < 50) {
+              this.contenidoTarjetas[i].nombre += totalPalabras[m] + ' ';
+            }
+            if (totalPalabras.length >= 14 && totalCaracteres < 48) {
+              this.contenidoTarjetas[i].nombre += totalPalabras[m] + ' ';
+            }
+          });
+          console.log('nada')
+          // textoTarjeta.forEach((element, m) => {
+          //   if (m < 7) {
+          //     c += element.length
+          //     if (c < 48) {
+
+          //       this.contenidoTarjetas[i].nombre = contenidoTarjeta.nombre.substring(0, 54)
+          //     } else {
+          //       this.contenidoTarjetas[i].nombre = contenidoTarjeta.nombre.substring(0, 48)
+          //     }
+          //   }
+          // });
+          // console.log('total caracteres:', c)
+          this.contenidoTarjetas[i].iconoCategoria = contenidoTarjeta.iconoCategoria;
+        });
         this.dataCarrusel = this.agruparData([...this.contenidoTarjetas], this.catidadTarjetas);
       }
     }

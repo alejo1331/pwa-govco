@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
 import { Platform } from '@angular/cdk/platform';
 
 
@@ -8,6 +8,12 @@ import { Platform } from '@angular/cdk/platform';
   styleUrls: ['./desplegable-uno.component.css']
 })
 export class DesplegableUnoComponent implements OnInit {
+
+  active = 1;
+  @Input() data: any[];
+  // @Input() tramite: any;
+  @Output() cargarDetalleMomento =  new EventEmitter<any>();
+  @Output() cargarMomentosAudiencia =  new EventEmitter<any>();
 
   touchMoveInicial: number = 0;
   touchMoveFinal: number = 0;
@@ -22,6 +28,7 @@ export class DesplegableUnoComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    console.log('data',this.data)
   }
 
   seleccionarItem(dataItem: number){

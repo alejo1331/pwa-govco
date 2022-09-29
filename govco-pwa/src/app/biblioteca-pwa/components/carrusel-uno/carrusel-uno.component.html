@@ -8,13 +8,20 @@
     <div class="carousel-inner">
         <div class="carousel-item" [class.active]="i==0" *ngFor="let slide of this.dataCarrusel; let i = index">
             <div [class]="'d-block card-item card-' + j" *ngFor="let item of slide; let j = index">
-                <a role="link" href="{{'/ficha-tramites-y-servicios/T' + contenidoTarjetas[j + i * catidadTarjetas].id }}">
+                <a role="link"
+                    href="{{'/ficha-tramites-y-servicios/T' + contenidoTarjetas[j + i * catidadTarjetas].id }}">
                     <div class="tarjeta-pwa">
                         <img src="{{contenidoTarjetas[j + i * catidadTarjetas].iconoCategoria != '' ? contenidoTarjetas[j + i * catidadTarjetas].iconoCategoria :
                             'https://govco-prod-webutils.s3.amazonaws.com/uploads/2021-10-26/d8f3f555-6765-451f-8ea8-d8109692f458-CAT_DEFAULT-80px.svg'}}"
                             alt="" />
-                        <span>{{(contenidoTarjetas[j + i * catidadTarjetas].nombre.length > 47) ? contenidoTarjetas[j + i * catidadTarjetas].nombre.substring(0, 47) + "..." 
-                            : contenidoTarjetas[j + i * catidadTarjetas].nombre}}</span>
+                        <!-- <span>{{(contenidoTarjetas[j + i * catidadTarjetas].nombre.length > 48) ? contenidoTarjetas[j +
+                            i * catidadTarjetas].nombre.substring(0, 48) + "..."
+                            : contenidoTarjetas[j + i * catidadTarjetas].nombre}}</span> -->
+                        <span>{{contenidoTarjetas[j + i * catidadTarjetas].nombre}}
+                            <!-- {{ 
+                                contenidoTarjetas[j + i * catidadTarjetas].nombre.split(" ")
+                            }} -->
+                        </span>
                     </div>
                 </a>
             </div>

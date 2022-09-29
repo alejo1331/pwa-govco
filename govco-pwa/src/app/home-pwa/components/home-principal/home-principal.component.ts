@@ -62,6 +62,13 @@ export class HomePrincipalComponent implements OnInit {
     this.dataGeolocalizacion();
     this.dataFichaTramite();
 
+    var a = "Registro sanitario o renovación de medicamentos importados incluidos en normas farmacológicas colombianas"
+    // const a = "Afiliación en forma colectiva al sistema de seguridad social integral a trabajadores independientes miembros de agremiaciones, asociaciones y comunidades religiosas"
+    var c: number = 0
+    a.split(" ").forEach((element, i) => {
+      i < 7 ? (c += element.length) < 48 ? a = a.substring(0, 54) : a = a.substring(0, 48) : ''
+    });
+    console.log('contador:', c)
   }
 
   dataGeolocalizacion() {
@@ -98,7 +105,7 @@ export class HomePrincipalComponent implements OnInit {
         this.codigoMunicipio == "" || this.codigoMunicipio == "TodosLosMunicipios" ?
           this.tramitesService.getTramitesMasConsultados().subscribe((info: GeneralInterface) => {
             this.dataTramites = info.data;
-            this
+            console.log('dataTramites',info.data)
             this.inputTramitesMasConsultados();
           })
           : this.tramitesService.getTramitesMasConsultadosPorMunicipio(this.codigoMunicipio).subscribe((tramitesPorMunicipio: PorMunicipioInterface) => {
