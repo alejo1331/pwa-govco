@@ -45,8 +45,8 @@ export class BibliotecaComponent implements OnInit {
     //                                         1, 2, 3 -> Tramites, Ingresa
     //servicioSideNav.seleccionandoItem(a, b)  a -> Activa o inactiva menu lateral
     //                                         b -> String con el valor del item a seleccionar
-    //bottomService.ajustandoPantalla(true)    true -> Agrega clase de css para ajustar 
-    //                                                 la pantalla cuando en la seccion  
+    //bottomService.ajustandoPantalla(true)    true -> Agrega clase de css para ajustar
+    //                                                 la pantalla cuando en la seccion
     //                                                 consultada no tiene header
     this.servicioHeader.estadoHeader(true, true);
     this.bottomService.seleccionandoItem(0);
