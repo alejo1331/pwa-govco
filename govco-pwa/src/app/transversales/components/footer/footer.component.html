@@ -1,8 +1,7 @@
 <section class="govco-pwa-footer-content">
     <footer class="footer-pwa-govco">
 
-        <h1 class="titulo-footer-pwa-govco">Portal Único</h1>
-        <h1 class="titulo-footer-pwa-govco">del Estado Colombiano</h1>
+        <h1 class="titulo-footer-pwa-govco">Portal Único<br>del Estado Colombiano</h1>
 
         <section class="info-general-pwa-govco">
             <ul class="lista-info-general-pwa-govco">
@@ -10,8 +9,16 @@
                     <p class="contenido-item-info-general-pwa-govco">{{infGeneral?.direccion}}</p>
                 </li>
                 <li class="item-info-general-pwa-govco">{{infGeneral?.tituloHorario}}
-                    <p class="contenido-item-info-general-pwa-govco">- {{infGeneral?.horarioPresencial}}</p>
-                    <p class="contenido-item-info-general-pwa-govco">- {{infGeneral?.horarioVirtual}}</p>
+                    <ul class="item-info-general-content">
+                        <li>
+                            <p class="contenido-item-info-general-pwa-govco">{{infGeneral?.horarioPresencial}}
+                            </p>
+                        </li>
+                        <li>
+                            <p class="contenido-item-info-general-pwa-govco">{{infGeneral?.horarioVirtual}}</p>
+                        </li>
+                    </ul>
+
                 </li>
                 <li class="item-info-general-pwa-govco">{{infGeneral?.textoCodigoPostal}}
                     <p class="contenido-item-info-general-pwa-govco">{{infGeneral?.codigoPostal}}</p>
@@ -48,15 +55,25 @@
                     <div class="body-accordion-pwa-govco">
                         <ul class="lista-info-contacto-pwa-govco">
                             <li class="item-info-contacto-pwa-govco">{{infContacto?.tituloTelefono}}
-                                <p class="contenido-item-info-contacto-pwa-govco">- {{tituloTelefonoNacional}}:</p>
-                                <a href="tel: {{telefonoNacional}}"
-                                    class="contenido-item-info-contacto-pwa-govco">{{telefonoNacional}}</a>
-                                <p class="contenido-item-info-contacto-pwa-govco">- {{tituloTelefonoLocal}}:</p>
-                                <a href="tel: {{telefonoLocal}}"
-                                    class="contenido-item-info-contacto-pwa-govco">{{telefonoLocal}}</a>
-                                <p class="contenido-item-info-contacto-pwa-govco">- {{tituloLineaAnticorrupcion}}:</p>
-                                <a href="tel: {{lineaAnticorrupcion}}"
-                                    class="contenido-item-info-contacto-pwa-govco">{{lineaAnticorrupcion}}</a>
+                                <ul class="item-info-contacto-content">
+                                    <li>
+                                        <p class="contenido-item-info-contacto-pwa-govco">{{tituloTelefonoNacional}}:
+                                        </p>
+                                        <a href="tel: {{telefonoNacional}}"
+                                            class="contenido-item-info-contacto-pwa-govco">{{telefonoNacional}}</a>
+                                    </li>
+                                    <li>
+                                        <p class="contenido-item-info-contacto-pwa-govco">{{tituloTelefonoLocal}}:</p>
+                                        <a href="tel: {{telefonoLocal}}"
+                                            class="contenido-item-info-contacto-pwa-govco">{{telefonoLocal}}</a>
+                                    </li>
+                                    <li>
+                                        <p class="contenido-item-info-contacto-pwa-govco">{{tituloLineaAnticorrupcion}}:
+                                        </p>
+                                        <a href="tel: {{lineaAnticorrupcion}}"
+                                            class="contenido-item-info-contacto-pwa-govco">{{lineaAnticorrupcion}}</a>
+                                    </li>
+                                </ul>
                             </li>
                             <li class="item-info-contacto-pwa-govco">{{infContacto?.correoTexto}}
                                 <a href="mailto: {{infContacto?.correoInstitucional}}"
@@ -116,8 +133,8 @@
             <div class="item-accordion-pwa-govco">
                 <h2 class="accordion-footer-pwa-govco">
                     <button class="button-accordion-pwa-govco collapsed" id="accordionPanelThree" type="button"
-                        [ngClass]="{'button-accordion-margin-pwa-govco': marginAccordionThree}"
-                        data-toggle="collapse" data-target="#accordionPanels-collapseThree" aria-expanded="false"
+                        [ngClass]="{'button-accordion-margin-pwa-govco': marginAccordionThree}" data-toggle="collapse"
+                        data-target="#accordionPanels-collapseThree" aria-expanded="false"
                         aria-controls="accordionPanels-collapseThree">
                         <div class="icono-titulo-inf-contacto-pwa-govco">
                             <span class="caja-icono-pwa-govco">
