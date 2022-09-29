@@ -61,6 +61,7 @@ import { WordLimitPipe } from './pipes/word-limit/word-limit.pipe';
 import { HomePwaModule } from './../home-pwa/home-pwa.module';
 import { ConsultaCertificadosComponent } from './components/ficha-tramite/consulta-certificados/consulta-certificados.component';
 import { VentanillasUnicasComponent } from './components/ficha-tramite/ventanillas-unicas/ventanillas-unicas.component';
+import { TramitesPwaModule } from '../tramites-pwa/tramites-pwa.module';
 
 @NgModule({
   imports: [
@@ -79,6 +80,7 @@ import { VentanillasUnicasComponent } from './components/ficha-tramite/ventanill
     NgxSkeletonLoaderModule,
     Ng2SearchPipeModule,
     HomePwaModule,
+    TramitesPwaModule
   ],
   declarations: [
     TramitesHomeComponent,

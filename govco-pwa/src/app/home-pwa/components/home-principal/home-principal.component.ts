@@ -61,7 +61,6 @@ export class HomePrincipalComponent implements OnInit {
 
     this.dataGeolocalizacion();
     this.dataFichaTramite();
-
   }
 
   dataGeolocalizacion() {
@@ -98,7 +97,6 @@ export class HomePrincipalComponent implements OnInit {
         this.codigoMunicipio == "" || this.codigoMunicipio == "TodosLosMunicipios" ?
           this.tramitesService.getTramitesMasConsultados().subscribe((info: GeneralInterface) => {
             this.dataTramites = info.data;
-            this
             this.inputTramitesMasConsultados();
           })
           : this.tramitesService.getTramitesMasConsultadosPorMunicipio(this.codigoMunicipio).subscribe((tramitesPorMunicipio: PorMunicipioInterface) => {

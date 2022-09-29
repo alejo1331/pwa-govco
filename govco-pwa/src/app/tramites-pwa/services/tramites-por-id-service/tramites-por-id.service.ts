@@ -21,6 +21,7 @@ export class TramitesPorIdService {
   API_URL = environment.serverUrlFichaTramite;
   API_URL_AUDITORIA = environment.auditoriaurl;
 
+
   constructor(private http: HttpClient) { }
 
   private getGeneric<T>(endPoint: string, parameters: string): Observable<T> {
@@ -38,12 +39,12 @@ export class TramitesPorIdService {
   }
   GetInfoBasicaEspecifica(idTramite: any) {
     return this.getGeneric<DatosBaseFichaTramite>('FichaTramite/GetInfoBasicaEspecificaById/', idTramite)
-    .pipe(
-      map( (n: DatosBaseFichaTramite) => {
-        n.Entidad = n.Entidad.toLowerCase();
-        return n;
-      })
-    );
+      .pipe(
+        map((n: DatosBaseFichaTramite) => {
+          n.Entidad = n.Entidad.toLowerCase();
+          return n;
+        })
+      );
   }
   GetTipoTramiteFichaEspecificaById(idTramite: any) {
     return this.getGeneric<TipoEnlace>('FichaTramite/GetTipoTramiteFichaEspecificaById/', idTramite);
@@ -56,14 +57,14 @@ export class TramitesPorIdService {
     return this.getGeneric<TipoAudiencia[]>('FichaTramite/GetTiposAudienciaById/', idTramite);
   }
   GetMomentosByIdAudiencia(idTramite: any, audiencia: any) {
-    return this.getGeneric<MomentosAudienciaTitulo[]>('FichaTramite/GetMomentosByIdAudiencia/' , `${idTramite}/${audiencia}`);
+    return this.getGeneric<MomentosAudienciaTitulo[]>('FichaTramite/GetMomentosByIdAudiencia/', `${idTramite}/${audiencia}`);
   }
 
   GetDataFichaByIdAudiencia(idTramite: any, audiencia: any, ordenMomento: any) {
     return this.getGeneric<DataMomentosAudiencia[]>('FichaTramite/GetDataFichaByIdAudiencia/', `${idTramite}/${audiencia}/${ordenMomento}`)
       .pipe(
-        map( (result: any[]) => {
-          result.forEach( n => {
+        map((result: any[]) => {
+          result.forEach(n => {
             n.Valor = parseFloat(n.Valor);
           });
           return result;
@@ -107,7 +108,7 @@ export class TramitesPorIdService {
     this.TipoAtencionPrsencial = data;
   }
 
-  getTipoAtencionPresencial(){
+  getTipoAtencionPresencial() {
     return this.TipoAtencionPrsencial;
   }
 
@@ -123,15 +124,37 @@ export class TramitesPorIdService {
     return this.getGeneric<any>('FichaTramite/GetDataFichaResult/', `${idTramite}`);
   }
 
-  GetBarraProcesoTramite(idTramite: any) {
-    return this.getGeneric<any>('etapas-barra/GetDataBarraTramite/',  `${idTramite}/Tramites`);
+  /********************   FICHA NO SUIT   *********************/
+
+  GetNotSuiteTramiteById(idTramite: any) {
+    return this.getGeneric<TramiteNoSuite>('FichaNoSuitTramite/GetNotSuiteTramiteById/', idTramite);
+  }
+  GetConsideracionesAdicionalesById(idTramite: any) {
+    return this.getGeneric<Condiciones[]>('FichaNoSuitTramite/GetConsideracionesAdicionalesById/', idTramite);
+  }
+  GetPuntosAtencionNoSuitById(idTramite: any) {
+    return this.getGeneric<PuntosAtencionNoSuite[]>('FichaNoSuitTramite/GetPuntosAtencionNoSuitById/', idTramite);
+  }
+  GetDocumentacionRequeridaNoSuitById(idTramite: any) {
+    return this.getGeneric<DocumentacionRequerida[]>('FichaNoSuitTramite/GetDocumentacionRequeridaById/', idTramite);
+  }
+  GetPuntoAtencionById(idPunto: any) {
+    return this.getGeneric<PuntosAtencion>('FichaTramite/GetPuntoAtencionById/', idPunto);
   }
 
-  GenerarTrackingTramite(idTramite: any){
+  /********************    EMBEBIDOS    *********************/
+  GetEmbebidosByIdTramite(idTramite: any) {
+    return this.getGeneric<Embebidos>('TramitesEmbebidos/GetEmbebidosByIdTramite/', idTramite);
+  }
+  GetBarraProcesoTramite(idTramite: any) {
+    return this.getGeneric<any>('etapas-barra/GetDataBarraTramite/', `${idTramite}/Tramites`);
+  }
+
+  GenerarTrackingTramite(idTramite: any) {
     const ubicacion = localStorage.getItem("ubicacion") || '';
     var codigoMunicipio = localStorage.getItem("ubicacion") == "" ? undefined : JSON.parse(ubicacion)?.codigoMunicipio;
-    var params=(codigoMunicipio!=undefined && codigoMunicipio!="" && codigoMunicipio!="Todos")? {"idTramite": idTramite,"idMunicipio": codigoMunicipio}:{"idTramite": idTramite,"idMunicipio": ""};
-    return this.http.post<any>(`${this.API_URL_AUDITORIA}`+"TrackingTramite/TrazaTrackingTramite", params);
+    var params = (codigoMunicipio != undefined && codigoMunicipio != "" && codigoMunicipio != "Todos") ? { "idTramite": idTramite, "idMunicipio": codigoMunicipio } : { "idTramite": idTramite, "idMunicipio": "" };
+    return this.http.post<any>(`${this.API_URL_AUDITORIA}` + "TrackingTramite/TrazaTrackingTramite", params);
   }
 
 }

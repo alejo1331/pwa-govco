@@ -24,6 +24,8 @@ import { HomePwaModule } from './../home-pwa/home-pwa.module';
     BibliotecaPwaModule,
     HomePwaModule,
   ],
-  exports: [],
+  exports: [
+    TramitesIdComponent,
+  ],
 })
 export class TramitesPwaModule {}
