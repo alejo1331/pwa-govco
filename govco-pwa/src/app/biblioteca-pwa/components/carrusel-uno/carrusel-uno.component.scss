@@ -1,6 +1,7 @@
 .container-carrusel-uno-c {
     height: 414px;
     margin-top: 40px;
+
     .titulo-tramites {
         h2 {
             color: #004884;
@@ -20,7 +21,7 @@
 
     .carousel-control-next,
     .carousel-control-prev {
-        top:38px
+        top: 38px
     }
 
     .carousel-inner {
@@ -51,7 +52,14 @@
                     color: #000000;
                     text-decoration: underline !important;
                     margin-left: 16px;
-                    line-height: 1.125rem
+                    line-height: 1.125rem;
+                    width: 100%;
+                    overflow: hidden;
+                    -o-text-overflow: ellipsis;
+                    text-overflow: ellipsis;
+                    display: -webkit-box;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 3;
                 }
             }
 
