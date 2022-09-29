@@ -16,11 +16,12 @@ import {
 })
 export class TramitesPorIdService {
 
+  private TipoAtencionPrsencial: number;
+
   API_URL = environment.serverUrlFichaTramite;
+  API_URL_AUDITORIA = environment.auditoriaurl;
 
   constructor(private http: HttpClient) { }
-
-  private TipoAtencionPrsencial: number;
 
   private getGeneric<T>(endPoint: string, parameters: string): Observable<T> {
     return this.http.get<T>(`${this.API_URL}${endPoint}${parameters}`);
@@ -120,6 +121,17 @@ export class TramitesPorIdService {
 
   GetDataFichaResult(idTramite: any) {
     return this.getGeneric<any>('FichaTramite/GetDataFichaResult/', `${idTramite}`);
+  }
+
+  GetBarraProcesoTramite(idTramite: any) {
+    return this.getGeneric<any>('etapas-barra/GetDataBarraTramite/',  `${idTramite}/Tramites`);
+  }
+
+  GenerarTrackingTramite(idTramite: any){
+    const ubicacion = localStorage.getItem("ubicacion") || '';
+    var codigoMunicipio = localStorage.getItem("ubicacion") == "" ? undefined : JSON.parse(ubicacion)?.codigoMunicipio;
+    var params=(codigoMunicipio!=undefined && codigoMunicipio!="" && codigoMunicipio!="Todos")? {"idTramite": idTramite,"idMunicipio": codigoMunicipio}:{"idTramite": idTramite,"idMunicipio": ""};
+    return this.http.post<any>(`${this.API_URL_AUDITORIA}`+"TrackingTramite/TrazaTrackingTramite", params);
   }
 
 }
