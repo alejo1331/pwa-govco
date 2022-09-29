@@ -40,10 +40,12 @@ ul {
   width: 4.5rem;
   text-align: center;
   width: 100%;
+  line-height: initial;
 }
 .navigation-bar .list-items .item .link span {
   color: #BABABA;
-  margin-bottom: 0.375rem;
+  margin-bottom: 0.125rem;
+  font-size: 27px;
 }
 .navigation-bar .list-items .item .link p {
   color: #4B4B4B;
@@ -59,12 +61,16 @@ ul {
   font-weight: 600;
 }
 
+.navigation-bar .list-items .item.active .link p {
+  font-family: 'WorkSans-SemiBold';
+}
+
 .navigation-bar .list-items .item.active .link .material-symbols-outlined{
   font-variation-settings:
   'FILL' 1,
   'wght' 500,
   'GRAD' 0,
-  'opsz' 40
+  'opsz' 40;
 }
 
 .navigation-bar .list-items .pointer {
