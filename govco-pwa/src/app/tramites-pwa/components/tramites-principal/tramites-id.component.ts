@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { BottomMenuService } from 'src/app/transversales/services/bottom-menu/bottom-menu.service';
 import { HeaderService } from 'src/app/transversales/services/header-service/header.service';
 import { SidenavService } from 'src/app/transversales/services/sidenav-service/sidenav-service.service';
@@ -11,24 +11,34 @@ import { TramitesPorIdService } from '../../services/tramites-por-id-service/tra
   styleUrls: ['./tramites-id.component.css']
 })
 export class TramitesIdComponent implements OnInit {
-  @Input() informacionFicha: { id: number, tipo: string | null, prefijo: string };
+  // @Input() informacionFicha: { id: number, tipo: string | null, prefijo: string };
+  informacionFicha: { id: number, tipo: string | null, prefijo: string };
+  estructuraModalDesplegable: { titulo: string, icono: string }[];
   infoBasicaTramite: any;
   nombreTramite: string;
   idTramite: number;
   audiencias: any[];
   embebidos: any;
   integrated: boolean = false;
+  embebido: boolean = false;
 
   constructor(
     protected fichaTramiteService: TramitesPorIdService,
     protected servicioSideNav: SidenavService,
     protected servicioHeader: HeaderService,
-    public bottomService: BottomMenuService
+    public bottomService: BottomMenuService,
+    private activatedRoute: ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
-    this.loadDataInfoFicha(this.informacionFicha);
-    this.idTramite = this.informacionFicha.id;
+    this.estructuraModalDesplegable = [
+      { titulo: 'Ciudadano', icono: '../../../../assets/icons-fonts/account_circle_FILL1_wght500_GRAD0_opsz20.svg' },
+      { titulo: 'Extranjero', icono: '../../../../assets/icons-fonts/badge_FILL0_wght500_GRAD0_opsz20.svg' },
+      { titulo: 'Empresa privada', icono: '../../../../assets/icons-fonts/apartment_FILL0_wght500_GRAD0_opsz20.svg' },
+      { titulo: 'Entidad pública', icono: '../../../../assets/icons-fonts/account_balance_FILL0_wght500_GRAD0_opsz20.svg' },
+    ]
+    this.informacionFicha = { id: 0, tipo: null, prefijo: '' };
+
     this.servicioHeader.estadoHeader(false, false);
     this.bottomService.putOcultandoBottomMenu(true);
     this.servicioSideNav.seleccionandoItem(false, 'null');
@@ -37,6 +47,11 @@ export class TramitesIdComponent implements OnInit {
     contenedorTopScroll.style.top = '0';
     contenedorTopScroll.style.height = '100%';
     contenedorTopScroll.scrollTop = 0;
+
+    this.loadData();
+
+    this.loadDataInfoFicha(this.informacionFicha);
+    this.idTramite = this.informacionFicha.id;
   }
 
   private async loadDataInfoFicha(dataTramite: any) {
@@ -47,8 +62,7 @@ export class TramitesIdComponent implements OnInit {
       this.nombreTramite = this.infoBasicaTramite.NombreEstandarizado;
       this.fichaTramiteService.setTipoAtencionPresencial(this.infoBasicaTramite.TipoAtencionPresencial);
       this.fichaTramiteService.GetTiposAudienciaById(dataTramite.id).subscribe(n => {
-        this.audiencias = n;
-        console.log('audiencias',n)
+        this.audiencias = n
         if (this.audiencias.length > 0) {
           this.loadMomentosAudiencia(dataTramite.id, this.audiencias[0].detalle);
         }
@@ -118,6 +132,7 @@ export class TramitesIdComponent implements OnInit {
   }
 
   cargarDetalleMomento(data: any) {
+    console.log("data",data)
     this.fichaTramiteService.GetDataFichaByIdTramiteAudienciaIdMomento(this.informacionFicha.id, data.audiencia, data.momento)
       .subscribe((dataAccion: any) => {
         this.audiencias.forEach((item) => {
@@ -213,6 +228,34 @@ export class TramitesIdComponent implements OnInit {
       temp[indiceTipoAccion][n.TipoAccionCondicion].push(n);
     });
     return temp;
+  }
+
+  //Esta seccion se encuentra en general.component.html en la seccion de Tramites ... 
+
+  loadData() {
+    const parametroid = this.activatedRoute.snapshot.params.id;
+    let idTramiteTemp = parametroid;
+
+    if (parametroid !== 'embebido') {
+      this.informacionFicha.id = parametroid.substring(1);
+      this.informacionFicha.prefijo = parametroid.substring(0, 1).toLowerCase();
+
+      // Tramite suit
+      if (this.informacionFicha.prefijo === 't') {
+        // this.fichaespecificaService.setTramite(this.informacionFicha);
+        idTramiteTemp = this.informacionFicha.id;
+      }
+
+      if (idTramiteTemp != null && idTramiteTemp != 'null') {
+        this.fichaTramiteService.GetTipoFichaTramite(idTramiteTemp)
+          .subscribe(data => {
+            this.informacionFicha.tipo = data.StatusCode;
+          });
+      }
+
+    } else {
+      this.embebido = true;
+    }
   }
 
 }

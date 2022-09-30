@@ -13,50 +13,50 @@
 
             <div class="govco-servicios-content">
                 <a>
-                    <div class="govco-candybox-element" [class.govco-active]="itemSelected == 0" (click)="seleccionarItem(0)">
-                        <div class="govco-candybox-icon govco-homepage">
+                    <div class="govco-candybox-element" [class.govco-active]="itemSelected == 0" [class.off]="estado[0]" (click)="seleccionarItem(0)">
+                        <div class="govco-candybox-icon" [class.off]="estado[0]">
                             <span>
-                                <img src="../../../../assets/icons-fonts/account_circle_FILL1_wght500_GRAD0_opsz20.svg" 
+                                <img src="{{estructura[0].icono}}" 
                                     alt="Ingresar Ciudadano">
                             </span>
                         </div>
-                        <p>Ciudadano<br> </p>
+                        <p [innerHTML]="titulo[0]" [class.off]="estado[0]"></p>
                     </div>
                 </a>
 
                 <a>
-                    <div class="govco-candybox-element" [class.govco-active]="itemSelected == 1" (click)="seleccionarItem(1)">
-                        <div class="govco-candybox-icon">
+                    <div class="govco-candybox-element" [class.govco-active]="itemSelected == 1" [class.off]="estado[1]" (click)="seleccionarItem(1)">
+                        <div class="govco-candybox-icon" [class.off]="estado[1]">
                             <span>
-                                <img src="../../../../assets/icons-fonts/badge_FILL0_wght500_GRAD0_opsz20.svg"
+                                <img src="{{estructura[1].icono}}"
                                     alt="Ingresar Extranjero">
                             </span>
                         </div>
-                        <p>Extranjero<br> </p>
+                        <p [innerHTML]="titulo[1]" [class.off]="estado[1]"></p>
                     </div>
                 </a>
 
                 <a>
-                    <div class="govco-candybox-element" [class.govco-active]="itemSelected == 2" (click)="seleccionarItem(2)">
-                        <div class="govco-candybox-icon">
+                    <div class="govco-candybox-element" [class.govco-active]="itemSelected == 2" [class.off]="estado[2]"(click)="seleccionarItem(2)">
+                        <div class="govco-candybox-icon" [class.off]="estado[2]">
                             <span>
-                                <img src="../../../../assets/icons-fonts/apartment_FILL0_wght500_GRAD0_opsz20.svg"
+                                <img src="{{estructura[2].icono}}"
                                     alt="Ingresar Empresa privada">
                             </span>
                         </div>
-                        <p>Empresa<br>privada</p> 
+                        <p [innerHTML]="titulo[2]" [class.off]="estado[2]"></p>
                     </div>
                 </a>
 
                 <a>
-                    <div class="govco-candybox-element" [class.govco-active]="itemSelected == 3" (click)="seleccionarItem(3)">
-                        <div class="govco-candybox-icon">
+                    <div class="govco-candybox-element" [class.govco-active]="itemSelected == 3" [class.off]="estado[3]" (click)="seleccionarItem(3)">
+                        <div class="govco-candybox-icon" [class.off]="estado[3]">
                             <span>
-                                <img src="../../../../assets/icons-fonts/account_balance_FILL0_wght500_GRAD0_opsz20.svg"
+                                <img src="{{estructura[3].icono}}"
                                     alt="Ingresar Entidad pública">
                             </span>
                         </div>
-                        <p>Entidad<br>pública</p>
+                        <p [innerHTML]="titulo[3]" [class.off]="estado[3]"></p>
                     </div>
                 </a>
 
