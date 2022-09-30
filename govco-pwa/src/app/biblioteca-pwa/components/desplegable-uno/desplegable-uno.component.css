@@ -98,16 +98,21 @@
     border-radius: 0.313rem;
 }
 
-.modal-desplegable-pwa .govco-candybox-element.govco-active{
+.modal-desplegable-pwa .govco-candybox-element.off {
+    pointer-events: none;
+}
+
+.modal-desplegable-pwa .govco-candybox-element.govco-active {
     border: 2px solid #004884;
     border-radius: 5px;
-  }
+}
+
 
 .modal-desplegable-pwa .govco-candybox-element.govco-active .govco-candybox-icon {
     background-color: #004884;
 }
 
-.modal-desplegable-pwa .govco-candybox-element.govco-active .govco-candybox-icon::after{
+.modal-desplegable-pwa .govco-candybox-element.govco-active .govco-candybox-icon::after {
     content: "";
     background: url("../../../../assets/icons-fonts/activo.svg") no-repeat;
     width: 20px;
@@ -117,7 +122,7 @@
     position: relative;
     top: -2.75rem;
     left: 1.938rem;
-  }
+}
 
 .modal-desplegable-pwa .govco-candybox-element p {
     font-family: 'WorkSans-Medium';
@@ -127,6 +132,14 @@
     line-height: 1;
     margin-bottom: 0px;
     margin-top: 8px;
+    color: #000000;
+}
+.modal-desplegable-pwa .govco-candybox-element p.off{
+    color: #737373;
+}
+
+.modal-desplegable-pwa .govco-candybox-icon.off {
+    background-color: #737373;
 }
 
 .modal-desplegable-pwa .footer-modal {

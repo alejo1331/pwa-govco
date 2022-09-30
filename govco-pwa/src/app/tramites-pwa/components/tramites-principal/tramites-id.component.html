@@ -1,5 +1,5 @@
 <app-boton-retroalimentacion></app-boton-retroalimentacion>
 <app-ficha-especifica-pwa></app-ficha-especifica-pwa>
-<app-desplegable-uno *ngIf="audiencias" [data]="audiencias"
+<app-desplegable-uno *ngIf="audiencias" [data]="audiencias" [estructura]="estructuraModalDesplegable"
     (cargarMomentosAudiencia)="cargarMomentosAudiencia($event)" (cargarDetalleMomento)="cargarDetalleMomento($event)">
 </app-desplegable-uno>
