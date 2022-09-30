@@ -50,7 +50,7 @@ export class BottomMenuComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnInit() {
     this.contadorClic = 0;
-    
+
   }
 
   ngAfterViewInit() {
