@@ -27,6 +27,7 @@
   padding: 0;
   .options {
     display: flex;
+    grid-gap: 8px;
     gap: 8px;
     margin-bottom: 24px;
     .selectionY, .selectionN {
