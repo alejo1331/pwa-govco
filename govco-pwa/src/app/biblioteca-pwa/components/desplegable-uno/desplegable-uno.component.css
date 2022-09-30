@@ -50,6 +50,7 @@
     cursor: pointer;
     background-color: transparent;
     border: 0;
+    outline-color: #F6F8F9;
 }
 
 .modal-desplegable-pwa .hr {
