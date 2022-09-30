@@ -33,3 +33,11 @@
       cursor: pointer;
   }
 }
+
+::ng-deep .modal-open .modal { 
+  background-color: #00000080
+}
+
+::ng-deep .modal-content {
+  border-radius: 0.8rem;
+}
