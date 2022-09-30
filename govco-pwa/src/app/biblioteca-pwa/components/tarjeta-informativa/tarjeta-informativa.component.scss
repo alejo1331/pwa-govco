@@ -28,7 +28,8 @@
     background-color: #FFFFFF;
     border-radius: 0 0 10px 10px;
     width: 100%;
-    padding: 16px 16px 26px 16px;
+    padding: 16px 16px 0 16px;
+    height: 89px;
     border: 2px solid #E6EFFD;
     border-top: 0;
 
@@ -37,8 +38,10 @@
       color: #004884;
       text-decoration: underline;
       font-size: 16px;
-      line-height: 28px;
+      line-height: 26px;
       margin: 0;
+      height: 47px;
+      overflow: hidden;
     }
   }
 }

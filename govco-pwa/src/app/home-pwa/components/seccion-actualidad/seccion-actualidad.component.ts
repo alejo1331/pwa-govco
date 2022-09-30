@@ -24,7 +24,7 @@ export class SeccionActualidadComponent implements OnInit {
           this.titulo = data.data.banner.titulo;
           this.descripcion = data.data.banner.descripcion;
           if (data.data.noticias.length > 0) {
-            this.dataNoticias = data.data.noticias;
+            this.dataNoticias = data.data.noticias.slice(0, 2);
           } else {
             this.noticiasEmpty = true;
           }
@@ -38,7 +38,7 @@ export class SeccionActualidadComponent implements OnInit {
 
   async shareNews(noticia:any) {
     let shareData = {
-      url : '',
+      url : '/noticias/detalle/' + noticia.id,
       title: noticia.titulo
     }
 

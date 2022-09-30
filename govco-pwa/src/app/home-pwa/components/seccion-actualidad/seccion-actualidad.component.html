@@ -18,6 +18,7 @@
         <app-tarjeta-informativa
         [imagen]="noticia.imagen"
         [descripcionImagen]="noticia.titulo"
+        [url]="'/noticias/detalle/' + noticia.id"
         [descripcioUrl]="noticia.titulo"
         [titulo]="noticia.titulo">
         </app-tarjeta-informativa>    
@@ -37,6 +38,7 @@
             </app-boton>
         </div>
     </div>
-
-    <app-boton *ngIf="!noticiasError && !noticiasEmpty">Ver más noticias</app-boton>
+    <a href="/noticias">
+        <app-boton *ngIf="!noticiasError && !noticiasEmpty">Ver más noticias</app-boton>
+    </a>
 </div>
