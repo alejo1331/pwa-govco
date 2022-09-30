@@ -41,6 +41,7 @@ export class AtencionComponent implements OnInit {
   }
 
   showModal(data: { tipo: string; data: any; }) {
+    (document.getElementById('topScroll') as HTMLElement).style.filter = "blur(6px)"
     const modal = this.modalService.open(PuntosAtencionModalComponent, { size: 'lg',
        backdrop: 'static',
        keyboard: false
