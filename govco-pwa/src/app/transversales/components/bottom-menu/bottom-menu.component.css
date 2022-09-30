@@ -20,19 +20,16 @@ ul {
   display: flex;
   position: relative;
   height: 4.5rem;
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
+  margin-left: 16px;
+  margin-right: 16px;
+  justify-content: space-between;
 }
 
 .navigation-bar .list-items .item {
-  -webkit-box-flex: 1;
-      -ms-flex: 1 1 0px;
-          flex: 1 1 0px;
   position: relative;
   z-index: 2;
   margin-top: 0.875rem;
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
+  width: 70px;
 }
 .navigation-bar .list-items .item .link {
   display: inline-block;
@@ -75,9 +72,8 @@ ul {
 
 .navigation-bar .list-items .pointer {
   position: absolute;
-  left: 3%;
   height: 100%;
-  width: 19%;
+  width: 70px;
   z-index: 0;
   -webkit-transition: all 0.2s linear;
   -o-transition: all 0.2s linear;
