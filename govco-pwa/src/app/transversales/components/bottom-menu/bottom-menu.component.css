@@ -19,7 +19,7 @@ ul {
   display: -ms-flexbox;
   display: flex;
   position: relative;
-  height: 4.5rem;
+  height: 72px;
   margin-left: 16px;
   margin-right: 16px;
   justify-content: space-between;
@@ -41,12 +41,13 @@ ul {
 }
 .navigation-bar .list-items .item .link span {
   color: #BABABA;
-  margin-bottom: 0.125rem;
-  font-size: 27px;
+  margin: 0px 0px 0px 0px;
+  font-size: 20px;
 }
 .navigation-bar .list-items .item .link p {
+  margin-top: 4px;
   color: #4B4B4B;
-  margin-bottom: 0.875rem;
+  /* margin-bottom: 0.875rem; */
   height: 1rem;
 }
 .navigation-bar .list-items .item.active .link {
@@ -55,7 +56,6 @@ ul {
 .navigation-bar .list-items .item.active .link span,
 .navigation-bar .list-items .item.active .link p {
   color: #3366CC;
-  font-weight: 600;
 }
 
 .navigation-bar .list-items .item.active .link p {
@@ -97,10 +97,14 @@ p{
   font-size: 14px;
 }
 
-.material-symbols-outlined {
-  font-variation-settings:
-  'FILL' 0,
-  'wght' 500,
-  'GRAD' 0,
-  'opsz' 20
+.govco-pwa-icon-bottom-menu{
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.person,
+.apps{
+  font-size: x-large !important;
 }

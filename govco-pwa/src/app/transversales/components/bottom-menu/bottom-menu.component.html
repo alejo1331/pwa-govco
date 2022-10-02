@@ -3,36 +3,38 @@
     <span class="pointer"></span>
     <li class="item">
       <a class="link" (click)="clickBottomMenu('/')">
-        <span class="material-symbols-outlined">home</span>
+        <div class="govco-pwa-icon-bottom-menu">
+          <span class="material-symbols-outlined home">home</span>
+        </div>
         <p>Inicio</p>
       </a>
     </li>
 
     <li class="item">
       <a class="link" (click)="clickBottomMenu('/ficha-tramites-y-servicios')">
-        <div>
-          <span class="material-symbols-outlined">task</span>
-          <p>Trámites</p>
+        <div class="govco-pwa-icon-bottom-menu">
+          <span class="material-symbols-outlined task">task</span>
         </div>
+          <p>Trámites</p>
       </a>
     </li>
 
     <li class="item">
       <a class="link" routerLink="/perfil">
-        <div>
-          <span class="material-symbols-outlined">person</span>
+        <div class="govco-pwa-icon-bottom-menu">
+          <span class="material-symbols-outlined person">person</span>
+        </div>
           <p *ngIf="userData">Perfil</p>
           <p *ngIf="userData == null">Ingresa</p>
-        </div>
       </a>
     </li>
 
     <li class="item">
       <a class="link" routerLink="/servicios">
-        <div>
-          <span class="material-symbols-outlined">apps</span>
-          <p>Servicios</p>
+        <div class="govco-pwa-icon-bottom-menu">
+          <span class="material-symbols-outlined apps">apps</span>
         </div>
+          <p>Servicios</p>
       </a>
     </li>
 
