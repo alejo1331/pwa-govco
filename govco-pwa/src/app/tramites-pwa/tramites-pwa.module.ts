@@ -10,6 +10,7 @@ import { FichaEspecificaHeaderPwaComponent } from './components/ficha-especifica
 import { FichaEspecificaDetallePwaComponent } from './components/ficha-especifica-pwa/ficha-especifica-detalle-pwa/ficha-especifica-detalle-pwa.component';
 import { HomePwaModule } from './../home-pwa/home-pwa.module';
 import { PrimerItemAcordeonComponent } from './components/tramites-id-acordeon/primer-item-acordeon/primer-item-acordeon.component';
+import { PuntosDeAtencionComponent } from './components/puntos-de-atencion/puntos-de-atencion.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { PrimerItemAcordeonComponent } from './components/tramites-id-acordeon/p
     FichaEspecificaDetallePwaComponent,
     TramitesIdAcordeonComponent,
     PrimerItemAcordeonComponent
+    PuntosDeAtencionComponent
   ],
   imports: [
     CommonModule,

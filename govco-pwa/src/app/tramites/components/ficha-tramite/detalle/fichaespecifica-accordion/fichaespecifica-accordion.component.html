@@ -27,6 +27,7 @@
                         <ngb-accordion [closeOthers]="true" #acc="ngbAccordion"
                             (panelChange)="tooggleAccordian($event, itemAudiencia.detalle)">
                             <ngb-panel *ngFor="let momento of itemAudiencia.momentos; let i = index" [id]="'panel-'+i">
+                                <!-- Incio creacion primer nivel acordeon -->
                                 <ng-template ngbPanelTitle>
                                     <div class="headerPanel"
                                         (click)="dataDetalleMomentoAudiencia(itemAudiencia.detalle, momento.MomentoId)">
@@ -38,13 +39,15 @@
                                             (click)="dataDetalleMomentoAudiencia(itemAudiencia.detalle, momento.MomentoId)">
                                         </div>
                                     </div>
-
                                 </ng-template>
+                                <!-- Fin creacion primer nivel acordeon -->
+
+                                <!-- Inicio Informacion interna de cada acordeon o nivel dos  -->
                                 <ng-template ngbPanelContent>
-                                    <ngx-skeleton-loader appearance="line" count="3" *ngIf="!momento.acciones" [theme]="{
-                                            height: '12px',
-                                            'background-color': '#888cc93d'
-                                            }"> </ngx-skeleton-loader>
+                                    
+                                    <ngx-skeleton-loader appearance="line" count="3" *ngIf="!momento.acciones" 
+                                        [theme]="{ height: '12px', 'background-color': '#888cc93d'}">
+                                    </ngx-skeleton-loader>
 
                                     <div *ngFor="let accion of momento.acciones">
                                         <div class="contenedor-ficha-accordion"
@@ -85,6 +88,8 @@
                                             [data]="momento.acciones.EXCEPCION"></app-accion-excepcion>
                                     </div>
                                 </ng-template>
+                                <!-- Fin Informacion interna de cada acordeon o nivel dos  -->
+
                             </ngb-panel>
                         </ngb-accordion>
                     </div>
