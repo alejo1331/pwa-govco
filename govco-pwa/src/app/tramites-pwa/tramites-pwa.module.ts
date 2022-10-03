@@ -17,7 +17,7 @@ import { FichaEspecificaHeaderPwaComponent } from './components/ficha-especifica
     FichaEspecificaHeaderPwaComponent,
     FichaEspecificaDetallePwaComponent,
     TramitesIdAcordeonComponent,
-    PrimerItemAcordeonComponent
+    PrimerItemAcordeonComponent,
     PuntosDeAtencionComponent
   ],
   imports: [
