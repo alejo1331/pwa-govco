@@ -11,8 +11,6 @@ import { TramitesPorIdService } from '../../services/tramites-por-id-service/tra
   styleUrls: ['./tramites-id.component.css']
 })
 export class TramitesIdComponent implements OnInit {
-
-  tramite: { id: string, tipo: string | null, prefijo: string } = { id: '', tipo: null, prefijo: '' };
   embebido: boolean = false;
 
   constructor(
