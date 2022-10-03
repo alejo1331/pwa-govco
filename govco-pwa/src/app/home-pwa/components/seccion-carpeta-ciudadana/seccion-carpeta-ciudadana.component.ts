@@ -17,8 +17,9 @@ export class SeccionCarpetaCiudadanaComponent implements OnInit {
   ngOnInit() {
   }
 
-  descargarGuion(url:string){
-    window.open(url, `target='_blank', rel=${url}`);
+  descargarGuion(){
+    const url = 'https://govco-prod-webutils.s3.amazonaws.com/uploads/Guión%20Video%20-%20Así%20puedes%20registrarte%20en%20Carpeta%20Ciudadana%20Digital.pdf'
+    window.open(url);
   }
 
 }

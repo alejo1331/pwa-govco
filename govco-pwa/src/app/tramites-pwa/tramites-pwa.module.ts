@@ -26,6 +26,8 @@ import { PrimerItemAcordeonComponent } from './components/tramites-id-acordeon/p
     BibliotecaPwaModule,
     HomePwaModule,
   ],
-  exports: [],
+  exports: [
+    TramitesIdComponent,
+  ],
 })
 export class TramitesPwaModule {}

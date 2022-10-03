@@ -67,10 +67,12 @@ export class BottomMenuService {
     this.quitarClaseActivo(navigation_items_elms, navigation_pointer);
     item.classList.add("active");
     const parentWidth = item.parentElement.clientWidth;
-    const lefPercent = ((parentWidth / navigation_items_elms.length) * index);
-    const relativePercent = (parentWidth / navigation_items_elms.length) / 8;
-    const totalPercent = lefPercent + relativePercent;
-    navigation_pointer.style.left = totalPercent + "px";
+    let lefPercent = 0
+    if (index != 0){
+      lefPercent = ((parentWidth - 280) / 3 ) * index + (70 * index);
+    }
+
+    navigation_pointer.style.left = lefPercent + "px";
   }
 
   private quitarClaseActivo(navigation_items_elms: any, navigation_pointer: any) {

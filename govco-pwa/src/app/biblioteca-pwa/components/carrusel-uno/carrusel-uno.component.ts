@@ -20,6 +20,7 @@ export class CarruselUnoComponent implements OnInit, OnChanges {
   codigoDepartamento: string | null = "";
   nombreMunicipio: string = "";
   estado: boolean = false;
+  c: number = 0
 
   constructor() { }
 

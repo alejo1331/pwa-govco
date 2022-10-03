@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
 import { Platform } from '@angular/cdk/platform';
 
 
@@ -9,11 +9,19 @@ import { Platform } from '@angular/cdk/platform';
 })
 export class DesplegableUnoComponent implements OnInit {
 
+  active = 1;
+  @Input() data: any[];
+  @Input() estructura: { titulo: string, icono: string }[];
+  @Output() cargarDetalleMomento = new EventEmitter<string>();
+  @Output() cargarMomentosAudiencia = new EventEmitter<string>();
+  estado: boolean[] = [true, true, true, true];
+  titulo: string[] = ['', '', '', '']
+
   touchMoveInicial: number = 0;
   touchMoveFinal: number = 0;
   touchMoveDiferencia: number = 0;
 
-  itemSelected:number;
+  itemSelected: number;
 
 
   constructor(
@@ -22,10 +30,22 @@ export class DesplegableUnoComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.estructura.forEach((element, i) => {
+      this.data.forEach(elemento => {
+        if (elemento['detalle'] === this.estructura[i].titulo) {
+          this.estado[i] = false;
+          this.seleccionarItem(i - (this.data.length - 1))
+        }
+      });
+      this.titulo[i] = element.titulo.split(" ").join("<br/>")
+    });
   }
 
-  seleccionarItem(dataItem: number){
+  seleccionarItem(dataItem: number) {
     this.itemSelected = dataItem;
+    if (this.estructura[dataItem] != undefined) {
+      this.cargarDetalleMomento.emit(this.estructura[dataItem].titulo)
+    }
   }
 
   abrirModal() {

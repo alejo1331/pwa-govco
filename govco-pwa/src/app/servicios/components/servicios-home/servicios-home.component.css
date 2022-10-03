@@ -27,7 +27,7 @@
 }
 
 .material-symbols-outlined{
-  font-size: 1.75rem;
+  font-size: 2.5rem;
   font-variation-settings:
   'FILL' 1,
   'wght' 500,
@@ -131,6 +131,7 @@ a{
 .govco-candybox-element.govco-active{
   border: 2px solid #004884;
   border-radius: 5px;
+  box-shadow: 0px 4px 6px #13173D1A;
 }
 
 .govco-candybox-element p{

@@ -51,6 +51,7 @@ export class PuntosAtencionModalComponent implements OnInit {
   }
 
   closeModal() {
+    (document.getElementById('topScroll') as HTMLElement).style.removeProperty('filter')
     this.activeModal.close();
   }
 
