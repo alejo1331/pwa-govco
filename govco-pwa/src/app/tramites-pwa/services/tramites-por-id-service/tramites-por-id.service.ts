@@ -17,6 +17,7 @@ import {
 export class TramitesPorIdService {
 
   private TipoAtencionPrsencial: number;
+  private tramite: any;
 
   API_URL = environment.serverUrlFichaTramite;
   API_URL_AUDITORIA = environment.auditoriaurl;
@@ -155,6 +156,14 @@ export class TramitesPorIdService {
     var codigoMunicipio = localStorage.getItem("ubicacion") == "" ? undefined : JSON.parse(ubicacion)?.codigoMunicipio;
     var params = (codigoMunicipio != undefined && codigoMunicipio != "" && codigoMunicipio != "Todos") ? { "idTramite": idTramite, "idMunicipio": codigoMunicipio } : { "idTramite": idTramite, "idMunicipio": "" };
     return this.http.post<any>(`${this.API_URL_AUDITORIA}` + "TrackingTramite/TrazaTrackingTramite", params);
+  }
+
+  setTramite(data: any) {
+    this.tramite = data;
+  }
+
+  getTramite(){
+    return this.tramite;
   }
 
 }

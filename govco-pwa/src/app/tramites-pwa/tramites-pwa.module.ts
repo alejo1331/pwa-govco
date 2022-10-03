@@ -9,6 +9,7 @@ import { FichaEspecificaPwaComponent } from './components/ficha-especifica-pwa/f
 import { FichaEspecificaHeaderPwaComponent } from './components/ficha-especifica-pwa/ficha-especifica-header-pwa/ficha-especifica-header-pwa.component';
 import { FichaEspecificaDetallePwaComponent } from './components/ficha-especifica-pwa/ficha-especifica-detalle-pwa/ficha-especifica-detalle-pwa.component';
 import { HomePwaModule } from './../home-pwa/home-pwa.module';
+import { PrimerItemAcordeonComponent } from './components/tramites-id-acordeon/primer-item-acordeon/primer-item-acordeon.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { HomePwaModule } from './../home-pwa/home-pwa.module';
     FichaEspecificaPwaComponent,
     FichaEspecificaHeaderPwaComponent,
     FichaEspecificaDetallePwaComponent,
-    TramitesIdAcordeonComponent
+    TramitesIdAcordeonComponent,
+    PrimerItemAcordeonComponent
   ],
   imports: [
     CommonModule,
