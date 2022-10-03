@@ -14,6 +14,7 @@ export class TramitesIdComponent implements OnInit {
   // @Input() informacionFicha: { id: number, tipo: string | null, prefijo: string };
   informacionFicha: { id: number, tipo: string | null, prefijo: string };
   estructuraModalDesplegable: { titulo: string, icono: string }[];
+  dataAcordeon: {perfil:string, idTramite: number}
   infoBasicaTramite: any;
   nombreTramite: string;
   idTramite: number;
@@ -64,7 +65,7 @@ export class TramitesIdComponent implements OnInit {
       this.fichaTramiteService.GetTiposAudienciaById(dataTramite.id).subscribe(n => {
         this.audiencias = n
         if (this.audiencias.length > 0) {
-          this.loadMomentosAudiencia(dataTramite.id, this.audiencias[0].detalle);
+          this.cargarMomentosAudiencia(dataTramite.id, this.audiencias[0].detalle);
         }
       });
       // Obtiene la URL de trámite en linea
@@ -73,6 +74,16 @@ export class TramitesIdComponent implements OnInit {
         this.infoBasicaTramite.EnLinea = res.isEnlinea;
       });
     });
+  }
+
+  perfilSeleccionado(perfil: string){
+    //En esta seccion se realiza un output hacia al acordeon el perfil y dentro de ese acordeon 
+   this.dataAcordeon = {
+    perfil : perfil,
+    idTramite: this.informacionFicha.id
+   }
+    //se realiza la consulta de las acciones 
+    this.cargarMomentosAudiencia( this.informacionFicha.id, perfil);
   }
 
   private async GenerarTrackingTramite(id: any) {
@@ -87,7 +98,7 @@ export class TramitesIdComponent implements OnInit {
     );
   }
 
-  private loadMomentosAudiencia(idTramite: number, audiencias: string) {
+  private cargarMomentosAudiencia(idTramite: number, audiencias: string) {
     this.fichaTramiteService.GetMomentosByIdAudiencia(idTramite, audiencias).subscribe(n => {
       this.audiencias.forEach((item) => {
         if (item.detalle === audiencias) {
@@ -99,7 +110,6 @@ export class TramitesIdComponent implements OnInit {
   }
 
   private eliminarValoresRepetidosMomentos(data: any[]) {
-
     const temp: any[] = [];
     const returnData: any[] = [];
 
@@ -127,12 +137,7 @@ export class TramitesIdComponent implements OnInit {
     return returnData;
   }
 
-  cargarMomentosAudiencia(data: any) {
-    this.loadMomentosAudiencia(this.informacionFicha.id, data.detalle);
-  }
-
   cargarDetalleMomento(data: any) {
-    console.log("data",data)
     this.fichaTramiteService.GetDataFichaByIdTramiteAudienciaIdMomento(this.informacionFicha.id, data.audiencia, data.momento)
       .subscribe((dataAccion: any) => {
         this.audiencias.forEach((item) => {

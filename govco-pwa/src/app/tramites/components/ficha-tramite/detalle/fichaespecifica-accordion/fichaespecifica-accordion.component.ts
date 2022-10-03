@@ -25,7 +25,6 @@ export class FichaespecificaAccordionComponent implements OnInit {
 
   ngOnInit(): void {
     this.IE = this.isIE();
-    // console.log(this.data)
   }
 
   isIE() {

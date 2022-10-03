@@ -91,7 +91,7 @@ export class FichaEspecificaComponent implements OnInit {
   }
 
   cargarDetalleMomento(data: any) {
-
+    console.log('data.audiencia',data.audiencia, '  data.momento', data.momento)
     this.fichaTramiteService.GetDataFichaByIdTramiteAudienciaIdMomento(this.informacionFicha.id, data.audiencia, data.momento)
       .subscribe((dataAccion: any) => {
         this.audiencias.forEach( (item) => {
@@ -99,6 +99,7 @@ export class FichaEspecificaComponent implements OnInit {
                   item.momentos.forEach( (i: any) => {
                     if (i.MomentoId === data.momento) {
                       i.acciones = this.agrupaAccionesPorTipoAccionCondicion(dataAccion.acciones);
+                      console.log('dataAccion.acciones',dataAccion.acciones)
                     }
                   });
               }

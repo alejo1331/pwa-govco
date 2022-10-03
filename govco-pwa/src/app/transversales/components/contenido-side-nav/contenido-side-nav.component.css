@@ -5,6 +5,12 @@
   text-align: left;
 }
 
+.govco-pwa-sidenav-logo img {
+  height: 3rem;
+  width: 10rem;
+  margin-top: 0.25rem;
+}
+
 .govco-pwa-sidenav-items {
   height: 100%;
   position: relative;
@@ -177,7 +183,7 @@ span.material-icons {
     'opsz' 20
 }
 
-li{
+li {
   outline: none !important;
 }
 
