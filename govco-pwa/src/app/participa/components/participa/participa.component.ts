@@ -59,8 +59,8 @@ export class ParticipaComponent implements OnInit {
     //                                         1, 2, 3 -> Tramites, Ingresa
     //servicioSideNav.seleccionandoItem(a, b)  a -> Activa o inactiva menu lateral
     //                                         b -> String con el valor del item a seleccionar
-    //bottomService.ajustandoPantalla(true)    true -> Agrega clase de css para ajustar 
-    //                                                 la pantalla cuando en la seccion  
+    //bottomService.ajustandoPantalla(true)    true -> Agrega clase de css para ajustar
+    //                                                 la pantalla cuando en la seccion
     //                                                 consultada no tiene header
     this.servicioHeader.estadoHeader(true, true);
     // this.bottomService.putOcultandoBottomMenu(false);
@@ -69,7 +69,6 @@ export class ParticipaComponent implements OnInit {
     this.bottomService.ajustandoPantalla(false);
     (document.getElementById('topScroll') as HTMLElement).style.top = '3.5rem';
     (document.getElementById('topScroll') as HTMLElement).scrollTop = 0;
-
     this.iniciarFiltro();
     this.iniciarCargaDatos();
     window["objeto"] = this;
