@@ -19,25 +19,20 @@
             <div class="accordion acordeon-pwa-govco" id="ejemploAcordeon">
                 <div class="card" *ngFor="let item of items; let i = index;" [class.active]="item.active">
                     <div class="card-header" id="headingOne">
-                        <!-- <a class="mb-0"> -->
-                            <button (click)="activarItem(i)" class="btn btn-link btn-block text-left" type="button"
-                                data-toggle="collapse" [attr.data-target]="'#collapse' + i" aria-expanded="false"
-                                [attr.aria-controls]="'collapse' + i">
-                                {{item.titulo}}
-                                <div class="caja-icono-48-pwa">
-                                    <img src="../../../../assets/icons-fonts/explore_FILL0_wght500_GRAD0_opsz20.svg"
-                                        alt="Abrir enlace a Google Maps o Navegador">
-                                </div>
-                                <!-- <div class="caja-icono-48-pwa">
-                                    <img src="../../../../assets/icons-fonts/expand_more.svg"
-                                        alt="Expandir acordeon para ver más información">
-                                </div> -->
-                                
-                                <span class="material-symbols-outlined">
-                                    expand_more
-                                </span>
-                            </button>
-                        <!-- </a> -->
+                        <button (click)="activarItem(i)" class="btn btn-link btn-block text-left" type="button"
+                            data-toggle="collapse" [attr.data-target]="'#collapse' + i" aria-expanded="false"
+                            [attr.aria-controls]="'collapse' + i">
+                            {{item.titulo}}
+                            <span class="caja-icono-48-pwa">
+                                <img src="../../../../assets/icons-fonts/explore_FILL0_wght500_GRAD0_opsz20.svg"
+                                    alt="Abrir enlace a Google Maps o Navegador">
+                            </span>
+                            <span class="caja-icono-48-pwa">
+                                <img class="icono-acordeon" src="../../../../assets/icons-fonts/expand_more.svg"
+                                    alt="Expandir acordeon para ver más información">
+                            </span>
+
+                        </button>
                     </div>
                     <div [id]="'collapse' + i" class="collapse" [attr.aria-labelledby]="'heading' + i"
                         data-parent="#ejemploAcordeon">

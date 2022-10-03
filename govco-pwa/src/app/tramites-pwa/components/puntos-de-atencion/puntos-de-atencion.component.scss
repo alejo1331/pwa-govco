@@ -103,7 +103,7 @@
                 justify-content: space-between;
                 align-items: center;
 
-                span {
+                .icono-acordeon {
                     font-size: 32px;
                     transition: 0.4s linear transform;
                 }
@@ -126,7 +126,7 @@
         background-color: #FFFFFF !important;
 
         .card-header button {
-            span {
+            .icono-acordeon {
                 display: inline;
                 transform: rotate(-180deg);
             }
