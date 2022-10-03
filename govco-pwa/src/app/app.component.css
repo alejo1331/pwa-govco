@@ -37,7 +37,7 @@ mat-sidenav-container {
 }
 
 mat-sidenav {
-  width: 71.78vw;
+  width: 264px;
   background: whitesmoke;
   text-align: center;
 }
@@ -53,7 +53,7 @@ mat-sidenav {
 
 /* MICROINTERACCIÓN DE CONTENIDO */
 .escalarContenido {
-  transform: scale(0.8);
+  transform: scale(0.75);
   border-radius: 20px;
   border: 1px solid rgba(255, 255, 255, 0.16);
 }
