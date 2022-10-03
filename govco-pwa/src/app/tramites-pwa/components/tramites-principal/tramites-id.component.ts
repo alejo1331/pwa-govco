@@ -14,6 +14,7 @@ export class TramitesIdComponent implements OnInit {
   // @Input() informacionFicha: { id: number, tipo: string | null, prefijo: string };
   informacionFicha: { id: number, tipo: string | null, prefijo: string };
   estructuraModalDesplegable: { titulo: string, icono: string }[];
+  dataAcordeon: {perfil:string, idTramite: number}
   infoBasicaTramite: any;
   nombreTramite: string;
   idTramite: number;
@@ -77,6 +78,10 @@ export class TramitesIdComponent implements OnInit {
 
   perfilSeleccionado(perfil: string){
     //En esta seccion se realiza un output hacia al acordeon el perfil y dentro de ese acordeon 
+   this.dataAcordeon = {
+    perfil : perfil,
+    idTramite: this.informacionFicha.id
+   }
     //se realiza la consulta de las acciones 
     this.cargarMomentosAudiencia( this.informacionFicha.id, perfil);
   }
@@ -105,7 +110,6 @@ export class TramitesIdComponent implements OnInit {
   }
 
   private eliminarValoresRepetidosMomentos(data: any[]) {
-
     const temp: any[] = [];
     const returnData: any[] = [];
 

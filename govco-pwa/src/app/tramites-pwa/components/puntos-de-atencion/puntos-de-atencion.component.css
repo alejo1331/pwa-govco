@@ -20,8 +20,15 @@
 }
 
 .puntos-atencion-govco-pwa .seccion-puntos-atencion h1 {
-    margin: 16px 0 0 0;
+    margin: 24px 0 0 0;
     font-family: 'Montserrat-SemiBold';
     color:#004884;
     font-size: 20px;
+}
+
+.puntos-atencion-govco-pwa .seccion-puntos-atencion h2 {
+    margin: 24px 0 0 0;
+    font-family: 'Montserrat-Medium';
+    color:#004884;
+    font-size: 14px;
 }
