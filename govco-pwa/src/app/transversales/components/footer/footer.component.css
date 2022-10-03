@@ -15,7 +15,6 @@ h1.titulo-footer-pwa-govco {
   color: #004884;
   margin: 0;
   line-height: 1.75rem;
-  background-color: yellowgreen;
 }
 
 /* Seccion lista */
@@ -37,7 +36,6 @@ h1.titulo-footer-pwa-govco {
 .item-info-general-pwa-govco,
 .item-info-contacto-pwa-govco {
   margin-bottom: 1rem;
-  background-color: yellowgreen;
 }
 
 .item-info-general-content,
