@@ -22,9 +22,7 @@
                 justify-content: space-between;
                 span {
                     font-size: 32px;
-                }
-                span:nth-child(2) {
-                    display: none;
+                    transition: 0.4s linear transform;
                 }
             }
             h2 button:focus {
@@ -41,11 +39,8 @@
         border-color: #004884;
         background-color: #FFFFFF !important;
         .card-header h2 button {
-            span:nth-child(2) {
-                display: inline;
-            }
-            span:nth-child(1) {
-                display: none;
+            span {
+                transform: rotate(-180deg);
             }
         }
     }
