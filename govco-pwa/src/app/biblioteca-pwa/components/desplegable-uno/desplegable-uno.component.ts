@@ -34,7 +34,10 @@ export class DesplegableUnoComponent implements OnInit {
         this.data.forEach(elemento => {
           if (elemento['detalle'] === this.estructura[i].titulo) {
             this.estado[i] = false;
-            this.seleccionarItem(i - (this.data.length - 1))
+            this.seleccionarItem(i - (this.data.length - 1));
+            if (this.estructura[this.itemSelected] != undefined) {
+              this.perfilSeleccionado.emit(this.estructura[this.itemSelected].titulo)
+            }
           }
         });
       }
