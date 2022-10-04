@@ -6,9 +6,37 @@ import { SidenavService } from 'src/app/transversales/services/sidenav-service/s
 @Component({
   selector: 'app-puntos-de-atencion',
   templateUrl: './puntos-de-atencion.component.html',
-  styleUrls: ['./puntos-de-atencion.component.css']
+  styleUrls: ['./puntos-de-atencion.component.scss']
 })
 export class PuntosDeAtencionComponent implements OnInit {
+
+  public items = [
+    {
+      active: false,
+      titulo: 'Fondo de desarrollo de la Educación Superior',
+      descripcion: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam gravida.'
+    },
+    {
+      active: false,
+      titulo: 'Fondo de desarrollo de la Educación Superior de Arauca',
+      descripcion: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam gravida.'
+    },
+    {
+      active: false,
+      titulo: 'Fondo de desarrollo de la Educación Superior',
+      descripcion: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam gravida.'
+    },
+    {
+      active: false,
+      titulo: 'Fondo de desarrollo de la Educación Superior',
+      descripcion: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam gravida.'
+    },
+    {
+      active: false,
+      titulo: 'Fondo de desarrollo de la Educación Superior',
+      descripcion: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam gravida.'
+    }
+  ]
 
   constructor(
     protected servicioSideNav: SidenavService,
@@ -27,8 +55,17 @@ export class PuntosDeAtencionComponent implements OnInit {
     contenedorTopScroll.scrollTop = 0;
   }
 
-  cerrarPuntoAtencion(){
-    
+  cerrarPuntoAtencion() {
+
+  }
+
+  activarItem(index: number) {
+    this.items[index].active = !this.items[index].active;
+    this.items.forEach(function (item, indexItem) {
+      if (indexItem != index) {
+        item.active = false;
+      }
+    });
   }
 
 }

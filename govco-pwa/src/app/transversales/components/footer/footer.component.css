@@ -36,7 +36,6 @@ h1.titulo-footer-pwa-govco {
 .item-info-general-pwa-govco,
 .item-info-contacto-pwa-govco {
   margin-bottom: 1rem;
-  line-height: 1.5rem;
 }
 
 .item-info-general-content,
@@ -145,7 +144,11 @@ a.texto-item-info-contacto-pwa-govco {
 }
 
 .caja-icono-pwa-govco .material-symbols-outlined {
-  font-variation-settings: 'FILL' 1, 'wght' 600, 'GRAD' 0, 'opsz' 20;
+  font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 20;
+}
+
+.icono-accesibilidad-accordion-pwa-govco {
+  font-size: 1.25rem;
 }
 
 a.contenido-item-info-contacto-pwa-govco,

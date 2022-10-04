@@ -217,41 +217,42 @@ steps:
 #  |_|  |_|_\ \___/ |___/ 
 #
 
-# - name: nodejs_build_prod
-#   image: node:16.14.0
-#   commands:
-#   - cd ./govco-pwa/
-#   - npm install -g @angular/cli
-#   - npm i --save-dev @types/select2
-#   - ng build --configuration="production"
-#   when:
-#     branch:
-#     - release_production
-#     event:
-#     - push
-#     - merge
+- name: nodejs_build_prod
+  image: node:16.14.0
+  commands:
+  - cd ./govco-pwa/
+  - npm install -g @angular/cli
+  - npm i --save-dev @types/select2
+  - ng build --configuration="production"
+  when:
+    branch:
+    - release_production
+    event:
+    - push
+    - merge
 
-# - name: upload_to_aws_s3_prod
-#   image: plugins/s3
-#   settings:
-#     bucket: 
-#       from_secret: BUCKET_PROD
-#     access_key: 
-#       from_secret: ACCESS_KEY_S3_PROD
-#     secret_key: 
-#       from_secret: SECRET_S3_PROD
-#     region:
-#       from_secret: REGION_S3
-#     strip_prefix: govco-pwa/dist/govco-pwa
-#     delete: true
-#     source: ./govco-pwa/dist/govco-pwa/**/*
-#     target: /
-#   when:
-#     branch:
-#     - release_production
-#     event:
-#     - push
-#     - merge
+- name: upload_to_aws_s3_prod
+  image: plugins/s3
+  settings:
+    bucket: 
+      from_secret: BUCKET_PROD
+    access_key: 
+      from_secret: ACCESS_KEY_S3_PROD
+    secret_key: 
+      from_secret: SECRET_S3_PROD
+    region:
+      from_secret: REGION_S3
+    strip_prefix: govco-pwa/dist/govco-pwa
+    delete: true
+    # source: ./govco-pwa/dist/govco-pwa/**/*
+    source: ./govco-pwa/dist/govco-pwa/favicon.ico
+    target: /
+  when:
+    branch:
+    - release_production
+    event:
+    - push
+    - merge
 
 #                                         #
 # --------------------------------------- #
