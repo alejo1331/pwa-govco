@@ -6,14 +6,15 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./tramites-id-acordeon.component.scss']
 })
 export class TramitesIdAcordeonComponent implements OnInit {
-  @Input() informacionFicha: any;
+  @Input() dataAcordeon: any;
 
   constructor() { }
 
   ngOnInit(): void { }
 
   activarItem(index:number) {
-    const elements = document.querySelectorAll('.card');
+    console.log('dataAcordeon', this.dataAcordeon)
+    const elements = document.querySelectorAll('#acordeonPerfilTramites > .card');
     elements.forEach((element, indexItem) => {
       if (index == indexItem && !element.classList.contains('active')) {
         element.classList.add('active');
