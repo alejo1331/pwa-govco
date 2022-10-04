@@ -4,14 +4,12 @@
 
 .puntos-atencion-govco-pwa .barra-superior {
     height: 3.5rem;
-    opacity: 1;
     display: flex;
     align-items: center;
     justify-content: flex-end;
 }
 
 .puntos-atencion-govco-pwa .seccion-puntos-atencion {
-    height: 100%;
     padding-bottom: 2.5rem;
 }
 
@@ -65,7 +63,7 @@
 .puntos-atencion-govco-pwa .columa-informativa {
     display: flex;
     justify-content: space-between;
-    padding: 0.813rem 1rem;
+    padding: 0.813rem 3.5rem 0.813rem 1rem;
     height: 2.75rem;
     width: 100%;
     background-color: #004884;
@@ -81,6 +79,7 @@
 
 .puntos-atencion-govco-pwa .acordeon-pwa-govco {
     width: 100%;
+
     .card {
         width: 100%;
         border: 2px solid #E8EFFC;
@@ -94,18 +93,35 @@
             padding: 0;
 
             button {
-                padding: 7px 0 7px 16px;
-                color: #004884;
-                font-family: 'WorkSans-Regular';
-                font-size: 0.875em;
+                padding: 0;
+                border: 0;
                 text-decoration: none;
                 display: flex;
                 justify-content: space-between;
-                align-items: center;
 
-                .icono-acordeon {
-                    font-size: 32px;
-                    transition: 0.4s linear transform;
+                p {
+                    color: #000000;
+                    font-family: 'WorkSans-Regular';
+                    font-size: 0.875em;
+                    margin: 0;
+                    padding: .438rem 1rem .438rem 1rem;
+                    line-height: 1.063rem;
+                }
+
+                .grupo-iconos-acordeon {
+                    display: flex;
+                    width: 6.5rem;
+                    height: auto;
+
+                    img {
+                        width: 30px;
+                        height: 30px;
+                    }
+
+                    .icono-expand-more {
+                        font-size: 32px;
+                        transition: 0.4s linear transform;
+                    }
                 }
             }
 
@@ -117,16 +133,44 @@
         .card-body {
             color: #000000;
             font-family: 'WorkSans-Regular';
-            font-size: 14px;
+            font-size: .875rem;
+            padding: 1.5rem 1rem;
+
+            h4 {
+                color: #004884;
+                font-family: 'WorkSans-SemiBold';
+                font-size: .875rem;
+                margin-bottom: .5rem;
+                line-height: 1rem;
+            }
+
+            .descripcion {
+                color: #000000;
+                font-family: 'WorkSans-Regular';
+                font-size: .875rem;
+                margin-bottom: 1.5rem;
+                padding-right: 6rem;
+                line-height: 1.125rem;
+            }
+
+            a.descripcion {
+                text-decoration: underline;
+                color: #3366CC;
+            }
+
         }
     }
 
     .card.active {
-        border-color: #004884;
+        border-color: #FFFFFF;
         background-color: #FFFFFF !important;
 
         .card-header button {
-            .icono-acordeon {
+            p {
+                font-family: 'WorkSans-Medium';
+            }
+
+            .icono-expand-more {
                 display: inline;
                 transform: rotate(-180deg);
             }

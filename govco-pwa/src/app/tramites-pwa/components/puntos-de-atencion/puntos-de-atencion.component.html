@@ -22,22 +22,30 @@
                         <button (click)="activarItem(i)" class="btn btn-link btn-block text-left" type="button"
                             data-toggle="collapse" [attr.data-target]="'#collapse' + i" aria-expanded="false"
                             [attr.aria-controls]="'collapse' + i">
-                            {{item.titulo}}
-                            <span class="caja-icono-48-pwa">
-                                <img src="../../../../assets/icons-fonts/explore_FILL0_wght500_GRAD0_opsz20.svg"
-                                    alt="Abrir enlace a Google Maps o Navegador">
-                            </span>
-                            <span class="caja-icono-48-pwa">
-                                <img class="icono-acordeon" src="../../../../assets/icons-fonts/expand_more.svg"
-                                    alt="Expandir acordeon para ver más información">
-                            </span>
-
+                            <p>{{item.titulo}}</p>
+                            <div class="grupo-iconos-acordeon">
+                                <span class="caja-icono-48-pwa mr-2">
+                                    <img src="../../../../assets/icons-fonts/explore_FILL0_wght500_GRAD0_opsz20.svg"
+                                        alt="Abrir enlace a Google Maps o Navegador">
+                                </span>
+                                <span class="caja-icono-48-pwa">
+                                    <img class="icono-expand-more" src="../../../../assets/icons-fonts/expand_more.svg"
+                                        alt="Expandir acordeon para ver más información">
+                                </span>
+                            </div>
                         </button>
                     </div>
                     <div [id]="'collapse' + i" class="collapse" [attr.aria-labelledby]="'heading' + i"
                         data-parent="#ejemploAcordeon">
                         <div class="card-body">
-                            {{item.descripcion}}
+                            <h4>Departamento/Municipio</h4>
+                            <p class="descripcion">{{item.departamentoMunicipio}}</p>
+                            <h4>Dirección</h4>
+                            <p class="descripcion">{{item.direccion}}</p>
+                            <h4>Horario</h4>
+                            <p class="descripcion">{{item.horario}}</p>
+                            <h4>Teléfono</h4>
+                            <a href="tel: {{item.telefono}}" class="descripcion">{{item.telefono}}</a>
                         </div>
                     </div>
                 </div>

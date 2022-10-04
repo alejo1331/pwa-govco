@@ -14,27 +14,42 @@ export class PuntosDeAtencionComponent implements OnInit {
     {
       active: false,
       titulo: 'Fondo de desarrollo de la Educación Superior',
-      descripcion: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam gravida.'
+      departamentoMunicipio: 'Bogotá. D.C. / Bogotá, Distrito Capital.',
+      direccion: 'Calle 57 No 8 B - 05 interior 32',
+      horario: '5 p.m',
+      telefono: '(+57) 315 3478616'
     },
     {
       active: false,
       titulo: 'Fondo de desarrollo de la Educación Superior de Arauca',
-      descripcion: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam gravida.'
+      departamentoMunicipio: 'Bogotá. D.C. / Bogotá, Distrito Capital.',
+      direccion: 'Calle 57 No 8 B - 05 interior 32',
+      horario: '5 p.m',
+      telefono: '(+57) 315 3478616'
     },
     {
       active: false,
       titulo: 'Fondo de desarrollo de la Educación Superior',
-      descripcion: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam gravida.'
+      departamentoMunicipio: 'Bogotá. D.C. / Bogotá, Distrito Capital.',
+      direccion: 'Calle 57 No 8 B - 05 interior 32',
+      horario: '5 p.m',
+      telefono: '(+57) 315 3478616'
     },
     {
       active: false,
       titulo: 'Fondo de desarrollo de la Educación Superior',
-      descripcion: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam gravida.'
+      departamentoMunicipio: 'Bogotá. D.C. / Bogotá, Distrito Capital.',
+      direccion: 'Calle 57 No 8 B - 05 interior 32',
+      horario: '5 p.m',
+      telefono: '(+57) 315 3478616'
     },
     {
       active: false,
       titulo: 'Fondo de desarrollo de la Educación Superior',
-      descripcion: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam gravida.'
+      departamentoMunicipio: 'Bogotá. D.C. / Bogotá, Distrito Capital.',
+      direccion: 'Calle 57 No 8 B - 05 interior 32',
+      horario: '5 p.m',
+      telefono: '(+57) 315 3478616'
     }
   ]
 
