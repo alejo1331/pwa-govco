@@ -1,16 +1,83 @@
 .container-detalle {
     padding: 0px 16px 0px 16px;
-    .contenido-detalle{
+
+    .contenido-detalle {
         font-size: 14px;
         margin-bottom: 48px;
-        .ficha-descripcion{
+
+        .ficha-descripcion {
             font-family: "WorkSans-Regular";
             color: #000;
         }
-        a{
+
+        a {
             font-family: "WorkSans-SemiBold";
             color: #3366CC;
             margin-top: 20px;
         }
     }
+
+    .caracteriticas-tramite{
+        margin-top: 40px;
+        .title-tramites {
+            font-family: 'Montserrat-Medium';
+            font-size: 14px;
+            margin-bottom: 24px;
+        }
+    
+        .card-detalle-tramite {
+            border: 2px solid #E8EFFC;
+            background-color: #E6EFFD;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+            .container-icon-detalle{
+                border-radius: 10px;
+                width: 40px;
+                height: 40px;
+                background-color: #3366CC;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 8px;
+                .material-symbols-outlined {
+                    color: #fff;
+                    font-variation-settings:
+                        'FILL' 0,
+                        'wght' 500,
+                        'GRAD' 0,
+                        'opsz' 24
+                }
+            }
+            .container-text-detalle{
+                p{
+                    margin-bottom: 0;
+                }
+                .tramite-type{
+                    font-family: "WorkSans-Regular";
+                    font-size: 13px;
+                }
+                .tramite-type-detalle{
+                    font-family: "WorkSans-Medium";
+                    font-size: 16px;
+                }
+            }
+            
+    
+        }
+    }
+    .separador{
+        display: flex;
+        justify-content: center;
+    }
+    .separador::after {
+		content: "";
+		display: block;
+		width: 88px;
+		height: 2px;
+		background-color: #1c4780;
+        margin-top: 28px;
+        margin-bottom: 36px;
+	}
 }
