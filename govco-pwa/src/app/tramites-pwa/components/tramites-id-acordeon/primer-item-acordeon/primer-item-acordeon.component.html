@@ -1,1 +1,22 @@
-<p>primer-item-acordeon works!</p>
+<div class="accordion subacordeon-pwa-govco" id="primerItemAcordeon">
+    <div class="card" *ngFor="let item of dataItemAcordeon; let i = index;" [class.active]="item.active">
+        <div class="card-header" [id]="'item' + i">
+            <h2 class="mb-0">
+                <button (click)="activarItem(i)" class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" [attr.data-target]="'#collapseItem' + i" aria-expanded="false" [attr.aria-controls]="'collapseItem' + i">
+                    <div class="numList">
+                        {{i + 1}}
+                    </div>
+                    {{item.Descripcion}}
+                    <span class="material-symbols-outlined">
+                        expand_more
+                    </span>
+                </button>
+            </h2>
+        </div>
+        <div [id]="'collapseItem' + i" class="collapse" [attr.aria-labelledby]="'item' + i" data-parent="#primerItemAcordeon">
+            <div class="card-body">
+                {{item.Descripcion}}
+            </div>
+        </div>
+    </div>
+</div>

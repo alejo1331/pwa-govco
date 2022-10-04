@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
 import { TramitesPorIdService } from 'src/app/tramites-pwa/services/tramites-por-id-service/tramites-por-id.service';
 
 @Component({
@@ -7,21 +7,32 @@ import { TramitesPorIdService } from 'src/app/tramites-pwa/services/tramites-por
   styleUrls: ['./primer-item-acordeon.component.scss']
 })
 export class PrimerItemAcordeonComponent implements OnInit {
-  @Input() informacionFicha: any;
+  @Input() dataAcordeon: any;
 
-  dataAcordeon: any[];
+  dataItemAcordeon: any[];
 
   constructor(
     protected fichaTramiteService: TramitesPorIdService
   ) { }
 
   ngOnInit(): void {
-    this.loadMomentosAudiencia(this.informacionFicha.id, "Ciudadano");
+    this.loadMomentosAudiencia();
   }
 
-  private loadMomentosAudiencia(idTramite: number, perfil: string ) {
-    this.fichaTramiteService.GetMomentosByIdAudiencia(idTramite, perfil ).subscribe( n => {
-      this.dataAcordeon = this.eliminarValoresRepetidosMomentos(n);
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes.dataAcordeon) {
+      if (!changes.dataAcordeon.previousValue) {
+        this.loadMomentosAudiencia();
+      } else if (changes.dataAcordeon.currentValue.idTramite != changes.dataAcordeon.previousValue.idTramite ||
+        changes.dataAcordeon.currentValue.perfil != changes.dataAcordeon.previousValue.perfil) {
+        this.loadMomentosAudiencia();
+      }
+    }
+  }
+
+  private loadMomentosAudiencia() {
+    this.fichaTramiteService.GetMomentosByIdAudiencia(this.dataAcordeon.idTramite, this.dataAcordeon.perfil).subscribe( n => {
+      this.dataItemAcordeon = this.eliminarValoresRepetidosMomentos(n);
     });
   }
 
@@ -50,5 +61,26 @@ export class PrimerItemAcordeonComponent implements OnInit {
     });
 
     return returnData;
+  }
+
+  activarItem(index:number) {
+    this.dataItemAcordeon[index].active = !this.dataItemAcordeon[index].active;
+    this.dataItemAcordeon.forEach(function(item, indexItem){
+      if (indexItem != index) {
+        item.active = false;
+      }
+    });
+
+    if (this.dataItemAcordeon[index].active) {
+      this.cargarDetalleMomento(index);
+    }
+  }
+
+  private cargarDetalleMomento(index: number) {
+    this.fichaTramiteService.GetDataFichaByIdTramiteAudienciaIdMomento(this.dataAcordeon.idTramite, this.dataAcordeon.perfil, this.dataItemAcordeon[index].MomentoId)
+      .subscribe((dataAccion: any) => {
+        this.dataItemAcordeon[index].acciones = dataAccion.acciones;
+        console.log('cargarDetalleMomento', this.dataItemAcordeon)
+      });
   }
 }
