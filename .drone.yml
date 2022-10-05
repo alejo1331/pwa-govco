@@ -17,7 +17,7 @@ steps:
 - name: run_sonar_scanner
   image: timbru31/java-node
   commands:
-    - export RELEASE=4.2.0.1873
+    - export RELEASE=4.7.0.2747
     - cat /etc/os-release
     - apt-get update -y
     - apt-get -y install curl grep sed unzip zip nodejs apt-utils
