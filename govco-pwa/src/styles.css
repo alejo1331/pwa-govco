@@ -74,6 +74,13 @@
   src: url('assets/fonts/Work_Sans/static/WorkSans-Regular.ttf');
 }
 
+/* WorkSans-Light */
+@font-face {
+  font-family: 'WorkSans-Light';
+  font-weight: '600';
+  src: url('assets/fonts/Work_Sans/static/WorkSans-Light.ttf');
+}
+
 html {
   font-size: 100%;
   /* 100% = 16px */

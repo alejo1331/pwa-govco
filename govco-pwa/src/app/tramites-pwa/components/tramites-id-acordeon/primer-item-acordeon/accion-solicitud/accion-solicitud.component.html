@@ -1,0 +1,41 @@
+
+<div class="card-body container-solicitud">
+    <h4>{{data.AtencionDescripcion}}</h4>
+    <p>
+        Entregar la documentación en la ventanilla de atención al ciudadano de la sede principal o en las oficinas de los Grupos de Trabajo Territorial. Se deben presentar los documentos foliados (enumerados) en la parte superior derecha de la hoja, tomando como primer folio el recibo de consignación o soporte de la transferencia electrónica.
+    </p>
+    <h5>Medio</h5>
+    <div class="card" *ngFor="let item of data.data">
+        <div class="card-header">
+            {{item.TipoCanal}}
+        </div>
+        <div class="card-body">
+            <a *ngIf="item.TipoCanal === 'CORREO'" href="mailto:{{ item.Correo }}" target="_blank">
+                {{item.Correo}}
+            </a>
+            <app-boton *ngIf="item.TipoCanal === 'PRESENCIAL'" [inverted]="true"  [border]="true">
+                Ver los puntos de atención
+            </app-boton>
+            <a *ngIf="item.TipoCanal === 'WEB'" [href]="item.UrlCanalWeb" target="_blank">
+                {{item.NombreCanalWeb}}
+            </a>
+            <h6 *ngIf="item.TipoCanal === 'TELEFONICO'">
+                <!-- T7760 -->
+                {{item.TipoTelefono}} {{item.NumeroTelefono}}
+                <span *ngIf="item.ExtensionTelFijo != null"> ext. {{item.ExtensionTelFijo}}, </span>
+                Horario de Atención:{{item.HorarioAtencionTelef}}
+            </h6>
+        </div>
+    </div>
+    <h5>Medio</h5>
+    <div class="card">
+        <div class="card-header">
+            Presencial
+        </div>
+        <div class="card-body">
+            <app-boton [inverted]="true" [border]="true">
+                Ver los puntos de atención
+            </app-boton>
+        </div>
+    </div>
+</div>
