@@ -1,0 +1,46 @@
+.container-solicitud {
+    h4 {
+        color: #004884;
+        font-size: 16px;
+        font-family: 'WorkSans-SemiBold';
+        margin-bottom: 16px;
+        display: block;
+    }
+    p {
+        color: #000000;
+        font-size: 16px;
+        font-family: 'WorkSans-Light';
+    }
+    h5 {
+        color: #004884;
+        font-size: 16px;
+        font-family: 'WorkSans-Medium';
+        margin-top: 24px;
+        margin-bottom: 16px;
+    }
+    .card {
+        border: 0;
+        border-radius: 5px;
+        .card-header {
+            background-color: #F2F2F2;
+            border: 0;
+            color: #000000;
+            font-family: 'WorkSans-SemiBold';
+            font-size: 14px;
+            padding: 14px 16px 14px 16px;
+        }
+        .card-body {
+            background-color: #FFFFFF;
+            padding: 14px 16px 14px 16px;
+            a {
+                color: #3366CC;
+                font-family: 'WorkSans-Medium';
+                font-size: 14px;
+                text-decoration: underline;
+            }
+            ::ng-deep button {
+                font-size: 15px;
+            }
+        }
+    }
+}

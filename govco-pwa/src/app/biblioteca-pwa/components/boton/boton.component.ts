@@ -9,6 +9,7 @@ export class BotonComponent implements OnInit {
 
   @Input() symbol = false;
   @Input() inverted = false;
+  @Input() border = false;
   @Input() disabled = false;
 
   constructor() { }

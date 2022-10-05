@@ -80,7 +80,6 @@ export class PrimerItemAcordeonComponent implements OnInit {
     this.fichaTramiteService.GetDataFichaByIdTramiteAudienciaIdMomento(this.dataAcordeon.idTramite, this.dataAcordeon.perfil, this.dataItemAcordeon[index].MomentoId)
       .subscribe((dataAccion: any) => {
         this.dataItemAcordeon[index].acciones = dataAccion.acciones;
-        console.log('cargarDetalleMomento', this.dataItemAcordeon)
       });
   }
 }

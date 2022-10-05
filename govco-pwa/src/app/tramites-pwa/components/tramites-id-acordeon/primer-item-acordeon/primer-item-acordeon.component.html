@@ -14,8 +14,9 @@
             </h2>
         </div>
         <div [id]="'collapseItem' + i" class="collapse" [attr.aria-labelledby]="'item' + i" data-parent="#primerItemAcordeon">
-            <div class="card-body">
-                {{item.Descripcion}}
+            <div *ngFor="let accion of item.acciones">
+                <!-- {{accion.TipoAccionCondicion}} -->
+                <app-accion-solicitud *ngIf="accion.TipoAccionCondicion === 'SOLICITUD'" [data]="accion"></app-accion-solicitud>
             </div>
         </div>
     </div>
