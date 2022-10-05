@@ -18,7 +18,7 @@
 
   .govco-pwa-carpeta-background{
     width: 100%;
-    height:  44.35rem;
+    height:  auto;
     background: transparent linear-gradient(180deg, #1B4AA7 0%, #113680 100%) 0% 0% no-repeat padding-box;
 
   }
@@ -38,10 +38,11 @@
   .govco-pwa-carpeta-video{
     width: 100%;
     margin: auto;
-    margin-top: 30px;
     padding: 0px 16px 0px 16px;
     position: relative;
-    margin-top: 21px;
+    margin-top: 41px;
+    display: flex;
+    flex-direction: column;
     iframe{
       width: 100%;
       height: 11.25rem;
@@ -49,11 +50,12 @@
     }
     .govco-pwa-video-guion{
       width: 100%;
-      height: 40px;
-      padding: 12px;
+      padding: 0px 0px 0px 12px;
       color: white;
       display: flex;
-      margin-top: 2px;
+      margin-top: 8px;
+      height: 40px;
+      align-items: center;
       a{
         font-family: 'WorkSans-SemiBold';
         font-size: 14px;
@@ -74,25 +76,26 @@
 
   .govco-pwa-carpeta-registro{
     top: 20px;
-    padding: 0px 16px 0px 16px;
+    padding: 0px 16px 24px 16px;
     margin-top: 20px;
     .govco-pwa-registro-texto{
       p{
         color: white;
         font-family: 'WorkSans-Regular';
         font-size: 16px;
+        margin-bottom: 0 !important;
+
       }
     }
 
     .see-aux {
       display: flex;
-      align-items: left;
+      height: 44px;
+      margin-top: 24px;
       a {
-        margin-top: 8px;
         border-radius: 30px;
         padding: 0.7em 2em;
         color: #3366CC !important;
-        border: 2px solid  #004884;
         background-color: #ffffff;
         font-size: 1rem !important;
         font-family: "WorkSans-Medium";
