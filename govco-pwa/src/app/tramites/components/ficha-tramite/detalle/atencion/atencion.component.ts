@@ -21,6 +21,7 @@ export class AtencionComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    console.log('data', this.data)
     if (!this.data.EnLinea && this.areaServicio) {
       this.showComponent = false;
     }
