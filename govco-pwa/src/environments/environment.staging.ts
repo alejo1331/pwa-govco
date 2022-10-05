@@ -62,5 +62,5 @@ export const environment = {
   keyCaptcha: "6LeCqOcUAAAAAMu9McR1zoUH0z6wDj_dekAODW5h",
 
   //Carpeta ciudadana
-  carpetaciudadana:"https://qacarpetaciudadana.and.gov.co/",
+  carpetaciudadana:"https://precarpetaciudadana.and.gov.co/",
 };
