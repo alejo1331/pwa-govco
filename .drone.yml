@@ -32,9 +32,8 @@ steps:
     - sonar-scanner-$RELEASE-linux/bin/sonar-scanner -X
   when:
     branch:
-    - devops
-    # - develop
-    # - release*
+    - develop
+    - release*
     event:
     - push
     - merge
