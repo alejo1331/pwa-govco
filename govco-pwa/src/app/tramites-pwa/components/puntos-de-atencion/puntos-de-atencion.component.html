@@ -1,34 +1,44 @@
 <div class="puntos-atencion-govco-pwa">
     <div class="contenido-pwa-govco barra-superior ">
-        <div class="caja-icono-48-pwa" (click)="cerrarPuntoAtencion()">
+        <div class="caja-icono-48-pwa" (click)="cerrarPuntoAtencion()" tabindex="0">
             <img src="../../../../assets/icons-fonts/icono_cerrar_rojo.svg" alt="Cerrar ventana puntos de atención">
         </div>
     </div>
     <div class="contenido-pwa-govco seccion-puntos-atencion">
-        <h1>Convalidación de títulos de estudios de posgrado obtenidos en el exterior</h1>
-        <h2>Puntos de Atención</h2>
+        <h1 tabindex="0">Convalidación de títulos de estudios de posgrado obtenidos en el exterior</h1>
+        <h2 tabindex="0">Puntos de Atención</h2>
         <div class="linea-horizontal-2-pwa-govco"></div>
-        <input class="buscador icono-buscador"
-            style="background-image: url(../../../../assets/icons-fonts/search_FILL0_wght500_GRAD0_opsz20.svg)"
-            type="text" placeholder="Buscar">
+        <section class="seccion-buscador">
+            <input #inputBuscador class="buscador" type="text" placeholder="Buscar" name="search">
+            <div class="grupo-iconos-buscador">
+                <a class="caja-icono-24-pwa boton-backspace" tabindex="0">
+                    <span class="icono-backspace" type="image" (click)="borrarContenido()"
+                        alt="Borrar contenido de la barra de busqueda"></span>
+                </a>
+                <div class="linea-vertical"></div>
+                <a class="caja-icono-36-pwa" (click)="buscarContenido()" tabindex="0">
+                    <span class="icono-search" type="image" alt="Realizar busqueda"></span>
+                </a>
+            </div>
+        </section>
         <section class="seccion-acordeon">
-            <div class="columa-informativa">
+            <div class="columa-informativa" tabindex="0">
                 <h3>Punto</h3>
                 <h3>Ver Mapa</h3>
             </div>
             <div class="accordion acordeon-pwa-govco" id="ejemploAcordeon">
                 <div class="card" *ngFor="let item of items; let i = index;" [class.active]="item.active">
                     <div class="card-header" id="headingOne">
-                        <button (click)="activarItem(i)" class="btn btn-link btn-block text-left" type="button"
-                            data-toggle="collapse" [attr.data-target]="'#collapse' + i" aria-expanded="false"
-                            [attr.aria-controls]="'collapse' + i">
-                            <p>{{item.titulo}}</p>
+                        <button (click)="activarItem(i)" class="btn btn-link btn-block text-left"
+                            type="button" data-toggle="collapse" [attr.data-target]="'#collapse' + i"
+                            aria-expanded="false" [attr.aria-controls]="'collapse' + i">
+                            <p tabindex="0">{{item.titulo}}</p>
                             <div class="grupo-iconos-acordeon">
-                                <span class="caja-icono-48-pwa mr-2">
+                                <span class="caja-icono-48-pwa mr-2" tabindex="0">
                                     <img src="../../../../assets/icons-fonts/explore_FILL0_wght500_GRAD0_opsz20.svg"
                                         alt="Abrir enlace a Google Maps o Navegador">
                                 </span>
-                                <span class="caja-icono-48-pwa">
+                                <span class="caja-icono-48-pwa" tabindex="0" alt="Expandir acordeon para ver más información">
                                     <img class="icono-expand-more" src="../../../../assets/icons-fonts/expand_more.svg"
                                         alt="Expandir acordeon para ver más información">
                                 </span>
@@ -38,13 +48,13 @@
                     <div [id]="'collapse' + i" class="collapse" [attr.aria-labelledby]="'heading' + i"
                         data-parent="#ejemploAcordeon">
                         <div class="card-body">
-                            <h4>Departamento/Municipio</h4>
-                            <p class="descripcion">{{item.departamentoMunicipio}}</p>
-                            <h4>Dirección</h4>
-                            <p class="descripcion">{{item.direccion}}</p>
-                            <h4>Horario</h4>
-                            <p class="descripcion">{{item.horario}}</p>
-                            <h4>Teléfono</h4>
+                            <h4 tabindex="0">Departamento/Municipio</h4>
+                            <p class="descripcion" tabindex="0">{{item.departamentoMunicipio}}</p>
+                            <h4 tabindex="0">Dirección</h4>
+                            <p class="descripcion" tabindex="0">{{item.direccion}}</p>
+                            <h4 tabindex="0">Horario</h4>
+                            <p class="descripcion" tabindex="0">{{item.horario}}</p>
+                            <h4 tabindex="0">Teléfono</h4>
                             <a href="tel: {{item.telefono}}" class="descripcion">{{item.telefono}}</a>
                         </div>
                     </div>

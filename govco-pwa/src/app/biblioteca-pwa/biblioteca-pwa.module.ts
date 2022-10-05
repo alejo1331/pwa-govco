@@ -9,6 +9,7 @@ import { AcordeonComponent } from './components/acordeon/acordeon.component';
 import { NivelDosComponent } from './components/nivel-dos/nivel-dos.component';
 import { DesplegableUnoComponent } from './components/desplegable-uno/desplegable-uno.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { BuscadorSencilloV1Component } from './components/buscador-sencillo-v1/buscador-sencillo-v1.component';
 
 
 
@@ -23,6 +24,7 @@ import { FooterComponent } from './components/footer/footer.component';
     FooterComponent,
     DesplegableUnoComponent,
     NivelDosComponent,
+    BuscadorSencilloV1Component,
   ],
   imports: [
     CommonModule
@@ -37,6 +39,7 @@ import { FooterComponent } from './components/footer/footer.component';
     FooterComponent,
     DesplegableUnoComponent,
     NivelDosComponent,
+    BuscadorSencilloV1Component,
   ],
 })
 export class BibliotecaPwaModule { }
