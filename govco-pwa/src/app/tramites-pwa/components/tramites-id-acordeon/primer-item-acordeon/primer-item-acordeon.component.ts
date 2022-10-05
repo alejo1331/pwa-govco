@@ -81,6 +81,5 @@ export class PrimerItemAcordeonComponent implements OnInit {
       .subscribe((dataAccion: any) => {
         this.dataItemAcordeon[index].acciones = dataAccion.acciones;
       });
-      });
   }
 }
