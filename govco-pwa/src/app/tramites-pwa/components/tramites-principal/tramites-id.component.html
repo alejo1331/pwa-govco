@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <section #seccionTramitesId class="seccion-tramites-por-id">
     <app-header-compartir-v1></app-header-compartir-v1>
     <div class="contenido">
@@ -19,3 +20,16 @@
     <app-puntos-de-atencion [perfil_idTramite]="perfil_idTramite" (cerrarPuntosAtencion)="cerrarPuntosAtencion($event)">
     </app-puntos-de-atencion>
 </section>
+=======
+<app-nivel-dos>
+    <app-ficha-especifica-header-pwa></app-ficha-especifica-header-pwa>
+    <app-ficha-especifica-detalle-pwa></app-ficha-especifica-detalle-pwa>
+    <app-ficha-especifica-cards-pwa></app-ficha-especifica-cards-pwa>
+    <app-tramites-id-acordeon [dataAcordeon]="dataAcordeon"></app-tramites-id-acordeon>
+    <app-ficha-especifica-footer-pwa></app-ficha-especifica-footer-pwa>
+</app-nivel-dos>
+<app-boton-retroalimentacion></app-boton-retroalimentacion>
+<app-desplegable-uno *ngIf="audiencias" [data]="audiencias" [estructura]="estructuraModalDesplegable"
+    (perfilSeleccionado)="perfilSeleccionado($event)">
+</app-desplegable-uno>
+>>>>>>> 145763d (feat: Maquetacion Botones - Ficha Tramite V1)
