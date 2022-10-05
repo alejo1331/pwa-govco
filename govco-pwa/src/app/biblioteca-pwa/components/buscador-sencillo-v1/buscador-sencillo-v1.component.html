@@ -1,0 +1,13 @@
+<section class="seccion-buscador">
+    <input #inputBuscador class="buscador" type="text" placeholder="Buscar" name="search">
+    <div class="grupo-iconos-buscador">
+        <a class="caja-icono-24-pwa boton-backspace" tabindex="0">
+            <span class="icono-backspace" type="image" (click)="borrarContenido()"
+                alt="Borrar contenido de la barra de busqueda"></span>
+        </a>
+        <div class="linea-vertical"></div>
+        <a class="caja-icono-36-pwa" (click)="buscarContenido()" tabindex="0">
+            <span class="icono-search" type="image" alt="Realizar busqueda"></span>
+        </a>
+    </div>
+</section>
