@@ -1,9 +1,12 @@
-.seccion-tramides-por-id {
+.seccion-tramites-por-id {
     transition: 0.5s all;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
+}
+.seccion-tramites-por-id .contenido{
+    padding: 3.5rem 0 0.75rem;
 }
 .seccion-puntos-atencion {
     transition: 0.5s all;
