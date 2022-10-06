@@ -12,7 +12,7 @@
 }
 
 .govco-pwa-sidenav-items {
-  height: 100%;
+  height: 100vh;
   position: relative;
 }
 
@@ -34,7 +34,7 @@
   padding-left: 0px;
   width: 100%;
   bottom: 0;
-  margin: 0;
+  margin: 0px 0px 43px 0px;
   position: absolute;
 }
 
@@ -139,6 +139,7 @@ li hr {
     margin-left: 16px;
     border-radius: 1.5px;
     font-size: 1.5px;
+    margin-bottom: 24px;
 }
 
 a {
