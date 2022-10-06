@@ -1,0 +1,14 @@
+.seccion-tramides-por-id {
+    transition: 0.5s all;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+.seccion-puntos-atencion {
+    transition: 0.5s all;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    width: 100%;
+}

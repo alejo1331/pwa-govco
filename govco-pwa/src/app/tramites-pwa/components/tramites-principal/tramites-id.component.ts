@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BottomMenuService } from 'src/app/transversales/services/bottom-menu/bottom-menu.service';
 import { HeaderService } from 'src/app/transversales/services/header-service/header.service';
@@ -11,10 +11,14 @@ import { TramitesPorIdService } from '../../services/tramites-por-id-service/tra
   styleUrls: ['./tramites-id.component.css']
 })
 export class TramitesIdComponent implements OnInit {
-  // @Input() informacionFicha: { id: number, tipo: string | null, prefijo: string };
+  @ViewChild('seccionTramitesId') seccionTramitesId: ElementRef;
+  @ViewChild('seccionPuntoAtencion') seccionPuntoAtencion: ElementRef;
+
+  topScroll : HTMLElement;
+
   informacionFicha: { id: number, tipo: string | null, prefijo: string };
   estructuraModalDesplegable: { titulo: string, icono: string }[];
-  dataAcordeon: {perfil:string, idTramite: number}
+  dataAcordeon: { perfil: string, idTramite: number }
   infoBasicaTramite: any;
   nombreTramite: string;
   idTramite: number;
@@ -44,10 +48,11 @@ export class TramitesIdComponent implements OnInit {
     this.bottomService.putOcultandoBottomMenu(true);
     this.servicioSideNav.seleccionandoItem(false, 'null');
     this.bottomService.ajustandoPantalla(false);
-    const contenedorTopScroll = (document.getElementById('topScroll') as HTMLElement);
-    contenedorTopScroll.style.top = '0';
-    contenedorTopScroll.style.height = '100%';
-    contenedorTopScroll.scrollTop = 0;
+    this.topScroll = (document.getElementById('topScroll') as HTMLElement)
+    this.topScroll.style.height = '100%';
+    this.topScroll.scrollTop = 0;
+    this.topScroll.style.top = '0';
+
 
     this.loadData();
 
@@ -76,14 +81,26 @@ export class TramitesIdComponent implements OnInit {
     });
   }
 
-  perfilSeleccionado(perfil: string){
-    //En esta seccion se realiza un output hacia al acordeon el perfil y dentro de ese acordeon 
-   this.dataAcordeon = {
-    perfil : perfil,
-    idTramite: this.informacionFicha.id
-   }
-    //se realiza la consulta de las acciones 
-    this.cargarMomentosAudiencia( this.informacionFicha.id, perfil);
+  perfilSeleccionado(perfil: string) {
+    this.dataAcordeon = {
+      perfil: perfil,
+      idTramite: this.informacionFicha.id
+    }
+    this.cargarMomentosAudiencia(this.informacionFicha.id, perfil);
+  }
+
+  abrirPuntosAtencion() {
+    const abrirPuntosAtencion: string = '0';
+    const cerrarTramitesId: string = '-100%';
+    this.seccionTramitesId.nativeElement.style.left = cerrarTramitesId;
+    this.seccionPuntoAtencion.nativeElement.style.left = abrirPuntosAtencion;
+    this.topScroll.scrollTop = 0;
+  }
+
+  cerrarPuntosAtencion([cerrarPuntosAtencion, abrirTramitesId]: [string, string]) {
+    this.seccionTramitesId.nativeElement.style.left = abrirTramitesId;
+    this.seccionPuntoAtencion.nativeElement.style.left = cerrarPuntosAtencion;
+    this.topScroll.scrollTop = 0;
   }
 
   private async GenerarTrackingTramite(id: any) {

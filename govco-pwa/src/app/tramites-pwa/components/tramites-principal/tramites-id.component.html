@@ -1,7 +1,8 @@
-<section class="seccion-tramides-por-id">
+<section #seccionTramitesId class="seccion-tramides-por-id">
     <app-nivel-dos>
         <app-ficha-especifica-header-pwa></app-ficha-especifica-header-pwa>
         <app-ficha-especifica-detalle-pwa></app-ficha-especifica-detalle-pwa>
+        <app-boton (click)="abrirPuntosAtencion()">abrir puntos de atencion</app-boton>
         <app-tramites-id-acordeon [dataAcordeon]="dataAcordeon"></app-tramites-id-acordeon>
     </app-nivel-dos>
     <app-boton-retroalimentacion></app-boton-retroalimentacion>
@@ -10,6 +11,6 @@
     </app-desplegable-uno>
 </section>
 
-<section class="seccion-puntos-atencion">
-    <!-- <app-puntos-de-atencion></app-puntos-de-atencion> -->
+<section #seccionPuntoAtencion class="seccion-puntos-atencion">
+    <app-puntos-de-atencion (cerrarPuntosAtencion)="cerrarPuntosAtencion($event)"></app-puntos-de-atencion>
 </section>
