@@ -79,7 +79,92 @@ export class PrimerItemAcordeonComponent implements OnInit {
   private cargarDetalleMomento(index: number) {
     this.fichaTramiteService.GetDataFichaByIdTramiteAudienciaIdMomento(this.dataAcordeon.idTramite, this.dataAcordeon.perfil, this.dataItemAcordeon[index].MomentoId)
       .subscribe((dataAccion: any) => {
-        this.dataItemAcordeon[index].acciones = dataAccion.acciones;
+        this.dataItemAcordeon[index].acciones = this.agrupaAccionesPorTipoAccionCondicion(dataAccion.acciones);
+        console.log('dataItemAcordeon', this.dataItemAcordeon);
       });
+  }
+
+  private agrupaAccionesPorTipoAccionCondicion(data: any) {
+    const temp: any = [];
+    const tiposAccionCondicion = this.ordenaPorAccionesPor('TipoAccionCondicion', data);
+
+    data.forEach( (n: any) => {
+      const indiceTipoAccion = tiposAccionCondicion.findIndex( (t: any) => t === n.TipoAccionCondicion);
+
+      if (!temp[indiceTipoAccion]) {
+        temp[indiceTipoAccion] = [];
+      }
+
+      if (!temp[indiceTipoAccion][n.TipoAccionCondicion]) {
+        temp[indiceTipoAccion][n.TipoAccionCondicion] = [];
+      }
+
+      if (n.Excepcion) {
+        if (!temp['EXCEPCION']) {
+          temp['EXCEPCION']   = [];
+        }
+        temp['EXCEPCION'].push(n);
+      } else {
+        if (!temp[indiceTipoAccion][n.TipoAccionCondicion]) {
+          temp[indiceTipoAccion][n.TipoAccionCondicion] = [];
+        }
+        temp[indiceTipoAccion][n.TipoAccionCondicion].push(n);
+      }
+
+    });
+
+    if (temp['EXCEPCION']) {
+      temp['EXCEPCION'] = this.agruparExcepcionesPorId(temp['EXCEPCION']);
+    }
+
+    return temp;
+  }
+
+  private ordenaPorAccionesPor( opcion: string , data: any[]) {
+    const temp = new Set();
+    const dataRetorno: any = [];
+
+    data.forEach( n => {
+      if (opcion === 'ExcepcionId') {
+        temp.add(n.ExcepcionId);
+      } else {
+        temp.add(n.TipoAccionCondicion);
+      }
+    });
+
+    temp.forEach( (value1, value2, set) => {
+      dataRetorno.push(value1);
+    });
+
+    return dataRetorno;
+  }
+
+  private agruparExcepcionesPorId(data: any[]) {
+    if (data.length === 0) {
+      return data;
+    }
+
+    const temp: any = [];
+    const tiposExcepcion = this.ordenaPorAccionesPor('ExcepcionId', data);
+
+    data.forEach( n => {
+      const indiceTipoAccion = tiposExcepcion.findIndex( (t: any) => t === n.ExcepcionId);
+
+      if (!temp[indiceTipoAccion]) {
+        temp[indiceTipoAccion] = [];
+      }
+
+      if (!temp[indiceTipoAccion][n.TipoAccionCondicion]) {
+        temp[indiceTipoAccion][n.TipoAccionCondicion] = [];
+      }
+
+      if (!temp[indiceTipoAccion][n.TipoAccionCondicion]) {
+        temp[indiceTipoAccion][n.TipoAccionCondicion] = [];
+      }
+      temp[indiceTipoAccion]['Excepcion'] = n.Excepcion;
+      temp[indiceTipoAccion][n.TipoAccionCondicion].push(n);
+    });
+
+    return temp;
   }
 }

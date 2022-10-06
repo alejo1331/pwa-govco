@@ -1,0 +1,11 @@
+<div class="card-body container-verificacion">
+    <h4>Alerta:</h4>
+    <p>
+        No debe presentar ningún soporte ya que la institución verificará que usted la cumpla.
+    </p>
+    <div *ngFor="let accion of data">
+        <p *ngFor="let item of accion.data">
+            {{item.VerificacionInstDescripcion}}
+        </p>
+    </div>
+</div>

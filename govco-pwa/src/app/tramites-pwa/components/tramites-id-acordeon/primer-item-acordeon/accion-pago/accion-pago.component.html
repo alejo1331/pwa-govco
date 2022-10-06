@@ -1,0 +1,51 @@
+<div class="card-body">
+    <div class="container-pago" *ngFor="let item of data">
+        <h4>Pago</h4>
+        <div class="accordion acordeon-pwa-govco" id="acordeonPago">
+            <div class="card cardFather" *ngFor="let dataItem of item.dataInicial; let i = index;" [class.active]="dataItem.active">
+                <div class="card-header" [id]="'itemPago' + i">
+                    <h2 class="mb-0">                        
+                        <div class="card">
+                            <div class="card-header">
+                                <button (click)="activarItem(i, item.data)" class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" [attr.data-target]="'#collapsePago' + i" aria-expanded="false" [attr.aria-controls]="'collapsePago' + i">
+                                    Descripción
+                                    <span class="material-symbols-outlined">
+                                        expand_more
+                                    </span>
+                                </button>
+                            </div>
+                            <div class="card-body">
+                              <h5 class="card-title">Special title treatment</h5>
+                              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                              <a href="#" class="btn btn-primary">Go somewhere</a>
+                            </div>
+                        </div>
+                    </h2>
+                </div>
+                <div [id]="'collapsePago' + i" class="collapse" [attr.aria-labelledby]="'itemPago' + i" data-parent="#acordeonPago">
+                    <div class="card-body">
+                        {{dataItem.Valor}}
+                    </div>
+                </div>
+            </div>
+            <div class="card" *ngFor="let dataItem of item.dataFinal; let i = index;" [class.active]="dataItem.active">
+                <div class="card-header" [id]="'itemPago' + i + 5">
+                    <h2 class="mb-0">
+                        <button (click)="activarItem(i + 5, item.data)" class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" [attr.data-target]="'#collapsePago' + i + 5" aria-expanded="false" [attr.aria-controls]="'collapsePago' + i + 5">
+                            Descripción
+                            <span class="material-symbols-outlined">
+                                expand_more
+                            </span>
+                        </button>
+                    </h2>
+                </div>
+                <div [id]="'collapsePago' + i + 5" class="collapse" [attr.aria-labelledby]="'itemPago' + i + 5" data-parent="#acordeonPago">
+                    <div class="card-body">
+                        {{dataItem.Valor}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <app-boton (click)="verMasPagos(item, $event)">Ver más</app-boton>
+    </div>
+</div>
