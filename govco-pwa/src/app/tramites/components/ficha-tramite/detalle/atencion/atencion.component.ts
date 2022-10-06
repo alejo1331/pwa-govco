@@ -16,12 +16,13 @@ export class AtencionComponent implements OnInit {
   showComponent = true;
 
   constructor(
-    private fichaTramiteService: FichaTramiteService, 
+    private fichaTramiteService: FichaTramiteService,
     private modalService: NgbModal
   ) { }
 
   ngOnInit(): void {
-    if (!this.data.EnLinea && this.areaServicio ) {
+    console.log('data', this.data)
+    if (!this.data.EnLinea && this.areaServicio) {
       this.showComponent = false;
     }
   }
@@ -31,7 +32,9 @@ export class AtencionComponent implements OnInit {
     this.fichaTramiteService.GetPuntosAtencion(tipoAtencionPresencial, 1, this.data.IdTramite, 0, 0).subscribe(
       // Success response
       response => {
-          this.showModal({tipo: 'puntos', data:  response});
+      console.log('infor puntos',response)
+
+        this.showModal({ tipo: 'puntos', data: response });
       },
       // Failure response
       error => {
@@ -42,16 +45,17 @@ export class AtencionComponent implements OnInit {
 
   showModal(data: { tipo: string; data: any; }) {
     (document.getElementById('topScroll') as HTMLElement).style.filter = "blur(6px)"
-    const modal = this.modalService.open(PuntosAtencionModalComponent, { size: 'lg',
-       backdrop: 'static',
-       keyboard: false
-     });
+    const modal = this.modalService.open(PuntosAtencionModalComponent, {
+      size: 'lg',
+      backdrop: 'static',
+      keyboard: false
+    });
     if (data.tipo === 'puntos') {
-     modal.componentInstance.puntosAtencion = data.data;
-     }
+      modal.componentInstance.puntosAtencion = data.data;
+    }
     if (data.tipo === 'normatividad') {
-       modal.componentInstance.normatividad = data.data;
-     }
+      modal.componentInstance.normatividad = data.data;
+    }
   }
 
   isIE() {

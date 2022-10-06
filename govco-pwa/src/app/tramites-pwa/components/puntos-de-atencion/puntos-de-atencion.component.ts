@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { BottomMenuService } from 'src/app/transversales/services/bottom-menu/bottom-menu.service';
 import { HeaderService } from 'src/app/transversales/services/header-service/header.service';
 import { SidenavService } from 'src/app/transversales/services/sidenav-service/sidenav-service.service';
@@ -9,6 +9,8 @@ import { SidenavService } from 'src/app/transversales/services/sidenav-service/s
   styleUrls: ['./puntos-de-atencion.component.scss']
 })
 export class PuntosDeAtencionComponent implements OnInit {
+
+  @ViewChild('inputBuscador') inputBuscador : ElementRef;
 
   public items = [
     {
@@ -53,6 +55,8 @@ export class PuntosDeAtencionComponent implements OnInit {
     }
   ]
 
+  active: boolean = false;
+
   constructor(
     protected servicioSideNav: SidenavService,
     protected servicioHeader: HeaderService,
@@ -70,10 +74,6 @@ export class PuntosDeAtencionComponent implements OnInit {
     contenedorTopScroll.scrollTop = 0;
   }
 
-  cerrarPuntoAtencion() {
-
-  }
-
   activarItem(index: number) {
     this.items[index].active = !this.items[index].active;
     this.items.forEach(function (item, indexItem) {
@@ -81,6 +81,18 @@ export class PuntosDeAtencionComponent implements OnInit {
         item.active = false;
       }
     });
+  }
+
+  cerrarPuntoAtencion() {
+  }
+
+  borrarContenido() {
+    this.inputBuscador.nativeElement.value = ''
+
+  }
+
+  buscarContenido() {
+
   }
 
 }
