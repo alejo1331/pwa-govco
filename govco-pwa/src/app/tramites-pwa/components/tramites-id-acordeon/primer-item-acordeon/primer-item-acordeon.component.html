@@ -15,8 +15,13 @@
         </div>
         <div [id]="'collapseItem' + i" class="collapse" [attr.aria-labelledby]="'item' + i" data-parent="#primerItemAcordeon">
             <div *ngFor="let accion of item.acciones">
-                <!-- {{accion.TipoAccionCondicion}} -->
-                <app-accion-solicitud *ngIf="accion.TipoAccionCondicion === 'SOLICITUD'" [data]="accion"></app-accion-solicitud>
+                <div *ngFor="let tipoAccion of accion | keyvalue">
+                    <!-- {{tipoAccion.key}} -->
+                    <app-accion-solicitud *ngIf="tipoAccion.key === 'SOLICITUD'" [data]="tipoAccion.value"></app-accion-solicitud>
+                    <app-accion-verificacion *ngIf="tipoAccion.key === 'VERIFICACION_INST'" [data]="tipoAccion.value"></app-accion-verificacion>
+                    <app-accion-pago *ngIf="tipoAccion.key === 'PAGO'" [data]="tipoAccion.value"></app-accion-pago>
+                    <app-accion-formulario *ngIf="tipoAccion.key === 'FORMULARIO'" [data]="tipoAccion.value"></app-accion-formulario>
+                </div>
             </div>
         </div>
     </div>

@@ -1,0 +1,137 @@
+.card-body {
+    padding: 12px 16px 12px 16px;
+    .container-pago {
+        h4 {
+            color: #004884;
+            font-family: 'WorkSans-SemiBold';
+            font-size: 16px;
+            margin-bottom: 16px;
+        }
+        .acordeon-pwa-govco {
+            width: 100%;
+            .cardFather {
+                width: 100%;
+                border: 0;
+                border-radius: 5px;
+                background-color: initial;
+                .card-header {
+                    background-color: #FFFFFF;
+                    border: 0;
+                    padding: 0;
+                    border-radius: 0 0 5px 5px;
+                    .card {
+                        border: 0;
+                        .card-header{
+                            padding: 11px 16px 11px 16px;
+                            background-color: #F2F2F2;
+                            border-radius: 0;
+                            button {
+                                color: #000000;
+                                padding: 0;
+                                font-size: 14px;
+                                font-family: 'WorkSans-SemiBold';
+                                text-decoration: none;
+                                display: flex;
+                                align-items: center;
+                                padding-right: 32px;
+                                span {
+                                    font-size: 32px;
+                                    transition: 0.4s linear transform;
+                                    color: #3366CC;
+                                    position: absolute;
+                                    right: 16px;
+                                    top: 7px;
+                                }
+                            }
+                            button:focus {
+                                box-shadow: none;
+                            }
+                        }
+                        .card-body {
+                            background-color: #FFFFFF;
+                            color: #000000;
+                            font-family: 'WorkSans-Regular';
+                            font-size: 14px;
+                            padding: 14px 16px 14px 16px;
+                            background-color: #FFFFFF;
+                            border-radius: 0 0 5px 5px;
+                        }
+                    }
+                }
+                .collapse {
+                    width: 100%;
+                }
+                .card-body {
+                    color: #000000;
+                    font-family: 'WorkSans-Regular';
+                    font-size: 14px;
+                    padding: 0;
+                    .card {
+                        border: 0;
+                        .card-header {
+                            padding: 14px 16px 14px 16px;
+                            background-color: #F2F2F2;
+                            border-radius: 0;
+                            h6 {
+                                margin: 0;
+                                color: #000000;
+                                font-size: 14px;
+                                font-family: 'WorkSans-SemiBold';
+                            }
+                        }
+                        .card-body {                        
+                            padding: 14px 16px 14px 16px;
+                            background-color: #FFFFFF;
+                            border-radius: 0;
+                        }
+                    }
+                    .card:last-child .card-body {                    
+                        border-radius: 0 0 5px 5px;
+                    }
+                }
+                p {
+                    font-family: 'WorkSans-Regular';
+                    font-size: 14px;
+                    color: #000000;
+                    margin: 0;
+                }
+                hr {
+                    background: #004884;
+                    margin: 0 auto;
+                    border: 1px solid #004884;
+                    margin-top: 24px;
+                    margin-bottom: 24px;
+                    width: 76%;
+                }
+            }
+            .card.active {
+                .card-header {                
+                    h2 button {
+                        span {
+                            display: inline;
+                            transform: rotate(-180deg);
+                        }
+                    }
+                    .card .card-body {
+                        border-radius: 0;
+                    }
+                }
+            }
+        }
+        .info-pago {
+            margin-top: 40px;
+            h5 {
+                color: #004884;
+                font-family: 'WorkSans-Medium';
+                font-size: 16px;
+                margin-bottom: 8px;
+            }
+            p {
+                color: #000000;
+                font-family: 'WorkSans-Light';
+                font-size: 16px;
+                margin: 0;
+            }
+        }
+    }
+}

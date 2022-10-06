@@ -7,23 +7,11 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class AccionVerificacionComponent implements OnInit {
 
-  constructor() { }
-
   @Input() data: any;
 
-  dataAccion: any[] = [];
+  constructor() { }
 
   ngOnInit(): void {
-    this.validarEstadoExcepcion();
-  }
-
-  private validarEstadoExcepcion() {
-  console.log('data', this.data)
-    if (typeof(this.data.length) !== 'undefined') {
-      this.dataAccion = this.data;
-    } else {
-      this.dataAccion.push(this.data);
-    }
   }
 
 }
