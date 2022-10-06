@@ -3,6 +3,7 @@
     background-color: #E6EFFD;
     display: flex;
     align-items: center;
+    z-index: 4;
 }
 
 .geolocalizacion-pwa-govco-icon {

@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NivelDosComponent implements OnInit {
 
+  topScroll: HTMLElement
+
   constructor() { }
 
   ngOnInit() {

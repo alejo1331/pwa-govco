@@ -10,6 +10,7 @@ import { NivelDosComponent } from './components/nivel-dos/nivel-dos.component';
 import { DesplegableUnoComponent } from './components/desplegable-uno/desplegable-uno.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { BuscadorSencilloV1Component } from './components/buscador-sencillo-v1/buscador-sencillo-v1.component';
+import { HeaderCompartirV1Component } from './components/nivel-dos-header-v1/header-compartir-v1.component';
 
 
 
@@ -25,6 +26,7 @@ import { BuscadorSencilloV1Component } from './components/buscador-sencillo-v1/b
     DesplegableUnoComponent,
     NivelDosComponent,
     BuscadorSencilloV1Component,
+    HeaderCompartirV1Component,
   ],
   imports: [
     CommonModule
@@ -40,6 +42,7 @@ import { BuscadorSencilloV1Component } from './components/buscador-sencillo-v1/b
     DesplegableUnoComponent,
     NivelDosComponent,
     BuscadorSencilloV1Component,
+    HeaderCompartirV1Component,
   ],
 })
 export class BibliotecaPwaModule { }
