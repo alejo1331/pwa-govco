@@ -21,6 +21,7 @@ export class PrimerItemAcordeonComponent implements OnInit {
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.dataAcordeon) {
+      this.dataAcordeon = changes.dataAcordeon.currentValue;
       if (!changes.dataAcordeon.previousValue) {
         this.loadMomentosAudiencia();
       } else if (changes.dataAcordeon.currentValue.idTramite != changes.dataAcordeon.previousValue.idTramite ||
@@ -80,7 +81,6 @@ export class PrimerItemAcordeonComponent implements OnInit {
     this.fichaTramiteService.GetDataFichaByIdTramiteAudienciaIdMomento(this.dataAcordeon.idTramite, this.dataAcordeon.perfil, this.dataItemAcordeon[index].MomentoId)
       .subscribe((dataAccion: any) => {
         this.dataItemAcordeon[index].acciones = this.agrupaAccionesPorTipoAccionCondicion(dataAccion.acciones);
-        console.log('dataItemAcordeon', this.dataItemAcordeon);
       });
   }
 

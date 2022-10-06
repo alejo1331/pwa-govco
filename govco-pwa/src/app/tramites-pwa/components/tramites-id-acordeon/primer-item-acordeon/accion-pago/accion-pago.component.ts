@@ -8,27 +8,10 @@ import { Component, Input, OnInit } from '@angular/core';
 export class AccionPagoComponent implements OnInit {
 
   @Input() data: any;
-
-  public items = [
-    {
-      active: false,
-      titulo: 'Título #1 del acordeón',
-      descripcion: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam gravida.'
-    }, 
-    {
-      active: false,
-      titulo: 'Título #2 del acordeón',
-      descripcion: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam gravida.'
-    },
-    {
-      active: false,
-      titulo: 'Título #3 del acordeón',
-      descripcion: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam gravida.'
-    }      
-  ]
   
   public verMas = false;
   public dataFinal = [];
+  public activeMas = false;
 
   constructor() { }
 
@@ -38,8 +21,10 @@ export class AccionPagoComponent implements OnInit {
         value['dataInicial'] = value['data'].slice(0, 5);
         value['dataFinal'] = [];
       }
+      if (value['data'].length > 5) {
+        this.activeMas = true;
+      }
     });
-    console.log('data', this.data)
   }
 
   activarItem(index:number, dataItem:any) {

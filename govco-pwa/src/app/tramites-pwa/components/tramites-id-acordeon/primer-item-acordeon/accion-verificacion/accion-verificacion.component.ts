@@ -12,7 +12,6 @@ export class AccionVerificacionComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log('accion',  this.data)
   }
 
 }

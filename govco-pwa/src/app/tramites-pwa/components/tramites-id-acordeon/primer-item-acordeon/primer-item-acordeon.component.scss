@@ -17,11 +17,14 @@
                 font-family: 'WorkSans-Regular';
                 text-decoration: none;
                 display: flex;
-                justify-content: space-between;
+                padding-right: 32px;
                 span {
                     font-size: 32px;
                     color: #3366CC;
                     transition: 0.4s linear transform;
+                    position: absolute;
+                    right: 16px;
+                    top: 9px;
                 }
                 .numList {
                     min-width: 21px;
