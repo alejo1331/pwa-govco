@@ -25,7 +25,7 @@ export class ContenidoSideNavComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.bottomService.seleccionandoItem(0);
-    
+
     this.navigation_items_elms = document.querySelectorAll(".govco-pwa-sidenav-item")
 
     this.sidenav.modificandoItem.subscribe(([estado,idTem]) => {

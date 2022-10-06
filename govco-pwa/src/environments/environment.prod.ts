@@ -6,7 +6,7 @@ export const environment = {
   serverUrlNoticia: 'https://api-interno.www.gov.co/api/noticias/',
   urlApiEntidades: 'https://api-interno.www.gov.co/api/entidades',
   apiUrl: "https://api-interno.www.gov.co/api/participacion/",
-  apiUrlUrna: "https://api-interno.www.gov.co/api/participacion/v2/",
+  apiUrlUrna: "https://api-interno.www.gov.co/api/participacion/",
 
   apiCrossUrl: "https://api-interno.www.gov.co/api/cross/",
   severApiCross: "https://api-interno.www.gov.co/api/cross/",
@@ -26,10 +26,10 @@ export const environment = {
   codSobreNosotros: 'sobrenosotros',
   codEntidades: 'paraentidades',
   //Entidades
-  serverIntegracion: 'https://aws-api-interno.www.gov.co/api/integracion-sedes/IntegracionSedes/entidad/',
+  serverIntegracion: 'https://api-interno.www.gov.co/api/integracion-sedes/IntegracionSedes/entidad/',
   //Tu opinion cuenta o Participacion
   apiCross: "https://api-interno.www.gov.co/api/cross/",
-  apiUtils: "https://preapi-interno.www.gov.co/api/utils/",
+  apiUtils: "https://api-interno.www.gov.co/api/utils/",
   //Biblioteca
   serverBiblioteca:"https://api-interno.www.gov.co/api/biblioteca/",
   serverUrlWebApi:"https://api-interno.www.gov.co/api/biblioteca/",
