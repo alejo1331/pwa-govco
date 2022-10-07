@@ -3,11 +3,12 @@
     <div class="contenido">
         <app-ficha-especifica-header-pwa></app-ficha-especifica-header-pwa>
         <app-ficha-especifica-detalle-pwa></app-ficha-especifica-detalle-pwa>
+        <app-ficha-especifica-cards-pwa></app-ficha-especifica-cards-pwa>
         <app-boton (click)="abrirPuntosAtencion()">abrir puntos de atencion</app-boton>
         <app-tramites-id-acordeon [dataAcordeon]="perfil_idTramite"></app-tramites-id-acordeon>
+        <app-ficha-especifica-footer-pwa></app-ficha-especifica-footer-pwa>
         <app-footer></app-footer>
     </div>
-
     <app-boton-retroalimentacion></app-boton-retroalimentacion>
     <app-desplegable-uno *ngIf="audiencias" [data]="audiencias" [estructura]="estructuraModalDesplegable"
         (perfilSeleccionado)="perfilSeleccionado($event)">
@@ -15,6 +16,6 @@
 </section>
 
 <section #seccionPuntoAtencion *ngIf="activarPuntosAtecion" class="seccion-puntos-atencion">
-    <app-puntos-de-atencion [perfil_idTramite]="perfil_idTramite"
-        (cerrarPuntosAtencion)="cerrarPuntosAtencion($event)"></app-puntos-de-atencion>
+    <app-puntos-de-atencion [perfil_idTramite]="perfil_idTramite" (cerrarPuntosAtencion)="cerrarPuntosAtencion($event)">
+    </app-puntos-de-atencion>
 </section>

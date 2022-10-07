@@ -16,6 +16,8 @@ import { AccionPagoComponent } from './components/tramites-id-acordeon/primer-it
 import { AccionFormularioComponent } from './components/tramites-id-acordeon/primer-item-acordeon/accion-formulario/accion-formulario.component';
 import { AccionDocumentoComponent } from './components/tramites-id-acordeon/primer-item-acordeon/accion-documento/accion-documento.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { FichaEspecificaCardsPwaComponent } from './components/ficha-especifica-cards-pwa/ficha-especifica-cards-pwa.component';
+import { FichaEspecificaFooterPwaComponent } from './components/ficha-especifica-footer-pwa/ficha-especifica-footer-pwa.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
     AccionVerificacionComponent,
     AccionPagoComponent,
     AccionFormularioComponent,
-    AccionDocumentoComponent
+    AccionDocumentoComponent,
+    FichaEspecificaCardsPwaComponent,
+    FichaEspecificaFooterPwaComponent,
   ],
   imports: [
     CommonModule,
@@ -38,8 +42,6 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
     HomePwaModule,
     NgxSkeletonLoaderModule,
   ],
-  exports: [
-    TramitesIdComponent,
-  ],
+  exports: [TramitesIdComponent],
 })
 export class TramitesPwaModule {}
