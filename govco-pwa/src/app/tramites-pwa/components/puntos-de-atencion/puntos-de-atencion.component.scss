@@ -3,14 +3,20 @@
 }
 
 .puntos-atencion-govco-pwa .barra-superior {
+    background-color: #E8EFFC;
     height: 3.5rem;
     display: flex;
+    position: fixed;
+    top:0;
+    z-index: 5;
+    width: 100%;
     align-items: center;
     justify-content: flex-end;
 }
 
 .puntos-atencion-govco-pwa .seccion-puntos-atencion {
     padding-bottom: 2.5rem;
+    padding-top: 3.5rem;
 }
 
 .puntos-atencion-govco-pwa .caja-icono-48-pwa img {
