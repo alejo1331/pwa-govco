@@ -14,13 +14,32 @@
             </h2>
         </div>
         <div [id]="'collapseItem' + i" class="collapse" [attr.aria-labelledby]="'item' + i" data-parent="#primerItemAcordeon">
+            <ngx-skeleton-loader appearance="line" count="3" *ngIf="!item.acciones" 
+                [theme]="{ height: '12px', 'background-color': '#888cc93d'}">
+            </ngx-skeleton-loader>
             <div *ngFor="let accion of item.acciones">
                 <div *ngFor="let tipoAccion of accion | keyvalue">
                     <!-- {{tipoAccion.key}} -->
-                    <app-accion-solicitud *ngIf="tipoAccion.key === 'SOLICITUD'" [data]="tipoAccion.value"></app-accion-solicitud>
-                    <app-accion-verificacion *ngIf="tipoAccion.key === 'VERIFICACION_INST'" [data]="tipoAccion.value"></app-accion-verificacion>
-                    <app-accion-pago *ngIf="tipoAccion.key === 'PAGO'" [data]="tipoAccion.value"></app-accion-pago>
-                    <app-accion-formulario *ngIf="tipoAccion.key === 'FORMULARIO'" [data]="tipoAccion.value"></app-accion-formulario>
+                    <app-accion-solicitud 
+                        *ngIf="tipoAccion.key === 'SOLICITUD' && tipoAccion.value" 
+                        [data]="tipoAccion.value">
+                    </app-accion-solicitud>
+                    <app-accion-verificacion 
+                        *ngIf="tipoAccion.key === 'VERIFICACION_INST' && tipoAccion.value" 
+                        [data]="tipoAccion.value">
+                    </app-accion-verificacion>
+                    <app-accion-pago 
+                        *ngIf="tipoAccion.key === 'PAGO' && tipoAccion.value" 
+                        [data]="tipoAccion.value">
+                    </app-accion-pago>
+                    <app-accion-formulario 
+                        *ngIf="tipoAccion.key === 'FORMULARIO' && tipoAccion.value" 
+                        [data]="tipoAccion.value">
+                    </app-accion-formulario>
+                    <app-accion-documento 
+                        *ngIf="tipoAccion.key === 'DOCUMENTO' && tipoAccion.value" 
+                        [data]="tipoAccion.value">
+                    </app-accion-documento>
                 </div>
             </div>
         </div>

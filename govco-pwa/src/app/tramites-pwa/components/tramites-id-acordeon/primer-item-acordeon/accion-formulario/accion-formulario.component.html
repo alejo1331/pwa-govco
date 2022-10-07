@@ -1,17 +1,28 @@
-<div class="card-body container-formulario">
+<div class="card-body container-formulario" *ngIf="data.length > 0">
     <h4>Formulario</h4>
-    <div *ngFor="let item of data">
-        <div *ngFor="let subItem of item.data">
+    <div class="container-accion-form" *ngFor="let item of data">
+        <div class="sub-container-accion-form" *ngFor="let subItem of item.data">
             <h5>{{subItem.FormularioNombre}}</h5>
-            <div class="card">
+            <div class="card initial" *ngIf="subItem.FormularioUrlDescarga || subItem.FormularioUrl">
                 <div class="card-header">
                     Disponible para ser
                 </div>
                 <div class="card-body">
-                    <a href="">{{subItem.FormularioUrlDescarga}}</a>
+                    <a *ngIf="subItem.FormularioUrl" [href]="subItem.FormularioUrl" target="_blank">
+                        <span class="material-symbols-outlined">
+                            Transaccional
+                        </span>
+                        <span class="text">Descargar</span>
+                    </a>
+                    <a *ngIf="subItem.FormularioUrlDescarga" [href]="subItem.FormularioUrlDescarga">
+                        <span class="material-symbols-outlined">
+                            download
+                        </span>
+                        <span class="text">Descargar</span>
+                    </a>
                 </div>
             </div>
-            <div class="card">
+            <div class="card" *ngIf="subItem.FormularioAnotacion">
                 <div class="card-header">
                     Anotación adicional
                 </div>
@@ -24,7 +35,7 @@
                     Reclamar de forma presencial
                 </div>
                 <div class="card-body">
-                    <a href="">En los puntos de atención indicados por la institución</a>
+                    <a class="punto-atencion" href="">En los puntos de atención indicados por la institución</a>
                 </div>
             </div>
         </div>
