@@ -15,6 +15,8 @@ import { AccionVerificacionComponent } from './components/tramites-id-acordeon/p
 import { AccionPagoComponent } from './components/tramites-id-acordeon/primer-item-acordeon/accion-pago/accion-pago.component';
 import { AccionFormularioComponent } from './components/tramites-id-acordeon/primer-item-acordeon/accion-formulario/accion-formulario.component';
 import { AccionDocumentoComponent } from './components/tramites-id-acordeon/primer-item-acordeon/accion-documento/accion-documento.component';
+import { FichaEspecificaCardsPwaComponent } from './components/ficha-especifica-cards-pwa/ficha-especifica-cards-pwa.component';
+import { FichaEspecificaFooterPwaComponent } from './components/ficha-especifica-footer-pwa/ficha-especifica-footer-pwa.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { AccionDocumentoComponent } from './components/tramites-id-acordeon/prim
     AccionVerificacionComponent,
     AccionPagoComponent,
     AccionFormularioComponent,
-    AccionDocumentoComponent
+    AccionDocumentoComponent,
+    FichaEspecificaCardsPwaComponent,
+    FichaEspecificaFooterPwaComponent,
   ],
   imports: [
     CommonModule,
@@ -36,8 +40,6 @@ import { AccionDocumentoComponent } from './components/tramites-id-acordeon/prim
     BibliotecaPwaModule,
     HomePwaModule,
   ],
-  exports: [
-    TramitesIdComponent,
-  ],
+  exports: [TramitesIdComponent],
 })
 export class TramitesPwaModule {}

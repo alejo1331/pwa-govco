@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { BotonComponent } from './components/boton/boton.component';
 import { EtiquetaComponent } from './components/etiqueta/etiqueta.component';
 import { TarjetaInformativaComponent } from './components/tarjeta-informativa/tarjeta-informativa.component';
@@ -11,8 +12,7 @@ import { DesplegableUnoComponent } from './components/desplegable-uno/desplegabl
 import { FooterComponent } from './components/footer/footer.component';
 import { BuscadorSencilloV1Component } from './components/buscador-sencillo-v1/buscador-sencillo-v1.component';
 import { HeaderCompartirV1Component } from './components/nivel-dos-header-v1/header-compartir-v1.component';
-
-
+import { TarjetaVinculoComponent } from './components/tarjeta-vinculo/tarjeta-vinculo.component';
 
 @NgModule({
   declarations: [
@@ -27,10 +27,9 @@ import { HeaderCompartirV1Component } from './components/nivel-dos-header-v1/hea
     NivelDosComponent,
     BuscadorSencilloV1Component,
     HeaderCompartirV1Component,
+    TarjetaVinculoComponent,
   ],
-  imports: [
-    CommonModule
-  ],
+  imports: [CommonModule, RouterModule],
   exports: [
     BotonComponent,
     EtiquetaComponent,
@@ -43,6 +42,7 @@ import { HeaderCompartirV1Component } from './components/nivel-dos-header-v1/hea
     NivelDosComponent,
     BuscadorSencilloV1Component,
     HeaderCompartirV1Component,
+    TarjetaVinculoComponent,
   ],
 })
-export class BibliotecaPwaModule { }
+export class BibliotecaPwaModule {}
