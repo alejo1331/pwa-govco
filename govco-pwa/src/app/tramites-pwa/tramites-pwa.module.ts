@@ -15,6 +15,7 @@ import { AccionVerificacionComponent } from './components/tramites-id-acordeon/p
 import { AccionPagoComponent } from './components/tramites-id-acordeon/primer-item-acordeon/accion-pago/accion-pago.component';
 import { AccionFormularioComponent } from './components/tramites-id-acordeon/primer-item-acordeon/accion-formulario/accion-formulario.component';
 import { AccionDocumentoComponent } from './components/tramites-id-acordeon/primer-item-acordeon/accion-documento/accion-documento.component';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { AccionDocumentoComponent } from './components/tramites-id-acordeon/prim
     TramitesPwaRoutingModule,
     BibliotecaPwaModule,
     HomePwaModule,
+    NgxSkeletonLoaderModule,
   ],
   exports: [
     TramitesIdComponent,
