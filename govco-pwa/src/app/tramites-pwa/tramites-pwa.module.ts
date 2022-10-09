@@ -18,6 +18,7 @@ import { AccionDocumentoComponent } from './components/tramites-id-acordeon/prim
 import { FichaEspecificaCardsPwaComponent } from './components/ficha-especifica-cards-pwa/ficha-especifica-cards-pwa.component';
 import { FichaEspecificaFooterPwaComponent } from './components/ficha-especifica-footer-pwa/ficha-especifica-footer-pwa.component';
 import { SegundoItemAcordeonComponent } from './components/tramites-id-acordeon/segundo-item-acordeon/segundo-item-acordeon.component';
+import { TercerItemAcordeonComponent } from './components/tramites-id-acordeon/tercer-item-acordeon/tercer-item-acordeon.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { SegundoItemAcordeonComponent } from './components/tramites-id-acordeon/
     AccionDocumentoComponent,
     FichaEspecificaCardsPwaComponent,
     FichaEspecificaFooterPwaComponent,
-    SegundoItemAcordeonComponent
+    SegundoItemAcordeonComponent,
+    TercerItemAcordeonComponent
   ],
   imports: [
     CommonModule,
