@@ -66,9 +66,10 @@
                         </div>
                     </div>
                 </div>
-                <hr>
+                <hr *ngIf="(i + 1) < item.dataInicial.length">
             </div>
             <div class="card cardFather" *ngFor="let dataItem of item.dataFinal; let i = index;" [class.active]="dataItem.active">
+                <hr *ngIf="i == 0">
                 <div class="card-header" [id]="'itemPago' + i + 5">
                     <h2 class="mb-0">                        
                         <div class="card">
@@ -132,16 +133,36 @@
                         </div>
                     </div>
                 </div>
-                <hr>
+                <hr *ngIf="(i + 1) < item.dataFinal.length">
             </div>
         </div>
         <app-boton (click)="verMasPagos(item, $event)" *ngIf="activeMas">Ver más</app-boton>
-        <div class="info-pago">
+        <div class="pay-on-line" *ngIf="item.PagoEnlineaUrl">
             <h4>Información del medio de pago:</h4>
             <h5>• Pago en línea</h5>
             <p>
                 En la entidad solicitante: en la Url de realizar el pago, se tienen las opciones de: pago en línea (PSE) o la de generar recibo para pago en entidad bancaria.
             </p>
+            <a (click)="validateUrlService.validateUrl(item.PagoEnlineaUrl)" target="_blank">
+              <app-boton>
+                <span class="material-symbols-outlined">
+                  devices
+                </span>
+                Pagar en línea
+              </app-boton>
+            </a>
         </div>
+        <ng-container *ngIf="item.entidadesPago.length > 0">
+          <div class="payment-information" *ngFor="let entidad of item.entidadesPago">
+            <div>
+              <span class="title">Tipo de cuenta: </span>
+              <span class="description">{{entidad.TipoCuenta}}</span>
+            </div>
+            <div>
+              <span class="title">Entidad recaudadora: </span>
+              <span class="description-blue">{{entidad.NombreEntidad}}</span>
+            </div>
+          </div>
+        </ng-container>
     </div>
 </div>

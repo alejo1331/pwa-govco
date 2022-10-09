@@ -1,0 +1,79 @@
+.container-excepcion {
+    padding: 12px 16px 0 16px;
+    .alert {
+        background-color: #004884;
+        border-radius: 5px;
+        padding: 14px 16px 14px 16px;
+        display: flex;
+        .material-symbols-outlined {
+            color: #004884;
+            background-color: #FFFFFF;
+            min-width: 16px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            margin-right: 8px;
+        }
+        .text {
+            font-family: 'WorkSans-Medium';
+            font-size: 14px;
+            color: #FFFFFF;
+        }
+    }
+    .acordeon-pwa-govco {
+        width: 100%;
+        .card {
+            width: 100%;
+            border: 2px solid #E8EFFC;
+            border-radius: 5px;
+            background-color: #F2F2F2;
+            margin-bottom: 16px;
+            .card-header {
+                background-color: #FFFFFF;
+                border: 0;
+                padding: 14px 8px 14px 16px;
+                h2 button {
+                    padding: 0;
+                    color: #004884;
+                    font-size: 14px;
+                    font-family: 'WorkSans-Medium';
+                    text-decoration: none;
+                    display: flex;
+                    justify-content: space-between;
+                    line-height: 16px;
+                    span {
+                        font-size: 32px;
+                        transition: 0.4s linear transform;
+                        color: #3366CC;
+                    }
+                }
+                h2 button:focus {
+                    box-shadow: none;
+                }
+            }
+            .card-body {
+                color: #000000;
+                font-family: 'WorkSans-Regular';
+                font-size: 14px;
+                padding: 14px 16px 14px 16px;
+            }
+        }
+        .card.active {
+            .card-header h2 button {
+                span {
+                    display: inline;
+                    transform: rotate(-180deg);
+                }
+            }
+        }
+    } 
+    ::ng-deep .container-documento {
+        h5, p {
+            font-size: 14px !important;
+        }
+    }   
+}

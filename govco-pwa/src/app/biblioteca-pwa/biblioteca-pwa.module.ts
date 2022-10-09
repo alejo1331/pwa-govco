@@ -13,6 +13,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { BuscadorSencilloV1Component } from './components/buscador-sencillo-v1/buscador-sencillo-v1.component';
 import { HeaderCompartirV1Component } from './components/nivel-dos-header-v1/header-compartir-v1.component';
 import { TarjetaVinculoComponent } from './components/tarjeta-vinculo/tarjeta-vinculo.component';
+import { ModalErrorUrlComponent } from './components/modal-error-url/modal-error-url.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -28,8 +30,9 @@ import { TarjetaVinculoComponent } from './components/tarjeta-vinculo/tarjeta-vi
     BuscadorSencilloV1Component,
     HeaderCompartirV1Component,
     TarjetaVinculoComponent,
+    ModalErrorUrlComponent,
   ],
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, MatDialogModule],
   exports: [
     BotonComponent,
     EtiquetaComponent,
@@ -43,6 +46,7 @@ import { TarjetaVinculoComponent } from './components/tarjeta-vinculo/tarjeta-vi
     BuscadorSencilloV1Component,
     HeaderCompartirV1Component,
     TarjetaVinculoComponent,
+    ModalErrorUrlComponent
   ],
 })
 export class BibliotecaPwaModule {}

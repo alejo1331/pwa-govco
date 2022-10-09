@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ValidateUrlService } from 'src/app/tramites-pwa/services/validate-url.service';
 
 @Component({
   selector: 'app-accion-pago',
@@ -13,7 +14,9 @@ export class AccionPagoComponent implements OnInit {
   public dataFinal = [];
   public activeMas = false;
 
-  constructor() { }
+  constructor(
+    public validateUrlService: ValidateUrlService
+  ) { }
 
   ngOnInit(): void {
     this.data.forEach((value: any[]) => {
