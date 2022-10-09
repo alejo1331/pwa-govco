@@ -45,7 +45,6 @@ import { TercerItemAcordeonComponent } from './components/tramites-id-acordeon/t
     ModalDudasPwaComponent,
     TercerItemAcordeonComponent,
     AccionExcepcionComponent
-
   ],
   imports: [
     CommonModule,
