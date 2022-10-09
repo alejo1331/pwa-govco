@@ -1,0 +1,27 @@
+.container-documento {
+    padding: 12px 16px 0 16px;
+    h4 {
+        color: #004884;
+        font-size: 16px;
+        font-family: 'WorkSans-SemiBold';
+        margin-bottom: 16px;
+    }
+    .container-info {
+        margin-bottom: 24px;
+        h5 {
+            color: #004884;
+            font-size: 16px;
+            font-family: 'WorkSans-Medium';
+            margin-bottom: 8px;
+        }
+        p {
+            color: #000000;
+            font-size: 16px;
+            font-family: 'WorkSans-Light';
+            margin: 0;
+            span {
+                font-family: 'WorkSans-Regular';
+            }
+        }
+    }
+}

@@ -1,3 +1,11 @@
 <div class="card-body container-documento" *ngIf="data.length > 0">
-    
+    <h4>Documento</h4>
+    <ng-container *ngFor="let accion of data">
+        <div class="container-info" *ngFor="let item of accion.data">
+            <h5>• {{item.DocumentoNombre}}: {{item.Cantidad}} {{item.UnidadCantidad}}</h5>
+            <p *ngIf="item.DocumentoAnotacionAdicional != null">
+                <span>Anotaciones adicionales:</span> {{item.DocumentoAnotacionAdicional}}
+            </p>
+        </div>
+    </ng-container>
 </div>

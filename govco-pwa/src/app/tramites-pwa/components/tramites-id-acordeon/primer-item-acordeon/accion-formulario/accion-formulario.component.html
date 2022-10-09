@@ -8,13 +8,13 @@
                     Disponible para ser
                 </div>
                 <div class="card-body">
-                    <a *ngIf="subItem.FormularioUrl" [href]="subItem.FormularioUrl" target="_blank">
+                    <a *ngIf="subItem.FormularioUrl" class="mb-1" (click)="validateUrlService.validateUrl(subItem.FormularioUrl)" target="_blank">
                         <span class="material-symbols-outlined">
-                            Transaccional
+                            laptop_mac
                         </span>
-                        <span class="text">Descargar</span>
+                        <span class="text">Transaccional</span>
                     </a>
-                    <a *ngIf="subItem.FormularioUrlDescarga" [href]="subItem.FormularioUrlDescarga">
+                    <a *ngIf="subItem.FormularioUrlDescarga" (click)="validateUrlService.validateUrl(subItem.FormularioUrlDescarga)" target="_blank">
                         <span class="material-symbols-outlined">
                             download
                         </span>

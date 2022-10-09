@@ -20,6 +20,7 @@ import { FichaEspecificaFooterPwaComponent } from './components/ficha-especifica
 import { SegundoItemAcordeonComponent } from './components/tramites-id-acordeon/segundo-item-acordeon/segundo-item-acordeon.component';
 import { TercerItemAcordeonComponent } from './components/tramites-id-acordeon/tercer-item-acordeon/tercer-item-acordeon.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { AccionExcepcionComponent } from './components/tramites-id-acordeon/primer-item-acordeon/accion-excepcion/accion-excepcion.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
     FichaEspecificaFooterPwaComponent,
     SegundoItemAcordeonComponent,
     TercerItemAcordeonComponent
+    AccionExcepcionComponent,
   ],
   imports: [
     CommonModule,

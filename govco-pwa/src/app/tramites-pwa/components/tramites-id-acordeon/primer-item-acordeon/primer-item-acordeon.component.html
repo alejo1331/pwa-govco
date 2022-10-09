@@ -1,4 +1,7 @@
 <div class="accordion subacordeon-pwa-govco" id="primerItemAcordeon">
+    <ngx-skeleton-loader appearance="line" count="3" *ngIf="!dataItemAcordeon" 
+        [theme]="{ height: '12px', 'background-color': '#888cc93d'}">
+    </ngx-skeleton-loader>
     <div class="card" *ngFor="let item of dataItemAcordeon; let i = index;" [class.active]="item.active">
         <div class="card-header" [id]="'item' + i">
             <h2 class="mb-0">
@@ -6,7 +9,7 @@
                     <div class="numList">
                         {{i + 1}}
                     </div>
-                    {{item.Descripcion}}
+                    <h5>{{item.Descripcion}}</h5>
                     <span class="material-symbols-outlined">
                         expand_more
                     </span>
@@ -17,8 +20,8 @@
             <ngx-skeleton-loader appearance="line" count="3" *ngIf="!item.acciones" 
                 [theme]="{ height: '12px', 'background-color': '#888cc93d'}">
             </ngx-skeleton-loader>
-            <div *ngFor="let accion of item.acciones">
-                <div *ngFor="let tipoAccion of accion | keyvalue">
+            <ng-container *ngFor="let accion of item.acciones">
+                <ng-container *ngFor="let tipoAccion of accion | keyvalue">
                     <!-- {{tipoAccion.key}} -->
                     <app-accion-solicitud 
                         *ngIf="tipoAccion.key === 'SOLICITUD' && tipoAccion.value" 
@@ -40,8 +43,11 @@
                         *ngIf="tipoAccion.key === 'DOCUMENTO' && tipoAccion.value" 
                         [data]="tipoAccion.value">
                     </app-accion-documento>
-                </div>
-            </div>
+                </ng-container>
+            </ng-container>
+            <ng-container *ngIf="item.acciones">
+                <app-accion-excepcion *ngIf="item.acciones.EXCEPCION" [data]="item.acciones.EXCEPCION"></app-accion-excepcion>
+            </ng-container>
         </div>
     </div>
 </div>
