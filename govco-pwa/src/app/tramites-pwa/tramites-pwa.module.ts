@@ -20,6 +20,7 @@ import { FichaEspecificaCardsPwaComponent } from './components/ficha-especifica-
 import { FichaEspecificaFooterPwaComponent } from './components/ficha-especifica-footer-pwa/ficha-especifica-footer-pwa.component';
 import { AccionExcepcionComponent } from './components/tramites-id-acordeon/primer-item-acordeon/accion-excepcion/accion-excepcion.component';
 import { SegundoItemAcordeonComponent } from './components/tramites-id-acordeon/segundo-item-acordeon/segundo-item-acordeon.component';
+import { TercerItemAcordeonComponent } from './components/tramites-id-acordeon/tercer-item-acordeon/tercer-item-acordeon.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { SegundoItemAcordeonComponent } from './components/tramites-id-acordeon/
     FichaEspecificaCardsPwaComponent,
     FichaEspecificaFooterPwaComponent,
     AccionExcepcionComponent,
-    SegundoItemAcordeonComponent
+    SegundoItemAcordeonComponent,
+    TercerItemAcordeonComponent
   ],
   imports: [
     CommonModule,
