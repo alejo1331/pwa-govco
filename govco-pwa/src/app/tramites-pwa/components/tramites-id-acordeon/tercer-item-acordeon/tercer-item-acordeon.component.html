@@ -1,0 +1,27 @@
+<section>
+  <div class="govco-pwa-elemento-container" *ngFor="let canal of canalesSeguimiento">
+    <div class="govco-pwa-seguimiento-icono">
+      <div class="govco-pwa-seguimiento-icono-background">
+        <span class="material-symbols-outlined" *ngIf="canal.TipoCanal == 'PRESENCIAL'">
+          explore
+        </span>
+        <span class="material-symbols-outlined" *ngIf="canal.TipoCanal == 'WEB'">
+          language
+        </span>
+      </div>
+    </div>
+    <div class="govco-pwa-seguimiento-info">
+      <p *ngIf="canal.TipoCanal != 'TELEFONICO' && canal.TipoCanal != 'CORREO'">
+        {{canal.TipoCanal | titlecase }}:
+      </p>
+      <a *ngIf="canal.TipoCanal === 'PRESENCIAL'">
+        Ver puntos de atención
+      </a>
+      <a *ngIf="canal.TipoCanal === 'WEB'">
+        {{canal.NombreCanalWeb}}
+      </a>
+    </div>
+
+
+  </div>
+</section>
