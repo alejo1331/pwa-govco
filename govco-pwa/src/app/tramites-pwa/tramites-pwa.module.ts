@@ -40,6 +40,9 @@ import { AccionExcepcionComponent } from './components/tramites-id-acordeon/prim
     SegundoItemAcordeonComponent,
     TercerItemAcordeonComponent
     AccionExcepcionComponent,
+    AccionExcepcionComponent,
+    SegundoItemAcordeonComponent,
+    TercerItemAcordeonComponent
   ],
   imports: [
     CommonModule,
