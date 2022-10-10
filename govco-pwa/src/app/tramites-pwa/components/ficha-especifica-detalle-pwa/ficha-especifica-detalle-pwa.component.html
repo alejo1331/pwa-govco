@@ -65,6 +65,9 @@
                 <p class="tramite-type">
                     Cuándo hacerlo?
                 </p>
+                <p *ngIf="showBotonFechas" class="tramite-type-detalle">
+                    <a tabindex="0" class="enlace-fechas" (click)="getFechas()">Ver fechas</a>
+                </p>
                 <p *ngIf="!showBotonFechas" class="tramite-type-detalle">
                     En cualquier fecha
                 </p>
