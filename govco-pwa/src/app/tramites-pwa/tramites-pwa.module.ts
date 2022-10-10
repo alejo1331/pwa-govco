@@ -19,6 +19,7 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { FichaEspecificaCardsPwaComponent } from './components/ficha-especifica-cards-pwa/ficha-especifica-cards-pwa.component';
 import { FichaEspecificaFooterPwaComponent } from './components/ficha-especifica-footer-pwa/ficha-especifica-footer-pwa.component';
 import { AccionExcepcionComponent } from './components/tramites-id-acordeon/primer-item-acordeon/accion-excepcion/accion-excepcion.component';
+import { SegundoItemAcordeonComponent } from './components/tramites-id-acordeon/segundo-item-acordeon/segundo-item-acordeon.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { AccionExcepcionComponent } from './components/tramites-id-acordeon/prim
     FichaEspecificaCardsPwaComponent,
     FichaEspecificaFooterPwaComponent,
     AccionExcepcionComponent,
+    SegundoItemAcordeonComponent
   ],
   imports: [
     CommonModule,
