@@ -16,11 +16,15 @@ import { PipeTransform } from '@angular/core';
 export class PuntosDeAtencionComponent implements OnInit, PipeTransform {
 
   @ViewChild('inputBuscador') inputBuscador: ElementRef;
+  @ViewChild('seccionPuntos') seccionPuntos: ElementRef;
+
   @Output() cerrarPuntosAtencion = new EventEmitter<[string, string]>();
   @Input() perfil_idTramite: { perfil: string, idTramite: number };
 
   public items: ItemsAcordeon[] = [];
   public itemsAux: ItemsAcordeon[] = [];
+  public magnitudItemsAux: number = 0;
+  public busqueda: string = '';
   numeroAcordeonPantalla: number = 5;
 
   active: boolean = false;
@@ -77,13 +81,14 @@ export class PuntosDeAtencionComponent implements OnInit, PipeTransform {
           );
         });
       },
-        error => { console.error(error); },
+        error => { this.seccionPuntos.nativeElement.style.height = '100vh' },
         () => this.verMas(0, this.itemsAux)
       );
   }
 
   verMas(contadorVerMas: number, itemsAux: ItemsAcordeon[]) {
-    console.log('filtrado', itemsAux);
+    this.magnitudItemsAux = itemsAux.length;
+    this.seccionPuntos.nativeElement.style.height = itemsAux.length < 4 ? '100vh' : '100%';
     let posicionConDefaseFinal: number = (contadorVerMas + 1) * this.numeroAcordeonPantalla;
     let diferencia: number = itemsAux.length - this.items.length;
     let ultimoContadorVerMas: number = diferencia < this.numeroAcordeonPantalla ?
@@ -91,26 +96,32 @@ export class PuntosDeAtencionComponent implements OnInit, PipeTransform {
       : 0;
 
     for (let i = this.items.length; i < posicionConDefaseFinal - ultimoContadorVerMas; i++) {
-      console.log('contador i', i)
       this.items.push(itemsAux[i]);
     }
   }
 
-  verMenos(itemsAux: ItemsAcordeon[]) {
+  resetValores(){
     this.contadorVerMas = 0;
     this.items = [];
-    this.verMas(0, itemsAux);
+  }
+
+  verMenos() {
+    this.resetValores();
+    this.itemsFiltrados(this.contadorVerMas, this.busqueda);
   }
 
   cerrarPuntoAtencion() {
     const cerrarPuntosAtencion: string = '100%';
     const AbrirTramitesId: string = '0%';
     this.cerrarPuntosAtencion.emit([cerrarPuntosAtencion, AbrirTramitesId]);
-    this.verMenos(this.itemsAux);
+    this.verMenos();
   }
 
   borrarContenido() {
-    this.inputBuscador.nativeElement.value = ''
+    this.busqueda = ''
+    this.inputBuscador.nativeElement.value = this.busqueda;
+    this.resetValores();
+    this.itemsFiltrados(this.contadorVerMas, this.busqueda);
   }
 
   transform(items: ItemsAcordeon[], searchText: string): ItemsAcordeon[] {
@@ -127,14 +138,16 @@ export class PuntosDeAtencionComponent implements OnInit, PipeTransform {
     });
   }
 
-  @HostListener('window:keydown', ['$event']) onInput(event: Event) {
-    console.log('event', event)
+  itemsFiltrados(contador: number, busqueda: string) {
+    let filtrado: ItemsAcordeon[] = this.transform(this.itemsAux, busqueda);
+    this.verMas(contador, filtrado);
+  }
+
+  @HostListener('window:keyup', ['$event']) onInput(event: KeyboardEvent) {
     if (this.inputBuscador.nativeElement == event.target) {
-      this.items = [];
-      let busqueda: string = (event.target as HTMLInputElement).value;
-      console.log('busqueda', busqueda)
-      let filtrado: ItemsAcordeon[] = this.transform(this.itemsAux, busqueda);
-      this.verMas(0, filtrado);
+      this.busqueda = (event.target as HTMLInputElement).value;
+      this.resetValores();
+      this.itemsFiltrados(this.contadorVerMas, this.busqueda);
     }
   }
 

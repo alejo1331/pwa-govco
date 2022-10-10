@@ -77,7 +77,7 @@ export class PuntosAtencionModalComponent implements OnInit {
     this.order = value;
   }
   
-  @HostListener('document:keydown', ['$event'])onkeydown(e:Event){
+  @HostListener('document:keydown', ['$event']) onkeydown(e:Event){
     this.p = 1;
   }
 

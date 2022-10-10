@@ -4,7 +4,7 @@
             <img src="../../../../assets/icons-fonts/icono_cerrar_rojo.svg" alt="Cerrar ventana puntos de atención">
         </div>
     </div>
-    <div class="contenido-pwa-govco seccion-puntos-atencion">
+    <div #seccionPuntos class="contenido-pwa-govco seccion-puntos-atencion">
         <h1 tabindex="0">Convalidación de títulos de estudios de posgrado obtenidos en el exterior</h1>
         <h2 tabindex="0">Puntos de Atención</h2>
         <div class="linea-horizontal-2-pwa-govco"></div>
@@ -69,9 +69,9 @@
                 </div>
             </div>
         </section>
-        <app-boton *ngIf="!(items.length == itemsAux.length)" 
-        (click)="verMas(contadorVerMas = contadorVerMas + 1, itemsAux)">Ver más</app-boton>
-        <app-boton *ngIf="items.length == itemsAux.length && !(numeroAcordeonPantalla > itemsAux.length) "
-            (click)="verMenos(itemsAux)">Ver menos</app-boton>
+        <app-boton *ngIf="!(items.length == magnitudItemsAux)" 
+        (click)="itemsFiltrados(contadorVerMas = contadorVerMas + 1, busqueda)">Ver más</app-boton>
+        <app-boton *ngIf="items.length == magnitudItemsAux && !(numeroAcordeonPantalla > magnitudItemsAux) "
+            (click)="verMenos()">Ver menos</app-boton>
     </div>
 </div>
