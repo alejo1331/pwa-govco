@@ -1,0 +1,42 @@
+<section>
+  <table class="govco-pwa-acerca-tabla">
+    <div class="govco-pwa-legislacion-header">
+        <th class="checkbox" style="width: 10%;">
+          <label class="govco-pwa-checkbox-header">
+            <input type="checkbox">
+          </label>
+        </th>
+
+        <th style="width: 70%;">Documento</th>
+
+        <th style="width: 20%;">Acción</th>
+    </div>
+
+    <tbody>
+
+      <tr class="govco-pwa-elemento-container" *ngFor="let norma of normatividad">
+        <td style="width: 10%;">
+          <label class="govco-pwa-checkbox-list">
+            <input type="checkbox">
+          </label>
+        </td>
+        <td style="width: 70%;">{{norma.TipoNorma}} {{norma.NumeroNorma}} de {{norma.AnoNorma}} ({{norma.Articulos}}) </td>
+        <td style="width: 20%;">
+          <div class="govco-pwa-seguimiento-icono">
+            <div class="govco-pwa-seguimiento-icono-background">
+              <a [href]="norma.UrlDescarga ?  norma.UrlDescarga : norma.UrlNorma">
+                <span class="material-symbols-outlined">
+                  call
+                </span>
+              </a>
+            </div>
+          </div>
+        </td>
+
+      </tr>
+
+    </tbody>
+
+  </table>
+
+</section>
