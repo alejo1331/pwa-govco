@@ -69,7 +69,7 @@
                 </div>
             </div>
         </section>
-        <app-boton *ngIf="!(items.length == magnitudItemsAux)" 
+        <app-boton *ngIf="!(items.length == magnitudItemsAux)"
         (click)="itemsFiltrados(contadorVerMas = contadorVerMas + 1, busqueda)">Ver más</app-boton>
         <app-boton *ngIf="items.length == magnitudItemsAux && !(numeroAcordeonPantalla > magnitudItemsAux) "
             (click)="verMenos()">Ver menos</app-boton>
