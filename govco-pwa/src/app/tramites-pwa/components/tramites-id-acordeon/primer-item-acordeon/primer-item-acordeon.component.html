@@ -25,7 +25,7 @@
                     <!-- {{tipoAccion.key}} -->
                     <app-accion-solicitud 
                         *ngIf="tipoAccion.key === 'SOLICITUD' && tipoAccion.value" 
-                        [data]="tipoAccion.value">
+                        [data]="tipoAccion.value" [dataAcordeon]="dataAcordeon">
                     </app-accion-solicitud>
                     <app-accion-verificacion 
                         *ngIf="tipoAccion.key === 'VERIFICACION_INST' && tipoAccion.value" 
