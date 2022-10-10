@@ -90,17 +90,7 @@ export class Contacto {
     Correo: string;
     UrlCanalWeb: string;
 }
-export class PuntosAtencion {
-    PuntoAtencionId: string;
-    PuntoAtencionNombre: string;
-    HorarioAtencion: string;
-    PuntoAtencionDireccion: string;
-    PuntoAtencionTelefono: string;
-    Latitud: string;
-    Longitud: string;
-    Municipio: string;
-    Departamento: string;
-}
+
 export class InformacionPago {
     CantidadSmlv: string;
     Moneda: string;

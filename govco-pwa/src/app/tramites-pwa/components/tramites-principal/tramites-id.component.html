@@ -18,7 +18,7 @@
     </app-desplegable-uno>
 </section>
 
-<section #seccionPuntoAtencion *ngIf="activarPuntosAtecion" class="seccion-puntos-atencion">
-    <app-puntos-de-atencion [perfil_idTramite]="perfil_idTramite" (cerrarPuntosAtencion)="cerrarPuntosAtencion($event)">
-    </app-puntos-de-atencion>
+<section #seccionPuntoAtencion  class="seccion-puntos-atencion">
+    <app-puntos-de-atencion *ngIf="activarPuntosAtecion" [perfil_idTramite]="perfil_idTramite"
+        (cerrarPuntosAtencion)="cerrarPuntosAtencion($event)"></app-puntos-de-atencion>
 </section>

@@ -6,10 +6,11 @@ import { map } from 'rxjs/operators';
 import {
   TipoFichaTramite, DatosBaseFichaTramite, TipoEnlace,
   TipoAudiencia, MomentosAudienciaTitulo, DataMomentosAudiencia,
-  CanalesAtencion, PuntosAtencion, InformacionPago, Normatividad,
+  CanalesAtencion, InformacionPago, Normatividad,
   PuntosFichaTramiteEstandar, Embebidos, TramiteNoSuite, Condiciones,
   PuntosAtencionNoSuite, DocumentacionRequerida, Contacto
 } from '../../models/tramites-id-models/tramites-por-id-interface';
+import { PuntosDeAtencionInterface } from '../../models/puntos-de-atencion/puntos-de-atencion-interface';
 
 @Injectable({
   providedIn: 'root'
@@ -83,7 +84,7 @@ export class TramitesPorIdService {
     return this.getGeneric<CanalesAtencion[]>('FichaTramite/GetCanalesByMomentoIdAudiencia/', `${idTramite}/${audiencia}/${momento}/${accion}`);
   }
   GetPuntosAtencionById(idTramite: any) {
-    return this.getGeneric<PuntosAtencion[]>('FichaTramite/GetPuntosAtencionById/', idTramite);
+    return this.getGeneric<PuntosDeAtencionInterface[]>('FichaTramite/GetPuntosAtencionById/', idTramite);
   }
 
   GetPagosByMomentoIdAudiencia(idTramite: any, audiencia: any, momento: any) {
@@ -98,11 +99,11 @@ export class TramitesPorIdService {
 
   GetPuntosAtencion(idCaso: any, idTipo: any, idTramite: any, idMomento: any, idAccion: any) {
     // tslint:disable-next-line: max-line-length
-    return this.getGeneric<PuntosAtencion[]>('FichaTramite/GetPuntosAtencion/', `${idCaso}/${idTipo}/${idTramite}/${idMomento}/${idAccion}`);
+    return this.getGeneric<PuntosDeAtencionInterface[]>('FichaTramite/GetPuntosAtencion/', `${idCaso}/${idTipo}/${idTramite}/${idMomento}/${idAccion}`);
   }
 
   GetFechasByTramite(idTramite: any) {
-    return this.getGeneric<PuntosAtencion[]>('FichaTramite/GetFechasEspecificaByTramite/', `${idTramite}`);
+    return this.getGeneric<PuntosDeAtencionInterface[]>('FichaTramite/GetFechasEspecificaByTramite/', `${idTramite}`);
   }
 
   setTipoAtencionPresencial(data: number) {
@@ -140,7 +141,7 @@ export class TramitesPorIdService {
     return this.getGeneric<DocumentacionRequerida[]>('FichaNoSuitTramite/GetDocumentacionRequeridaById/', idTramite);
   }
   GetPuntoAtencionById(idPunto: any) {
-    return this.getGeneric<PuntosAtencion>('FichaTramite/GetPuntoAtencionById/', idPunto);
+    return this.getGeneric<PuntosDeAtencionInterface>('FichaTramite/GetPuntoAtencionById/', idPunto);
   }
 
   /********************    EMBEBIDOS    *********************/
