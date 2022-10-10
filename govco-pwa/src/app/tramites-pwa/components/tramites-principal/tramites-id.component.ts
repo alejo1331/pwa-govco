@@ -14,7 +14,7 @@ export class TramitesIdComponent implements OnInit {
   @ViewChild('seccionTramitesId') seccionTramitesId: ElementRef;
   @ViewChild('seccionPuntoAtencion') seccionPuntoAtencion: ElementRef;
 
-  topScroll : HTMLElement;
+  topScroll: HTMLElement;
 
   informacionFicha: { id: number, tipo: string | null, prefijo: string };
   estructuraModalDesplegable: { titulo: string, icono: string }[];
@@ -75,29 +75,6 @@ export class TramitesIdComponent implements OnInit {
     });
   }
 
-  perfilSeleccionado(perfil: string) {
-    this.perfil_idTramite = {
-      perfil: perfil,
-      idTramite: this.informacionFicha.id
-    }
-  }
-
-  abrirPuntosAtencion() {
-    this.activarPuntosAtecion = true;
-    const abrirPuntosAtencion: string = '0';
-    const cerrarTramitesId: string = '-100%';
-    this.seccionTramitesId.nativeElement.style.left = cerrarTramitesId;
-    this.seccionPuntoAtencion.nativeElement.style.left = abrirPuntosAtencion;
-    this.topScroll.scrollTop = 0;
-  }
-
-  cerrarPuntosAtencion([cerrarPuntosAtencion, abrirTramitesId]: [string, string]) {
-    this.activarPuntosAtecion = false;
-    this.seccionTramitesId.nativeElement.style.left = abrirTramitesId;
-    this.seccionPuntoAtencion.nativeElement.style.left = cerrarPuntosAtencion;
-    this.topScroll.scrollTop = 0;
-  }
-
   private async GenerarTrackingTramite(id: any) {
 
     this.fichaTramiteService.GenerarTrackingTramite(id).subscribe(
@@ -108,6 +85,32 @@ export class TramitesIdComponent implements OnInit {
         console.error(error);
       }
     );
+  }
+
+  perfilSeleccionado(perfil: string) {
+    this.perfil_idTramite = {
+      perfil: perfil,
+      idTramite: this.informacionFicha.id
+    }
+  }
+
+  abrirPuntosAtencion() {
+    this.activarPuntosAtecion = true;
+    const abrirPuntosAtencion: string = '0%';
+    const cerrarTramitesId: string = '-100%';
+    this.seccionTramitesId.nativeElement.style.left = cerrarTramitesId;
+    this.seccionPuntoAtencion.nativeElement.style.left = abrirPuntosAtencion;
+    this.topScroll.scrollTop = 0;
+  }
+
+  cerrarPuntosAtencion([cerrarPuntosAtencion, abrirTramitesId]: [string, string]) {
+    this.seccionTramitesId.nativeElement.style.left = abrirTramitesId;
+    this.seccionPuntoAtencion.nativeElement.style.left = cerrarPuntosAtencion;
+    this.topScroll.scrollTop = 0;
+    this.seccionTramitesId.nativeElement.addEventListener("transitionend", () => {
+      this.seccionTramitesId.nativeElement.style.left == '0%' ?
+        this.activarPuntosAtecion = false : null;
+    })
   }
 
   //Esta seccion se encuentra en general.component.html en la seccion de Tramites ... 
