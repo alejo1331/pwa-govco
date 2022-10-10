@@ -1,0 +1,24 @@
+h2, .text-error {
+    font-size: 14px;
+    color: #000000;
+    text-align: center;
+    font-family: 'WorkSans-Regular';
+}
+h2 {
+    font-family: 'WorkSans-Medium';
+}
+div {
+    display: flex;
+    justify-content: center;
+}
+button {
+    border-radius: 25px;
+    border: 2px solid #3366CC;
+    background-color: #FFFFFF;
+    color: #3366CC;
+    font-size: 16px;
+    font-family: 'WorkSans-Medium';
+    width: 120px;
+    margin-top: 10px;
+    padding: 6px;
+}

@@ -1,5 +1,5 @@
 
-<div class="card-body container-solicitud">
+<div class="card-body container-solicitud"  *ngIf="data.length > 0">
     <div *ngFor="let tipoAccion of data">
         <h4>{{tipoAccion.AtencionDescripcion}}</h4>
         <p>

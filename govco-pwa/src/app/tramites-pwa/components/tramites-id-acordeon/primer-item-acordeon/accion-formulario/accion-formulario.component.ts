@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ValidateUrlService } from 'src/app/tramites-pwa/services/validate-url.service';
 
 @Component({
   selector: 'app-accion-formulario',
@@ -9,10 +10,11 @@ export class AccionFormularioComponent implements OnInit {
 
   @Input() data: any;
 
-  constructor() { }
+  constructor(
+    public validateUrlService: ValidateUrlService
+    ) { }
 
   ngOnInit(): void {
-    console.log('data', this.data)
   }
 
 }

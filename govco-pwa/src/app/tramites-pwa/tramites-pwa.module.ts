@@ -15,8 +15,10 @@ import { AccionVerificacionComponent } from './components/tramites-id-acordeon/p
 import { AccionPagoComponent } from './components/tramites-id-acordeon/primer-item-acordeon/accion-pago/accion-pago.component';
 import { AccionFormularioComponent } from './components/tramites-id-acordeon/primer-item-acordeon/accion-formulario/accion-formulario.component';
 import { AccionDocumentoComponent } from './components/tramites-id-acordeon/primer-item-acordeon/accion-documento/accion-documento.component';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { FichaEspecificaCardsPwaComponent } from './components/ficha-especifica-cards-pwa/ficha-especifica-cards-pwa.component';
 import { FichaEspecificaFooterPwaComponent } from './components/ficha-especifica-footer-pwa/ficha-especifica-footer-pwa.component';
+import { AccionExcepcionComponent } from './components/tramites-id-acordeon/primer-item-acordeon/accion-excepcion/accion-excepcion.component';
 import { SegundoItemAcordeonComponent } from './components/tramites-id-acordeon/segundo-item-acordeon/segundo-item-acordeon.component';
 
 @NgModule({
@@ -34,6 +36,7 @@ import { SegundoItemAcordeonComponent } from './components/tramites-id-acordeon/
     AccionDocumentoComponent,
     FichaEspecificaCardsPwaComponent,
     FichaEspecificaFooterPwaComponent,
+    AccionExcepcionComponent,
     SegundoItemAcordeonComponent
   ],
   imports: [
@@ -41,6 +44,7 @@ import { SegundoItemAcordeonComponent } from './components/tramites-id-acordeon/
     TramitesPwaRoutingModule,
     BibliotecaPwaModule,
     HomePwaModule,
+    NgxSkeletonLoaderModule,
   ],
   exports: [TramitesIdComponent],
 })
