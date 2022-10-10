@@ -1,8 +1,6 @@
 <div class="container-detalle">
     <div class="contenido-detalle">
-        <p class="ficha-descripcion">Obtener certificación de programa(s) académico(s) de instituciones de educación
-            superior. Obtener certificación
-            de programa(s) académico(s) de instituciones de educación superior.
+        <p class="ficha-descripcion">{{contenidoDescripcion}}
             <br>
         </p>
         <a href="#" class="contenido-expandido">Leer Mas...</a>
@@ -23,7 +21,7 @@
                     Tipo de trámite
                 </p>
                 <p class="tramite-type-detalle">
-                    En Línea
+                    {{data.Tipotramite}}
                 </p>
             </div>
         </div>
@@ -38,7 +36,7 @@
                     Tiene costo?
                 </p>
                 <p class="tramite-type-detalle">
-                    Si
+                    {{infoDescripcionTramite?.Costo | titlecase}}
                 </p>
             </div>
         </div>
@@ -53,7 +51,7 @@
                     Duración del proceso
                 </p>
                 <p class="tramite-type-detalle">
-                    15 días (hábiles)
+                    {{infoDescripcionTramite?.TiempoObtencion | titlecase}}
                 </p>
             </div>
         </div>
@@ -67,8 +65,11 @@
                 <p class="tramite-type">
                     Cuándo hacerlo?
                 </p>
-                <p class="tramite-type-detalle">
-                    Ver Fechas
+                <p *ngIf="showBotonFechas" class="tramite-type-detalle">
+                    <a tabindex="0" class="enlace-fechas" (click)="getFechas()">Ver fechas</a>
+                </p>
+                <p *ngIf="!showBotonFechas" class="tramite-type-detalle">
+                    En cualquier fecha
                 </p>
             </div>
         </div>
