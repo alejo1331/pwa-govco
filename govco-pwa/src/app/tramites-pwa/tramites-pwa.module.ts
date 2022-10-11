@@ -38,8 +38,9 @@ import { AccionExcepcionComponent } from './components/tramites-id-acordeon/prim
     FichaEspecificaCardsPwaComponent,
     FichaEspecificaFooterPwaComponent,
     SegundoItemAcordeonComponent,
-    TercerItemAcordeonComponent
-    AccionExcepcionComponent,
+    TercerItemAcordeonComponent,
+    SegundoItemAcordeonComponent,
+    TercerItemAcordeonComponent,
     AccionExcepcionComponent,
     SegundoItemAcordeonComponent,
     TercerItemAcordeonComponent
