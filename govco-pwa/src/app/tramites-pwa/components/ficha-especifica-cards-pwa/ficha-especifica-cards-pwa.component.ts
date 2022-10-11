@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ModalTutorialesPwaComponent } from '../modal-tutoriales-pwa/modal-tutoriales-pwa.component';
+import { ModalDudasPwaComponent } from '../modal-dudas-pwa/modal-dudas-pwa.component';
+import { TramitesPorIdService } from '../../services/tramites-por-id-service/tramites-por-id.service';
 
 @Component({
   selector: 'app-ficha-especifica-cards-pwa',
@@ -6,7 +10,52 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./ficha-especifica-cards-pwa.component.scss'],
 })
 export class FichaEspecificaCardsPwaComponent implements OnInit {
-  constructor() {}
+  @Input() infoTramite: any;
+  @Input() itemid: number;
+  canalesSeguimiento: any[];
 
-  ngOnInit(): void {}
+  constructor(
+    private modalService: NgbModal,
+    private fichaTramiteService: TramitesPorIdService
+  ) {}
+
+  ngOnInit(): void {
+    this.getDataContactoDudas(this.itemid);
+  }
+
+  getDataContactoDudas(tramiteid: number) {
+    this.fichaTramiteService.GetDataContactoDudas(tramiteid).subscribe(
+      (data) => {
+        // Success
+        this.canalesSeguimiento = data.reverse();
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  }
+
+  openTutoriales() {
+    if (this.infoTramite?.UrlManualEnLinea) {
+      const modalRef = this.modalService.open(ModalTutorialesPwaComponent, {
+        size: 'lg',
+        backdrop: 'static',
+        keyboard: false,
+        centered: true,
+        windowClass: 'background-modal',
+      });
+      modalRef.componentInstance.data = this.infoTramite.UrlManualEnLinea;
+    }
+  }
+
+  openDudas() {
+    const modalRef = this.modalService.open(ModalDudasPwaComponent, {
+      size: 'lg',
+      backdrop: 'static',
+      keyboard: false,
+      centered: true,
+      windowClass: 'background-modal',
+    });
+    modalRef.componentInstance.canalesSeguimiento = this.canalesSeguimiento;
+  }
 }

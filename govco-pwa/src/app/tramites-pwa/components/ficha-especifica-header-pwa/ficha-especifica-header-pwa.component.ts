@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ValidateUrlService } from '../../services/validate-url.service';
 
 @Component({
   selector: 'app-ficha-especifica-header-pwa',
@@ -7,19 +8,19 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class FichaEspecificaHeaderPwaComponent implements OnInit {
   @Input() data: any;
-  constructor() {}
+  constructor(private validateUrlService: ValidateUrlService) {}
 
   ngOnInit(): void {}
 
-  // validateUrl(url: string, e: any) {
-  //   e.preventDefault();
-  //   this.validateUrlService.validate(url).subscribe((data: boolean) => {
-  //     if (data) {
-  //       url = url.match(/^https?:/) ? url : '//' + url;
-  //       window.open(url);
-  //     } else {
-  //       this.utilsService.openModalErrorValidateUrl();
-  //     }
-  //   });
-  // }
+  validateUrl(url: string, e: any) {
+    e.preventDefault();
+    this.validateUrlService.validate(url).subscribe((data: boolean) => {
+      if (data) {
+        url = url.match(/^https?:/) ? url : '//' + url;
+        window.open(url);
+      } else {
+        // this.utilsService.openModalErrorValidateUrl();
+      }
+    });
+  }
 }
