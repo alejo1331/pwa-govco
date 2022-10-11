@@ -1,9 +1,9 @@
 
 <div class="card-body container-solicitud"  *ngIf="data.length > 0">
     <div *ngFor="let tipoAccion of data">
-        <h4>{{tipoAccion.AtencionDescripcion}}</h4>
+        <h4>Canal de atención</h4>
         <p>
-            Entregar la documentación en la ventanilla de atención al ciudadano de la sede principal o en las oficinas de los Grupos de Trabajo Territorial. Se deben presentar los documentos foliados (enumerados) en la parte superior derecha de la hoja, tomando como primer folio el recibo de consignación o soporte de la transferencia electrónica.
+            {{tipoAccion.AtencionDescripcion}}
         </p>
         <h5>Medio</h5>
         <div class="card" *ngFor="let item of tipoAccion.data">
@@ -17,7 +17,7 @@
                 <app-boton *ngIf="item.TipoCanal === 'PRESENCIAL'" [inverted]="true"  [border]="true">
                     Ver los puntos de atención
                 </app-boton>
-                <a *ngIf="item.TipoCanal === 'WEB'" [href]="item.UrlCanalWeb" target="_blank">
+                <a *ngIf="item.TipoCanal === 'WEB'" (click)="validateUrlService.validateUrl(item.UrlCanalWeb)" target="_blank">
                     {{item.NombreCanalWeb}}
                 </a>
                 <div class="tel" *ngIf="item.TipoCanal === 'TELEFONICO'">
@@ -44,10 +44,15 @@
                 Presencial
             </div>
             <div class="card-body">
-                <app-boton [inverted]="true" [border]="true">
+                <app-boton [inverted]="true" [border]="true" (click)="abrirPuntosAtencion()">
                     Ver los puntos de atención
                 </app-boton>
             </div>
         </div>
     </div>
 </div>
+
+<section #seccionPuntoAtencion  class="seccion-puntos-atencion">
+    <app-puntos-de-atencion *ngIf="activarPuntosAtecion" [perfil_idTramite]="dataAcordeon"
+        (cerrarPuntosAtencion)="cerrarPuntosAtencion($event)"></app-puntos-de-atencion>
+</section>
