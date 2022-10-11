@@ -2,41 +2,41 @@ kind: pipeline
 name: and_ci_cliente
 
 steps:
-- name: check_branch
-  image: jjvargass/qa_develoment:latest
-  commands:
-  - python /app/check_branch.py -H ${DRONE_GIT_HTTP_URL}
-  when:
-    branch:
-    - develop
-    - release*
-    - devops
-    event:
-    - push
+# - name: check_branch
+#   image: jjvargass/qa_develoment:latest
+#   commands:
+#   - python /app/check_branch.py -H ${DRONE_GIT_HTTP_URL}
+#   when:
+#     branch:
+#     - develop
+#     - release*
+#     - devops
+#     event:
+#     - push
 
-- name: run_sonar_scanner
-  image: timbru31/java-node
-  commands:
-    - export RELEASE=4.7.0.2747
-    - cat /etc/os-release
-    - apt-get update -y
-    - apt-get -y install curl grep sed unzip zip nodejs apt-utils
-    - node --version
-    - npm --version
-    - curl --insecure -o ./sonarscanner.zip -L https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-$RELEASE-linux.zip
-    - unzip sonarscanner.zip
-    - rm sonarscanner.zip
-    - rm -rf sonar-scanner-$RELEASE-linux/jre
-    - sed -i 's/use_embedded_jre=true/use_embedded_jre=false/g' ./sonar-scanner-$RELEASE-linux/bin/sonar-scanner
-    - cp sonar-project.properties ./sonar-scanner-$RELEASE-linux/conf/sonar-scanner.properties
-    - sonar-scanner-$RELEASE-linux/bin/sonar-scanner -X
-  when:
-    branch:
-    - develop
-    - release*
-    event:
-    - push
-    - merge
+# - name: run_sonar_scanner
+#   image: timbru31/java-node
+#   commands:
+#     - export RELEASE=4.7.0.2747
+#     - cat /etc/os-release
+#     - apt-get update -y
+#     - apt-get -y install curl grep sed unzip zip nodejs apt-utils
+#     - node --version
+#     - npm --version
+#     - curl --insecure -o ./sonarscanner.zip -L https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-$RELEASE-linux.zip
+#     - unzip sonarscanner.zip
+#     - rm sonarscanner.zip
+#     - rm -rf sonar-scanner-$RELEASE-linux/jre
+#     - sed -i 's/use_embedded_jre=true/use_embedded_jre=false/g' ./sonar-scanner-$RELEASE-linux/bin/sonar-scanner
+#     - cp sonar-project.properties ./sonar-scanner-$RELEASE-linux/conf/sonar-scanner.properties
+#     - sonar-scanner-$RELEASE-linux/bin/sonar-scanner -X
+#   when:
+#     branch:
+#     - develop
+#     - release*
+#     event:
+#     - push
+#     - merge
 
 #  --------------- DEVELOP ---------------
 #   ___   ___ __   __ ___  _     ___   ___ 
