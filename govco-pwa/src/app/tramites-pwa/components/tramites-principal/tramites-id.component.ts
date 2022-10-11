@@ -121,7 +121,6 @@ export class TramitesIdComponent implements OnInit, OnChanges {
   }
 
   abrirPuntosAtencion([abrirPuntosAtencion, cerrarTramitesId]: [string, string]) {
-    console.log('abrirPuntosAtencion',abrirPuntosAtencion,' cerrarTramitesId', cerrarTramitesId)
     this.activarPuntosAtecion = true;
     this.seccionTramitesId.nativeElement.style.left = cerrarTramitesId;
     this.seccionPuntoAtencion.nativeElement.style.left = abrirPuntosAtencion;
