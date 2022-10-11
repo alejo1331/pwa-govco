@@ -8,7 +8,7 @@ import {
   TipoAudiencia, MomentosAudienciaTitulo, DataMomentosAudiencia,
   CanalesAtencion, InformacionPago, Normatividad,
   PuntosFichaTramiteEstandar, Embebidos, TramiteNoSuite, Condiciones,
-  PuntosAtencionNoSuite, DocumentacionRequerida, Contacto
+  PuntosAtencionNoSuite, DocumentacionRequerida, Contacto, TrackingTramite
 } from '../../models/tramites-id-models/tramites-por-id-interface';
 import { PuntosDeAtencionInterface } from '../../models/puntos-de-atencion/puntos-de-atencion-interface';
 
@@ -32,7 +32,7 @@ export class TramitesPorIdService {
 
   /********************         FICHA SUIT        *********************/
 
-  GetTipoFichaTramite(idTramite: any): Observable<TipoFichaTramite> {
+  GetTipoFichaTramite(idTramite: string): Observable<TipoFichaTramite> {
     return this.getGeneric<TipoFichaTramite>('FichaTramite/GetTipoFichaTramiteById/', idTramite);
   }
 
@@ -48,14 +48,14 @@ export class TramitesPorIdService {
         })
       );
   }
-  GetTipoTramiteFichaEspecificaById(idTramite: any) {
+  GetTipoTramiteFichaEspecificaById(idTramite: string):Observable<TipoEnlace> {
     return this.getGeneric<TipoEnlace>('FichaTramite/GetTipoTramiteFichaEspecificaById/', idTramite);
   }
 
   GetServicioYTramiteEspecifico(idTramite: any) {
     return this.getGeneric<TipoEnlace>('ServiciosYTramites/GetServicioYTramiteEspecifico/', idTramite);
   }
-  GetTiposAudienciaById(idTramite: any) {
+  GetTiposAudienciaById(idTramite: string):Observable<TipoAudiencia[]> {
     return this.getGeneric<TipoAudiencia[]>('FichaTramite/GetTiposAudienciaById/', idTramite);
   }
   GetMomentosByIdAudiencia(idTramite: any, audiencia: any) {
@@ -152,10 +152,9 @@ export class TramitesPorIdService {
     return this.getGeneric<any>('etapas-barra/GetDataBarraTramite/', `${idTramite}/Tramites`);
   }
 
-  GenerarTrackingTramite(idTramite: any) {
-    const ubicacion = localStorage.getItem("ubicacion") || '';
-    var codigoMunicipio = localStorage.getItem("ubicacion") == "" ? undefined : JSON.parse(ubicacion)?.codigoMunicipio;
-    var params = (codigoMunicipio != undefined && codigoMunicipio != "" && codigoMunicipio != "Todos") ? { "idTramite": idTramite, "idMunicipio": codigoMunicipio } : { "idTramite": idTramite, "idMunicipio": "" };
+  GenerarTrackingTramite(idTramite: string):Observable<any> {
+    let codigoMunicipio: string = localStorage.getItem("codigoMunicipio") == "" ? '' : String(localStorage.getItem("codigoMunicipio"));
+    var params: TrackingTramite = (codigoMunicipio != undefined && codigoMunicipio != "" && codigoMunicipio != "TodosLosMunicipios") ? { idTramite: idTramite, idMunicipio: codigoMunicipio } : { idTramite: idTramite, idMunicipio: "" };
     return this.http.post<any>(`${this.API_URL_AUDITORIA}` + "TrackingTramite/TrazaTrackingTramite", params);
   }
 

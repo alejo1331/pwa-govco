@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, EventEmitter, OnInit, Input, Output } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalTutorialesPwaComponent } from '../modal-tutoriales-pwa/modal-tutoriales-pwa.component';
 import { ModalDudasPwaComponent } from '../modal-dudas-pwa/modal-dudas-pwa.component';
@@ -12,6 +12,7 @@ import { TramitesPorIdService } from '../../services/tramites-por-id-service/tra
 export class FichaEspecificaCardsPwaComponent implements OnInit {
   @Input() infoTramite: any;
   @Input() itemid: number;
+  @Output() cerrarPuntosAtencion = new EventEmitter<[string, string]>();
   canalesSeguimiento: any[];
 
   constructor(
@@ -57,5 +58,10 @@ export class FichaEspecificaCardsPwaComponent implements OnInit {
       windowClass: 'background-modal',
     });
     modalRef.componentInstance.canalesSeguimiento = this.canalesSeguimiento;
+  }
+  abrirPuntosAtencion() {
+    const cerrarPuntosAtencion: string = '0%';
+    const AbrirTramitesId: string = '-100%';
+    this.cerrarPuntosAtencion.emit([cerrarPuntosAtencion, AbrirTramitesId]);
   }
 }

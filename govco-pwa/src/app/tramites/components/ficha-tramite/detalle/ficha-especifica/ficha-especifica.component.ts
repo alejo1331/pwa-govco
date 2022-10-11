@@ -46,7 +46,6 @@ export class FichaEspecificaComponent implements OnInit {
     this.fichaTramiteService.GetTipoTramiteFichaEspecificaById(dataTramite.id).subscribe(dataFicha => {
       dataTramite?this.GenerarTrackingTramite(dataTramite.id):null;
       this.infoBasicaTramite = dataFicha;
-      console.log('data',this.infoBasicaTramite)
       this.breadCrumbService.setTittle(this.infoBasicaTramite.NombreEstandarizado);
       this.nombreTramite = this.infoBasicaTramite.NombreEstandarizado;
       this.fichaTramiteService.setTipoAtencionPresencial(this.infoBasicaTramite.TipoAtencionPresencial);

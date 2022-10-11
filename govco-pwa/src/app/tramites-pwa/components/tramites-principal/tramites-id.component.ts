@@ -1,32 +1,40 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, OnChanges, ViewChild, SimpleChanges } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BottomMenuService } from 'src/app/transversales/services/bottom-menu/bottom-menu.service';
 import { HeaderService } from 'src/app/transversales/services/header-service/header.service';
 import { SidenavService } from 'src/app/transversales/services/sidenav-service/sidenav-service.service';
 import { TramitesPorIdService } from '../../services/tramites-por-id-service/tramites-por-id.service';
+import {
+  TipoFichaTramite, DatosBaseFichaTramite, TipoEnlace,
+  TipoAudiencia, MomentosAudienciaTitulo, DataMomentosAudiencia,
+  CanalesAtencion, InformacionPago, Normatividad,
+  PuntosFichaTramiteEstandar, Embebidos, TramiteNoSuite, Condiciones,
+  PuntosAtencionNoSuite, DocumentacionRequerida, Contacto, informacionFicha
+} from '../../models/tramites-id-models/tramites-por-id-interface';
 
 @Component({
   selector: 'app-tramites-id',
   templateUrl: './tramites-id.component.html',
   styleUrls: ['./tramites-id.component.css']
 })
-export class TramitesIdComponent implements OnInit {
+export class TramitesIdComponent implements OnInit, OnChanges {
   @ViewChild('seccionTramitesId') seccionTramitesId: ElementRef;
   @ViewChild('seccionPuntoAtencion') seccionPuntoAtencion: ElementRef;
 
   topScroll: HTMLElement;
 
-  informacionFicha: { id: number, tipo: string | null, prefijo: string };
+  informacionFicha: informacionFicha;
   estructuraModalDesplegable: { titulo: string, icono: string }[];
   perfil_idTramite: { perfil: string, idTramite: number }
 
-  infoBasicaTramite: any;
+  infoBasicaTramite: TipoEnlace;
   nombreTramite: string;
   idTramite: number;
-  audiencias: any[];
+  audiencias: TipoAudiencia[];
   embebido: boolean = false;
   activarPuntosAtecion: boolean = false;
-
+  activarBotonPuntosAtencion: boolean = true;
+  activarTramitesId: boolean = false;
 
   constructor(
     protected fichaTramiteService: TramitesPorIdService,
@@ -58,26 +66,39 @@ export class TramitesIdComponent implements OnInit {
     this.cargarInformacionFicha(this.informacionFicha);
   }
 
-  private async cargarInformacionFicha(dataTramite: any) {
-    this.fichaTramiteService.GetTipoTramiteFichaEspecificaById(dataTramite.id).subscribe(dataFicha => {
-      dataTramite ? this.GenerarTrackingTramite(dataTramite.id) : null;
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log('olii',changes)
+  }
+
+
+
+  private async cargarInformacionFicha(dataTramite: informacionFicha) {
+
+    this.fichaTramiteService.GetTipoTramiteFichaEspecificaById(String(dataTramite.id)).subscribe((dataFicha: TipoEnlace) => {
+      this.activarTramitesId = true;
+      // to do
+      // dataTramite ? this.GenerarTrackingTramite(dataTramite.id) : null; 
       this.infoBasicaTramite = dataFicha;
+      if (!dataFicha.EnLinea ) {
+        this.activarBotonPuntosAtencion = false;
+      }
       this.nombreTramite = this.infoBasicaTramite.NombreEstandarizado;
       this.fichaTramiteService.setTipoAtencionPresencial(this.infoBasicaTramite.TipoAtencionPresencial);
-      this.fichaTramiteService.GetTiposAudienciaById(dataTramite.id).subscribe(n => {
-        this.audiencias = n
-      });
+      this.fichaTramiteService.GetTiposAudienciaById(String(dataTramite.id)).subscribe((audiencia: TipoAudiencia[]) => {
+        this.audiencias = audiencia;
+      }, error => { console.log('error', error) }
+      );
       // Obtiene la URL de trámite en linea
       this.fichaTramiteService.GetBarraProcesoTramite(dataTramite.id).subscribe(res => {
         this.infoBasicaTramite.UrlTramiteEnLinea = res.urlTramite.match(/^https?:/) ? res.urlTramite : res.urlTramite.includes("embebido") && res.urlTramite.includes("tramites-y-servicios") ? res.urlTramite : res.urlTramite;
         this.infoBasicaTramite.EnLinea = res.isEnlinea;
       });
-    });
+    }, error => { console.log('error', error), this.activarTramitesId = false }
+    );
   }
 
-  private async GenerarTrackingTramite(id: any) {
-
-    this.fichaTramiteService.GenerarTrackingTramite(id).subscribe(
+  private async GenerarTrackingTramite(id: number) {
+    this.fichaTramiteService.GenerarTrackingTramite(String(id)).subscribe(
       (resp: any) => {
         console.log(resp);
       },
@@ -94,10 +115,9 @@ export class TramitesIdComponent implements OnInit {
     }
   }
 
-  abrirPuntosAtencion() {
+  abrirPuntosAtencion([abrirPuntosAtencion, cerrarTramitesId]: [string, string]) {
+    console.log('abrirPuntosAtencion',abrirPuntosAtencion,' cerrarTramitesId', cerrarTramitesId)
     this.activarPuntosAtecion = true;
-    const abrirPuntosAtencion: string = '0%';
-    const cerrarTramitesId: string = '-100%';
     this.seccionTramitesId.nativeElement.style.left = cerrarTramitesId;
     this.seccionPuntoAtencion.nativeElement.style.left = abrirPuntosAtencion;
     this.topScroll.scrollTop = 0;

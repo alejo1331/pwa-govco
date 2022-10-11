@@ -1,25 +1,25 @@
 <section #seccionTramitesId class="seccion-tramites-por-id">
     <app-header-compartir-v1></app-header-compartir-v1>
-    <div class="contenido">
+    <div *ngIf="activarTramitesId" class="contenido">
         <app-ficha-especifica-header-pwa *ngIf="infoBasicaTramite" [data]="infoBasicaTramite">
         </app-ficha-especifica-header-pwa>
         <app-ficha-especifica-detalle-pwa *ngIf="infoBasicaTramite" [data]="infoBasicaTramite">
         </app-ficha-especifica-detalle-pwa>
-        <app-ficha-especifica-cards-pwa [infoTramite]="infoBasicaTramite" [itemid]="idTramite">
-        </app-ficha-especifica-cards-pwa>
-        <app-boton (click)="abrirPuntosAtencion()">abrir puntos de atencion</app-boton>
+        <app-ficha-especifica-cards-pwa [infoTramite]="infoBasicaTramite" [itemid]="idTramite" (cerrarPuntosAtencion)="cerrarPuntosAtencion($event)"></app-ficha-especifica-cards-pwa>
+        <app-boton  (click)="abrirPuntosAtencion(['0%','-100%'])">abrir puntos de atencion
+        </app-boton>
         <app-tramites-id-acordeon [dataAcordeon]="perfil_idTramite"></app-tramites-id-acordeon>
         <app-ficha-especifica-footer-pwa *ngIf="infoBasicaTramite" [data]="infoBasicaTramite">
         </app-ficha-especifica-footer-pwa>
         <app-footer></app-footer>
     </div>
-    <app-boton-retroalimentacion></app-boton-retroalimentacion>
-    <app-desplegable-uno *ngIf="audiencias" [data]="audiencias" [estructura]="estructuraModalDesplegable"
-        (perfilSeleccionado)="perfilSeleccionado($event)">
+    <app-boton-retroalimentacion *ngIf="activarTramitesId"></app-boton-retroalimentacion>
+    <app-desplegable-uno *ngIf="audiencias && activarTramitesId" [data]="audiencias"
+        [estructura]="estructuraModalDesplegable" (perfilSeleccionado)="perfilSeleccionado($event)">
     </app-desplegable-uno>
 </section>
 
 <section #seccionPuntoAtencion class="seccion-puntos-atencion">
-    <app-puntos-de-atencion *ngIf="activarPuntosAtecion" [perfil_idTramite]="perfil_idTramite"
+    <app-puntos-de-atencion *ngIf="activarPuntosAtecion && activarTramitesId" [perfil_idTramite]="perfil_idTramite"
         (cerrarPuntosAtencion)="cerrarPuntosAtencion($event)"></app-puntos-de-atencion>
 </section>
