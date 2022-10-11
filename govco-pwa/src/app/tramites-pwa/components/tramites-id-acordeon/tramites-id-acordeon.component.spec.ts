@@ -19,7 +19,7 @@ describe('TramitesIdAcordeonComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('Debe de crearse correctamente', () => {
     expect(component).toBeTruthy();
   });
 });
