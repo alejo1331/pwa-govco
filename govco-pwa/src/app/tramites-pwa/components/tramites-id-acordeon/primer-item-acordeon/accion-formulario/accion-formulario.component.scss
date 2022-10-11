@@ -1,69 +1,69 @@
 .container-formulario {
-    padding: 12px 16px 0 16px;
-    h4 {
-        font-family: 'WorkSans-SemiBold';
-        font-size: 16px;
-        color: #004884;
-        margin-bottom: 16px;
-    }
-    .container-accion-form .sub-container-accion-form {
-        margin-bottom: 34px;
-        h5 {
-            font-family: 'WorkSans-Medium';
-            font-size: 16px;
-            color: #004884;
-            margin-bottom: 8px;
-        }
-        .card {
-            border: 0;
-            border-radius: 0;
-            background-color: initial;
-            .card-header {
-                background-color: #F2F2F2;
-                padding: 14px 16px 14px 16px;
-                font-family: 'WorkSans-SemiBold';
-                font-size: 14px;
-                color: #000000;
-                border: 0;
-            }
-            .card-body {
-                background-color: #ffff;
-                padding: 12px 24px 12px 16px;
-                a {
-                    display: flex;
-                    align-items: center;
-                    color: #3366CC;
-                    text-decoration: none;  
-                    span.material-symbols-outlined {
-                        margin-right: 4px;
-                    }
-                    span.text {
-                        text-decoration: underline;       
-                        font-family: 'WorkSans-SemiBold';
-                        font-size: 14px;                 
-                    }
-                }
-                p {
-                    font-family: 'WorkSans-Regular';
-                    font-size: 14px;
-                    color: #000000;
-                    margin: 0;
-                }
-                a.punto-atencion {
-                    font-family: 'WorkSans-Medium';
-                    font-size: 14px;
-                    text-decoration: underline;       
-                }
-            }
-        }
-        .card.initial .card-header {
-            border-radius: 5px 5px 0px 0px;
-        }
-        .card:last-child .card-body {
-            border-radius: 0px 0px 5px 5px;
-        }
-    }
-    .container-accion-form:last-child .sub-container-accion-form {
-        margin-bottom: 18px;
-    }
+  padding: 12px 16px 0 16px;
+  h4 {
+      font-family: 'WorkSans-SemiBold';
+      font-size: 16px;
+      color: #004884;
+      margin-bottom: 16px;
+  }
+  .container-accion-form .sub-container-accion-form {
+      margin-bottom: 34px;
+      h5 {
+          font-family: 'WorkSans-Medium';
+          font-size: 16px;
+          color: #004884;
+          margin-bottom: 8px;
+      }
+      .card {
+          border: 0;
+          border-radius: 0;
+          background-color: initial;
+          .card-header {
+              background-color: #F2F2F2;
+              padding: 14px 16px 14px 16px;
+              font-family: 'WorkSans-SemiBold';
+              font-size: 14px;
+              color: #000000;
+              border: 0;
+          }
+          .card-body {
+              background-color: #ffff;
+              padding: 12px 24px 12px 16px;
+              a {
+                  display: flex;
+                  align-items: center;
+                  color: #3366CC;
+                  text-decoration: none;
+                  span.material-symbols-outlined {
+                      margin-right: 4px;
+                  }
+                  span.text {
+                      text-decoration: underline;
+                      font-family: 'WorkSans-SemiBold';
+                      font-size: 14px;
+                  }
+              }
+              p {
+                  font-family: 'WorkSans-Regular';
+                  font-size: 14px;
+                  color: #000000;
+                  margin: 0;
+              }
+              a.punto-atencion {
+                  font-family: 'WorkSans-Medium';
+                  font-size: 14px;
+                  text-decoration: underline;
+              }
+          }
+      }
+      .card.initial .card-header {
+          border-radius: 5px 5px 0px 0px;
+      }
+      .card:last-child .card-body {
+          border-radius: 0px 0px 5px 5px;
+      }
+  }
+  .container-accion-form:last-child .sub-container-accion-form {
+      margin-bottom: 18px;
+  }
 }

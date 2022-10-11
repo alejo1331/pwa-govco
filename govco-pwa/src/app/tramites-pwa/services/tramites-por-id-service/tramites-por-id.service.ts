@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { map } from 'rxjs/operators';
 import {
@@ -8,9 +8,10 @@ import {
   TipoAudiencia, MomentosAudienciaTitulo, DataMomentosAudiencia,
   CanalesAtencion, InformacionPago, Normatividad,
   PuntosFichaTramiteEstandar, Embebidos, TramiteNoSuite, Condiciones,
-  PuntosAtencionNoSuite, DocumentacionRequerida, Contacto
+  PuntosAtencionNoSuite, DocumentacionRequerida, Contacto, TrackingTramite
 } from '../../models/tramites-id-models/tramites-por-id-interface';
 import { PuntosDeAtencionInterface } from '../../models/puntos-de-atencion/puntos-de-atencion-interface';
+import { AccionSolicitudInterface } from '../../models/accion-solicitud/accion-solicitud-interface';
 
 @Injectable({
   providedIn: 'root'
@@ -23,8 +24,26 @@ export class TramitesPorIdService {
   API_URL = environment.serverUrlFichaTramite;
   API_URL_AUDITORIA = environment.auditoriaurl;
 
+  private dataPuntosAtencion: AccionSolicitudInterface = {
+    abrirPuntos: '100%',
+    cerrarTramiteId: '0%',
+    id1: 'string',
+    id2: 'string',
+    id3: 'string',
+  }
+
+  private abrir = new BehaviorSubject<AccionSolicitudInterface> (this.dataPuntosAtencion);
+  public abrirPuntosAtencion = this.abrir.asObservable();
+
 
   constructor(private http: HttpClient) { }
+
+
+  public async getAbrirPuntos(data: AccionSolicitudInterface) {
+    await this.abrir.next(data);
+  }
+
+
 
   private getGeneric<T>(endPoint: string, parameters: string): Observable<T> {
     return this.http.get<T>(`${this.API_URL}${endPoint}${parameters}`);
@@ -32,7 +51,7 @@ export class TramitesPorIdService {
 
   /********************         FICHA SUIT        *********************/
 
-  GetTipoFichaTramite(idTramite: any): Observable<TipoFichaTramite> {
+  GetTipoFichaTramite(idTramite: string): Observable<TipoFichaTramite> {
     return this.getGeneric<TipoFichaTramite>('FichaTramite/GetTipoFichaTramiteById/', idTramite);
   }
 
@@ -48,14 +67,14 @@ export class TramitesPorIdService {
         })
       );
   }
-  GetTipoTramiteFichaEspecificaById(idTramite: any) {
+  GetTipoTramiteFichaEspecificaById(idTramite: string):Observable<TipoEnlace> {
     return this.getGeneric<TipoEnlace>('FichaTramite/GetTipoTramiteFichaEspecificaById/', idTramite);
   }
 
   GetServicioYTramiteEspecifico(idTramite: any) {
     return this.getGeneric<TipoEnlace>('ServiciosYTramites/GetServicioYTramiteEspecifico/', idTramite);
   }
-  GetTiposAudienciaById(idTramite: any) {
+  GetTiposAudienciaById(idTramite: string):Observable<TipoAudiencia[]> {
     return this.getGeneric<TipoAudiencia[]>('FichaTramite/GetTiposAudienciaById/', idTramite);
   }
   GetMomentosByIdAudiencia(idTramite: any, audiencia: any) {
@@ -152,10 +171,9 @@ export class TramitesPorIdService {
     return this.getGeneric<any>('etapas-barra/GetDataBarraTramite/', `${idTramite}/Tramites`);
   }
 
-  GenerarTrackingTramite(idTramite: any) {
-    const ubicacion = localStorage.getItem("ubicacion") || '';
-    var codigoMunicipio = localStorage.getItem("ubicacion") == "" ? undefined : JSON.parse(ubicacion)?.codigoMunicipio;
-    var params = (codigoMunicipio != undefined && codigoMunicipio != "" && codigoMunicipio != "Todos") ? { "idTramite": idTramite, "idMunicipio": codigoMunicipio } : { "idTramite": idTramite, "idMunicipio": "" };
+  GenerarTrackingTramite(idTramite: string):Observable<any> {
+    let codigoMunicipio: string = localStorage.getItem("codigoMunicipio") == "" ? '' : String(localStorage.getItem("codigoMunicipio"));
+    var params: TrackingTramite = (codigoMunicipio != undefined && codigoMunicipio != "" && codigoMunicipio != "TodosLosMunicipios") ? { idTramite: idTramite, idMunicipio: codigoMunicipio } : { idTramite: idTramite, idMunicipio: "" };
     return this.http.post<any>(`${this.API_URL_AUDITORIA}` + "TrackingTramite/TrazaTrackingTramite", params);
   }
 

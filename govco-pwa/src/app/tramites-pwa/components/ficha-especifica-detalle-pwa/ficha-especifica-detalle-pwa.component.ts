@@ -15,6 +15,9 @@ export class FichaEspecificaDetallePwaComponent implements OnInit {
   caracteresCategoria: boolean = false;
   textoBoton: string = 'Iniciar trámite';
   urlBoton = '';
+  iconoTramite = '';
+  iconoCosto = '';
+
   showBotonFechas: boolean;
 
   constructor(protected fichaTramiteService: TramitesPorIdService) {}
@@ -24,6 +27,7 @@ export class FichaEspecificaDetallePwaComponent implements OnInit {
       .GetServicioYTramiteEspecifico(this.data.IdTramite)
       .subscribe((data: any) => {
         this.infoDescripcionTramite = data;
+        this.getIconoCosto(data?.Costo);
         this.contenidoDescripcion =
           this.infoDescripcionTramite.DescripcionTramite.substring(0, 250);
         this.contenidoLeido = this.infoDescripcionTramite.DescripcionTramite;
@@ -31,7 +35,7 @@ export class FichaEspecificaDetallePwaComponent implements OnInit {
           this.caracteresCategoria = true;
         }
       });
-
+    this.getIconoTramite(this.data.Tipotramite);
     this.showBotonFecha();
   }
 
@@ -39,10 +43,26 @@ export class FichaEspecificaDetallePwaComponent implements OnInit {
     window.open(url, '_blank');
   }
 
+  getIconoTramite(data: any) {
+    if (data === 'En línea') {
+      this.iconoTramite = 'laptop_mac';
+    } else if (data === 'Presencial') {
+      this.iconoTramite = 'person';
+    } else {
+      this.iconoTramite = 'co_present';
+    }
+  }
+
+  getIconoCosto(data: any) {
+    data === 'SI'
+      ? (this.iconoCosto = 'monetization_on')
+      : (this.iconoCosto = 'money_off');
+  }
+
   showBotonFecha() {
     this.fichaTramiteService.GetFechasByTramite(this.data.IdTramite).subscribe(
       (resp: any) => {
-        this.showBotonFechas = resp.fechasEspecificas.length > 0;
+        this.showBotonFechas = resp.length > 0;
       },
       (error) => console.log(error)
     );

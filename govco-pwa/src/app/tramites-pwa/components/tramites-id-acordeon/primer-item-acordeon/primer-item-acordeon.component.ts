@@ -34,6 +34,7 @@ export class PrimerItemAcordeonComponent implements OnInit {
   private loadMomentosAudiencia() {
     this.fichaTramiteService.GetMomentosByIdAudiencia(this.dataAcordeon.idTramite, this.dataAcordeon.perfil).subscribe( n => {
       this.dataItemAcordeon = this.eliminarValoresRepetidosMomentos(n);
+      console.log('this.dataItemAcordeon', n)
     });
   }
 

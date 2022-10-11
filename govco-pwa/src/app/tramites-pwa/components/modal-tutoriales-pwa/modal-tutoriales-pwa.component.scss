@@ -1,0 +1,105 @@
+::ng-deep .modal-lg {
+    max-width: 100% !important;
+    padding-left: 16px;
+    padding-right: 16px;
+    margin: 0;
+}
+
+::ng-deep .background-modal {
+    background-color: #00000080;
+}
+
+::ng-deep .modal-content {
+    padding: 24px 16px 14px 16px;
+    border: 2px solid #E6EFFD;
+    border-radius: 10px;
+}
+
+.modal-header {
+    text-align: left;
+    display: block;
+    padding: 0px;
+    padding-bottom: 24px;
+    font-family: "WorkSans-Regular", sans-serif;
+    font-size: 16px;
+    border-bottom: none;
+
+    .modal-title {
+        .titulo {
+            font-family: 'WorkSans-Medium';
+            text-align: left;
+            font-size: 16px;
+            margin-bottom: 26px;
+        }
+
+        .sub-titulo {
+            font-size: 14px;
+        }
+    }
+
+    .icon-error {
+        text-align: end;
+        cursor: pointer;
+    }
+}
+
+.modal-body {
+    color: #004884 !important;
+    font-family: "WorkSans-Regular", sans-serif;
+    font-size: 13px;
+    padding: 0px;
+
+    .contenedor-tutoriales {
+        border: 1px solid #E6EFFD;
+        border-radius: 5px;
+        padding-top: 16px;
+        padding-bottom: 16px;
+
+        .item-tutorial {
+            text-align: center;
+            display: block;
+
+            img {
+                cursor: pointer;
+            }
+
+            p {
+                cursor: pointer;
+                margin-bottom: 0px;
+            }
+        }
+    }
+
+    .separador {
+        display: flex;
+        justify-content: center;
+    }
+
+    .separador::after {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 2px;
+        background-color: #1c4780;
+        margin-top: 24px;
+    }
+}
+
+.modal-footer{
+    border-top: none;
+    padding: 0px;
+    padding-top: 1rem;
+    justify-content: flex-start;
+    button {
+        font-family: 'WorkSans-SemiBold';
+        font-size: 14px;
+        color: #3366CC;
+        border: 0;
+        background-color: transparent;
+        padding: 12px;
+        outline: none;
+    }
+    .btn-outline:focus, .btn-outline:focus-visible{
+        box-shadow: none !important;
+    }
+}
