@@ -59,6 +59,7 @@ export class FichaEspecificaCardsPwaComponent implements OnInit {
     });
     modalRef.componentInstance.canalesSeguimiento = this.canalesSeguimiento;
   }
+  
   abrirPuntosAtencion() {
     const cerrarPuntosAtencion: string = '0%';
     const AbrirTramitesId: string = '-100%';

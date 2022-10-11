@@ -5,8 +5,9 @@
         </app-ficha-especifica-header-pwa>
         <app-ficha-especifica-detalle-pwa *ngIf="infoBasicaTramite" [data]="infoBasicaTramite">
         </app-ficha-especifica-detalle-pwa>
-        <app-ficha-especifica-cards-pwa [infoTramite]="infoBasicaTramite" [itemid]="idTramite" (cerrarPuntosAtencion)="cerrarPuntosAtencion($event)"></app-ficha-especifica-cards-pwa>
-        <app-boton  (click)="abrirPuntosAtencion(['0%','-100%'])">abrir puntos de atencion
+        <app-ficha-especifica-cards-pwa [infoTramite]="infoBasicaTramite" [itemid]="idTramite"
+            (cerrarPuntosAtencion)="cerrarPuntosAtencion($event)"></app-ficha-especifica-cards-pwa>
+        <app-boton (click)="abrirPuntosAtencion(['0%','-100%'])">abrir puntos de atencion
         </app-boton>
         <app-tramites-id-acordeon [dataAcordeon]="perfil_idTramite"></app-tramites-id-acordeon>
         <app-ficha-especifica-footer-pwa *ngIf="infoBasicaTramite" [data]="infoBasicaTramite">

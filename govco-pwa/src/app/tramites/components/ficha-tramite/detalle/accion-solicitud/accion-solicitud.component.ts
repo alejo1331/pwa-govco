@@ -29,6 +29,7 @@ export class AccionSolicitudComponent implements OnInit {
   }
 
   private validarEstadoExcepcion() {
+    console.log('data accion solicitud', this.data)
     if (typeof (this.data.length) !== 'undefined') {
       this.dataAccion = this.data;
     } else {
