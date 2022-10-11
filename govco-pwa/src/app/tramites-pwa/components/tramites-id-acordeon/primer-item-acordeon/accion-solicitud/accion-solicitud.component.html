@@ -44,15 +44,10 @@
                 Presencial
             </div>
             <div class="card-body">
-                <app-boton [inverted]="true" [border]="true" (click)="abrirPuntosAtencion()">
+                <app-boton [inverted]="true" [border]="true" (click)="abrirPuntosAtencionClic()">
                     Ver los puntos de atención
                 </app-boton>
             </div>
         </div>
     </div>
 </div>
-
-<section #seccionPuntoAtencion  class="seccion-puntos-atencion">
-    <app-puntos-de-atencion *ngIf="activarPuntosAtecion" [perfil_idTramite]="dataAcordeon"
-        (cerrarPuntosAtencion)="cerrarPuntosAtencion($event)"></app-puntos-de-atencion>
-</section>
