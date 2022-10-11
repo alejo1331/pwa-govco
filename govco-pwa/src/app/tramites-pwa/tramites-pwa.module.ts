@@ -39,11 +39,12 @@ import { TercerItemAcordeonComponent } from './components/tramites-id-acordeon/t
     AccionDocumentoComponent,
     FichaEspecificaCardsPwaComponent,
     FichaEspecificaFooterPwaComponent,
-    AccionExcepcionComponent,
     SegundoItemAcordeonComponent,
     ModalTutorialesPwaComponent,
     ModalDudasPwaComponent,
-    TercerItemAcordeonComponent
+    TercerItemAcordeonComponent,
+    AccionExcepcionComponent
+
   ],
   imports: [
     CommonModule,
