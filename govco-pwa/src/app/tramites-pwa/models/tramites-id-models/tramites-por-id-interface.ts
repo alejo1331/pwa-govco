@@ -2,6 +2,11 @@ export class TipoFichaTramite {
     message: string;
     StatusCode: string;
 }
+export class informacionFicha {
+    id: number;
+    tipo: string | null;
+    prefijo: string
+}
 export class DatosBaseFichaTramite {
     IdTramite: string;
     NombreEstandarizado: string;
@@ -9,12 +14,18 @@ export class DatosBaseFichaTramite {
     Entidad: string;
 }
 export class TipoEnlace {
-    IdTramite: string;
-    Tipotramite: string;
-    UrlTramiteEnLinea: string;
-    PaginaWeb: string;
-    TipoTramitePrsencial: number;
     EnLinea: boolean;
+    Entidad: string;
+    FechaActualizacion: string;
+    IdTramite: string;
+    NombreEstandarizado: string;
+    PaginaWeb: string;
+    Proposito: string;
+    TipoAtencionPresencial: number;
+    Tipotramite: string;
+    UrlManualEnLinea: string;
+    UrlTramiteEnLinea: string;
+    TipoTramitePrsencial: number;
 }
 export class TipoAudiencia {
     tipoaudiencia: string;
@@ -147,6 +158,11 @@ export class PuntosAtencionNoSuite {
 
 export class DocumentacionRequerida {
     DescripcionDocumento: string;
+}
+
+export class TrackingTramite {
+    idTramite: string;
+    idMunicipio: string;
 }
 
 
