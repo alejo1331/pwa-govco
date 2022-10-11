@@ -3,7 +3,7 @@
     <div class="govco-pwa-legislacion-header">
         <th class="checkbox" style="width: 10%;">
           <label class="govco-pwa-checkbox-header">
-            <input type="checkbox">
+            <input type="checkbox" name="selectorGeneral" (change)="toogleSeleccion()">
           </label>
         </th>
 
@@ -17,7 +17,9 @@
       <tr class="govco-pwa-elemento-container" *ngFor="let norma of normatividad">
         <td style="width: 10%;">
           <label class="govco-pwa-checkbox-list">
-            <input type="checkbox">
+            <input type="checkbox"
+            name="norma"
+            value="{{norma.UrlDescarga ?  norma.UrlDescarga : norma.UrlNorma}}">
           </label>
         </td>
         <td style="width: 70%;">{{norma.TipoNorma}} {{norma.NumeroNorma}} de {{norma.AnoNorma}} ({{norma.Articulos}}) </td>
@@ -32,11 +34,11 @@
             </div>
           </div>
         </td>
-
       </tr>
-
     </tbody>
-
   </table>
 
+  <div class="legislacion-body-button">
+    <button [ngClass]="{disabled: (toggleBool === true) ? true : false}"   (click)="descargarSeleccion()">Descargar selección</button>
+  </div>
 </section>
