@@ -11,6 +11,7 @@ import {
   PuntosFichaTramiteEstandar, Embebidos, TramiteNoSuite, Condiciones,
   PuntosAtencionNoSuite, DocumentacionRequerida, Contacto, informacionFicha
 } from '../../models/tramites-id-models/tramites-por-id-interface';
+import { AccionSolicitudInterface } from '../../models/accion-solicitud/accion-solicitud-interface';
 
 @Component({
   selector: 'app-tramites-id',
@@ -42,7 +43,11 @@ export class TramitesIdComponent implements OnInit, OnChanges {
     protected servicioHeader: HeaderService,
     public bottomService: BottomMenuService,
     private activatedRoute: ActivatedRoute,
-  ) { }
+  ) { 
+    this.fichaTramiteService.abrirPuntosAtencion.subscribe(async(data: AccionSolicitudInterface) => {
+      await this.abrirPuntosAtencion([data.abrirPuntos,data.cerrarTramiteId])
+    })
+  }
 
   ngOnInit(): void {
     this.estructuraModalDesplegable = [

@@ -12,7 +12,7 @@ import { TramitesPorIdService } from '../../services/tramites-por-id-service/tra
 export class FichaEspecificaCardsPwaComponent implements OnInit {
   @Input() infoTramite: any;
   @Input() itemid: number;
-  @Output() cerrarPuntosAtencion = new EventEmitter<[string, string]>();
+  @Output() abrirPuntosAtencion = new EventEmitter<[string, string]>();
   canalesSeguimiento: any[];
 
   constructor(
@@ -60,9 +60,9 @@ export class FichaEspecificaCardsPwaComponent implements OnInit {
     modalRef.componentInstance.canalesSeguimiento = this.canalesSeguimiento;
   }
   
-  abrirPuntosAtencion() {
+  abrirPuntosAtencionClic() {
     const cerrarPuntosAtencion: string = '0%';
     const AbrirTramitesId: string = '-100%';
-    this.cerrarPuntosAtencion.emit([cerrarPuntosAtencion, AbrirTramitesId]);
+    this.abrirPuntosAtencion.emit([cerrarPuntosAtencion, AbrirTramitesId]);
   }
 }

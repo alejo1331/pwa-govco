@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { map } from 'rxjs/operators';
 import {
@@ -11,6 +11,7 @@ import {
   PuntosAtencionNoSuite, DocumentacionRequerida, Contacto, TrackingTramite
 } from '../../models/tramites-id-models/tramites-por-id-interface';
 import { PuntosDeAtencionInterface } from '../../models/puntos-de-atencion/puntos-de-atencion-interface';
+import { AccionSolicitudInterface } from '../../models/accion-solicitud/accion-solicitud-interface';
 
 @Injectable({
   providedIn: 'root'
@@ -23,8 +24,26 @@ export class TramitesPorIdService {
   API_URL = environment.serverUrlFichaTramite;
   API_URL_AUDITORIA = environment.auditoriaurl;
 
+  private dataPuntosAtencion: AccionSolicitudInterface = {
+    abrirPuntos: '100%',
+    cerrarTramiteId: '0%',
+    id1: 'string',
+    id2: 'string',
+    id3: 'string',
+  }
+
+  private abrir = new BehaviorSubject<AccionSolicitudInterface> (this.dataPuntosAtencion);
+  public abrirPuntosAtencion = this.abrir.asObservable();
+
 
   constructor(private http: HttpClient) { }
+
+
+  public async getAbrirPuntos(data: AccionSolicitudInterface) {
+    await this.abrir.next(data);
+  }
+
+
 
   private getGeneric<T>(endPoint: string, parameters: string): Observable<T> {
     return this.http.get<T>(`${this.API_URL}${endPoint}${parameters}`);
