@@ -22,6 +22,8 @@ import { AccionExcepcionComponent } from './components/tramites-id-acordeon/prim
 import { SegundoItemAcordeonComponent } from './components/tramites-id-acordeon/segundo-item-acordeon/segundo-item-acordeon.component';
 import { ModalTutorialesPwaComponent } from './components/modal-tutoriales-pwa/modal-tutoriales-pwa.component';
 import { ModalDudasPwaComponent } from './components/modal-dudas-pwa/modal-dudas-pwa.component';
+import { TercerItemAcordeonComponent } from './components/tramites-id-acordeon/tercer-item-acordeon/tercer-item-acordeon.component';
+
 
 @NgModule({
   declarations: [
@@ -38,10 +40,11 @@ import { ModalDudasPwaComponent } from './components/modal-dudas-pwa/modal-dudas
     AccionDocumentoComponent,
     FichaEspecificaCardsPwaComponent,
     FichaEspecificaFooterPwaComponent,
-    AccionExcepcionComponent,
     SegundoItemAcordeonComponent,
     ModalTutorialesPwaComponent,
     ModalDudasPwaComponent,
+    TercerItemAcordeonComponent,
+    AccionExcepcionComponent
   ],
   imports: [
     CommonModule,
