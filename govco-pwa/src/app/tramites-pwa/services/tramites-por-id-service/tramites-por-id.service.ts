@@ -27,6 +27,7 @@ export class TramitesPorIdService {
   private dataPuntosAtencion: AccionSolicitudInterface = {
     abrirPuntos: '100%',
     cerrarTramiteId: '0%',
+    activar: false,
     idTipo: 0,
     idMomento: 0,
     idAccion: 0

@@ -12,8 +12,10 @@ import { TramitesPorIdService } from '../../services/tramites-por-id-service/tra
 export class FichaEspecificaCardsPwaComponent implements OnInit {
   @Input() infoTramite: any;
   @Input() itemid: number;
-  @Output() abrirPuntosAtencion = new EventEmitter<[string, string]>();
+  @Output() abrirPuntosAtencion = new EventEmitter<[string, string, boolean]>();
   canalesSeguimiento: any[];
+
+  activarBotonPuntosAtencion: boolean = true;
 
   constructor(
     private modalService: NgbModal,
@@ -21,6 +23,9 @@ export class FichaEspecificaCardsPwaComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    if (!this.infoTramite.EnLinea ) {
+      this.activarBotonPuntosAtencion = false;
+    }
     this.getDataContactoDudas(this.itemid);
   }
 
@@ -63,6 +68,6 @@ export class FichaEspecificaCardsPwaComponent implements OnInit {
   abrirPuntosAtencionClic() {
     const cerrarPuntosAtencion: string = '0%';
     const AbrirTramitesId: string = '-100%';
-    this.abrirPuntosAtencion.emit([cerrarPuntosAtencion, AbrirTramitesId]);
+    this.abrirPuntosAtencion.emit([cerrarPuntosAtencion, AbrirTramitesId, true]);
   }
 }
