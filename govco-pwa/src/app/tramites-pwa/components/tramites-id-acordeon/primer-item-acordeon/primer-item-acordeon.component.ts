@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
+import { MomentosAudiencia } from 'src/app/tramites-pwa/models/acordeon/acordeon-interface';
 import { TramitesPorIdService } from 'src/app/tramites-pwa/services/tramites-por-id-service/tramites-por-id.service';
 
 @Component({
@@ -7,9 +8,10 @@ import { TramitesPorIdService } from 'src/app/tramites-pwa/services/tramites-por
   styleUrls: ['./primer-item-acordeon.component.scss']
 })
 export class PrimerItemAcordeonComponent implements OnInit {
-  @Input() dataAcordeon: any;
+  @Input() dataAcordeon: { perfil: string, idTramite: number };
+  @Input() tramiteEnLinea: boolean;
 
-  dataItemAcordeon: any[];
+  dataItemAcordeon: MomentosAudiencia[];
 
   constructor(
     protected fichaTramiteService: TramitesPorIdService
@@ -34,7 +36,6 @@ export class PrimerItemAcordeonComponent implements OnInit {
   private loadMomentosAudiencia() {
     this.fichaTramiteService.GetMomentosByIdAudiencia(this.dataAcordeon.idTramite, this.dataAcordeon.perfil).subscribe( n => {
       this.dataItemAcordeon = this.eliminarValoresRepetidosMomentos(n);
-      console.log('this.dataItemAcordeon', n)
     });
   }
 
@@ -81,19 +82,22 @@ export class PrimerItemAcordeonComponent implements OnInit {
   private cargarDetalleMomento(index: number) {
     this.fichaTramiteService.GetDataFichaByIdTramiteAudienciaIdMomento(this.dataAcordeon.idTramite, this.dataAcordeon.perfil, this.dataItemAcordeon[index].MomentoId)
       .subscribe((dataAccion: any) => {
+        console.log('dataAccion.acciones', dataAccion.acciones)
         this.dataItemAcordeon[index].acciones = this.agrupaAccionesPorTipoAccionCondicion(dataAccion.acciones);
+        console.log('this.dataItemAcordeon', this.dataItemAcordeon)
       });
   }
 
   private agrupaAccionesPorTipoAccionCondicion(data: any) {
     const temp: any = [];
     const tiposAccionCondicion = this.ordenaPorAccionesPor('TipoAccionCondicion', data);
+    let excepcion: any = {};
 
     data.forEach( (n: any) => {
       const indiceTipoAccion = tiposAccionCondicion.findIndex( (t: any) => t === n.TipoAccionCondicion);
 
       if (!temp[indiceTipoAccion]) {
-        temp[indiceTipoAccion] = [];
+        temp[indiceTipoAccion] = {};
       }
 
       if (!temp[indiceTipoAccion][n.TipoAccionCondicion]) {
@@ -101,10 +105,10 @@ export class PrimerItemAcordeonComponent implements OnInit {
       }
 
       if (n.Excepcion) {
-        if (!temp['EXCEPCION']) {
-          temp['EXCEPCION']   = [];
+        if (!excepcion['EXCEPCION']) {
+          excepcion['EXCEPCION'] = [];
         }
-        temp['EXCEPCION'].push(n);
+        excepcion['EXCEPCION'].push(n);
       } else {
         if (!temp[indiceTipoAccion][n.TipoAccionCondicion]) {
           temp[indiceTipoAccion][n.TipoAccionCondicion] = [];
@@ -114,8 +118,9 @@ export class PrimerItemAcordeonComponent implements OnInit {
 
     });
 
-    if (temp['EXCEPCION']) {
-      temp['EXCEPCION'] = this.agruparExcepcionesPorId(temp['EXCEPCION']);
+    if (excepcion['EXCEPCION']) {
+      excepcion['EXCEPCION'] = this.agruparExcepcionesPorId(excepcion['EXCEPCION']);
+      temp.push(excepcion);
     }
 
     return temp;
@@ -152,7 +157,7 @@ export class PrimerItemAcordeonComponent implements OnInit {
       const indiceTipoAccion = tiposExcepcion.findIndex( (t: any) => t === n.ExcepcionId);
 
       if (!temp[indiceTipoAccion]) {
-        temp[indiceTipoAccion] = [];
+        temp[indiceTipoAccion] = {};
       }
 
       if (!temp[indiceTipoAccion][n.TipoAccionCondicion]) {

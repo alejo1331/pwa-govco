@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { AccionPago, DataAccionPago } from 'src/app/tramites-pwa/models/acordeon/acordeon-interface';
 import { ValidateUrlService } from 'src/app/tramites-pwa/services/validate-url.service';
 
 @Component({
@@ -8,7 +9,8 @@ import { ValidateUrlService } from 'src/app/tramites-pwa/services/validate-url.s
 })
 export class AccionPagoComponent implements OnInit {
 
-  @Input() data: any;
+  @Input() data: AccionPago[];
+  @Input() indexPago: number;
   
   public verMas = false;
   public dataFinal = [];
@@ -19,7 +21,7 @@ export class AccionPagoComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.data.forEach((value: any[]) => {
+    this.data.forEach((value: AccionPago) => {
       if (value['data'].length > 0) {
         value['dataInicial'] = value['data'].slice(0, 5);
         value['dataFinal'] = [];

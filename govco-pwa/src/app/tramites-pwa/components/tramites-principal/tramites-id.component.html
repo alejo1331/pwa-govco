@@ -1,5 +1,6 @@
 <section #seccionTramitesId class="seccion-tramites-por-id">
-    <app-header-compartir-v1></app-header-compartir-v1>
+    <app-header-compartir-v1 [urlTramite]="urlPage" [titleTramite]="infoBasicaTramite">
+    </app-header-compartir-v1>
     <div *ngIf="activarTramitesId" class="contenido">
         <app-ficha-especifica-header-pwa *ngIf="infoBasicaTramite" [data]="infoBasicaTramite">
         </app-ficha-especifica-header-pwa>
@@ -7,7 +8,7 @@
         </app-ficha-especifica-detalle-pwa>
         <app-ficha-especifica-cards-pwa [infoTramite]="infoBasicaTramite" [itemid]="idTramite"
             (abrirPuntosAtencion)="abrirPuntosAtencion($event)"></app-ficha-especifica-cards-pwa>
-        <app-tramites-id-acordeon [dataAcordeon]="perfil_idTramite"></app-tramites-id-acordeon>
+        <app-tramites-id-acordeon [dataAcordeon]="perfil_idTramite" [tramiteEnLinea]="infoBasicaTramite.EnLinea"></app-tramites-id-acordeon>
         <app-ficha-especifica-footer-pwa *ngIf="infoBasicaTramite" [data]="infoBasicaTramite">
         </app-ficha-especifica-footer-pwa>
         <app-footer></app-footer>

@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { AccionExcepcion } from 'src/app/tramites-pwa/models/acordeon/acordeon-interface';
 
 @Component({
   selector: 'app-accion-excepcion',
@@ -7,12 +8,12 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class AccionExcepcionComponent implements OnInit {
 
-  @Input() data: any;
+  @Input() data: AccionExcepcion[];
+  @Input() indexExcepcion: number;
 
   constructor() { }
 
   ngOnInit(): void {
-    console.log('data', this.data);
   }
 
   activarItem(index:number) {

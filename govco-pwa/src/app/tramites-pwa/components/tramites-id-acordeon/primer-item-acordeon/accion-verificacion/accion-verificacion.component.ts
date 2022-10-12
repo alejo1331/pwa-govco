@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { AccionVerificacion } from 'src/app/tramites-pwa/models/acordeon/acordeon-interface';
 
 @Component({
   selector: 'app-accion-verificacion',
@@ -7,7 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class AccionVerificacionComponent implements OnInit {
 
-  @Input() data: any;
+  @Input() data: AccionVerificacion[];
 
   constructor() { }
 

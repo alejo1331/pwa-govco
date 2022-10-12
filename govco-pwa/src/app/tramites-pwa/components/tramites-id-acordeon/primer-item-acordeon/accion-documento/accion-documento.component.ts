@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { AccionDocumento } from 'src/app/tramites-pwa/models/acordeon/acordeon-interface';
 
 @Component({
   selector: 'app-accion-documento',
@@ -7,7 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class AccionDocumentoComponent implements OnInit {
 
-  @Input() data: any;
+  @Input() data: AccionDocumento[];
 
   constructor() { }
 
