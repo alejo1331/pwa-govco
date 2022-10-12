@@ -1,3 +1,6 @@
+::ng-deep .banner-ciiu-box {
+    background: #ffffff !important;
+}
 .btn-categories {
     width: 300px;
     height: 42px;

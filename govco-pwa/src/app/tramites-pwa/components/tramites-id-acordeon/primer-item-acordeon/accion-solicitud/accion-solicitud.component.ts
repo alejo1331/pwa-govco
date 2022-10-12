@@ -27,6 +27,7 @@ export class AccionSolicitudComponent implements OnInit {
     this.dataPuntosAtencion = {
       abrirPuntos: '0%',
       cerrarTramiteId: '-100%',
+      activar: true,
       idTipo: 2,
       idMomento: idMomento,
       idAccion: idAccion,

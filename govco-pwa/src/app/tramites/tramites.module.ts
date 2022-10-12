@@ -130,7 +130,7 @@ import { TramitesPwaModule } from '../tramites-pwa/tramites-pwa.module';
     ConsultaCertificadosComponent,
     VentanillasUnicasComponent,
   ],
-  exports: [TramitesHomeComponent, BreadCrumbComponent, WordLimitPipe],
+  exports: [TramitesHomeComponent, BreadCrumbComponent, WordLimitPipe, BannerCiiuComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class TramitesModule {}

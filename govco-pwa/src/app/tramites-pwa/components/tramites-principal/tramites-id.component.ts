@@ -1,35 +1,10 @@
-import {
-  Component,
-  ElementRef,
-  OnInit,
-  OnChanges,
-  ViewChild,
-  SimpleChanges,
-} from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BottomMenuService } from 'src/app/transversales/services/bottom-menu/bottom-menu.service';
 import { HeaderService } from 'src/app/transversales/services/header-service/header.service';
 import { SidenavService } from 'src/app/transversales/services/sidenav-service/sidenav-service.service';
 import { TramitesPorIdService } from '../../services/tramites-por-id-service/tramites-por-id.service';
-import {
-  TipoFichaTramite,
-  DatosBaseFichaTramite,
-  TipoEnlace,
-  TipoAudiencia,
-  MomentosAudienciaTitulo,
-  DataMomentosAudiencia,
-  CanalesAtencion,
-  InformacionPago,
-  Normatividad,
-  PuntosFichaTramiteEstandar,
-  Embebidos,
-  TramiteNoSuite,
-  Condiciones,
-  PuntosAtencionNoSuite,
-  DocumentacionRequerida,
-  Contacto,
-  informacionFicha,
-} from '../../models/tramites-id-models/tramites-por-id-interface';
+import { TipoEnlace, TipoAudiencia, informacionFicha } from '../../models/tramites-id-models/tramites-por-id-interface';
 import { AccionSolicitudInterface } from '../../models/acciones-solicitud/accion-solicitud-interface';
 
 @Component({
@@ -37,7 +12,7 @@ import { AccionSolicitudInterface } from '../../models/acciones-solicitud/accion
   templateUrl: './tramites-id.component.html',
   styleUrls: ['./tramites-id.component.css'],
 })
-export class TramitesIdComponent implements OnInit, OnChanges {
+export class TramitesIdComponent implements OnInit {
   @ViewChild('seccionTramitesId') seccionTramitesId: ElementRef;
   @ViewChild('seccionPuntoAtencion') seccionPuntoAtencion: ElementRef;
 
@@ -53,7 +28,6 @@ export class TramitesIdComponent implements OnInit, OnChanges {
   audiencias: TipoAudiencia[];
   embebido: boolean = false;
   activarPuntosAtecion: boolean = false;
-  activarBotonPuntosAtencion: boolean = true;
   activarTramitesId: boolean = false;
   urlPage: string;
 
@@ -69,6 +43,7 @@ export class TramitesIdComponent implements OnInit, OnChanges {
         await this.abrirPuntosAtencion([
           data.abrirPuntos,
           data.cerrarTramiteId,
+          data.activar
         ]);
       }
     );
@@ -113,10 +88,6 @@ export class TramitesIdComponent implements OnInit, OnChanges {
     this.urlPage = window.location.href;
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log('olii', changes);
-  }
-
   private async cargarInformacionFicha(dataTramite: informacionFicha) {
     this.fichaTramiteService
       .GetTipoTramiteFichaEspecificaById(String(dataTramite.id))
@@ -126,9 +97,6 @@ export class TramitesIdComponent implements OnInit, OnChanges {
           // to do
           // dataTramite ? this.GenerarTrackingTramite(dataTramite.id) : null;
           this.infoBasicaTramite = dataFicha;
-          if (!dataFicha.EnLinea) {
-            this.activarBotonPuntosAtencion = false;
-          }
           this.nombreTramite = this.infoBasicaTramite.NombreEstandarizado;
           this.fichaTramiteService.setTipoAtencionPresencial(
             this.infoBasicaTramite.TipoAtencionPresencial
@@ -153,8 +121,8 @@ export class TramitesIdComponent implements OnInit, OnChanges {
                 ? res.urlTramite
                 : res.urlTramite.includes('embebido') &&
                   res.urlTramite.includes('tramites-y-servicios')
-                ? res.urlTramite
-                : res.urlTramite;
+                  ? res.urlTramite
+                  : res.urlTramite;
               this.infoBasicaTramite.EnLinea = res.isEnlinea;
             });
         },
@@ -182,20 +150,16 @@ export class TramitesIdComponent implements OnInit, OnChanges {
     };
   }
 
-  abrirPuntosAtencion([abrirPuntosAtencion, cerrarTramitesId]: [
-    string,
-    string
-  ]) {
-    this.activarPuntosAtecion = true;
-    this.seccionTramitesId.nativeElement.style.left = cerrarTramitesId;
-    this.seccionPuntoAtencion.nativeElement.style.left = abrirPuntosAtencion;
-    this.topScroll.scrollTop = 0;
+  abrirPuntosAtencion([abrirPuntosAtencion, cerrarTramitesId, activar]: [string, string, boolean]) {
+    this.activarPuntosAtecion = activar;
+    if (this.activarPuntosAtecion == true) {
+      this.seccionTramitesId.nativeElement.style.left = cerrarTramitesId;
+      this.seccionPuntoAtencion.nativeElement.style.left = abrirPuntosAtencion;
+      this.topScroll.scrollTop = 0;
+    }
   }
 
-  cerrarPuntosAtencion([cerrarPuntosAtencion, abrirTramitesId]: [
-    string,
-    string
-  ]) {
+  cerrarPuntosAtencion([cerrarPuntosAtencion, abrirTramitesId]: [string, string]) {
     this.seccionTramitesId.nativeElement.style.left = abrirTramitesId;
     this.seccionPuntoAtencion.nativeElement.style.left = cerrarPuntosAtencion;
     this.topScroll.scrollTop = 0;

@@ -26,6 +26,7 @@ import { RecaptchaModule } from "ng-recaptcha";
 import { LoginComponent } from './components/login/login.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { ModalNatvivoModule } from '../modal-natvivo/modal-natvivo.module';
+import { BuscadorBarraPwaComponent } from './components/buscador-barra-pwa/buscador-barra-pwa.component';
 
 
 @NgModule({
@@ -59,7 +60,8 @@ import { ModalNatvivoModule } from '../modal-natvivo/modal-natvivo.module';
     BannerSeccionesInternasComponent,
     BannerDetalleInternasDosComponent,
     LevelOneBreadCrumbsComponent,
-    LevelTwoBreadCrumbsComponent
+    LevelTwoBreadCrumbsComponent,
+    BuscadorBarraPwaComponent
   ],
   exports: [
     GeolocalizacionComponent,
@@ -69,12 +71,12 @@ import { ModalNatvivoModule } from '../modal-natvivo/modal-natvivo.module';
     BottomMenuComponent,
     BarraSuperiorComponent,
     GeolocalizacionFormularioComponent,
-
     BannerSeccionesInternasComponent,
     BannerDetalleInternasDosComponent,
     LevelOneBreadCrumbsComponent,
     LevelTwoBreadCrumbsComponent,
     LoginComponent,
+    BuscadorBarraPwaComponent,
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })

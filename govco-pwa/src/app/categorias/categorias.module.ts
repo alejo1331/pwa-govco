@@ -8,6 +8,7 @@ import { DetalleMomentosComponent } from './components/detalle-momentos/detalle-
 import { MomentosDeVidaComponent } from './components/momentos-de-vida/momentos-de-vida.component';
 import { TransversalesModule } from '../transversales/transversales.module';
 import { PipesModule } from '../pipes/pipes.module';
+import { TramitesModule } from '../tramites/tramites.module';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { PipesModule } from '../pipes/pipes.module';
     CommonModule,
     CategoriasRoutingModule,
     TransversalesModule,
-    PipesModule
+    PipesModule,
+    TramitesModule
   ],
   exports: [
     CardCategoriasComponent,
