@@ -121,8 +121,8 @@ export class TramitesIdComponent implements OnInit {
                 ? res.urlTramite
                 : res.urlTramite.includes('embebido') &&
                   res.urlTramite.includes('tramites-y-servicios')
-                ? res.urlTramite
-                : res.urlTramite;
+                  ? res.urlTramite
+                  : res.urlTramite;
               this.infoBasicaTramite.EnLinea = res.isEnlinea;
             });
         },
@@ -152,16 +152,14 @@ export class TramitesIdComponent implements OnInit {
 
   abrirPuntosAtencion([abrirPuntosAtencion, cerrarTramitesId, activar]: [string, string, boolean]) {
     this.activarPuntosAtecion = activar;
-    this.activarPuntosAtecion = true;
-    this.seccionTramitesId.nativeElement.style.left = cerrarTramitesId;
-    this.seccionPuntoAtencion.nativeElement.style.left = abrirPuntosAtencion;
-    this.topScroll.scrollTop = 0;
+    if (this.activarPuntosAtecion == true) {
+      this.seccionTramitesId.nativeElement.style.left = cerrarTramitesId;
+      this.seccionPuntoAtencion.nativeElement.style.left = abrirPuntosAtencion;
+      this.topScroll.scrollTop = 0;
+    }
   }
 
-  cerrarPuntosAtencion([cerrarPuntosAtencion, abrirTramitesId]: [
-    string,
-    string
-  ]) {
+  cerrarPuntosAtencion([cerrarPuntosAtencion, abrirTramitesId]: [string, string]) {
     this.seccionTramitesId.nativeElement.style.left = abrirTramitesId;
     this.seccionPuntoAtencion.nativeElement.style.left = cerrarPuntosAtencion;
     this.topScroll.scrollTop = 0;
