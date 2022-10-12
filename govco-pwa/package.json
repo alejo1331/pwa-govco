@@ -35,6 +35,8 @@
     "g": "^2.0.1",
     "google-maps": "^4.3.3",
     "jquery": "^3.5.1",
+    "jszip": "^3.10.1",
+    "jszip-utils": "^0.1.0",
     "ng-custom-select": "^2.0.4",
     "ng-recaptcha": "^6.0.2",
     "ng-select2": "^1.4.1",

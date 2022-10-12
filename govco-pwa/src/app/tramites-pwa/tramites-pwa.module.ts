@@ -24,7 +24,7 @@ import { ModalTutorialesPwaComponent } from './components/modal-tutoriales-pwa/m
 import { ModalDudasPwaComponent } from './components/modal-dudas-pwa/modal-dudas-pwa.component';
 import { TercerItemAcordeonComponent } from './components/tramites-id-acordeon/tercer-item-acordeon/tercer-item-acordeon.component';
 import { CuartoItemAcordeonComponent } from './components/tramites-id-acordeon/cuarto-item-acordeon/cuarto-item-acordeon.component';
-
+import { QuintoItemAcordeonComponent } from './components/tramites-id-acordeon/quinto-item-acordeon/quinto-item-acordeon.component';
 
 @NgModule({
   declarations: [
@@ -44,9 +44,10 @@ import { CuartoItemAcordeonComponent } from './components/tramites-id-acordeon/c
     SegundoItemAcordeonComponent,
     ModalTutorialesPwaComponent,
     ModalDudasPwaComponent,
-    TercerItemAcordeonComponent,
     AccionExcepcionComponent,
-    CuartoItemAcordeonComponent
+    TercerItemAcordeonComponent,
+    CuartoItemAcordeonComponent,
+    QuintoItemAcordeonComponent
   ],
   imports: [
     CommonModule,
