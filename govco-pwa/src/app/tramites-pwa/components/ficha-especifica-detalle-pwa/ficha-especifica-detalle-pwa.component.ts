@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { TramitesPorIdService } from '../../services/tramites-por-id-service/tramites-por-id.service';
 
 @Component({
@@ -8,12 +8,14 @@ import { TramitesPorIdService } from '../../services/tramites-por-id-service/tra
 })
 export class FichaEspecificaDetallePwaComponent implements OnInit {
   @Input() data: any;
+  @Output() abrirPuntosAtencion = new EventEmitter<[string, string]>();
 
   infoDescripcionTramite: any;
   contenidoDescripcion: string;
   contenidoLeido: string;
   caracteresCategoria: boolean = false;
-  textoBoton: string = 'Iniciar trámite';
+  nombreExpanded: string = 'Leer más...';
+  textoBoton: string;
   urlBoton = '';
   iconoTramite = '';
   iconoCosto = '';
@@ -35,12 +37,36 @@ export class FichaEspecificaDetallePwaComponent implements OnInit {
           this.caracteresCategoria = true;
         }
       });
+    this.urlBoton = this.data.PaginaWeb;
     this.getIconoTramite(this.data.Tipotramite);
+    this.setDataBoton(this.data.Tipotramite);
     this.showBotonFecha();
   }
 
   goToLink(url: string) {
     window.open(url, '_blank');
+  }
+
+  showExpended() {
+    if (this.nombreExpanded === 'Leer más...') {
+      this.contenidoDescripcion =
+        this.infoDescripcionTramite.DescripcionTramite;
+      this.nombreExpanded = 'Leer menos';
+    }
+    return this.contenidoDescripcion;
+  }
+
+  showBotonLeer() {
+    if (this.nombreExpanded === 'Leer más...') {
+      this.contenidoDescripcion =
+        this.infoDescripcionTramite.DescripcionTramite;
+      this.nombreExpanded = 'Leer menos';
+    } else {
+      this.nombreExpanded = 'Leer más...';
+      this.contenidoDescripcion =
+        this.infoDescripcionTramite.DescripcionTramite.substring(0, 250);
+    }
+    return this.contenidoDescripcion;
   }
 
   getIconoTramite(data: any) {
@@ -75,5 +101,13 @@ export class FichaEspecificaDetallePwaComponent implements OnInit {
         console.log('getFechas', resp);
         // this.showModalFechas(resp)
       });
+  }
+
+  setDataBoton(data: any) {
+    if (data === 'En línea') {
+      this.textoBoton = 'Realizar trámite';
+    } else {
+      this.textoBoton = 'Ver los puntos de atención';
+    }
   }
 }
