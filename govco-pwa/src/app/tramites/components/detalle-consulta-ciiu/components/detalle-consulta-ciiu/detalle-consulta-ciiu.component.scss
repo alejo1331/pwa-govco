@@ -176,6 +176,8 @@
         align-content: center;
         align-self: center;
         text-align: center;
+        flex-wrap: wrap;
+        justify-content: center;
     }
 }
 @media only screen and (max-device-width: 767px) {
