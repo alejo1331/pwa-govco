@@ -5,7 +5,7 @@
         <p>
             {{tipoAccion.AtencionDescripcion}}
         </p>
-        <h5>Medio</h5>
+        <h5 *ngIf="tipoAccion.data.length > 0">Medio</h5>
         <div class="card" *ngFor="let item of tipoAccion.data">
             <div class="card-header">
                 {{item.TipoCanal[0] | uppercase}}{{item.TipoCanal | lowercase | slice: 1 : item.TipoCanal.length}}
@@ -14,7 +14,7 @@
                 <a *ngIf="item.TipoCanal === 'CORREO'" href="mailto:{{ item.Correo }}" target="_blank">
                     {{item.Correo}}
                 </a>
-                <app-boton *ngIf="item.TipoCanal === 'PRESENCIAL'" [inverted]="true"  [border]="true">
+                <app-boton *ngIf="item.TipoCanal === 'PRESENCIAL'" [inverted]="true"  [border]="true" (click)="abrirPuntosAtencionClic(tipoAccion.Orden, tipoAccion.AccionCondicionId)">
                     Ver los puntos de atención
                 </app-boton>
                 <a *ngIf="item.TipoCanal === 'WEB'" (click)="validateUrlService.validateUrl(item.UrlCanalWeb)" target="_blank">
@@ -44,7 +44,7 @@
                 Presencial
             </div>
             <div class="card-body">
-                <app-boton [inverted]="true" [border]="true" (click)="abrirPuntosAtencionClic()">
+                <app-boton [inverted]="true" [border]="true" (click)="abrirPuntosAtencionClic(tipoAccion.Orden, tipoAccion.AccionCondicionId)">
                     Ver los puntos de atención
                 </app-boton>
             </div>

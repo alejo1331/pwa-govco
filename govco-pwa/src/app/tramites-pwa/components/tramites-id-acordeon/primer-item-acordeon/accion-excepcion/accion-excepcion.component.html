@@ -7,7 +7,7 @@
             Si se identifica con alguno de estos casos, adicionalmente debe:
         </span>
     </div>
-    <div class="accordion acordeon-pwa-govco" id="acordeonExcepcion">
+    <div class="accordion acordeon-pwa-govco" [id]="'acordeonExcepcion' + indexExcepcion">
         <div class="card" *ngFor="let item of data; let i = index;" [class.active]="item.active">
             <div class="card-header" [id]="'excepcion' + i">
                 <h2 class="mb-0">
@@ -19,27 +19,27 @@
                     </button>
                 </h2>
             </div>
-            <div [id]="'collapseExcepcion' + i" class="collapse" [attr.aria-labelledby]="'excepcion' + i" data-parent="#acordeonExcepcion">
-                <ng-container *ngFor="let excepcion of item | keyvalue">
+            <div [id]="'collapseExcepcion' + i" class="collapse" [attr.aria-labelledby]="'excepcion' + i" [attr.data-parent]="'#acordeonExcepcion' + indexExcepcion">
+                <ng-container>
                     <app-accion-solicitud 
-                        *ngIf="excepcion.key === 'SOLICITUD' && excepcion.value" 
-                        [data]="excepcion.value">
+                        *ngIf="item.SOLICITUD" 
+                        [data]="item.SOLICITUD">
                     </app-accion-solicitud>
                     <app-accion-verificacion 
-                        *ngIf="excepcion.key === 'VERIFICACION_INST' && excepcion.value" 
-                        [data]="excepcion.value">
+                        *ngIf="item.VERIFICACION_INST" 
+                        [data]="item.VERIFICACION_INST">
                     </app-accion-verificacion>
                     <app-accion-pago 
-                        *ngIf="excepcion.key === 'PAGO' && excepcion.value" 
-                        [data]="excepcion.value">
+                        *ngIf="item.PAGO" 
+                        [data]="item.PAGO">
                     </app-accion-pago>
                     <app-accion-formulario 
-                        *ngIf="excepcion.key === 'FORMULARIO' && excepcion.value" 
-                        [data]="excepcion.value">
+                        *ngIf="item.FORMULARIO" 
+                        [data]="item.FORMULARIO">
                     </app-accion-formulario>
                     <app-accion-documento 
-                        *ngIf="excepcion.key === 'DOCUMENTO' && excepcion.value" 
-                        [data]="excepcion.value">
+                        *ngIf="item.DOCUMENTO" 
+                        [data]="item.DOCUMENTO">
                     </app-accion-documento>
                 </ng-container>
             </div>

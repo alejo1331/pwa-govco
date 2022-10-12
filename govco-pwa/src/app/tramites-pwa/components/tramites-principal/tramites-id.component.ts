@@ -11,7 +11,7 @@ import {
   PuntosFichaTramiteEstandar, Embebidos, TramiteNoSuite, Condiciones,
   PuntosAtencionNoSuite, DocumentacionRequerida, Contacto, informacionFicha
 } from '../../models/tramites-id-models/tramites-por-id-interface';
-import { AccionSolicitudInterface } from '../../models/accion-solicitud/accion-solicitud-interface';
+import { AccionSolicitudInterface } from '../../models/acciones-solicitud/accion-solicitud-interface';
 
 @Component({
   selector: 'app-tramites-id',

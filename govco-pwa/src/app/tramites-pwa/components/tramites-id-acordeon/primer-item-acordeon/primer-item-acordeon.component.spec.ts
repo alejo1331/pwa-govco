@@ -1,7 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { TramitesPorIdService } from 'src/app/tramites-pwa/services/tramites-por-id-service/tramites-por-id.service';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { PrimerItemAcordeonComponent } from './primer-item-acordeon.component';
+import { TramitesPorIdService } from 'src/app/tramites-pwa/services/tramites-por-id-service/tramites-por-id.service';
 
 describe('PrimerItemAcordeonComponent', () => {
   let component: PrimerItemAcordeonComponent;
@@ -11,7 +12,8 @@ describe('PrimerItemAcordeonComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PrimerItemAcordeonComponent ]
+      declarations: [ PrimerItemAcordeonComponent ],
+      imports: [HttpClientTestingModule]
     })
     .compileComponents();
   });
