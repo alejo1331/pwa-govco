@@ -1,0 +1,46 @@
+<section>
+  <table class="govco-pwa-acerca-tabla">
+    <thead>
+
+      <tr>
+        <th scope="col" class="govco-pwa-titulo-tabla">Medio</th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+      <tr class="govco-pwa-elemento-container" *ngFor="let canal of canalesMedios">
+        <div class="govco-pwa-seguimiento-icono">
+          <div class="govco-pwa-seguimiento-icono-background">
+            <span class="material-symbols-outlined" *ngIf="canal.TipoCanal == 'TELEFONICO'">
+              call
+            </span>
+            <span class="material-symbols-outlined" *ngIf="canal.TipoCanal == 'Correo electrónico:'">
+              mail
+            </span>
+            <span class="material-symbols-outlined" *ngIf="canal.TipoCanal == 'Aprenda con tutoriales'">
+              help
+            </span>
+          </div>
+        </div>
+
+        <div class="govco-pwa-seguimiento-info" *ngIf="canal.TipoCanal == 'Correo electrónico:' || canal.TipoCanal == 'Aprenda con tutoriales'">
+          <p>{{canal.Indice}}:</p>
+           <a>
+            {{canal.Correo}}
+          </a>
+        </div>
+
+        <div class="govco-pwa-seguimiento-info" *ngIf="canal.TipoCanal == 'TELEFONICO'">
+          <p>{{canal.Indice}}:</p>
+          <p>Fijo: <a>{{canal.NumeroTelefono}} {{canal.ExtensionTelFijo}}</a></p>
+          <p>Horario de Atención: {{canal.HorarioAtencionTelef}}</p>
+        </div>
+
+      </tr>
+
+    </tbody>
+
+  </table>
+
+</section>
