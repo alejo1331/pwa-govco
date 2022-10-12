@@ -38,6 +38,10 @@
     background-color: #E8EFFC;
   }
 
+  tbody tr { display: none; }
+
+  tbody tr.active { display: inline-block; }
+
   .govco-pwa-elemento-container{
     border: 2px solid #E8EFFC;
     border-radius: 5px;
@@ -56,6 +60,47 @@
       background-color: #3366CC;
       border-radius: 50%;
     }
+  }
+
+  .govco-pwa-checkbox-header,
+  .govco-pwa-checkbox-list {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    font-family: arial;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+}
+
+  .govco-pwa-checkbox-header-input-show-checkbox {
+      background-image: url('../../../../../assets/images/tramites-servicios/checkbox/CheckBox-Invertido.png');
+  }
+
+  .govco-pwa-checkbox-header > .govco-pwa-checkbox-header-input:checked + .govco-pwa-checkbox-header-input-show-checkbox {
+      background-image: url('../../../../../assets/images/tramites-servicios/checkbox/CheckBox-Invertido-Activo.png');
+  }
+
+  .govco-pwa-checkbox-list-input-show-checkbox {
+    background-image: url('../../../../../assets/images/tramites-servicios/checkbox/CheckBox.png');
+  }
+
+  .govco-pwa-checkbox-list > .govco-pwa-checkbox-list-input:checked + .govco-pwa-checkbox-list-input-show-checkbox {
+    background-image: url('../../../../../assets/images/tramites-servicios/checkbox/CheckBox-Activo.png');
+}
+
+  .govco-pwa-checkbox-list > .govco-pwa-checkbox-list-input,
+  .govco-pwa-checkbox-header > .govco-pwa-checkbox-header-input {
+      display: none;
+  }
+
+  .govco-pwa-checkbox-list > .govco-pwa-checkbox-list-input-show,
+  .govco-pwa-checkbox-header > .govco-pwa-checkbox-header-input-show {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      margin-right: .5rem;
+      background-size: cover;
   }
 
   table tr { display: none; }
@@ -95,7 +140,81 @@
     'GRAD' 0,
     'opsz' 48;
   }
+}
 
+.govco-pwa-legislacion-body-button {
+  margin-top: 1em;
+  .govco-pwa-seguimiento-icono-background{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 20px;
+    width: 20px;
+    background-color: #3366cc;
+    border-radius: 50%;
+    margin-right: 10px;
+      span{
+        color: white;
+        font-size: 12px;
+      }
+  }
+  .govco-pwa-boton-seleccion{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+  button {
+    color: #3366cc;
+    font-family: 'WorkSans-Medium';
+    height: 44px;
+    border: 2px solid;
+    text-align: center;
+    border-radius: 25px;
+    line-height: 2.3;
+    background-color: #f6f8f9;
+    width: 100%;
+    cursor: pointer;
+  }
+  .disabled {
+    .govco-pwa-boton-seleccion{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #737373;
+    }
+    .govco-pwa-seguimiento-icono-background{
+      height: 20px;
+      width: 20px;
+      background-color: #737373;
+      border-radius: 50%;
+      margin-right: 10px;
+      span{
+        color: white;
+        font-size: 12px;
+      }
+    }
+    border: 2px solid #737373;
+    color: rgba($color: #4b4b4b, $alpha: 0.5);
+    background: transparent;
+    pointer-events: none;
+  }
+}
+
+.govco-pwa-ver-mas-button{
+  margin-top: 1em;
+  button {
+    color: white;
+    font-family: 'WorkSans-Medium';
+    height: 44px;
+    border: 2px solid;
+    text-align: center;
+    border-radius: 25px;
+    line-height: 2.3;
+    background-color: #3366cc;
+    width: 100%;
+    cursor: pointer;
+  }
 }
 
 
