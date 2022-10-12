@@ -88,7 +88,7 @@ export class FichaEspecificaDetallePwaComponent implements OnInit {
   showBotonFecha() {
     this.fichaTramiteService.GetFechasByTramite(this.data.IdTramite).subscribe(
       (resp: any) => {
-        this.showBotonFechas = resp.length > 0;
+        this.showBotonFechas = resp.fechasEspecificas.length > 0;
       },
       (error) => console.log(error)
     );

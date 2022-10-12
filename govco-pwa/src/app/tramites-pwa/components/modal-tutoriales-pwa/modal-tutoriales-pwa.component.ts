@@ -14,9 +14,7 @@ export class ModalTutorialesPwaComponent implements OnInit {
     private validateUrlService: ValidateUrlService
   ) {}
 
-  ngOnInit(): void {
-    console.log('Tutoriales', this.data);
-  }
+  ngOnInit(): void {}
 
   validateUrl(url: string) {
     this.validateUrlService.validate(url).subscribe((data: boolean) => {
