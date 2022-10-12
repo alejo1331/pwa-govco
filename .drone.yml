@@ -50,7 +50,7 @@ steps:
   commands:
   - cd ./govco-pwa/
   - npm install -g @angular/cli
-  - npm i --save-dev @types/select2
+  - npm i
   - ng build --configuration="preproduction"
   when:
     branch:
@@ -93,7 +93,7 @@ steps:
   commands:
   - cd ./govco-pwa/
   - npm install -g @angular/cli
-  - npm i --save-dev @types/select2
+  - npm i
   - ng build --configuration="staging"
   when:
     branch:
@@ -136,7 +136,7 @@ steps:
   commands:
   - cd ./govco-pwa/
   - npm install -g @angular/cli
-  - npm i --save-dev @types/select2
+  - npm i
   - ng build --configuration="preproduction"
   when:
     branch:
@@ -179,7 +179,7 @@ steps:
   commands:
   - cd ./govco-pwa/
   - npm install -g @angular/cli
-  - npm i --save-dev @types/select2
+  - npm i
   - ng build --configuration="preproduction"
   when:
     branch:
@@ -222,7 +222,7 @@ steps:
   commands:
   - cd ./govco-pwa/
   - npm install -g @angular/cli
-  - npm i --save-dev @types/select2
+  - npm i
   - ng build --configuration="production"
   when:
     branch:
