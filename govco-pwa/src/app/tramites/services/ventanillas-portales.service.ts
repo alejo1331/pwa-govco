@@ -23,4 +23,8 @@ export class VentanillasPortalesService {
   public getVentanillas(): Observable<SedesElectronicasModel[]> {
     return this.http.get<SedesElectronicasModel[]>(`${this.urlApi}/IntegracionSedes/VentanillaUnica/Obtener?busqueda=`);
   }
+
+  public getPortales<T>(params:any) {
+    return this.http.post<T>(`${this.urlApi}/IntegracionSedes/PortalTransversal/ObtenerPaginado`, params);
+  } 
 }

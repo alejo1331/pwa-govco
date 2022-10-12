@@ -22,7 +22,7 @@ export class ValidarUrlService {
     public dialog: MatDialog
     ) { }
 
-  private validate(url: string) {    
+  public validate(url: string) {    
     return this.http.get(this.url_apiUtils+`validateurl?url=${url}`)
                     .pipe(map( m => {
                       // Pruebas
