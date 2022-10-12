@@ -13,6 +13,8 @@ export class DesplegableUnoComponent implements OnInit {
   @Input() data: any[];
   @Input() estructura: { titulo: string, icono: string }[];
   @Output() perfilSeleccionado = new EventEmitter<string>();
+  @Output() botonRetroalimentaciona = new EventEmitter<string>();
+
   estado: boolean[] = [true, true, true, true];
   titulo: string[] = ['', '', '', '']
 
@@ -50,6 +52,7 @@ export class DesplegableUnoComponent implements OnInit {
   }
 
   abrirModal() {
+    this.botonRetroalimentaciona.emit('ocultar');
     var espaldar = (document.getElementById('espaldarModal') as HTMLElement);
     espaldar.style.zIndex = '5';
     espaldar.style.opacity = '1';
@@ -66,6 +69,7 @@ export class DesplegableUnoComponent implements OnInit {
   }
 
   cerrarModal() {
+    this.botonRetroalimentaciona.emit('mostrar');
     if (this.estructura[this.itemSelected] != undefined) {
       this.perfilSeleccionado.emit(this.estructura[this.itemSelected].titulo)
     }

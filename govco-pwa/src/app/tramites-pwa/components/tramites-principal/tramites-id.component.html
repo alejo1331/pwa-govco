@@ -14,9 +14,9 @@
         </app-ficha-especifica-footer-pwa>
         <app-footer></app-footer>
     </div>
-    <app-boton-retroalimentacion #botonRetroalimentaciona *ngIf="activarTramitesId"></app-boton-retroalimentacion>
+    <app-boton-retroalimentacion *ngIf="activarTramitesId"></app-boton-retroalimentacion>
     <app-desplegable-uno *ngIf="audiencias && activarTramitesId" [data]="audiencias"
-        [estructura]="estructuraModalDesplegable" (perfilSeleccionado)="perfilSeleccionado($event)">
+        [estructura]="estructuraModalDesplegable" (perfilSeleccionado)="perfilSeleccionado($event)" (botonRetroalimentaciona)="iteracionBotonRetroalimentaciona($event)">
     </app-desplegable-uno>
 </section>
 

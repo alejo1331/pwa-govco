@@ -15,7 +15,6 @@ import { AccionSolicitudInterface } from '../../models/acciones-solicitud/accion
 export class TramitesIdComponent implements OnInit {
   @ViewChild('seccionTramitesId') seccionTramitesId: ElementRef;
   @ViewChild('seccionPuntoAtencion') seccionPuntoAtencion: ElementRef;
-  @ViewChild('botonRetroalimentaciona') botonRetroalimentaciona: ElementRef;
 
   topScroll: HTMLElement;
 
@@ -175,8 +174,14 @@ export class TramitesIdComponent implements OnInit {
     );
   }
 
-  evento(event: Event){
-    console.log('event',event)
+  iteracionBotonRetroalimentaciona(estado: string) {
+    let botonRetroalimentacion: HTMLElement = (
+      document.querySelector('app-boton-retroalimentacion .button-container') as HTMLElement
+    );
+    estado == 'ocultar'? botonRetroalimentacion.style.opacity = '0': botonRetroalimentacion.removeAttribute('style');
+    botonRetroalimentacion.addEventListener('transitionend', () => {
+      estado == 'ocultar'? botonRetroalimentacion.style.zIndex = '-1' : botonRetroalimentacion.removeAttribute('style')
+    });
   }
 
   //Esta seccion se encuentra en general.component.html en la seccion de Tramites ...
