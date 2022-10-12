@@ -51,7 +51,6 @@ export interface AccionPago {
     PagoEnlineaUrl: string;
     TipoAccionCondicion: string;
     data: DataAccionPago[];
-    dataFinal: DataAccionPago[];
     dataInicial: DataAccionPago[];
     entidadesPago: EntidadesPago[];
 }
