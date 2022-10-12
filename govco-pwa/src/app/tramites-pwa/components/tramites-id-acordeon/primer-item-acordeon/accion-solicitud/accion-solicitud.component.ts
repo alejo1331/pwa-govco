@@ -1,7 +1,8 @@
 import { Component, Input, OnInit, ElementRef, ViewChild, Output, EventEmitter } from '@angular/core';
 import { ValidateUrlService } from 'src/app/tramites-pwa/services/validate-url.service';
 import { TramitesPorIdService } from 'src/app/tramites-pwa/services/tramites-por-id-service/tramites-por-id.service';
-import { AccionSolicitudInterface } from 'src/app/tramites-pwa/models/accion-solicitud/accion-solicitud-interface';
+import { AccionSolicitudInterface } from 'src/app/tramites-pwa/models/acciones-solicitud/accion-solicitud-interface';
+import { AccionSolicitud } from 'src/app/tramites-pwa/models/acordeon/acordeon-interface';
 
 @Component({
   selector: 'app-accion-solicitud',
@@ -9,18 +10,10 @@ import { AccionSolicitudInterface } from 'src/app/tramites-pwa/models/accion-sol
   styleUrls: ['./accion-solicitud.component.scss']
 })
 export class AccionSolicitudComponent implements OnInit {
-  @ViewChild('seccionTramitesId') seccionTramitesId: ElementRef;
-  @ViewChild('seccionPuntoAtencion') seccionPuntoAtencion: ElementRef;
-
-  @Input() data: any;
-  @Input() dataAcordeon: any;
+  
+  @Input() data: AccionSolicitud[];
 
   dataPuntosAtencion: AccionSolicitudInterface;
-
-
-  activarPuntosAtecion: boolean = false;
-
-  topScroll: HTMLElement;
 
   constructor(
     public validateUrlService: ValidateUrlService,
@@ -30,15 +23,14 @@ export class AccionSolicitudComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  abrirPuntosAtencionClic() {
+  abrirPuntosAtencionClic(idMomento:number, idAccion:number) {
     this.dataPuntosAtencion = {
       abrirPuntos: '0%',
       cerrarTramiteId: '-100%',
-      id1: 'string',
-      id2: 'string',
-      id3: 'string',
+      idTipo: 2,
+      idMomento: idMomento,
+      idAccion: idAccion,
     }
     this.TramitesPorIdservice.getAbrirPuntos(this.dataPuntosAtencion);
   }
-
 }

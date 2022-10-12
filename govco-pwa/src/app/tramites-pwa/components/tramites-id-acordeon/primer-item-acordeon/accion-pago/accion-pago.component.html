@@ -1,7 +1,7 @@
 <div class="card-body">
     <div class="container-pago" *ngFor="let item of data">
         <h4>Pago</h4>
-        <div class="accordion acordeon-pwa-govco" id="acordeonPago">
+        <div class="accordion acordeon-pwa-govco" [id]="'acordeonPago' + indexPago">
             <div class="card cardFather" *ngFor="let dataItem of item.dataInicial; let i = index;" [class.active]="dataItem.active">
                 <div class="card-header" [id]="'itemPago' + i">
                     <h2 class="mb-0">
@@ -22,7 +22,7 @@
                         </div>
                     </h2>
                 </div>
-                <div [id]="'collapsePago' + i" class="collapse" [attr.aria-labelledby]="'itemPago' + i" data-parent="#acordeonPago">
+                <div [id]="'collapsePago' + i" class="collapse" [attr.aria-labelledby]="'itemPago' + i" [attr.data-parent]="'#acordeonPago' + indexPago">
                     <div class="card-body">
                         <div class="card">
                             <div class="card-header">
@@ -89,7 +89,7 @@
                         </div>
                     </h2>
                 </div>
-                <div [id]="'collapsePago' + i + 5" class="collapse" [attr.aria-labelledby]="'itemPago' + i + 5" data-parent="#acordeonPago">
+                <div [id]="'collapsePago' + i + 5" class="collapse" [attr.aria-labelledby]="'itemPago' + i + 5" [attr.data-parent]="'#acordeonPago' + indexPago">
                     <div class="card-body">
                         <div class="card">
                             <div class="card-header">

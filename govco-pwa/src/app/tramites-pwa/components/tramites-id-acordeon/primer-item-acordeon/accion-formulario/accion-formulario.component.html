@@ -30,12 +30,12 @@
                     <p>{{subItem.FormularioAnotacion}}</p>
                 </div>
             </div>
-            <div class="card">
+            <div class="card" *ngIf="tramiteEnLinea && item.AccCondPtoAtencions">
                 <div class="card-header">
                     Reclamar de forma presencial
                 </div>
                 <div class="card-body">
-                    <a class="punto-atencion" href="">En los puntos de atención indicados por la institución</a>
+                    <a class="punto-atencion" (click)="abrirPuntosAtencionClic(item.Orden, item.AccionCondicionId)">En los puntos de atención indicados por la institución</a>
                 </div>
             </div>
         </div>
