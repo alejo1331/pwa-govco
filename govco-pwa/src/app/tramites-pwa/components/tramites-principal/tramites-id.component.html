@@ -1,5 +1,6 @@
 <section #seccionTramitesId class="seccion-tramites-por-id">
-    <app-header-compartir-v1></app-header-compartir-v1>
+    <app-header-compartir-v1 [urlTramite]="urlPage" [titleTramite]="infoBasicaTramite">
+    </app-header-compartir-v1>
     <div *ngIf="activarTramitesId" class="contenido">
         <app-ficha-especifica-header-pwa *ngIf="infoBasicaTramite" [data]="infoBasicaTramite">
         </app-ficha-especifica-header-pwa>
