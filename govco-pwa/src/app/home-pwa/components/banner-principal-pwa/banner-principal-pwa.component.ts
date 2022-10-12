@@ -41,7 +41,7 @@ export class BannerPrincipalPwaComponent implements OnInit {
   }
 
   goToLink(url: string){
-    window.open( url, "_blank" );
+    location.href = url
   }
 
 }

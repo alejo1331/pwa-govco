@@ -15,6 +15,7 @@ import { AccionSolicitudInterface } from '../../models/acciones-solicitud/accion
 export class TramitesIdComponent implements OnInit {
   @ViewChild('seccionTramitesId') seccionTramitesId: ElementRef;
   @ViewChild('seccionPuntoAtencion') seccionPuntoAtencion: ElementRef;
+  @ViewChild('botonRetroalimentaciona') botonRetroalimentaciona: ElementRef;
 
   topScroll: HTMLElement;
 
@@ -93,7 +94,6 @@ export class TramitesIdComponent implements OnInit {
       .GetTipoTramiteFichaEspecificaById(String(dataTramite.id))
       .subscribe(
         (dataFicha: TipoEnlace) => {
-          this.activarTramitesId = true;
           // to do
           // dataTramite ? this.GenerarTrackingTramite(dataTramite.id) : null;
           this.infoBasicaTramite = dataFicha;
@@ -128,6 +128,8 @@ export class TramitesIdComponent implements OnInit {
         },
         (error) => {
           console.log('error', error), (this.activarTramitesId = false);
+        }, () => {
+          this.activarTramitesId = true;
         }
       );
   }
@@ -171,6 +173,10 @@ export class TramitesIdComponent implements OnInit {
           : null;
       }
     );
+  }
+
+  evento(event: Event){
+    console.log('event',event)
   }
 
   //Esta seccion se encuentra en general.component.html en la seccion de Tramites ...
