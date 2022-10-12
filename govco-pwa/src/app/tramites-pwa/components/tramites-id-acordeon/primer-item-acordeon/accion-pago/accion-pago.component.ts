@@ -24,7 +24,6 @@ export class AccionPagoComponent implements OnInit {
     this.data.forEach((value: AccionPago) => {
       if (value['data'].length > 0) {
         value['dataInicial'] = value['data'].slice(0, 5);
-        value['dataFinal'] = [];
       }
       if (value['data'].length > 5) {
         this.activeMas = true;
@@ -43,14 +42,15 @@ export class AccionPagoComponent implements OnInit {
 
   verMasPagos(item:any, e:any) {
     if (item['data'].length > 0) {
-      if (item['dataFinal'].length > 0) {
-        item['dataFinal'] = [];
-        e.target.textContent = 'Ver más';
-      } else {
-        item['dataFinal'] = item['data'].slice(5, item['data'].length);
-        e.target.textContent = 'Ver menos';
-      }
+        if (item['dataInicial'].length < item['data'].length) {
+          item['dataInicial'] = item['data'].slice(0, item['dataInicial'].length + 5);
+          if (item['dataInicial'].length == item['data'].length) {
+            e.target.textContent = 'Ver menos';
+          }
+        } else {
+          item['dataInicial'] = item['data'].slice(0, 5);
+          e.target.textContent = 'Ver más';
+        }
     }
   }
-
 }
