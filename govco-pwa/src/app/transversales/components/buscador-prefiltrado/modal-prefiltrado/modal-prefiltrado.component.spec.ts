@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BuscadorBarraPwaComponent } from './buscador-barra-pwa.component';
+import { ModalPrefiltradoComponent } from './modal-prefiltrado.component';
 
-describe('BuscadorBarraPwaComponent', () => {
-  let component: BuscadorBarraPwaComponent;
-  let fixture: ComponentFixture<BuscadorBarraPwaComponent>;
+describe('ModalPrefiltradoComponent', () => {
+  let component: ModalPrefiltradoComponent;
+  let fixture: ComponentFixture<ModalPrefiltradoComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BuscadorBarraPwaComponent ]
+      declarations: [ ModalPrefiltradoComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BuscadorBarraPwaComponent);
+    fixture = TestBed.createComponent(ModalPrefiltradoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

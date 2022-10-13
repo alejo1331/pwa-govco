@@ -26,10 +26,11 @@ import { RecaptchaModule } from "ng-recaptcha";
 import { LoginComponent } from './components/login/login.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { ModalNatvivoModule } from '../modal-natvivo/modal-natvivo.module';
-import { BuscadorBarraPwaComponent } from './components/buscador-barra-pwa/buscador-barra-pwa.component';
 import { PortalesComponent } from './components/portales/portales.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { BreadCrumbComponent } from './shared/components/bread-crumb/components/bread-crumb/bread-crumb.component';
+import { BuscadorPrefiltradoComponent } from './components/buscador-prefiltrado/buscador-prefiltrado.component';
+import { ModalPrefiltradoComponent } from './components/buscador-prefiltrado/modal-prefiltrado/modal-prefiltrado.component';
 
 
 @NgModule({
@@ -65,9 +66,10 @@ import { BreadCrumbComponent } from './shared/components/bread-crumb/components/
     BannerDetalleInternasDosComponent,
     LevelOneBreadCrumbsComponent,
     LevelTwoBreadCrumbsComponent,
-    BuscadorBarraPwaComponent,
     PortalesComponent,
-    BreadCrumbComponent
+    BreadCrumbComponent,
+    BuscadorPrefiltradoComponent,
+    ModalPrefiltradoComponent
   ],
   exports: [
     GeolocalizacionComponent,
@@ -82,7 +84,7 @@ import { BreadCrumbComponent } from './shared/components/bread-crumb/components/
     LevelOneBreadCrumbsComponent,
     LevelTwoBreadCrumbsComponent,
     LoginComponent,
-    BuscadorBarraPwaComponent,
+    BuscadorPrefiltradoComponent,
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })
