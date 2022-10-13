@@ -51,7 +51,7 @@ steps:
   - cd ./govco-pwa/
   - npm install -g @angular/cli
   - npm i
-  - ng build --configuration="preproduction"
+  - ng build --configuration="develop"
   when:
     branch:
     - develop
@@ -137,7 +137,7 @@ steps:
   - cd ./govco-pwa/
   - npm install -g @angular/cli
   - npm i
-  - ng build --configuration="preproduction"
+  - ng build --configuration="operaciones"
   when:
     branch:
     - release_operaciones
