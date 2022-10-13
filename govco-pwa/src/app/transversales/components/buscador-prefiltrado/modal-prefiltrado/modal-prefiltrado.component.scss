@@ -1,0 +1,128 @@
+.modal-prefiltrado-pwa {
+    background-color: #E6EFFD;
+    height: 100%;
+    border-radius: 20px;
+    padding: 1.5rem 1rem;
+    box-shadow: 0px 4px 10px #13173d29;
+
+    .lista-filtro {
+        list-style: none;
+        padding: 0;
+
+        .item-filtro {
+            width: 100%;
+            height: 2.5rem;
+            margin-bottom: 8px;
+
+            .contenido-item {
+                display: flex;
+                align-items: center;
+                height: 100%;
+                padding: .5rem .75rem;
+
+                .caja-icono-24-pwa {
+
+                    .icono-item {
+                        width: 1.5rem;
+                        height: 1.5rem;
+                    }
+                }
+
+                p {
+                    margin: 0 0 0 .5rem;
+                    font-family: 'WorkSans-Regular';
+                    font-size: .875em;
+                    color: #004884;
+                }
+            }
+
+            .contenido-item:focus {
+                background-color: #FFFFFF;
+                outline-color: #FFFFFF;
+                border-radius: 5px;
+
+                p {
+                    font-family: 'WorkSans-Medium';
+                }
+            }
+        }
+
+        #tramites-servicios {
+            .contenido-item {
+                .icono-item {
+                    content: url(../../../../../assets/icons-fonts/description_inactivo.svg);
+                }
+            }
+
+            .contenido-item:focus {
+                .icono-item {
+                    content: url(../../../../../assets/icons-fonts/description_activo.svg);
+                }
+            }
+        }
+
+        #entidades {
+            .contenido-item {
+                .icono-item {
+                    content: url(../../../../../assets/icons-fonts/home_work_inactivo.svg);
+                }
+            }
+
+            .contenido-item:focus {
+                .icono-item {
+                    content: url(../../../../../assets/icons-fonts/home_work_activo.svg);
+                }
+            }
+        }
+
+        #noticias {
+            .contenido-item {
+                .icono-item {
+                    content: url(../../../../../assets/icons-fonts/feed_inactivo.svg);
+                }
+            }
+
+            .contenido-item:focus {
+                .icono-item {
+                    content: url(../../../../../assets/icons-fonts/feed_activo.svg);
+                }
+            }
+        }
+
+        #ejecicios-participacion {
+            .contenido-item {
+                .icono-item {
+                    content: url(../../../../../assets/icons-fonts/diversity.svg);
+                }
+            }
+        }
+
+        #ventanillas-unicas {
+            .contenido-item {
+                .icono-item {
+                    content: url(../../../../../assets/icons-fonts/store_inactivo.svg);
+                }
+            }
+
+            .contenido-item:focus {
+                .icono-item {
+                    content: url(../../../../../assets/icons-fonts/store_activo.svg);
+                }
+            }
+        }
+
+        #portales-transversales {
+            .contenido-item {
+                .icono-item {
+                    content: url(../../../../../assets/icons-fonts/computer_inactivo.svg);
+                }
+            }
+
+            .contenido-item:focus {
+                .icono-item {
+                    content: url(../../../../../assets/icons-fonts/computer_activo.svg);
+                }
+            }
+        }
+    }
+}
