@@ -3,6 +3,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalTutorialesPwaComponent } from '../modal-tutoriales-pwa/modal-tutoriales-pwa.component';
 import { ModalDudasPwaComponent } from '../modal-dudas-pwa/modal-dudas-pwa.component';
 import { TramitesPorIdService } from '../../services/tramites-por-id-service/tramites-por-id.service';
+import { DataBasicaPuntosInterface } from '../../models/puntos-de-atencion/data-basica-puntos-interface';
 
 @Component({
   selector: 'app-ficha-especifica-cards-pwa',
@@ -12,7 +13,7 @@ import { TramitesPorIdService } from '../../services/tramites-por-id-service/tra
 export class FichaEspecificaCardsPwaComponent implements OnInit {
   @Input() infoTramite: any;
   @Input() itemid: number;
-  @Output() abrirPuntosAtencion = new EventEmitter<[string, string, boolean]>();
+  @Output() abrirPuntosAtencion = new EventEmitter<DataBasicaPuntosInterface>();
   canalesSeguimiento: any[];
 
   activarBotonPuntosAtencion: boolean = true;
@@ -66,8 +67,14 @@ export class FichaEspecificaCardsPwaComponent implements OnInit {
   }
   
   abrirPuntosAtencionClic() {
-    const cerrarPuntosAtencion: string = '0%';
-    const AbrirTramitesId: string = '-100%';
-    this.abrirPuntosAtencion.emit([cerrarPuntosAtencion, AbrirTramitesId, true]);
+    let data: DataBasicaPuntosInterface = {
+      transitionPuntosAtencion: '0%',
+      transitionTramitesId: '-100%',
+      activar: true,
+      idTipo: 1,
+      idMomento: 0,
+      idAccion: 0
+    }
+    this.abrirPuntosAtencion.emit(data);
   }
 }

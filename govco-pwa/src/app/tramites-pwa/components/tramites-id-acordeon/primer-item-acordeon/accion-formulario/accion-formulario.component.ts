@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { AccionSolicitudInterface } from 'src/app/tramites-pwa/models/acciones-solicitud/accion-solicitud-interface';
 import { AccionFormulario } from 'src/app/tramites-pwa/models/acordeon/acordeon-interface';
+import { DataBasicaPuntosInterface } from 'src/app/tramites-pwa/models/puntos-de-atencion/data-basica-puntos-interface';
 import { TramitesPorIdService } from 'src/app/tramites-pwa/services/tramites-por-id-service/tramites-por-id.service';
 import { ValidateUrlService } from 'src/app/tramites-pwa/services/validate-url.service';
 
@@ -13,7 +13,7 @@ export class AccionFormularioComponent implements OnInit {
   @Input() data: AccionFormulario[];
   @Input() tramiteEnLinea: boolean;
 
-  dataPuntosAtencion: AccionSolicitudInterface;
+  dataPuntosAtencion: DataBasicaPuntosInterface;
 
   constructor(
     public validateUrlService: ValidateUrlService,
@@ -25,8 +25,8 @@ export class AccionFormularioComponent implements OnInit {
 
   abrirPuntosAtencionClic(idMomento:number, idAccion:number) {
     this.dataPuntosAtencion = {
-      abrirPuntos: '0%',
-      cerrarTramiteId: '-100%',
+      transitionPuntosAtencion: '0%',
+      transitionTramitesId: '-100%',
       activar: true,
       idTipo: 2,
       idMomento: idMomento,

@@ -1,5 +1,5 @@
 <section #seccionTramitesId class="seccion-tramites-por-id">
-    <app-header-compartir-v1 [urlTramite]="urlPage" [titleTramite]="infoBasicaTramite">
+    <app-header-compartir-v1 [urlTramite]="urlPage" [titleTramite]="infoBasicaTramite" [botonAtras]="botonAtras">
     </app-header-compartir-v1>
     <div *ngIf="activarTramitesId" class="contenido">
         <app-ficha-especifica-header-pwa *ngIf="infoBasicaTramite" [data]="infoBasicaTramite">
@@ -14,13 +14,15 @@
         </app-ficha-especifica-footer-pwa>
         <app-footer></app-footer>
     </div>
-    <app-boton-retroalimentacion #botonRetroalimentaciona *ngIf="activarTramitesId"></app-boton-retroalimentacion>
+    <app-boton-retroalimentacion *ngIf="activarTramitesId"></app-boton-retroalimentacion>
     <app-desplegable-uno *ngIf="audiencias && activarTramitesId" [data]="audiencias"
-        [estructura]="estructuraModalDesplegable" (perfilSeleccionado)="perfilSeleccionado($event)">
+        [estructura]="estructuraModalDesplegable" (perfilSeleccionado)="perfilSeleccionado($event)"
+        (botonRetroalimentaciona)="iteracionBotonRetroalimentaciona($event)">
     </app-desplegable-uno>
 </section>
 
 <section #seccionPuntoAtencion class="seccion-puntos-atencion">
     <app-puntos-de-atencion *ngIf="activarPuntosAtecion && activarTramitesId" [perfil_idTramite]="perfil_idTramite"
-        (cerrarPuntosAtencion)="cerrarPuntosAtencion($event)"></app-puntos-de-atencion>
+        [dataPuntosAtencion]="dataPuntosAtencion" (cerrarPuntosAtencion)="cerrarPuntosAtencion($event)">
+    </app-puntos-de-atencion>
 </section>

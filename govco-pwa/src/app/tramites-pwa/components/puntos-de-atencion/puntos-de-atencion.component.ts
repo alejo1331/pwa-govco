@@ -7,6 +7,7 @@ import { ItemsAcordeon } from '../../models/puntos-de-atencion/items-acordeon-in
 import { PuntosDeAtencionInterface } from '../../models/puntos-de-atencion/puntos-de-atencion-interface';
 import { TramitesPorIdService } from '../../services/tramites-por-id-service/tramites-por-id.service';
 import { PipeTransform } from '@angular/core';
+import { DataBasicaPuntosInterface } from '../../models/puntos-de-atencion/data-basica-puntos-interface';
 
 @Component({
   selector: 'app-puntos-de-atencion',
@@ -20,6 +21,7 @@ export class PuntosDeAtencionComponent implements OnInit, PipeTransform {
 
   @Output() cerrarPuntosAtencion = new EventEmitter<[string, string]>();
   @Input() perfil_idTramite: { perfil: string, idTramite: number };
+  @Input() dataPuntosAtencion: DataBasicaPuntosInterface;
 
   public items: ItemsAcordeon[] = [];
   public itemsAux: ItemsAcordeon[] = [];
@@ -63,7 +65,7 @@ export class PuntosDeAtencionComponent implements OnInit, PipeTransform {
 
   getPuntosAtencion() {
     const tipoAtencionPresencial = this.fichaTramiteService.getTipoAtencionPresencial();
-    this.fichaTramiteService.GetPuntosAtencion(tipoAtencionPresencial, 1, this.perfil_idTramite.idTramite, 0, 0)
+    this.fichaTramiteService.GetPuntosAtencion(tipoAtencionPresencial, this.dataPuntosAtencion.idTipo, this.perfil_idTramite.idTramite, this.dataPuntosAtencion.idMomento, this.dataPuntosAtencion.idAccion)
       .subscribe((puntosDeAntencion: PuntosDeAtencionInterface[]) => {
         puntosDeAntencion.forEach((elemento) => {
           this.itemsAux.push(
