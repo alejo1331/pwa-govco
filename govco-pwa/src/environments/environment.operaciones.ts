@@ -1,5 +1,5 @@
 export const environment = {
-  production: true,
+  production: false,
   //General
   serverEntidades: 'https://preapi-interno.www.gov.co/api/entidades/',
   serverUrl: 'https://preapi-interno.www.gov.co/api/entidades/',
@@ -54,7 +54,7 @@ export const environment = {
   authIssuer: 'https://preautenticaciondigital.and.gov.co',
   clientID: "govcomovilPRE",
   authWebApi:"https://preapi-interno.www.gov.co/api/roles-y-permisos/RolesPerfiles/Usuarios",
-  URLgovco : 'https://pwa-dev.and.gov.co/',
+  URLgovco : 'https://pwa-qa.www.gov.co/',
   //WebComponent
   serverFichaTramite:'https://preapi-interno.www.gov.co/api/ficha-tramites-y-servicios',
 
