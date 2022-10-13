@@ -18,5 +18,5 @@
 
 ::ng-deep .button-container {
     opacity: 1;
-    transition: 0.4s ;
+    transition: 0.4s all ease;
 }

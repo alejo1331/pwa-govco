@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
+import { BottomMenuService } from 'src/app/transversales/services/bottom-menu/bottom-menu.service';
 
 @Component({
   selector: 'app-header-compartir-v1',
@@ -8,10 +10,14 @@ import { Component, OnInit, Input } from '@angular/core';
 export class HeaderCompartirV1Component implements OnInit {
   @Input() urlTramite: string;
   @Input() titleTramite: any;
+  @Input() botonAtras: { url: string, estadoMenuInferior: boolean, itemMenu: number };
 
-  constructor() {}
+  constructor(
+    private router: Router,
+    public bottomService: BottomMenuService,
+  ) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   async shareTramite() {
     let shareData = {
@@ -24,5 +30,13 @@ export class HeaderCompartirV1Component implements OnInit {
     } catch (err) {
       console.log('error al compartir tramite.');
     }
+  }
+
+  accionAtras(): void {
+    this.router.navigate([this.botonAtras.url]);
+    this.bottomService.putOcultandoBottomMenu(this.botonAtras.estadoMenuInferior);
+    setTimeout(() => {
+      this.bottomService.seleccionandoItem(this.botonAtras.itemMenu);
+    }, 100);
   }
 }

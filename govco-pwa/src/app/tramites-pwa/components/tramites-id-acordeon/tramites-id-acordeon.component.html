@@ -29,7 +29,7 @@
         </div>
         <div id="collapse1" class="collapse" aria-labelledby="paso1" data-parent="#acordeonPerfilTramites">
             <div class="card-body">
-                <app-segundo-item-acordeon [dataAcordeon]="dataAcordeon"></app-segundo-item-acordeon>
+                <app-segundo-item-acordeon *ngIf="dataAcordeon" [dataAcordeon]="dataAcordeon"></app-segundo-item-acordeon>
             </div>
         </div>
     </div>
@@ -46,7 +46,7 @@
         </div>
         <div id="collapse2" class="collapse" aria-labelledby="paso2" data-parent="#acordeonPerfilTramites">
             <div class="card-body">
-              <app-tercer-item-acordeon [dataAcordeon]="dataAcordeon"></app-tercer-item-acordeon>
+              <app-tercer-item-acordeon *ngIf="dataAcordeon" [dataAcordeon]="dataAcordeon"></app-tercer-item-acordeon>
             </div>
         </div>
     </div>
@@ -63,7 +63,7 @@
         </div>
         <div id="collapse3" class="collapse" aria-labelledby="paso3" data-parent="#acordeonPerfilTramites">
             <div class="card-body">
-                <app-cuarto-item-acordeon [dataAcordeon]="dataAcordeon"></app-cuarto-item-acordeon>
+                <app-cuarto-item-acordeon *ngIf="dataAcordeon" [dataAcordeon]="dataAcordeon"></app-cuarto-item-acordeon>
             </div>
         </div>
     </div>
@@ -80,7 +80,7 @@
         </div>
         <div id="collapse4" class="collapse" aria-labelledby="paso4" data-parent="#acordeonPerfilTramites">
             <div class="card-body">
-                <app-quinto-item-acordeon [dataAcordeon]="dataAcordeon"></app-quinto-item-acordeon>
+                <app-quinto-item-acordeon *ngIf="dataAcordeon" [dataAcordeon]="dataAcordeon"></app-quinto-item-acordeon>
             </div>
         </div>
     </div>
