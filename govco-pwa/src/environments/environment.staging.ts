@@ -54,7 +54,7 @@ export const environment = {
   authIssuer: 'https://qaautenticaciondigital.and.gov.co',
   clientID: "govcomovil2QA",
   authWebApi:"https://preapi-interno.www.gov.co/api/roles-y-permisos/RolesPerfiles/Usuarios",
-  URLgovco : 'https://d36tbrftj1zuu.cloudfront.net/',
+  URLgovco : 'https://pwa-qa.and.gov.co/',
   //WebComponent
   serverFichaTramite:'https://preapi-interno.www.gov.co/api/ficha-tramites-y-servicios',
 
