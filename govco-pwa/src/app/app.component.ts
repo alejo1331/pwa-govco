@@ -343,4 +343,30 @@ export class AppComponent implements OnInit, AfterContentChecked {
       }
     }
   }
+
+  @HostListener('click', ['$event']) onClick(event: Event) {
+    var id_temas_de_interes: HTMLElement = (document.getElementById('temas-de-interes') as HTMLElement);
+    if (id_temas_de_interes != undefined || id_temas_de_interes != null) {
+      var slide_activo: HTMLElement = id_temas_de_interes.querySelector('.contenedor-img.activo') as HTMLElement;
+      var etiqueta_a: HTMLAnchorElement = (slide_activo.getElementsByTagName('a') as HTMLCollectionOf<HTMLAnchorElement>)[0];
+      let get_href = String((<HTMLElement>etiqueta_a).getAttribute('href'));
+      let ventanillas: number = get_href.indexOf('/ventanillas-unicas');
+      let portales: number = get_href.indexOf('/portales');
+
+      var hijo_1: HTMLElement = etiqueta_a.querySelector('.descripcion-span') as HTMLElement;
+      var hijo_2: HTMLElement = etiqueta_a.querySelector('.titulo-span') as HTMLElement;
+      var hijo_3: HTMLElement = etiqueta_a.querySelector('.titulo-block ') as HTMLElement;
+      if (event.target == hijo_1 || event.target == hijo_2 || event.target == hijo_3) {
+        if (ventanillas >= 0) {
+          etiqueta_a.target = '_self';
+          location.href = '/ventanillas-unicas';
+        }
+        if (portales >= 0) {
+          etiqueta_a.target = '_self';
+          location.href = '/portales';
+        }
+      }
+    }
+
+  }
 }
