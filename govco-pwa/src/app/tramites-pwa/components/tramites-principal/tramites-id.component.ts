@@ -1,11 +1,11 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BottomMenuService } from 'src/app/transversales/services/bottom-menu/bottom-menu.service';
 import { HeaderService } from 'src/app/transversales/services/header-service/header.service';
 import { SidenavService } from 'src/app/transversales/services/sidenav-service/sidenav-service.service';
 import { TramitesPorIdService } from '../../services/tramites-por-id-service/tramites-por-id.service';
 import { TipoEnlace, TipoAudiencia, informacionFicha } from '../../models/tramites-id-models/tramites-por-id-interface';
-import { AccionSolicitudInterface } from '../../models/acciones-solicitud/accion-solicitud-interface';
+import { DataBasicaPuntosInterface } from '../../models/puntos-de-atencion/data-basica-puntos-interface';
 
 @Component({
   selector: 'app-tramites-id',
@@ -15,14 +15,13 @@ import { AccionSolicitudInterface } from '../../models/acciones-solicitud/accion
 export class TramitesIdComponent implements OnInit {
   @ViewChild('seccionTramitesId') seccionTramitesId: ElementRef;
   @ViewChild('seccionPuntoAtencion') seccionPuntoAtencion: ElementRef;
-  @ViewChild('botonRetroalimentaciona') botonRetroalimentaciona: ElementRef;
 
+  botonAtras: { url: string, estadoMenuInferior: boolean, itemMenu: number};
+  dataPuntosAtencion : DataBasicaPuntosInterface
   topScroll: HTMLElement;
-
   informacionFicha: informacionFicha;
   estructuraModalDesplegable: { titulo: string; icono: string }[];
   perfil_idTramite: { perfil: string; idTramite: number };
-
   infoBasicaTramite: TipoEnlace;
   nombreTramite: string;
   idTramite: number;
@@ -40,17 +39,19 @@ export class TramitesIdComponent implements OnInit {
     private activatedRoute: ActivatedRoute
   ) {
     this.fichaTramiteService.abrirPuntosAtencion.subscribe(
-      async (data: AccionSolicitudInterface) => {
-        await this.abrirPuntosAtencion([
-          data.abrirPuntos,
-          data.cerrarTramiteId,
-          data.activar
-        ]);
+      async (data: DataBasicaPuntosInterface) => {
+        await this.abrirPuntosAtencion(data);
       }
     );
   }
 
   ngOnInit(): void {
+    this.botonAtras = {
+      url: '/ficha-tramites-y-servicios',
+      estadoMenuInferior: false,
+      itemMenu: 1
+    } ;
+
     this.estructuraModalDesplegable = [
       {
         titulo: 'Ciudadano',
@@ -152,11 +153,12 @@ export class TramitesIdComponent implements OnInit {
     };
   }
 
-  abrirPuntosAtencion([abrirPuntosAtencion, cerrarTramitesId, activar]: [string, string, boolean]) {
-    this.activarPuntosAtecion = activar;
+  abrirPuntosAtencion(data: DataBasicaPuntosInterface) {
+    this.activarPuntosAtecion = data.activar;
     if (this.activarPuntosAtecion == true) {
-      this.seccionTramitesId.nativeElement.style.left = cerrarTramitesId;
-      this.seccionPuntoAtencion.nativeElement.style.left = abrirPuntosAtencion;
+      this.dataPuntosAtencion = data;
+      this.seccionTramitesId.nativeElement.style.left = data.transitionTramitesId;
+      this.seccionPuntoAtencion.nativeElement.style.left = data.transitionPuntosAtencion;
       this.topScroll.scrollTop = 0;
     }
   }
@@ -175,8 +177,15 @@ export class TramitesIdComponent implements OnInit {
     );
   }
 
-  evento(event: Event){
-    console.log('event',event)
+  iteracionBotonRetroalimentaciona(estado: string) {
+    let botonRetroalimentacion: HTMLElement = (
+      document.querySelector('app-boton-retroalimentacion .button-container') as HTMLElement
+    );
+    estado == 'ocultar' ? botonRetroalimentacion.style.opacity = '0'
+      : botonRetroalimentacion.style.opacity = '1', botonRetroalimentacion.style.zIndex = '7';
+    botonRetroalimentacion.addEventListener('transitionend', () => {
+      estado == 'mostrar' ? botonRetroalimentacion.style.zIndex = '7' : botonRetroalimentacion.style.zIndex = '-1';
+    });
   }
 
   //Esta seccion se encuentra en general.component.html en la seccion de Tramites ...

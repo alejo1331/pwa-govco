@@ -11,7 +11,7 @@ import {
   PuntosAtencionNoSuite, DocumentacionRequerida, Contacto, TrackingTramite
 } from '../../models/tramites-id-models/tramites-por-id-interface';
 import { PuntosDeAtencionInterface } from '../../models/puntos-de-atencion/puntos-de-atencion-interface';
-import { AccionSolicitudInterface } from '../../models/acciones-solicitud/accion-solicitud-interface';
+import { DataBasicaPuntosInterface } from '../../models/puntos-de-atencion/data-basica-puntos-interface';
 
 @Injectable({
   providedIn: 'root'
@@ -24,23 +24,23 @@ export class TramitesPorIdService {
   API_URL = environment.serverUrlFichaTramite;
   API_URL_AUDITORIA = environment.auditoriaurl;
 
-  private dataPuntosAtencion: AccionSolicitudInterface = {
-    abrirPuntos: '100%',
-    cerrarTramiteId: '0%',
+  private dataPuntosAtencion: DataBasicaPuntosInterface = {
+    transitionPuntosAtencion: '100%',
+    transitionTramitesId: '0%',
     activar: false,
     idTipo: 0,
     idMomento: 0,
     idAccion: 0
   }
 
-  private abrir = new BehaviorSubject<AccionSolicitudInterface> (this.dataPuntosAtencion);
+  private abrir = new BehaviorSubject<DataBasicaPuntosInterface> (this.dataPuntosAtencion);
   public abrirPuntosAtencion = this.abrir.asObservable();
 
 
   constructor(private http: HttpClient) { }
 
 
-  public async getAbrirPuntos(data: AccionSolicitudInterface) {
+  public async getAbrirPuntos(data: DataBasicaPuntosInterface) {
     await this.abrir.next(data);
   }
 
