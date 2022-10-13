@@ -1,0 +1,77 @@
+.buscador-sedes {
+    position: relative;
+    bottom: 2em;
+    .govco-icon-plus .govco-icon-close {
+        color: #36c !important;
+    }
+    .sobra-buscador {
+        box-shadow: none !important;
+    }
+}
+.text-gris {
+    color: #4b4b4b;
+    font-size: .9rem;
+    font-family: "Work Sans", sans-serif;
+}
+#paginador {
+    padding: 0.2em 0.5em;
+}
+.titulo-contendor {
+    color: #004884;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.container-portales {
+    font-family: 'Montserrat-Regular', sans-serif;
+    margin-bottom: 60px;
+    .body-sedes-electronicas {
+        background-color: #004884;
+        .container {
+            width: 100%;
+            padding-right: 15px;
+            padding-left: 15px;
+            margin-right: auto;
+            margin-left: auto;
+            h1 {
+                color: #f3f5f7;
+                font-weight: 600;
+                font-size: 1.5rem!important;
+            }
+            span {
+                font-size: 1.25rem!important;
+                display: block;
+                padding-right: 37%;
+                color: #fff!important;
+            }
+        }
+    }
+    .container {
+        .container-sedes-govco {
+            a h3 {
+                color: #36c;
+                font-weight: 600;
+                font-size: 12px;
+            }
+            span {
+                color: #4b4b4b;
+                font-size: 14px;
+                strong {
+                    font-family: 'Montserrat-Bold';
+                }
+            }
+            p {
+                font-size: 12px;
+                font-family: 'WorkSans-Regular';
+            }
+        }
+    }
+    ::ng-deep {
+        .content-search {
+            top: 5px;
+        }
+        .contenedor-tramites {
+            box-shadow: initial;
+        }
+    }
+}

@@ -1,0 +1,31 @@
+<!-- <nav class="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/">
+                <span class="breadcrumb-home">Inicio</span>
+            </a>
+        </li>
+        <li *ngIf="title != ''" [class]="title != '' ? 'breadcrumb-item activo':'breadcrumb-item'">
+            <div class="breadcrumb">
+                <span class="govco-icon govco-icon-shortr-arrow mx-1"></span>
+                <span class="breadcrumb-text item-link">{{ title }}</span>
+            </div>
+        </li>
+    </ol>
+</nav> -->
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item white">
+            <a href="/">
+                Inicio
+            </a>
+        </li>
+      <li *ngIf="title != ''" [class]="title != '' ? 'breadcrumb-item activo white':'breadcrumb-item'">
+        <div class="image-icon">
+            <div class="govco-icon govco-icon-shortr-arrow mx-1"></div>
+            <a class="breadcrumb-text" >{{ title }}</a>
+          </div>
+    </li>
+    </ol>
+  </nav>

@@ -7,7 +7,6 @@ import { MenuContextualComponent } from './components/menu-contextual/menu-conte
 import { BannerPrincipalComponent } from './components/banner-principal/banner-principal.component';
 import { ContactosDeEmergenciaComponent } from './components/contactos-de-emergencia/contactos-de-emergencia.component';
 import { CarpetaCiudadanaComponent } from './components/carpeta-ciudadana/carpeta-ciudadana.component';
-import { PortalesComponent } from './components/portales/portales.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FormsModule } from '@angular/forms';
 
@@ -25,7 +24,7 @@ import { FormsModule } from '@angular/forms';
     MenuContextualComponent, 
     BannerPrincipalComponent, 
     ContactosDeEmergenciaComponent, 
-    CarpetaCiudadanaComponent, PortalesComponent
+    CarpetaCiudadanaComponent
   ],
   exports: [HomeComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
