@@ -6,7 +6,7 @@
     <div class="carousel-inner">
       <div class="carousel-item" [class.active]="i==0" *ngFor="let item of carruselItems; let i = index">
         <div class="container-tarjeta">
-          <a [href]="item.urlDestino">
+          <a [href]="item.urlDestino.indexOf('portales') >= 0? '/portales' : item.urlDestino">
             <div class="container-img">
               <img [src]="item.urlImagen" [alt]="item.titulo">
             </div>

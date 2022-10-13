@@ -27,6 +27,9 @@ import { LoginComponent } from './components/login/login.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { ModalNatvivoModule } from '../modal-natvivo/modal-natvivo.module';
 import { BuscadorBarraPwaComponent } from './components/buscador-barra-pwa/buscador-barra-pwa.component';
+import { PortalesComponent } from './components/portales/portales.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { BreadCrumbComponent } from './shared/components/bread-crumb/components/bread-crumb/bread-crumb.component';
 
 
 @NgModule({
@@ -39,7 +42,8 @@ import { BuscadorBarraPwaComponent } from './components/buscador-barra-pwa/busca
     TransversalesRoutingModule,
     PipesModule,
     RecaptchaModule,
-    ModalNatvivoModule
+    ModalNatvivoModule,
+    NgxPaginationModule
   ],
   declarations: [
     BuscadorComponent,
@@ -61,7 +65,9 @@ import { BuscadorBarraPwaComponent } from './components/buscador-barra-pwa/busca
     BannerDetalleInternasDosComponent,
     LevelOneBreadCrumbsComponent,
     LevelTwoBreadCrumbsComponent,
-    BuscadorBarraPwaComponent
+    BuscadorBarraPwaComponent,
+    PortalesComponent,
+    BreadCrumbComponent
   ],
   exports: [
     GeolocalizacionComponent,

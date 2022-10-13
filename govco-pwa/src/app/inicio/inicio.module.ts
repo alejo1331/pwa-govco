@@ -7,6 +7,8 @@ import { MenuContextualComponent } from './components/menu-contextual/menu-conte
 import { BannerPrincipalComponent } from './components/banner-principal/banner-principal.component';
 import { ContactosDeEmergenciaComponent } from './components/contactos-de-emergencia/contactos-de-emergencia.component';
 import { CarpetaCiudadanaComponent } from './components/carpeta-ciudadana/carpeta-ciudadana.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -14,6 +16,8 @@ import { CarpetaCiudadanaComponent } from './components/carpeta-ciudadana/carpet
     CommonModule,
     AvisoDeConstruccionModule,
     InicioRoutingModule,
+    NgxPaginationModule,
+    FormsModule
   ],
   declarations: [
     HomeComponent, 

@@ -1,0 +1,70 @@
+<div class="container-portales">
+    <div class="body-sedes-electronicas pb-4">
+        <div class="container pt-5">
+            <app-bread-crumb class="breadcrumb-dark" title="Portales transversales"></app-bread-crumb>
+            <div class="sedes-electronicas-header mt-2">
+                <section class="row" title="Encabezado de página">
+                    <div class="col">
+                        <div class="mb-5">
+                            <h1>Portales de Programas Transversales</h1>
+                            <span class="resumen">Sitio o canal digital que integra información de programas de dos o más autoridades que tienen un impacto de nivel NACIONAL para atender necesidades de los ciudadanos o las entidades de manera general.</span>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div>
+            <div class="container buscador-sedes-container">
+                <govco-buscador-2 class="buscador-sedes" seed={{this.parametroBuscador}} solobusqueda="portal"
+                    filtros="false" categoriabusqueda=""></govco-buscador-2>
+            </div>
+        </div>
+        <div class="container-sedes-govco" *ngIf="listSedes">
+            <div class="paginador-header row" *ngIf="count > pageSize">
+                <div class="col-md-8 col-12 mb-5 d-flex justify-content-between">
+                    <div class="resultados">
+                        <span class="text-gris">Mostrando {{ itemMin }} de {{ itemMax }} de {{ count }} resultados de
+                            portales. </span>
+                    </div>
+                    <div class="paginador-container">
+                        <label for="paginador" class="text-gris mr-3">Página</label>
+                        <select [(ngModel)]="pagina" id="paginador" (change)="changePage()">
+                            <option *ngFor="let page of paginador" [value]="page">
+                                {{ page }}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="paginador-header row" *ngIf="count <= pageSize">
+                <div class="col-md-8 col-12 mb-5 d-flex justify-content-between">
+                    <div class="resultados">
+                        <span class="text-gris">Mostrando {{ page }} de {{ count }} resultados de portales. </span>
+                    </div>
+                </div>
+            </div>
+            <div class="row" *ngFor="let portal of portales | paginate : {
+                itemsPerPage: pageSize,
+                currentPage: page,
+                totalItems: count
+              };">
+                <div class="col-md-6 col-12 mb-4">
+                    <p class="titulo-contendor mb-1">PORTAL TRANSVERSAL</p>
+                    <a (click)="openLink(portal.urlDominio)"  title="Abre en una nueva ventana">
+                        <h3 class="headline-s-govco">{{ portal.nombreLargo }}</h3>
+                    </a>
+                    <span class="caption"><strong>Entidad responsable:
+                        </strong><span>{{ portal.nombreEntidad }}</span></span>
+                    <p class="descripcion">{{ portal.descripcion }}</p>
+                </div>
+            </div>
+            <pagination-controls *ngIf="count > pageSize" (pageChange)="onPaginatorChange($event)"
+                (pageBoundsCorrection)="onPaginatorChange($event)" [maxSize]="9" [directionLinks]="true" [autoHide]="false"
+                [responsive]="true" previousLabel="Anterior" nextLabel="Siguiente" screenReaderPaginationLabel="Paginador"
+                screenReaderPageLabel="Página" screenReaderCurrentLabel="Usted está en la página">
+            </pagination-controls>
+        </div>
+    </div>
+</div>
