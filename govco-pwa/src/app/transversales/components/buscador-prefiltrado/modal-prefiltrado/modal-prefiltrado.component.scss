@@ -19,6 +19,7 @@
                 align-items: center;
                 height: 100%;
                 padding: .5rem .75rem;
+                text-decoration: none;
 
                 .caja-icono-24-pwa {
 
@@ -36,10 +37,15 @@
                 }
             }
 
-            .contenido-item:focus {
-                background-color: #FFFFFF;
+        }
+
+        .item-filtro.active {
+            background-color: #FFFFFF;
+            outline-color: #FFFFFF;
+            border-radius: 5px;
+
+            .contenido-item {
                 outline-color: #FFFFFF;
-                border-radius: 5px;
 
                 p {
                     font-family: 'WorkSans-Medium';
@@ -53,8 +59,10 @@
                     content: url(../../../../../assets/icons-fonts/description_inactivo.svg);
                 }
             }
+        }
 
-            .contenido-item:focus {
+        #tramites-servicios.active {
+            .contenido-item {
                 .icono-item {
                     content: url(../../../../../assets/icons-fonts/description_activo.svg);
                 }
@@ -67,8 +75,10 @@
                     content: url(../../../../../assets/icons-fonts/home_work_inactivo.svg);
                 }
             }
+        }
 
-            .contenido-item:focus {
+        #entidades.active {
+            .contenido-item {
                 .icono-item {
                     content: url(../../../../../assets/icons-fonts/home_work_activo.svg);
                 }
@@ -81,13 +91,16 @@
                     content: url(../../../../../assets/icons-fonts/feed_inactivo.svg);
                 }
             }
+        }
 
-            .contenido-item:focus {
+        #noticias.active {
+            .contenido-item {
                 .icono-item {
                     content: url(../../../../../assets/icons-fonts/feed_activo.svg);
                 }
             }
         }
+
 
         #ejecicios-participacion {
             .contenido-item {
@@ -103,8 +116,10 @@
                     content: url(../../../../../assets/icons-fonts/store_inactivo.svg);
                 }
             }
+        }
 
-            .contenido-item:focus {
+        #ventanillas-unicas.active {
+            .contenido-item {
                 .icono-item {
                     content: url(../../../../../assets/icons-fonts/store_activo.svg);
                 }
@@ -117,12 +132,15 @@
                     content: url(../../../../../assets/icons-fonts/computer_inactivo.svg);
                 }
             }
+        }
 
-            .contenido-item:focus {
+        #portales-transversales.active {
+            .contenido-item {
                 .icono-item {
                     content: url(../../../../../assets/icons-fonts/computer_activo.svg);
                 }
             }
         }
+
     }
 }

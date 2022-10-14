@@ -1,55 +1,54 @@
 <div class="modal-prefiltrado-pwa">
     <ul class="lista-filtro">
-        <li class="item-filtro" id="tramites-servicios">
-            <a href="" class="contenido-item">
+        <li class="item-filtro" id="tramites-servicios" (click)="seleccionarItem('Trámites', 0)"
+            [class.active]="itemFiltro == 0">
+            <a class="contenido-item">
                 <div class="caja-icono-24-pwa">
-                    <span class="icono-item" type="image" 
-                        alt="Borrar contenido de la barra de busqueda"></span>
+                    <span class="icono-item" type="image" alt="Filtro Trámites y servicios"></span>
                 </div>
                 <p>Trámites y servicios</p>
             </a>
         </li>
-        <li class="item-filtro" id="entidades">
-            <a href="" class="contenido-item">
+        <li class="item-filtro" id="entidades" (click)="seleccionarItem('Entidades', 1)"
+            [class.active]="itemFiltro == 1">
+            <a class="contenido-item">
                 <div class="caja-icono-24-pwa">
-                    <span class="icono-item" type="image" 
-                        alt="Borrar contenido de la barra de busqueda"></span>
+                    <span class="icono-item" type="image" alt="Filtro Entidades"></span>
                 </div>
                 <p>Entidades</p>
             </a>
         </li>
-        <li class="item-filtro" id="noticias">
-            <a href="" class="contenido-item">
+        <li class="item-filtro" id="noticias" (click)="seleccionarItem('Noticias', 2)" [class.active]="itemFiltro == 2">
+            <a class="contenido-item">
                 <div class="caja-icono-24-pwa">
-                    <span class="icono-item" type="image" 
-                        alt="Borrar contenido de la barra de busqueda"></span>
+                    <span class="icono-item" type="image" alt="Filtro Noticias"></span>
                 </div>
                 <p>Noticias</p>
             </a>
         </li>
-        <li class="item-filtro" id="ejecicios-participacion">
-            <a href="" class="contenido-item">
+        <li class="item-filtro" id="ejecicios-participacion" (click)="seleccionarItem('Ejercicios', 3)"
+            [class.active]="itemFiltro == 3">
+            <a class="contenido-item">
                 <div class="caja-icono-24-pwa">
-                    <span class="icono-item" type="image" 
-                        alt="Borrar contenido de la barra de busqueda"></span>
+                    <span class="icono-item" type="image" alt="Filtro Ejercicios de participación"></span>
                 </div>
                 <p>Ejercicios de participación</p>
             </a>
         </li>
-        <li class="item-filtro" id="ventanillas-unicas">
-            <a href="" class="contenido-item">
+        <li class="item-filtro" id="ventanillas-unicas" (click)="seleccionarItem('Ventanillas', 4)"
+            [class.active]="itemFiltro == 4">
+            <a class="contenido-item">
                 <div class="caja-icono-24-pwa">
-                    <span class="icono-item" type="image" 
-                        alt="Borrar contenido de la barra de busqueda"></span>
+                    <span class="icono-item" type="image" alt="Filtro Ventanillas Únicas"></span>
                 </div>
                 <p>Ventanillas Únicas</p>
             </a>
         </li>
-        <li class="item-filtro" id="portales-transversales">
-            <a href="" class="contenido-item">
+        <li class="item-filtro" id="portales-transversales" (click)="seleccionarItem('Portales', 5)"
+            [class.active]="itemFiltro == 5">
+            <a class="contenido-item">
                 <div class="caja-icono-24-pwa">
-                    <span class="icono-item" type="image" 
-                        alt="Borrar contenido de la barra de busqueda"></span>
+                    <span class="icono-item" type="image" alt="Filtro Portales Transversales"></span>
                 </div>
                 <p>Portales Transversales</p>
             </a>
