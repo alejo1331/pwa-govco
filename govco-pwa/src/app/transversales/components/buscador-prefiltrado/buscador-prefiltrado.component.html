@@ -1,15 +1,15 @@
 <section class="seccion-buscador">
-    <input #inputBuscador class="buscador" type="text" placeholder="Buscar" name="search">
-    <div class="grupo-iconos-buscador">
-        <a class="caja-icono-24-pwa boton-backspace" tabindex="0">
-            <span class="icono-backspace" type="image" 
+    <input class="buscador"
+        style="background-image: url(../../../../assets/icons-fonts/search_FILL0_wght500_GRAD0_opsz20.svg)" type="text"
+        placeholder="Buscar en GOV.CO">
+    <button class="boton-filtro" (click)="filtrarPor()">
+        <p>{{tituloFiltro}}</p>
+        <div class="caja-icono-36-pwa">
+            <span class="icono-filtro" [class.active]="!estadoBotonFiltro" type="image"
                 alt="Borrar contenido de la barra de busqueda"></span>
-        </a>
-        <div class="linea-vertical"></div>
-        <a class="caja-icono-36-pwa" tabindex="0">
-            <span class="icono-search" type="image" alt="Realizar busqueda"></span>
-        </a>
-    </div>
+        </div>
+    </button>
 </section>
 
-<app-modal-prefiltrado id="modal-prefiltrado"></app-modal-prefiltrado>
+<app-modal-prefiltrado id="modal-prefiltrado" [class.active]="estadoBotonFiltro" (itemSelected)="itemSelected($event)">
+</app-modal-prefiltrado>

@@ -36,6 +36,7 @@ import { ModalNatvivoModule } from './modal-natvivo/modal-natvivo.module';
 import { BibliotecaPwaModule } from './biblioteca-pwa/biblioteca-pwa.module';
 import { HomePwaModule } from './home-pwa/home-pwa.module';
 import { TramitesPwaModule } from './tramites-pwa/tramites-pwa.module';
+import { BuscadorPwaModule } from './buscador-pwa/buscador-pwa.module';
 
 
 
@@ -83,7 +84,8 @@ registerLocaleData(es)
     ModalNatvivoModule,
     BibliotecaPwaModule,
     HomePwaModule,
-    TramitesPwaModule
+    TramitesPwaModule,
+    BuscadorPwaModule
   ],
   providers: [
     SidenavService,
