@@ -24,16 +24,23 @@
           </div>
         </div>
 
-        <div class="govco-pwa-seguimiento-info" *ngIf="canal.TipoCanal == 'Correo electrónico:' || canal.TipoCanal == 'Aprenda con tutoriales'">
+        <div class="govco-pwa-seguimiento-info" *ngIf="canal.TipoCanal == 'Correo electrónico:'">
           <p>{{canal.Indice}}:</p>
-           <a>
+           <a href="mailto:{{ canal.Correo }}" target="_blank">
+            {{canal.Correo}}
+          </a>
+        </div>
+
+        <div class="govco-pwa-seguimiento-info" *ngIf="canal.TipoCanal == 'Aprenda con tutoriales'">
+          <p>{{canal.Indice}}:</p>
+           <a (click)="aprenderConTutoriales()">
             {{canal.Correo}}
           </a>
         </div>
 
         <div class="govco-pwa-seguimiento-info" *ngIf="canal.TipoCanal == 'TELEFONICO'">
           <p>{{canal.Indice}}:</p>
-          <p>Fijo: <a>{{canal.NumeroTelefono}} {{canal.ExtensionTelFijo}}</a></p>
+          <p>Fijo: <a [href]="'tel: ' + canal.NumeroTelefono">{{canal.NumeroTelefono}} {{canal.ExtensionTelFijo}}</a></p>
           <p>Horario de Atención: {{canal.HorarioAtencionTelef}}</p>
         </div>
 

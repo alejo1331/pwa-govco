@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
+import { DataBasicaPuntosInterface } from 'src/app/tramites-pwa/models/puntos-de-atencion/data-basica-puntos-interface';
 import { TramitesPorIdService } from 'src/app/tramites-pwa/services/tramites-por-id-service/tramites-por-id.service';
 
 @Component({
@@ -9,9 +10,10 @@ import { TramitesPorIdService } from 'src/app/tramites-pwa/services/tramites-por
 export class TercerItemAcordeonComponent implements OnInit {
   @Input() dataAcordeon: any;
   canalesSeguimiento: any[];
+  dataPuntosAtencion: DataBasicaPuntosInterface;
 
   constructor(
-    protected fichaTramiteService: TramitesPorIdService
+    protected fichaTramiteService: TramitesPorIdService,
   ) { }
 
   ngOnInit() {
@@ -34,5 +36,26 @@ export class TercerItemAcordeonComponent implements OnInit {
         console.error(error);
       }
     );
+  }
+
+  getPuntosAtencion(){
+    const tipoAtencionPresencial = this.fichaTramiteService.getTipoAtencionPresencial();
+    this.fichaTramiteService.GetPuntosAtencion(tipoAtencionPresencial, 3, this.dataAcordeon.idTramite, 0, 0).subscribe( () => {
+        this.dataPuntosAtencion = {
+          transitionPuntosAtencion: '0%',
+          transitionTramitesId: '-100%',
+          activar: true,
+          idTipo: 2,
+          idMomento: 0,
+          idAccion: 0,
+        }
+        this.fichaTramiteService.getAbrirPuntos(this.dataPuntosAtencion);
+
+      },
+      error => {
+        console.error(error);
+      },
+    );
+
   }
 }

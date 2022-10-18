@@ -8,6 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class TramitesIdAcordeonComponent implements OnInit {
   @Input() dataAcordeon: { perfil: string, idTramite: number };
   @Input() tramiteEnLinea: boolean;
+  @Input() urlManualEnlinea : String;
 
   constructor() { }
 
