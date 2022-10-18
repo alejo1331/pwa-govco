@@ -4,12 +4,14 @@
     <div *ngIf="activarTramitesId" class="contenido">
         <app-ficha-especifica-header-pwa *ngIf="infoBasicaTramite" [data]="infoBasicaTramite">
         </app-ficha-especifica-header-pwa>
-        <app-ficha-especifica-detalle-pwa *ngIf="infoBasicaTramite" [data]="infoBasicaTramite">
+        <app-ficha-especifica-detalle-pwa *ngIf="infoBasicaTramite" [data]="infoBasicaTramite"
+            (abrirPuntosAtencion)="abrirPuntosAtencion($event)">
         </app-ficha-especifica-detalle-pwa>
-        <app-ficha-especifica-cards-pwa [infoTramite]="infoBasicaTramite" [itemid]="idTramite"
+        <app-ficha-especifica-cards-pwa *ngIf="activarTramitesId" [infoTramite]="infoBasicaTramite" [itemid]="idTramite"
             (abrirPuntosAtencion)="abrirPuntosAtencion($event)"></app-ficha-especifica-cards-pwa>
         <app-tramites-id-acordeon *ngIf="activarTramitesId" [dataAcordeon]="perfil_idTramite"
-            [tramiteEnLinea]="infoBasicaTramite.EnLinea" [urlManualEnlinea]="infoBasicaTramite.UrlManualEnLinea"></app-tramites-id-acordeon>
+            [tramiteEnLinea]="infoBasicaTramite.EnLinea" [urlManualEnlinea]="infoBasicaTramite.UrlManualEnLinea">
+        </app-tramites-id-acordeon>
         <app-ficha-especifica-footer-pwa *ngIf="infoBasicaTramite" [data]="infoBasicaTramite">
         </app-ficha-especifica-footer-pwa>
         <app-footer></app-footer>

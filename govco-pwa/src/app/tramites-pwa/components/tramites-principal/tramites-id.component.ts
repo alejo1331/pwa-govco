@@ -15,11 +15,11 @@ import { DataBasicaPuntosInterface } from '../../models/puntos-de-atencion/data-
 export class TramitesIdComponent implements OnInit {
   @ViewChild('seccionTramitesId') seccionTramitesId: ElementRef;
   @ViewChild('seccionPuntoAtencion') seccionPuntoAtencion: ElementRef;
+  @Input() informacionFicha: informacionFicha;
 
-  botonAtras: { url: string, estadoMenuInferior: boolean, itemMenu: number};
-  dataPuntosAtencion : DataBasicaPuntosInterface
+  botonAtras: { url: string, estadoMenuInferior: boolean, itemMenu: number };
+  dataPuntosAtencion: DataBasicaPuntosInterface
   topScroll: HTMLElement;
-  informacionFicha: informacionFicha;
   estructuraModalDesplegable: { titulo: string; icono: string }[];
   perfil_idTramite: { perfil: string; idTramite: number };
   infoBasicaTramite: TipoEnlace;
@@ -50,7 +50,7 @@ export class TramitesIdComponent implements OnInit {
       url: '/ficha-tramites-y-servicios',
       estadoMenuInferior: false,
       itemMenu: 1
-    } ;
+    };
 
     this.estructuraModalDesplegable = [
       {
@@ -74,7 +74,7 @@ export class TramitesIdComponent implements OnInit {
           '../../../../assets/icons-fonts/account_balance_FILL0_wght500_GRAD0_opsz20.svg',
       },
     ];
-    this.informacionFicha = { id: 0, tipo: null, prefijo: '' };
+    // this.informacionFicha = { id: 0, tipo: null, prefijo: '' };
 
     this.servicioHeader.estadoHeader(false, false);
     this.bottomService.putOcultandoBottomMenu(true);
@@ -85,12 +85,13 @@ export class TramitesIdComponent implements OnInit {
     this.topScroll.scrollTop = 0;
     this.topScroll.style.top = '0';
 
-    this.filtradoId_T();
+    // this.filtradoId_T();
     this.cargarInformacionFicha(this.informacionFicha);
     this.urlPage = window.location.href;
   }
 
   private async cargarInformacionFicha(dataTramite: informacionFicha) {
+
     this.fichaTramiteService
       .GetTipoTramiteFichaEspecificaById(String(dataTramite.id))
       .subscribe(
@@ -112,10 +113,15 @@ export class TramitesIdComponent implements OnInit {
                 console.log('error', error);
               }
             );
+          this.idTramite = Number(this.infoBasicaTramite.IdTramite);
+
+
           // Obtiene la URL de trámite en linea
+
           this.fichaTramiteService
-            .GetBarraProcesoTramite(dataTramite.id)
+            .GetBarraProcesoTramite(String(dataTramite.id))
             .subscribe((res) => {
+              // debugger
               this.infoBasicaTramite.UrlTramiteEnLinea = res.urlTramite.match(
                 /^https?:/
               )
@@ -190,29 +196,29 @@ export class TramitesIdComponent implements OnInit {
 
   //Esta seccion se encuentra en general.component.html en la seccion de Tramites ...
 
-  filtradoId_T() {
-    const parametroid = this.activatedRoute.snapshot.params.id;
-    let idTramiteTemp = parametroid;
+  // filtradoId_T() {
+  //   const parametroid = this.activatedRoute.snapshot.params.id;
+  //   let idTramiteTemp = parametroid;
 
-    if (parametroid !== 'embebido') {
-      this.informacionFicha.id = parametroid.substring(1);
-      this.idTramite = parametroid.substring(1);
-      this.informacionFicha.prefijo = parametroid.substring(0, 1).toLowerCase();
+  //   if (parametroid !== 'embebido') {
+  //     this.informacionFicha.id = parametroid.substring(1);
+  //     this.idTramite = parametroid.substring(1);
+  //     this.informacionFicha.prefijo = parametroid.substring(0, 1).toLowerCase();
 
-      // Tramite suit
-      if (this.informacionFicha.prefijo === 't') {
-        idTramiteTemp = this.informacionFicha.id;
-      }
+  //     // Tramite suit
+  //     if (this.informacionFicha.prefijo === 't') {
+  //       idTramiteTemp = this.informacionFicha.id;
+  //     }
 
-      if (idTramiteTemp != null && idTramiteTemp != 'null') {
-        this.fichaTramiteService
-          .GetTipoFichaTramite(idTramiteTemp)
-          .subscribe((data) => {
-            this.informacionFicha.tipo = data.StatusCode;
-          });
-      }
-    } else {
-      this.embebido = true;
-    }
-  }
+  //     if (idTramiteTemp != null && idTramiteTemp != 'null') {
+  //       this.fichaTramiteService
+  //         .GetTipoFichaTramite(idTramiteTemp)
+  //         .subscribe((data) => {
+  //           this.informacionFicha.tipo = data.StatusCode;
+  //         });
+  //     }
+  //   } else {
+  //     this.embebido = true;
+  //   }
+  // }
 }
