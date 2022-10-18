@@ -65,7 +65,7 @@ export class FichaEspecificaCardsPwaComponent implements OnInit {
     });
     modalRef.componentInstance.canalesSeguimiento = this.canalesSeguimiento;
   }
-  
+
   abrirPuntosAtencionClic() {
     let data: DataBasicaPuntosInterface = {
       transitionPuntosAtencion: '0%',

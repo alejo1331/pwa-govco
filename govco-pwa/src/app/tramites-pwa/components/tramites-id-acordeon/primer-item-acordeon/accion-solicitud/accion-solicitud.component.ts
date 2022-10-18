@@ -10,7 +10,7 @@ import { DataBasicaPuntosInterface } from 'src/app/tramites-pwa/models/puntos-de
   styleUrls: ['./accion-solicitud.component.scss']
 })
 export class AccionSolicitudComponent implements OnInit {
-  
+
   @Input() data: AccionSolicitud[];
 
   dataPuntosAtencion: DataBasicaPuntosInterface;

@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
 import { TramitesPorIdService } from 'src/app/tramites-pwa/services/tramites-por-id-service/tramites-por-id.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ModalTutorialesPwaComponent } from '../../modal-tutoriales-pwa/modal-tutoriales-pwa.component';
 
 @Component({
   selector: 'app-cuarto-item-acordeon',
@@ -8,10 +10,12 @@ import { TramitesPorIdService } from 'src/app/tramites-pwa/services/tramites-por
 })
 export class CuartoItemAcordeonComponent implements OnInit {
   @Input() dataAcordeon: any;
+  @Input() urlManualEnlinea: String;
   canalesMedios:any = []
 
   constructor(
-    protected fichaTramiteService: TramitesPorIdService
+    protected fichaTramiteService: TramitesPorIdService,
+    private modalService: NgbModal,
   ) { }
 
   ngOnInit() {
@@ -34,6 +38,18 @@ export class CuartoItemAcordeonComponent implements OnInit {
         console.error(error);
       }
     );
+  }
+
+  aprenderConTutoriales(){
+    const modalRef = this.modalService.open(ModalTutorialesPwaComponent, {
+      size: 'lg',
+      backdrop: 'static',
+      keyboard: false,
+      centered: true,
+      windowClass: 'background-modal',
+    });
+    modalRef.componentInstance.data = this.urlManualEnlinea;
+
   }
 
 }
