@@ -7,8 +7,7 @@
     </div>
     <div class="container-boton">
         <app-boton *ngIf="data.Tipotramite === 'En línea'" (click)="goToLink(urlBoton)">{{textoBoton}}</app-boton>
-        <app-boton *ngIf="data.Tipotramite !== 'En línea'">{{textoBoton}}
-        </app-boton>
+        <app-boton *ngIf="data.Tipotramite !== 'En línea'" (click)="abrirPuntosAtencionClic()">{{textoBoton}}</app-boton>
     </div>
     <div class="caracteriticas-tramite">
         <h3 class="title-tramites">Caracteristicas del trámite</h3>

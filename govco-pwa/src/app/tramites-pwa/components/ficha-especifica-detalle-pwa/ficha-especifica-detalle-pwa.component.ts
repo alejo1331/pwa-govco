@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { DataBasicaPuntosInterface } from '../../models/puntos-de-atencion/data-basica-puntos-interface';
 import { TramitesPorIdService } from '../../services/tramites-por-id-service/tramites-por-id.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { TramitesPorIdService } from '../../services/tramites-por-id-service/tra
 })
 export class FichaEspecificaDetallePwaComponent implements OnInit {
   @Input() data: any;
-  @Output() abrirPuntosAtencion = new EventEmitter<[string, string]>();
+  @Output() abrirPuntosAtencion = new EventEmitter<DataBasicaPuntosInterface>();
 
   infoDescripcionTramite: any;
   contenidoDescripcion: string;
@@ -109,5 +110,17 @@ export class FichaEspecificaDetallePwaComponent implements OnInit {
     } else {
       this.textoBoton = 'Ver los puntos de atención';
     }
+  }
+
+  abrirPuntosAtencionClic() {
+    let data: DataBasicaPuntosInterface = {
+      transitionPuntosAtencion: '0%',
+      transitionTramitesId: '-100%',
+      activar: true,
+      idTipo: 1,
+      idMomento: 0,
+      idAccion: 0
+    }
+    this.abrirPuntosAtencion.emit(data);
   }
 }
