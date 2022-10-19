@@ -7,42 +7,10 @@
         </div>
         <hr>
         <ul>
-            <li>
-                <a href="">
-                    Categoría
-                    <span class="material-symbols-outlined arrow">
-                        chevron_right
-                    </span>
-                </a>
-            </li>
-            <li>
-                <a href="" class="disabled">
-                    Subcategorías
-                    <span class="material-symbols-outlined arrow">
-                        chevron_right
-                    </span>
-                </a>
-            </li>
-            <li>
-                <a href="">
-                    Entidad
-                    <span class="material-symbols-outlined arrow">
-                        chevron_right
-                    </span>
-                </a>
-            </li>
-            <li>
-                <a href="">
-                    Sector
-                    <span class="material-symbols-outlined arrow">
-                        chevron_right
-                    </span>
-                </a>
-            </li>
-            <li>
-                <a href="">
-                    Trámite estándar
-                    <span class="material-symbols-outlined information">
+            <li *ngFor="let filtro of seccionFiltros[seccion]">
+                <a [class.disabled]="filtro.padre" (click)="seleccionaFiltroNivelUno(filtro.id)">
+                    {{filtro.nombre}}
+                    <span class="material-symbols-outlined information" *ngIf="filtro.id == 'nombreEstandarizado'">
                         question_mark
                     </span>
                     <span class="material-symbols-outlined arrow">
