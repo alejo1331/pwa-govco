@@ -58,6 +58,9 @@ export const environment = {
   //WebComponent
   serverFichaTramite:'https://preapi-interno.www.gov.co/api/ficha-tramites-y-servicios',
 
+  //buscador
+  serverBuscador: 'https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api/buscador/',
+
   //captcha
   keyCaptcha: "6LeCqOcUAAAAAMu9McR1zoUH0z6wDj_dekAODW5h",
 
