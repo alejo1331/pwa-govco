@@ -42,7 +42,6 @@ export class FichaEspecificaDetallePwaComponent implements OnInit {
     this.getIconoTramite(this.data.Tipotramite);
     this.setDataBoton(this.data.Tipotramite);
     this.showBotonFecha();
-    console.log(this.data);
   }
 
   goToLink(url: string) {
