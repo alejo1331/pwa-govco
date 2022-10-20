@@ -1,0 +1,21 @@
+<br><br>
+<app-boton (click)="abrirModal()">filtro</app-boton>
+
+<div #modalFiltro class="modal-filtro-pwa" role="main">
+    <div class="contenido">
+        <div class="form-group">
+            <label for="search-text">
+                <p>{{titulo}}</p>
+            </label>
+            <input type="email" id="search-text" [(ngModel)]="searchText" placeholder="Buscar">
+        </div>
+        <div class="listado">
+            <label class="item" [class.active]="itemSelected == data.idItem"
+                (click)="itemSeleccionado(data.idItem)"
+                *ngFor="let data of propiedad | filterSegundoNivel: searchText" tabindex="0">
+                <p>{{data.item}}</p>
+                <span class="radio-button" type="image"></span>
+            </label>
+        </div>
+    </div>
+</div>
