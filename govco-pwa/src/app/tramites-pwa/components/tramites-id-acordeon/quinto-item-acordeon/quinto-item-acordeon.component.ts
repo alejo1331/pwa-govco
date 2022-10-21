@@ -64,11 +64,13 @@ export class QuintoItemAcordeonComponent implements OnInit {
     if (estadoSelectorGeneral.checked){
       for (let i=0; i < normas.length; i++){
         normas[i].checked=true;
+        this.toggleBool = false;
       }
     }
     else{
       for (let i=0; i < normas.length; i++){
         normas[i].checked=false;
+        this.toggleBool = true;
       }
     }
   }
@@ -114,7 +116,16 @@ export class QuintoItemAcordeonComponent implements OnInit {
       this.toggleBool = false;
     }
     else {
+      let normas : any = document.getElementsByClassName('normas');
+      let normasCheck = false
+      for (let i=0; i < normas.length; i++){
+        if (normas[i].checked){
+          normasCheck = true;
+        }
+      }
+      if (normasCheck == false){
         this.toggleBool = true;
+      }
     }
   }
 
