@@ -29,16 +29,11 @@ export class BannerPrincipalComponent implements OnInit {
         (data: BannerInterface) => {
           if (data.succeeded) {
             this.banner = data.data;
-            switch (data.data.urlBotonAuxiliar) {
-              case 'https://carpetaciudadana.and.gov.co/':
-                this.urlBotonAuxiliar = 'https://carpetaciudadana.and.gov.co/';
-                break;
-              case 'https://qa-govco-and.xyz/categorias-subcategorias':
-                this.urlBotonAuxiliar = "/categorias-subcategorias"
-                break;
-              case 'https://beta.www.gov.co/categorias-subcategorias/':
-                this.urlBotonAuxiliar = "/categorias-subcategorias"
-                break;
+            let urlCategorias: number = data.data.urlBotonAuxiliar.indexOf('/categorias-subcategorias');
+            if (urlCategorias >= 0) {
+              this.urlBotonAuxiliar = "/categorias-subcategorias"
+            } else {
+              this.urlBotonAuxiliar = data.data.urlBotonAuxiliar;
             }
             this.ramdonImagen(data.data)
           } else {

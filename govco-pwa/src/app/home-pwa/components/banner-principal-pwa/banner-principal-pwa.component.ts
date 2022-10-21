@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HomeService } from '../../services/home.service';
 import { BannerPrincipalModel } from '../../models/banner-principal.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-banner-principal-pwa',
@@ -17,21 +18,29 @@ export class BannerPrincipalPwaComponent implements OnInit {
   public descripcionImagen: string = '';
   public urlBoton: string = ''
 
-  constructor(private homeService : HomeService) { }
+  constructor(
+    private homeService: HomeService, 
+    private router: Router
+    ) { }
 
-  ngOnInit (): void {
-    this.homeService.getBannerPrincipal().subscribe( ( info: BannerPrincipalModel ) => {
-      if ( info['succeeded'] ) {
+  ngOnInit(): void {
+    this.homeService.getBannerPrincipal().subscribe((info: BannerPrincipalModel) => {
+      if (info['succeeded']) {
         const { textoBienvenida, textoBuscador, textoAuxiliar, textoBotonAuxiliar, urlBotonAuxiliar, listaImagenes } = info['data'];
-        const textoIndex = textoAuxiliar.indexOf( '.' );
+        const textoIndex = textoAuxiliar.indexOf('.');
         const textoLength = textoAuxiliar.length;
         this.titleBanner = textoBienvenida;
         this.textoBanner = textoBuscador;
         this.textoPrimario = textoAuxiliar.slice(0, textoIndex + 1);
         this.textoSecundario = textoAuxiliar.slice(textoIndex + 1, textoLength);
         this.textoBoton = textoBotonAuxiliar;
-        this.urlBoton = urlBotonAuxiliar;
-        const imagenAleatoria = listaImagenes[Math.floor( Math.random() * listaImagenes.length )];
+        let urlCategorias: number = urlBotonAuxiliar.indexOf('/categorias-subcategorias');
+        if (urlCategorias >= 0) {
+          this.urlBoton = "/categorias-subcategorias"
+        } else {
+          this.urlBoton = urlBotonAuxiliar;
+        }
+        const imagenAleatoria = listaImagenes[Math.floor(Math.random() * listaImagenes.length)];
         const { urlImagen, textoDescriptivo } = imagenAleatoria;
         let re = /\ /gi;
         this.imagen = urlImagen.replace(re, "%20");
@@ -40,9 +49,8 @@ export class BannerPrincipalPwaComponent implements OnInit {
     })
   }
 
-  goToLink(url: string){
-    console.log('url',url)
-    location.href = url
+  goToLink(url: string) {
+    this.router.navigate([url]);
   }
 
 }
