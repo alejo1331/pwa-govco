@@ -2,8 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { BuscadorPwaRoutingModule } from './buscador-pwa-routing.module';
-import { BuscadorPrincipalComponent } from './buscador-principal/buscador-principal.component';
+import { BuscadorPrincipalComponent } from './components/buscador-principal/buscador-principal.component';
 import { FiltrosPrincipalComponent } from './components/filtros-principal/filtros-principal.component';
+import { BibliotecaPwaModule } from '../biblioteca-pwa/biblioteca-pwa.module';
 
 
 @NgModule({
@@ -14,6 +15,8 @@ import { FiltrosPrincipalComponent } from './components/filtros-principal/filtro
   imports: [
     CommonModule,
     BuscadorPwaRoutingModule,
+    BibliotecaPwaModule,
+
   ],
   exports:[ 
     BuscadorPrincipalComponent,

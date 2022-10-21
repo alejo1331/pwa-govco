@@ -1,5 +1,6 @@
 import { Platform } from '@angular/cdk/platform';
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { InformacionModalInterface, ContenidoModalFiltroInterface } from '../../models/filtro-nivel-dos/filtro-nivel-dos-interface';
 
 @Component({
   selector: 'app-modal-filtro-segundo-nivel',
@@ -9,32 +10,16 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 export class ModalFiltroSegundoNivelComponent implements OnInit {
 
   @ViewChild('modalFiltro') modalFiltro: ElementRef;
+  @Input() informacionModal: InformacionModalInterface;
+  @Output() itemSelected = new EventEmitter<ContenidoModalFiltroInterface>() ;
+
+  idItemSelected: string | number;
 
   searchText: string = '';
-  propiedad: { item: string, idItem: number | string }[];
-  titulo: string = 'Categoría';
-  itemSelected: string;
-  contenidoBody: HTMLElement;
-  alturaPantalla: number = 0;
-  tamañoModal: number = 0;
-  anchoPantalla: number = 0;
 
   constructor(public platform: Platform) { }
 
   ngOnInit(): void {
-    this.propiedad = [
-      { item: 'Artesanías', idItem: 0 },
-      { item: 'Formación empresarial', idItem: 1 },
-      { item: 'Industria y comercio', idItem: 2 },
-      { item: 'Matricula empresa', idItem: 3 },
-      { item: 'Artesanías colombiana', idItem: 4 },
-      { item: 'Formación empresarial extranjera', idItem: 5 },
-      { item: 'Industria y comercio mixta', idItem: 6 },
-      { item: 'Inscripción casa de la cultura', idItem: 7 },
-      { item: 'Matricula empresa publica', idItem: 8 },
-      { item: 'Matricula empresa extranjera', idItem: 9 },
-      { item: 'Formación empresarial privada', idItem: 10 },
-    ];
   }
 
   abrirModal() {
@@ -46,8 +31,9 @@ export class ModalFiltroSegundoNivelComponent implements OnInit {
     }
   }
 
-  itemSeleccionado(item: string) {
-    this.itemSelected = item;
+  itemSeleccionado(idItem: string | number, item: string) {
+    this.idItemSelected = idItem;
+    this.itemSelected.emit({idItem: idItem, item: item})
     this.modalFiltro.nativeElement.classList.remove('show');
     if (this.platform.IOS || this.platform.SAFARI) {
       var body = (document.getElementsByTagName('body') as HTMLCollectionOf<HTMLElement>)[0];

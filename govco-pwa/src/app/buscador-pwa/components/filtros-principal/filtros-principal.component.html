@@ -8,7 +8,7 @@
         <hr>
         <ul>
             <li *ngFor="let filtro of seccionFiltros[seccion]">
-                <a [class.disabled]="filtro.padre" (click)="seleccionaFiltroNivelUno(filtro.id)">
+                <a [class.disabled]="filtro.padre" (click)="seleccionaFiltroNivelUno(filtro.id, filtro.nombre)">
                     {{filtro.nombre}}
                     <span class="material-symbols-outlined information" *ngIf="filtro.id == 'nombreEstandarizado'">
                         question_mark
@@ -21,3 +21,6 @@
         </ul>
     </div>
 </div>
+<app-modal-filtro-segundo-nivel *ngIf="informacionModalFiltro" [informacionModal]="informacionModalFiltro"
+    (itemSelected)="itemFiltroNivelDos($event)">
+</app-modal-filtro-segundo-nivel>
