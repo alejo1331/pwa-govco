@@ -38,6 +38,16 @@ export class AccionPagoComponent implements OnInit {
         item.active = false;
       }
     });
+    
+    if (dataItem[index].active) {
+      this.onClickItem(index > 0 ? ('hrItemPago' + (index-1)) : 'item' + this.indexPago);
+    }
+  }
+
+  onClickItem(item: any) {
+    setTimeout(()=>{
+      document.getElementById(item)?.scrollIntoView({block: "start", behavior: "smooth"});
+    }, 350)
   }
 
   verMasPagos(item:any, e:any) {
