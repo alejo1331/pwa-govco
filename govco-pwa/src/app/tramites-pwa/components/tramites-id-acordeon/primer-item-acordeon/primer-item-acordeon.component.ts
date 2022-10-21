@@ -10,6 +10,7 @@ import { TramitesPorIdService } from 'src/app/tramites-pwa/services/tramites-por
 export class PrimerItemAcordeonComponent implements OnInit {
   @Input() dataAcordeon: { perfil: string, idTramite: number };
   @Input() tramiteEnLinea: boolean;
+  @Input() itemActivoAnterior: number;
 
   dataItemAcordeon: MomentosAudiencia[];
 
@@ -31,11 +32,22 @@ export class PrimerItemAcordeonComponent implements OnInit {
         this.loadMomentosAudiencia();
       }
     }
+    
+    // Si en el acordeon padre el item que estaba desplegado era el primero, se cierra el acordeon
+    if (changes.itemActivoAnterior && changes.itemActivoAnterior.currentValue === 0) {
+      this.dataItemAcordeon.forEach(function (item, indexItem) {
+        if (item.active) {
+          $('button[data-target="#collapseItem' + indexItem + '"]').trigger('click');
+          item.active = false;
+        }        
+      });
+    }
   }
 
   private loadMomentosAudiencia() {
     this.fichaTramiteService.GetMomentosByIdAudiencia(this.dataAcordeon.idTramite, this.dataAcordeon.perfil).subscribe(n => {
       this.dataItemAcordeon = this.eliminarValoresRepetidosMomentos(n);
+      document.getElementById('primerItemAcordeon')?.scrollIntoView({ behavior: 'smooth' });
     });
   }
 
@@ -75,8 +87,15 @@ export class PrimerItemAcordeonComponent implements OnInit {
     });
 
     if (this.dataItemAcordeon[index].active) {
+      this.onClickItem(index > 0 ? ('item' + (index-1)) : 'paso0');
       this.cargarDetalleMomento(index);
     }
+  }
+
+  onClickItem(item: any) {
+    setTimeout(()=>{
+      document.getElementById(item)?.scrollIntoView({block: "start", behavior: "smooth"});
+    }, 350)
   }
 
   private cargarDetalleMomento(index: number) {

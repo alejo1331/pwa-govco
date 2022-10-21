@@ -1,6 +1,6 @@
 <div class="accordion acordeon-pwa-govco" id="acordeonPerfilTramites">
     <div class="card">
-        <div class="card-header" id="paso0">
+        <div class="card-header link-target" id="paso0">
             <h2 class="mb-0">
                 <button (click)="activarItem(0)" class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapse0" aria-expanded="false" aria-controls="collapse0">
                     ¿Qué necesito para hacer mi trámite?
@@ -12,12 +12,12 @@
         </div>
         <div id="collapse0" class="collapse" aria-labelledby="paso0" data-parent="#acordeonPerfilTramites">
             <div class="card-body">
-                <app-primer-item-acordeon *ngIf="dataAcordeon" [dataAcordeon]="dataAcordeon" [tramiteEnLinea]="tramiteEnLinea"></app-primer-item-acordeon>
+                <app-primer-item-acordeon *ngIf="dataAcordeon" [dataAcordeon]="dataAcordeon" [tramiteEnLinea]="tramiteEnLinea" [itemActivoAnterior]="itemActivoAnterior"></app-primer-item-acordeon>
             </div>
         </div>
     </div>
     <div class="card">
-        <div class="card-header" id="paso1">
+        <div class="card-header link-target" id="paso1">
             <h2 class="mb-0">
                 <button (click)="activarItem(1)" class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapse1">
                     ¿Qué resultado obtengo luego de hacer mi trámite?
@@ -34,7 +34,7 @@
         </div>
     </div>
     <div class="card">
-        <div class="card-header" id="paso2">
+        <div class="card-header link-target" id="paso2">
             <h2 class="mb-0">
                 <button (click)="activarItem(2)" class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
                     ¿Dónde se puede hacer el seguimiento a la solicitud?
@@ -51,7 +51,7 @@
         </div>
     </div>
     <div class="card">
-        <div class="card-header" id="paso3">
+        <div class="card-header link-target" id="paso3">
             <h2 class="mb-0">
                 <button (click)="activarItem(3)" class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
                     ¿Dónde puedo saber más acerca del trámite?
@@ -68,7 +68,7 @@
         </div>
     </div>
     <div class="card">
-        <div class="card-header" id="paso4">
+        <div class="card-header link-target" id="paso4">
             <h2 class="mb-0">
                 <button (click)="activarItem(4)" class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
                     Legislación asociada

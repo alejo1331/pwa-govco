@@ -23,6 +23,15 @@ export class AccionExcepcionComponent implements OnInit {
         item.active = false;
       }
     });
+    
+    if (this.data[index].active) {
+      this.onClickItem(index > 0 ? ('excepcion' + (index-1)) : 'alertExcepcion');
+    }
   }
 
+  onClickItem(item: any) {
+    setTimeout(()=>{
+      document.getElementById(item)?.scrollIntoView({block: "start", behavior: "smooth"});
+    }, 350)
+  }
 }

@@ -10,18 +10,28 @@ export class TramitesIdAcordeonComponent implements OnInit {
   @Input() tramiteEnLinea: boolean;
   @Input() urlManualEnlinea : String;
 
+  public itemActivoAnterior:number;
+
   constructor() { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
   activarItem(index:number) {
     const elements = document.querySelectorAll('#acordeonPerfilTramites > .card');
     elements.forEach((element, indexItem) => {
       if (index == indexItem && !element.classList.contains('active')) {
         element.classList.add('active');
+        this.onClickItem(index > 0 ? ('paso' + (index-1)) : 'acordeonPerfilTramites');
       } else {
+        if (element.classList.contains('active')) { this.itemActivoAnterior = indexItem; }
         element.classList.remove('active');
       }
     });
   }
+
+  onClickItem(item: any) {
+    setTimeout(()=>{
+      document.getElementById(item)?.scrollIntoView({block: "start", behavior: "smooth"});
+    }, 280)
+  }  
 }
