@@ -1,7 +1,6 @@
 .acordeon-pwa-govco {
     width: 100%;
-    padding: 0 16px;
-    margin-top: 40px;
+    padding: 40px 16px 0;
     .card {
         width: 100%;
         border: 2px solid #E8EFFC;
@@ -45,4 +44,12 @@
             }
         }
     }
+}
+
+.link-target:before {
+    display: block;
+    content: " ";
+    margin-top: -7.8rem;
+    height: 7.8rem;
+    visibility: hidden;
 }

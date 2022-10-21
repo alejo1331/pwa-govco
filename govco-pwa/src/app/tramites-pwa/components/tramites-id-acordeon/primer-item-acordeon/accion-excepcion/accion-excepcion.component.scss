@@ -55,6 +55,9 @@
                     box-shadow: none;
                 }
             }
+            .card-header ~ div {
+                background-color: #F2F2F2;
+            }
             .card-body {
                 color: #000000;
                 font-family: 'WorkSans-Regular';

@@ -29,7 +29,7 @@ export class SegundoItemAcordeonComponent implements OnInit {
     this.fichaTramiteService.GetDataFichaResult(dataAcordeon.idTramite)
     .subscribe(
       (data) => { // Success
-        this.resultado = data;
+        this.resultado = data;        
       },
       (error) => {
         console.error(error);
