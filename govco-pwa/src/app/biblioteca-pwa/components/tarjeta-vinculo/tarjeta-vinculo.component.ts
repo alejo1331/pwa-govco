@@ -13,6 +13,8 @@ export class TarjetaVinculoComponent implements OnInit {
   @Input() textContainerMax = false;
   @Input() iconNameClass: string;
   @Input() textNameClass: string;
+  @Input() ariaLabelText: string;
+  @Input() disabledCard = false;
 
   constructor() {}
 

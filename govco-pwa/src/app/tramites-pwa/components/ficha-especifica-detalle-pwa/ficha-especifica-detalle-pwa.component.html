@@ -1,13 +1,15 @@
 <div class="container-detalle">
     <div class="contenido-detalle" (click)="showBotonLeer()">
-        <p class="ficha-descripcion" (focus)="showExpended()">{{contenidoDescripcion}}
+        <p class="ficha-descripcion" tabindex="0" [attr.aria-label]="contenidoLeido" (focus)="showExpended()">
+            {{contenidoDescripcion}}
             <br>
         </p>
         <a *ngIf="caracteresCategoria" class="contenido-expandido">{{nombreExpanded}}</a>
     </div>
     <div class="container-boton">
         <app-boton *ngIf="data.Tipotramite === 'En línea'" (click)="goToLink(urlBoton)">{{textoBoton}}</app-boton>
-        <app-boton *ngIf="data.Tipotramite !== 'En línea'" (click)="abrirPuntosAtencionClic()">{{textoBoton}}</app-boton>
+        <app-boton *ngIf="data.Tipotramite !== 'En línea'" (click)="abrirPuntosAtencionClic()">{{textoBoton}}
+        </app-boton>
     </div>
     <div class="caracteriticas-tramite">
         <h3 class="title-tramites">Caracteristicas del trámite</h3>

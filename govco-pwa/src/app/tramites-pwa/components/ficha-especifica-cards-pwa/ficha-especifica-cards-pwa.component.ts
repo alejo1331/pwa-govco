@@ -14,6 +14,11 @@ export class FichaEspecificaCardsPwaComponent implements OnInit {
   @Input() infoTramite: any;
   @Input() itemid: number;
   @Output() abrirPuntosAtencion = new EventEmitter<DataBasicaPuntosInterface>();
+  ariaTutoriales: string =
+    'Te explicamos con tutoriales.  Abrirá una nueva ventana emergente con los recursos de apoyo para realizar  el trámite.';
+  ariaDudas: string = '¿Tienes dudas?';
+  ariaPuntos: string =
+    'Ver los puntos de atención. Abrirá una ventana emergente con la información de los puntos de atención disponibles para el trámite.';
   canalesSeguimiento: any[];
 
   activarBotonPuntosAtencion: boolean = true;
@@ -24,7 +29,7 @@ export class FichaEspecificaCardsPwaComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    if (!this.infoTramite.EnLinea ) {
+    if (!this.infoTramite.EnLinea) {
       this.activarBotonPuntosAtencion = false;
     }
     this.getDataContactoDudas(this.itemid);
@@ -73,8 +78,8 @@ export class FichaEspecificaCardsPwaComponent implements OnInit {
       activar: true,
       idTipo: 1,
       idMomento: 0,
-      idAccion: 0
-    }
+      idAccion: 0,
+    };
     this.abrirPuntosAtencion.emit(data);
   }
 }
