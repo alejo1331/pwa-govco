@@ -15,6 +15,10 @@ import { HeaderCompartirV1Component } from './components/nivel-dos-header-v1/hea
 import { TarjetaVinculoComponent } from './components/tarjeta-vinculo/tarjeta-vinculo.component';
 import { ModalErrorUrlComponent } from './components/modal-error-url/modal-error-url.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { FiltroSegundoNivel } from './pipes/filtro-segundo-nivel/filtro-segundo-nivel.pipe';
+import { ModalFiltroSegundoNivelComponent } from './components/modal-filtro-segundo-nivel/modal-filtro-segundo-nivel.component';
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -31,8 +35,15 @@ import { MatDialogModule } from '@angular/material/dialog';
     HeaderCompartirV1Component,
     TarjetaVinculoComponent,
     ModalErrorUrlComponent,
+    FiltroSegundoNivel,
+    ModalFiltroSegundoNivelComponent,
   ],
-  imports: [CommonModule, RouterModule, MatDialogModule],
+  imports: [
+    CommonModule, 
+    RouterModule, 
+    MatDialogModule,
+    FormsModule
+  ],
   exports: [
     BotonComponent,
     EtiquetaComponent,
@@ -46,7 +57,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     BuscadorSencilloV1Component,
     HeaderCompartirV1Component,
     TarjetaVinculoComponent,
-    ModalErrorUrlComponent
+    ModalErrorUrlComponent,
+    ModalFiltroSegundoNivelComponent,
   ],
 })
 export class BibliotecaPwaModule {}
