@@ -1,5 +1,6 @@
 .govco-pwa-acerca-tabla{
   width: 100%;
+  font-family: 'WorkSans-Regular';
 
   .govco-pwa-titulo-tabla {
     background: #004884 0% 0% no-repeat padding-box;
@@ -38,7 +39,10 @@
     background-color: #E8EFFC;
   }
 
-  tbody tr { display: none; }
+  tbody tr {
+    display: none;
+    width: 100%;
+  }
 
   tbody tr.active { display: inline-block; }
 
@@ -103,8 +107,12 @@
       background-size: cover;
   }
 
-  table tr { display: none; }
-  table tr.active { display: table-row; }
+  table tr {
+    display: none;
+  }
+  table tr.active {
+    display: table-row;
+  }
 
   .govco-pwa-seguimiento-info{
     display: flex;
