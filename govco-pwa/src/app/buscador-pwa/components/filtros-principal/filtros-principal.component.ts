@@ -2,8 +2,10 @@ import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { DATA_FILTRO_SECCIONES } from '../../models/dataFiltroSeccionesModel';
 import { FiltrosService } from '../../services/filtros.service';
 import { ResultadoFiltro } from '../../models/resultadoFiltroModel';
-import { ModalFiltroSegundoNivelComponent } from 'src/app/biblioteca-pwa/components/modal-filtro-segundo-nivel/modal-filtro-segundo-nivel.component';
+import { ModalFiltroSegundoNivelComponent } from '../../../biblioteca-pwa/components/modal-filtro-segundo-nivel/modal-filtro-segundo-nivel.component';
 import { ContenidoModalFiltroInterface, InformacionModalInterface } from '../../../biblioteca-pwa/models/filtro-nivel-dos/filtro-nivel-dos-interface';
+import { FiltroBusqueda } from '../../models/filtroBusquedaModel';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -20,18 +22,16 @@ export class FiltrosPrincipalComponent implements OnInit {
 
   public seccion = 'tramite';
   public seccionFiltros = DATA_FILTRO_SECCIONES;
+  resultadosSubscription: Subscription;
 
   constructor(
     protected filtrosService: FiltrosService
   ) { }
 
-  ngOnInit(): void {
-    console.log('seccionFiltros', this.seccionFiltros)
-    this.filtrosService.obtenerResultadoFiltro().subscribe(
-      (data: ResultadoFiltro) => {
-        console.log('data', data)
-      }
-    )
+  ngOnInit(): void {  
+    this.resultadosSubscription = this.filtrosService.ResultadoBusqueda$.subscribe((resultados) => {
+      console.log('resultados',resultados);
+    });
   }
 
   seleccionaFiltroNivelUno(idFiltro: string, tituloFiltro: string) {
@@ -63,6 +63,18 @@ export class FiltrosPrincipalComponent implements OnInit {
 
   itemFiltroNivelDos(data: ContenidoModalFiltroInterface) {
     console.log('data', data);
+    // this.filtrosService.Filters = {
+    //   filters: null,
+    //   pageNumber: 1,
+    //   pageSize: 10,
+    //   search: "empresa de servicios publicos aguas y aseo de el penol aap" + this.y,
+    //   sort: "",
+    //   seccion: ""
+    // }
+  }
+
+  ngOnDestroy() {
+    this.resultadosSubscription.unsubscribe();
   }
 
 }

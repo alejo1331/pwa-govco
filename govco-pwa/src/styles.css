@@ -74,9 +74,9 @@
   src: url('assets/fonts/Work_Sans/static/WorkSans-Regular.ttf');
 }
 
-/* WorkSans-SemiBold */
+/* WorkSans-Light */
 @font-face {
-  font-family: 'WorkSans-SemiBold';
+  font-family: 'WorkSans-Light';
   font-weight: '600';
   src: url('assets/fonts/Work_Sans/static/WorkSans-Light.ttf');
 }
