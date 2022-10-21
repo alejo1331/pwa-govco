@@ -67,3 +67,19 @@ a{
         box-shadow: none;
     }
 }
+
+.disabled-filled{
+    pointer-events: none;
+    .card-container{
+        .icon-container{
+            .material-symbols-outlined{
+                color: #737373;
+            }
+        }
+        .text-container{
+            p.text-blue{
+                color: #737373;
+            }
+        }
+    }
+}

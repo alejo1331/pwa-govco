@@ -8,33 +8,21 @@
           <div class="col-lg-8 col-md-12 col-sm-12">
             <div class="text-left">
               <h1 class="title-search-bienvenido text-lg-left" tabindex="0">
-                ¡Hola! Estás en GOV.CO
-              </h1>
-              <!-- To do -->
-              <!-- <h1 class="title-search-bienvenido text-lg-left" tabindex="0">
                 {{banner.textoBienvenida}}
-              </h1> -->
+              </h1>
             </div>
             <div class="text-left">
               <p class="description-search-banner ml-5" tabindex="0">
-                Encuentra trámites, servicios e información del Estado colombiano.
-              </p>
-              <!-- To do  -->
-              <!-- <p class="description-search-banner ml-5" tabindex="0">
                 {{banner.textoBuscador}}
-              </p> -->
+              </p>
             </div>
             <div class="text-left mt-5">
               <p class="description-aux ml-5 px-0" tabindex="0">
-                <span>¿No sabes como buscar?</span>
-                <!-- To do -->
-                <!-- <span>{{banner.textoAuxiliar}}</span> -->
+                <span>{{banner.textoAuxiliar}}</span>
               </p>
             </div>
             <div class="see-aux pb-3" *ngIf="banner.estadoBotonAuxiliar">
-              <a routerLink="/categorias-subcategorias" class="btn btn-round" role="button">Ir a momentos de vida </a>
-              <!-- To do -->
-              <!-- <a href="{{urlBotonAuxiliar}}" class="btn btn-round" role="button">{{banner.textoBotonAuxiliar}}</a> -->
+              <a href="{{urlBotonAuxiliar}}" class="btn btn-round" role="button">{{banner.textoBotonAuxiliar}}</a>
             </div>
           </div>
         </div>

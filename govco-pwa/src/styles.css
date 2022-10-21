@@ -74,12 +74,41 @@
   src: url('assets/fonts/Work_Sans/static/WorkSans-Regular.ttf');
 }
 
-/* WorkSans-Light */
+/* WorkSans-SemiBold */
 @font-face {
-  font-family: 'WorkSans-Light';
+  font-family: 'WorkSans-SemiBold';
   font-weight: '600';
   src: url('assets/fonts/Work_Sans/static/WorkSans-Light.ttf');
 }
+
+/* Roboto-Bold */
+@font-face {
+  font-family: 'Roboto-Bold';
+  font-weight: '700';
+  src: url('assets/fonts/Roboto/Roboto-Bold.ttf');
+}
+
+/* Roboto-Medium */
+@font-face {
+  font-family: 'Roboto-Medium';
+  font-weight: '700';
+  src: url('assets/fonts/Roboto/Roboto-Medium.ttf');
+}
+
+/* Roboto-Regular */
+@font-face {
+  font-family: 'Roboto-Regular';
+  font-weight: '600';
+  src: url('assets/fonts/Roboto/Roboto-Regular.ttf');
+}
+
+/* Roboto-Light */
+@font-face {
+  font-family: 'Roboto-Light';
+  font-weight: '600';
+  src: url('assets/fonts/Roboto/Roboto-Light.ttf');
+}
+
 
 html {
   font-size: 100%;
