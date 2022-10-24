@@ -1,6 +1,6 @@
 export interface ResultadoFiltro {
     data: DataResultadoFiltro[];
-    filtros: [];
+    filtros: DataFiltros[];
     message: string;
     seconds: number;
     success: number;

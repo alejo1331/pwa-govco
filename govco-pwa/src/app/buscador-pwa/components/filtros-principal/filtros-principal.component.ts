@@ -1,12 +1,11 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { DATA_FILTRO_SECCIONES } from '../../models/dataFiltroSeccionesModel';
 import { FiltrosService } from '../../services/filtros.service';
-import { ResultadoFiltro } from '../../models/resultadoFiltroModel';
 import { ModalFiltroSegundoNivelComponent } from '../../../biblioteca-pwa/components/modal-filtro-segundo-nivel/modal-filtro-segundo-nivel.component';
 import { ContenidoModalFiltroInterface, InformacionModalInterface } from '../../../biblioteca-pwa/models/filtro-nivel-dos/filtro-nivel-dos-interface';
-import { FiltroBusqueda } from '../../models/filtroBusquedaModel';
 import { Subscription } from 'rxjs';
-
+import { DataFiltros, ResultadoFiltro } from '../../models/resultadoFiltroModel';
+import { filter } from '../../models/filtroBusquedaModel';
 
 @Component({
   selector: 'app-filtros-principal',
@@ -14,44 +13,56 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./filtros-principal.component.scss']
 })
 export class FiltrosPrincipalComponent implements OnInit {
-  @Input() seleccion: string;
+  @Input() seccion: string;
   @Input() busqueda: string;
   @ViewChild(ModalFiltroSegundoNivelComponent) modalFiltro: ModalFiltroSegundoNivelComponent;
   informacionModalFiltro: InformacionModalInterface;
 
-
-  public seccion = 'tramite';
   public seccionFiltros = DATA_FILTRO_SECCIONES;
-  resultadosSubscription: Subscription;
+  public resultadosSubscription: Subscription;
+  public resultadosBusqueda:ResultadoFiltro;
+  private filtroInicial = '';  
 
   constructor(
     protected filtrosService: FiltrosService
   ) { }
 
   ngOnInit(): void {  
+    console.log('seccion', this.seccion);
+    console.log('busqueda', this.busqueda);
+
+    // this.filtrosService.Filters = {
+    //   filters: null,
+    //   pageNumber: 1,
+    //   pageSize: 10,
+    //   search: this.busqueda,
+    //   sort: "",
+    //   seccion: this.seccion
+    // }
+
     this.resultadosSubscription = this.filtrosService.ResultadoBusqueda$.subscribe((resultados) => {
-      console.log('resultados',resultados);
+      if (resultados) {
+        this.resultadosBusqueda = resultados;
+        this.actualizaFiltrosActivos();
+      }
+    });
+  }
+
+  actualizaFiltrosActivos() {
+    const filtrosResultadoBusqueda = this.resultadosBusqueda.filtros[0];
+    this.seccionFiltros[this.seccion].forEach((element: { active: boolean; id: string }) => {
+      element.active = filtrosResultadoBusqueda[element.id].length > 0 ? true : false;
     });
   }
 
   seleccionaFiltroNivelUno(idFiltro: string, tituloFiltro: string) {
+    this.filtroInicial = idFiltro;
     console.log('idFiltro', idFiltro)
+    console.log('resultadosBusqueda', this.resultadosBusqueda)
     //inicia el servicio para el filtro de segundo nivel
     this.informacionModalFiltro = {
       titulo: tituloFiltro,
-      contendioModal: [
-        { item: 'Artesanías', idItem: 0 },
-        { item: 'Formación empresarial', idItem: 1 },
-        { item: 'Industria y comercio', idItem: 2 },
-        { item: 'Matricula empresa', idItem: 3 },
-        { item: 'Artesanías colombiana', idItem: 4 },
-        { item: 'Formación empresarial extranjera', idItem: 5 },
-        { item: 'Industria y comercio mixta', idItem: 6 },
-        { item: 'Inscripción casa de la cultura', idItem: 7 },
-        { item: 'Matricula empresa publica', idItem: 8 },
-        { item: 'Matricula empresa extranjera', idItem: 9 },
-        { item: 'Formación empresarial privada', idItem: 10 },
-      ]
+      contendioModal: this.resultadosBusqueda.filtros[0][idFiltro]
     }
     //al final de subscribe --> servicio completo se abre el modal
     //el setTimeout simula el tiempo de consulta del servicio y una vez finalizada la consulta
@@ -62,15 +73,24 @@ export class FiltrosPrincipalComponent implements OnInit {
   }
 
   itemFiltroNivelDos(data: ContenidoModalFiltroInterface) {
+    console.log('this.filtrosService.Filters', this.filtrosService.Filters)
     console.log('data', data);
-    // this.filtrosService.Filters = {
-    //   filters: null,
-    //   pageNumber: 1,
-    //   pageSize: 10,
-    //   search: "empresa de servicios publicos aguas y aseo de el penol aap" + this.y,
-    //   sort: "",
-    //   seccion: ""
-    // }
+    const filterSelected:filter = this.filtrosService.Filters?.filters != null ? this.filtrosService.Filters.filters : {};
+    if (this.filtroInicial == 'categorias' || this.filtroInicial == 'subCategorias') {
+      filterSelected[this.filtroInicial] = { 'nombre': data.item }
+    } else {
+      filterSelected[this.filtroInicial] = data.item;
+    }
+
+    this.filtrosService.Filters = {
+      filters: filterSelected,
+      pageNumber: 1,
+      pageSize: 10,
+      search: this.busqueda,
+      sort: "",
+      seccion: this.seccion
+    }
+    console.log('this.filtrosService.Filters', this.filtrosService.Filters)
   }
 
   ngOnDestroy() {

@@ -1,5 +1,5 @@
 export interface FiltroBusqueda {
-    filters: filter[] | null;
+    filters: filter | null;
     pageNumber: number;
     pageSize: number;
     search: string;
@@ -9,8 +9,8 @@ export interface FiltroBusqueda {
 
 export interface filter {
     sector?: string;
-    categorias?: string;
-    subcategorias?: string;
+    categorias?: name;
+    subcategorias?: name;
     entidadNombre?: string;
     nombreEstandarizado?: string;
     tipoEntidad?: string;
@@ -19,4 +19,8 @@ export interface filter {
     estado?: string;
     fechaPublicacionFiltro?: string;
     fechaCierreFiltro?: string;
+}
+
+export interface name {
+    nombre: string;
 }

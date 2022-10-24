@@ -6,9 +6,10 @@
             <span class="clean">Limpiar filtros</span>
         </div>
         <hr>
-        <ul>
+        <ul *ngIf="resultadosBusqueda">
             <li *ngFor="let filtro of seccionFiltros[seccion]">
-                <a [class.disabled]="filtro.padre" (click)="seleccionaFiltroNivelUno(filtro.id, filtro.nombre)">
+                <a [class.disabled]="!filtro.active" (click)="seleccionaFiltroNivelUno(filtro.id, filtro.nombre)">
+                <!-- <a [class.disabled]="resultadosBusqueda.filtros[0][filtro.id].length < 1" (click)="seleccionaFiltroNivelUno(filtro.id, filtro.nombre)"> -->
                     {{filtro.nombre}}
                     <span class="material-symbols-outlined information" *ngIf="filtro.id == 'nombreEstandarizado'">
                         question_mark

@@ -7,10 +7,10 @@
             <input type="email" id="search-text" [(ngModel)]="searchText" placeholder="Buscar">
         </div>
         <div class="listado">
-            <label *ngFor="let data of informacionModal.contendioModal | filterSegundoNivel: searchText"
-                (click)="itemSeleccionado(data.idItem, data.item)" class="item"
-                [class.active]="idItemSelected == data.idItem" tabindex="0">
-                <p>{{data.item}}</p>
+            <label *ngFor="let item of informacionModal.contendioModal | filterSegundoNivel: searchText; let idItem = index;"
+                (click)="itemSeleccionado(idItem, item)" class="item"
+                [class.active]="idItemSelected == idItem" tabindex="0">
+                <p>{{item}}</p>
                 <span class="radio-button" type="image"></span>
             </label>
         </div>

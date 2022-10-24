@@ -1,8 +1,11 @@
 .container-filtros-prueba {
-    background-color: #F2F2F2;
-    position: relative;
+    background-color: #00000080;
+    position: fixed;
     width: 100%;
-    height: 400px;
+    height: 100%;
+    top: 0;
+    overflow: hidden;
+    z-index: 9;
     .container-filtros {
         width: 280px;
         border-radius: 20px;
