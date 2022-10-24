@@ -44,14 +44,14 @@
     width: 100%;
   }
 
-  tbody tr.active { display: inline-block; }
+  tbody tr.actived { display: inline-block; }
 
   .govco-pwa-elemento-container{
     border: 2px solid #E8EFFC;
     border-radius: 5px;
     display: flex;
     flex-direction: row;
-    margin: 8px 0px 8px 0px;
+    margin: 8px 0px 0px 0px;
     align-items: center;
   }
 
@@ -110,7 +110,7 @@
   table tr {
     display: none;
   }
-  table tr.active {
+  table tr.actived {
     display: table-row;
   }
 
