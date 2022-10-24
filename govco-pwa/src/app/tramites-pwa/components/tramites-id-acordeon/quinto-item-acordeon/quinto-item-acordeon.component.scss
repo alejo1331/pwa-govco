@@ -44,7 +44,7 @@
     width: 100%;
   }
 
-  tbody tr.active { display: inline-block; }
+  tbody tr.actived { display: inline-block; }
 
   .govco-pwa-elemento-container{
     border: 2px solid #E8EFFC;
@@ -110,7 +110,7 @@
   table tr {
     display: none;
   }
-  table tr.active {
+  table tr.actived {
     display: table-row;
   }
 

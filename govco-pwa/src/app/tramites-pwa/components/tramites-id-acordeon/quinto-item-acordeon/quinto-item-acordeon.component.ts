@@ -33,7 +33,7 @@ export class QuintoItemAcordeonComponent implements OnInit {
 
     if (this.normatividad.length > 0){
       if(document.getElementById('legislacionContenido')){
-        $('table tr:nth-child(n+1):nth-child(-n+5)').addClass('active');
+        $('table tr:nth-child(n+1):nth-child(-n+5)').addClass('actived');
       }
 
     }
@@ -86,29 +86,7 @@ export class QuintoItemAcordeonComponent implements OnInit {
         this.selectedItemsListNames.push(normas[i].name);
       }
     }
-
-    this.selectedItemsListUrls.forEach((url : any, i : any) =>{
-      const nombre = this.selectedItemsListNames[i];
-
-      JSZipUtils.getBinaryContent(url, (error : any, data : any) => {
-        if (error){
-          throw error
-        }
-        zip.file(nombre, data, {binary: true});
-        cuentaNorma ++;
-        debugger;
-        if(cuentaNorma === this.selectedItemsListUrls.length){
-          zip.generateAsync({type:'blob'}).then((content : any) => {
-            const url = URL.createObjectURL(content);
-            const link : any = document.createElement('a');
-            link.download = 'documentacionTramite.zip'
-            link.href=url
-            link.click()
-          })
-        }
-      })
-    })
-    // this.selectedItemsList.forEach((e : any) =>  self.open(e),"_self")
+    this.selectedItemsListUrls.forEach((e : any) =>  self.open(e),"_self")
    }
 
    toogleSeleccionItem(event : any){
@@ -131,8 +109,8 @@ export class QuintoItemAcordeonComponent implements OnInit {
 
   VerMasLegislacion(){
     let legislacionActiva = $('tr#legislacionContenido');
-    let ultimoActivo = legislacionActiva.filter('.active:last').index();
-    legislacionActiva.filter(':lt(' + (ultimoActivo + 6) + ')').addClass('active');
+    let ultimoActivo = legislacionActiva.filter('.actived:last').index();
+    legislacionActiva.filter(':lt(' + (ultimoActivo + 6) + ')').addClass('actived');
   }
 
 
