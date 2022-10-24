@@ -10,7 +10,7 @@ import { BottomMenuService } from 'src/app/transversales/services/bottom-menu/bo
 export class HeaderCompartirV1Component implements OnInit {
   @Input() urlTramite: string;
   @Input() titleTramite: any;
-  @Input() botonAtras: { url: string, estadoMenuInferior: boolean, itemMenu: number };
+  @Input() botonAtras: { url: string, tipoNavegacion: string };
 
   constructor(
     private router: Router,
@@ -33,10 +33,13 @@ export class HeaderCompartirV1Component implements OnInit {
   }
 
   accionAtras(): void {
-    this.router.navigate([this.botonAtras.url]);
-    this.bottomService.putOcultandoBottomMenu(this.botonAtras.estadoMenuInferior);
-    setTimeout(() => {
-      this.bottomService.seleccionandoItem(this.botonAtras.itemMenu);
-    }, 100);
+    switch (this.botonAtras.tipoNavegacion) {
+      case 'href':
+        location.href = this.botonAtras.url
+        break;
+      case 'router':
+        this.router.navigate([this.botonAtras.url]);
+        break;
+    }
   }
 }
