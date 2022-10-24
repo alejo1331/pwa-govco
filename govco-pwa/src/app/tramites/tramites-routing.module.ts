@@ -9,7 +9,7 @@ import { VentanillasUnicasComponent } from './components/ficha-tramite/ventanill
 
 const routes: Routes = [
   // {
-  //   path: 'ficha-tramites-y-servicios-old',
+  //   path: 'ficha-tramites-y-servicios',
   //   children: [
   //     {
   //       path: '',

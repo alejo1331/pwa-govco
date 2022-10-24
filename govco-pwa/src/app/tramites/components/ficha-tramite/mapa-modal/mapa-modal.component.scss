@@ -1,32 +1,53 @@
-.punto-mapa-modal-title {
-    font-size: 1rem;
-    color: #004884;
-}
+.content-modal {
+    padding: 1rem;
 
-.modal-header .close {
-    color: #0061ea;
-    font-weight: 700;
-}
-
-.modal-header{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    .modal-header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 0 1rem 0;
     
-    h2{
-        margin: 0;
-    }
-    .close{
-        em {
-            color: #0061EA;
-            font-weight: bold;
+        h2 {
+            margin: 0;
+            color: #000000;
+            font-family: "WorkSans-Bold";
+            font-size: 1.5rem;
+        }
+    
+        .close {
+            em {
+                color: #0061EA;
+                font-weight: bold;
+            }
         }
     }
+
+    .modal-body {
+        padding: 0;
+        height: calc(100% - 3rem);
+
+        #map {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
 }
-.modal-body{
-    padding-top: 0;
+
+
+::ng-deep.modal-open .modal {
+    background-color: #00000080;
+    height: 100%;
+    padding: 0.5rem;
 }
-#map{
-    width:100%;
-    height:80vh;
+
+::ng-deep.modal-content {
+    border-radius: 1.25rem;
+    height: 100%;
+}
+
+::ng-deep.modal.show .modal-dialog {
+    height: 100%;
+    max-width: 100% !important;
+    margin: 0;
 }
