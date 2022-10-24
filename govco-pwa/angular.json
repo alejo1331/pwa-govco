@@ -29,14 +29,20 @@
                             "src/favicon.ico",
                             "src/assets",
                             "src/manifest.webmanifest",
-                            "src/silent-refresh.html"
+                            "src/silent-refresh.html",
+                            {
+                                "glob": "**/*",
+                                "input": "./node_modules/leaflet/dist/images",
+                                "output": "leaflet/"
+                            }
                         ],
                         "styles": [
                             "src/govco-pwa-theme.scss",
                             "src/govco-icon.css",
                             "node_modules/ngx-owl-carousel-o/lib/styles/scss/owl.carousel.scss",
                             "node_modules/ngx-owl-carousel-o/lib/styles/scss/owl.theme.default.scss",
-                            "src/styles.css"
+                            "src/styles.css",
+                            "node_modules/leaflet/dist/leaflet.css"
                         ],
                         "scripts": [
                             "node_modules/jquery/dist/jquery.min.js",
@@ -161,7 +167,7 @@
                                 "with": "src/environments/environment.prod.ts"
                             }],
                             "index": {
-                                "input": "src/index.html",
+                                "input": "src/index.prod.html",
                                 "output": "index.html"
                             }
                         },

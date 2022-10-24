@@ -1,14 +1,15 @@
-import { AfterViewInit, Component, ElementRef, HostListener, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, Input, OnInit, ViewChild } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import * as L from 'leaflet';
 
 
 @Component({
-  selector: 'app-mapa-modal',
-  templateUrl: './mapa-modal.component.html',
-  styleUrls: ['./mapa-modal.component.scss']
+  selector: 'app-modal-mapa',
+  templateUrl: './modal-mapa.component.html',
+  styleUrls: ['./modal-mapa.component.scss']
 })
-export class MapaModalComponent implements OnInit, AfterViewInit {
+export class ModalMapaComponent implements OnInit {
+
   @Input() latitud: string;
   @Input() longitud: string;
   @Input() direccion: string;
@@ -24,9 +25,8 @@ export class MapaModalComponent implements OnInit, AfterViewInit {
 
   private map: any;
 
-  constructor(
-    private activeModal: NgbActiveModal
-  ) { }
+
+  constructor(private activeModal: NgbActiveModal) { }
 
   ngOnInit(): void {
     this.bodyElement = (document.getElementsByTagName('body') as HTMLCollectionOf<HTMLBodyElement>)[0]
