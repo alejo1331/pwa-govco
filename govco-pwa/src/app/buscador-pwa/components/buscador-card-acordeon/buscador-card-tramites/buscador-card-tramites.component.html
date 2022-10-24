@@ -1,0 +1,67 @@
+<app-buscador-card-acordeon [tramiteTitle]="titleAcordeon">
+    <div class="govco-pwa-ficha-subtitulo">
+        <div class="texto-entidad">
+            <p>Entidad responsable: <br>
+                <span [attr.aria-label]="'Entidad responsable' + data?.Entidad">{{
+                    data?.Entidad | titlecase}}</span>
+            </p>
+        </div>
+        <div class="separador"></div>
+    </div>
+    <div class="container-detalle">
+        <div class="contenido-detalle" (click)="showBotonLeer()">
+            <p class="ficha-descripcion" tabindex="0" [attr.aria-label]="contenidoLeido" (focus)="showExpended()">
+                {{contenidoDescripcion}}
+                <br>
+            </p>
+            <a *ngIf="caracteresCategoria" class="contenido-expandido">{{nombreExpanded}}</a>
+        </div>
+        <div class="caracteriticas-tramite">
+            <div class="card-detalle-tramite">
+                <div class="container-icon-detalle">
+                    <span class="material-symbols-outlined">
+                        {{iconoTramite}}
+                    </span>
+                </div>
+                <div class="container-text-detalle">
+                    <p class="tramite-type">
+                        Tipo de trámite
+                    </p>
+                    <p class="tramite-type-detalle">
+                        {{data.Tipotramite}}
+                    </p>
+                </div>
+            </div>
+            <div class="card-detalle-tramite">
+                <div class="container-icon-detalle">
+                    <span class="material-symbols-outlined">
+                        {{iconoCosto}}
+                    </span>
+                </div>
+                <div class="container-text-detalle">
+                    <p class="tramite-type">
+                        Tiene costo?
+                    </p>
+                    <p class="tramite-type-detalle">
+                        {{infoDescripcionTramite?.Costo | titlecase}}
+                    </p>
+                </div>
+            </div>
+            <div class="card-detalle-tramite">
+                <div class="container-icon-detalle">
+                    <span class="material-symbols-outlined">
+                        schedule
+                    </span>
+                </div>
+                <div class="container-text-detalle">
+                    <p class="tramite-type">
+                        Duración del proceso
+                    </p>
+                    <p class="tramite-type-detalle">
+                        {{infoDescripcionTramite?.TiempoObtencion | titlecase}}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</app-buscador-card-acordeon>

@@ -1,0 +1,94 @@
+.govco-pwa-ficha-subtitulo {
+	// padding: 0px 16px 0px 16px;
+	width: 100%;
+	height: auto;
+	margin-bottom: 24px;
+
+	.texto-entidad {
+		margin-bottom: 0.5rem;
+
+		p {
+			font-family: "Montserrat-Medium";
+			font-size: 14px;
+			color: #000000;
+			margin: 0;
+
+			span {
+				font-family: "WorkSans-Regular";
+			}
+		}
+	}
+
+	.separador::after {
+		content: "";
+		display: block;
+		width: 88px;
+		height: 2px;
+		background-color: #1c4780;
+	}
+}
+
+.container-detalle {
+    .contenido-detalle {
+        font-size: 14px;
+        margin-bottom: 24px;
+
+        .ficha-descripcion {
+            font-family: "WorkSans-Regular";
+            color: #000;
+        }
+
+        a {
+            font-family: "WorkSans-SemiBold";
+            color: #3366CC;
+            margin-top: 20px;
+        }
+    }
+    .caracteriticas-tramite{
+        .title-tramites {
+            font-family: 'Montserrat-Medium';
+            font-size: 14px;
+            margin-bottom: 24px;
+        }
+    
+        .card-detalle-tramite {
+            border: 2px solid #E8EFFC;
+            background-color: #FFFFFF;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            margin-bottom: 6px;
+            .container-icon-detalle{
+                border-radius: 10px;
+                width: 40px;
+                height: 40px;
+                background-color: #FFFFFF;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 8px;
+                .material-symbols-outlined {
+                    color: #004884;
+                    font-variation-settings:
+                        'FILL' 0,
+                        'wght' 500,
+                        'GRAD' 0,
+                        'opsz' 24
+                }
+            }
+            .container-text-detalle{
+                p{
+                    margin-bottom: 0;
+                }
+                .tramite-type{
+                    font-family: "WorkSans-Medium";
+                    font-size: 14px;
+                }
+                .tramite-type-detalle{
+                    font-family: "WorkSans-Regular";
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+}
