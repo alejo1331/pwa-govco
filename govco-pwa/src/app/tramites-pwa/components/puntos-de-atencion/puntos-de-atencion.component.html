@@ -30,8 +30,8 @@
                 <div class="card" *ngFor="let item of items; index as i;" [class.active]="item.active">
                     <div class="card-header" id="headingOne">
                         <button (click)="activarItem(i)" class="btn btn-link btn-block text-left" type="button"
-                            data-toggle="collapse" [attr.data-target]="'#collapse' + i" aria-expanded="false"
-                            [attr.aria-controls]="'collapse' + i">
+                            data-toggle="collapse" [attr.data-target]="'#collapse-puntos' + i" aria-expanded="false"
+                            [attr.aria-controls]="'collapse-puntos' + i">
                             <p tabindex="0">{{item.titulo}}</p>
                             <div class="grupo-iconos-acordeon">
                                 <a *ngIf="!iOS"
@@ -53,7 +53,7 @@
                             </div>
                         </button>
                     </div>
-                    <div [id]="'collapse' + i" class="collapse" [attr.aria-labelledby]="'heading' + i"
+                    <div [id]="'collapse-puntos' + i" class="collapse" [attr.aria-labelledby]="'heading' + i"
                         data-parent="#ejemploAcordeon">
                         <div class="card-body">
                             <h4 tabindex="0">Departamento/Municipio</h4>
@@ -63,7 +63,7 @@
                             <h4 tabindex="0">Horario</h4>
                             <p class="descripcion" tabindex="0">{{item.horario}}</p>
                             <h4 tabindex="0">Teléfono</h4>
-                            <a href="tel: {{item.telefono}}" class="descripcion">{{item.telefono}}</a>
+                            <a href="tel: {{item.telefono}}" class="descripcion" [innerHTML]="item.telefono"></a>
                         </div>
                     </div>
                 </div>

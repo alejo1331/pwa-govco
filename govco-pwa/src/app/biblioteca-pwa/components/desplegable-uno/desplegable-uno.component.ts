@@ -17,6 +17,7 @@ export class DesplegableUnoComponent implements OnInit {
 
   estado: boolean[] = [true, true, true, true];
   titulo: string[] = ['', '', '', '']
+  posicion: number[] = [];
 
   touchMoveInicial: number = 0;
   touchMoveFinal: number = 0;
@@ -31,12 +32,15 @@ export class DesplegableUnoComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    var cont: number = 0;
     this.estructura.forEach((element, i) => {
-      if(this.data != undefined){
+      if (this.data != undefined) {
         this.data.forEach(elemento => {
           if (elemento['detalle'] === this.estructura[i].titulo) {
             this.estado[i] = false;
-            this.seleccionarItem(i - (this.data.length - 1));
+            this.posicion[cont] = i;
+            this.seleccionarItem(this.posicion[0]);
+            cont = cont + 1;
             if (this.estructura[this.itemSelected] != undefined) {
               this.perfilSeleccionado.emit(this.estructura[this.itemSelected].titulo)
             }
@@ -45,6 +49,7 @@ export class DesplegableUnoComponent implements OnInit {
       }
       this.titulo[i] = element.titulo.split(" ").join("<br/>")
     });
+
   }
 
   seleccionarItem(dataItem: number) {

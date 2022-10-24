@@ -204,6 +204,7 @@ body {
   background: #FFFFFF 0% 0% no-repeat padding-box;
   display: flex;
   align-items: center;
+  width: 100%;
 }
 
 .caja-icono-pwa-govco,

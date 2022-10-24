@@ -113,7 +113,6 @@ export class TramitesIdComponent implements OnInit {
             );
           this.idTramite = Number(this.infoBasicaTramite.IdTramite);
 
-
           // Obtiene la URL de trámite en linea
 
           this.fichaTramiteService
@@ -164,14 +163,12 @@ export class TramitesIdComponent implements OnInit {
       this.dataPuntosAtencion = data;
       this.seccionTramitesId.nativeElement.style.left = data.transitionTramitesId;
       this.seccionPuntoAtencion.nativeElement.style.left = data.transitionPuntosAtencion;
-      this.topScroll.scrollTop = 0;
     }
   }
 
   cerrarPuntosAtencion([cerrarPuntosAtencion, abrirTramitesId]: [string, string]) {
     this.seccionTramitesId.nativeElement.style.left = abrirTramitesId;
     this.seccionPuntoAtencion.nativeElement.style.left = cerrarPuntosAtencion;
-    this.topScroll.scrollTop = 0;
     this.seccionTramitesId.nativeElement.addEventListener(
       'transitionend',
       () => {

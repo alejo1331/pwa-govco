@@ -46,10 +46,6 @@ export class PuntosDeAtencionComponent implements OnInit, PipeTransform {
     this.bottomService.putOcultandoBottomMenu(true);
     this.servicioSideNav.seleccionandoItem(false, 'null');
     this.bottomService.ajustandoPantalla(false);
-    const contenedorTopScroll = (document.getElementById('topScroll') as HTMLElement);
-    contenedorTopScroll.style.top = '0';
-    contenedorTopScroll.style.height = '100%';
-    contenedorTopScroll.scrollTop = 0;
     this.getPuntosAtencion();
     this.iOS = this.platform.IOS || this.platform.SAFARI ? true : false;
   }
@@ -78,19 +74,18 @@ export class PuntosDeAtencionComponent implements OnInit, PipeTransform {
               municipio: elemento.Municipio,
               direccion: elemento.PuntoAtencionDireccion,
               horario: elemento.HorarioAtencion,
-              telefono: elemento.PuntoAtencionTelefono
+              telefono: elemento.PuntoAtencionTelefono.split(",").join("<br>")
             }
           );
         });
       },
-        error => { this.seccionPuntos.nativeElement.style.height = '100vh' },
+        (error) => {},
         () => this.verMas(0, this.itemsAux)
       );
   }
 
   verMas(contadorVerMas: number, itemsAux: ItemsAcordeon[]) {
     this.magnitudItemsAux = itemsAux.length;
-    this.seccionPuntos.nativeElement.style.height = itemsAux.length < 4 ? '100vh' : '100%';
     let posicionConDefaseFinal: number = (contadorVerMas + 1) * this.numeroAcordeonPantalla;
     let diferencia: number = itemsAux.length - this.items.length;
     let ultimoContadorVerMas: number = diferencia < this.numeroAcordeonPantalla ?

@@ -1,15 +1,17 @@
 .seccion-tramites-por-id {
-    transition: 0.5s all;
+    transition: 1s all;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
+    height: 100%;
+    overflow-y: scroll;
 }
 .seccion-tramites-por-id .contenido{
     padding: 3.5rem 0 0.75rem;
 }
 .seccion-puntos-atencion {
-    transition: 0.5s all;
+    transition: 1s all;
     position: absolute;
     top: 0;
     left: 100%;
