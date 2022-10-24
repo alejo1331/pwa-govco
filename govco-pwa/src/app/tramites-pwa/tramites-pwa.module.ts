@@ -25,6 +25,7 @@ import { ModalDudasPwaComponent } from './components/modal-dudas-pwa/modal-dudas
 import { TercerItemAcordeonComponent } from './components/tramites-id-acordeon/tercer-item-acordeon/tercer-item-acordeon.component';
 import { CuartoItemAcordeonComponent } from './components/tramites-id-acordeon/cuarto-item-acordeon/cuarto-item-acordeon.component';
 import { QuintoItemAcordeonComponent } from './components/tramites-id-acordeon/quinto-item-acordeon/quinto-item-acordeon.component';
+import { ModalMapaComponent } from './components/puntos-de-atencion/modal-mapa/modal-mapa.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { QuintoItemAcordeonComponent } from './components/tramites-id-acordeon/q
     AccionExcepcionComponent,
     TercerItemAcordeonComponent,
     CuartoItemAcordeonComponent,
-    QuintoItemAcordeonComponent
+    QuintoItemAcordeonComponent,
+    ModalMapaComponent
   ],
   imports: [
     CommonModule,

@@ -8,6 +8,8 @@ import { PuntosDeAtencionInterface } from '../../models/puntos-de-atencion/punto
 import { TramitesPorIdService } from '../../services/tramites-por-id-service/tramites-por-id.service';
 import { PipeTransform } from '@angular/core';
 import { DataBasicaPuntosInterface } from '../../models/puntos-de-atencion/data-basica-puntos-interface';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ModalMapaComponent } from './modal-mapa/modal-mapa.component';
 
 @Component({
   selector: 'app-puntos-de-atencion',
@@ -34,6 +36,7 @@ export class PuntosDeAtencionComponent implements OnInit, PipeTransform {
   iOS: boolean = false;
 
   constructor(
+    private modalService: NgbModal,
     protected servicioSideNav: SidenavService,
     protected servicioHeader: HeaderService,
     public bottomService: BottomMenuService,
@@ -139,6 +142,14 @@ export class PuntosDeAtencionComponent implements OnInit, PipeTransform {
     let filtrado: ItemsAcordeon[] = this.transform(this.itemsAux, busqueda);
     this.verMas(contador, filtrado);
   }
+
+  printCoordenadas(latitud:string, longitud:string, direccion:string){ 
+    const modal = this.modalService.open(ModalMapaComponent,{ size: 'lg', backdrop: 'static', keyboard: false});
+    modal.componentInstance.latitud = latitud;
+    modal.componentInstance.longitud = longitud;
+    modal.componentInstance.direccion = direccion;
+  }
+
 
   @HostListener('window:keyup', ['$event']) onInput(event: KeyboardEvent) {
     if (this.inputBuscador.nativeElement == event.target) {

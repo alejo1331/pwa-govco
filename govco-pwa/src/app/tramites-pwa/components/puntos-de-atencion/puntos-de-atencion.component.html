@@ -34,14 +34,8 @@
                             [attr.aria-controls]="'collapse-puntos' + i">
                             <p tabindex="0">{{item.titulo}}</p>
                             <div class="grupo-iconos-acordeon">
-                                <a *ngIf="!iOS"
-                                    href="https://www.google.com.gt/maps/@{{item.latitud}},{{item.longitud}},15z"
-                                    class="caja-icono-48-pwa mr-2">
-                                    <img src="../../../../assets/icons-fonts/explore_FILL0_wght500_GRAD0_opsz20.svg"
-                                        alt="Abrir enlace a Google Maps o Navegador">
-                                </a>
-                                <a *ngIf="iOS" href="http://maps.apple.com/?ll={{item.latitud}},{{item.longitud}}"
-                                    class="caja-icono-48-pwa mr-2">
+                                <a (click)="printCoordenadas(item.latitud.replace(',','.'), item.longitud.replace(',','.'), item.direccion)"
+                                    class=" caja-icono-48-pwa mr-2">
                                     <img src="../../../../assets/icons-fonts/explore_FILL0_wght500_GRAD0_opsz20.svg"
                                         alt="Abrir enlace a Google Maps o Navegador">
                                 </a>
@@ -70,7 +64,7 @@
             </div>
         </section>
         <app-boton *ngIf="!(items.length == magnitudItemsAux)"
-        (click)="itemsFiltrados(contadorVerMas = contadorVerMas + 1, busqueda)">Ver más</app-boton>
+            (click)="itemsFiltrados(contadorVerMas = contadorVerMas + 1, busqueda)">Ver más</app-boton>
         <app-boton *ngIf="items.length == magnitudItemsAux && !(numeroAcordeonPantalla > magnitudItemsAux) "
             (click)="verMenos()">Ver menos</app-boton>
     </div>
