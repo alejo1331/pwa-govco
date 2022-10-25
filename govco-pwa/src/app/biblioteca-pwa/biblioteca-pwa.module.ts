@@ -18,6 +18,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { FiltroSegundoNivel } from './pipes/filtro-segundo-nivel/filtro-segundo-nivel.pipe';
 import { ModalFiltroSegundoNivelComponent } from './components/modal-filtro-segundo-nivel/modal-filtro-segundo-nivel.component';
 import { FormsModule } from '@angular/forms';
+import { NivelDosHeaderBuscadorComponent } from './components/nivel-dos-header-buscador/nivel-dos-header-buscador.component';
+import { NivelDosHeaderPrefiltrosComponent } from './components/nivel-dos-header-prefiltros/nivel-dos-header-prefiltros.component';
+
 
 
 @NgModule({
@@ -37,10 +40,12 @@ import { FormsModule } from '@angular/forms';
     ModalErrorUrlComponent,
     FiltroSegundoNivel,
     ModalFiltroSegundoNivelComponent,
+    NivelDosHeaderBuscadorComponent,
+    NivelDosHeaderPrefiltrosComponent
   ],
   imports: [
-    CommonModule, 
-    RouterModule, 
+    CommonModule,
+    RouterModule,
     MatDialogModule,
     FormsModule
   ],
@@ -59,6 +64,8 @@ import { FormsModule } from '@angular/forms';
     TarjetaVinculoComponent,
     ModalErrorUrlComponent,
     ModalFiltroSegundoNivelComponent,
+    NivelDosHeaderBuscadorComponent,
+    NivelDosHeaderPrefiltrosComponent
   ],
 })
 export class BibliotecaPwaModule {}
