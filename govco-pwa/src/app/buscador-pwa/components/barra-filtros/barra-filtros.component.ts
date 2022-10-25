@@ -9,10 +9,12 @@ import { FiltrosPrincipalComponent } from '../filtros-principal/filtros-principa
 export class BarraFiltrosComponent implements OnInit {
 
   @ViewChild(FiltrosPrincipalComponent) FiltrosPrincipalComponent: FiltrosPrincipalComponent;
+  totalResultados: number | string;
 
   constructor() { }
 
   ngOnInit(): void {
+    this.totalResultados = 45
   }
 
   filtroPrimerNivel() {
