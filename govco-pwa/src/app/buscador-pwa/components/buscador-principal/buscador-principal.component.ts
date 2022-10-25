@@ -6,7 +6,7 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-buscador-principal',
   templateUrl: './buscador-principal.component.html',
-  styleUrls: ['./buscador-principal.component.css']
+  styleUrls: ['./buscador-principal.component.scss']
 })
 export class BuscadorPrincipalComponent implements OnInit {
 

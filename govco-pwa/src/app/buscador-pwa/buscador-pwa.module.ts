@@ -9,6 +9,7 @@ import { BuscadorCardAcordeonComponent } from './components/buscador-card-acorde
 import { BuscadorCardTramitesComponent } from './components/buscador-card-acordeon/buscador-card-tramites/buscador-card-tramites.component';
 import { BuscadorCardEntidadesComponent } from './components/buscador-card-acordeon/buscador-card-entidades/buscador-card-entidades.component';
 import { BuscadorCardPortalesComponent } from './components/buscador-card-acordeon/buscador-card-portales/buscador-card-portales.component';
+import { BarraFiltrosComponent } from './components/barra-filtros/barra-filtros.component';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { BuscadorCardPortalesComponent } from './components/buscador-card-acorde
     BuscadorCardTramitesComponent,
     BuscadorCardEntidadesComponent,
     BuscadorCardPortalesComponent,
+    BarraFiltrosComponent,
   ],
   imports: [
     CommonModule,
