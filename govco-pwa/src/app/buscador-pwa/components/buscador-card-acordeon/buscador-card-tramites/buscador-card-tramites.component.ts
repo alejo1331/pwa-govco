@@ -34,9 +34,9 @@ export class BuscadorCardTramitesComponent implements OnInit {
   ngOnInit(): void {
     this.infoDescripcionTramite = this.data;
     this.contenidoDescripcion =
-      this.infoDescripcionTramite.DescripcionTramite.substring(0, 250);
+      this.infoDescripcionTramite.DescripcionTramite.substring(0, 125) + '...';
     this.contenidoLeido = this.infoDescripcionTramite.DescripcionTramite;
-    if (this.contenidoDescripcion.length > 249) {
+    if (this.contenidoDescripcion.length > 124) {
       this.caracteresCategoria = true;
     }
     this.getIconoCosto(this.data?.Costo);
@@ -60,7 +60,8 @@ export class BuscadorCardTramitesComponent implements OnInit {
     } else {
       this.nombreExpanded = 'Leer más...';
       this.contenidoDescripcion =
-        this.infoDescripcionTramite.DescripcionTramite.substring(0, 250);
+        this.infoDescripcionTramite.DescripcionTramite.substring(0, 125) +
+        '...';
     }
     return this.contenidoDescripcion;
   }
@@ -79,31 +80,5 @@ export class BuscadorCardTramitesComponent implements OnInit {
     data === 'SI'
       ? (this.iconoCosto = 'monetization_on')
       : (this.iconoCosto = 'money_off');
-  }
-
-  // showBotonFecha() {
-  //   this.fichaTramiteService.GetFechasByTramite(this.data.IdTramite).subscribe(
-  //     (resp: any) => {
-  //       this.showBotonFechas = resp.fechasEspecificas.length > 0;
-  //     },
-  //     (error) => console.log(error)
-  //   );
-  // }
-
-  // getFechas() {
-  //   this.fichaTramiteService
-  //     .GetFechasByTramite(this.data.IdTramite)
-  //     .subscribe((resp) => {
-  //       console.log('getFechas', resp);
-  //       // this.showModalFechas(resp)
-  //     });
-  // }
-
-  setDataBoton(data: any) {
-    if (data === 'En línea') {
-      this.textoBoton = 'Realizar trámite';
-    } else {
-      this.textoBoton = 'Ver los puntos de atención';
-    }
   }
 }
