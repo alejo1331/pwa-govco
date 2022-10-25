@@ -9,7 +9,7 @@
         <div class="listado">
             <label *ngFor="let item of informacionModal.contendioModal | filterSegundoNivel: searchText; let idItem = index;"
                 (click)="itemSeleccionado(idItem, item)" class="item"
-                [class.active]="idItemSelected == idItem" tabindex="0">
+                [class.active]="informacionModal.itemSeleccionado == 1" tabindex="0">
                 <p>{{item}}</p>
                 <span class="radio-button" type="image"></span>
             </label>

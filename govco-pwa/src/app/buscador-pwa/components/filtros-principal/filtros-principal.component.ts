@@ -14,8 +14,6 @@ import { filter } from '../../models/filtroBusquedaModel';
   styleUrls: ['./filtros-principal.component.scss']
 })
 export class FiltrosPrincipalComponent implements OnInit {
-  @Input() seccion: string;
-  @Input() busqueda: string;
   @ViewChild('modalFiltroNivel1') filtroPrimerNivel: ElementRef;
   @ViewChild(ModalFiltroSegundoNivelComponent) ModalFiltroSegundoNivelComponent: ModalFiltroSegundoNivelComponent;
   informacionModalFiltro: InformacionModalInterface;
@@ -24,15 +22,20 @@ export class FiltrosPrincipalComponent implements OnInit {
   public resultadosSubscription: Subscription;
   public resultadosBusqueda:ResultadoFiltro;
   private filtroInicial = '';  
+  public seccion = '';
+  public busqueda = '';
+  public filtersSelected:filter = {};
 
   constructor(
     protected filtrosService: FiltrosService,
     public platform: Platform
   ) { }
 
-  ngOnInit(): void {  
-    console.log('seccion', this.seccion);
-    console.log('busqueda', this.busqueda);
+  ngOnInit(): void {
+    console.log(this.filtersSelected);
+    console.log(this.filtersSelected['categorias']);
+    this.seccion = this.filtrosService.Filters?.seccion ? this.filtrosService.Filters?.seccion : '';
+    this.busqueda = this.filtrosService.Filters?.search ? this.filtrosService.Filters?.search : '';
 
     this.resultadosSubscription = this.filtrosService.ResultadoBusqueda$.subscribe((resultados) => {
       if (resultados) {
@@ -51,12 +54,11 @@ export class FiltrosPrincipalComponent implements OnInit {
 
   seleccionaFiltroNivelUno(idFiltro: string, tituloFiltro: string) {
     this.filtroInicial = idFiltro;
-    console.log('idFiltro', idFiltro)
-    console.log('resultadosBusqueda', this.resultadosBusqueda)
     //inicia el servicio para el filtro de segundo nivel
     this.informacionModalFiltro = {
       titulo: tituloFiltro,
-      contendioModal: this.resultadosBusqueda.filtros[0][idFiltro]
+      contendioModal: this.resultadosBusqueda.filtros[0][idFiltro],
+      itemSeleccionado: this.filtersSelected != null ? this.filtersSelected[idFiltro] ? 1 : 0 : 0
     }
     //al final de subscribe --> servicio completo se abre el modal
     //el setTimeout simula el tiempo de consulta del servicio y una vez finalizada la consulta
@@ -75,24 +77,31 @@ export class FiltrosPrincipalComponent implements OnInit {
   }
 
   itemFiltroNivelDos(data: ContenidoModalFiltroInterface) {
-    console.log('this.filtrosService.Filters', this.filtrosService.Filters)
-    console.log('data', data);
-    const filterSelected:filter = this.filtrosService.Filters?.filters != null ? this.filtrosService.Filters.filters : {};
+    this.filtersSelected = this.filtrosService.Filters?.filters != null ? this.filtrosService.Filters.filters : {};
     if (this.filtroInicial == 'categorias' || this.filtroInicial == 'subCategorias') {
-      filterSelected[this.filtroInicial] = { 'nombre': data.item }
+      this.filtersSelected[this.filtroInicial] = { 'nombre': data.item }
     } else {
-      filterSelected[this.filtroInicial] = data.item;
+      this.filtersSelected[this.filtroInicial] = data.item;
     }
 
+    this.actualizarBusqueda();
+  }
+
+  eliminarFiltro(item:string) {
+    delete this.filtersSelected[item];
+
+    this.actualizarBusqueda();
+  }
+
+  actualizarBusqueda() {
     this.filtrosService.Filters = {
-      filters: filterSelected,
+      filters: this.filtersSelected,
       pageNumber: 1,
       pageSize: 10,
       search: this.busqueda,
       sort: "",
       seccion: this.seccion
     }
-    console.log('this.filtrosService.Filters', this.filtrosService.Filters)
   }
 
   ngOnDestroy() {

@@ -7,10 +7,15 @@
         </div>
         <hr>
         <ul *ngIf="resultadosBusqueda">
-            <li *ngFor="let filtro of seccionFiltros[seccion]">
+            <li *ngFor="let filtro of seccionFiltros[seccion]" [class.contiene-etiqueta]="filtersSelected[filtro.id] != undefined">
+                <app-etiqueta estado="informative" *ngIf="filtersSelected[filtro.id] != undefined">
+                    {{filtro.id == 'categorias' || filtro.id == 'subCategorias' ? filtersSelected[filtro.id].nombre : filtersSelected[filtro.id]}}
+                    <span class="material-symbols-outlined delete-selection" (click)="eliminarFiltro(filtro.id)">
+                        close
+                    </span>
+                </app-etiqueta>
                 <a [class.disabled]="!filtro.active" (click)="seleccionaFiltroNivelUno(filtro.id, filtro.nombre)">
-                <!-- <a [class.disabled]="resultadosBusqueda.filtros[0][filtro.id].length < 1" (click)="seleccionaFiltroNivelUno(filtro.id, filtro.nombre)"> -->
-                    {{filtro.nombre}}
+                    <span *ngIf="filtersSelected[filtro.id] == null">{{filtro.nombre}}</span>
                     <span class="material-symbols-outlined information" *ngIf="filtro.id == 'nombreEstandarizado'">
                         question_mark
                     </span>
