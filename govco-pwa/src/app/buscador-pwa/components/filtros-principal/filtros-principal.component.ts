@@ -31,15 +31,6 @@ export class FiltrosPrincipalComponent implements OnInit {
     console.log('seccion', this.seccion);
     console.log('busqueda', this.busqueda);
 
-    // this.filtrosService.Filters = {
-    //   filters: null,
-    //   pageNumber: 1,
-    //   pageSize: 10,
-    //   search: this.busqueda,
-    //   sort: "",
-    //   seccion: this.seccion
-    // }
-
     this.resultadosSubscription = this.filtrosService.ResultadoBusqueda$.subscribe((resultados) => {
       if (resultados) {
         this.resultadosBusqueda = resultados;
