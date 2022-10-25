@@ -10,16 +10,9 @@ import { FiltroBusqueda } from '../models/filtroBusquedaModel';
 })
 export class FiltrosService {
 
-  private filters = new BehaviorSubject<FiltroBusqueda>({
-    filters: null,
-    pageNumber: 1,
-    pageSize: 10,
-    search: "",
-    sort: "",
-    seccion: "tramite"
-  });
+  private filters = new BehaviorSubject<FiltroBusqueda | undefined>(undefined);
 
-  private resultadoBusqueda = new BehaviorSubject<ResultadoFiltro | undefined>(undefined)
+  private resultadoBusqueda = new BehaviorSubject<ResultadoFiltro | undefined>(undefined);
 
   constructor(private http: HttpClient) { }
   
@@ -28,20 +21,34 @@ export class FiltrosService {
     return this.http.post<ResultadoFiltro>(buscar, dataBusqueda);
   }
 
-  set Filters(filters: FiltroBusqueda) {
+  // Asigna un nuevo valor a filtros, de los seleccionados y dispara un evento para que en los suscribe lo escuchen
+  set Filters(filters: FiltroBusqueda | undefined) {
     this.filters.next(filters);
   }
 
-  get Filters$(): Observable<FiltroBusqueda> {
+  // Observable para suscribirse a los filtros seleccionado, es decir cada vez que se asigne un valor a filters, se consulta nuevamente los resultados de busqueda
+  get Filters$(): Observable<FiltroBusqueda | undefined> {
     return this.filters;
   }
 
-  set ResultadoBusqueda(resultadoBusqueda: ResultadoFiltro) {
+  // Obtener el ultimo filtro seleccionado
+  get Filters(): FiltroBusqueda | undefined {
+    return this.filters.getValue();
+  }
+
+  // Asigna un nuevo valor a resultado busqueda y dispara un evento para que en los suscribe lo escuchen
+  set ResultadoBusqueda(resultadoBusqueda: ResultadoFiltro | undefined) {
     this.resultadoBusqueda.next(resultadoBusqueda);
   }
 
+  // Observable para suscribirse a los resultados busqueda, es decir con cada cambio en los filtros este se actualiza
   get ResultadoBusqueda$(): Observable<ResultadoFiltro | undefined> {
     return this.resultadoBusqueda;
+  }
+
+  // Obtener el ultimo resultado de busqueda, en componentes donde no se cambien los filtros
+  get ResultadoBusqueda(): ResultadoFiltro | undefined {
+    return this.resultadoBusqueda.getValue();
   }
 
 }
