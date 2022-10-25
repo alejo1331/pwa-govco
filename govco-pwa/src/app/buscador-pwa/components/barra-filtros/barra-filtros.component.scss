@@ -1,0 +1,41 @@
+.barra-filtros-pwa {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 2.5rem;
+    border-bottom: 2px solid #E8EFFC;
+
+    .resultado-filtro {
+        margin: 0 0 0 .75rem;
+        font-family: 'WorkSans-Medium';
+        font-size: 0.875em;
+        color: #000000;
+    }
+
+    .grupo-filtro {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 .5rem 0 .75rem;
+        width: 6rem;
+        height: 100%;
+        border: none;
+        background-color: #ffffff;
+
+        p {
+            margin: 0;
+            font-family: 'WorkSans-Regular';
+            font-size: 0.875em;
+            color: #004884;
+        }
+
+        .caja-icono-24-pwa {
+
+            .icono-filtro {
+                content: url(../../../../assets/icons-fonts/filter_list_004884.svg);
+                width: 1.5rem;
+                height: 1.5rem;
+            }
+        }
+    }
+}

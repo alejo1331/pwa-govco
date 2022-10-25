@@ -505,3 +505,8 @@ select-search-1 a,
 .owl-dots .owl-dot.active span {
   background-color: #4B4B4B !important;
 }
+
+.contenido-body {
+  position: fixed;
+  overflow: hidden;
+}

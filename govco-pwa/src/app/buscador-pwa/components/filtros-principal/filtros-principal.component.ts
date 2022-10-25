@@ -1,9 +1,10 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { DATA_FILTRO_SECCIONES } from '../../models/dataFiltroSeccionesModel';
 import { FiltrosService } from '../../services/filtros.service';
 import { ModalFiltroSegundoNivelComponent } from '../../../biblioteca-pwa/components/modal-filtro-segundo-nivel/modal-filtro-segundo-nivel.component';
 import { ContenidoModalFiltroInterface, InformacionModalInterface } from '../../../biblioteca-pwa/models/filtro-nivel-dos/filtro-nivel-dos-interface';
 import { Subscription } from 'rxjs';
+import { Platform } from '@angular/cdk/platform';
 import { DataFiltros, ResultadoFiltro } from '../../models/resultadoFiltroModel';
 import { filter } from '../../models/filtroBusquedaModel';
 
@@ -15,7 +16,8 @@ import { filter } from '../../models/filtroBusquedaModel';
 export class FiltrosPrincipalComponent implements OnInit {
   @Input() seccion: string;
   @Input() busqueda: string;
-  @ViewChild(ModalFiltroSegundoNivelComponent) modalFiltro: ModalFiltroSegundoNivelComponent;
+  @ViewChild('modalFiltroNivel1') filtroPrimerNivel: ElementRef;
+  @ViewChild(ModalFiltroSegundoNivelComponent) ModalFiltroSegundoNivelComponent: ModalFiltroSegundoNivelComponent;
   informacionModalFiltro: InformacionModalInterface;
 
   public seccionFiltros = DATA_FILTRO_SECCIONES;
@@ -24,7 +26,8 @@ export class FiltrosPrincipalComponent implements OnInit {
   private filtroInicial = '';  
 
   constructor(
-    protected filtrosService: FiltrosService
+    protected filtrosService: FiltrosService,
+    public platform: Platform
   ) { }
 
   ngOnInit(): void {  
@@ -59,8 +62,16 @@ export class FiltrosPrincipalComponent implements OnInit {
     //el setTimeout simula el tiempo de consulta del servicio y una vez finalizada la consulta
     // se abre el modal
     setTimeout(() => {
-      this.modalFiltro.abrirModal();
+      this.ModalFiltroSegundoNivelComponent.abrirModal();
     }, 100);
+  }
+
+  abrirModal() {
+    this.filtroPrimerNivel.nativeElement.classList.toggle('show');
+    if (this.platform.IOS || this.platform.SAFARI) {
+      var body = (document.getElementsByTagName('body') as HTMLCollectionOf<HTMLElement>)[0];
+      body.classList.toggle('contenido-body');
+    }
   }
 
   itemFiltroNivelDos(data: ContenidoModalFiltroInterface) {

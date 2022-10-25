@@ -1,7 +1,9 @@
 <div #contentModal class="content-modal">
     <div class="modal-header">
         <h2>Mapa de ubicación</h2>
-        <button type="button" class="close" (click)="closeModal()"><em class="material-icons">clear</em></button>
+        <button type="button" class="icono-close" (click)="closeModal()">
+            <span type="image" alt="Cerrar mapa"></span>
+        </button>
     </div>
     <div class="modal-body">
         <div #mapContainer id="map"></div>
