@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { DATA_FILTRO_SECCIONES } from '../../models/dataFiltroSeccionesModel';
 import { FiltrosService } from '../../services/filtros.service';
 import { ResultadoFiltro } from '../../models/resultadoFiltroModel';
@@ -6,6 +6,7 @@ import { ModalFiltroSegundoNivelComponent } from '../../../biblioteca-pwa/compon
 import { ContenidoModalFiltroInterface, InformacionModalInterface } from '../../../biblioteca-pwa/models/filtro-nivel-dos/filtro-nivel-dos-interface';
 import { FiltroBusqueda } from '../../models/filtroBusquedaModel';
 import { Subscription } from 'rxjs';
+import { Platform } from '@angular/cdk/platform';
 
 
 @Component({
@@ -16,7 +17,8 @@ import { Subscription } from 'rxjs';
 export class FiltrosPrincipalComponent implements OnInit {
   @Input() seleccion: string;
   @Input() busqueda: string;
-  @ViewChild(ModalFiltroSegundoNivelComponent) modalFiltro: ModalFiltroSegundoNivelComponent;
+  @ViewChild('modalFiltroNivel1') filtroPrimerNivel: ElementRef;
+  @ViewChild(ModalFiltroSegundoNivelComponent) ModalFiltroSegundoNivelComponent: ModalFiltroSegundoNivelComponent;
   informacionModalFiltro: InformacionModalInterface;
 
 
@@ -25,7 +27,8 @@ export class FiltrosPrincipalComponent implements OnInit {
   resultadosSubscription: Subscription;
 
   constructor(
-    protected filtrosService: FiltrosService
+    protected filtrosService: FiltrosService,
+    public platform: Platform
   ) { }
 
   ngOnInit(): void {  
@@ -57,8 +60,16 @@ export class FiltrosPrincipalComponent implements OnInit {
     //el setTimeout simula el tiempo de consulta del servicio y una vez finalizada la consulta
     // se abre el modal
     setTimeout(() => {
-      this.modalFiltro.abrirModal();
+      this.ModalFiltroSegundoNivelComponent.abrirModal();
     }, 100);
+  }
+
+  abrirModal() {
+    this.filtroPrimerNivel.nativeElement.classList.toggle('show');
+    if (this.platform.IOS || this.platform.SAFARI) {
+      var body = (document.getElementsByTagName('body') as HTMLCollectionOf<HTMLElement>)[0];
+      body.classList.toggle('contenido-body');
+    }
   }
 
   itemFiltroNivelDos(data: ContenidoModalFiltroInterface) {

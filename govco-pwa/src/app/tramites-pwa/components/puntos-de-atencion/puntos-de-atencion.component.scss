@@ -214,7 +214,7 @@
                 font-family: 'WorkSans-Regular';
                 font-size: .875rem;
                 margin-bottom: 1.5rem;
-                padding-right: 6rem;
+                padding-right: 7.5rem;
                 line-height: 1.125rem;
             }
 
@@ -227,7 +227,7 @@
     }
 
     .card.active {
-        border-color: #FFFFFF;
+        border: none;
         background-color: #FFFFFF !important;
 
         .card-header button {

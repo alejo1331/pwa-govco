@@ -3,21 +3,27 @@
 
     .modal-header {
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
         align-items: center;
-        padding: 0 0 1rem 0;
-    
+        padding: 0 0 0 0;
+        height: 2.625rem;
+        border: none;
+
         h2 {
             margin: 0;
             color: #000000;
-            font-family: "WorkSans-Bold";
-            font-size: 1.5rem;
+            font-family: "WorkSans-Medium";
+            font-size: 1rem;
         }
-    
-        .close {
-            em {
-                color: #0061EA;
-                font-weight: bold;
+
+        .icono-close {
+            border: none;
+            background-color: #ffffff;
+
+            span {
+                content: url(../../../../../assets/icons-fonts/close_Azul.svg);
+                width: 1.5rem;
+                height: 1.5rem;
             }
         }
     }

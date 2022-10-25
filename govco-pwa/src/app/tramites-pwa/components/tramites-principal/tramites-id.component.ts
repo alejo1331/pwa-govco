@@ -6,6 +6,7 @@ import { SidenavService } from 'src/app/transversales/services/sidenav-service/s
 import { TramitesPorIdService } from '../../services/tramites-por-id-service/tramites-por-id.service';
 import { TipoEnlace, TipoAudiencia, informacionFicha } from '../../models/tramites-id-models/tramites-por-id-interface';
 import { DataBasicaPuntosInterface } from '../../models/puntos-de-atencion/data-basica-puntos-interface';
+import { AppService } from 'src/app/app.service';
 
 @Component({
   selector: 'app-tramites-id',
@@ -17,7 +18,7 @@ export class TramitesIdComponent implements OnInit {
   @ViewChild('seccionPuntoAtencion') seccionPuntoAtencion: ElementRef;
   @Input() informacionFicha: informacionFicha;
 
-  botonAtras: { url: string, estadoMenuInferior: boolean, itemMenu: number };
+  botonAtras: { url: string, tipoNavegacion: string };
   dataPuntosAtencion: DataBasicaPuntosInterface
   topScroll: HTMLElement;
   estructuraModalDesplegable: { titulo: string; icono: string }[];
@@ -30,26 +31,29 @@ export class TramitesIdComponent implements OnInit {
   activarPuntosAtecion: boolean = false;
   activarTramitesId: boolean = false;
   urlPage: string;
+  previousUrl: any;
+
 
   constructor(
     protected fichaTramiteService: TramitesPorIdService,
     protected servicioSideNav: SidenavService,
     protected servicioHeader: HeaderService,
     public bottomService: BottomMenuService,
-    private activatedRoute: ActivatedRoute
+    public appService : AppService,
+
   ) {
     this.fichaTramiteService.abrirPuntosAtencion.subscribe(
       async (data: DataBasicaPuntosInterface) => {
         await this.abrirPuntosAtencion(data);
       }
     );
+    this.previousUrl = appService.previousUrl;
   }
 
   ngOnInit(): void {
     this.botonAtras = {
-      url: '/ficha-tramites-y-servicios',
-      estadoMenuInferior: false,
-      itemMenu: 1
+      url: this.previousUrl,
+      tipoNavegacion: 'href'
     };
 
     this.estructuraModalDesplegable = [
