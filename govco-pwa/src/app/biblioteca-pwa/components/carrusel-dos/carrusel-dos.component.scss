@@ -26,17 +26,17 @@
             text-decoration: none;
             .container-img {
               position: relative;
-              overflow: hidden;
-              display: flex;
-              align-items: center;
               width: 100%;
               height: 160px;
               transition: .6s linear height !important;
-              img {
+              .img {
                 min-width: 100%;
                 min-height: 100%;
-                object-fit: cover;
-                object-position: center center;
+                -webkit-background-size: cover;
+                -moz-background-size: cover;
+                -o-background-size: cover;
+                background-size: cover;
+                background-position: center;
               }
             }
             span {
