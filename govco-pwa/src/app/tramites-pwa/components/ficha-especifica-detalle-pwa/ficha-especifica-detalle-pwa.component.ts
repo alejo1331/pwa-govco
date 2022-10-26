@@ -40,7 +40,6 @@ export class FichaEspecificaDetallePwaComponent implements OnInit {
           this.caracteresCategoria = true;
         }
       });
-
     this.urlBoton = this.data.UrlTramiteEnLinea;
     this.getIconoTramite(this.data.Tipotramite);
     this.setDataBoton(this.data.Tipotramite);
@@ -92,7 +91,7 @@ export class FichaEspecificaDetallePwaComponent implements OnInit {
   showBotonFecha() {
     this.fichaTramiteService.GetFechasByTramite(this.data.IdTramite).subscribe(
       (resp: any) => {
-        this.showBotonFechas = resp.fechasEspecificas.length > 0;
+        this.showBotonFechas = resp.length != 0 ? true: false;
       },
       (error) => console.log(error)
     );

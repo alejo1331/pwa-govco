@@ -39,7 +39,7 @@ export class TramitesIdComponent implements OnInit {
     protected servicioSideNav: SidenavService,
     protected servicioHeader: HeaderService,
     public bottomService: BottomMenuService,
-    public appService : AppService,
+    public appService: AppService,
 
   ) {
     this.fichaTramiteService.abrirPuntosAtencion.subscribe(
@@ -116,28 +116,21 @@ export class TramitesIdComponent implements OnInit {
               }
             );
           this.idTramite = Number(this.infoBasicaTramite.IdTramite);
-
           // Obtiene la URL de trámite en linea
 
-          this.fichaTramiteService
-            .GetBarraProcesoTramite(String(dataTramite.id))
-            .subscribe((res) => {
-              // debugger
-              this.infoBasicaTramite.UrlTramiteEnLinea = res.urlTramite.match(
-                /^https?:/
-              )
-                ? res.urlTramite
-                : res.urlTramite.includes('embebido') &&
-                  res.urlTramite.includes('tramites-y-servicios')
-                  ? res.urlTramite
-                  : res.urlTramite;
-              this.infoBasicaTramite.EnLinea = res.isEnlinea;
-            });
-        },
-        (error) => {
-          console.log('error', error), (this.activarTramitesId = false);
-        }, () => {
-          this.activarTramitesId = true;
+          this.fichaTramiteService.GetBarraProcesoTramite(String(dataTramite.id)).subscribe((res) => {
+            this.infoBasicaTramite.UrlTramiteEnLinea = res.urlTramite.match(/^https?:/) ?
+              res.urlTramite :
+              (res.urlTramite.includes('embebido') && res.urlTramite.includes('tramites-y-servicios')) ?
+                res.urlTramite : res.urlTramite;
+            this.infoBasicaTramite.EnLinea = res.isEnlinea;
+          },
+          (error) => {
+            console.log('error', error), (this.activarTramitesId = false);
+          }, () => {
+            this.activarTramitesId = true;
+          }
+          );
         }
       );
   }
