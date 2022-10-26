@@ -16,6 +16,7 @@ export class QuintoItemAcordeonComponent implements OnInit {
   toggleBool=true;
   selectedItemsListUrls : any = [];
   selectedItemsListNames : any = [];
+  selectedAllItems : Boolean;
 
   constructor(
     protected fichaTramiteService: TramitesPorIdService
@@ -66,12 +67,14 @@ export class QuintoItemAcordeonComponent implements OnInit {
         normas[i].checked=true;
         this.toggleBool = false;
       }
+      this.selectedAllItems = true;
     }
     else{
       for (let i=0; i < normas.length; i++){
         normas[i].checked=false;
         this.toggleBool = true;
       }
+      this.selectedAllItems = false;
     }
   }
 
@@ -95,13 +98,17 @@ export class QuintoItemAcordeonComponent implements OnInit {
     }
     else {
       let normas : any = document.getElementsByClassName('normas');
-      let normasCheck = false
+      let normasCheck = 0
       for (let i=0; i < normas.length; i++){
         if (normas[i].checked){
-          normasCheck = true;
+          normasCheck =+ 1;
         }
       }
-      if (normasCheck == false){
+      if (normasCheck < normas.length){
+        let estadoSelectorGeneral : any = document.getElementsByName('selectorGeneral')[0];
+        estadoSelectorGeneral.checked =false
+      }
+      if (normasCheck == 0){
         this.toggleBool = true;
       }
     }
@@ -112,7 +119,5 @@ export class QuintoItemAcordeonComponent implements OnInit {
     let ultimoActivo = legislacionActiva.filter('.actived:last').index();
     legislacionActiva.filter(':lt(' + (ultimoActivo + 6) + ')').addClass('actived');
   }
-
-
 
 }

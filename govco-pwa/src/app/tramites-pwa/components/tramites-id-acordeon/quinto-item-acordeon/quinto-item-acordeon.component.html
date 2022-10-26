@@ -16,7 +16,7 @@
     <tbody>
 
       <tr id='legislacionContenido' class="govco-pwa-elemento-container" *ngFor="let norma of normatividad">
-        <td style="width: 17%; height: 100%;">
+        <td style="width: 17%; height: 100%; display: flex;">
           <label class="govco-pwa-checkbox-list">
             <input class="normas govco-pwa-checkbox-list-input"
             type="checkbox"
@@ -27,7 +27,7 @@
           </label>
         </td>
         <td style="width: 63%;">
-          <div style="width: 100%;">
+          <div>
             {{norma.TipoNorma}} {{norma.NumeroNorma}} de {{norma.AnoNorma}} ({{norma.Articulos}})
           </div>
         </td>
