@@ -40,20 +40,8 @@ export class FichaEspecificaDetallePwaComponent implements OnInit {
           this.caracteresCategoria = true;
         }
       });
-    let prod: number = this.data.UrlTramiteEnLinea.indexOf('www.gov.co/tramites-y-servicios/dps');
-    let beta: number = this.data.UrlTramiteEnLinea.indexOf('beta.www.gov.co/tramites-y-servicios/dps');
 
-    if (prod > 0) {
-      this.urlBoton = 'https://www.gov.co/tramites-y-servicios/dps/consulta-estado-vinculacion/T' + this.data.IdTramite;
-    } else {
-      if (beta > 0) {
-        this.urlBoton = 'https://beta.www.gov.co/tramites-y-servicios/dps/consulta-estado-vinculacion/T' + this.data.IdTramite;
-      }
-      else {
-        this.urlBoton = this.data.UrlTramiteEnLinea;
-      }
-    }
-
+    this.urlBoton = this.data.UrlTramiteEnLinea;
     this.getIconoTramite(this.data.Tipotramite);
     this.setDataBoton(this.data.Tipotramite);
     this.showBotonFecha();
