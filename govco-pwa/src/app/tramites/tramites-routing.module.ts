@@ -8,38 +8,38 @@ import { VentanillasUnicasComponent } from './components/ficha-tramite/ventanill
 
 
 const routes: Routes = [
-  {
-    path: 'ficha-tramites-y-servicios',
-    children: [
-      {
-        path: '',
-        component: TramitesHomeComponent
-      },
-      {
-        path: 'codigos-ciiu-y-tramites',
-        component: CodigosCiiuYTramitesComponent
-      },
-      {
-        path: ':id',
-        component: GeneralComponent
-      },
-      {
-        path:  'detalle-consulta-ciiu/:idCodigo/:dpto/:municipio/:codigo',
-        loadChildren: () => import('./components/detalle-consulta-ciiu/detalle-consulta-ciiu.module').then(m => m.DetalleConsultaCiiuModule),
-        data: {
-          title: 'Detalle consulta CIIU'
-        }
-      },
-    ]
-  },
-  {
-    path: 'consulta-certificados',
-    component: ConsultaCertificadosComponent
-  },
-  {
-    path: 'ventanillas-unicas',
-    component: VentanillasUnicasComponent
-  },
+  // {
+  //   path: 'ficha-tramites-y-servicios',
+  //   children: [
+  //     {
+  //       path: '',
+  //       component: TramitesHomeComponent
+  //     },
+  //     {
+  //       path: 'codigos-ciiu-y-tramites',
+  //       component: CodigosCiiuYTramitesComponent
+  //     },
+  //     {
+  //       path: ':id',
+  //       component: GeneralComponent
+  //     },
+  //     {
+  //       path:  'detalle-consulta-ciiu/:idCodigo/:dpto/:municipio/:codigo',
+  //       loadChildren: () => import('./components/detalle-consulta-ciiu/detalle-consulta-ciiu.module').then(m => m.DetalleConsultaCiiuModule),
+  //       data: {
+  //         title: 'Detalle consulta CIIU'
+  //       }
+  //     },
+  //   ]
+  // },
+  // {
+  //   path: 'consulta-certificados',
+  //   component: ConsultaCertificadosComponent
+  // },
+  // {
+  //   path: 'ventanillas-unicas',
+  //   component: VentanillasUnicasComponent
+  // },
 ];
 
 @NgModule({
