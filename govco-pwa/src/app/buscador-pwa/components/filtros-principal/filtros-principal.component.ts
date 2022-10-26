@@ -21,10 +21,10 @@ export class FiltrosPrincipalComponent implements OnInit {
   public seccionFiltros = DATA_FILTRO_SECCIONES;
   public resultadosSubscription: Subscription;
   public resultadosBusqueda:ResultadoFiltro;
-  private filtroInicial = '';  
+  private filtroSeleccionado = '';  
   public seccion = '';
   public busqueda = '';
-  public filtersSelected:filter = {};
+  public filtrosSeleccionados:filter = {};
 
   constructor(
     protected filtrosService: FiltrosService,
@@ -32,8 +32,6 @@ export class FiltrosPrincipalComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log(this.filtersSelected);
-    console.log(this.filtersSelected['categorias']);
     this.seccion = this.filtrosService.Filters?.seccion ? this.filtrosService.Filters?.seccion : '';
     this.busqueda = this.filtrosService.Filters?.search ? this.filtrosService.Filters?.search : '';
 
@@ -47,18 +45,22 @@ export class FiltrosPrincipalComponent implements OnInit {
 
   actualizaFiltrosActivos() {
     const filtrosResultadoBusqueda = this.resultadosBusqueda.filtros[0];
-    this.seccionFiltros[this.seccion].forEach((element: { active: boolean; id: string }) => {
-      element.active = filtrosResultadoBusqueda[element.id].length > 0 ? true : false;
+    this.seccionFiltros[this.seccion].forEach((element: { active: boolean; id: string, padre:string }) => {
+      let condicionPadre = true;
+      if (element.padre) {
+        condicionPadre = this.filtrosSeleccionados[element.padre] != undefined;
+      }
+      element.active = filtrosResultadoBusqueda[element.id].length > 0 && condicionPadre;
     });
   }
 
   seleccionaFiltroNivelUno(idFiltro: string, tituloFiltro: string) {
-    this.filtroInicial = idFiltro;
+    this.filtroSeleccionado = idFiltro;
     //inicia el servicio para el filtro de segundo nivel
     this.informacionModalFiltro = {
       titulo: tituloFiltro,
       contendioModal: this.resultadosBusqueda.filtros[0][idFiltro],
-      itemSeleccionado: this.filtersSelected != null ? this.filtersSelected[idFiltro] ? 1 : 0 : 0
+      itemSeleccionado: this.filtrosSeleccionados != null ? this.filtrosSeleccionados[idFiltro] ? 1 : 0 : 0
     }
     //al final de subscribe --> servicio completo se abre el modal
     //el setTimeout simula el tiempo de consulta del servicio y una vez finalizada la consulta
@@ -77,25 +79,36 @@ export class FiltrosPrincipalComponent implements OnInit {
   }
 
   itemFiltroNivelDos(data: ContenidoModalFiltroInterface) {
-    this.filtersSelected = this.filtrosService.Filters?.filters != null ? this.filtrosService.Filters.filters : {};
-    if (this.filtroInicial == 'categorias' || this.filtroInicial == 'subCategorias') {
-      this.filtersSelected[this.filtroInicial] = { 'nombre': data.item }
+    this.filtrosSeleccionados = this.filtrosService.Filters?.filters != null ? this.filtrosService.Filters.filters : {};
+    if (this.filtroSeleccionado == 'categorias' || this.filtroSeleccionado == 'subCategorias') {
+      this.filtrosSeleccionados[this.filtroSeleccionado] = { 'nombre': data.item }
     } else {
-      this.filtersSelected[this.filtroInicial] = data.item;
+      this.filtrosSeleccionados[this.filtroSeleccionado] = data.item;
     }
 
     this.actualizarBusqueda();
   }
 
   eliminarFiltro(item:string) {
-    delete this.filtersSelected[item];
+    delete this.filtrosSeleccionados[item];
 
+    if (item == 'categorias') {
+      delete this.filtrosSeleccionados['subCategorias'];
+    } else if (item == 'anioPublicacionFiltro') {
+      delete this.filtrosSeleccionados['mesPublicacionFiltro'];
+    }
+
+    this.actualizarBusqueda();
+  }
+
+  limpiarFiltros() {
+    this.filtrosSeleccionados = {};
     this.actualizarBusqueda();
   }
 
   actualizarBusqueda() {
     this.filtrosService.Filters = {
-      filters: this.filtersSelected,
+      filters: this.filtrosSeleccionados,
       pageNumber: 1,
       pageSize: 10,
       search: this.busqueda,
