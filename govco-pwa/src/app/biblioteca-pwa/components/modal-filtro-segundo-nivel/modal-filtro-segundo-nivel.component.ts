@@ -13,8 +13,6 @@ export class ModalFiltroSegundoNivelComponent implements OnInit {
   @Input() informacionModal: InformacionModalInterface;
   @Output() itemSelected = new EventEmitter<ContenidoModalFiltroInterface>() ;
 
-  idItemSelected: string | number;
-
   searchText: string = '';
 
   constructor(public platform: Platform) { }
@@ -32,7 +30,6 @@ export class ModalFiltroSegundoNivelComponent implements OnInit {
   }
 
   itemSeleccionado(idItem: string | number, item: string) {
-    this.idItemSelected = idItem;
     this.itemSelected.emit({idItem: idItem, item: item})
     this.modalFiltro.nativeElement.classList.remove('show');
     if (this.platform.IOS || this.platform.SAFARI) {

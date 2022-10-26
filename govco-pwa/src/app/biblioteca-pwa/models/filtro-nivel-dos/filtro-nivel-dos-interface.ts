@@ -1,6 +1,7 @@
 export interface InformacionModalInterface {
     contendioModal: ContenidoModalFiltroInterface [];
-    titulo: string
+    titulo: string;
+    itemSeleccionado: number;
 }
 
 export interface ContenidoModalFiltroInterface {

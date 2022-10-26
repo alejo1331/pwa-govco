@@ -54,6 +54,26 @@
                 list-style: none;
                 padding: 8px 8px 8px 12px;
                 margin-bottom: 8px;
+                ::ng-deep app-etiqueta span {
+                    border-radius: 12px;
+                    box-shadow: none;
+                    background-color: #E6EFFD;
+                    padding: 4px 4px 4px 8px;
+                    line-height: 16px;
+                    .delete-selection {
+                        width: 16px;
+                        height: 16px;
+                        background-color: #004884;
+                        border-radius: 50%;
+                        color: #E6EFFD;
+                        font-size: 14px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        padding: 0;
+                        margin-left: 12px;
+                    }
+                }
                 a {
                     color: #000000;
                     font-family: 'WorkSans-Regular';
@@ -83,6 +103,11 @@
                         color: #BABABA;
                     }
                 }
+            }
+            li.contiene-etiqueta {
+                justify-content: space-between;
+                display: flex;
+                align-items: center;
             }
         }
     }
