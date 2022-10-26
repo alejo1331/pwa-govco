@@ -1,0 +1,27 @@
+<div class="accordion acordeon-pwa-govco" id="acordeonVentanillas">
+    <div class="card" *ngFor="let item of items; index as i;" [class.active]="item.active">
+        <div class="card-header" id="headingOne">
+            <button (click)="activarItem(i)" class="btn btn-link btn-block text-left" type="button"
+                data-toggle="collapse" [attr.data-target]="'#collapse-ventanillas' + i" aria-expanded="false"
+                [attr.aria-controls]="'collapse-ventanillas' + i">
+                <a routerLink="{{item.urlVentanillas}}">{{item.titulo}}</a>
+                <div class="caja-icono-24-pwa">
+                    <span class="icono-expand-more" type="image"
+                        alt="Expandir acordeon para ver más información"></span>
+                </div>
+            </button>
+        </div>
+        <div [id]="'collapse-ventanillas' + i" class="collapse" [attr.aria-labelledby]="'heading' + i"
+            data-parent="#acordeonVentanillas">
+            <div class="card-body contenido-pwa-govco">
+                <span>Entidad responsable: </span>
+                <p tabindex="0"> {{item.responsable}}</p>
+                <div class="linea-horizontal-2-pwa-govco"></div>
+                <div class="descripcion">
+                    <p>{{item.descripcion}}</p>
+                    <a>Leer más</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

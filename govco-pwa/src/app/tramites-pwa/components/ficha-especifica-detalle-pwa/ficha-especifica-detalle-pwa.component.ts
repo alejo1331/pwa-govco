@@ -1,6 +1,8 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { DataBasicaPuntosInterface } from '../../models/puntos-de-atencion/data-basica-puntos-interface';
 import { TramitesPorIdService } from '../../services/tramites-por-id-service/tramites-por-id.service';
+import { TipoEnlace } from '../../models/tramites-id-models/tramites-por-id-interface';
+
 
 @Component({
   selector: 'app-ficha-especifica-detalle-pwa',
@@ -8,7 +10,7 @@ import { TramitesPorIdService } from '../../services/tramites-por-id-service/tra
   styleUrls: ['./ficha-especifica-detalle-pwa.component.scss'],
 })
 export class FichaEspecificaDetallePwaComponent implements OnInit {
-  @Input() data: any;
+  @Input() data: TipoEnlace;
   @Output() abrirPuntosAtencion = new EventEmitter<DataBasicaPuntosInterface>();
 
   infoDescripcionTramite: any;
@@ -23,7 +25,7 @@ export class FichaEspecificaDetallePwaComponent implements OnInit {
 
   showBotonFechas: boolean;
 
-  constructor(protected fichaTramiteService: TramitesPorIdService) {}
+  constructor(protected fichaTramiteService: TramitesPorIdService) { }
 
   ngOnInit(): void {
     this.fichaTramiteService
@@ -38,7 +40,20 @@ export class FichaEspecificaDetallePwaComponent implements OnInit {
           this.caracteresCategoria = true;
         }
       });
-    this.urlBoton = this.data.UrlTramiteEnLinea;
+    let prod: number = this.data.UrlTramiteEnLinea.indexOf('www.gov.co/tramites-y-servicios/dps');
+    let beta: number = this.data.UrlTramiteEnLinea.indexOf('beta.www.gov.co/tramites-y-servicios/dps');
+
+    if (prod > 0) {
+      this.urlBoton = 'https://www.gov.co/tramites-y-servicios/dps/consulta-estado-vinculacion/T' + this.data.IdTramite;
+    } else {
+      if (beta > 0) {
+        this.urlBoton = 'https://beta.www.gov.co/tramites-y-servicios/dps/consulta-estado-vinculacion/T' + this.data.IdTramite;
+      }
+      else {
+        this.urlBoton = this.data.UrlTramiteEnLinea;
+      }
+    }
+
     this.getIconoTramite(this.data.Tipotramite);
     this.setDataBoton(this.data.Tipotramite);
     this.showBotonFecha();
@@ -99,7 +114,6 @@ export class FichaEspecificaDetallePwaComponent implements OnInit {
     this.fichaTramiteService
       .GetFechasByTramite(this.data.IdTramite)
       .subscribe((resp) => {
-        console.log('getFechas', resp);
         // this.showModalFechas(resp)
       });
   }

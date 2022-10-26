@@ -10,6 +10,8 @@ import { BuscadorCardTramitesComponent } from './components/buscador-card-acorde
 import { BuscadorCardEntidadesComponent } from './components/buscador-card-acordeon/buscador-card-entidades/buscador-card-entidades.component';
 import { BuscadorCardPortalesComponent } from './components/buscador-card-acordeon/buscador-card-portales/buscador-card-portales.component';
 import { BarraFiltrosComponent } from './components/barra-filtros/barra-filtros.component';
+import { BuscadorCardVentanillaComponent } from './components/buscador-card-acordeon/buscador-card-ventanilla/buscador-card-ventanilla.component';
+import { BuscadorCardEjerciciosParticipacionComponent } from './components/buscador-card-acordeon/buscador-card-ejercicios-participacion/buscador-card-ejercicios-participacion.component';
 
 
 @NgModule({
@@ -21,6 +23,8 @@ import { BarraFiltrosComponent } from './components/barra-filtros/barra-filtros.
     BuscadorCardEntidadesComponent,
     BuscadorCardPortalesComponent,
     BarraFiltrosComponent,
+    BuscadorCardVentanillaComponent,
+    BuscadorCardEjerciciosParticipacionComponent,
   ],
   imports: [
     CommonModule,
