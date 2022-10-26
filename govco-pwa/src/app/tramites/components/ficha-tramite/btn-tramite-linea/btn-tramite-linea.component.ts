@@ -28,19 +28,21 @@ export class BtnTramiteLineaComponent implements OnInit {
   }
 
   validateUrl(url: string, e: any) {
-    e.preventDefault();
-    if (!url.includes('embebido') && !url.includes('tramites-y-servicios')) {
-      this.validateUrlService.validate(url)
-        .subscribe((data: boolean) => {
-          if (data) {
-            window.open(url, "target='_blank'");
-          } else {
-            this.utilsService.openModalErrorValidateUrl();
-          }
-        });
-    } else {
-      location.href = url;
-    }
+    console.log('data btn tramite',this.data)
+
+    // e.preventDefault();
+    // if (!url.includes('embebido') && !url.includes('tramites-y-servicios')) {
+    //   this.validateUrlService.validate(url)
+    //     .subscribe((data: boolean) => {
+    //       if (data) {
+    //         window.open(url, "target='_blank'");
+    //       } else {
+    //         this.utilsService.openModalErrorValidateUrl();
+    //       }
+    //     });
+    // } else {
+    //   location.href = url;
+    // }
   }
 
   openModalAlerta(entidad: string, url: string) {
