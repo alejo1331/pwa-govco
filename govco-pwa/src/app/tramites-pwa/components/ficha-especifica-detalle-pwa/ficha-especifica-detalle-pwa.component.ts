@@ -28,7 +28,6 @@ export class FichaEspecificaDetallePwaComponent implements OnInit {
   constructor(protected fichaTramiteService: TramitesPorIdService) { }
 
   ngOnInit(): void {
-    console.log('data id ficha', this.data)
     this.fichaTramiteService
       .GetServicioYTramiteEspecifico(this.data.IdTramite)
       .subscribe((data: any) => {
@@ -115,7 +114,6 @@ export class FichaEspecificaDetallePwaComponent implements OnInit {
     this.fichaTramiteService
       .GetFechasByTramite(this.data.IdTramite)
       .subscribe((resp) => {
-        console.log('getFechas', resp);
         // this.showModalFechas(resp)
       });
   }
