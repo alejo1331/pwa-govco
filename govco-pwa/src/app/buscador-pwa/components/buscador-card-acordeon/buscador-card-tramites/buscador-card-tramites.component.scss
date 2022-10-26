@@ -1,3 +1,56 @@
+.acordeon-pwa-govco {
+    width: 100%;
+    .card {
+        width: 100%;
+        border: 2px solid #E8EFFC;
+        border-radius: 4px;
+        background-color: #FFFFFF;
+        margin: 1rem 0;
+        .card-header {
+            background-color: #FFFFFF;
+            border: 0;
+            padding: 16px;
+            h2 button {
+                padding: 0;
+                color: #004884;
+                font-size: 16px;
+                font-family: 'Montserrat-SemiBold';
+                text-decoration: none;
+                display: flex;
+                justify-content: space-between;
+                span {
+                    font-size: 32px;
+                    transition: 0.4s linear transform;
+                }
+            }
+            h2 button:focus {
+                box-shadow: none;
+            }
+        }
+        .card-header.active h2 button {
+            span {
+                display: inline;
+                transform: rotate(-180deg);
+            }
+        }
+        .card-body {
+            color: #000000;
+            font-family: 'WorkSans-Regular';
+            font-size: 14px;
+            padding: 1rem;
+        }
+    }
+    // .card.active {
+    //     background-color: #FFFFFF !important;
+    //     .card-header h2 button {
+    //         span {
+    //             display: inline;
+    //             transform: rotate(-180deg);
+    //         }
+    //     }
+    // }
+}
+
 .govco-pwa-ficha-subtitulo {
 	// padding: 0px 16px 0px 16px;
 	width: 100%;
@@ -57,7 +110,7 @@
             border-radius: 5px;
             display: flex;
             align-items: center;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
             .container-icon-detalle{
                 border-radius: 10px;
                 width: 40px;
@@ -89,6 +142,9 @@
                     font-size: 14px;
                 }
             }
+        }
+        .timeLast{
+            margin-bottom: 0px;
         }
     }
 }

@@ -1,67 +1,88 @@
-<app-buscador-card-acordeon [tramiteTitle]="titleAcordeon">
-    <div class="govco-pwa-ficha-subtitulo">
-        <div class="texto-entidad">
-            <p>Entidad responsable: <br>
-                <span [attr.aria-label]="'Entidad responsable' + data?.Entidad">{{
-                    data?.Entidad}}</span>
-            </p>
+<div class="accordion acordeon-pwa-govco" id="tramitesAcordeon">
+    <div class="card" *ngFor="let item of data; let i = index;">
+        <div class="card-header" [id]="'heading' + i">
+            <h2 class="mb-0">
+                <button (click)="activarItem(i)" class="btn btn-link btn-block text-left" type="button"
+                    data-toggle="collapse" [attr.data-target]="'#collapse' + i" aria-expanded="false"
+                    [attr.aria-controls]="'collapse' + i">
+                    {{item.titulo}}
+                    <span class="material-symbols-outlined">
+                        expand_more
+                    </span>
+                </button>
+            </h2>
         </div>
-        <div class="separador"></div>
+        <div [id]="'collapse' + i" class="collapse" [attr.aria-labelledby]="'heading' + i"
+            data-parent="#tramitesAcordeon">
+            <div class="card-body">
+                <div class="govco-pwa-ficha-subtitulo">
+                    <div class="texto-entidad">
+                        <p>Entidad responsable: <br>
+                            <span [attr.aria-label]="'Entidad responsable' + item?.otro">{{
+                                item?.otro}}</span>
+                        </p>
+                    </div>
+                    <div class="separador"></div>
+                </div>
+                <div class="container-detalle">
+                    <div class="contenido-detalle" (click)="showBotonLeer()">
+                        <p class="ficha-descripcion" tabindex="0" [attr.aria-label]="contenidoLeido"
+                            (focus)="showExpended()">
+                            <!-- {{contenidoDescripcion}} -->
+                            {{item.descripcion}}
+                            <br>
+                        </p>
+                        <a *ngIf="caracteresCategoria" class="contenido-expandido">{{nombreExpanded}}</a>
+                    </div>
+                    <div class="caracteriticas-tramite">
+                        <div class="card-detalle-tramite">
+                            <div class="container-icon-detalle">
+                                <span class="material-symbols-outlined">
+                                    {{item.enLinea == 'SI'? 'laptop_mac': 'person' }}
+                                </span>
+                            </div>
+                            <div class="container-text-detalle">
+                                <p class="tramite-type">
+                                    Tipo de trámite
+                                </p>
+                                <p class="tramite-type-detalle">
+                                    {{item.enLinea == 'SI'? 'En línea': 'Presencial' }}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="card-detalle-tramite">
+                            <div class="container-icon-detalle">
+                                <span class="material-symbols-outlined">
+                                    {{item.costo.includes('SI')? 'monetization_on': 'money_off' }}
+                                </span>
+                            </div>
+                            <div class="container-text-detalle">
+                                <p class="tramite-type">
+                                    Tiene costo?
+                                </p>
+                                <p class="tramite-type-detalle">
+                                    {{item.costo | titlecase}}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="card-detalle-tramite timeLast">
+                            <div class="container-icon-detalle">
+                                <span class="material-symbols-outlined">
+                                    schedule
+                                </span>
+                            </div>
+                            <div class="container-text-detalle">
+                                <p class="tramite-type">
+                                    Duración del proceso
+                                </p>
+                                <p class="tramite-type-detalle">
+                                    {{item?.tiempoObtencion | titlecase}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="container-detalle">
-        <div class="contenido-detalle" (click)="showBotonLeer()">
-            <p class="ficha-descripcion" tabindex="0" [attr.aria-label]="contenidoLeido" (focus)="showExpended()">
-                {{contenidoDescripcion}}
-                <br>
-            </p>
-            <a *ngIf="caracteresCategoria" class="contenido-expandido">{{nombreExpanded}}</a>
-        </div>
-        <div class="caracteriticas-tramite">
-            <div class="card-detalle-tramite">
-                <div class="container-icon-detalle">
-                    <span class="material-symbols-outlined">
-                        {{iconoTramite}}
-                    </span>
-                </div>
-                <div class="container-text-detalle">
-                    <p class="tramite-type">
-                        Tipo de trámite
-                    </p>
-                    <p class="tramite-type-detalle">
-                        {{data.Tipotramite}}
-                    </p>
-                </div>
-            </div>
-            <div class="card-detalle-tramite">
-                <div class="container-icon-detalle">
-                    <span class="material-symbols-outlined">
-                        {{iconoCosto}}
-                    </span>
-                </div>
-                <div class="container-text-detalle">
-                    <p class="tramite-type">
-                        Tiene costo?
-                    </p>
-                    <p class="tramite-type-detalle">
-                        {{infoDescripcionTramite?.Costo | titlecase}}
-                    </p>
-                </div>
-            </div>
-            <div class="card-detalle-tramite">
-                <div class="container-icon-detalle">
-                    <span class="material-symbols-outlined">
-                        schedule
-                    </span>
-                </div>
-                <div class="container-text-detalle">
-                    <p class="tramite-type">
-                        Duración del proceso
-                    </p>
-                    <p class="tramite-type-detalle">
-                        {{infoDescripcionTramite?.TiempoObtencion | titlecase}}
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-</app-buscador-card-acordeon>
+</div>
