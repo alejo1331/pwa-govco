@@ -44,7 +44,9 @@
     width: 100%;
   }
 
-  tbody tr.actived { display: inline-block; }
+  tbody tr.actived {
+    display: flex;
+  }
 
   .govco-pwa-elemento-container{
     border: 2px solid #E8EFFC;
@@ -58,6 +60,7 @@
   .govco-pwa-seguimiento-icono{
     padding: 16px;
     display: flex;
+    justify-content: flex-end;
     .govco-pwa-seguimiento-icono-background{
       height: 24px;
       width: 24px;
@@ -224,5 +227,4 @@
     cursor: pointer;
   }
 }
-
 
