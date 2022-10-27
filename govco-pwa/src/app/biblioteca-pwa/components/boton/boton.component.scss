@@ -17,14 +17,24 @@
     background-color: #FFFFFF;
 }
 
-.btn-pwa-govco:not(.symbol):focus {
+.btn-pwa-govco:not(.symbol):focus,
+.btn-pwa-govco:not(.symbol):focus-visible {
     background-color: #004884;
     border-color: #004884;
 }
 
-.btn-pwa-govco.inverted:not(.symbol):focus {
+.btn-pwa-govco:not(.symbol):focus-visible {
+    outline: 2px solid #000;
+}
+
+.btn-pwa-govco.inverted:not(.symbol):focus,
+.btn-pwa-govco.inverted:not(.symbol):focus-visible {
     border-color: #FFFFFF;
     color: #FFFFFF;
+}
+
+.btn-pwa-govco.inverted:not(.symbol):focus-visible {
+    outline: 2px solid #000;
 }
 
 .btn-pwa-govco:not(.symbol):disabled {
@@ -54,6 +64,11 @@
     border-color: #3366CC!important;
 }
 
-.btn-pwa-govco.borderBlue:focus {
+.btn-pwa-govco.borderBlue:focus,
+.btn-pwa-govco.borderBlue:focus-visible {
     border-color: #004884!important;
+}
+
+.btn-pwa-govco.borderBlue:focus-visible {
+    outline: 2px solid #000;
 }

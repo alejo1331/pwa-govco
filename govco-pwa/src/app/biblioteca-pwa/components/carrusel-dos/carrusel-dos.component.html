@@ -1,14 +1,14 @@
 <div class="container-carrusel-dos">
   <div id="carruselDosTemasInteres" class="carousel slide multi-item-carousel" data-ride="carousel" data-interval="false">
     <ol class="carousel-indicators">
-      <li data-target="#carruselDosTemasInteres" [attr.data-slide-to]="i" [class.active]="i==0" *ngFor="let item of carruselItems; let i = index"></li>
+      <li data-target="#carruselDosTemasInteres" [attr.data-slide-to]="i" [class.active]="i==0" *ngFor="let item of carruselItems; let i = index" tabindex="0"></li>
     </ol>
     <div class="carousel-inner">
       <div class="carousel-item" [class.active]="i==0" *ngFor="let item of carruselItems; let i = index">
         <div class="container-tarjeta">
           <a [href]="item.urlDestino.indexOf('portales') >= 0? '/portales' : item.urlDestino">
             <div class="container-img">
-              <img [src]="item.urlImagen" [alt]="item.titulo">
+              <div class="img" style='background-image: url("{{item.urlImagen}}");'></div>
             </div>
             <span></span>
             <div class="container-text">
