@@ -1,10 +1,10 @@
 <section #seccionTramitesId class="seccion-tramites-por-id">
-    <app-header-compartir-v1 [urlTramite]="urlPage" [titleTramite]="infoBasicaTramite" [botonAtras]="botonAtras">
+    <app-header-compartir-v1 *ngIf="activarTramitesId" [urlTramite]="urlPage" [titleTramite]="infoBasicaTramite" [botonAtras]="botonAtras">
     </app-header-compartir-v1>
     <div *ngIf="activarTramitesId" class="contenido">
-        <app-ficha-especifica-header-pwa *ngIf="infoBasicaTramite" [data]="infoBasicaTramite">
+        <app-ficha-especifica-header-pwa *ngIf="activarTramitesId" [data]="infoBasicaTramite">
         </app-ficha-especifica-header-pwa>
-        <app-ficha-especifica-detalle-pwa *ngIf="infoBasicaTramite" [data]="infoBasicaTramite"
+        <app-ficha-especifica-detalle-pwa *ngIf="activarTramitesId" [data]="infoBasicaTramite"
             (abrirPuntosAtencion)="abrirPuntosAtencion($event)">
         </app-ficha-especifica-detalle-pwa>
         <app-ficha-especifica-cards-pwa *ngIf="activarTramitesId" [infoTramite]="infoBasicaTramite" [itemid]="idTramite"
@@ -12,7 +12,7 @@
         <app-tramites-id-acordeon *ngIf="activarTramitesId" [dataAcordeon]="perfil_idTramite"
             [tramiteEnLinea]="infoBasicaTramite.EnLinea" [urlManualEnlinea]="infoBasicaTramite.UrlManualEnLinea">
         </app-tramites-id-acordeon>
-        <app-ficha-especifica-footer-pwa *ngIf="infoBasicaTramite" [data]="infoBasicaTramite">
+        <app-ficha-especifica-footer-pwa *ngIf="activarTramitesId" [data]="infoBasicaTramite">
         </app-ficha-especifica-footer-pwa>
         <app-footer></app-footer>
     </div>
