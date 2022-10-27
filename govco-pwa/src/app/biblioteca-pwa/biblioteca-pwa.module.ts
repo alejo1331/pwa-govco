@@ -18,6 +18,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { FiltroSegundoNivel } from './pipes/filtro-segundo-nivel/filtro-segundo-nivel.pipe';
 import { ModalFiltroSegundoNivelComponent } from './components/modal-filtro-segundo-nivel/modal-filtro-segundo-nivel.component';
 import { FormsModule } from '@angular/forms';
+import { DescripcionEmergenteComponent } from './components/descripcion-emergente/descripcion-emergente.component';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import { FormsModule } from '@angular/forms';
     ModalErrorUrlComponent,
     FiltroSegundoNivel,
     ModalFiltroSegundoNivelComponent,
+    DescripcionEmergenteComponent,
   ],
   imports: [
     CommonModule, 
@@ -59,6 +61,7 @@ import { FormsModule } from '@angular/forms';
     TarjetaVinculoComponent,
     ModalErrorUrlComponent,
     ModalFiltroSegundoNivelComponent,
+    DescripcionEmergenteComponent,
   ],
 })
 export class BibliotecaPwaModule {}
