@@ -48,7 +48,7 @@ export class PuntosDeAtencionComponent implements OnInit, PipeTransform {
     this.servicioHeader.estadoHeader(false, false);
     this.bottomService.putOcultandoBottomMenu(true);
     this.servicioSideNav.seleccionandoItem(false, 'null');
-    this.bottomService.ajustandoPantalla(false);
+    this.bottomService.ajustandoPantalla(true);
     this.getPuntosAtencion();
     this.iOS = this.platform.IOS || this.platform.SAFARI ? true : false;
   }
