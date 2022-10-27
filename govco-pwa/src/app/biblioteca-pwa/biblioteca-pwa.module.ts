@@ -20,7 +20,9 @@ import { ModalFiltroSegundoNivelComponent } from './components/modal-filtro-segu
 import { FormsModule } from '@angular/forms';
 import { NivelDosHeaderBuscadorComponent } from './components/nivel-dos-header-buscador/nivel-dos-header-buscador.component';
 import { NivelDosHeaderPrefiltrosComponent } from './components/nivel-dos-header-prefiltros/nivel-dos-header-prefiltros.component';
-
+import { MatChipsModule } from '@angular/material/chips';
+import { ChipComponent } from './components/chip/chip.component';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
@@ -41,13 +43,16 @@ import { NivelDosHeaderPrefiltrosComponent } from './components/nivel-dos-header
     FiltroSegundoNivel,
     ModalFiltroSegundoNivelComponent,
     NivelDosHeaderBuscadorComponent,
-    NivelDosHeaderPrefiltrosComponent
+    NivelDosHeaderPrefiltrosComponent,
+    ChipComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
     MatDialogModule,
-    FormsModule
+    FormsModule,
+    MatChipsModule,
+    MatIconModule
   ],
   exports: [
     BotonComponent,
@@ -65,7 +70,8 @@ import { NivelDosHeaderPrefiltrosComponent } from './components/nivel-dos-header
     ModalErrorUrlComponent,
     ModalFiltroSegundoNivelComponent,
     NivelDosHeaderBuscadorComponent,
-    NivelDosHeaderPrefiltrosComponent
+    NivelDosHeaderPrefiltrosComponent,
+    ChipComponent,
   ],
 })
 export class BibliotecaPwaModule {}
