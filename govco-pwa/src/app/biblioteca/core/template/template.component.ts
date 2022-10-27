@@ -14,7 +14,9 @@ export class TemplateComponent implements OnInit {
     public bottomService: BottomMenuService,
     protected servicioHeader: HeaderService,
     protected servicioSideNav: SidenavService
-  ) { }
+  ) { 
+    this.bottomService.putOcultandoBottomMenu(false);
+  }
 
   ngOnInit(): void {
     this.servicioHeader.estadoHeader(true, true);

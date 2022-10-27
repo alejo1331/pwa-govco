@@ -53,7 +53,7 @@ export class TramitesIdComponent implements OnInit {
   ngOnInit(): void {
     this.botonAtras = {
       url: this.previousUrl,
-      tipoNavegacion: 'href'
+      tipoNavegacion: 'router'
     };
 
     this.estructuraModalDesplegable = [
@@ -82,9 +82,8 @@ export class TramitesIdComponent implements OnInit {
     this.servicioHeader.estadoHeader(false, false);
     this.bottomService.putOcultandoBottomMenu(true);
     this.servicioSideNav.seleccionandoItem(false, 'null');
-    this.bottomService.ajustandoPantalla(false);
+    this.bottomService.ajustandoPantalla(true);
     this.topScroll = document.getElementById('topScroll') as HTMLElement;
-    this.topScroll.style.height = '100%';
     this.topScroll.scrollTop = 0;
     this.topScroll.style.top = '0';
 
@@ -117,19 +116,21 @@ export class TramitesIdComponent implements OnInit {
             );
           this.idTramite = Number(this.infoBasicaTramite.IdTramite);
           // Obtiene la URL de trámite en linea
-
           this.fichaTramiteService.GetBarraProcesoTramite(String(dataTramite.id)).subscribe((res) => {
-            this.infoBasicaTramite.UrlTramiteEnLinea = res.urlTramite.match(/^https?:/) ?
-              res.urlTramite :
-              (res.urlTramite.includes('embebido') && res.urlTramite.includes('tramites-y-servicios')) ?
-                res.urlTramite : res.urlTramite;
-            this.infoBasicaTramite.EnLinea = res.isEnlinea;
+            console.log('res', res)
+            if (res.urlTramite != undefined) {
+              this.infoBasicaTramite.UrlTramiteEnLinea = res.urlTramite.match(/^https?:/) ?
+                res.urlTramite :
+                (res.urlTramite.includes('embebido') && res.urlTramite.includes('tramites-y-servicios')) ?
+                  res.urlTramite : res.urlTramite;
+              this.infoBasicaTramite.EnLinea = res.isEnlinea;
+            }
           },
-          (error) => {
-            console.log('error', error), (this.activarTramitesId = false);
-          }, () => {
-            this.activarTramitesId = true;
-          }
+            (error) => {
+              console.log('error', error), (this.activarTramitesId = true);
+            }, () => {
+              this.activarTramitesId = true;
+            }
           );
         }
       );

@@ -23,13 +23,13 @@ import { BreadCrumbService } from '../../../../services/bread-crumb.service';
 export class DetalleConsultaCiiuComponent implements OnInit {
 
   codigoCiiuT: CodigoCIIU;
-  totalRegistros:number = 0;
+  totalRegistros: number = 0;
   numeroPaginas: number = 0;
-  page:number = 1;
-  count:number = 0;
+  page: number = 1;
+  count: number = 0;
   pageSize: number = 3;
-  idCodigo:number;
-  idMunicipio:string;
+  idCodigo: number;
+  idMunicipio: string;
   idDepartamento: string;
   preguntasLng: number;
   Condicionados: PreguntaTramite[];
@@ -37,13 +37,17 @@ export class DetalleConsultaCiiuComponent implements OnInit {
   request: PageRequestTramite;
 
 
-  constructor( private service: BackendApiService, private route: ActivatedRoute, protected servicioHeader: HeaderService,
+  constructor(
+    private service: BackendApiService,
+    private route: ActivatedRoute,
+    protected servicioHeader: HeaderService,
     public bottomService: BottomMenuService,
-    protected servicioSideNav: SidenavService, private breadCrumbService: BreadCrumbService) { 
-    
+    protected servicioSideNav: SidenavService, private breadCrumbService: BreadCrumbService
+  ) {
+
     this.idCodigo = Number(this.route.snapshot.paramMap.get("idCodigo"));
     this.idDepartamento = this.route.snapshot.paramMap.get("dpto")!;
-    this.idMunicipio= this.route.snapshot.paramMap.get("municipio")!;
+    this.idMunicipio = this.route.snapshot.paramMap.get("municipio")!;
 
     //Definicion del objeto request.
     let objeto = new PageRequestTramite();
@@ -51,13 +55,14 @@ export class DetalleConsultaCiiuComponent implements OnInit {
     objeto.IdDepartamento = this.idDepartamento;
     objeto.IdMunicipio = this.idMunicipio;
     this.request = objeto;
-    this.breadCrumbService.setTittleCiiu("Código CIIU "+this.route.snapshot.paramMap.get("codigo"));
+    this.breadCrumbService.setTittleCiiu("Código CIIU " + this.route.snapshot.paramMap.get("codigo"));
+    this.bottomService.putOcultandoBottomMenu(false);
   }
 
-  ngOnInit (): void {
-    this.cargarCondicionados();   
-    this.CargarCodigoCIIU(); 
-    this.cargarTotalRegistros(); 
+  ngOnInit(): void {
+    this.cargarCondicionados();
+    this.CargarCodigoCIIU();
+    this.cargarTotalRegistros();
     // servicioHeader.estadoHeader(a, b)       a -> true = header seccion internas
     //                                         a -> false = header general
     //                                         b -> Muestra/Oculta  Header
@@ -71,58 +76,58 @@ export class DetalleConsultaCiiuComponent implements OnInit {
     this.servicioHeader.estadoHeader(true, true);
     this.bottomService.seleccionandoItem(3);
     this.bottomService.ajustandoPantalla(false);
-    this.servicioSideNav.seleccionandoItem(false,'null');
+    this.servicioSideNav.seleccionandoItem(false, 'null');
     (document.getElementById('topScroll') as HTMLElement).style.top = '3.5rem';
     (document.getElementById('topScroll') as HTMLElement).scrollTop = 0;
   }
 
-  cargarTotalRegistros(){
-    this.service.TotalTramitesObligatorios(this.request).subscribe(data =>{
+  cargarTotalRegistros() {
+    this.service.TotalTramitesObligatorios(this.request).subscribe(data => {
       this.totalRegistros = data;
       this.contadorPaginas();
     });
   }
-  
-  cargarCondicionados(){
+
+  cargarCondicionados() {
     this.service.obtenerTramitesCondicionados(this.request).subscribe(data => {
       this.Condicionados = data;
       this.preguntasLng = this.Condicionados.length;
     });
   }
-  
-  CargarCodigoCIIU(){
+
+  CargarCodigoCIIU() {
     this.service.getCodigoCIIU(this.request.IdCIIU).subscribe(data => {
-      this.codigoCiiuT = data; 
+      this.codigoCiiuT = data;
     });
   }
 
-  numeroPagina(): number{
-    let pagina = this.page * this.pageSize;  
+  numeroPagina(): number {
+    let pagina = this.page * this.pageSize;
     return pagina > this.totalRegistros ? this.totalRegistros : pagina;
   }
 
-  cambiarAnterior(){
+  cambiarAnterior() {
     this.page -= 1;
   }
-  
-  cambiarSiguiente(){
+
+  cambiarSiguiente() {
     this.page += 1;
   }
-  
-  establecerPagina(pagina:number){
-    this.page=pagina;
+
+  establecerPagina(pagina: number) {
+    this.page = pagina;
   }
 
-  contadorPaginas(){
-    let divisionNormal= Math.trunc(this.totalRegistros / this.pageSize);
+  contadorPaginas() {
+    let divisionNormal = Math.trunc(this.totalRegistros / this.pageSize);
     let divisionResiduo = this.totalRegistros % this.pageSize;
-    this.numeroPaginas = divisionResiduo > 0 ? (divisionNormal+1) : divisionNormal;
+    this.numeroPaginas = divisionResiduo > 0 ? (divisionNormal + 1) : divisionNormal;
   }
 
-  createRange(number: any){
+  createRange(number: any) {
     let items: number[] = [];
-    for(let i = 1; i <= number; i++){
-       items.push(i);
+    for (let i = 1; i <= number; i++) {
+      items.push(i);
     }
     return items;
   }

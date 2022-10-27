@@ -38,7 +38,9 @@ export class LoginComponent implements OnInit {
     public bottomService: BottomMenuService,
     protected servicioHeader: HeaderService,
     protected servicioSideNav: SidenavService
-  ) { }
+  ) {
+    this.bottomService.putOcultandoBottomMenu(false);
+  }
 
   ngOnInit() {
     // servicioHeader.estadoHeader(a, b)       a -> true = header seccion internas
@@ -57,7 +59,7 @@ export class LoginComponent implements OnInit {
     this.servicioSideNav.seleccionandoItem(false, 'null');
     (document.getElementById('topScroll') as HTMLElement).style.top = '7.25rem';
     (document.getElementById('topScroll') as HTMLElement).scrollTop = 0
-    
+
     const mensaje = this.activatedRoute.snapshot.params['msg'];
     const detalle = this.activatedRoute.snapshot.params['detail'];
 

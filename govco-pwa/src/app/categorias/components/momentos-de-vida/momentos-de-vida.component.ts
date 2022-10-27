@@ -24,7 +24,9 @@ export class MomentosDeVidaComponent implements OnInit {
     protected categoriasService: CategoriasService,
     protected servicioSideNav: SidenavService,
     protected servicioHeader: HeaderService,
-    public bottomService: BottomMenuService) {
+    public bottomService: BottomMenuService
+  ) {
+    this.bottomService.putOcultandoBottomMenu(false);
   }
 
   ngOnInit(): void {
@@ -172,8 +174,8 @@ export class MomentosDeVidaComponent implements OnInit {
       } else return false
     } else return false
   }
-  
-  @HostListener('click', ['$event']) onClick(event: Event){
+
+  @HostListener('click', ['$event']) onClick(event: Event) {
     var seccionCiuu = (document.getElementsByClassName('enlace-ciiu') as HTMLCollectionOf<HTMLElement>)[0];
     var clicSeccionCiuu = (seccionCiuu.getElementsByTagName('a'))[0];
     clicSeccionCiuu.target = "_self"

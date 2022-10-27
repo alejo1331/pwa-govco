@@ -14,8 +14,11 @@ export class BottomMenuService {
   private pantalla = new BehaviorSubject<boolean>(false);
   public ajustePantalla = this.pantalla.asObservable();
 
-  private bottomMenu = new BehaviorSubject<boolean> (true);
+  private bottomMenu = new BehaviorSubject<boolean> (!false);
   public getOcultandoBottomMenu = this.bottomMenu.asObservable();
+
+  private item = new BehaviorSubject<number> (0);
+  public getItem = this.item.asObservable();
 
   LoginNotifier: Subject<null> = new Subject<null>();
 
@@ -28,6 +31,7 @@ export class BottomMenuService {
   }
 
   public async seleccionandoItem(seleccionado: number) {
+    await this.item.next(seleccionado);
     const navigation_items_elms: any = document.querySelectorAll(".navigation-bar .list-items .item");
     const navigation_pointer: any = document.querySelector(".navigation-bar .pointer");
 

@@ -39,6 +39,7 @@ export class HomePrincipalComponent implements OnInit {
         this.dataFichaTramite();
       }
     })
+    this.bottomService.putOcultandoBottomMenu(false);
   }
 
   ngOnInit(): void {

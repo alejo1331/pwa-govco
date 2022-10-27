@@ -31,7 +31,9 @@ export class SobreNosotrosComponent implements OnInit {
     protected servicioSideNav: SidenavService,
     protected servicioHeader: HeaderService,
     public bottomService: BottomMenuService
-  ) { }
+  ) { 
+    this.bottomService.putOcultandoBottomMenu(false);
+  }
 
   ngOnInit(): void {
     this.servicioHeader.estadoHeader(true,true);

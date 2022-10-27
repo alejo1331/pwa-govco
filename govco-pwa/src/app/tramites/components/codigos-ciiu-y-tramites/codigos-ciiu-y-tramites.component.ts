@@ -22,7 +22,9 @@ export class CodigosCiiuYTramitesComponent implements OnInit {
     public bottomService: BottomMenuService,
     protected servicioSideNav: SidenavService,
     private serviciosService: ServiciosService
-    ) { }
+  ) {
+    this.bottomService.putOcultandoBottomMenu(false);
+  }
 
   ngOnInit(): void {
     // servicioHeader.estadoHeader(a, b)       a -> true = header seccion internas
@@ -38,7 +40,7 @@ export class CodigosCiiuYTramitesComponent implements OnInit {
     this.servicioHeader.estadoHeader(true, true);
     this.bottomService.seleccionandoItem(3);
     this.bottomService.ajustandoPantalla(false);
-    this.servicioSideNav.seleccionandoItem(false,'null');
+    this.servicioSideNav.seleccionandoItem(false, 'null');
     (document.getElementById('topScroll') as HTMLElement).style.top = '3.5rem';
     (document.getElementById('topScroll') as HTMLElement).scrollTop = 0;
 

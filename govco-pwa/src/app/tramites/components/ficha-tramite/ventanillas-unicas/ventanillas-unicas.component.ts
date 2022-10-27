@@ -36,13 +36,14 @@ export class VentanillasUnicasComponent implements OnInit {
   ) {
     this.parametroBuscador = '';
     localStorage.removeItem('categorias');
+    this.bottomService.putOcultandoBottomMenu(false);
   }
 
   ngOnInit(): void {
-    this.servicioHeader.estadoHeader(false,true);
+    this.servicioHeader.estadoHeader(false, true);
     this.bottomService.seleccionandoItem(1);
     this.bottomService.ajustandoPantalla(false);
-    this.servicioSideNav.seleccionandoItem(false,'null');
+    this.servicioSideNav.seleccionandoItem(false, 'null');
     (document.getElementById('topScroll') as HTMLElement).style.top = '7.25rem';
     (document.getElementById('topScroll') as HTMLElement).scrollTop = 0;
     this.parametroBuscador = '';
@@ -66,7 +67,7 @@ export class VentanillasUnicasComponent implements OnInit {
     this.setMetaDescription("Listado de ventanillas electrónicas que gestionan de manera integrada trámites administrativos de dos o más entidades del Estado, bajo una misma finalidad, para atender a los colombianos.");
     this.setMetaTitle("Ventanillas Únicas | GOV.CO");
   }
-  
+
   setTitle(newTitle: string) {
     this.titleService.setTitle(newTitle);
   }
@@ -78,8 +79,8 @@ export class VentanillasUnicasComponent implements OnInit {
   setMetaDescription(desc: string) {
     this.meta.updateTag({ name: 'description', content: desc })
   }
-  
-  public govcoBuscadorCompleted(valor:any) {
+
+  public govcoBuscadorCompleted(valor: any) {
     let dataBuscador = valor.detail;
     if (dataBuscador.tipoEvento != 0) {
       this.listSedes = false;

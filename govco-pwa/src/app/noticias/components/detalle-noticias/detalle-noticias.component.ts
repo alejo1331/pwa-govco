@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener} from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NoticiasServiceService } from 'src/app/noticias/services/noticias-service/noticias-service.service';
 import { NoticiaPublicadaModel } from 'src/app/noticias/models/noticiaPublicadaModel';
@@ -12,7 +12,7 @@ import { BottomMenuService } from 'src/app/transversales/services/bottom-menu/bo
   styleUrls: ['./detalle-noticias.component.scss']
 })
 export class DetalleNoticiasComponent implements OnInit {
-  public idRecurso: string ;
+  public idRecurso: string;
   noticiasError: boolean = false;
   loadingInfo: boolean = true;
   noticia: NoticiaPublicadaModel;
@@ -23,7 +23,10 @@ export class DetalleNoticiasComponent implements OnInit {
     private noticiasService: NoticiasServiceService,
     protected servicioSideNav: SidenavService,
     protected servicioHeader: HeaderService,
-    public bottomService: BottomMenuService) { }
+    public bottomService: BottomMenuService
+  ) {
+    this.bottomService.putOcultandoBottomMenu(false);
+  }
 
   ngOnInit() {
     this.activatedRoute.url.subscribe(() => {

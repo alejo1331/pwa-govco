@@ -31,7 +31,9 @@ export class RegistroComponent implements OnInit, OnDestroy {
     public bottomService: BottomMenuService,
     protected servicioHeader: HeaderService,
     protected servicioSideNav: SidenavService
-    ) { }
+  ) {
+    this.bottomService.putOcultandoBottomMenu(false);
+  }
 
   ngOnInit() {
     // servicioHeader.estadoHeader(a, b)       a -> true = header seccion internas

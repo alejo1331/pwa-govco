@@ -51,6 +51,7 @@ export class ActualidadPrincipalComponent implements OnInit {
     public bottomService: BottomMenuService
   ) {
     this.iniciarFiltro();
+    this.bottomService.putOcultandoBottomMenu(false);
   }
 
   ngOnInit() {

@@ -20,7 +20,9 @@ export class ServiciosParaEntidadesComponent implements OnInit {
   constructor(private serviciosService: ServiciosService,
     protected servicioSideNav: SidenavService,
     protected servicioHeader: HeaderService,
-    public bottomService: BottomMenuService) {
+    public bottomService: BottomMenuService
+  ) {
+    this.bottomService.putOcultandoBottomMenu(false);
   }
 
   ngOnInit() {
@@ -36,11 +38,11 @@ export class ServiciosParaEntidadesComponent implements OnInit {
     //                                                 consultada no tiene header
     this.servicioHeader.estadoHeader(true, true);
     this.bottomService.seleccionandoItem(0);
-    this.servicioSideNav.seleccionandoItem(true,'serviciosEntidades');
+    this.servicioSideNav.seleccionandoItem(true, 'serviciosEntidades');
     this.bottomService.ajustandoPantalla(false);
     (document.getElementById('topScroll') as HTMLElement).style.top = '3.5rem';
     (document.getElementById('topScroll') as HTMLElement).scrollTop = 0;
-    
+
     this.serviciosService.getTitleAndDescription(this.codigo)
       .subscribe((resp) => {
         this.title = resp.data.titulo;
@@ -49,9 +51,9 @@ export class ServiciosParaEntidadesComponent implements OnInit {
       })
   }
 
-  salir(evento: any){
+  salir(evento: any) {
     try {
-      if(evento.key === 'Escape'){
+      if (evento.key === 'Escape') {
         document.getElementById('salir-seccion-hacer')?.focus()
       }
     } catch (error) {

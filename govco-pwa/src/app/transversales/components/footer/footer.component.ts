@@ -39,7 +39,9 @@ export class FooterComponent implements OnInit {
     protected servicioSideNav: SidenavService,
     protected servicioHeader: HeaderService,
     public bottomService: BottomMenuService
-  ) { }
+  ) {
+    this.bottomService.putOcultandoBottomMenu(false);
+  }
 
   ngOnInit(): void {
 
@@ -69,13 +71,13 @@ export class FooterComponent implements OnInit {
   onClick() {
     setTimeout(() => {
       this.estadoAccordionOne = String(document.getElementById('accordionPanelOne')?.getAttribute('aria-expanded'));
-    this.marginAccordionOne = (this.estadoAccordionOne?.toLowerCase() === 'true');
+      this.marginAccordionOne = (this.estadoAccordionOne?.toLowerCase() === 'true');
 
-    this.estadoAccordionTwo = String(document.getElementById('accordionPanelTwo')?.getAttribute('aria-expanded'));
-    this.marginAccordionTwo = (this.estadoAccordionTwo?.toLowerCase() === 'true');
+      this.estadoAccordionTwo = String(document.getElementById('accordionPanelTwo')?.getAttribute('aria-expanded'));
+      this.marginAccordionTwo = (this.estadoAccordionTwo?.toLowerCase() === 'true');
 
-    this.estadoAccordionThree = String(document.getElementById('accordionPanelThree')?.getAttribute('aria-expanded'));
-    this.marginAccordionThree = (this.estadoAccordionThree?.toLowerCase() === 'true');
+      this.estadoAccordionThree = String(document.getElementById('accordionPanelThree')?.getAttribute('aria-expanded'));
+      this.marginAccordionThree = (this.estadoAccordionThree?.toLowerCase() === 'true');
     }, 5);
   }
 

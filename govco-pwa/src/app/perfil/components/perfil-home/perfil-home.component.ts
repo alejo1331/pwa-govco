@@ -12,15 +12,17 @@ import { PerfilService } from '../../../transversales/services/perfil/perfil.ser
 })
 export class PerfilHomeComponent implements OnInit {
 
-  userData : any;
-  userName : string;
+  userData: any;
+  userName: string;
 
   constructor(
     protected servicioHeader: HeaderService,
     public bottomService: BottomMenuService,
     protected servicioSideNav: SidenavService,
     public perfilService: PerfilService
-  ) { }
+  ) {
+    this.bottomService.putOcultandoBottomMenu(false);
+  }
 
   ngOnInit() {
     this.servicioHeader.estadoHeader(false, true);
@@ -32,7 +34,7 @@ export class PerfilHomeComponent implements OnInit {
 
     this.userData = this.perfilService.checkLoginUser()
     this.userData = JSON.parse(this.userData)
-    if (this.userData){
+    if (this.userData) {
       let name = this.userData.PrimerNombre.charAt(0) + this.userData.PrimerNombre.slice(1).toLowerCase();
       let surname = this.userData.PrimerApellido.charAt(0) + this.userData.PrimerApellido.slice(1).toLowerCase();
       this.userName = name + ' ' + surname

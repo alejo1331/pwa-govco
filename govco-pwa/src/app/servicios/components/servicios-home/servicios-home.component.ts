@@ -29,6 +29,7 @@ export class ServiciosHomeComponent implements OnInit {
   ) {
     this.anteriorUrl = appService.currentUrl;
     this.itemSelected = appService.getSelectedServiceOption();
+    this.bottomService.putOcultandoBottomMenu(false);
    }
 
   ngOnInit() {
