@@ -6,7 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./buscador-nivel-dos.component.scss']
 })
 export class BuscadorNivelDosComponent implements OnInit {
-
   constructor() { }
 
   ngOnInit() {
