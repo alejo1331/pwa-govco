@@ -12,6 +12,7 @@ import { BuscadorCardPortalesComponent } from './components/buscador-card-acorde
 import { BarraFiltrosComponent } from './components/barra-filtros/barra-filtros.component';
 import { BuscadorCardVentanillaComponent } from './components/buscador-card-acordeon/buscador-card-ventanilla/buscador-card-ventanilla.component';
 import { BuscadorCardEjerciciosParticipacionComponent } from './components/buscador-card-acordeon/buscador-card-ejercicios-participacion/buscador-card-ejercicios-participacion.component';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { BuscadorCardEjerciciosParticipacionComponent } from './components/busca
     CommonModule,
     BuscadorPwaRoutingModule,
     BibliotecaPwaModule,
+    NgxSkeletonLoaderModule,
 
   ],
   exports:[ 

@@ -14,12 +14,12 @@
         background-color: #fff;
         border: 1px solid rgba(0, 0, 0, .125);
         border-radius: 1.25rem;
-        padding: 1.5rem 1rem;
         display: flex;
         flex-direction: column;
         max-height: 100%;
 
         .form-group {
+            margin: 20px 16px 10px 16px;
 
             label {
                 margin-bottom: .625rem;
@@ -59,13 +59,14 @@
         .listado {
             overflow-y: auto;
             overflow-x: hidden;
+            margin-bottom: 24px;
 
             .item {
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                height: 3rem;
                 margin: 0;
+                padding: 13px 16px 14px 16px;
 
                 p {
                     margin: 0;
@@ -78,11 +79,12 @@
                     height: 22px;
                     outline-color: #ffffff;
                     content: url(../../../../assets/icons-fonts/radio_button_unchecked.svg);
+                    margin-left: 20px;
                 }
             }
 
             .item.active {
-                background-color: #ffffff !important;
+                background-color: #E8EFFC !important;
 
                 .radio-button {
                     outline-color: #ffffff;

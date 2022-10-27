@@ -17,7 +17,7 @@ export class BuscadorPrincipalComponent implements OnInit {
   resultadosBusqueda: ResultadoFiltro;
 
   public busqueda = 'empresa de servicios publicos aguas y aseo de el penol aap';
-  public seccion = 'noticia';
+  public seccion = 'tramite';
 
   constructor(
     protected filtrosService: FiltrosService,
