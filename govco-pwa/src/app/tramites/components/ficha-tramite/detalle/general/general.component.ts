@@ -29,13 +29,15 @@ export class GeneralComponent implements OnInit {
     public bottomService: BottomMenuService,
     protected servicioHeader: HeaderService,
     protected servicioSideNav: SidenavService
-  ) { }
+  ) {
+    this.bottomService.putOcultandoBottomMenu(false);
+  }
 
   ngOnInit(): void {
-    this.servicioHeader.estadoHeader(false,true);
+    this.servicioHeader.estadoHeader(false, true);
     this.bottomService.seleccionandoItem(1);
     this.bottomService.ajustandoPantalla(false);
-    this.servicioSideNav.seleccionandoItem(false,'null');
+    this.servicioSideNav.seleccionandoItem(false, 'null');
     (document.getElementById('topScroll') as HTMLElement).style.top = '7.25rem';
     (document.getElementById('topScroll') as HTMLElement).scrollTop = 0;
 
@@ -52,7 +54,7 @@ export class GeneralComponent implements OnInit {
 
     let idTramiteTemp = parametroid;
 
-    if ( parametroid !== 'embebido' ) {
+    if (parametroid !== 'embebido') {
       this.tramite.id = parametroid.substring(1);
       this.tramite.prefijo = parametroid.substring(0, 1).toLowerCase();
 
@@ -64,9 +66,9 @@ export class GeneralComponent implements OnInit {
 
       if (idTramiteTemp != null && idTramiteTemp != 'null') {
         this.fichaTramiteService.GetTipoFichaTramite(idTramiteTemp)
-        .subscribe( data => {
-          this.tramite.tipo = data.StatusCode;
-        });
+          .subscribe(data => {
+            this.tramite.tipo = data.StatusCode;
+          });
       }
 
     } else {

@@ -31,16 +31,18 @@ export class PortalesComponent implements OnInit {
     public bottomService: BottomMenuService,
     protected servicioHeader: HeaderService,
     protected servicioSideNav: SidenavService,
-    ) { }
+  ) {
+    this.bottomService.putOcultandoBottomMenu(false);
+  }
 
   ngOnInit(): void {
-    this.servicioHeader.estadoHeader(false,true);
+    this.servicioHeader.estadoHeader(false, true);
     this.bottomService.seleccionandoItem(0);
     this.bottomService.ajustandoPantalla(false);
-    this.servicioSideNav.seleccionandoItem(false,'null');
+    this.servicioSideNav.seleccionandoItem(false, 'null');
     (document.getElementById('topScroll') as HTMLElement).style.top = '7.25rem';
     (document.getElementById('topScroll') as HTMLElement).scrollTop = 0;
-    
+
     this.parametroBuscador = '';
     this.portalesData();
   }
@@ -77,7 +79,7 @@ export class PortalesComponent implements OnInit {
       this.govcoBuscadorCompleted(valor);
     });
   }
-  public govcoBuscadorCompleted(valor:any) {
+  public govcoBuscadorCompleted(valor: any) {
     let dataBuscador = valor.detail;
     if (dataBuscador.tipoEvento != 0) {
       this.listSedes = false;
@@ -85,7 +87,7 @@ export class PortalesComponent implements OnInit {
       this.listSedes = true;
     }
   }
-  public onPaginatorChange(number:any) {
+  public onPaginatorChange(number: any) {
     this.page = number;
     this.pagina = number.toString();
     this.portalesData();
@@ -103,13 +105,13 @@ export class PortalesComponent implements OnInit {
     if (this.count > this.pageSize) {
       this.itemMin = (this.page * this.pageSize) - (this.pageSize - 1);
       const max = this.page * this.pageSize;
-      this.itemMax = max > this.count ? this.count : max;      
+      this.itemMax = max > this.count ? this.count : max;
     }
   }
 
-  public openLink(url:string){
-    this.validarUrlService.validate(url).subscribe( resp => {
-      if(resp){ window.open(url, "target='_blank'");}       
+  public openLink(url: string) {
+    this.validarUrlService.validate(url).subscribe(resp => {
+      if (resp) { window.open(url, "target='_blank'"); }
     });
   }
 

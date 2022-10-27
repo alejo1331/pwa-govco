@@ -325,11 +325,7 @@ export class AppComponent implements OnInit, AfterContentChecked {
       this.touchMoveFinal = event.changedTouches[0].screenY;
       if (this.platform.IOS || this.platform.SAFARI) {
         this.touchMoveInicial = posicionInicial;
-        this.appGeolocalizacion = (
-          document.getElementsByClassName(
-            'barra-geolocalizacion-pwa-govco'
-          ) as HTMLCollectionOf<HTMLElement>
-        )[0].style;
+        this.appGeolocalizacion = barraGeolocalizador.style;
         this.appGeolocalizacion.position = 'sticky';
       }
       this.appGeolocalizacion.transition = '0.6s';

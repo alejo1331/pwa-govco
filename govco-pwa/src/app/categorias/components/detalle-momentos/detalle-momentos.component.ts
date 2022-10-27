@@ -27,7 +27,10 @@ export class DetalleMomentosComponent implements OnInit {
     private activatedRouter: ActivatedRoute,
     protected servicioSideNav: SidenavService,
     protected servicioHeader: HeaderService,
-    public bottomService: BottomMenuService) {
+    public bottomService: BottomMenuService
+  ) {
+    this.bottomService.putOcultandoBottomMenu(false);
+
   }
 
   ngOnInit(): void {
@@ -78,7 +81,7 @@ export class DetalleMomentosComponent implements OnInit {
     console.log('evento', event.target)
     var verMasNoticias: HTMLElement = document.querySelector('.btn.btn-round.link-see-more') as HTMLElement;
     if (event.target == verMasNoticias) {
-      verMasNoticias.setAttribute('href','/noticias')
+      verMasNoticias.setAttribute('href', '/noticias')
     }
   }
 }

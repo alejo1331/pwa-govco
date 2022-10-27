@@ -10,7 +10,7 @@ import { SidenavService } from 'src/app/transversales/services/sidenav-service/s
 })
 export class CajaHerramientasComponent implements OnInit {
 
-  listPortal:any[] = [
+  listPortal: any[] = [
     {
       img: 'https://govco-prod-webutils.s3.amazonaws.com/uploads/2021-07-16/059689e0-e99d-4abd-bca3-349aa9e5be07-GOV.CO1.jpg',
       url: 'https://xd.adobe.com/view/a03bc891-9002-415e-b2b1-f34200d55502-f568/?fullscreen',
@@ -25,7 +25,7 @@ export class CajaHerramientasComponent implements OnInit {
     }
   ];
 
-  listServicios:any[] = [
+  listServicios: any[] = [
     {
       img: 'https://govco-prod-webutils.s3.amazonaws.com/uploads/2021-07-16/2e36cf79-4632-4c9a-a2d0-4cb672d06137-SCD1.jpg',
       url: 'https://xd.adobe.com/view/8075636c-3e86-494c-8863-1295c8ce78a5-d526/?fullscreen',
@@ -52,22 +52,24 @@ export class CajaHerramientasComponent implements OnInit {
     },
   ];
 
-  dataVideo:any = {
+  dataVideo: any = {
     urlVideo: 'https://youtu.be/zDoCNDwZsxY',
     title: 'Conozca la Carpeta Ciudadana Digital y resuelva sus trámites y servicios ciudadanos',
     description: 'Encuentre los documentos resultados de sus interacciones con el Estado colombiano en un solo lugar.'
-}
+  }
 
   constructor(
     protected servicioSideNav: SidenavService,
     protected servicioHeader: HeaderService,
     public bottomService: BottomMenuService
-  ) { }
+  ) {
+    this.bottomService.putOcultandoBottomMenu(false);
+  }
 
   ngOnInit(): void {
     this.servicioHeader.estadoHeader(true, true);
     this.bottomService.seleccionandoItem(0);
-    this.servicioSideNav.seleccionandoItem(true,'serviciosEntidades');
+    this.servicioSideNav.seleccionandoItem(true, 'serviciosEntidades');
     this.bottomService.ajustandoPantalla(false);
     (document.getElementById('topScroll') as HTMLElement).style.top = '3.5rem';
     (document.getElementById('topScroll') as HTMLElement).scrollTop = 0

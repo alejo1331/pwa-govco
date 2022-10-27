@@ -23,7 +23,8 @@ export class TramitesHomeComponent implements OnInit {
     protected servicioSideNav: SidenavService,
     private breadCrumbService: BreadCrumbService
   ) {
-    this.anteriorUrl = appService.currentUrl
+    this.anteriorUrl = appService.currentUrl;
+    this.bottomService.putOcultandoBottomMenu(false);
   }
 
   ngOnInit() {
@@ -37,10 +38,10 @@ export class TramitesHomeComponent implements OnInit {
     //bottomService.ajustandoPantalla(true)    true -> Agrega clase de css para ajustar 
     //                                                 la pantalla cuando en la seccion  
     //                                                 consultada no tiene header
-    this.servicioHeader.estadoHeader(false,true);
+    this.servicioHeader.estadoHeader(false, true);
     this.bottomService.seleccionandoItem(1);
     this.bottomService.ajustandoPantalla(false);
-    this.servicioSideNav.seleccionandoItem(false,'null');
+    this.servicioSideNav.seleccionandoItem(false, 'null');
     (document.getElementById('topScroll') as HTMLElement).style.top = '7.25rem';
     (document.getElementById('topScroll') as HTMLElement).scrollTop = 0;
 

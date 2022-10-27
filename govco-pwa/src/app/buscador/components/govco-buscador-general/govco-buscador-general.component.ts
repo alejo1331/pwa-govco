@@ -24,7 +24,9 @@ export class BuscadorGeneralComponent implements OnInit {
     protected servicioSideNav: SidenavService,
     protected servicioHeader: HeaderService,
     public bottomService: BottomMenuService
-  ) { }
+  ) {
+    this.bottomService.putOcultandoBottomMenu(false);
+   }
 
   ngOnInit() {
     this.servicioHeader.estadoHeader(true, true);

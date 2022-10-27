@@ -29,8 +29,9 @@ export class EntidadesEstadoComponent implements OnInit {
   constructor(private serviceEntidades:EntidadesService,
     protected servicioSideNav: SidenavService,
     protected servicioHeader: HeaderService,
-    public bottomService: BottomMenuService) {
-
+    public bottomService: BottomMenuService
+    ) {
+    this.bottomService.putOcultandoBottomMenu(false);
   }
 
   ngOnInit() {

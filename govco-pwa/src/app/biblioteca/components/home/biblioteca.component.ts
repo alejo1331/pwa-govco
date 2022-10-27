@@ -35,7 +35,9 @@ export class BibliotecaComponent implements OnInit {
     protected servicioSideNav: SidenavService,
     protected servicioHeader: HeaderService,
     public bottomService: BottomMenuService
-  ) { }
+  ) { 
+    this.bottomService.putOcultandoBottomMenu(false);
+  }
 
   ngOnInit() {
     // servicioHeader.estadoHeader(a, b)       a -> true = header seccion internas
