@@ -510,3 +510,8 @@ select-search-1 a,
   position: fixed;
   overflow: hidden;
 }
+
+.fixed {
+  position: fixed !important;
+  transition: 0s !important;
+}

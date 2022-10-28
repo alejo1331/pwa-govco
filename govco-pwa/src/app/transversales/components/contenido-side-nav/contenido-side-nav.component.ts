@@ -10,7 +10,6 @@ import { SidenavService } from '../../services/sidenav-service/sidenav-service.s
 })
 export class ContenidoSideNavComponent implements OnInit, AfterViewInit {
 
-  @Output() efectoTransicion = new EventEmitter<boolean>();
   @Output() outEstadoMenu = new EventEmitter<boolean>();
   estadoMenu: boolean = false;
   navigation_items_elms: any;
@@ -67,9 +66,6 @@ export class ContenidoSideNavComponent implements OnInit, AfterViewInit {
   }
 
   @HostListener('click') onClick() {
-    this.servicioHeader.ocultandoHeader.subscribe(([estilo, estado]) => {
-      this.efectoTransicion.emit(estilo);
-    })
     this.bottomService.seleccionandoItem(0);
   }
 }

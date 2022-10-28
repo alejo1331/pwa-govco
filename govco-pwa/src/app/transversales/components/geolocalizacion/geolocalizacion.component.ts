@@ -1,8 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { MunicipioInterface } from '../../models/geolocalizacion/municipio-interface';
 import { GeolocalizacionService } from '../../services/geolocalizacion/geolocalizacion.service';
 import { HeaderService } from '../../services/header-service/header.service';
-import { GeolocalizacionFormularioComponent } from '../geolocalizacion-formulario/geolocalizacion-formulario.component';
 
 @Component({
   selector: 'app-geolocalizacion',
@@ -11,7 +10,7 @@ import { GeolocalizacionFormularioComponent } from '../geolocalizacion-formulari
 })
 export class GeolocalizacionComponent implements OnInit {
 
-  @ViewChild(GeolocalizacionFormularioComponent) openFormularioGeolocalizacion: any;
+  @ViewChild('contenidoHtml') contenidoHtml: ElementRef;
 
   ubicacionMunicipio: string;
   ocultar: boolean = false;
