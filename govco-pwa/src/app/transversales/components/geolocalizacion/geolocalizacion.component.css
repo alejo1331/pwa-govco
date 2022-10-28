@@ -1,9 +1,13 @@
-.barra-geolocalizacion-pwa-govco{
+.barra-geolocalizacion-pwa-govco {
     height: 2.25em;
+    width: 100%;
     background-color: #E6EFFD;
     display: flex;
     align-items: center;
     z-index: 4;
+    position: -webkit-sticky;
+    position: sticky;
+    transition: 0.6s ease;
 }
 
 .geolocalizacion-pwa-govco-icon {
@@ -24,4 +28,3 @@
 .caja-icono-pwa-govco {
     margin-left: 1.75em;
 }
-

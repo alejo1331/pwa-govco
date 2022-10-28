@@ -1,8 +1,8 @@
-import { Component, HostListener, ViewChild, OnInit, AfterContentChecked, ElementRef, } from '@angular/core';
+import { Component, HostListener, ViewChild, OnInit, AfterContentChecked, ElementRef, ViewChildren, QueryList } from '@angular/core';
 import { MatSidenav, MatSidenavContent } from '@angular/material/sidenav';
 import { SidenavService } from './transversales/services/sidenav-service/sidenav-service.service';
 import { AppService } from './app.service';
-import { Router, NavigationEnd } from '@angular/router';
+import { Router, NavigationEnd, RouterLinkActive } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { BarraSuperiorComponent } from './transversales/components/barra-superior/barra-superior.component';
 import { HeaderService } from './transversales/services/header-service/header.service';
@@ -21,6 +21,9 @@ import { Observable } from 'rxjs';
 import { UsuarioModel } from './transversales/models/auth/usuario.model';
 import { UsuarioLoginModel } from './transversales/models/auth/usuarioLogin.model';
 import { AuthService } from './transversales/services/auth/auth.service';
+import { GeolocalizacionComponent } from './transversales/components/geolocalizacion/geolocalizacion.component';
+import { HtmlAstPath } from '@angular/compiler';
+
 
 export interface OAuthErrorEventParams {
   error: string;
@@ -33,7 +36,7 @@ export interface OAuthErrorEventParams {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent implements OnInit, AfterContentChecked {
+export class AppComponent implements OnInit, AfterContentChecked, AfterContentChecked {
   isAuthenticated: Observable<boolean>;
   isDoneLoading: Observable<boolean>;
   canActivateProtectedRoutes: Observable<boolean>;
@@ -43,16 +46,16 @@ export class AppComponent implements OnInit, AfterContentChecked {
   @ViewChild('sidenav') sidenav!: MatSidenav;
   @ViewChild(MatSidenavContent) sidenavcontent!: MatSidenavContent;
   @ViewChild(BarraSuperiorComponent) barraSuperior: BarraSuperiorComponent;
-  @ViewChild(GeolocalizacionFormularioComponent) formularioGeolocalizador: any;
-
+  @ViewChild(GeolocalizacionFormularioComponent) formularioGeolocalizador: GeolocalizacionFormularioComponent;
+  @ViewChild(GeolocalizacionComponent) GeolocalizacionComponent: GeolocalizacionComponent;
+  @ViewChild('formulario') appGeolocalizacionFormulario: ElementRef;
 
   barraSuperiorGeneral: boolean = true;
   statusMenu: boolean = false;
   cambiarEstilo: boolean = false;
 
   matSidenavContent: any;
-  appGeolocalizacion: any;
-  appGeolocalizacionFormulario: any;
+  appGeolocalizacion: HTMLElement;
 
   touchMoveInicial: number = 0;
   touchMoveFinal: number = 0;
@@ -193,21 +196,7 @@ export class AppComponent implements OnInit, AfterContentChecked {
   }
 
   ngOnInit(): void {
-    this.appGeolocalizacion = (
-      document.getElementsByTagName(
-        'app-geolocalizacion'
-      ) as HTMLCollectionOf<HTMLElement>
-    )[0].style;
-    this.appGeolocalizacionFormulario = (
-      document.getElementsByTagName(
-        'app-geolocalizacion-formulario'
-      ) as HTMLCollectionOf<HTMLElement>
-    )[0].style;
-    this.matSidenavContent = (
-      document.getElementsByTagName(
-        'mat-sidenav-container'
-      ) as HTMLCollectionOf<HTMLElement>
-    )[0].style;
+
   }
 
   loadUserProfile(): void {
@@ -302,67 +291,89 @@ export class AppComponent implements OnInit, AfterContentChecked {
   }
 
   formularioGeolocalizacion(modalAndContect: string[]) {
-    this.appGeolocalizacionFormulario.transition = '0.6s';
-    this.appGeolocalizacionFormulario.transform = modalAndContect[0];
-    this.matSidenavContent.transition = '0.6s';
+    this.appGeolocalizacionFormulario.nativeElement.style.transform = modalAndContect[0];
     this.matSidenavContent.transform = modalAndContect[1];
     this.formularioGeolocalizador.abrirFormulario();
   }
 
-  estadoEfectoTransicion(estilo: boolean) {
-    this.appGeolocalizacion.transition = '0s';
-    this.appGeolocalizacion.top = '0em';
+  @HostListener('window:load') onLoad() {
+    if (this.GeolocalizacionComponent != undefined) {
+      this.appGeolocalizacion = this.GeolocalizacionComponent.contenidoHtml.nativeElement;
+    }
+    this.matSidenavContent = (
+      document.getElementsByTagName('mat-sidenav-container') as HTMLCollectionOf<HTMLElement>
+    )[0].style;
   }
 
   @HostListener('touchstart', ['$event']) onTouchStart(event: any): void {
     this.touchMoveInicial = event.changedTouches[0].screenY;
+    if (this.appGeolocalizacion != undefined) {
+      this.router.url == '/buscar-pwa' ?
+        (this.appGeolocalizacion.removeAttribute('style'),
+          this.appGeolocalizacion.classList.add('fixed'))
+        : this.appGeolocalizacion.classList.remove('fixed')
+    }
   }
 
   @HostListener('touchmove', ['$event']) onTouchMove(event: any): void {
-    let barraGeolocalizador: HTMLElement = (document.getElementsByClassName('barra-geolocalizacion-pwa-govco') as HTMLCollectionOf<HTMLElement>)[0];
-    if (barraGeolocalizador != undefined) {
-      const posicionInicial = this.touchMoveInicial;
-      this.touchMoveFinal = event.changedTouches[0].screenY;
-      if (this.platform.IOS || this.platform.SAFARI) {
-        this.touchMoveInicial = posicionInicial;
-        this.appGeolocalizacion = barraGeolocalizador.style;
-        this.appGeolocalizacion.position = 'sticky';
-      }
-      this.appGeolocalizacion.transition = '0.6s';
-      if (this.touchMoveInicial < this.touchMoveFinal) {
-        this.touchMoveDiferencia = this.touchMoveFinal - this.touchMoveInicial;
-        if (this.touchMoveDiferencia >= 50) {
-          this.appGeolocalizacion.top = '0rem';
+    if (this.router.url != '/buscar-pwa') {
+      if (this.appGeolocalizacion != undefined) {
+        this.touchMoveFinal = event.changedTouches[0].screenY;
+        if (this.touchMoveInicial < this.touchMoveFinal) {
+          this.touchMoveDiferencia = this.touchMoveFinal - this.touchMoveInicial;
+          if (this.touchMoveDiferencia >= 50) {
+            this.appGeolocalizacion.style.top = '0rem';
+          }
+        } else {
+          this.appGeolocalizacion.style.top = '-2.25rem';
         }
-      } else {
-        this.appGeolocalizacion.top = '-2.25rem';
       }
     }
   }
 
+  // solucion redireccionamiento slide 
+  @HostListener('touchmove') slide(): void {
+    var id_temas_de_interes: HTMLElement = (document.getElementsByTagName('temas-de-interes') as HTMLCollectionOf<HTMLElement>)[0];
+    if (id_temas_de_interes != undefined || id_temas_de_interes != null) {
+      var etiqueta_a = Array.from(id_temas_de_interes.getElementsByTagName('a') as HTMLCollectionOf<HTMLElement>);
+      var get_href: String = '', ventanillas: number, portales: number
+      etiqueta_a.forEach(element => {
+        get_href = String(element.getAttribute('href'))
+        ventanillas = get_href.indexOf('/ventanillas-unicas');
+        portales = get_href.indexOf('/portales');
+        if (ventanillas >= 0) {
+          element.removeAttribute('href');
+          element.removeAttribute('target');
+        }
+        if (portales >= 0) {
+          element.removeAttribute('href');
+          element.removeAttribute('target');
+        }
+      });
+    }
+  }
+
+  // solucion redireccionamiento slide 
   @HostListener('click', ['$event']) onClick(event: Event) {
     var id_temas_de_interes: HTMLElement = (document.getElementById('temas-de-interes') as HTMLElement);
     if (id_temas_de_interes != undefined || id_temas_de_interes != null) {
       var slide_activo: HTMLElement = id_temas_de_interes.querySelector('.contenedor-img.activo') as HTMLElement;
       var etiqueta_a: HTMLAnchorElement = (slide_activo.getElementsByTagName('a') as HTMLCollectionOf<HTMLAnchorElement>)[0];
-      let get_href = String((<HTMLElement>etiqueta_a).getAttribute('href'));
-      let ventanillas: number = get_href.indexOf('/ventanillas-unicas');
-      let portales: number = get_href.indexOf('/portales');
+      let get_href = String((<HTMLElement>etiqueta_a).getAttribute('aria-label'));
+      let ventanillas: number = get_href.indexOf('Ventanillas Únicas');
+      let portales: number = get_href.indexOf('Portales');
 
       var hijo_1: HTMLElement = etiqueta_a.querySelector('.descripcion-span') as HTMLElement;
       var hijo_2: HTMLElement = etiqueta_a.querySelector('.titulo-span') as HTMLElement;
       var hijo_3: HTMLElement = etiqueta_a.querySelector('.titulo-block ') as HTMLElement;
       if (event.target == hijo_1 || event.target == hijo_2 || event.target == hijo_3) {
         if (ventanillas >= 0) {
-          etiqueta_a.target = '_self';
-          location.href = '/ventanillas-unicas';
+          this.router.navigate(['/ventanillas-unicas']);
         }
         if (portales >= 0) {
-          etiqueta_a.target = '_self';
-          location.href = '/portales';
+          this.router.navigate(['/portales']);
         }
       }
     }
-
   }
 }
