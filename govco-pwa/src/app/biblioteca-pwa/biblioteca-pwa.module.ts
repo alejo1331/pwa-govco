@@ -24,6 +24,7 @@ import { NivelDosHeaderPrefiltrosComponent } from './components/nivel-dos-header
 import { MatChipsModule } from '@angular/material/chips';
 import { ChipComponent } from './components/chip/chip.component';
 import { MatIconModule } from '@angular/material/icon';
+import { ModalUrlNoDisponibleComponent } from './components/modal-url-no-disponible/modal-url-no-disponible.component';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { MatIconModule } from '@angular/material/icon';
     NivelDosHeaderBuscadorComponent,
     NivelDosHeaderPrefiltrosComponent,
     ChipComponent,
-    DescripcionEmergenteComponent
+    DescripcionEmergenteComponent,
+    ModalUrlNoDisponibleComponent,
   ],
   imports: [
     CommonModule,
@@ -74,6 +76,7 @@ import { MatIconModule } from '@angular/material/icon';
     NivelDosHeaderBuscadorComponent,
     NivelDosHeaderPrefiltrosComponent,
     DescripcionEmergenteComponent,
+    ModalUrlNoDisponibleComponent,
   ],
 })
 export class BibliotecaPwaModule {}

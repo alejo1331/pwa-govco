@@ -1,14 +1,5 @@
-.tooltip-pwa {
-    background-color: #36c;
-    border-radius: 50%;
-    padding: 1px;
-    position: absolute;
-    right: 44px;
-    width: 16px;
-    height: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.descripcion-emergente-pwa {
+    position: relative;
 
     &:hover .tiptext {
         visibility: visible;
@@ -24,21 +15,17 @@
     }
 
     .tiptext {
-        visibility:hidden;
-        background-color: #000000B3!important;
+        visibility: hidden;
+        background-color: #000000b3!important;
         color: #fff;
         border-radius: 4px;
         width: 215px;
-        height: 40px;
         position: absolute;
         font-size: 14px;
-        font-family: 'WorkSans-SemiBold';
+        font-family: "WorkSans-Regular";
         z-index: 1;
-        padding-top: 10px;
-        padding-bottom: 12px;
-        padding-left: 28px;
-        padding-right: 28px;        
-        margin-left: -100px;
+        padding: 12px 12px 12px;
+        margin-left: -162px;
         bottom: 150%;
         left: 30%;
 
@@ -47,9 +34,7 @@
             position: absolute;
             border-width: 5px;
             border-style: solid;
-            margin-left: -5px;
             top: 100%;
-            left: 50%;
             border-color: #000000B3 transparent transparent transparent;
         }
     }

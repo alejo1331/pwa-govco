@@ -60,6 +60,7 @@ export const environment = {
 
   //buscador
   serverBuscador: 'https://api-interno.www.gov.co/api/buscador/',
+  serverUrlValidarUrl: 'https://api-interno.www.gov.co/api/utils',
 
   //captcha
   keyCaptcha: "6LeCqOcUAAAAAMu9McR1zoUH0z6wDj_dekAODW5h",
