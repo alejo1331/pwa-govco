@@ -1,6 +1,6 @@
-<mat-sidenav-container>
+<mat-sidenav-container class="sidenav-container">
   <mat-sidenav #sidenav="matSidenav" mode="push" (closed)="estadoSideNav(true)">
-    <app-contenido-side-nav (outEstadoMenu)="estadoMenu($event)" (efectoTransicion)="estadoEfectoTransicion($event)">
+    <app-contenido-side-nav (outEstadoMenu)="estadoMenu($event)">
     </app-contenido-side-nav>
   </mat-sidenav>
 
@@ -24,6 +24,6 @@
 
   </mat-sidenav-content>
 </mat-sidenav-container>
-
-<app-geolocalizacion-formulario (closedModal)="formularioGeolocalizacion($event)"
-  class="app-geolocalizacion-formulario-pwa-govco"></app-geolocalizacion-formulario>
+<section #formulario class="app-geolocalizacion-formulario-pwa-govco">
+  <app-geolocalizacion-formulario (closedModal)="formularioGeolocalizacion($event)"></app-geolocalizacion-formulario>
+</section>

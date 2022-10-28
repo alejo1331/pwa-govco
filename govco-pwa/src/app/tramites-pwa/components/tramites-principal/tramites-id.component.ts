@@ -117,7 +117,6 @@ export class TramitesIdComponent implements OnInit {
           this.idTramite = Number(this.infoBasicaTramite.IdTramite);
           // Obtiene la URL de trámite en linea
           this.fichaTramiteService.GetBarraProcesoTramite(String(dataTramite.id)).subscribe((res) => {
-            console.log('res', res)
             if (res.urlTramite != undefined) {
               this.infoBasicaTramite.UrlTramiteEnLinea = res.urlTramite.match(/^https?:/) ?
                 res.urlTramite :

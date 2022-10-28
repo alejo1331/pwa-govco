@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ResultadoFiltro } from '../../models/resultadoFiltroModel';
 import { FiltrosService } from '../../services/filtros.service';
 import { Subscription } from 'rxjs';
@@ -12,6 +12,8 @@ import { SidenavService } from 'src/app/transversales/services/sidenav-service/s
   styleUrls: ['./buscador-principal.component.scss']
 })
 export class BuscadorPrincipalComponent implements OnInit {
+
+  @ViewChild('resultados') resultados: ElementRef;
 
   filterSubscription: Subscription;
   resultadosBusqueda: ResultadoFiltro;

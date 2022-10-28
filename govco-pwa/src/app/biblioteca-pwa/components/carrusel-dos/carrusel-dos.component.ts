@@ -29,4 +29,14 @@ export class CarruselDosComponent {
 
     $('.carousel-indicators li[data-target="#carruselDosTemasInteres"].active').trigger('click')
   }
+
+  validarURL(item:{urlDestino:string}) {
+    if (item.urlDestino.indexOf('portales') >= 0) {
+      return '/portales';
+    } else if (item.urlDestino.indexOf('ventanillas-unicas') >= 0) {
+      return '/ventanillas-unicas';
+    } else {
+      return item.urlDestino;
+    }
+  }
 }
