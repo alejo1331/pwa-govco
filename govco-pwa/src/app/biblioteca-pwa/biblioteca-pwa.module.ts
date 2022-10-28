@@ -43,7 +43,10 @@ import { MatIconModule } from '@angular/material/icon';
     ModalErrorUrlComponent,
     FiltroSegundoNivel,
     ModalFiltroSegundoNivelComponent,
-    DescripcionEmergenteComponent,
+    NivelDosHeaderBuscadorComponent,
+    NivelDosHeaderPrefiltrosComponent,
+    ChipComponent,
+    DescripcionEmergenteComponent
   ],
   imports: [
     CommonModule,
@@ -68,6 +71,8 @@ import { MatIconModule } from '@angular/material/icon';
     TarjetaVinculoComponent,
     ModalErrorUrlComponent,
     ModalFiltroSegundoNivelComponent,
+    NivelDosHeaderBuscadorComponent,
+    NivelDosHeaderPrefiltrosComponent,
     DescripcionEmergenteComponent,
   ],
 })
