@@ -21,6 +21,10 @@
     overflow-y: scroll;
 }
 
+.puntos-atencion-govco-pwa .seccion-puntos-atencion::-webkit-scrollbar {
+    display: none;
+}
+
 .puntos-atencion-govco-pwa .caja-icono-48-pwa img {
     height: 2.063rem;
     width: 2.063rem;

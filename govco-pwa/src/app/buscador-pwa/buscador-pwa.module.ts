@@ -13,6 +13,7 @@ import { BarraFiltrosComponent } from './components/barra-filtros/barra-filtros.
 import { BuscadorCardVentanillaComponent } from './components/buscador-card-acordeon/buscador-card-ventanilla/buscador-card-ventanilla.component';
 import { BuscadorCardEjerciciosParticipacionComponent } from './components/buscador-card-acordeon/buscador-card-ejercicios-participacion/buscador-card-ejercicios-participacion.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { BuscadorNivelDosComponent } from './buscador-nivel-dos/buscador-nivel-dos.component';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
     BarraFiltrosComponent,
     BuscadorCardVentanillaComponent,
     BuscadorCardEjerciciosParticipacionComponent,
+    BuscadorNivelDosComponent
   ],
   imports: [
     CommonModule,
@@ -34,7 +36,7 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
     NgxSkeletonLoaderModule,
 
   ],
-  exports:[ 
+  exports:[
     BuscadorPrincipalComponent,
   ]
 })
