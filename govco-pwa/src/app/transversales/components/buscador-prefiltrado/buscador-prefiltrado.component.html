@@ -1,5 +1,8 @@
 <section class="seccion-buscador">
     <input class="buscador"
+        id="buscador-pwa-general"
+        readonly="readonly"
+        (click)="abrirBuscadorPWA()"
         style="background-image: url(../../../../assets/icons-fonts/search_FILL0_wght500_GRAD0_opsz20.svg)" type="text"
         placeholder="Buscar en GOV.CO">
     <button class="boton-filtro" (click)="filtrarPor()">

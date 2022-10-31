@@ -1,6 +1,6 @@
 <div class="modal-prefiltrado-pwa">
     <ul class="lista-filtro">
-        <li class="item-filtro" id="tramites-servicios" (click)="seleccionarItem('Trámites', 0)"
+        <li class="item-filtro" id="tramites-servicios" (click)="seleccionarItem('Trámites', 0, 'tramite')"
             [class.active]="itemFiltro == 0">
             <a class="contenido-item">
                 <div class="caja-icono-24-pwa">
@@ -9,7 +9,7 @@
                 <p>Trámites y servicios</p>
             </a>
         </li>
-        <li class="item-filtro" id="entidades" (click)="seleccionarItem('Entidades', 1)"
+        <li class="item-filtro" id="entidades" (click)="seleccionarItem('Entidades', 1, 'entidad')"
             [class.active]="itemFiltro == 1">
             <a class="contenido-item">
                 <div class="caja-icono-24-pwa">
@@ -18,7 +18,7 @@
                 <p>Entidades</p>
             </a>
         </li>
-        <li class="item-filtro" id="noticias" (click)="seleccionarItem('Noticias', 2)" [class.active]="itemFiltro == 2">
+        <li class="item-filtro" id="noticias" (click)="seleccionarItem('Noticias', 2, 'noticia')" [class.active]="itemFiltro == 2">
             <a class="contenido-item">
                 <div class="caja-icono-24-pwa">
                     <span class="icono-item" type="image" alt="Filtro Noticias"></span>
@@ -26,7 +26,7 @@
                 <p>Noticias</p>
             </a>
         </li>
-        <li class="item-filtro" id="ejecicios-participacion" (click)="seleccionarItem('Ejercicios', 3)"
+        <li class="item-filtro" id="ejecicios-participacion" (click)="seleccionarItem('Ejercicios', 3, 'participacion')"
             [class.active]="itemFiltro == 3">
             <a class="contenido-item">
                 <div class="caja-icono-24-pwa">
@@ -35,7 +35,7 @@
                 <p>Ejercicios de participación</p>
             </a>
         </li>
-        <li class="item-filtro" id="ventanillas-unicas" (click)="seleccionarItem('Ventanillas', 4)"
+        <li class="item-filtro" id="ventanillas-unicas" (click)="seleccionarItem('Ventanillas', 4, 'tramiteventanilla')"
             [class.active]="itemFiltro == 4">
             <a class="contenido-item">
                 <div class="caja-icono-24-pwa">
@@ -44,7 +44,7 @@
                 <p>Ventanillas Únicas</p>
             </a>
         </li>
-        <li class="item-filtro" id="portales-transversales" (click)="seleccionarItem('Portales', 5)"
+        <li class="item-filtro" id="portales-transversales" (click)="seleccionarItem('Portales', 5, 'portaltransversal')"
             [class.active]="itemFiltro == 5">
             <a class="contenido-item">
                 <div class="caja-icono-24-pwa">
