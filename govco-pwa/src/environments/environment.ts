@@ -59,7 +59,8 @@ export const environment = {
   serverFichaTramite:'https://preapi-interno.www.gov.co/api/ficha-tramites-y-servicios',
 
   //buscador
-  serverBuscador: 'https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api/buscador/',
+  serverBuscador: 'http://100.24.232.62:8083/',
+  serverUrlValidarUrl: 'https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api',
 
   //captcha
   keyCaptcha: "6LeCqOcUAAAAAMu9McR1zoUH0z6wDj_dekAODW5h",

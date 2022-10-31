@@ -18,11 +18,13 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { FiltroSegundoNivel } from './pipes/filtro-segundo-nivel/filtro-segundo-nivel.pipe';
 import { ModalFiltroSegundoNivelComponent } from './components/modal-filtro-segundo-nivel/modal-filtro-segundo-nivel.component';
 import { FormsModule } from '@angular/forms';
+import { DescripcionEmergenteComponent } from './components/descripcion-emergente/descripcion-emergente.component';
 import { NivelDosHeaderBuscadorComponent } from './components/nivel-dos-header-buscador/nivel-dos-header-buscador.component';
 import { NivelDosHeaderPrefiltrosComponent } from './components/nivel-dos-header-prefiltros/nivel-dos-header-prefiltros.component';
 import { MatChipsModule } from '@angular/material/chips';
 import { ChipComponent } from './components/chip/chip.component';
 import { MatIconModule } from '@angular/material/icon';
+import { ModalUrlNoDisponibleComponent } from './components/modal-url-no-disponible/modal-url-no-disponible.component';
 
 
 @NgModule({
@@ -44,7 +46,9 @@ import { MatIconModule } from '@angular/material/icon';
     ModalFiltroSegundoNivelComponent,
     NivelDosHeaderBuscadorComponent,
     NivelDosHeaderPrefiltrosComponent,
-    ChipComponent
+    ChipComponent,
+    DescripcionEmergenteComponent,
+    ModalUrlNoDisponibleComponent,
   ],
   imports: [
     CommonModule,
@@ -71,7 +75,8 @@ import { MatIconModule } from '@angular/material/icon';
     ModalFiltroSegundoNivelComponent,
     NivelDosHeaderBuscadorComponent,
     NivelDosHeaderPrefiltrosComponent,
-    ChipComponent,
+    DescripcionEmergenteComponent,
+    ModalUrlNoDisponibleComponent,
   ],
 })
 export class BibliotecaPwaModule {}

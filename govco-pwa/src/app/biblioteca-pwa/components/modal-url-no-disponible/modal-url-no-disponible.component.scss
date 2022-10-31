@@ -1,0 +1,32 @@
+.container-modal-url-pwa {
+    h2 {
+        font-family: 'Roboto-Medium';
+        font-size: 16px;
+        color: #000000DE;
+        margin-bottom: 14px;
+    }
+
+    .text-error {
+        font-family: 'Roboto-Regular';
+        font-size: 14px;
+        color: #00000099;
+        margin-bottom: 30px;
+    }
+
+    div.mat-dialog-actions {
+        padding: 0;
+        margin: 0;
+        min-height: auto;
+
+        button {
+            font-family: 'Roboto-Medium';
+            font-size: 14px;
+            color: #6200EE;
+            border: 0;
+            background-color: initial;
+            padding: 10px 8px;
+            margin-left: -8px;
+            margin-bottom: -18px;
+        }
+    }
+}

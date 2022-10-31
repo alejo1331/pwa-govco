@@ -1,0 +1,46 @@
+.descripcion-emergente-pwa {
+    position: relative;
+
+    &:hover .tiptext {
+        visibility: visible;
+    }
+
+    &:focus .tiptext {
+        visibility: visible;
+    }
+
+    &:focus-visible {
+        outline: 2px  solid #000 !important;
+        border: 2px  solid #fff !important;
+    }
+
+    .tiptext {
+        visibility: hidden;
+        background-color: #000000b3!important;
+        color: #fff;
+        border-radius: 4px;
+        width: 215px;
+        position: absolute;
+        font-size: 14px;
+        font-family: "WorkSans-Regular";
+        z-index: 1;
+        padding: 12px 12px 12px;
+        margin-left: -162px;
+        bottom: 150%;
+        left: 30%;
+
+        &::after {
+            content: "";
+            position: absolute;
+            border-width: 5px;
+            border-style: solid;
+            top: 100%;
+            border-color: #000000B3 transparent transparent transparent;
+        }
+    }
+
+    .material-symbols-outlined {
+        font-size: 12px;
+        color: #fff;
+    }
+}

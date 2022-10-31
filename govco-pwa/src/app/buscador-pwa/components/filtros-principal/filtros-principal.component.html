@@ -18,12 +18,14 @@
                     <span class="material-symbols-outlined delete-selection" (click)="eliminarFiltro(filtro.id)">
                         close
                     </span>
-                </app-etiqueta>
-                <a [class.disabled]="!filtro.active" (click)="seleccionaFiltroNivelUno(filtro.id, filtro.nombre)">
-                    <span *ngIf="filtrosSeleccionados[filtro.id] == null">{{filtro.nombre}}</span>
-                    <span class="material-symbols-outlined information" *ngIf="filtro.id == 'nombreEstandarizado'">
+                </app-etiqueta>                
+                <app-descripcion-emergente *ngIf="filtro.id == 'nombreEstandarizado'" texto="Trámites que se repiten en diferentes entidades que realizan el mismo proceso y son agrupados bajo un nombre común.">
+                    <span class="material-symbols-outlined information">
                         question_mark
                     </span>
+                </app-descripcion-emergente>
+                <a [class.disabled]="!filtro.active" (click)="seleccionaFiltroNivelUno(filtro.id, filtro.nombre)">
+                    <span *ngIf="filtrosSeleccionados[filtro.id] == null">{{filtro.nombre}}</span>
                     <span class="material-symbols-outlined arrow">
                         chevron_right
                     </span>

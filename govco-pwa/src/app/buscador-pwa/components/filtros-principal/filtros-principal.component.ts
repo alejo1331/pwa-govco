@@ -7,6 +7,8 @@ import { Subscription } from 'rxjs';
 import { Platform } from '@angular/cdk/platform';
 import { DataFiltros, ResultadoFiltro } from '../../models/resultadoFiltroModel';
 import { filter } from '../../models/filtroBusquedaModel';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalUrlNoDisponibleComponent } from 'src/app/biblioteca-pwa/components/modal-url-no-disponible/modal-url-no-disponible.component';
 
 @Component({
   selector: 'app-filtros-principal',
@@ -28,7 +30,8 @@ export class FiltrosPrincipalComponent implements OnInit {
 
   constructor(
     protected filtrosService: FiltrosService,
-    public platform: Platform
+    public platform: Platform,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -40,6 +43,10 @@ export class FiltrosPrincipalComponent implements OnInit {
         this.resultadosBusqueda = resultados;
         this.actualizaFiltrosActivos();
       }
+    });
+    
+    this.dialog.open(ModalUrlNoDisponibleComponent, {
+      width: '280px'
     });
   }
 
@@ -55,12 +62,18 @@ export class FiltrosPrincipalComponent implements OnInit {
   }
 
   seleccionaFiltroNivelUno(idFiltro: string, tituloFiltro: string) {
-    this.filtroSeleccionado = idFiltro;
+    this.filtroSeleccionado = idFiltro;    
+    let subFiltroSeleccionado = '';
+
+    if (this.filtrosSeleccionados != null && this.filtrosSeleccionados[idFiltro]) {
+      subFiltroSeleccionado = this.filtroSeleccionado == 'categorias' || this.filtroSeleccionado == 'subCategorias' ? this.filtrosSeleccionados[idFiltro].nombre : this.filtrosSeleccionados[idFiltro];
+    }    
+
     //inicia el servicio para el filtro de segundo nivel
     this.informacionModalFiltro = {
       titulo: tituloFiltro,
       contendioModal: this.resultadosBusqueda.filtros[0][idFiltro],
-      itemSeleccionado: this.filtrosSeleccionados != null ? this.filtrosSeleccionados[idFiltro] ? 1 : 0 : 0
+      itemSeleccionado: subFiltroSeleccionado
     }
     //al final de subscribe --> servicio completo se abre el modal
     //el setTimeout simula el tiempo de consulta del servicio y una vez finalizada la consulta
