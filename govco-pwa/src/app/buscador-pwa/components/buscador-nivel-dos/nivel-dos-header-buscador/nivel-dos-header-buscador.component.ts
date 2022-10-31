@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { BuscadorParams, BuscadorService } from 'src/app/buscador-pwa/services/buscador.service';
 import { Parametros } from 'src/app/buscador-pwa/services/global';
 import { SugerenciasService } from '../../../services/sugerencias.service'
@@ -21,7 +22,8 @@ export class NivelDosHeaderBuscadorComponent implements OnInit {
 
   constructor(
     private sugerenciasService : SugerenciasService,
-    private buscadorService : BuscadorService
+    private buscadorService : BuscadorService,
+    private router : Router
   ) { }
 
   ngOnInit() {
@@ -65,7 +67,8 @@ export class NivelDosHeaderBuscadorComponent implements OnInit {
 
   buscar(txtInput:any){
     if(txtInput == this.txtInputBuscador){
-      console.log('buscar....')
+      this.cerrarBuscadorPWA()
+      this.router.navigateByUrl('/buscar-pwa')
     }
 
   }
