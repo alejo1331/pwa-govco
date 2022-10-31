@@ -19,8 +19,6 @@ import { FiltroSegundoNivel } from './pipes/filtro-segundo-nivel/filtro-segundo-
 import { ModalFiltroSegundoNivelComponent } from './components/modal-filtro-segundo-nivel/modal-filtro-segundo-nivel.component';
 import { FormsModule } from '@angular/forms';
 import { DescripcionEmergenteComponent } from './components/descripcion-emergente/descripcion-emergente.component';
-import { NivelDosHeaderBuscadorComponent } from './components/nivel-dos-header-buscador/nivel-dos-header-buscador.component';
-import { NivelDosHeaderPrefiltrosComponent } from './components/nivel-dos-header-prefiltros/nivel-dos-header-prefiltros.component';
 import { MatChipsModule } from '@angular/material/chips';
 import { ChipComponent } from './components/chip/chip.component';
 import { MatIconModule } from '@angular/material/icon';
@@ -44,11 +42,9 @@ import { ModalUrlNoDisponibleComponent } from './components/modal-url-no-disponi
     ModalErrorUrlComponent,
     FiltroSegundoNivel,
     ModalFiltroSegundoNivelComponent,
-    NivelDosHeaderBuscadorComponent,
-    NivelDosHeaderPrefiltrosComponent,
     ChipComponent,
     DescripcionEmergenteComponent,
-    ModalUrlNoDisponibleComponent,
+    ModalUrlNoDisponibleComponent
   ],
   imports: [
     CommonModule,
@@ -73,10 +69,9 @@ import { ModalUrlNoDisponibleComponent } from './components/modal-url-no-disponi
     TarjetaVinculoComponent,
     ModalErrorUrlComponent,
     ModalFiltroSegundoNivelComponent,
-    NivelDosHeaderBuscadorComponent,
-    NivelDosHeaderPrefiltrosComponent,
     DescripcionEmergenteComponent,
     ModalUrlNoDisponibleComponent,
+    ChipComponent,
   ],
 })
 export class BibliotecaPwaModule {}
