@@ -2,11 +2,11 @@
     position: relative;
 
     &:hover .tiptext {
-        visibility: visible;
+        display: block;
     }
 
     &:focus .tiptext {
-        visibility: visible;
+        display: block;
     }
 
     &:focus-visible {
@@ -15,7 +15,7 @@
     }
 
     .tiptext {
-        visibility: hidden;
+        display: none;
         background-color: #000000b3!important;
         color: #fff;
         border-radius: 4px;
@@ -25,8 +25,8 @@
         font-family: "WorkSans-Regular";
         z-index: 1;
         padding: 12px 12px 12px;
-        margin-left: -162px;
-        bottom: 150%;
+        margin-left: -164px;
+        bottom: 166%;
         left: 30%;
 
         &::after {
