@@ -45,8 +45,24 @@ export class FiltrosPrincipalComponent implements OnInit {
       }
     });
     
-    this.dialog.open(ModalUrlNoDisponibleComponent, {
-      width: '280px'
+    // this.dialog.open(ModalUrlNoDisponibleComponent, {
+    //   width: '280px'
+    // });    
+    this.clickBackdrop();
+    document.addEventListener('keydown', (event) => {
+      if (event.key == 'Escape') {
+        this.filtroPrimerNivel.nativeElement.classList.remove('show');
+      }
+    }, false);
+  }
+
+  clickBackdrop() {
+    let th = this;
+    $('.backdrop-filtros').on("click", function(event) {
+      const container = $(".container-filtros");
+      if ($(event.target).closest(container).length == 0 && !event.target.classList.contains('delete-selection')) {
+        th.filtroPrimerNivel.nativeElement.classList.toggle('show');
+      }
     });
   }
 
@@ -61,7 +77,11 @@ export class FiltrosPrincipalComponent implements OnInit {
     });
   }
 
-  seleccionaFiltroNivelUno(idFiltro: string, tituloFiltro: string) {
+  seleccionaFiltroNivelUno(idFiltro: string, tituloFiltro: string, event:any) {
+    if (event.target.classList.contains('information') || event.target.classList.contains('delete-selection')) {
+      return false;
+    }
+
     this.filtroSeleccionado = idFiltro;    
     let subFiltroSeleccionado = '';
 

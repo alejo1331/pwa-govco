@@ -1,9 +1,9 @@
-<div #modalFiltroNivel1 class="container-filtros-prueba">
+<div #modalFiltroNivel1 class="backdrop-filtros">
     <div class="container-filtros">
         <div class="dropdown-arrow"></div>
         <div class="header">
             <h5>Filtrar por:</h5>
-            <span class="clean" (click)="limpiarFiltros()">Limpiar filtros</span>
+            <button class="clean" (click)="limpiarFiltros()">Limpiar filtros</button>
         </div>
         <hr>
         <ngx-skeleton-loader appearance="line" count="3" *ngIf="!resultadosBusqueda"
@@ -11,25 +11,27 @@
         </ngx-skeleton-loader>
         <ul *ngIf="resultadosBusqueda">
             <li *ngFor="let filtro of seccionFiltros[seccion]" [class.contiene-etiqueta]="filtrosSeleccionados[filtro.id] != undefined">
-                <app-etiqueta estado="informative" *ngIf="filtrosSeleccionados[filtro.id] != undefined">
-                    <span class="text" [class.contiene-tooltip]="filtro.id == 'nombreEstandarizado'">
-                        {{filtro.id == 'categorias' || filtro.id == 'subCategorias' ? filtrosSeleccionados[filtro.id].nombre : filtrosSeleccionados[filtro.id]}}
-                    </span>
-                    <span class="material-symbols-outlined delete-selection" (click)="eliminarFiltro(filtro.id)">
-                        close
-                    </span>
-                </app-etiqueta>                
-                <app-descripcion-emergente *ngIf="filtro.id == 'nombreEstandarizado'" texto="Trámites que se repiten en diferentes entidades que realizan el mismo proceso y son agrupados bajo un nombre común.">
-                    <span class="material-symbols-outlined information">
-                        question_mark
-                    </span>
-                </app-descripcion-emergente>
-                <a [class.disabled]="!filtro.active" (click)="seleccionaFiltroNivelUno(filtro.id, filtro.nombre)">
-                    <span *ngIf="filtrosSeleccionados[filtro.id] == null">{{filtro.nombre}}</span>
+                <button [class.disabled]="!filtro.active" (click)="seleccionaFiltroNivelUno(filtro.id, filtro.nombre, $event)" [tabindex]="filtro.active ? '0' : '-1'">
+                    <app-etiqueta estado="informative" *ngIf="filtrosSeleccionados[filtro.id] != undefined">
+                        <span class="text" [class.contiene-tooltip]="filtro.id == 'nombreEstandarizado'">
+                            {{filtro.id == 'categorias' || filtro.id == 'subCategorias' ? filtrosSeleccionados[filtro.id].nombre : filtrosSeleccionados[filtro.id]}}
+                        </span>
+                        <button class="material-symbols-outlined delete-selection" (click)="eliminarFiltro(filtro.id)">
+                            close
+                        </button>
+                    </app-etiqueta>                
+                    <app-descripcion-emergente *ngIf="filtro.id == 'nombreEstandarizado'" texto="Trámites que se repiten en diferentes entidades que realizan el mismo proceso y son agrupados bajo un nombre común.">
+                        <span class="material-symbols-outlined information">
+                            question_mark
+                        </span>
+                    </app-descripcion-emergente>                
+                    <div class="filtro-sin-seleccion" *ngIf="filtrosSeleccionados[filtro.id] == null">
+                        {{filtro.nombre}}
+                    </div>
                     <span class="material-symbols-outlined arrow">
                         chevron_right
                     </span>
-                </a>
+                </button>
             </li>
         </ul>
     </div>

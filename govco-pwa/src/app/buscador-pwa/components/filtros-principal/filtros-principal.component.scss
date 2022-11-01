@@ -1,9 +1,12 @@
-.container-filtros-prueba {
+.backdrop-filtros {
     display: none;
     background-color: #00000080;
-    position: relative;
+    top: 0;
+    left: 0;
+    height: 100%;
     width: 100%;
-    height: 100vh;
+    position: fixed;
+    z-index: 10;
 
     .container-filtros {
         width: 280px;
@@ -12,8 +15,9 @@
         border: 2px solid #E8EFFC;
         box-shadow: 0px 4px 6px #13173D29;
         position: absolute;
-        top: 40px;
-        right: 20px;
+        top: 198px;
+        right: 28px;
+
         .dropdown-arrow {
             width: 0;
             height: 0;
@@ -25,109 +29,158 @@
             border-top: 10px solid transparent;
             border-bottom: 10px solid transparent; 
         }
+
         .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 24px 8px 16px 20px;
+
             h5 {
                 color: #000000;
                 font-family: 'Montserrat-SemiBold';
                 font-size: 16px;
                 margin: 0;
             }
-            span.clean {
+
+            .clean {
                 color: #3366CC;
                 font-family: 'WorkSans-SemiBold';
                 font-size: 14px;
                 text-decoration: underline;
+                background-color: #ffff;
+                border: 0;
+
+                &:focus-visible {
+                    outline: 2px  solid #000 !important;
+                }
             }
         }
+
         hr {
             border: 1px solid #E8EFFC;
             margin-top: 0;
             margin-bottom: 8px;
         }
+
         ul {
             padding: 0;
+
             li {
                 list-style: none;
-                padding: 8px 8px 8px 12px;
                 margin-bottom: 8px;
                 position: relative;
-                ::ng-deep app-etiqueta span {
-                    border-radius: 12px;
-                    box-shadow: none;
-                    background-color: #E6EFFD;
-                    padding: 4px 4px 4px 8px;
-                    line-height: 16px;
-                    .text {
-                        max-width: 188px;
-                        white-space: nowrap;
-                        text-overflow: ellipsis;
-                        overflow: hidden;
-                        padding: 0;
+
+                button {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 8px 8px 8px 12px;
+                    position: relative;
+                    width: 100%;
+                    background-color: #ffff;
+                    border: 0;
+
+                    ::ng-deep app-etiqueta span {
+                        border-radius: 12px;
+                        box-shadow: none;
+                        background-color: #E6EFFD;
+                        padding: 4px 4px 4px 8px;
+                        line-height: 16px;
+
+                        .text {
+                            max-width: 188px;
+                            white-space: nowrap;
+                            text-overflow: ellipsis;
+                            overflow: hidden;
+                            padding: 0;
+                        }
+
+                        .text.contiene-tooltip {
+                            max-width: 154px;
+                        }
+
+                        .delete-selection {
+                            width: 16px;
+                            height: 16px;
+                            background-color: #004884;
+                            border-radius: 50%;
+                            color: #E6EFFD;
+                            font-size: 14px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            padding: 0;
+                            margin-left: 12px;
+
+                            &:focus-visible {
+                                outline: 2px  solid #000 !important;
+                                border: 2px  solid #fff !important;
+                            }
+                        }
                     }
-                    .text.contiene-tooltip {
-                        max-width: 154px;
-                    }
-                    .delete-selection {
+
+                    ::ng-deep app-descripcion-emergente button {
+                        position: absolute;
+                        right: 44px;
                         width: 16px;
                         height: 16px;
-                        background-color: #004884;
+                        background-color: #36c;
                         border-radius: 50%;
-                        color: #E6EFFD;
+                        border: 0;
+                        top: 50%;
+                        transform: translateY(-50%);
+
+                        .information {
+                            color: #fff;
+                            font-size: 12px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                        }
+                    }
+
+                    .filtro-sin-seleccion {
+                        color: #000000;
+                        font-family: 'WorkSans-Regular';
                         font-size: 14px;
+                        text-decoration: none;
+                        justify-content: space-between;
                         display: flex;
                         align-items: center;
-                        justify-content: center;
-                        padding: 0;
-                        margin-left: 12px;
+                        width: 100%;
                     }
-                }
-                ::ng-deep app-descripcion-emergente button {
-                    position: absolute;
-                    right: 44px;
-                    width: 16px;
-                    height: 16px;
-                    background-color: #36c;
-                    border-radius: 50%;
-                    border: 0;
-                    top: 50%;
-                    transform: translateY(-50%);
-                    .information {
-                        color: #fff;
-                        font-size: 12px;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                    }
-                }
-                a {
-                    color: #000000;
-                    font-family: 'WorkSans-Regular';
-                    font-size: 14px;
-                    text-decoration: none;
-                    justify-content: space-between;
-                    display: flex;
-                    align-items: center;
+
                     .arrow {
                         color: #3366CC;
+                        position: absolute;
+                        right: 8px;
+                    }
+
+                    &:focus-visible {
+                        outline: 2px  solid #000 !important;
+                    }
+
+                    &.disabled {
+                        pointer-events: none;
+                        cursor: default;
+
+                        .filtro-sin-seleccion {
+                            color: #BABABA;
+                        }
+
+                        .arrow, 
+                        .information {
+                            color: #BABABA;
+                        }
                     }
                 }
-                a.disabled {
-                    color: #BABABA;
-                    pointer-events: none;
-                    cursor: default;
-                    .arrow, .information {
-                        color: #BABABA;
+
+                &.contiene-etiqueta {
+                    .filtro-sin-seleccion {
+                        margin-left: 4px;
                     }
                 }
-            }
-            li.contiene-etiqueta {
-                justify-content: space-between;
-                display: flex;
-                align-items: center;
             }
         }
     }
