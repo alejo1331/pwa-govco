@@ -215,7 +215,6 @@ export class AppComponent implements OnInit, AfterContentChecked, AfterContentCh
         else if (this.abrirBuscadorCheck == false && this.ulitmoEstadoBuscador == true ) {
           this.cerrarBuscadorPWA()
         }
-        console.log(this.abrirBuscadorCheck)
       })
   }
 
