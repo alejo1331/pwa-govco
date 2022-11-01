@@ -13,7 +13,11 @@ import { BarraFiltrosComponent } from './components/barra-filtros/barra-filtros.
 import { BuscadorCardVentanillaComponent } from './components/buscador-card-acordeon/buscador-card-ventanilla/buscador-card-ventanilla.component';
 import { BuscadorCardEjerciciosParticipacionComponent } from './components/buscador-card-acordeon/buscador-card-ejercicios-participacion/buscador-card-ejercicios-participacion.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
-import { BuscadorNivelDosComponent } from './buscador-nivel-dos/buscador-nivel-dos.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BuscadorNivelDosComponent } from './components/buscador-nivel-dos/buscador-nivel-dos.component';
+import { NivelDosHeaderBuscadorComponent } from './components/buscador-nivel-dos/nivel-dos-header-buscador/nivel-dos-header-buscador.component';
+import { NivelDosHeaderPrefiltrosComponent } from './components/buscador-nivel-dos/nivel-dos-header-prefiltros/nivel-dos-header-prefiltros.component';
+import { ListadoSugerenciasComponent } from './components/buscador-nivel-dos/listado-sugerencias/listado-sugerencias.component';
 
 
 @NgModule({
@@ -27,17 +31,23 @@ import { BuscadorNivelDosComponent } from './buscador-nivel-dos/buscador-nivel-d
     BarraFiltrosComponent,
     BuscadorCardVentanillaComponent,
     BuscadorCardEjerciciosParticipacionComponent,
-    BuscadorNivelDosComponent
+    BuscadorNivelDosComponent,
+    NivelDosHeaderBuscadorComponent,
+    NivelDosHeaderPrefiltrosComponent,
+    ListadoSugerenciasComponent
+
   ],
   imports: [
     CommonModule,
     BuscadorPwaRoutingModule,
     BibliotecaPwaModule,
     NgxSkeletonLoaderModule,
+    BrowserAnimationsModule
 
   ],
   exports:[
     BuscadorPrincipalComponent,
+    BuscadorNivelDosComponent
   ]
 })
 export class BuscadorPwaModule { }

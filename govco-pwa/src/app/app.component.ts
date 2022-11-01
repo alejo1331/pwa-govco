@@ -23,6 +23,8 @@ import { UsuarioLoginModel } from './transversales/models/auth/usuarioLogin.mode
 import { AuthService } from './transversales/services/auth/auth.service';
 import { GeolocalizacionComponent } from './transversales/components/geolocalizacion/geolocalizacion.component';
 import { HtmlAstPath } from '@angular/compiler';
+import { BuscadorService } from './buscador-pwa/services/buscador.service';
+import { BuscadorNivelDosComponent } from './buscador-pwa/components/buscador-nivel-dos/buscador-nivel-dos.component';
 
 
 export interface OAuthErrorEventParams {
@@ -49,6 +51,9 @@ export class AppComponent implements OnInit, AfterContentChecked, AfterContentCh
   @ViewChild(GeolocalizacionFormularioComponent) formularioGeolocalizador: GeolocalizacionFormularioComponent;
   @ViewChild(GeolocalizacionComponent) GeolocalizacionComponent: GeolocalizacionComponent;
   @ViewChild('formulario') appGeolocalizacionFormulario: ElementRef;
+  @ViewChild('seccionBuscador') seccionBuscador: ElementRef;
+  @ViewChild(BuscadorNivelDosComponent) buscadorNivelDos: BuscadorNivelDosComponent;
+
 
   barraSuperiorGeneral: boolean = true;
   statusMenu: boolean = false;
@@ -64,6 +69,9 @@ export class AppComponent implements OnInit, AfterContentChecked, AfterContentCh
   modalClasico: ModalInterface;
 
   prueba: any;
+
+  abrirBuscadorCheck : boolean = false;
+  ulitmoEstadoBuscador : boolean = false;
 
   public parametroBuscador: string;
   title: string = 'govco-pwa';
@@ -81,7 +89,8 @@ export class AppComponent implements OnInit, AfterContentChecked, AfterContentCh
     protected modalService: ModalService,
     private oidcService: OidcService,
     private oauthService: OAuthService,
-    private authService: AuthService
+    private authService: AuthService,
+    private buscadorService : BuscadorService
   ) {
     this.isAuthenticated = this.oidcService.isAuthenticated$;
     this.isDoneLoading = this.oidcService.isDoneLoading$;
@@ -196,7 +205,17 @@ export class AppComponent implements OnInit, AfterContentChecked, AfterContentCh
   }
 
   ngOnInit(): void {
-
+    // Suscribe al componente de abrir elbuscador
+    this.buscadorService.getAbrirBuscador$.subscribe(
+      (abrir : boolean) => {
+        this.abrirBuscadorCheck = abrir
+        if(this.abrirBuscadorCheck == true){
+          this.abrirBuscadorPWA()
+        }
+        else if (this.abrirBuscadorCheck == false && this.ulitmoEstadoBuscador == true ) {
+          this.cerrarBuscadorPWA()
+        }
+      })
   }
 
   loadUserProfile(): void {
@@ -331,7 +350,7 @@ export class AppComponent implements OnInit, AfterContentChecked, AfterContentCh
     }
   }
 
-  // solucion redireccionamiento slide 
+  // solucion redireccionamiento slide
   @HostListener('touchmove') slide(): void {
     var id_temas_de_interes: HTMLElement = (document.getElementsByTagName('temas-de-interes') as HTMLCollectionOf<HTMLElement>)[0];
     if (id_temas_de_interes != undefined || id_temas_de_interes != null) {
@@ -353,7 +372,7 @@ export class AppComponent implements OnInit, AfterContentChecked, AfterContentCh
     }
   }
 
-  // solucion redireccionamiento slide 
+  // solucion redireccionamiento slide
   @HostListener('click', ['$event']) onClick(event: Event) {
     var id_temas_de_interes: HTMLElement = (document.getElementById('temas-de-interes') as HTMLElement);
     if (id_temas_de_interes != undefined || id_temas_de_interes != null) {
@@ -375,5 +394,20 @@ export class AppComponent implements OnInit, AfterContentChecked, AfterContentCh
         }
       }
     }
+  }
+
+  // Función para abrir el buscador
+  abrirBuscadorPWA() {
+    this.seccionBuscador.nativeElement.style.transform = 'translate(0%)';
+    this.matSidenavContent.transform = 'translate(-100%)';
+    this.ulitmoEstadoBuscador = true;
+
+  }
+
+// Función para cerrar el buscador
+  cerrarBuscadorPWA(){
+    this.seccionBuscador.nativeElement.style.transform = 'translate(100%)';
+    this.matSidenavContent.transform = 'translate(0%)';
+    this.ulitmoEstadoBuscador = false;
   }
 }

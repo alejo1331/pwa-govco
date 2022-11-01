@@ -6,7 +6,7 @@
           description
         </span>
       </div>
-      <a (click)="changePrefilter(0)">Trámites y servicios</a>
+      <a (click)="changePrefilter(0, 'tramite')">Trámites y servicios</a>
     </li>
     <li class="govco-pwa-prefiltro-element">
       <div class="govco-pwa-prefiltros-icon">
@@ -14,7 +14,7 @@
           home_work
         </span>
       </div>
-      <a (click)="changePrefilter(1)">Entidades</a>
+      <a (click)="changePrefilter(1, 'entidad')">Entidades</a>
     </li>
     <li class="govco-pwa-prefiltro-element">
       <div class="govco-pwa-prefiltros-icon">
@@ -22,7 +22,7 @@
           feed
         </span>
       </div>
-      <a (click)="changePrefilter(2)">Noticias</a>
+      <a (click)="changePrefilter(2, 'noticia')">Noticias</a>
     </li>
     <li class="govco-pwa-prefiltro-element">
       <div class="govco-pwa-prefiltros-icon">
@@ -30,7 +30,7 @@
           diversity_3
         </span>
       </div>
-      <a (click)="changePrefilter(3)">Ejercicios de participación</a>
+      <a (click)="changePrefilter(3, 'participacion')">Ejercicios de participación</a>
     </li>
     <li class="govco-pwa-prefiltro-element">
       <div class="govco-pwa-prefiltros-icon">
@@ -38,7 +38,7 @@
           store
         </span>
       </div>
-      <a (click)="changePrefilter(4)">Ventanillas Únicas</a>
+      <a (click)="changePrefilter(4, 'tramiteventanilla')">Ventanillas Únicas</a>
     </li>
     <li class="govco-pwa-prefiltro-element">
       <div class="govco-pwa-prefiltros-icon">
@@ -46,7 +46,7 @@
           computer
         </span>
       </div>
-      <a (click)="changePrefilter(5)">Portales Trasversales</a>
+      <a (click)="changePrefilter(5, 'portaltransversal')">Portales Trasversales</a>
     </li>
   </ul>
 </div>

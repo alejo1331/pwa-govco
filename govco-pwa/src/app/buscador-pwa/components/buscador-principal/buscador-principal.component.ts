@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { BottomMenuService } from 'src/app/transversales/services/bottom-menu/bottom-menu.service';
 import { HeaderService } from 'src/app/transversales/services/header-service/header.service';
 import { SidenavService } from 'src/app/transversales/services/sidenav-service/sidenav-service.service';
+import { BuscadorService, BuscadorParams } from '../../services/buscador.service';
 
 @Component({
   selector: 'app-buscador-principal',
@@ -26,6 +27,7 @@ export class BuscadorPrincipalComponent implements OnInit {
     public bottomService: BottomMenuService,
     protected servicioHeader: HeaderService,
     protected servicioSideNav: SidenavService,
+    private buscadorService : BuscadorService,
   ) {
     this.bottomService.putOcultandoBottomMenu(false);
   }
@@ -38,9 +40,16 @@ export class BuscadorPrincipalComponent implements OnInit {
     //                                         1, 2, 3 -> Tramites, Ingresa
     //servicioSideNav.seleccionandoItem(a, b)  a -> Activa o inactiva menu lateral
     //                                         b -> String con el valor del item a seleccionar
-    //bottomService.ajustandoPantalla(true)    true -> Agrega clase de css para ajustar 
-    //                                                 la pantalla cuando en la seccion  
+    //bottomService.ajustandoPantalla(true)    true -> Agrega clase de css para ajustar
+    //                                                 la pantalla cuando en la seccion
     //                                                 consultada no tiene header
+
+    this.buscadorService.getBuscadorParams$.subscribe(
+      (parametros : BuscadorParams) => {
+        this.busqueda = parametros.txtInputBuscador;
+        this.seccion = parametros.txtConsumoApi
+      })
+
     this.servicioHeader.estadoHeader(false, true);
     this.bottomService.seleccionandoItem(0);
     this.bottomService.ajustandoPantalla(false);
@@ -54,7 +63,7 @@ export class BuscadorPrincipalComponent implements OnInit {
 
       try {
         const resultado: ResultadoFiltro = await this.filtrosService.obtenerResultadoFiltro(filters).toPromise();
-
+        // Se almacena la respuesta de la búsqueda
         this.resultadosBusqueda = resultado;
         this.filtrosService.ResultadoBusqueda = resultado;
         console.log('resultado principal', this.resultadosBusqueda)

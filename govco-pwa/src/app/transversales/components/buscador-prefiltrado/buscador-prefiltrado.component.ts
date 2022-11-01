@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
+import { BuscadorService, BuscadorParams } from 'src/app/buscador-pwa/services/buscador.service';
 
 @Component({
   selector: 'app-buscador-prefiltrado',
@@ -7,12 +9,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BuscadorPrefiltradoComponent implements OnInit {
 
+
   estadoBotonFiltro: boolean = true;
   tituloFiltro: string = '';
+  abrirBuscadorCheck : boolean = false;
 
-  constructor() { }
+  constructor(
+    private buscadorService : BuscadorService,
+    private router: Router) { }
 
   ngOnInit(): void {
+
+    let input : any = document.querySelector("input");
+    // Suscribe para abrir el buscador
+    this.buscadorService.getAbrirBuscador$.subscribe(
+      (abrir : boolean) => {
+        this.abrirBuscadorCheck = abrir
+      })
+
+      this.buscadorService.getBuscadorParams$.subscribe(
+        (parametros : BuscadorParams) => {
+          input.value = parametros.txtInputBuscador;
+        })
   }
 
   filtrarPor() {
@@ -21,13 +39,25 @@ export class BuscadorPrefiltradoComponent implements OnInit {
     modal_prefiltrado.style.display = 'block';
   }
 
-  itemSelected([item, estado]: [string, boolean]) {
+  itemSelected([item, estado, index, txtConsumoApi]: [string, boolean, number, string]) {
     this.tituloFiltro = item;
     this.estadoBotonFiltro = estado;
     let modal_prefiltrado: HTMLElement = document.getElementById('modal-prefiltrado') as HTMLElement;
     modal_prefiltrado.addEventListener('transitionend', () => {
       this.estadoBotonFiltro == true ? modal_prefiltrado.style.display = 'none' : null;
     });
+    // Actualización de los parametros de busqueda
+    let input_buscador : any = document.getElementById('buscador-pwa-general') ;
+    const buscadorParams : BuscadorParams = {
+      index  : index,
+      txtInputBuscador : input_buscador.value,
+      txtConsumoApi : txtConsumoApi
+    }
+    this.buscadorService.setBuscadorParams(buscadorParams)
   }
 
+  // Función de abrir el buscador
+  abrirBuscadorPWA(){
+    this.buscadorService.setAbrirBuscador(true)
+  }
 }
