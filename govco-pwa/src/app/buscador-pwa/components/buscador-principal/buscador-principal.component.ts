@@ -74,6 +74,7 @@ export class BuscadorPrincipalComponent implements OnInit {
         this.resultadosBusqueda = resultado;
         this.filtrosService.ResultadoBusqueda = resultado;
         this.dataResultado = this.resultadosBusqueda.data;
+        console.log('this.resultadosBusqueda', this.resultadosBusqueda)
       } catch (error) {
         console.error(error);
       }

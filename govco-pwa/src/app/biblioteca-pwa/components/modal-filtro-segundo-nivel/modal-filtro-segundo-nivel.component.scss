@@ -19,7 +19,7 @@
         max-height: 100%;
 
         .form-group {
-            margin: 20px 16px 10px 16px;
+            margin: 20px 16px 5px 16px;
 
             label {
                 margin-bottom: .625rem;
@@ -52,18 +52,19 @@
                 &:focus-visible {
                     outline: 2px solid #000;
                 }
-            }
 
-            #search-text::placeholder {
-                color: #495057;
+                &::placeholder {
+                    color: #495057;
+                }
             }
-
         }
 
         .listado {
             overflow-y: auto;
             overflow-x: hidden;
-            margin-bottom: 24px;
+            margin-bottom: 19px;
+            padding-top: 5px;
+            padding-bottom: 5px;
 
             .item {
                 display: flex;
@@ -71,6 +72,10 @@
                 align-items: center;
                 margin: 0;
                 padding: 13px 16px 14px 16px;
+                border: 0;
+                background-color: #ffff;
+                width: 100%;
+                text-align: left;
 
                 p {
                     margin: 0;
@@ -85,14 +90,18 @@
                     content: url(../../../../assets/icons-fonts/radio_button_unchecked.svg);
                     margin-left: 20px;
                 }
-            }
 
-            .item.active {
-                background-color: #E8EFFC !important;
+                &.active {
+                    background-color: #E8EFFC !important;
+    
+                    .radio-button {
+                        outline-color: #ffffff;
+                        content: url(../../../../assets/icons-fonts/radio_button_checked.svg);
+                    }
+                }
 
-                .radio-button {
-                    outline-color: #ffffff;
-                    content: url(../../../../assets/icons-fonts/radio_button_checked.svg);
+                &:focus-visible {
+                    outline: 2px  solid #000 !important;
                 }
             }
         }

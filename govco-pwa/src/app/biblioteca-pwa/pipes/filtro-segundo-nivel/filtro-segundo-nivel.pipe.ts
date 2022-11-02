@@ -5,17 +5,18 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class FiltroSegundoNivel implements PipeTransform {
 
-  transform(items: { item: string, idItem: number | string}[], searchText: string): any[] {
+  transform(items: string[], searchText: string): any[] {
     if (!items) {
       return [];
     }
     if (!searchText) {
       return items;
     }
+
     searchText = searchText.toLocaleLowerCase();
 
     return items.filter(it => {
-      return it.item.toLocaleLowerCase().includes(searchText);
+      return it.toLocaleLowerCase().includes(searchText);
     });
   }
 
