@@ -6,7 +6,6 @@ import { BottomMenuService } from 'src/app/transversales/services/bottom-menu/bo
 import { HeaderService } from 'src/app/transversales/services/header-service/header.service';
 import { SidenavService } from 'src/app/transversales/services/sidenav-service/sidenav-service.service';
 import { BuscadorService, BuscadorParams } from '../../services/buscador.service';
-import { EjerciciosParticipacionInterface } from '../../models/ejercicios-participacion-interface';
 
 @Component({
   selector: 'app-buscador-principal',
