@@ -4,7 +4,7 @@
             <label for="search-text">
                 <p>{{informacionModal.titulo}}</p>
             </label>
-            <input type="email" id="search-text" [(ngModel)]="searchText" placeholder="Buscar">
+            <input type="text" id="search-text" [(ngModel)]="searchText" placeholder="Buscar" tabindex="0">
         </div>
         <div class="listado">
             <label *ngFor="let item of informacionModal.contendioModal | filterSegundoNivel: searchText; let idItem = index;"

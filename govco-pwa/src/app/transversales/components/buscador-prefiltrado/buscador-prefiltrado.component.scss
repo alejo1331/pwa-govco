@@ -71,10 +71,9 @@
     height: 20.5rem;
     opacity: 1;
     transition: opacity 0.4s;
+    display: none;
 }
 
 #modal-prefiltrado.active {
     opacity: 0;
-    // transition-delay: 500ms;
-    // display: none;
 }

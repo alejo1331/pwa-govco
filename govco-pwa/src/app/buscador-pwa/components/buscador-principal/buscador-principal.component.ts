@@ -19,9 +19,6 @@ export class BuscadorPrincipalComponent implements OnInit {
   filterSubscription: Subscription;
   resultadosBusqueda: ResultadoFiltro;
 
-  public busqueda = 'empresa de servicios publicos aguas y aseo de el penol aap';
-  public seccion = 'tramite';
-
   constructor(
     protected filtrosService: FiltrosService,
     public bottomService: BottomMenuService,
@@ -46,8 +43,14 @@ export class BuscadorPrincipalComponent implements OnInit {
 
     this.buscadorService.getBuscadorParams$.subscribe(
       (parametros : BuscadorParams) => {
-        this.busqueda = parametros.txtInputBuscador;
-        this.seccion = parametros.txtConsumoApi
+        this.filtrosService.Filters = {
+          filters: null,
+          pageNumber: 1,
+          pageSize: 10,
+          search:  parametros.txtInputBuscador,
+          sort: "",
+          seccion: parametros.txtConsumoApi
+        }
       })
 
     this.servicioHeader.estadoHeader(false, true);
@@ -56,6 +59,7 @@ export class BuscadorPrincipalComponent implements OnInit {
     this.servicioSideNav.seleccionandoItem(false, 'null');
     (document.getElementById('topScroll') as HTMLElement).style.top = '7.25rem';
     (document.getElementById('topScroll') as HTMLElement).scrollTop = 0;
+
     this.filterSubscription = this.filtrosService.Filters$.subscribe(async (filters) => {
       if (filters == undefined) {
         return;
@@ -71,16 +75,6 @@ export class BuscadorPrincipalComponent implements OnInit {
         console.error(error);
       }
     });
-
-    // usar las siguientes lineas de codigo donde se cambie el texto del input de busqueda y donde se cambie el dato del desplegable
-    this.filtrosService.Filters = {
-      filters: null,
-      pageNumber: 1,
-      pageSize: 10,
-      search: this.busqueda,
-      sort: "",
-      seccion: this.seccion
-    }
   }
 
   ngOnDestroy() {

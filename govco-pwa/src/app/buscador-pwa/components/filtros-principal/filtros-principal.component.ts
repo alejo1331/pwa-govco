@@ -35,13 +35,21 @@ export class FiltrosPrincipalComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.seccion = this.filtrosService.Filters?.seccion ? this.filtrosService.Filters?.seccion : '';
-    this.busqueda = this.filtrosService.Filters?.search ? this.filtrosService.Filters?.search : '';
+    this.seccion = this.filtrosService.Filters?.seccion || '';
+    this.busqueda = this.filtrosService.Filters?.search || '';
 
     this.resultadosSubscription = this.filtrosService.ResultadoBusqueda$.subscribe((resultados) => {
       if (resultados) {
         this.resultadosBusqueda = resultados;
         this.actualizaFiltrosActivos();
+      }
+
+      const filter = this.filtrosService.Filters;
+
+      if (filter?.seccion != this.seccion || filter?.search != this.busqueda) {
+        this.seccion = filter?.seccion || '';
+        this.busqueda = filter?.search || '';
+        this.filtrosSeleccionados = {};
       }
     });
     

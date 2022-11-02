@@ -31,6 +31,10 @@ setBuscadorParams(buscadorParams:BuscadorParams):void{
   this.buscadorParams$.next(buscadorParams)
 }
 
+get getBuscadorParams(): BuscadorParams {
+  return this.buscadorParams$.getValue();
+}
+
 // Get para obtener el observador de apertura del buscador
 get getAbrirBuscador$ (): Observable<boolean>{
   return this.abrirBuscador$.asObservable();

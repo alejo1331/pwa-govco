@@ -4,7 +4,7 @@ export interface ResultadoFiltro {
     message: string;
     seconds: number;
     success: number;
-    tituloSugerido: number;
+    tituloSugerido: string | null;
     total: number;
 }
 

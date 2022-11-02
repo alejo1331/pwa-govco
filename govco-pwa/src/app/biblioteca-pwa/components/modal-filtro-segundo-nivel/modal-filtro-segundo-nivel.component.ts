@@ -27,6 +27,9 @@ export class ModalFiltroSegundoNivelComponent implements OnInit {
       body.style.position = 'fixed';
       body.style.overflow = 'hidden';
     }
+
+    const input: HTMLElement = <HTMLElement>document.getElementById("search-text");
+    input.focus();
   }
 
   itemSeleccionado(idItem: string | number, item: string) {

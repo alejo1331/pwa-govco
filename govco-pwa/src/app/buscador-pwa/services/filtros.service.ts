@@ -14,9 +14,38 @@ export class FiltrosService {
 
   private resultadoBusqueda = new BehaviorSubject<ResultadoFiltro | undefined>(undefined);
 
+  private data:ResultadoFiltro = {
+    success: 0,
+    message: "",
+    total: 0,
+    seconds: 0,
+    data: [],
+    tituloSugerido: null,
+    filtros: [
+      {
+        categorias: [],
+        subCategorias: [],
+        entidadNombre: [],
+        sector: [],
+        fechaPublicacionFiltro: [],
+        fechaCierreFiltro: [],
+        estado: [],
+        sugerenciasFiltro: [],
+        tipoEntidad: [],
+        nombreEstandarizado: [],
+        anioPublicacionFiltro: [],
+        mesPublicacionFiltro: []
+      }
+    ]
+  };
+
   constructor(private http: HttpClient) { }
   
   obtenerResultadoFiltro(dataBusqueda: FiltroBusqueda): Observable<ResultadoFiltro> {
+    // if (dataBusqueda.seccion == '' || dataBusqueda.search == '') {
+    //   return new BehaviorSubject<ResultadoFiltro>(this.data);
+    // }
+
     const buscar = environment.serverBuscador + dataBusqueda.seccion + '/buscar/';
     return this.http.post<ResultadoFiltro>(buscar, dataBusqueda);
   }
