@@ -20,13 +20,14 @@ export class BuscadorPrincipalComponent implements OnInit {
   filterSubscription: Subscription;
   resultadosBusqueda: ResultadoFiltro;
   dataResultado: any;
+  seccion: String = '';
 
   constructor(
     protected filtrosService: FiltrosService,
     public bottomService: BottomMenuService,
     protected servicioHeader: HeaderService,
     protected servicioSideNav: SidenavService,
-    private buscadorService : BuscadorService,
+    private buscadorService: BuscadorService,
   ) {
     this.bottomService.putOcultandoBottomMenu(false);
   }
@@ -44,12 +45,13 @@ export class BuscadorPrincipalComponent implements OnInit {
     //                                                 consultada no tiene header
 
     this.buscadorService.getBuscadorParams$.subscribe(
-      (parametros : BuscadorParams) => {
+      (parametros: BuscadorParams) => {
+        this.seccion = parametros.txtConsumoApi;
         this.filtrosService.Filters = {
           filters: null,
           pageNumber: 1,
           pageSize: 10,
-          search:  parametros.txtInputBuscador,
+          search: parametros.txtInputBuscador,
           sort: "",
           seccion: parametros.txtConsumoApi
         }
