@@ -1,13 +1,15 @@
 <section #resultados class="contenido-buscador-pwa">
-    <app-barra-filtros></app-barra-filtros>
+    <app-barra-filtros *ngIf="dataResultado" [totalResultados]="dataResultado.length"></app-barra-filtros>
     <div class="contenido-resultado contenido-pwa-govco">
-        <app-buscador-card-entidades *ngIf="seccion == 'entidad' && dataResultado"></app-buscador-card-entidades>
+        <app-buscador-card-entidades *ngIf="seccion == 'entidad' && dataResultado" 
+            [data]="dataResultado"></app-buscador-card-entidades>
         <app-buscador-card-ejercicios-participacion *ngIf="seccion == 'participacion' && dataResultado"
             [data]="dataResultado"></app-buscador-card-ejercicios-participacion>
-        <app-buscador-card-ventanilla *ngIf="seccion == 'tramiteventanilla'&& dataResultado">
-        </app-buscador-card-ventanilla>
-        <app-buscador-card-portales *ngIf="seccion == 'portaltransversal' && dataResultado">
-        </app-buscador-card-portales>
-        <app-buscador-card-tramites *ngIf="seccion == 'tramite' && dataResultado"></app-buscador-card-tramites>
+        <app-buscador-card-ventanilla *ngIf="seccion == 'tramiteventanilla'&& dataResultado" 
+            [data]="dataResultado"></app-buscador-card-ventanilla>
+        <app-buscador-card-portales *ngIf="seccion == 'portaltransversal' && dataResultado" 
+            [data]="dataResultado"></app-buscador-card-portales>
+        <app-buscador-card-tramites *ngIf="seccion == 'tramite' && dataResultado" 
+            [data]="dataResultado"></app-buscador-card-tramites>
     </div>
 </section>

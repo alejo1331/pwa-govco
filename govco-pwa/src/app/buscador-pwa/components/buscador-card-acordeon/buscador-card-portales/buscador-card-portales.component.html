@@ -1,20 +1,28 @@
-<app-buscador-card-acordeon [tramiteTitle]="titleAcordeon">
-    <div class="govco-pwa-ficha-subtitulo">
-        <div class="texto-entidad">
-            <p>Entidad responsable: <br>
-                <span [attr.aria-label]="'Entidad responsable' + data?.Entidad">{{
-                    data?.Entidad}}</span>
-            </p>
+<div class="accordion acordeon-pwa-govco" id="acordeonPortales">
+    <div class="card" *ngFor="let item of items; index as i;" [class.active]="item.active">
+        <div class="card-header" id="headingOne">
+            <button (click)="activarItem(i)" class="btn btn-link btn-block text-left" type="button"
+                data-toggle="collapse" [attr.data-target]="'#collapse-portales' + i" aria-expanded="false"
+                [attr.aria-controls]="'collapse-portales' + i">
+                <a *ngIf="href" href="{{item.link}}" target="_blank">{{item.titulo}}</a>
+                <a *ngIf="!href" routerLink="{{item.link}}">{{item.titulo}}</a>
+                <div class="caja-icono-24-pwa">
+                    <span class="icono-expand-more" type="image"
+                        alt="Expandir acordeon para ver más información"></span>
+                </div>
+            </button>
         </div>
-        <div class="separador"></div>
-    </div>
-    <div class="container-detalle">
-        <div class="contenido-detalle" (click)="showBotonLeer()">
-            <p class="ficha-descripcion" tabindex="0" [attr.aria-label]="contenidoLeido" (focus)="showExpended()">
-                {{contenidoDescripcion}}
-                <br>
-            </p>
-            <a *ngIf="caracteresCategoria" class="contenido-expandido">{{nombreExpanded}}</a>
+        <div [id]="'collapse-portales' + i" class="collapse" [attr.aria-labelledby]="'heading' + i"
+            data-parent="#acordeonPortales">
+            <div class="card-body contenido-pwa-govco">
+                <span>Entidad responsable: </span>
+                <p tabindex="0"> {{item.entidadNombre}}</p>
+                <div class="linea-horizontal-2-pwa-govco"></div>
+                <div class="descripcion">
+                    <p>{{item.descripcion}}</p>
+                    <a>Leer más</a>
+                </div>
+            </div>
         </div>
     </div>
-</app-buscador-card-acordeon>
+</div>

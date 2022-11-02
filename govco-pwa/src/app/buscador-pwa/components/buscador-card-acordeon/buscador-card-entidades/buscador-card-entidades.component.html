@@ -1,10 +1,27 @@
-<app-buscador-card-acordeon [tramiteTitle]="titleAcordeon">
-    <div class="govco-pwa-ficha-subtitulo">
-        <div class="texto-entidad">
-            <p>Tipo de orden:
-                <span [attr.aria-label]="'Entidad responsable' + data?.Entidad">{{
-                    data?.Entidad}}</span>
-            </p>
+<div class="accordion acordeon-pwa-govco" id="acordeonEntidades">
+    <div class="card" *ngFor="let item of items; index as i;" [class.active]="item.active">
+        <div class="card-header" id="headingOne">
+            <button (click)="activarItem(i)" class="btn btn-link btn-block text-left" type="button"
+                data-toggle="collapse" [attr.data-target]="'#collapse-entidades' + i"
+                aria-expanded="false" [attr.aria-controls]="'collapse-entidades' + i">
+                <a *ngIf="href" href="{{item.linkEntidad}}" target="_blank">{{item.titulo}}</a>
+                <a *ngIf="!href" routerLink="{{item.linkEntidad}}">{{item.titulo}}</a>
+                <div class="caja-icono-24-pwa">
+                    <span class="icono-expand-more" type="image"
+                        alt="Expandir acordeon para ver más información"></span>
+                </div>
+            </button>
+        </div>
+        <div [id]="'collapse-entidades' + i" class="collapse" [attr.aria-labelledby]="'heading' + i"
+            data-parent="#acordeonEntidades">
+            <div class="card-body">
+                <div class="descripcion contenido-pwa-govco">
+                    <p tabindex="0">Tipo de orden:
+                        <span>{{item.orden}}</span>
+                    </p>
+                </div>
+                
+            </div>
         </div>
     </div>
-</app-buscador-card-acordeon>
+</div>
