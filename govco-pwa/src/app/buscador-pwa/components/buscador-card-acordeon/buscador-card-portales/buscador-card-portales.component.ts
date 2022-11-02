@@ -1,18 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import { PortalTransversalesInterface } from 'src/app/buscador-pwa/models/portal-transversales-interface';
+import { urlsLocal } from 'src/variables-globales/urlsLocal';
 
 @Component({
   selector: 'app-buscador-card-portales',
   templateUrl: './buscador-card-portales.component.html',
   styleUrls: ['./buscador-card-portales.component.scss'],
 })
-export class BuscadorCardPortalesComponent implements OnInit {
-  titleAcordeon = 'Portal de Datos del Estado colombiano';
-  data = {
-    Entidad: 'I.P.S. Centro de Salud - Macaravita',
-    PaginaWeb: 'www.google.com',
-    DescripcionTramite:
-      ' Es una estrategia de articulación público privada que busca mejorar el entorno para el desarrollo de la actividad. El Ministerio de Educación Nacional y el Ministerio de Ciencia, Tecnología e Innovación invitan a los Docentes.',
-  };
+export class BuscadorCardPortalesComponent implements OnInit, OnChanges {
+
+  @Input() data: PortalTransversalesInterface[];
+
+  public items: {
+    active: boolean,
+    descripcion: string;
+    entidadNombre: string;
+    link: string;
+    linkEntidad: string;
+    titulo: string;
+  }[] = [];
+  href: boolean = true;
 
   infoDescripcionTramite: any;
   contenidoDescripcion: string;
@@ -25,13 +32,38 @@ export class BuscadorCardPortalesComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    this.infoDescripcionTramite = this.data;
-    this.contenidoDescripcion =
-      this.infoDescripcionTramite.DescripcionTramite.substring(0, 125) + '...';
-    this.contenidoLeido = this.infoDescripcionTramite.DescripcionTramite;
-    if (this.contenidoDescripcion.length > 124) {
-      this.caracteresCategoria = true;
-    }
+    
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.data.previousValue != changes.data.currentValue) {
+      this.items = []
+    };
+    changes.data.currentValue.forEach((element:PortalTransversalesInterface) => {
+      this.href = true;
+      Object.values(urlsLocal).find(url => {
+         element.link.indexOf(url) >= 0 ? this.href = false : null;
+      })
+      this.items.push(
+        {
+          active: false,
+          descripcion: element.descripcion,
+          entidadNombre: element.entidadNombre,
+          link: element.link,
+          linkEntidad: element.linkEntidad,
+          titulo: element.titulo
+        }
+      )
+    })
+  }
+
+  activarItem(index: number) {
+    this.items[index].active = !this.items[index].active;
+    this.items.forEach(function (item, indexItem) {
+      if (indexItem != index) {
+        item.active = false;
+      }
+    });
   }
 
   showExpended() {

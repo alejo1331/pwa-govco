@@ -1,46 +1,105 @@
-.govco-pwa-ficha-subtitulo {
-	// padding: 0px 16px 0px 16px;
-	width: 100%;
-	height: auto;
-	margin-bottom: 24px;
+.acordeon-pwa-govco {
+    width: 100%;
 
-	.texto-entidad {
-		margin-bottom: 0.5rem;
+    .card {
+        width: 100%;
+        border: 2px solid #E8EFFC;
+        border-radius: 4px;
+        background-color: #FFFFFF;
+        margin-bottom: 0.5rem;
 
-		p {
-			font-family: "Montserrat-Medium";
-			font-size: 14px;
-			color: #000000;
-			margin: 0;
+        .card-header {
+            background-color: #FFFFFF;
+            border: 0;
+            padding: 0;
 
-			span {
-				font-family: "WorkSans-Regular";
-			}
-		}
-	}
+            button {
+                padding: 1rem;
+                border: 0;
+                text-decoration: none;
+                display: flex;
+                justify-content: space-between;
+                min-height: 3.5rem;
 
-	.separador::after {
-		content: "";
-		display: block;
-		width: 88px;
-		height: 2px;
-		background-color: #1c4780;
-	}
-}
+                a {
+                    color: #3366CC;
+                    font-family: 'WorkSans-Medium';
+                    font-size: 1rem;
+                    margin: 0;
+                    padding: 0;
+                    line-height: 1.3rem;
+                    text-decoration: underline;
+                }
 
-.container-detalle {
-    .contenido-detalle {
-        font-size: 14px;
+                .caja-icono-24-pwa {
+                    margin-left: 1rem;
 
-        .ficha-descripcion {
-            font-family: "WorkSans-Regular";
-            color: #000;
+                    .icono-expand-more {
+                        content: url(../../../../../assets/icons-fonts/expand_more.svg);
+                        width: 2rem;
+                        height: 2rem;
+                        transition: 0.4s linear transform;
+                    }
+                }
+            }
+
+            button:focus {
+                box-shadow: none;
+            }
         }
 
-        a {
-            font-family: "WorkSans-Medium";
-            color: #3366CC;
-            margin-top: 20px;
+        .card-body {
+
+            span {
+                color: #000000;
+                font-family: 'WorkSans-Medium';
+                font-size: .875rem;
+            }
+
+            p {
+                color: #000000;
+                font-family: 'WorkSans-Regular';
+                font-size: .875rem;
+                margin: 0;
+            }
+
+            .linea-horizontal-2-pwa-govco {
+                margin: .5rem 0 1.5rem 0;
+            }
+
+            .descripcion {
+                padding-bottom: 1rem;
+
+                p {
+                    color: #000000;
+                    font-family: 'WorkSans-Regular';
+                    font-size: .875rem;
+                    letter-spacing: -0.006rem;
+                }
+
+                a {
+                    color: #3366CC;
+                    font-family: 'WorkSans-Medium';
+                    font-size: .875rem;
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+
+    .card.active {
+        border: 2px solid #E8EFFC;
+        background-color: #FFFFFF !important;
+
+        .card-header button {
+            p {
+                font-family: 'WorkSans-Medium';
+            }
+
+            .icono-expand-more {
+                display: inline;
+                transform: rotate(-180deg);
+            }
         }
     }
 }
