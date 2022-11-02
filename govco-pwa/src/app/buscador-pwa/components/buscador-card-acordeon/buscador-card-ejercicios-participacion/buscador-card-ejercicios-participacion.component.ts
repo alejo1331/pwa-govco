@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { EjerciciosParticipacionInterface } from 'src/app/buscador-pwa/models/ejercicios-participacion-interface';
 import { urlsLocal } from 'src/variables-globales/urlsLocal';
 
@@ -7,7 +7,7 @@ import { urlsLocal } from 'src/variables-globales/urlsLocal';
   templateUrl: './buscador-card-ejercicios-participacion.component.html',
   styleUrls: ['./buscador-card-ejercicios-participacion.component.scss']
 })
-export class BuscadorCardEjerciciosParticipacionComponent implements OnInit {
+export class BuscadorCardEjerciciosParticipacionComponent implements OnInit, OnChanges {
 
   @Input() data: EjerciciosParticipacionInterface[];
   meses: string[] = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
@@ -27,7 +27,13 @@ export class BuscadorCardEjerciciosParticipacionComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.data.forEach((element) => {
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.data.previousValue != changes.data.currentValue) {
+      this.items = []
+    };
+    changes.data.currentValue.forEach((element: EjerciciosParticipacionInterface) => {
       var fechaPublicacion: Array<String> = Array.from((element.fechaPublicacion.split(/\s+/).join('')).split("de"));
       var fechaCierre: Array<String> = Array.from((element.fechaCierre.split(/\s+/).join('')).split("de"));
       this.meses.forEach((mes, i) => {
@@ -38,10 +44,10 @@ export class BuscadorCardEjerciciosParticipacionComponent implements OnInit {
           element.fechaCierre = fechaCierre[0] + '/' + this.mesesNum[i] + '/' + fechaCierre[2]
           : null;
       });
-      Object.values(urlsLocal).forEach(url => {
-        this.href = element.link.indexOf(url) >= 0 ? false : true;
+      this.href = true;
+      Object.values(urlsLocal).find(url => {
+         element.link.indexOf(url) >= 0 ? this.href = false : null;
       })
-      
       this.items.push(
         {
           active: false,

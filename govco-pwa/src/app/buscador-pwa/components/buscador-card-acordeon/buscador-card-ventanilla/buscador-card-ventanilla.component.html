@@ -4,7 +4,8 @@
             <button (click)="activarItem(i)" class="btn btn-link btn-block text-left" type="button"
                 data-toggle="collapse" [attr.data-target]="'#collapse-ventanillas' + i" aria-expanded="false"
                 [attr.aria-controls]="'collapse-ventanillas' + i">
-                <a routerLink="{{item.urlVentanillas}}">{{item.titulo}}</a>
+                <a *ngIf="href" href="{{item.link}}" target="_blank">{{item.titulo}}</a>
+                <a *ngIf="!href" routerLink="{{item.link}}">{{item.titulo}}</a>
                 <div class="caja-icono-24-pwa">
                     <span class="icono-expand-more" type="image"
                         alt="Expandir acordeon para ver más información"></span>
@@ -15,7 +16,7 @@
             data-parent="#acordeonVentanillas">
             <div class="card-body contenido-pwa-govco">
                 <span>Entidad responsable: </span>
-                <p tabindex="0"> {{item.responsable}}</p>
+                <p tabindex="0"> {{item.entidadNombre}}</p>
                 <div class="linea-horizontal-2-pwa-govco"></div>
                 <div class="descripcion">
                     <p>{{item.descripcion}}</p>

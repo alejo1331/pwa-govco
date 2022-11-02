@@ -1,16 +1,95 @@
-.govco-pwa-ficha-subtitulo {
+.acordeon-pwa-govco {
 	width: 100%;
-	height: auto;
 
-	.texto-entidad {
-		p {
-			font-family: "Montserrat-Medium";
-			font-size: 14px;
-			color: #000000;
-			margin: 0;
+	.card {
+		width: 100%;
+		border: 2px solid #E8EFFC;
+		border-radius: 4px;
+		background-color: #FFFFFF;
+		margin-bottom: 0.5rem;
 
-			span {
-				font-family: "WorkSans-Regular";
+		.card-header {
+			background-color: #FFFFFF;
+			border: 0;
+			padding: 0;
+
+			button {
+				padding: 1rem;
+				border: 0;
+				text-decoration: none;
+				display: flex;
+				justify-content: space-between;
+				min-height: 6.188rem;
+
+				a {
+					color: #3366CC;
+					font-family: 'WorkSans-Medium';
+					font-size: 1rem;
+					margin: 0;
+					padding: 0;
+					line-height: 1.3rem;
+					text-decoration: underline;
+				}
+
+				.caja-icono-24-pwa {
+					margin-left: 1rem;
+
+					.icono-expand-more {
+						content: url(../../../../../assets/icons-fonts/expand_more.svg);
+						width: 2rem;
+						height: 2rem;
+						transition: 0.4s linear transform;
+					}
+				}
+			}
+
+			button:focus {
+				box-shadow: none;
+			}
+		}
+
+		.card-body {
+			padding: 0;
+
+			.descripcion {
+				padding-bottom: 1rem;
+
+				p {
+					color: #000000;
+					font-family: 'WorkSans-Medium';
+					font-size: .875rem;
+					margin: 0;
+					line-height: 1.33122rem;
+
+					span {
+						color: #000000;
+						font-family: 'WorkSans-Regular';
+						font-size: .875rem;
+					}
+				}
+
+				a {
+					color: #3366CC;
+					font-family: 'WorkSans-Medium';
+					font-size: .875rem;
+					text-decoration: underline;
+				}
+			}
+		}
+	}
+
+	.card.active {
+		border: 2px solid #E8EFFC;
+		background-color: #FFFFFF !important;
+
+		.card-header button {
+			p {
+				font-family: 'WorkSans-Medium';
+			}
+
+			.icono-expand-more {
+				display: inline;
+				transform: rotate(-180deg);
 			}
 		}
 	}

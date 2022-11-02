@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { FiltrosPrincipalComponent } from '../filtros-principal/filtros-principal.component';
 
 @Component({
@@ -8,14 +8,12 @@ import { FiltrosPrincipalComponent } from '../filtros-principal/filtros-principa
 })
 export class BarraFiltrosComponent implements OnInit {
 
+  @Input() totalResultados: any[];
   @ViewChild(FiltrosPrincipalComponent) FiltrosPrincipalComponent: FiltrosPrincipalComponent;
-  totalResultados: number | string;
 
   constructor() { }
 
-  ngOnInit(): void {
-    this.totalResultados = 45
-  }
+  ngOnInit(): void {}
 
   filtroPrimerNivel() {
     this.FiltrosPrincipalComponent.abrirModal();
