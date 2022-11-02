@@ -22,8 +22,12 @@
     <div class="comentarios-content">
         <p class="comentarios-text">Escribe tus comentarios</p>
         <textarea class="aservice-comentarios-textarea" [(ngModel)]="textLarge" id="aservice-comentarios-textarea"
+            [ngClass]="textLarge.length < 10 ? 'error-text-area': 'success-text-area'"
             placeholder="Queremos conocer tu experiencia, sugerencias y consejos..."
             aria-label="area de comentarios"></textarea>
+        <span *ngIf="textLarge.length < 10" class="aservice-comentarios-alerta">El comentario debe ser mínimo de 10
+            caracteres para ser
+            enviado.</span>
     </div>
 </div>
 <div mat-dialog-actions>
