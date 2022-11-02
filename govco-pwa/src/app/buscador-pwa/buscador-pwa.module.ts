@@ -18,6 +18,7 @@ import { BuscadorNivelDosComponent } from './components/buscador-nivel-dos/busca
 import { NivelDosHeaderBuscadorComponent } from './components/buscador-nivel-dos/nivel-dos-header-buscador/nivel-dos-header-buscador.component';
 import { NivelDosHeaderPrefiltrosComponent } from './components/buscador-nivel-dos/nivel-dos-header-prefiltros/nivel-dos-header-prefiltros.component';
 import { ListadoSugerenciasComponent } from './components/buscador-nivel-dos/listado-sugerencias/listado-sugerencias.component';
+import { BuscadorAvisoComponent } from './components/buscador-aviso/buscador-aviso.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { ListadoSugerenciasComponent } from './components/buscador-nivel-dos/lis
     BuscadorNivelDosComponent,
     NivelDosHeaderBuscadorComponent,
     NivelDosHeaderPrefiltrosComponent,
-    ListadoSugerenciasComponent
+    ListadoSugerenciasComponent,
+    BuscadorAvisoComponent
 
   ],
   imports: [
