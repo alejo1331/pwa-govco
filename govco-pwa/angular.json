@@ -247,7 +247,7 @@
                             "browserTarget": "govco-pwa:build:stagingServe"
                         },
                         "develop": {
-                            "browserTarget": "govco-pwa:build:develop"
+                            "browserTarget": "govco-pwa:build:developServe"
                         }
                     },
                     "defaultConfiguration": "develop"

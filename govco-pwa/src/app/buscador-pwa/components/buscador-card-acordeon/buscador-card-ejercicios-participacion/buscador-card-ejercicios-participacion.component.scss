@@ -86,15 +86,13 @@
                         font-family: 'WorkSans-Regular';
                         font-size: .875rem;
                     }
-
-                    .status-on {
-                        font-family: 'WorkSans-SemiBold';
-                        color: #068460;
-                    }
-
                     .status-off {
                         font-family: 'WorkSans-SemiBold';
                         color: #A80521;
+                    }
+
+                    .status-on {
+                        color: #068460;
                     }
                 }
             }
