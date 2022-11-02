@@ -6,6 +6,7 @@ import { BottomMenuService } from 'src/app/transversales/services/bottom-menu/bo
 import { HeaderService } from 'src/app/transversales/services/header-service/header.service';
 import { SidenavService } from 'src/app/transversales/services/sidenav-service/sidenav-service.service';
 import { BuscadorService, BuscadorParams } from '../../services/buscador.service';
+import { EjerciciosParticipacionInterface } from '../../models/ejercicios-participacion-interface';
 
 @Component({
   selector: 'app-buscador-principal',
@@ -18,6 +19,7 @@ export class BuscadorPrincipalComponent implements OnInit {
 
   filterSubscription: Subscription;
   resultadosBusqueda: ResultadoFiltro;
+  dataResultado: any;
 
   constructor(
     protected filtrosService: FiltrosService,
@@ -64,13 +66,12 @@ export class BuscadorPrincipalComponent implements OnInit {
       if (filters == undefined) {
         return;
       }
-
       try {
         const resultado: ResultadoFiltro = await this.filtrosService.obtenerResultadoFiltro(filters).toPromise();
         // Se almacena la respuesta de la búsqueda
         this.resultadosBusqueda = resultado;
         this.filtrosService.ResultadoBusqueda = resultado;
-        console.log('resultado principal', this.resultadosBusqueda)
+        this.dataResultado = this.resultadosBusqueda.data;
       } catch (error) {
         console.error(error);
       }
