@@ -25,6 +25,16 @@ export class BuscadorCardVentanillaComponent implements OnInit, OnChanges {
 
   ngOnInit(): void { }
 
+  ngDoCheck() {
+
+    if (this.items.length > 0){
+
+      if(document.getElementById('acordeonVentanillas')){
+        $('#acordeonVentanillas div.card:nth-child(-n+5)').addClass('actived')
+      }
+    }
+  }
+
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.data.previousValue != changes.data.currentValue) {
       this.items = []
@@ -54,6 +64,13 @@ export class BuscadorCardVentanillaComponent implements OnInit, OnChanges {
         item.active = false;
       }
     });
+  }
+
+  VerMasResultados(){
+    let resultadosActivos = $('div.card');
+    let ultimoActivo = resultadosActivos.filter('.actived:last').index();
+    resultadosActivos.filter(':lt(' + (ultimoActivo + 6) + ')').addClass('actived');
+
   }
 
 }
