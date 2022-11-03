@@ -2,7 +2,7 @@ import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { DATA_FILTRO_SECCIONES } from '../../models/dataFiltroSeccionesModel';
 import { FiltrosService } from '../../services/filtros.service';
 import { ModalFiltroSegundoNivelComponent } from '../../../biblioteca-pwa/components/modal-filtro-segundo-nivel/modal-filtro-segundo-nivel.component';
-import { ContenidoModalFiltroInterface, InformacionModalInterface } from '../../../biblioteca-pwa/models/filtro-nivel-dos/filtro-nivel-dos-interface';
+import { InformacionModalInterface } from '../../../biblioteca-pwa/models/filtro-nivel-dos/filtro-nivel-dos-interface';
 import { Subscription } from 'rxjs';
 import { Platform } from '@angular/cdk/platform';
 import { DataFiltros, ResultadoFiltro } from '../../models/resultadoFiltroModel';
@@ -39,17 +39,17 @@ export class FiltrosPrincipalComponent implements OnInit {
     this.busqueda = this.filtrosService.Filters?.search || '';
 
     this.resultadosSubscription = this.filtrosService.ResultadoBusqueda$.subscribe((resultados) => {
-      if (resultados) {
-        this.resultadosBusqueda = resultados;
-        this.actualizaFiltrosActivos();
-      }
-
       const filter = this.filtrosService.Filters;
 
       if (filter?.seccion != this.seccion || filter?.search != this.busqueda) {
         this.seccion = filter?.seccion || '';
         this.busqueda = filter?.search || '';
         this.filtrosSeleccionados = {};
+      }
+
+      if (resultados) {
+        this.resultadosBusqueda = resultados;
+        this.actualizaFiltrosActivos();
       }
     });
     
@@ -117,14 +117,20 @@ export class FiltrosPrincipalComponent implements OnInit {
       var body = (document.getElementsByTagName('body') as HTMLCollectionOf<HTMLElement>)[0];
       body.classList.toggle('contenido-body');
     }
+    this.focus();
   }
 
-  itemFiltroNivelDos(data: ContenidoModalFiltroInterface) {
+  itemFiltroNivelDos(item: string) {
     this.filtrosSeleccionados = this.filtrosService.Filters?.filters != null ? this.filtrosService.Filters.filters : {};
     if (this.filtroSeleccionado == 'categorias' || this.filtroSeleccionado == 'subCategorias') {
-      this.filtrosSeleccionados[this.filtroSeleccionado] = { 'nombre': data.item }
+      this.filtrosSeleccionados[this.filtroSeleccionado] = { 'nombre': item }
     } else {
-      this.filtrosSeleccionados[this.filtroSeleccionado] = data.item;
+      this.filtrosSeleccionados[this.filtroSeleccionado] = item;
+    }
+
+    if (this.filtroSeleccionado) {
+      const itemActivo = <HTMLElement>document.querySelector('[itemfiltroniveluno="' + this.filtroSeleccionado + '"]');
+      itemActivo.focus();
     }
 
     this.actualizarBusqueda();
@@ -158,8 +164,41 @@ export class FiltrosPrincipalComponent implements OnInit {
     }
   }
 
+  focus() {
+    const currDialog = document.querySelector(".container-filtros");
+
+    if (currDialog) {
+      const focusableElements = currDialog.querySelectorAll(
+        'a[href], button, input, textarea, select, details, [tabindex]:not([tabindex="-1"])'
+      );
+  
+      let first = <HTMLElement>focusableElements[0];
+      let last = <HTMLElement>focusableElements[focusableElements.length - 1];
+  
+      document.body.addEventListener("focus", (event:FocusEvent) => {
+        if (currDialog && !currDialog.contains(<HTMLElement>event.target)) {
+          event.preventDefault();
+          event.stopPropagation();
+
+          const previous = event.relatedTarget;
+
+          if (previous == last) {
+            first.focus();
+          } else if (previous == first) {
+            last.focus();
+          }
+        }
+      }, {capture: true});
+    }
+  }
+
+  removeFocus() {
+    document.body.removeEventListener("focus", () => {});
+  }
+
   ngOnDestroy() {
     this.resultadosSubscription.unsubscribe();
+    this.removeFocus();
   }
 
 }

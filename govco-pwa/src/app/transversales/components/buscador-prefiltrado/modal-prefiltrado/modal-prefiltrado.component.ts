@@ -21,8 +21,7 @@ export class ModalPrefiltradoComponent implements OnInit {
     // Suscribe a los parametros de busqueda para actualizar el boton del filtro
     this.buscadorService.getBuscadorParams$.subscribe(
       (parametros : BuscadorParams) => {
-        let elementoLista : any =  document.getElementsByClassName('item-filtro')[parametros.index]
-        elementoLista.click()
+        this.itemFiltro = parametros.index;
       }
     )
   }

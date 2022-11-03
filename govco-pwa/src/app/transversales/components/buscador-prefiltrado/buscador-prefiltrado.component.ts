@@ -30,6 +30,8 @@ export class BuscadorPrefiltradoComponent implements OnInit {
       this.buscadorService.getBuscadorParams$.subscribe(
         (parametros : BuscadorParams) => {
           input.value = parametros.txtInputBuscador;
+          this.tituloFiltro = parametros.txtConsumoApi;
+          this.estadoBotonFiltro = true;
         })
   }
 
@@ -40,6 +42,7 @@ export class BuscadorPrefiltradoComponent implements OnInit {
   }
 
   itemSelected([item, estado, index, txtConsumoApi]: [string, boolean, number, string]) {
+    console.log('estado', estado)
     this.tituloFiltro = item;
     this.estadoBotonFiltro = estado;
     let modal_prefiltrado: HTMLElement = document.getElementById('modal-prefiltrado') as HTMLElement;
