@@ -8,6 +8,7 @@ import { BuscadorService, BuscadorParams } from 'src/app/buscador-pwa/services/b
 })
 export class NivelDosHeaderPrefiltrosComponent implements OnInit {
   tramiteIndex : number = 0;
+  estadoClick = false;
   buscadorParams : BuscadorParams;
   constructor(
     private buscadorService : BuscadorService
@@ -24,6 +25,10 @@ export class NivelDosHeaderPrefiltrosComponent implements OnInit {
         }
         let tramiteSelected = document.getElementsByClassName('govco-pwa-prefiltro-element')[this.tramiteIndex]
         tramiteSelected.classList.add('filtro-active');
+        let container : any = document.getElementById(this.tramiteIndex.toString())?.offsetLeft;
+        document.getElementById('govco-pwa-prefiltros-container')!.scrollLeft = 0;
+        document.getElementById('govco-pwa-prefiltros-container')!.scrollLeft += container;
+        this.estadoClick = false
       }
     )
   }
@@ -41,6 +46,7 @@ export class NivelDosHeaderPrefiltrosComponent implements OnInit {
     txtConsumoApi: txtApi
    }
    this.buscadorService.setBuscadorParams(nuevosBuscadorParams)
+
   }
 
 }
