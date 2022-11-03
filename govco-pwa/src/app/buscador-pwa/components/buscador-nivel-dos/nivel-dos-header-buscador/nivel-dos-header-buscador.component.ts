@@ -15,7 +15,7 @@ export class NivelDosHeaderBuscadorComponent implements OnInit {
   minCaracterTexto: number =  Parametros.minCaracterTexto;
   maxLargoSugerencia: number = Parametros.maxLargoSugerencia;
   numeroSugerenciasDevueltas: number = 0;
-  datosAutocompletar = [];
+  datosAutocompletar : any = [];
   txtConsumoApi = '';
   txtInputBuscador = '';
 
@@ -52,12 +52,17 @@ export class NivelDosHeaderBuscadorComponent implements OnInit {
   buscarSugerencias(event : any){
     if(event.target.value.length < this.minCaracterTexto){
       this.datosAutocompletar = []
+      this.buscadorService.setSugerenrciasBuscador(this.datosAutocompletar)
     }
     else{
       this.sugerenciasService.obtenerSugerencias(this.txtConsumoApi,
       event.target.value,
       this.numeroSugerencias).subscribe((data) => {
         this.datosAutocompletar = data.filtros[0].sugerenciasFiltro;
+        let regEx = new RegExp(event.target.value, 'gi');
+        this.datosAutocompletar.forEach((name : any , index : any) => {
+          this.datosAutocompletar[index] = [name, name.replace(regEx, "<strong>$&</strong>")]
+        });
         this.buscadorService.setSugerenrciasBuscador(this.datosAutocompletar)
     }, (error) => {
         console.error(error);

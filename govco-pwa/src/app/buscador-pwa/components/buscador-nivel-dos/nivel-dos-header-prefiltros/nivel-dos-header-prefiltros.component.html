@@ -1,6 +1,6 @@
 <div class="govco-pwa-header-prefiltros">
-  <ul>
-    <li class="govco-pwa-prefiltro-element">
+  <ul id="govco-pwa-prefiltros-container">
+    <li class="govco-pwa-prefiltro-element" id="0">
       <div class="govco-pwa-prefiltros-icon">
         <span class="material-symbols-outlined">
           description
@@ -8,15 +8,15 @@
       </div>
       <a (click)="changePrefilter(0, 'tramite')">Trámites y servicios</a>
     </li>
-    <li class="govco-pwa-prefiltro-element">
+    <li class="govco-pwa-prefiltro-element" id="1">
       <div class="govco-pwa-prefiltros-icon">
         <span class="material-symbols-outlined">
           home_work
         </span>
       </div>
       <a (click)="changePrefilter(1, 'entidad')">Entidades</a>
-    </li>
-    <li class="govco-pwa-prefiltro-element">
+    </li >
+    <li class="govco-pwa-prefiltro-element" id="2">
       <div class="govco-pwa-prefiltros-icon">
         <span class="material-symbols-outlined">
           feed
@@ -24,7 +24,7 @@
       </div>
       <a (click)="changePrefilter(2, 'noticia')">Noticias</a>
     </li>
-    <li class="govco-pwa-prefiltro-element">
+    <li class="govco-pwa-prefiltro-element" id="3">
       <div class="govco-pwa-prefiltros-icon">
         <span class="material-symbols-outlined">
           diversity_3
@@ -32,7 +32,7 @@
       </div>
       <a (click)="changePrefilter(3, 'participacion')">Ejercicios de participación</a>
     </li>
-    <li class="govco-pwa-prefiltro-element">
+    <li class="govco-pwa-prefiltro-element" id="4">
       <div class="govco-pwa-prefiltros-icon">
         <span class="material-symbols-outlined">
           store
@@ -40,7 +40,7 @@
       </div>
       <a (click)="changePrefilter(4, 'tramiteventanilla')">Ventanillas Únicas</a>
     </li>
-    <li class="govco-pwa-prefiltro-element">
+    <li class="govco-pwa-prefiltro-element" id="5">
       <div class="govco-pwa-prefiltros-icon">
         <span class="material-symbols-outlined">
           computer

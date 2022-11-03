@@ -1,7 +1,7 @@
 <section class="govco-pwa-sugerencias-buscador">
   <div class="govco-pwa-sugerencia"
     *ngFor="let sugerencia of listadoSugerencias;"
-    (click)="seleccionarSugerencia(sugerencia)">
-    {{sugerencia}}
+    (click)="seleccionarSugerencia(sugerencia[0])">
+    <div class="govco-pwa-sugerencia-texto" [innerHTML]='sugerencia[1]'></div>
   </div>
 </section>
