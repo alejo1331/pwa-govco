@@ -103,7 +103,7 @@
             font-size: 14px;
             margin-bottom: 24px;
         }
-    
+
         .card-detalle-tramite {
             border: 2px solid #E8EFFC;
             background-color: #FFFFFF;
@@ -147,4 +147,12 @@
             margin-bottom: 0px;
         }
     }
+}
+
+div.card{
+  display: none;
+}
+
+div.card.actived{
+  display: block;
 }

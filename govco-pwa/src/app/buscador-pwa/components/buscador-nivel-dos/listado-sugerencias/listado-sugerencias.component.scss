@@ -7,22 +7,16 @@
   color: #737373;
 }
 
-//   .govco-pwa-sugerencia-texto {
-//     color: red;
-//     strong{
-//       color: black;
-
-//     }
-//   }
-// }
-
-
-b
-{
-// font-weight: normal;
-color: red;
-}
-
 strong {
   font-weight: bold;
+}
+
+p{
+    text-overflow: ellipsis;
+    max-height: 48px;
+    margin: 0;
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
 }
