@@ -32,6 +32,15 @@ export class BuscadorCardEjerciciosParticipacionComponent implements OnInit, OnC
   ngOnInit(): void {
   }
 
+  ngDoCheck() {
+    if (this.items.length > 0){
+
+      if(document.getElementById('acordeonEjercicios')){
+        $('#acordeonEjercicios div.card:nth-child(-n+5)').addClass('actived')
+      }
+    }
+  }
+
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.data.previousValue != changes.data.currentValue) {
       this.items = []
@@ -72,6 +81,13 @@ export class BuscadorCardEjerciciosParticipacionComponent implements OnInit, OnC
         item.active = false;
       }
     });
+  }
+
+  VerMasResultados(){
+    let resultadosActivos = $('div.card');
+    let ultimoActivo = resultadosActivos.filter('.actived:last').index();
+    resultadosActivos.filter(':lt(' + (ultimoActivo + 6) + ')').addClass('actived');
+
   }
 
 }

@@ -35,7 +35,15 @@ export class BuscadorCardPortalesComponent implements OnInit, OnChanges {
   ) {}
 
   ngOnInit(): void {
-    
+
+  }
+
+  ngDoCheck() {
+    if (this.items.length > 0){
+      if(document.getElementById('acordeonPortales')){
+        $('#acordeonPortales div.card:nth-child(-n+5)').addClass('actived')
+      }
+    }
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -91,4 +99,12 @@ export class BuscadorCardPortalesComponent implements OnInit, OnChanges {
     }
     return this.contenidoDescripcion;
   }
+
+  VerMasResultados(){
+    let resultadosActivos = $('div.card');
+    let ultimoActivo = resultadosActivos.filter('.actived:last').index();
+    resultadosActivos.filter(':lt(' + (ultimoActivo + 6) + ')').addClass('actived');
+
+  }
+
 }

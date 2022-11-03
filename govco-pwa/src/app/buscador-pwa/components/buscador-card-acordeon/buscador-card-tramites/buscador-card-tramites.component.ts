@@ -28,6 +28,16 @@ export class BuscadorCardTramitesComponent implements OnInit, OnChanges {
   ngOnInit(): void {
   }
 
+  ngDoCheck() {
+
+    if (this.items.length > 0){
+
+      if(document.getElementById('tramitesAcordeon')){
+        $('#tramitesAcordeon div.card:nth-child(-n+5)').addClass('actived')
+      }
+    }
+  }
+
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.data.previousValue != changes.data.currentValue) {
       this.items = []
@@ -88,5 +98,11 @@ export class BuscadorCardTramitesComponent implements OnInit, OnChanges {
     collection.forEach((element) => element.classList.toggle('active'));
     let cardActive = document.getElementById('heading' + index);
     cardActive?.classList.toggle('active');
+  }
+  VerMasResultados(){
+    let resultadosActivos = $('div.card');
+    let ultimoActivo = resultadosActivos.filter('.actived:last').index();
+    resultadosActivos.filter(':lt(' + (ultimoActivo + 6) + ')').addClass('actived');
+
   }
 }
