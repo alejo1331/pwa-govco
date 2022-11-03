@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { EjerciciosParticipacionInterface } from 'src/app/buscador-pwa/models/ejercicios-participacion-interface';
+import { ValidarUrlService } from 'src/app/buscador-pwa/services/validar-url.service';
 import { urlsLocal } from 'src/variables-globales/urlsLocal';
 
 @Component({
@@ -24,7 +25,9 @@ export class BuscadorCardEjerciciosParticipacionComponent implements OnInit, OnC
     fechaCierre: string
   }[] = [];
 
-  constructor() { }
+  constructor(
+    public validarUrlService: ValidarUrlService
+  ) { }
 
   ngOnInit(): void {
   }

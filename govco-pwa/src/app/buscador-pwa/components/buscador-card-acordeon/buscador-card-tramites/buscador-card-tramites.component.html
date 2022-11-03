@@ -5,7 +5,7 @@
                 <button (click)="activarItem(i)" class="btn btn-link btn-block text-left" type="button"
                     data-toggle="collapse" [attr.data-target]="'#collapse' + i" aria-expanded="false"
                     [attr.aria-controls]="'collapse' + i">
-                    <a *ngIf="href" href="{{item.link}}" target="_blank">{{item.titulo}}</a>
+                    <a *ngIf="href" (click)="validarUrlService.validarUrl(item.link, '_blank')">{{item.titulo}}</a>
                     <a *ngIf="!href" routerLink="{{item.link}}">{{item.titulo}}</a>
                     <span class="material-symbols-outlined">
                         expand_more

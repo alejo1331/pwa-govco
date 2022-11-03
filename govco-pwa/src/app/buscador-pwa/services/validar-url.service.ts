@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalUrlNoDisponibleComponent } from 'src/app/biblioteca-pwa/components/modal-url-no-disponible/modal-url-no-disponible.component';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -8,10 +10,11 @@ export class ValidarUrlService {
 
   servicioUrl = environment.serverUrlValidarUrl;
 
-  constructor() { }
+  constructor(
+    public dialog: MatDialog
+  ) { }
 
-  validarLink(link:string) {
-
+  valida(link:string) {
     return new Promise((resolve, reject) => {
       const validarFichaTramites = link.includes("ficha-tramites-y-servicios");
       
@@ -26,7 +29,7 @@ export class ValidarUrlService {
             response.json().then(resp => {
             resolve(resp);
           }).catch( () => {
-            reject(true);
+            resolve(false);
           });
         });
       } else {
@@ -34,4 +37,31 @@ export class ValidarUrlService {
       }
     });
   }
+
+  validarUrl(link:string, target:string) {
+    if (link !=""){
+      this.valida(link).then((resp: any) => {
+        try {
+          if (resp) {
+            window.open(link, target == "_blank" ? "_blank" : "_self");
+          } else{
+            this.abrirModalUrlNoDisponible();
+            console.error('No se encuentra Url --> ' + link);
+          }
+        } catch (error) {
+          this.abrirModalUrlNoDisponible();
+          console.error('Error validacion Url --> ' + error);
+        }
+      });
+    } else{
+      this.abrirModalUrlNoDisponible();
+    }
+  }
+
+  abrirModalUrlNoDisponible() {
+    this.dialog.open(ModalUrlNoDisponibleComponent, {
+      width: '280px'
+    });  
+  }
+
 }

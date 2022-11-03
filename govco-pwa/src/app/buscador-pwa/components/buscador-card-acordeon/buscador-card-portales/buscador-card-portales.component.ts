@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { PortalTransversalesInterface } from 'src/app/buscador-pwa/models/portal-transversales-interface';
 import { urlsLocal } from 'src/variables-globales/urlsLocal';
+import { ValidarUrlService } from 'src/app/buscador-pwa/services/validar-url.service';
 
 @Component({
   selector: 'app-buscador-card-portales',
@@ -29,7 +30,9 @@ export class BuscadorCardPortalesComponent implements OnInit, OnChanges {
 
   showBotonFechas: boolean;
 
-  constructor() {}
+  constructor(
+    public validarUrlService: ValidarUrlService
+  ) {}
 
   ngOnInit(): void {
     

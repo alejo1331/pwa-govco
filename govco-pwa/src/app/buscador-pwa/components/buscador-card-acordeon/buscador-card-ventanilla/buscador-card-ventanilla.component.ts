@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { VentanillasUnicasInterface } from 'src/app/buscador-pwa/models/ventanillas-unicas-interface';
 import { urlsLocal } from 'src/variables-globales/urlsLocal';
+import { ValidarUrlService } from 'src/app/buscador-pwa/services/validar-url.service';
 
 @Component({
   selector: 'app-buscador-card-ventanilla',
@@ -21,7 +22,9 @@ export class BuscadorCardVentanillaComponent implements OnInit, OnChanges {
   }[] = [];
   href: boolean = true;
 
-  constructor() { }
+  constructor(
+    public validarUrlService: ValidarUrlService
+  ) { }
 
   ngOnInit(): void { }
 

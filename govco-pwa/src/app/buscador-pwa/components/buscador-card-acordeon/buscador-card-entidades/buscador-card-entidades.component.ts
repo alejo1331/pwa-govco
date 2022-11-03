@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { EntidadesInterface } from 'src/app/buscador-pwa/models/entidades-interface';
 import { urlsLocal } from 'src/variables-globales/urlsLocal';
+import { ValidarUrlService } from 'src/app/buscador-pwa/services/validar-url.service';
 
 @Component({
   selector: 'app-buscador-card-entidades',
@@ -20,7 +21,9 @@ export class BuscadorCardEntidadesComponent implements OnInit, OnChanges {
   }[] = [];
   href: boolean = true;
 
-  constructor() {}
+  constructor(
+    public validarUrlService: ValidarUrlService
+  ) {}
 
   ngOnInit(): void {
   }
