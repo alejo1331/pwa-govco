@@ -1,0 +1,29 @@
+.tarjeta-aviso-cabecera{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 24px;
+    .tarjeta-aviso-cabecera-img{
+        height: 160px;
+        margin-bottom: 24px;
+    }
+    .tarjeta-aviso-cabecera-titulo{
+        font-family: 'Montserrat-SemiBold';
+        font-size: 24px;
+        color: #004884;
+    }
+}
+
+.tarjeta-aviso-contenido{
+    font-size: 14px;
+    font-family: 'workSans-Regular';
+    .tarjeta-aviso-contenido-mensaje{
+        font-family: 'workSans-Medium';
+    }
+    .tarjeta-aviso-mensaje-link{
+        color: #3366CC
+    }
+    .tarjeta-aviso-listado{
+        padding-left: 1rem;
+    }
+}

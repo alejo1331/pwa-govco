@@ -1,0 +1,32 @@
+<div class="tarjeta-aviso">
+    <div class="tarjeta-aviso-cabecera">
+        <img class="tarjeta-aviso-cabecera-img" src={{imageSrc}} alt="imagen información para mejorar la busqueda" />
+        <h3 class="tarjeta-aviso-cabecera-titulo">Lo sentimos</h3>
+    </div>
+
+    <div class="tarjeta-aviso-contenido">
+        <p class=" tarjeta-aviso-contenido-mensaje">No aparecen coincidencias con la palabra
+            "<span>{{resBuscador}}</span>" en
+            "<span>{{geoLocMunName}}</span>"
+        </p>
+
+        <p class="tarjeta-aviso-mensaje-texto">¿Quisiste decir "<a class="tarjeta-aviso-mensaje-link"
+                href="javascript:void(0)">{{sugBuscador}}</a>" ?
+        </p>
+        <p class="tarjeta-aviso-mensaje-texto">Te sugerimos: </p>
+        <ul class="tarjeta-aviso-listado">
+            <li class="tarjeta-aviso-mensaje-texto">
+                <a class="tarjeta-aviso-mensaje-link" href="javascript:void(0)"> Cambiar ubicación</a>
+                <span> para refinar la búsqueda.</span>
+            </li>
+            <li class="tarjeta-aviso-mensaje-texto">
+                <span>
+                    Asegúrate que las palabras estén escritas correctamente
+                </span>
+            </li>
+            <li class="tarjeta-aviso-mensaje-texto">
+                <span>Escribe palabras clave</span>
+            </li>
+        </ul>
+    </div>
+</div>
