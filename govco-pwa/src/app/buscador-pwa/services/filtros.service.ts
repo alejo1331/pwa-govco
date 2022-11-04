@@ -42,12 +42,16 @@ export class FiltrosService {
   constructor(private http: HttpClient) { }
   
   obtenerResultadoFiltro(dataBusqueda: FiltroBusqueda): Observable<ResultadoFiltro> {
-    // if (dataBusqueda.seccion == '' || dataBusqueda.search == '') {
-    //   return new BehaviorSubject<ResultadoFiltro>(this.data);
-    // }
+    const data = {
+      filters: dataBusqueda.filters,
+      pageNumber: dataBusqueda.pageNumber,
+      pageSize: dataBusqueda.pageSize,
+      search: dataBusqueda.search,
+      sort: dataBusqueda.sort
+    }
 
     const buscar = environment.serverBuscador + dataBusqueda.seccion + '/buscar/';
-    return this.http.post<ResultadoFiltro>(buscar, dataBusqueda);
+    return this.http.post<ResultadoFiltro>(buscar, data);
   }
 
   // Asigna un nuevo valor a filtros, de los seleccionados y dispara un evento para que en los suscribe lo escuchen

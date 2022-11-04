@@ -5,6 +5,7 @@ export interface FiltroBusqueda {
     search: string;
     sort: string;
     seccion?: string;
+    spinner?: boolean;
 }
 
 export interface filter {

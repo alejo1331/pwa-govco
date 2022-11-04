@@ -81,11 +81,13 @@
                     margin: 0;
                     font-family: 'Roboto-Regular';
                     font-size: 1rem;
+                    line-height: 24px;
+                    color: #000000DE;
                 }
 
                 .radio-button {
-                    width: 22px;
-                    height: 22px;
+                    width: 24px;
+                    height: 24px;
                     outline-color: #ffffff;
                     content: url(../../../../assets/icons-fonts/radio_button_unchecked.svg);
                     margin-left: 20px;
