@@ -1,11 +1,11 @@
 <div class="accordion acordeon-pwa-govco" id="acordeonVentanillas">
     <div class="card" *ngFor="let item of items; index as i;" [class.active]="item.active">
         <div class="card-header" id="headingOne">
-            <button (click)="activarItem(i)" class="btn btn-link btn-block text-left" type="button"
+            <button #botonAcordeon (click)="activarItem(i)" class="btn btn-link btn-block text-left" type="button"
                 data-toggle="collapse" [attr.data-target]="'#collapse-ventanillas' + i" aria-expanded="false"
                 [attr.aria-controls]="'collapse-ventanillas' + i">
-                <a *ngIf="href" href="{{item.link}}" target="_blank">{{item.titulo}}</a>
-                <a *ngIf="!href" routerLink="{{item.link}}">{{item.titulo}}</a>
+                <a *ngIf="href" href="{{item.link}}" target="_blank" class="line-clamp-3">{{item.titulo}}</a>
+                <a *ngIf="!href" routerLink="{{item.link}}" class="line-clamp-3">{{item.titulo}}</a>
                 <div class="caja-icono-24-pwa">
                     <span class="icono-expand-more" type="image"
                         alt="Expandir acordeon para ver más información"></span>
@@ -19,8 +19,8 @@
                 <p tabindex="0"> {{item.entidadNombre}}</p>
                 <div class="linea-horizontal-2-pwa-govco"></div>
                 <div class="descripcion">
-                    <p>{{item.descripcion}}</p>
-                    <a>Leer más</a>
+                    <p #texto class="line-clamp-3">{{item.descripcion}}</p>
+                    <a *ngIf="botonTexto[i]" (click)="expandirText(i)">{{ expandirTexto == true ? 'Leer menos' : 'Leer más'}}</a>
                 </div>
             </div>
         </div>

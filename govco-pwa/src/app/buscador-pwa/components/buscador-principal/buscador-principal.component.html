@@ -3,6 +3,8 @@
     <div class="contenido-resultado contenido-pwa-govco">
         <app-buscador-card-entidades *ngIf="seccion == 'entidad' && dataResultado" 
             [data]="dataResultado"></app-buscador-card-entidades>
+        <app-buscador-card-noticias *ngIf="seccion == 'noticia' && dataResultado" 
+            [data]="dataResultado"></app-buscador-card-noticias>
         <app-buscador-card-ejercicios-participacion *ngIf="seccion == 'participacion' && dataResultado"
             [data]="dataResultado"></app-buscador-card-ejercicios-participacion>
         <app-buscador-card-ventanilla *ngIf="seccion == 'tramiteventanilla'&& dataResultado" 

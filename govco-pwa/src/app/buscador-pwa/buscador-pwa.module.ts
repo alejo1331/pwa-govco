@@ -5,7 +5,6 @@ import { BuscadorPwaRoutingModule } from './buscador-pwa-routing.module';
 import { BuscadorPrincipalComponent } from './components/buscador-principal/buscador-principal.component';
 import { FiltrosPrincipalComponent } from './components/filtros-principal/filtros-principal.component';
 import { BibliotecaPwaModule } from '../biblioteca-pwa/biblioteca-pwa.module';
-import { BuscadorCardAcordeonComponent } from './components/buscador-card-acordeon/buscador-card-acordeon.component';
 import { BuscadorCardTramitesComponent } from './components/buscador-card-acordeon/buscador-card-tramites/buscador-card-tramites.component';
 import { BuscadorCardEntidadesComponent } from './components/buscador-card-acordeon/buscador-card-entidades/buscador-card-entidades.component';
 import { BuscadorCardPortalesComponent } from './components/buscador-card-acordeon/buscador-card-portales/buscador-card-portales.component';
@@ -18,6 +17,7 @@ import { BuscadorNivelDosComponent } from './components/buscador-nivel-dos/busca
 import { NivelDosHeaderBuscadorComponent } from './components/buscador-nivel-dos/nivel-dos-header-buscador/nivel-dos-header-buscador.component';
 import { NivelDosHeaderPrefiltrosComponent } from './components/buscador-nivel-dos/nivel-dos-header-prefiltros/nivel-dos-header-prefiltros.component';
 import { ListadoSugerenciasComponent } from './components/buscador-nivel-dos/listado-sugerencias/listado-sugerencias.component';
+import { BuscadorCardNoticiasComponent } from './components/buscador-card-acordeon/buscador-card-noticias/buscador-card-noticias.component';
 import { BuscadorAvisoComponent } from './components/buscador-aviso/buscador-aviso.component';
 
 
@@ -25,7 +25,6 @@ import { BuscadorAvisoComponent } from './components/buscador-aviso/buscador-avi
   declarations: [
     BuscadorPrincipalComponent,
     FiltrosPrincipalComponent,
-    BuscadorCardAcordeonComponent,
     BuscadorCardTramitesComponent,
     BuscadorCardEntidadesComponent,
     BuscadorCardPortalesComponent,
@@ -36,7 +35,8 @@ import { BuscadorAvisoComponent } from './components/buscador-aviso/buscador-avi
     NivelDosHeaderBuscadorComponent,
     NivelDosHeaderPrefiltrosComponent,
     ListadoSugerenciasComponent,
-    BuscadorAvisoComponent
+    BuscadorAvisoComponent,
+    BuscadorCardNoticiasComponent,
 
   ],
   imports: [

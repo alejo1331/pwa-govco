@@ -515,3 +515,11 @@ select-search-1 a,
   position: fixed !important;
   transition: 0s !important;
 }
+
+.line-clamp-3 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}

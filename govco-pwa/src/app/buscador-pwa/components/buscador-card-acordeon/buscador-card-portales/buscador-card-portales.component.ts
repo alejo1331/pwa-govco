@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, SimpleChanges, ViewChildren, ElementRef, QueryList } from '@angular/core';
 import { PortalTransversalesInterface } from 'src/app/buscador-pwa/models/portal-transversales-interface';
 import { urlsLocal } from 'src/variables-globales/urlsLocal';
 
@@ -10,6 +10,8 @@ import { urlsLocal } from 'src/variables-globales/urlsLocal';
 export class BuscadorCardPortalesComponent implements OnInit, OnChanges {
 
   @Input() data: PortalTransversalesInterface[];
+  @ViewChildren('texto', { read: ElementRef }) listaTexto: QueryList<ElementRef>;
+  @ViewChildren('botonAcordeon', { read: ElementRef }) ListaAcordeon: QueryList<ElementRef>;
 
   public items: {
     active: boolean,
@@ -21,15 +23,10 @@ export class BuscadorCardPortalesComponent implements OnInit, OnChanges {
   }[] = [];
   href: boolean = true;
 
-  infoDescripcionTramite: any;
-  contenidoDescripcion: string;
-  contenidoLeido: string;
-  caracteresCategoria: boolean = false;
-  nombreExpanded: string = 'Leer más...';
+  expandirTexto: boolean = false;
+  botonTexto: boolean[] = [];
 
-  showBotonFechas: boolean;
-
-  constructor() {}
+  constructor() { }
 
   ngOnInit(): void {
 
@@ -47,10 +44,11 @@ export class BuscadorCardPortalesComponent implements OnInit, OnChanges {
     if (changes.data.previousValue != changes.data.currentValue) {
       this.items = []
     };
-    changes.data.currentValue.forEach((element:PortalTransversalesInterface) => {
+    changes.data.currentValue.forEach((element: PortalTransversalesInterface, i: number) => {
       this.href = true;
+      this.botonTexto[i] = false;
       Object.values(urlsLocal).find(url => {
-         element.link.indexOf(url) >= 0 ? this.href = false : null;
+        element.link.indexOf(url) >= 0 ? this.href = false : null;
       })
       this.items.push(
         {
@@ -72,29 +70,25 @@ export class BuscadorCardPortalesComponent implements OnInit, OnChanges {
         item.active = false;
       }
     });
+    this.expandirTexto = false;
+    this.listaTexto.toArray()[index].nativeElement.classList.add('line-clamp-3');
+    var element: HTMLElement = this.listaTexto.toArray()[index].nativeElement;
+    this.ListaAcordeon.toArray()[index].nativeElement.addEventListener('transitionend', () => {
+      if (this.botonTexto[index] == false) {
+        if (element.offsetHeight < element.scrollHeight ||
+          element.offsetWidth < element.scrollWidth) {
+          this.botonTexto[index] = true;
+
+        } else {
+          this.botonTexto[index] = false;
+        }
+      }
+    });
   }
 
-  showExpended() {
-    if (this.nombreExpanded === 'Leer más...') {
-      this.contenidoDescripcion =
-        this.infoDescripcionTramite.DescripcionTramite;
-      this.nombreExpanded = 'Leer menos';
-    }
-    return this.contenidoDescripcion;
-  }
-
-  showBotonLeer() {
-    if (this.nombreExpanded === 'Leer más...') {
-      this.contenidoDescripcion =
-        this.infoDescripcionTramite.DescripcionTramite;
-      this.nombreExpanded = 'Leer menos';
-    } else {
-      this.nombreExpanded = 'Leer más...';
-      this.contenidoDescripcion =
-        this.infoDescripcionTramite.DescripcionTramite.substring(0, 125) +
-        '...';
-    }
-    return this.contenidoDescripcion;
+  expandirText(index: number) {
+    this.listaTexto.toArray()[index].nativeElement.classList.toggle('line-clamp-3');
+    this.expandirTexto = (this.expandirTexto == true) ? false : true;
   }
 
   VerMasResultados(){

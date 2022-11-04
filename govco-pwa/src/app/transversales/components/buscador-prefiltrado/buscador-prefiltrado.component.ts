@@ -42,7 +42,7 @@ export class BuscadorPrefiltradoComponent implements OnInit {
   }
 
   itemSelected([item, estado, index, txtConsumoApi]: [string, boolean, number, string]) {
-    console.log('estado', estado)
+    console.log('item', item)
     this.tituloFiltro = item;
     this.estadoBotonFiltro = estado;
     let modal_prefiltrado: HTMLElement = document.getElementById('modal-prefiltrado') as HTMLElement;

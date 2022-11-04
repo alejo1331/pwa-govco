@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, SimpleChanges, ViewChildren, QueryList, ElementRef } from '@angular/core';
 import { EjerciciosParticipacionInterface } from 'src/app/buscador-pwa/models/ejercicios-participacion-interface';
 import { urlsLocal } from 'src/variables-globales/urlsLocal';
 
@@ -10,9 +10,15 @@ import { urlsLocal } from 'src/variables-globales/urlsLocal';
 export class BuscadorCardEjerciciosParticipacionComponent implements OnInit, OnChanges {
 
   @Input() data: EjerciciosParticipacionInterface[];
+  @ViewChildren('texto', { read: ElementRef }) listaTexto: QueryList<ElementRef>;
+  @ViewChildren('botonAcordeon', { read: ElementRef }) ListaAcordeon: QueryList<ElementRef>;
+
   meses: string[] = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
   mesesNum: string[] = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"];
   href: boolean = true;
+
+  expandirTexto: boolean = false;
+  botonTexto: boolean[] = [];
 
   public items: {
     active: boolean,
@@ -42,7 +48,7 @@ export class BuscadorCardEjerciciosParticipacionComponent implements OnInit, OnC
     if (changes.data.previousValue != changes.data.currentValue) {
       this.items = []
     };
-    changes.data.currentValue.forEach((element: EjerciciosParticipacionInterface) => {
+    changes.data.currentValue.forEach((element: EjerciciosParticipacionInterface, i: number) => {
       var fechaPublicacion: Array<String> = Array.from((element.fechaPublicacion.split(/\s+/).join('')).split("de"));
       var fechaCierre: Array<String> = Array.from((element.fechaCierre.split(/\s+/).join('')).split("de"));
       this.meses.forEach((mes, i) => {
@@ -54,6 +60,7 @@ export class BuscadorCardEjerciciosParticipacionComponent implements OnInit, OnC
           : null;
       });
       this.href = true;
+      this.botonTexto[i] = false;
       Object.values(urlsLocal).find(url => {
          element.link.indexOf(url) >= 0 ? this.href = false : null;
       })
@@ -78,6 +85,25 @@ export class BuscadorCardEjerciciosParticipacionComponent implements OnInit, OnC
         item.active = false;
       }
     });
+    this.expandirTexto = false;
+    this.listaTexto.toArray()[index].nativeElement.classList.add('line-clamp-3');
+    var element: HTMLElement = this.listaTexto.toArray()[index].nativeElement;
+    this.ListaAcordeon.toArray()[index].nativeElement.addEventListener('transitionend', () => {
+      if (this.botonTexto[index] == false) {
+        if (element.offsetHeight < element.scrollHeight ||
+          element.offsetWidth < element.scrollWidth) {
+          this.botonTexto[index] = true;
+
+        } else {
+          this.botonTexto[index] = false;
+        }
+      }
+    });
+  }
+
+  expandirText(index: number) {
+    this.listaTexto.toArray()[index].nativeElement.classList.toggle('line-clamp-3');
+    this.expandirTexto = (this.expandirTexto == true) ? false : true;
   }
 
   VerMasResultados(){

@@ -28,7 +28,7 @@ export class ModalPrefiltradoComponent implements OnInit {
 
   seleccionarItem(item: string, posicion: number, txtConsumoApi:string ) {
     this.itemFiltro = posicion;
-    this.itemSelected.emit([item,true, this.itemFiltro, txtConsumoApi ]);
+    this.itemSelected.emit([item,true, posicion, txtConsumoApi ]);
   }
 
 }
