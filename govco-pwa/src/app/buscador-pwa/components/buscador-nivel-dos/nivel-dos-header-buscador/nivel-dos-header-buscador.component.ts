@@ -18,6 +18,7 @@ export class NivelDosHeaderBuscadorComponent implements OnInit {
   datosAutocompletar : any = [];
   txtConsumoApi = '';
   txtInputBuscador = '';
+  index = 0;
 
 
   constructor(
@@ -34,17 +35,23 @@ export class NivelDosHeaderBuscadorComponent implements OnInit {
       (parametros : BuscadorParams) => {
         this.txtConsumoApi = parametros.txtConsumoApi;
         this.txtInputBuscador = parametros.txtInputBuscador;
+        this.index = parametros.index;
         input.value = this.txtInputBuscador
         if((input.value == parametros.txtInputBuscador) && (input.value != '')){
-
-          this.buscar(input.value)
-
-      }}
+          this.buscar()
+      }
+    }
     )
 
     input.addEventListener("keyup", (event:any) => {
       if (event.keyCode === 13) {
-        this.buscar(input.value);
+        this.buscar();
+        const nuevoBuscadorParams : BuscadorParams = {
+          index : this.index,
+          txtConsumoApi : this.txtConsumoApi,
+          txtInputBuscador : input.value
+        }
+        this.buscadorService.setBuscadorParams(nuevoBuscadorParams)
       }
     });
   }
@@ -70,12 +77,9 @@ export class NivelDosHeaderBuscadorComponent implements OnInit {
     }
   }
 
-  buscar(txtInput:any){
-    if(txtInput == this.txtInputBuscador){
-      this.cerrarBuscadorPWA()
-      this.router.navigateByUrl('/buscar-pwa')
-    }
-
+  buscar(){
+    this.cerrarBuscadorPWA()
+    this.router.navigateByUrl('/buscar-pwa')
   }
 
   cerrarBuscadorPWA(){
