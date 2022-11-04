@@ -70,8 +70,8 @@ export class AppComponent implements OnInit, AfterContentChecked, AfterContentCh
 
   prueba: any;
 
-  abrirBuscadorCheck : boolean = false;
-  ulitmoEstadoBuscador : boolean = false;
+  abrirBuscadorCheck: boolean = false;
+  ulitmoEstadoBuscador: boolean = false;
 
   public parametroBuscador: string;
   title: string = 'govco-pwa';
@@ -90,7 +90,7 @@ export class AppComponent implements OnInit, AfterContentChecked, AfterContentCh
     private oidcService: OidcService,
     private oauthService: OAuthService,
     private authService: AuthService,
-    private buscadorService : BuscadorService
+    private buscadorService: BuscadorService
   ) {
     this.isAuthenticated = this.oidcService.isAuthenticated$;
     this.isDoneLoading = this.oidcService.isDoneLoading$;
@@ -207,12 +207,12 @@ export class AppComponent implements OnInit, AfterContentChecked, AfterContentCh
   ngOnInit(): void {
     // Suscribe al componente de abrir elbuscador
     this.buscadorService.getAbrirBuscador$.subscribe(
-      (abrir : boolean) => {
+      (abrir: boolean) => {
         this.abrirBuscadorCheck = abrir
-        if(this.abrirBuscadorCheck == true){
+        if (this.abrirBuscadorCheck == true) {
           this.abrirBuscadorPWA()
         }
-        else if (this.abrirBuscadorCheck == false && this.ulitmoEstadoBuscador == true ) {
+        else if (this.abrirBuscadorCheck == false && this.ulitmoEstadoBuscador == true) {
           this.cerrarBuscadorPWA()
         }
       })
@@ -348,10 +348,8 @@ export class AppComponent implements OnInit, AfterContentChecked, AfterContentCh
         }
       }
     }
-  }
 
-  // solucion redireccionamiento slide
-  @HostListener('touchmove') slide(): void {
+    // solucion redireccionamiento slide
     var id_temas_de_interes: HTMLElement = (document.getElementsByTagName('temas-de-interes') as HTMLCollectionOf<HTMLElement>)[0];
     if (id_temas_de_interes != undefined || id_temas_de_interes != null) {
       var etiqueta_a = Array.from(id_temas_de_interes.getElementsByTagName('a') as HTMLCollectionOf<HTMLElement>);
@@ -369,6 +367,16 @@ export class AppComponent implements OnInit, AfterContentChecked, AfterContentCh
           element.removeAttribute('target');
         }
       });
+    }
+    // Fin solucion redireccionamiento slide
+  }
+
+  @HostListener('document:mousewheel', ['$event']) onMousedown(event: any) {
+    if (this.appGeolocalizacion != undefined) {
+      this.router.url == '/buscar-pwa' ?
+        (this.appGeolocalizacion.removeAttribute('style'),
+          this.appGeolocalizacion.classList.add('fixed'))
+        : this.appGeolocalizacion.classList.remove('fixed')
     }
   }
 
@@ -404,8 +412,8 @@ export class AppComponent implements OnInit, AfterContentChecked, AfterContentCh
 
   }
 
-// Función para cerrar el buscador
-  cerrarBuscadorPWA(){
+  // Función para cerrar el buscador
+  cerrarBuscadorPWA() {
     this.seccionBuscador.nativeElement.style.transform = 'translate(100%)';
     this.matSidenavContent.transform = 'translate(0%)';
     this.ulitmoEstadoBuscador = false;
