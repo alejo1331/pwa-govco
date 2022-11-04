@@ -52,6 +52,7 @@
           align-items: center;
   width: 3rem;
   height: 3rem;
+  outline-color: #000000;
 }
 
 .menu-caja-pwa-govco {
@@ -125,6 +126,10 @@
           align-items: center;
 }
 
+.logo-pwa-govco a {
+  outline-color: #000000;
+}
+
 .caja-buscador-pwa-govco {
   -ms-grid-column: 11;
   -ms-grid-column-span: 1;
@@ -138,6 +143,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  outline-color: #000000;
 }
 
 .icono-buscador-pwa-govco {

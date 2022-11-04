@@ -1,56 +1,14 @@
 <div class="modal-prefiltrado-pwa">
     <ul class="lista-filtro">
-        <li class="item-filtro" id="tramites-servicios" (click)="seleccionarItem('Trámites', 0, 'tramite')"
-            [class.active]="itemFiltro == 0">
+        <li class="item-filtro" *ngFor="let item of titulo; index as i;" id="prefiltro-{{i}}"
+            (click)="seleccionarItem(tituloCorto[i], i, palabraClable[i])" [class.active]="itemFiltro == i" tabindex="0"
+            (keypress)="seleccionarItem(tituloCorto[i], i, palabraClable[i])"
+            [attr.aria-label]="'Seleccionar prefiltro tipo ' + item">
             <a class="contenido-item">
                 <div class="caja-icono-24-pwa">
-                    <span class="icono-item" type="image" alt="Filtro Trámites y servicios"></span>
+                    <span class="icono-item" type="image"></span>
                 </div>
-                <p>Trámites y servicios</p>
-            </a>
-        </li>
-        <li class="item-filtro" id="entidades" (click)="seleccionarItem('Entidades', 1, 'entidad')"
-            [class.active]="itemFiltro == 1">
-            <a class="contenido-item">
-                <div class="caja-icono-24-pwa">
-                    <span class="icono-item" type="image" alt="Filtro Entidades"></span>
-                </div>
-                <p>Entidades</p>
-            </a>
-        </li>
-        <li class="item-filtro" id="noticias" (click)="seleccionarItem('Noticias', 2, 'noticia')" [class.active]="itemFiltro == 2">
-            <a class="contenido-item">
-                <div class="caja-icono-24-pwa">
-                    <span class="icono-item" type="image" alt="Filtro Noticias"></span>
-                </div>
-                <p>Noticias</p>
-            </a>
-        </li>
-        <li class="item-filtro" id="ejecicios-participacion" (click)="seleccionarItem('Ejercicios', 3, 'participacion')"
-            [class.active]="itemFiltro == 3">
-            <a class="contenido-item">
-                <div class="caja-icono-24-pwa">
-                    <span class="icono-item" type="image" alt="Filtro Ejercicios de participación"></span>
-                </div>
-                <p>Ejercicios de participación</p>
-            </a>
-        </li>
-        <li class="item-filtro" id="ventanillas-unicas" (click)="seleccionarItem('Ventanillas', 4, 'tramiteventanilla')"
-            [class.active]="itemFiltro == 4">
-            <a class="contenido-item">
-                <div class="caja-icono-24-pwa">
-                    <span class="icono-item" type="image" alt="Filtro Ventanillas Únicas"></span>
-                </div>
-                <p>Ventanillas Únicas</p>
-            </a>
-        </li>
-        <li class="item-filtro" id="portales-transversales" (click)="seleccionarItem('Portales', 5, 'portaltransversal')"
-            [class.active]="itemFiltro == 5">
-            <a class="contenido-item">
-                <div class="caja-icono-24-pwa">
-                    <span class="icono-item" type="image" alt="Filtro Portales Transversales"></span>
-                </div>
-                <p>Portales Transversales</p>
+                <p>{{item}}</p>
             </a>
         </li>
     </ul>
