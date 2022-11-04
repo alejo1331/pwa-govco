@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { BuscadorAvisoComponent } from './buscador-aviso.component';
 
 describe('BuscadorAvisoComponent', () => {
@@ -8,9 +7,8 @@ describe('BuscadorAvisoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BuscadorAvisoComponent ]
-    })
-    .compileComponents();
+      declarations: [BuscadorAvisoComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -19,7 +17,7 @@ describe('BuscadorAvisoComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('Debe de crearse correctamente', () => {
     expect(component).toBeTruthy();
   });
 });
