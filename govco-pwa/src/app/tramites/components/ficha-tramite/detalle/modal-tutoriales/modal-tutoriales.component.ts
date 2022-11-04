@@ -6,37 +6,32 @@ import { ValidateUrlService } from 'src/app/tramites/services/validate-url.servi
 @Component({
   selector: 'app-modal-tutoriales',
   templateUrl: './modal-tutoriales.component.html',
-  styleUrls: ['./modal-tutoriales.component.scss']
+  styleUrls: ['./modal-tutoriales.component.scss'],
 })
 export class ModalTutorialesComponent implements OnInit {
   @Input() data: any;
 
   constructor(
     public activeModal: NgbActiveModal,
-    private validateUrlService:ValidateUrlService,
-    private utilsService: UtilsService,
-  ) { }
+    private validateUrlService: ValidateUrlService,
+    private utilsService: UtilsService
+  ) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   validateUrl(url: string) {
-
-    this.validateUrlService.validate(url)
-      .subscribe((data: boolean) => {
-        if (data) {
-          console.log("data", data)
-          url = url.match(/^https?:/) ? url : '//' + url;
-          window.open(url);
-        } else {
-          this.utilsService.openModalErrorValidateUrl();
-        }
-      })
+    this.validateUrlService.validate(url).subscribe((data: boolean) => {
+      if (data) {
+        url = url.match(/^https?:/) ? url : '//' + url;
+        window.open(url);
+      } else {
+        this.utilsService.openModalErrorValidateUrl();
+      }
+    });
   }
 
-  direccionar(routePage: any){
+  direccionar(routePage: any) {
     // this.activeModal.close();
     // this.router.navigate([routePage]);
   }
-
 }
