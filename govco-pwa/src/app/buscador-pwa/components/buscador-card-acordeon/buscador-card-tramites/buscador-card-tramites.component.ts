@@ -1,4 +1,10 @@
-import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnInit,
+  OnChanges,
+  SimpleChanges,
+} from '@angular/core';
 import { TramitesServiciosInterface } from 'src/app/buscador-pwa/models/tramites-servicios-interface';
 import { urlsLocal } from 'src/variables-globales/urlsLocal';
 
@@ -20,51 +26,38 @@ export class BuscadorCardTramitesComponent implements OnInit, OnChanges {
 
   showBotonFechas: boolean;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   ngDoCheck() {
-
-    if (this.items.length > 0){
-
-      if(document.getElementById('tramitesAcordeon')){
-        $('#tramitesAcordeon div.card:nth-child(-n+5)').addClass('actived')
+    if (this.items.length > 0) {
+      if (document.getElementById('tramitesAcordeon')) {
+        $('#tramitesAcordeon div.card:nth-child(-n+5)').addClass('actived');
       }
     }
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.data.previousValue != changes.data.currentValue) {
-      this.items = []
-    };
+      this.items = [];
+    }
     changes.data.currentValue.forEach((element: TramitesServiciosInterface) => {
       this.href = true;
-      Object.values(urlsLocal).find(url => {
-         element.link.indexOf(url) >= 0 ? this.href = false : null;
-      })
-      console.log()
-      this.items.push(
-        {
-          costo: element.costo,
-          descripcion: element.descripcion,
-          enLinea: element.enLinea,
-          entidad: element.entidad,
-          link: element.link,
-          linkEntidad: element.linkEntidad,
-          tiempoObtencion: element.tiempoObtencion,
-          titulo: element.titulo
-        }
-      )
-    })
-    // this.infoDescripcionTramite = this.items;
-    // this.contenidoDescripcion =
-    //   this.infoDescripcionTramite.DescripcionTramite.substring(0, 125) + '...';
-    // this.contenidoLeido = this.infoDescripcionTramite.DescripcionTramite;
-    // if (this.contenidoDescripcion.length > 124) {
-    //   this.caracteresCategoria = true;
-    // }
+      Object.values(urlsLocal).find((url) => {
+        element.link.indexOf(url) >= 0 ? (this.href = false) : null;
+      });
+      this.items.push({
+        costo: element.costo,
+        descripcion: element.descripcion,
+        enLinea: element.enLinea,
+        entidad: element.entidad,
+        link: element.link,
+        linkEntidad: element.linkEntidad,
+        tiempoObtencion: element.tiempoObtencion,
+        titulo: element.titulo,
+      });
+    });
   }
 
   showExpended() {
@@ -96,10 +89,11 @@ export class BuscadorCardTramitesComponent implements OnInit, OnChanges {
     let cardActive = document.getElementById('heading' + index);
     cardActive?.classList.toggle('active');
   }
-  VerMasResultados(){
+  VerMasResultados() {
     let resultadosActivos = $('div.card');
     let ultimoActivo = resultadosActivos.filter('.actived:last').index();
-    resultadosActivos.filter(':lt(' + (ultimoActivo + 6) + ')').addClass('actived');
-
+    resultadosActivos
+      .filter(':lt(' + (ultimoActivo + 6) + ')')
+      .addClass('actived');
   }
 }

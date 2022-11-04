@@ -19,7 +19,6 @@ export class ModalTutorialesPwaComponent implements OnInit {
   validateUrl(url: string) {
     this.validateUrlService.validate(url).subscribe((data: boolean) => {
       if (data) {
-        console.log('data', data);
         url = url.match(/^https?:/) ? url : '//' + url;
         window.open(url);
       } else {
