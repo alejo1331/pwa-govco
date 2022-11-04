@@ -46,8 +46,8 @@ export class BuscadorCardTramitesComponent implements OnInit, OnChanges {
 
   ngDoCheck() {
     if (this.items.length > 0) {
-      if (document.getElementById('tramitesAcordeon')) {
-        $('#tramitesAcordeon div.card:nth-child(-n+5)').addClass('actived');
+      if(document.getElementById('acordeonTramites')){
+        $('#acordeonTramites div.card:nth-child(-n+5)').addClass('actived')
       }
     }
   }
