@@ -100,4 +100,11 @@
             }
         }
     }
+    div.card{
+      display: none;
+    }
+
+    div.card.actived{
+      display: block;
+    }
 }

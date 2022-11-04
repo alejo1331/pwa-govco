@@ -31,6 +31,16 @@ export class BuscadorCardNoticiasComponent implements OnInit, OnChanges {
   ngOnInit(): void {
   }
 
+  ngDoCheck() {
+
+    if (this.items.length > 0){
+
+      if(document.getElementById('acordeonNoticias')){
+        $('#acordeonNoticias div.card:nth-child(-n+5)').addClass('actived')
+      }
+    }
+  }
+
   ngOnChanges(changes: SimpleChanges): void {
     console.log('oli',this.data)
     if (changes.data.previousValue != changes.data.currentValue) {
@@ -82,4 +92,10 @@ export class BuscadorCardNoticiasComponent implements OnInit, OnChanges {
     this.expandirTexto = (this.expandirTexto == true) ? false : true;
   }
 
+  VerMasResultados(){
+    let resultadosActivos = $('div.card');
+    let ultimoActivo = resultadosActivos.filter('.actived:last').index();
+    resultadosActivos.filter(':lt(' + (ultimoActivo + 6) + ')').addClass('actived');
+
+  }
 }
