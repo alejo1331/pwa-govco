@@ -1,10 +1,10 @@
-<div class="accordion acordeon-pwa-govco" id="acordeonVentanillas">
+<div class="accordion acordeon-pwa-govco" id="acordeonNoticias">
     <div class="card" *ngFor="let item of items; index as i;" [class.active]="item.active">
         <div class="card-header" id="headingOne">
             <button #botonAcordeon (click)="activarItem(i)" class="btn btn-link btn-block text-left" type="button"
-                data-toggle="collapse" [attr.data-target]="'#collapse-ventanillas' + i" aria-expanded="false"
-                [attr.aria-controls]="'collapse-ventanillas' + i">
-                <a *ngIf="href" (click)="validarUrlService.validarUrl(item.link, '_blank')" class="line-clamp-3">{{item.titulo}}</a>
+                data-toggle="collapse" [attr.data-target]="'#collapse-noticias' + i"
+                aria-expanded="false" [attr.aria-controls]="'collapse-noticias' + i">
+                <a *ngIf="href" href="{{item.link}}" target="_blank" class="line-clamp-3">{{item.titulo}}</a>
                 <a *ngIf="!href" routerLink="{{item.link}}" class="line-clamp-3">{{item.titulo}}</a>
                 <div class="caja-icono-24-pwa">
                     <span class="icono-expand-more" type="image"
@@ -12,20 +12,17 @@
                 </div>
             </button>
         </div>
-        <div [id]="'collapse-ventanillas' + i" class="collapse" [attr.aria-labelledby]="'heading' + i"
-            data-parent="#acordeonVentanillas">
-            <div class="card-body contenido-pwa-govco">
-                <span>Entidad responsable: </span>
-                <p tabindex="0"> {{item.entidadNombre}}</p>
-                <div class="linea-horizontal-2-pwa-govco"></div>
-                <div class="descripcion">
+        <div [id]="'collapse-noticias' + i" class="collapse" [attr.aria-labelledby]="'heading' + i"
+            data-parent="#acordeonNoticias">
+            <div class="card-body">
+                <div class="descripcion contenido-pwa-govco">
                     <p #texto class="line-clamp-3">{{item.descripcion}}</p>
                     <a *ngIf="botonTexto[i]" (click)="expandirText(i)">{{ expandirTexto == true ? 'Leer menos' : 'Leer más'}}</a>
                 </div>
+                <p tabindex="0" class="contenido-pwa-govco">Fecha de publicación:</p>
+                <span class="contenido-pwa-govco">{{item.fechaPublicacion}}</span>
             </div>
         </div>
     </div>
-
     <app-boton [inverted]="false" *ngIf="items.length > 5" (click)="VerMasResultados()">Ver más</app-boton>
-
 </div>

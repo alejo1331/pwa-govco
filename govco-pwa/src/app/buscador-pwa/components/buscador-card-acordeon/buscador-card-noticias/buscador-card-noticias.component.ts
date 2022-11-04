@@ -1,67 +1,63 @@
-import { Component, Input, OnInit, OnChanges, SimpleChanges, ViewChild, ElementRef, QueryList, ViewChildren, HostListener } from '@angular/core';
-import { VentanillasUnicasInterface } from 'src/app/buscador-pwa/models/ventanillas-unicas-interface';
+import { Component, ElementRef, Input, OnChanges, OnInit, QueryList, SimpleChanges, ViewChildren } from '@angular/core';
+import { NoticiasInterface } from 'src/app/buscador-pwa/models/noticias-interface';
 import { urlsLocal } from 'src/variables-globales/urlsLocal';
-import { ValidarUrlService } from 'src/app/buscador-pwa/services/validar-url.service';
 
 @Component({
-  selector: 'app-buscador-card-ventanilla',
-  templateUrl: './buscador-card-ventanilla.component.html',
-  styleUrls: ['./buscador-card-ventanilla.component.scss']
+  selector: 'app-buscador-card-noticias',
+  templateUrl: './buscador-card-noticias.component.html',
+  styleUrls: ['./buscador-card-noticias.component.scss']
 })
-export class BuscadorCardVentanillaComponent implements OnInit, OnChanges {
+export class BuscadorCardNoticiasComponent implements OnInit, OnChanges {
 
-  @Input() data: VentanillasUnicasInterface[];
+  @Input() data: NoticiasInterface[];
   @ViewChildren('texto', { read: ElementRef }) listaTexto: QueryList<ElementRef>;
   @ViewChildren('botonAcordeon', { read: ElementRef }) ListaAcordeon: QueryList<ElementRef>;
 
-  public items: {
-    active: boolean,
-    descripcion: string;
-    entidadNombre: string;
-    link: string;
-    linkEntidad: string;
-    titulo: string;
-  }[] = [];
   href: boolean = true;
 
   expandirTexto: boolean = false;
   botonTexto: boolean[] = [];
 
-  constructor(
-    public validarUrlService: ValidarUrlService
-  ) { }
+  public items: {
+    active: boolean,
+    descripcion: string;
+    fechaPublicacion: string;
+    link: string;
+    titulo: string;
+  }[] = [];
+
+  constructor() { }
 
   ngOnInit(): void {
-
   }
 
   ngDoCheck() {
 
     if (this.items.length > 0){
 
-      if(document.getElementById('acordeonVentanillas')){
-        $('#acordeonVentanillas div.card:nth-child(-n+5)').addClass('actived')
+      if(document.getElementById('acordeonNoticias')){
+        $('#acordeonNoticias div.card:nth-child(-n+5)').addClass('actived')
       }
     }
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+    console.log('oli',this.data)
     if (changes.data.previousValue != changes.data.currentValue) {
       this.items = []
     };
-    changes.data.currentValue.forEach((element: VentanillasUnicasInterface, i: number) => {
+    changes.data.currentValue.forEach((element: NoticiasInterface, i: number) => {
       this.href = true;
       this.botonTexto[i] = false;
       Object.values(urlsLocal).find(url => {
-        element.link.indexOf(url) >= 0 ? this.href = false : null;
+         element.link.indexOf(url) >= 0 ? this.href = false : null;
       })
       this.items.push(
         {
           active: false,
           descripcion: element.descripcion,
-          entidadNombre: element.entidadNombre,
+          fechaPublicacion: element.fechaPublicacion,
           link: element.link,
-          linkEntidad: element.linkEntidad,
           titulo: element.titulo
         }
       )
@@ -83,6 +79,7 @@ export class BuscadorCardVentanillaComponent implements OnInit, OnChanges {
         if (element.offsetHeight < element.scrollHeight ||
           element.offsetWidth < element.scrollWidth) {
           this.botonTexto[index] = true;
+
         } else {
           this.botonTexto[index] = false;
         }
@@ -94,9 +91,11 @@ export class BuscadorCardVentanillaComponent implements OnInit, OnChanges {
     this.listaTexto.toArray()[index].nativeElement.classList.toggle('line-clamp-3');
     this.expandirTexto = (this.expandirTexto == true) ? false : true;
   }
+
   VerMasResultados(){
     let resultadosActivos = $('div.card');
     let ultimoActivo = resultadosActivos.filter('.actived:last').index();
     resultadosActivos.filter(':lt(' + (ultimoActivo + 6) + ')').addClass('actived');
+
   }
 }

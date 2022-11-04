@@ -1,38 +1,33 @@
-<div class="accordion acordeon-pwa-govco" id="tramitesAcordeon">
-    <div class="card" *ngFor="let item of items; let i = index;">
-        <div class="card-header" [id]="'heading' + i">
-            <h2 class="mb-0">
-                <button (click)="activarItem(i)" class="btn btn-link btn-block text-left" type="button"
-                    data-toggle="collapse" [attr.data-target]="'#collapse' + i" aria-expanded="false"
-                    [attr.aria-controls]="'collapse' + i">
-                    <a *ngIf="href" (click)="validarUrlService.validarUrl(item.link, '_blank')">{{item.titulo}}</a>
-                    <a *ngIf="!href" routerLink="{{item.link}}">{{item.titulo}}</a>
-                    <span class="material-symbols-outlined">
-                        expand_more
-                    </span>
-                </button>
-            </h2>
+<div class="accordion acordeon-pwa-govco" id="acordeonTramites">
+    <div class="card" *ngFor="let item of items; index as i;" [class.active]="item.active">
+        <div class="card-header" id="headingOne">
+            <button #botonAcordeon (click)="activarItem(i)" class="btn btn-link btn-block text-left" type="button"
+                data-toggle="collapse" [attr.data-target]="'#collapse-tramites' + i" aria-expanded="false"
+                [attr.aria-controls]="'collapse-tramites' + i">
+                <a *ngIf="href" (click)="validarUrlService.validarUrl(item.link, '_blank')" class="line-clamp-3">{{item.titulo}}</a>
+                <a *ngIf="!href" routerLink="{{item.link}}" class="line-clamp-3">{{item.titulo}}</a>
+                <div class="caja-icono-24-pwa">
+                    <span class="icono-expand-more" type="image"
+                        alt="Expandir acordeon para ver más información"></span>
+                </div>
+            </button>
         </div>
-        <div [id]="'collapse' + i" class="collapse" [attr.aria-labelledby]="'heading' + i"
-            data-parent="#tramitesAcordeon">
-            <div class="card-body">
+        <div [id]="'collapse-tramites' + i" class="collapse" [attr.aria-labelledby]="'heading' + i"
+            data-parent="#acordeonTramites">
+            <div class="card-body contenido-pwa-govco">
                 <div class="govco-pwa-ficha-subtitulo">
                     <div class="texto-entidad">
-                        <p>Entidad responsable: <br>
-                            <span [attr.aria-label]="'Entidad responsable' + item?.entidad">{{
-                                item?.entidad}}</span>
-                        </p>
+                        <p>Entidad responsable:</p>
+                        <span [attr.aria-label]="'Entidad responsable' + item?.entidad">{{
+                            item?.entidad}}</span>
                     </div>
-                    <div class="separador"></div>
+                    <div class="linea-horizontal-2-pwa-govco"></div>
                 </div>
                 <div class="container-detalle">
-                    <div class="contenido-detalle" (click)="showBotonLeer()">
-                        <p class="ficha-descripcion" tabindex="0" [attr.aria-label]="contenidoLeido"
-                            (focus)="showExpended()">
-                            {{item.descripcion}}
-                            <br>
-                        </p>
-                        <a *ngIf="caracteresCategoria" class="contenido-expandido">{{nombreExpanded}}</a>
+                    <div class="descripcion">
+                        <p #texto class="line-clamp-3">{{item.descripcion}}</p>
+                        <a *ngIf="botonTexto[i]" (click)="expandirText(i)">{{ expandirTexto == true ? 'Leer menos' :
+                            'Leer más'}}</a>
                     </div>
                     <div class="caracteriticas-tramite">
                         <div class="card-detalle-tramite">
@@ -53,7 +48,7 @@
                         <div class="card-detalle-tramite">
                             <div class="container-icon-detalle">
                                 <span class="material-symbols-outlined">
-                                    {{item.costo.includes('SI')? 'monetization_on': 'money_off' }}
+                                    {{item.costo== 'SI'? 'monetization_on': 'money_off' }}
                                 </span>
                             </div>
                             <div class="container-text-detalle">
