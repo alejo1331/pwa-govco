@@ -12,7 +12,7 @@ export class BuscadorAvisoComponent implements OnInit {
   imageSrc = '../../../../assets/images/imgaviso.png';
   resBuscador = 'Ebuxación';
   geoLocMunName = 'Toda Colombia';
-  sugBuscador = 'Educación';
+  sugBuscador = 'Educación inclusiva y marco legal';
   codDepartamento: string = '';
   codMunicipio: string = '';
 
@@ -22,6 +22,8 @@ export class BuscadorAvisoComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    let input: any = document.querySelector('input');
+    this.resBuscador = input.value;
     if (localStorage.getItem('codigoDepartamento')) {
       this.codDepartamento = localStorage.getItem('codigoDepartamento')!;
       this.codMunicipio = localStorage.getItem('codigoMunicipio')!;
