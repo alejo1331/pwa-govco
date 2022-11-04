@@ -21,8 +21,9 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 0 .5rem 0 .75rem;
-        width: 6rem;
+        padding: 0;
+        margin-right: .5rem;
+        max-width: 7.375rem;
         height: 100%;
         border: none;
         background-color: #ffffff;
@@ -35,6 +36,7 @@
         }
 
         .caja-icono-24-pwa {
+            margin-left: 0.5rem;
 
             .icono-filtro {
                 content: url(../../../../assets/icons-fonts/filter_list_004884.svg);

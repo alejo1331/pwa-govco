@@ -1,8 +1,8 @@
 <nav class="barra-filtros-pwa contenido-pwa-govco">
     <p class="resultado-filtro">({{totalResultados}}) Resultados</p>
     <button class="grupo-filtro" (click)="filtroPrimerNivel()">
-        <p>Filtros</p>
-        <div class="caja-icono-24-pwa">
+        <p>{{ totalFiltros == 0 ? 'Filtros': 'Filtros (' +  totalFiltros + ')'}}</p>
+        <div class="caja-icono-24-pwa" tabindex="0">
             <span class="icono-filtro" type="image" alt="Abrir filtro"></span>
         </div>
     </button>
