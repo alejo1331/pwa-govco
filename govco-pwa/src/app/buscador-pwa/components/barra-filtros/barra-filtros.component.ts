@@ -1,4 +1,6 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { FiltrosService } from '../../services/filtros.service';
 import { FiltrosPrincipalComponent } from '../filtros-principal/filtros-principal.component';
 
 @Component({
@@ -11,9 +13,17 @@ export class BarraFiltrosComponent implements OnInit {
   @Input() totalResultados: any[];
   @ViewChild(FiltrosPrincipalComponent) FiltrosPrincipalComponent: FiltrosPrincipalComponent;
 
-  constructor() { }
+  public filtrosSubscription: Subscription
+  totalFiltros: number = 0;
 
-  ngOnInit(): void {}
+  constructor(protected filtrosService: FiltrosService) { }
+
+  ngOnInit(): void {
+    this.filtrosSubscription = this.filtrosService.Filters$.subscribe((resultados) => {
+      this.totalFiltros = resultados?.filters != undefined ?
+        Object.keys(resultados?.filters).length : 0
+    });
+  }
 
   filtroPrimerNivel() {
     this.FiltrosPrincipalComponent.abrirModal();
