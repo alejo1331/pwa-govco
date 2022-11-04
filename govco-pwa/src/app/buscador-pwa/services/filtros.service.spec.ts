@@ -1,3 +1,4 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 
 import { FiltrosService } from './filtros.service';
@@ -5,12 +6,14 @@ import { FiltrosService } from './filtros.service';
 describe('FiltrosService', () => {
   let service: FiltrosService;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({});
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule]
+    });
     service = TestBed.inject(FiltrosService);
   });
 
-  it('should be created', () => {
+  it('Debe de crearse correctamente', () => {
     expect(service).toBeTruthy();
   });
 });

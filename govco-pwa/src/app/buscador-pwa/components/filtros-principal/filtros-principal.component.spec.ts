@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FiltrosPrincipalComponent } from './filtros-principal.component';
+import { FiltrosService } from '../../services/filtros.service';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('FiltrosPrincipalComponent', () => {
   let component: FiltrosPrincipalComponent;
@@ -8,7 +10,9 @@ describe('FiltrosPrincipalComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FiltrosPrincipalComponent ]
+      declarations: [ FiltrosPrincipalComponent ],
+      providers: [FiltrosService],
+      imports: [HttpClientTestingModule]
     })
     .compileComponents();
   });
@@ -19,7 +23,7 @@ describe('FiltrosPrincipalComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('Debe de crearse correctamente', () => {
     expect(component).toBeTruthy();
   });
 });

@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, OnChanges, SimpleChanges, ViewChildren, ElementRef, QueryList } from '@angular/core';
 import { TramitesServiciosInterface } from 'src/app/buscador-pwa/models/tramites-servicios-interface';
 import { urlsLocal } from 'src/variables-globales/urlsLocal';
+import { ValidarUrlService } from 'src/app/buscador-pwa/services/validar-url.service';
 
 @Component({
   selector: 'app-buscador-card-tramites',
@@ -29,7 +30,9 @@ export class BuscadorCardTramitesComponent implements OnInit, OnChanges {
   expandirTexto: boolean = false;
   botonTexto: boolean[] = [];
 
-  constructor() { }
+  constructor(
+    public validarUrlService: ValidarUrlService
+  ) { }
 
   ngOnInit(): void {
   }

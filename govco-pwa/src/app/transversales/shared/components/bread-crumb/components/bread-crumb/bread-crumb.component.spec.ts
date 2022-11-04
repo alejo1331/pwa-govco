@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BreadCrumbComponent } from './bread-crumb.component';
 import { RouterTestingModule } from '@angular/router/testing';
-import { WordLimitPipe } from '@shared/pipes/word-limit/word-limit.pipe';
+import { WordLimitPipe } from  '../../../../../pipes/word-limite.pipe';
 import { DebugElement } from '@angular/core';
 import { Router } from '@angular/router';
 

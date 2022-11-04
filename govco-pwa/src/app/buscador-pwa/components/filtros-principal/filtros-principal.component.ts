@@ -1,14 +1,12 @@
-import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { DATA_FILTRO_SECCIONES } from '../../models/dataFiltroSeccionesModel';
 import { FiltrosService } from '../../services/filtros.service';
 import { ModalFiltroSegundoNivelComponent } from '../../../biblioteca-pwa/components/modal-filtro-segundo-nivel/modal-filtro-segundo-nivel.component';
 import { InformacionModalInterface } from '../../../biblioteca-pwa/models/filtro-nivel-dos/filtro-nivel-dos-interface';
 import { Subscription } from 'rxjs';
 import { Platform } from '@angular/cdk/platform';
-import { DataFiltros, ResultadoFiltro } from '../../models/resultadoFiltroModel';
+import { ResultadoFiltro } from '../../models/resultadoFiltroModel';
 import { filter } from '../../models/filtroBusquedaModel';
-import { MatDialog } from '@angular/material/dialog';
-import { ModalUrlNoDisponibleComponent } from 'src/app/biblioteca-pwa/components/modal-url-no-disponible/modal-url-no-disponible.component';
 
 @Component({
   selector: 'app-filtros-principal',
@@ -31,7 +29,6 @@ export class FiltrosPrincipalComponent implements OnInit {
   constructor(
     protected filtrosService: FiltrosService,
     public platform: Platform,
-    public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -52,13 +49,11 @@ export class FiltrosPrincipalComponent implements OnInit {
         this.actualizaFiltrosActivos();
       }
     });
-    
-    // this.dialog.open(ModalUrlNoDisponibleComponent, {
-    //   width: '280px'
-    // });    
+          
     this.clickBackdrop();
     document.addEventListener('keydown', (event) => {
-      if (event.key == 'Escape') {
+      const modalFiltroSegundoNivel = document.querySelector('.modal-filtro-pwa')?.classList.contains('show');
+      if (event.key == 'Escape' && !modalFiltroSegundoNivel) {
         this.filtroPrimerNivel.nativeElement.classList.remove('show');
       }
     }, false);
