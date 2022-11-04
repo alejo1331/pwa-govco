@@ -68,32 +68,18 @@
                 }
             }
 
-            .estado-fechas {
-                background-color: #E8EFFC;
-                height: 6rem;
-                padding: 1rem;
+            p {
+                color: #000000;
+                font-family: 'WorkSans-Medium';
+                font-size: .875rem;
+                margin: 0;
+                line-height: 1.33122rem;
+            }
 
-                p {
-                    color: #000000;
-                    font-family: 'WorkSans-Medium';
-                    font-size: .875rem;
-                    margin: 0;
-                    line-height: 1.33122rem;
-
-                    span {
-                        color: #000000;
-                        font-family: 'WorkSans-Regular';
-                        font-size: .875rem;
-                    }
-                    .status-off {
-                        font-family: 'WorkSans-SemiBold';
-                        color: #A80521;
-                    }
-
-                    .status-on {
-                        color: #068460;
-                    }
-                }
+            span {
+                color: #000000;
+                font-family: 'WorkSans-Regular';
+                font-size: .875rem;
             }
         }
     }
@@ -101,6 +87,7 @@
     .card.active {
         border: 2px solid #E8EFFC;
         background-color: #FFFFFF !important;
+        padding-bottom: 1rem;
 
         .card-header button {
             p {
@@ -113,13 +100,4 @@
             }
         }
     }
-
-    div.card{
-      display: none;
-    }
-
-    div.card.actived{
-      display: block;
-    }
-
 }

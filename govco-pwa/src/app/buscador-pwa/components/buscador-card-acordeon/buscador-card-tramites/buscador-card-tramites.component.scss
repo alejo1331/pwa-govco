@@ -1,103 +1,130 @@
 .acordeon-pwa-govco {
     width: 100%;
+
     .card {
         width: 100%;
         border: 2px solid #E8EFFC;
         border-radius: 4px;
         background-color: #FFFFFF;
-        margin: 1rem 0;
+        margin-bottom: 0.5rem;
+
         .card-header {
             background-color: #FFFFFF;
             border: 0;
-            padding: 16px;
-            h2 button {
-                padding: 0;
-                color: #004884;
-                font-size: 16px;
-                font-family: 'Montserrat-SemiBold';
+            padding: 0;
+
+            button {
+                padding: 1rem;
+                border: 0;
                 text-decoration: none;
                 display: flex;
                 justify-content: space-between;
-                span {
-                    font-size: 32px;
-                    transition: 0.4s linear transform;
+
+                a {
+                    color: #3366CC;
+                    font-family: 'WorkSans-Medium';
+                    font-size: 1rem;
+                    margin: 0;
+                    padding: 0;
+                    line-height: 1.3rem;
+                    text-decoration: underline;
+                }
+
+                .caja-icono-24-pwa {
+                    margin-left: 1rem;
+
+                    .icono-expand-more {
+                        content: url(../../../../../assets/icons-fonts/expand_more.svg);
+                        width: 2rem;
+                        height: 2rem;
+                        transition: 0.4s linear transform;
+                    }
                 }
             }
-            h2 button:focus {
+
+            button:focus {
                 box-shadow: none;
             }
         }
-        .card-header.active h2 button {
-            span {
+
+        .card-body {
+            padding-bottom: 1rem;
+        }
+    }
+
+    .card.active {
+        border: 2px solid #E8EFFC;
+        background-color: #FFFFFF !important;
+
+        .card-header button {
+            p {
+                font-family: 'WorkSans-Medium';
+            }
+
+            .icono-expand-more {
                 display: inline;
                 transform: rotate(-180deg);
             }
         }
-        .card-body {
-            color: #000000;
-            font-family: 'WorkSans-Regular';
-            font-size: 14px;
-            padding: 1rem;
-        }
     }
-    // .card.active {
-    //     background-color: #FFFFFF !important;
-    //     .card-header h2 button {
-    //         span {
-    //             display: inline;
-    //             transform: rotate(-180deg);
-    //         }
-    //     }
-    // }
 }
 
 .govco-pwa-ficha-subtitulo {
-	// padding: 0px 16px 0px 16px;
-	width: 100%;
-	height: auto;
-	margin-bottom: 24px;
+    width: 100%;
+    height: auto;
+    margin-bottom: 24px;
 
-	.texto-entidad {
-		margin-bottom: 0.5rem;
+    .texto-entidad {
+        margin-bottom: 0.5rem;
 
-		p {
-			font-family: "Montserrat-Medium";
-			font-size: 14px;
-			color: #000000;
-			margin: 0;
+        p {
+            color: #000000;
+            font-family: 'WorkSans-Medium';
+            font-size: .875rem;
+            margin: 0;
+        }
 
-			span {
-				font-family: "WorkSans-Regular";
-			}
-		}
-	}
+        span {
+            color: #000000;
+            font-family: 'WorkSans-Regular';
+            font-size: .875rem;
+            letter-spacing: -0.006rem;
+        }
 
-	.separador::after {
-		content: "";
-		display: block;
-		width: 88px;
-		height: 2px;
-		background-color: #1c4780;
-	}
+        .linea-horizontal-2-pwa-govco {
+            margin: .5rem 0 1.5rem 0;
+        }
+    }
+
+    .separador::after {
+        content: "";
+        display: block;
+        width: 88px;
+        height: 2px;
+        background-color: #1c4780;
+    }
 }
 
 .container-detalle {
-    .contenido-detalle {
-        font-size: 14px;
-        margin-bottom: 24px;
+    .descripcion {
+        padding-bottom: 1rem;
 
-        .ficha-descripcion {
-            font-family: "WorkSans-Regular";
-            color: #000;
+        p {
+            color: #000000;
+            font-family: 'WorkSans-Regular';
+            font-size: .875rem;
+            letter-spacing: -0.006rem;
         }
 
         a {
-            font-family: "WorkSans-Medium";
             color: #3366CC;
-            margin-top: 20px;
+            font-family: 'WorkSans-Medium';
+            font-size: .875rem;
+            text-decoration: underline;
         }
     }
-    .caracteriticas-tramite{
+
+    .caracteriticas-tramite {
         .title-tramites {
             font-family: 'Montserrat-Medium';
             font-size: 14px;
@@ -111,7 +138,8 @@
             display: flex;
             align-items: center;
             margin-bottom: 8px;
-            .container-icon-detalle{
+
+            .container-icon-detalle {
                 border-radius: 10px;
                 width: 40px;
                 height: 40px;
@@ -120,6 +148,7 @@
                 align-items: center;
                 justify-content: center;
                 margin: 8px;
+
                 .material-symbols-outlined {
                     color: #004884;
                     font-variation-settings:
@@ -129,21 +158,25 @@
                         'opsz' 24
                 }
             }
-            .container-text-detalle{
-                p{
+
+            .container-text-detalle {
+                p {
                     margin-bottom: 0;
                 }
-                .tramite-type{
+
+                .tramite-type {
                     font-family: "WorkSans-Medium";
                     font-size: 14px;
                 }
-                .tramite-type-detalle{
+
+                .tramite-type-detalle {
                     font-family: "WorkSans-Regular";
                     font-size: 14px;
                 }
             }
         }
-        .timeLast{
+
+        .timeLast {
             margin-bottom: 0px;
         }
     }

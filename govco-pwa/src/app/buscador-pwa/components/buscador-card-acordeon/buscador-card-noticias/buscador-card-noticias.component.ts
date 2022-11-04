@@ -1,54 +1,42 @@
-import { Component, Input, OnInit, OnChanges, SimpleChanges, ViewChildren, ElementRef, QueryList } from '@angular/core';
-import { TramitesServiciosInterface } from 'src/app/buscador-pwa/models/tramites-servicios-interface';
+import { Component, ElementRef, Input, OnChanges, OnInit, QueryList, SimpleChanges, ViewChildren } from '@angular/core';
+import { NoticiasInterface } from 'src/app/buscador-pwa/models/noticias-interface';
 import { urlsLocal } from 'src/variables-globales/urlsLocal';
 
 @Component({
-  selector: 'app-buscador-card-tramites',
-  templateUrl: './buscador-card-tramites.component.html',
-  styleUrls: ['./buscador-card-tramites.component.scss'],
+  selector: 'app-buscador-card-noticias',
+  templateUrl: './buscador-card-noticias.component.html',
+  styleUrls: ['./buscador-card-noticias.component.scss']
 })
-export class BuscadorCardTramitesComponent implements OnInit, OnChanges {
-  
-  @Input() data: TramitesServiciosInterface[];
+export class BuscadorCardNoticiasComponent implements OnInit, OnChanges {
+
+  @Input() data: NoticiasInterface[];
   @ViewChildren('texto', { read: ElementRef }) listaTexto: QueryList<ElementRef>;
   @ViewChildren('botonAcordeon', { read: ElementRef }) ListaAcordeon: QueryList<ElementRef>;
 
-  items:  {
-    active: boolean,
-    costo: string;
-    descripcion: string;
-    enLinea: string;
-    entidad: string;
-    link: string;
-    linkEntidad: string;
-    tiempoObtencion: string;
-    titulo: string;
-  }[] = [];
   href: boolean = true;
 
   expandirTexto: boolean = false;
   botonTexto: boolean[] = [];
+
+  public items: {
+    active: boolean,
+    descripcion: string;
+    fechaPublicacion: string;
+    link: string;
+    titulo: string;
+  }[] = [];
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  ngDoCheck() {
-
-    if (this.items.length > 0){
-
-      if(document.getElementById('tramitesAcordeon')){
-        $('#tramitesAcordeon div.card:nth-child(-n+5)').addClass('actived')
-      }
-    }
-  }
-
   ngOnChanges(changes: SimpleChanges): void {
+    console.log('oli',this.data)
     if (changes.data.previousValue != changes.data.currentValue) {
       this.items = []
     };
-    changes.data.currentValue.forEach((element: TramitesServiciosInterface, i: number) => {
+    changes.data.currentValue.forEach((element: NoticiasInterface, i: number) => {
       this.href = true;
       this.botonTexto[i] = false;
       Object.values(urlsLocal).find(url => {
@@ -57,13 +45,9 @@ export class BuscadorCardTramitesComponent implements OnInit, OnChanges {
       this.items.push(
         {
           active: false,
-          costo: element.costo,
           descripcion: element.descripcion,
-          enLinea: element.enLinea,
-          entidad: element.entidad,
+          fechaPublicacion: element.fechaPublicacion,
           link: element.link,
-          linkEntidad: element.linkEntidad,
-          tiempoObtencion: element.tiempoObtencion,
           titulo: element.titulo
         }
       )
@@ -97,11 +81,5 @@ export class BuscadorCardTramitesComponent implements OnInit, OnChanges {
     this.listaTexto.toArray()[index].nativeElement.classList.toggle('line-clamp-3');
     this.expandirTexto = (this.expandirTexto == true) ? false : true;
   }
-  VerMasResultados(){
-    let resultadosActivos = $('div.card');
-    let ultimoActivo = resultadosActivos.filter('.actived:last').index();
-    resultadosActivos.filter(':lt(' + (ultimoActivo + 6) + ')').addClass('actived');
 
-  }
-  
 }

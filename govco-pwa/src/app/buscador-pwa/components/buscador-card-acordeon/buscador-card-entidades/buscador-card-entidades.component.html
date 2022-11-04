@@ -4,8 +4,8 @@
             <button (click)="activarItem(i)" class="btn btn-link btn-block text-left" type="button"
                 data-toggle="collapse" [attr.data-target]="'#collapse-entidades' + i"
                 aria-expanded="false" [attr.aria-controls]="'collapse-entidades' + i">
-                <a *ngIf="href" href="{{item.linkEntidad}}" target="_blank">{{item.titulo}}</a>
-                <a *ngIf="!href" routerLink="{{item.linkEntidad}}">{{item.titulo}}</a>
+                <a *ngIf="href" href="{{item.linkEntidad}}" target="_blank" class="line-clamp-3">{{item.titulo}}</a>
+                <a *ngIf="!href" routerLink="{{item.linkEntidad}}" class="line-clamp-3">{{item.titulo}}</a>
                 <div class="caja-icono-24-pwa">
                     <span class="icono-expand-more" type="image"
                         alt="Expandir acordeon para ver más información"></span>
