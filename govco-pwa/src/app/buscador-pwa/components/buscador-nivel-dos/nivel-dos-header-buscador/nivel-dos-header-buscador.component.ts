@@ -44,7 +44,7 @@ export class NivelDosHeaderBuscadorComponent implements OnInit {
     )
 
     input.addEventListener("keyup", (event:any) => {
-      if (event.keyCode === 13) {
+      if (event.keyCode === 13 && input.value != '') {
         this.buscar();
         const nuevoBuscadorParams : BuscadorParams = {
           index : this.index,
