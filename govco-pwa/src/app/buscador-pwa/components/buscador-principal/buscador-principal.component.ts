@@ -22,6 +22,7 @@ export class BuscadorPrincipalComponent implements OnInit {
   resultadosBusqueda: ResultadoFiltro;
   dataResultado: any;
   seccion: String = '';
+  public cantidadResultados: number;
 
   constructor(
     protected filtrosService: FiltrosService,
@@ -79,6 +80,7 @@ export class BuscadorPrincipalComponent implements OnInit {
           this.resultadosBusqueda = resultado;
           this.filtrosService.ResultadoBusqueda = resultado;
           this.dataResultado = this.resultadosBusqueda.data;
+          this.cantidadResultados = resultado.total;
         } catch (error) {
           console.error(error);
         }
