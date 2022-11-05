@@ -59,8 +59,8 @@ export const environment = {
   serverFichaTramite:'https://api-interno.www.gov.co/api/ficha-tramites-y-servicios',
 
   //buscador
-  serverBuscador: 'https://buscador.www.gov.co/api/v1/',
-  serverUrlValidarUrl: 'https://api-interno.www.gov.co/api/utils',
+  serverBuscador: 'https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api/buscador/',
+  serverUrlValidarUrl: 'https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api',
 
   //captcha
   keyCaptcha: "6LeCqOcUAAAAAMu9McR1zoUH0z6wDj_dekAODW5h",

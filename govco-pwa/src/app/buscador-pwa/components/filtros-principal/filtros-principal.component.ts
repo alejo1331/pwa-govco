@@ -51,12 +51,7 @@ export class FiltrosPrincipalComponent implements OnInit {
     });
           
     this.clickBackdrop();
-    document.addEventListener('keydown', (event) => {
-      const modalFiltroSegundoNivel = document.querySelector('.modal-filtro-pwa')?.classList.contains('show');
-      if (event.key == 'Escape' && !modalFiltroSegundoNivel) {
-        this.filtroPrimerNivel.nativeElement.classList.remove('show');
-      }
-    }, false);
+    this.clickEscape();
   }
 
   clickBackdrop() {
@@ -65,8 +60,19 @@ export class FiltrosPrincipalComponent implements OnInit {
       const container = $(".container-filtros");
       if ($(event.target).closest(container).length == 0 && !event.target.classList.contains('delete-selection')) {
         th.filtroPrimerNivel.nativeElement.classList.toggle('show');
+        th.removerFocus();
       }
     });
+  }
+
+  clickEscape () {
+    document.addEventListener('keydown', (event) => {
+      const modalFiltroSegundoNivel = document.querySelector('.modal-filtro-pwa')?.classList.contains('show');
+      if (event.key == 'Escape' && !modalFiltroSegundoNivel) {
+        this.filtroPrimerNivel.nativeElement.classList.remove('show');
+        this.removerFocus();
+      }
+    }, false);
   }
 
   actualizaFiltrosActivos() {
@@ -97,22 +103,24 @@ export class FiltrosPrincipalComponent implements OnInit {
       titulo: tituloFiltro,
       contendioModal: this.resultadosBusqueda.filtros[0][idFiltro],
       itemSeleccionado: subFiltroSeleccionado
-    }
+    }    
+
     //al final de subscribe --> servicio completo se abre el modal
     //el setTimeout simula el tiempo de consulta del servicio y una vez finalizada la consulta
     // se abre el modal
     setTimeout(() => {
+      this.removerFocus();
       this.ModalFiltroSegundoNivelComponent.abrirModal();
     }, 100);
   }
 
   abrirModal() {
     this.filtroPrimerNivel.nativeElement.classList.toggle('show');
+    this.focus();
     if (this.platform.IOS || this.platform.SAFARI) {
       var body = (document.getElementsByTagName('body') as HTMLCollectionOf<HTMLElement>)[0];
       body.classList.toggle('contenido-body');
     }
-    this.focus();
   }
 
   itemFiltroNivelDos(item: string) {
@@ -122,12 +130,12 @@ export class FiltrosPrincipalComponent implements OnInit {
     } else {
       this.filtrosSeleccionados[this.filtroSeleccionado] = item;
     }
+    this.focus();
 
     if (this.filtroSeleccionado) {
       const itemActivo = <HTMLElement>document.querySelector('[itemfiltroniveluno="' + this.filtroSeleccionado + '"]');
       itemActivo.focus();
     }
-
     this.actualizarBusqueda();
   }
 
@@ -155,7 +163,8 @@ export class FiltrosPrincipalComponent implements OnInit {
       pageSize: 10,
       search: this.busqueda,
       sort: "",
-      seccion: this.seccion
+      seccion: this.seccion,
+      spinner: true,
     }
   }
 
@@ -169,8 +178,8 @@ export class FiltrosPrincipalComponent implements OnInit {
   
       let first = <HTMLElement>focusableElements[0];
       let last = <HTMLElement>focusableElements[focusableElements.length - 1];
-  
-      document.body.addEventListener("focus", (event:FocusEvent) => {
+
+      $(document.body).on("focusin", (event) => {
         if (currDialog && !currDialog.contains(<HTMLElement>event.target)) {
           event.preventDefault();
           event.stopPropagation();
@@ -183,17 +192,29 @@ export class FiltrosPrincipalComponent implements OnInit {
             last.focus();
           }
         }
-      }, {capture: true});
+      });
     }
   }
 
-  removeFocus() {
-    document.body.removeEventListener("focus", () => {});
+  removerFocus() {
+    $(document.body).off("focusin");
+  }
+
+  activarSpinner(activa:boolean) {
+    const element = document.querySelector('.spinner-pwa');
+    const backdrop = document.querySelector('.backdrop-spinner-filtros');
+    if (activa) {
+      element?.classList.add('show');
+      backdrop?.classList.add('show');
+    } else {
+      element?.classList.remove('show');
+      backdrop?.classList.remove('show');
+    }
   }
 
   ngOnDestroy() {
     this.resultadosSubscription.unsubscribe();
-    this.removeFocus();
+    this.removerFocus();
   }
 
 }

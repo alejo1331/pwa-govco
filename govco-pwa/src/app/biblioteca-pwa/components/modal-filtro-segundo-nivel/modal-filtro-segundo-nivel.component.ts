@@ -59,7 +59,7 @@ export class ModalFiltroSegundoNivelComponent implements OnInit {
       let first = <HTMLElement>focusableElements[0];
       let last = <HTMLElement>focusableElements[focusableElements.length - 1];
   
-      document.body.addEventListener("focus", (event:FocusEvent) => {
+      $(document.body).on("focusin", (event) => {
         if (currDialog && !currDialog.contains(<HTMLElement>event.target)) {
           event.preventDefault();
           event.stopPropagation();
@@ -72,7 +72,7 @@ export class ModalFiltroSegundoNivelComponent implements OnInit {
             last.focus();
           }
         }
-      }, {capture: true});
+      });
     }
   }
 

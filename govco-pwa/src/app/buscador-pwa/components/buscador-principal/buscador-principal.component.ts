@@ -9,6 +9,7 @@ import {
   BuscadorService,
   BuscadorParams,
 } from '../../services/buscador.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-buscador-principal',
@@ -29,12 +30,19 @@ export class BuscadorPrincipalComponent implements OnInit {
     public bottomService: BottomMenuService,
     protected servicioHeader: HeaderService,
     protected servicioSideNav: SidenavService,
-    private buscadorService: BuscadorService
+    private buscadorService: BuscadorService,
+    private router: Router
   ) {
     this.bottomService.putOcultandoBottomMenu(false);
   }
 
   ngOnInit(): void {
+
+    if (!this.buscadorService.getBuscadorParams.txtInputBuscador) {
+      this.activarSpinner(false);
+      this.router.navigate(['']);
+    }
+    
     // servicioHeader.estadoHeader(a, b)       a -> true = header seccion internas
     //                                         a -> false = header general
     //                                         b -> Muestra/Oculta  Header
@@ -56,6 +64,7 @@ export class BuscadorPrincipalComponent implements OnInit {
           search: parametros.txtInputBuscador,
           sort: '',
           seccion: parametros.txtConsumoApi,
+          spinner: false,
         };
       }
     );
@@ -69,9 +78,15 @@ export class BuscadorPrincipalComponent implements OnInit {
 
     this.filterSubscription = this.filtrosService.Filters$.subscribe(
       async (filters) => {
+      
         if (filters == undefined) {
           return;
         }
+
+        if (filters.spinner) {
+          this.activarSpinner(true);
+        }
+
         try {
           const resultado: ResultadoFiltro = await this.filtrosService
             .obtenerResultadoFiltro(filters)
@@ -80,12 +95,27 @@ export class BuscadorPrincipalComponent implements OnInit {
           this.resultadosBusqueda = resultado;
           this.filtrosService.ResultadoBusqueda = resultado;
           this.dataResultado = this.resultadosBusqueda.data;
+        
+          this.activarSpinner(false);
           this.cantidadResultados = resultado.total;
         } catch (error) {
+          this.activarSpinner(false);
           console.error(error);
         }
       }
     );
+  }
+
+  activarSpinner(activa:boolean) {
+    const element = document.querySelector('.spinner-pwa');
+    const backdrop = document.querySelector('.backdrop-spinner-filtros');
+    if (activa) {
+      element?.classList.add('show');
+      backdrop?.classList.add('show');
+    } else {
+      element?.classList.remove('show');
+      backdrop?.classList.remove('show');
+    }
   }
 
   ngOnDestroy() {
