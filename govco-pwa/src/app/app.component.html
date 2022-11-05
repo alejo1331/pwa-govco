@@ -11,14 +11,15 @@
     </section>
     <section id="topScroll" class="govco-pwa-content" [ngClass]="{'govco-pwa-content-2': cambiarEstilo}">
       <app-geolocalizacion (click)="formularioGeolocalizacion(['translate(0%)', 'translate(-100%)'])"
-        class="app-geolocalizacion-pwa-govco">
+        class="app-geolocalizacion-pwa-govco" tabindex="0" [attr.aria-label]="'Abrir formulario del geolocalizador'"
+        (keypress)="formularioGeolocalizacion(['translate(0%)', 'translate(-100%)'])">
       </app-geolocalizacion>
       <div class="contenido-principal">
         <router-outlet></router-outlet>
       </div>
     </section>
 
-    <section class="govco-pwa-bottom-menu" >
+    <section class="govco-pwa-bottom-menu">
       <app-bottom-menu></app-bottom-menu>
     </section>
 
@@ -28,7 +29,7 @@
   <app-geolocalizacion-formulario (closedModal)="formularioGeolocalizacion($event)"></app-geolocalizacion-formulario>
 </section>
 
-<section #seccionBuscador class="seccion-buscador" >
+<section #seccionBuscador class="seccion-buscador">
   <app-buscador-nivel-dos (cerrarBuscador)="cerrarBuscadorPWA()"></app-buscador-nivel-dos>
 </section>
 

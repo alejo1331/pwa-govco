@@ -13,6 +13,7 @@
             width: 100%;
             height: 2.5rem;
             margin-bottom: 8px;
+            outline-color: #000000;
 
             .contenido-item {
                 display: flex;
@@ -41,11 +42,9 @@
 
         .item-filtro.active {
             background-color: #FFFFFF;
-            outline-color: #FFFFFF;
             border-radius: 5px;
 
             .contenido-item {
-                outline-color: #FFFFFF;
 
                 p {
                     font-family: 'WorkSans-Medium';
@@ -53,7 +52,7 @@
             }
         }
 
-        #tramites-servicios {
+        #prefiltro-0 {
             .contenido-item {
                 .icono-item {
                     content: url(../../../../../assets/icons-fonts/description_inactivo.svg);
@@ -61,7 +60,7 @@
             }
         }
 
-        #tramites-servicios.active {
+        #prefiltro-0.active {
             .contenido-item {
                 .icono-item {
                     content: url(../../../../../assets/icons-fonts/description_activo.svg);
@@ -69,7 +68,7 @@
             }
         }
 
-        #entidades {
+        #prefiltro-1 {
             .contenido-item {
                 .icono-item {
                     content: url(../../../../../assets/icons-fonts/home_work_inactivo.svg);
@@ -77,7 +76,7 @@
             }
         }
 
-        #entidades.active {
+        #prefiltro-1.active {
             .contenido-item {
                 .icono-item {
                     content: url(../../../../../assets/icons-fonts/home_work_activo.svg);
@@ -85,7 +84,7 @@
             }
         }
 
-        #noticias {
+        #prefiltro-2 {
             .contenido-item {
                 .icono-item {
                     content: url(../../../../../assets/icons-fonts/feed_inactivo.svg);
@@ -93,7 +92,7 @@
             }
         }
 
-        #noticias.active {
+        #prefiltro-2.active {
             .contenido-item {
                 .icono-item {
                     content: url(../../../../../assets/icons-fonts/feed_activo.svg);
@@ -102,7 +101,7 @@
         }
 
 
-        #ejecicios-participacion {
+        #prefiltro-3 {
             .contenido-item {
                 .icono-item {
                     content: url(../../../../../assets/icons-fonts/diversity.svg);
@@ -110,7 +109,7 @@
             }
         }
 
-        #ventanillas-unicas {
+        #prefiltro-4 {
             .contenido-item {
                 .icono-item {
                     content: url(../../../../../assets/icons-fonts/store_inactivo.svg);
@@ -118,7 +117,7 @@
             }
         }
 
-        #ventanillas-unicas.active {
+        #prefiltro-4.active {
             .contenido-item {
                 .icono-item {
                     content: url(../../../../../assets/icons-fonts/store_activo.svg);
@@ -126,7 +125,7 @@
             }
         }
 
-        #portales-transversales {
+        #prefiltro-5 {
             .contenido-item {
                 .icono-item {
                     content: url(../../../../../assets/icons-fonts/computer_inactivo.svg);
@@ -134,7 +133,7 @@
             }
         }
 
-        #portales-transversales.active {
+        #prefiltro-5.active {
             .contenido-item {
                 .icono-item {
                     content: url(../../../../../assets/icons-fonts/computer_activo.svg);

@@ -32,9 +32,7 @@ export class BuscadorCardNoticiasComponent implements OnInit, OnChanges {
   }
 
   ngDoCheck() {
-
     if (this.items.length > 0){
-
       if(document.getElementById('acordeonNoticias')){
         $('#acordeonNoticias div.card:nth-child(-n+5)').addClass('actived')
       }
@@ -42,7 +40,6 @@ export class BuscadorCardNoticiasComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log('oli',this.data)
     if (changes.data.previousValue != changes.data.currentValue) {
       this.items = []
     };

@@ -9,7 +9,11 @@ import { BuscadorService, BuscadorParams } from 'src/app/buscador-pwa/services/b
 export class ModalPrefiltradoComponent implements OnInit {
 
   itemFiltro: number;
-  @Output() itemSelected = new EventEmitter<[string, boolean, number,  string]>();;
+  @Output() itemSelected = new EventEmitter<[string, boolean, number,  string]>();
+  tituloCorto: Array<string> = ['Trámites', 'Entidades', 'Noticias', 'Ejercicios', 'Ventanillas', 'Portales'];
+  titulo: Array<string> = ['Trámites y servicios', 'Entidades', 'Noticias', 'Ejercicios de participación', 'Ventanillas Únicas', 'Portales Transversales'];
+  palabraClable: Array<string> = ['tramite', 'entidad', 'noticia', 'participacion', 'tramiteventanilla', 'portaltransversal'];
+
 
   constructor(
     private buscadorService : BuscadorService

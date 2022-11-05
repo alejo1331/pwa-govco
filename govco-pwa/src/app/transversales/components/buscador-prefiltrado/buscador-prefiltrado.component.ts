@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { BuscadorService, BuscadorParams } from 'src/app/buscador-pwa/services/buscador.service';
 
@@ -9,9 +9,10 @@ import { BuscadorService, BuscadorParams } from 'src/app/buscador-pwa/services/b
 })
 export class BuscadorPrefiltradoComponent implements OnInit {
 
-
   estadoBotonFiltro: boolean = true;
   tituloFiltro: string = '';
+  titleSeccion: Array<String> = ['Trámites', 'Entidades', 'Noticias', 'Ejercicios', 'Ventanillas', 'Portales'];
+  posicion: number;
   abrirBuscadorCheck : boolean = false;
 
   constructor(
@@ -42,6 +43,7 @@ export class BuscadorPrefiltradoComponent implements OnInit {
   }
 
   itemSelected([item, estado, index, txtConsumoApi]: [string, boolean, number, string]) {
+    this.posicion = index;
     this.tituloFiltro = item;
     this.estadoBotonFiltro = estado;
     let modal_prefiltrado: HTMLElement = document.getElementById('modal-prefiltrado') as HTMLElement;
