@@ -23,7 +23,7 @@ export class BuscadorPrincipalComponent implements OnInit {
   resultadosBusqueda: ResultadoFiltro;
   dataResultado: any;
   seccion: String = '';
-  public cantidadResultados: number;
+  cantidadResultados: number;
 
   constructor(
     protected filtrosService: FiltrosService,
@@ -37,12 +37,11 @@ export class BuscadorPrincipalComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     if (!this.buscadorService.getBuscadorParams.txtInputBuscador) {
       this.activarSpinner(false);
       this.router.navigate(['']);
     }
-    
+
     // servicioHeader.estadoHeader(a, b)       a -> true = header seccion internas
     //                                         a -> false = header general
     //                                         b -> Muestra/Oculta  Header
@@ -78,7 +77,6 @@ export class BuscadorPrincipalComponent implements OnInit {
 
     this.filterSubscription = this.filtrosService.Filters$.subscribe(
       async (filters) => {
-      
         if (filters == undefined) {
           return;
         }
@@ -95,9 +93,9 @@ export class BuscadorPrincipalComponent implements OnInit {
           this.resultadosBusqueda = resultado;
           this.filtrosService.ResultadoBusqueda = resultado;
           this.dataResultado = this.resultadosBusqueda.data;
-        
+
           this.activarSpinner(false);
-          this.cantidadResultados = resultado.total;
+          this.cantidadResultados = resultado.data.length;
         } catch (error) {
           this.activarSpinner(false);
           console.error(error);
@@ -106,7 +104,7 @@ export class BuscadorPrincipalComponent implements OnInit {
     );
   }
 
-  activarSpinner(activa:boolean) {
+  activarSpinner(activa: boolean) {
     const element = document.querySelector('.spinner-pwa');
     const backdrop = document.querySelector('.backdrop-spinner-filtros');
     if (activa) {
