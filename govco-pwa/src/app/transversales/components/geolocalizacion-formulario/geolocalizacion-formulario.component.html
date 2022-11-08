@@ -6,13 +6,13 @@
         </div>
     </div>
     <section class="contenido-pwa-govco">
-        <h1 class="titulo-general-pwa-govco" tabindex="0">Elige tu ubicación actual</h1>
+        <h1 class="titulo-general-pwa-govco">Elige tu ubicación actual</h1>
         <div class="linea-horizontal-2-pwa-govco"></div>
-        <p class="texto-general-pwa-govco" tabindex="0">Podrás encontrar trámites, servicios e información
+        <p class="texto-general-pwa-govco" >Podrás encontrar trámites, servicios e información
             cercana a tu ubicación.</p>
         <form [formGroup]="registerForm" (ngSubmit)="itemSeleccionado('codigoMunicipio') == false ? focus(): guardarUbicacion(registerForm.value)" class="formulario-pwa-govco">
             <div class="campo-inputs">
-                <label class="label-pwa-govco" for="listadoDepartmentos" tabindex="0">Departamento*</label>
+                <label class="label-pwa-govco" for="listadoDepartmentos" >Departamento*</label>
                 <select (change)="getMunicipiosPorDepartamento($any($event.target).value)" style="z-index: 1;"
                     formControlName="codigoDepartamento" class="select-pwa-govco texto-select-pwa-govco"
                     id=" listadoDepartmentos" [ngClass]="{ 'seleccionado': itemSeleccionado('codigoDepartamento')}"
@@ -23,7 +23,7 @@
                         {{departmentos.nombre}}
                     </option>
                 </select>
-                <label class="label-pwa-govco margin-label-pwa-govco" for="listadoMunicipios" tabindex="0">Municipio*</label>
+                <label class="label-pwa-govco margin-label-pwa-govco" for="listadoMunicipios">Municipio*</label>
                 <select formControlName="codigoMunicipio" class="select-pwa-govco texto-select-pwa-govco"
                     style="z-index: 1;" id="listadoMunicipios" tabindex="0" [attr.aria-label]="'Seleccionar un municipio'"
                     [ngClass]="{ 'seleccionado': itemSeleccionado('codigoMunicipio')}">
