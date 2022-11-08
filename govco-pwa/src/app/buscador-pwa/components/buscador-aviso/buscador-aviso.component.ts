@@ -1,7 +1,11 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AppComponent } from 'src/app/app.component';
 import { MunicipioInterface } from './../../../transversales/models/geolocalizacion/municipio-interface';
 import { GeolocalizacionService } from './../../../transversales/services/geolocalizacion/geolocalizacion.service';
+import {
+  BuscadorService,
+  BuscadorParams,
+} from 'src/app/buscador-pwa/services/buscador.service';
 
 @Component({
   selector: 'app-buscador-aviso',
@@ -12,18 +16,19 @@ export class BuscadorAvisoComponent implements OnInit {
   imageSrc = '../../../../assets/images/imgaviso.png';
   resBuscador = 'Ebuxación';
   geoLocMunName = 'Toda Colombia';
-  sugBuscador = 'Educación inclusiva y marco legal';
+  sugBuscador = '';
   codDepartamento: string = '';
   codMunicipio: string = '';
+  resIndex: number;
+  resConsumoApi = '';
 
   constructor(
     private appprincipal: AppComponent,
-    protected ServicioGeolocalizacion: GeolocalizacionService
+    protected ServicioGeolocalizacion: GeolocalizacionService,
+    private buscadorService: BuscadorService
   ) {}
 
   ngOnInit(): void {
-    let input: any = document.querySelector('input');
-    this.resBuscador = input.value;
     if (localStorage.getItem('codigoDepartamento')) {
       this.codDepartamento = localStorage.getItem('codigoDepartamento')!;
       this.codMunicipio = localStorage.getItem('codigoMunicipio')!;
@@ -32,6 +37,21 @@ export class BuscadorAvisoComponent implements OnInit {
         this.codMunicipio,
       ]);
     }
+
+    this.buscadorService.getSugerenciasBuscador$.subscribe(
+      (sugerencias: any) => {
+        if (sugerencias.length > 0) this.sugBuscador = sugerencias[0][0];
+        else this.sugBuscador = '';
+      }
+    );
+
+    this.buscadorService.getBuscadorParams$.subscribe(
+      (parametros: BuscadorParams) => {
+        this.resIndex = parametros.index;
+        this.resBuscador = parametros.txtInputBuscador;
+        this.resConsumoApi = parametros.txtConsumoApi;
+      }
+    );
   }
 
   abrirGeolocalizacion() {
@@ -59,5 +79,14 @@ export class BuscadorAvisoComponent implements OnInit {
         });
       }
     });
+  }
+
+  seleccionarSugerencia() {
+    const nuevoBuscadorParams: BuscadorParams = {
+      index: this.resIndex,
+      txtConsumoApi: this.resConsumoApi,
+      txtInputBuscador: this.sugBuscador,
+    };
+    this.buscadorService.setBuscadorParams(nuevoBuscadorParams);
   }
 }

@@ -10,8 +10,9 @@
             <span>{{geoLocMunName}}</span>
         </p>
 
-        <p class="tarjeta-aviso-mensaje-texto">¿Qué tal si pruebas con “<a class="tarjeta-aviso-mensaje-link"
-                href="javascript:void(0)">{{sugBuscador}}</a>” ?
+        <p *ngIf="sugBuscador != ''" class="tarjeta-aviso-mensaje-texto">¿Qué tal si pruebas con “<a
+                class="tarjeta-aviso-mensaje-link" href="javascript:void(0)"
+                (click)="seleccionarSugerencia()">{{sugBuscador}}</a>” ?
         </p>
         <p class="tarjeta-aviso-mensaje-texto">Te sugerimos: </p>
         <ul class="tarjeta-aviso-listado">
