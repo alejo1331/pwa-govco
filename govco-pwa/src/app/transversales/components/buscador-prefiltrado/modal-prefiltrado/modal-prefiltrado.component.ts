@@ -68,6 +68,7 @@ export class ModalPrefiltradoComponent implements OnInit {
         break;
       case 'Escape':
         this.cerrarModal();
+        this.buscadorPrefiltrado.botonPrefiltro.nativeElement.focus();
         this.buscadorPrefiltrado.filtrarPor();
         break;
     }

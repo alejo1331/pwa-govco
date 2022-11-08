@@ -1,5 +1,5 @@
-<nav id="govco-header">
-    <div *ngIf="ocultar" [ngClass]="{
+<nav [hidden]="!ocultar" id="govco-header">
+    <div  [ngClass]="{
         'barra-superior-general-pwa-govco': !barraSuperiorInterna,
         'barra-superior-interna-pwa-govco': barraSuperiorInterna}">
         <div class="menu-logo-pwa-govco">

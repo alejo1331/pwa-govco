@@ -1,7 +1,6 @@
 import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { BuscadorService } from 'src/app/buscador-pwa/services/buscador.service';
-import { BottomMenuService } from '../../services/bottom-menu/bottom-menu.service';
 import { HeaderService } from '../../services/header-service/header.service';
 import { SidenavService } from '../../services/sidenav-service/sidenav-service.service';
 import { BuscadorPrefiltradoComponent } from '../buscador-prefiltrado/buscador-prefiltrado.component';
@@ -19,7 +18,7 @@ export class BarraSuperiorComponent implements OnInit {
 
   estadoMenu: boolean = false;
   barraSuperiorInterna: boolean = false;
-  ocultar: boolean = false;
+  ocultar: boolean;
 
   constructor(
     protected servicioSideNav: SidenavService,
@@ -29,6 +28,7 @@ export class BarraSuperiorComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.ocultar = false;
     this.servicioHeader.ocultandoHeader.subscribe(([estilo, estado]) => {
       this.ocultar = estado;
       this.barraSuperiorInterna = estilo;
