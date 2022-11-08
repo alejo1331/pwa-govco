@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BuscadorCardPortalesComponent } from './buscador-card-portales.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 describe('BuscadorCardPortalesComponent', () => {
   let component: BuscadorCardPortalesComponent;
@@ -8,9 +9,9 @@ describe('BuscadorCardPortalesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BuscadorCardPortalesComponent ]
-    })
-    .compileComponents();
+      declarations: [BuscadorCardPortalesComponent],
+      imports: [MatDialogModule],
+    }).compileComponents();
   });
 
   beforeEach(() => {

@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BuscadorCardEntidadesComponent } from './buscador-card-entidades.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 describe('BuscadorCardEntidadesComponent', () => {
   let component: BuscadorCardEntidadesComponent;
@@ -8,9 +9,9 @@ describe('BuscadorCardEntidadesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BuscadorCardEntidadesComponent ]
-    })
-    .compileComponents();
+      declarations: [BuscadorCardEntidadesComponent],
+      imports: [MatDialogModule],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -19,7 +20,7 @@ describe('BuscadorCardEntidadesComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('Debe de crearse correctamente', () => {
     expect(component).toBeTruthy();
   });
 });

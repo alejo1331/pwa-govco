@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BuscadorCardTramitesComponent } from './buscador-card-tramites.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 describe('BuscadorCardTramitesComponent', () => {
   let component: BuscadorCardTramitesComponent;
@@ -8,9 +9,9 @@ describe('BuscadorCardTramitesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BuscadorCardTramitesComponent ]
-    })
-    .compileComponents();
+      declarations: [BuscadorCardTramitesComponent],
+      imports: [MatDialogModule],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -19,7 +20,7 @@ describe('BuscadorCardTramitesComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('Debe de crearse correctamente', () => {
     expect(component).toBeTruthy();
   });
 });
