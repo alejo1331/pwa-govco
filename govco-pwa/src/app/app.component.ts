@@ -1,8 +1,8 @@
-import { Component, HostListener, ViewChild, OnInit, AfterContentChecked, ElementRef, ViewChildren, QueryList } from '@angular/core';
+import { Component, HostListener, ViewChild, OnInit, AfterContentChecked, ElementRef } from '@angular/core';
 import { MatSidenav, MatSidenavContent } from '@angular/material/sidenav';
 import { SidenavService } from './transversales/services/sidenav-service/sidenav-service.service';
 import { AppService } from './app.service';
-import { Router, NavigationEnd, RouterLinkActive } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { BarraSuperiorComponent } from './transversales/components/barra-superior/barra-superior.component';
 import { HeaderService } from './transversales/services/header-service/header.service';
@@ -22,7 +22,6 @@ import { UsuarioModel } from './transversales/models/auth/usuario.model';
 import { UsuarioLoginModel } from './transversales/models/auth/usuarioLogin.model';
 import { AuthService } from './transversales/services/auth/auth.service';
 import { GeolocalizacionComponent } from './transversales/components/geolocalizacion/geolocalizacion.component';
-import { HtmlAstPath } from '@angular/compiler';
 import { BuscadorService } from './buscador-pwa/services/buscador.service';
 import { BuscadorNivelDosComponent } from './buscador-pwa/components/buscador-nivel-dos/buscador-nivel-dos.component';
 
@@ -310,6 +309,9 @@ export class AppComponent implements OnInit, AfterContentChecked, AfterContentCh
   }
 
   formularioGeolocalizacion(modalAndContect: string[]) {
+    modalAndContect[0] == "translate(100%)" ?
+      this.GeolocalizacionComponent.contenidoHtml.nativeElement.focus() 
+      : this.formularioGeolocalizador.botonAtras.nativeElement.focus();
     this.appGeolocalizacionFormulario.nativeElement.style.transform = modalAndContect[0];
     this.matSidenavContent.transform = modalAndContect[1];
     this.formularioGeolocalizador.abrirFormulario();

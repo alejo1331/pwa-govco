@@ -10,10 +10,7 @@
       <app-barra-superior (outEstadoMenu)="estadoMenu($event)"></app-barra-superior>
     </section>
     <section id="topScroll" class="govco-pwa-content" [ngClass]="{'govco-pwa-content-2': cambiarEstilo}">
-      <app-geolocalizacion (click)="formularioGeolocalizacion(['translate(0%)', 'translate(-100%)'])"
-        class="app-geolocalizacion-pwa-govco" tabindex="0" [attr.aria-label]="'Abrir formulario del geolocalizador'"
-        (keypress)="formularioGeolocalizacion(['translate(0%)', 'translate(-100%)'])">
-      </app-geolocalizacion>
+      <app-geolocalizacion (abrir)="formularioGeolocalizacion($event)"></app-geolocalizacion>
       <div class="contenido-principal">
         <router-outlet></router-outlet>
       </div>

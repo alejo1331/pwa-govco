@@ -1,15 +1,17 @@
-<div class="modal-prefiltrado-pwa">
-    <ul class="lista-filtro">
-        <li class="item-filtro" *ngFor="let item of titulo; index as i;" id="prefiltro-{{i}}"
-            (click)="seleccionarItem(tituloCorto[i], i, palabraClable[i])" [class.active]="itemFiltro == i" tabindex="0"
-            (keypress)="seleccionarItem(tituloCorto[i], i, palabraClable[i])"
-            [attr.aria-label]="'Seleccionar prefiltro tipo ' + item">
-            <a class="contenido-item">
-                <div class="caja-icono-24-pwa">
-                    <span class="icono-item" type="image"></span>
-                </div>
-                <p>{{item}}</p>
-            </a>
-        </li>
-    </ul>
+<div #modal class="contenido-modal-pwa" (animationend)="onAnimationEnd($event)">
+    <div class="modal-prefiltrado-pwa">
+        <ul class="lista-filtro">
+            <li #listaPrefiltro class="item-filtro" *ngFor="let item of titulo; index as i;" id="prefiltro-{{i}}"
+                (click)="seleccionarItem(tituloCorto[i], i, palabraClable[i])" [class.active]="itemFiltro == i"
+                tabindex="0" (keypress)="seleccionarItem(tituloCorto[i], i, palabraClable[i])" (keydown)="onKeyDown($event)"
+                (focus)="onFocusLi($event)" [attr.aria-label]="'Seleccionar prefiltro tipo ' + item">
+                <a class="contenido-item">
+                    <div class="caja-icono-24-pwa">
+                        <span class="icono-item" type="image"></span>
+                    </div>
+                    <p>{{item}}</p>
+                </a>
+            </li>
+        </ul>
+    </div>
 </div>

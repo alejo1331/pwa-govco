@@ -1,145 +1,188 @@
-.modal-prefiltrado-pwa {
-    background-color: #E6EFFD;
+.contenido-modal-pwa {
+    position: fixed;
+    z-index: 9;
+    left: 0;
+    top: 0;
+    padding: 0 1rem;
+    width: 100%;
     height: 100%;
-    border-radius: 20px;
-    padding: 1.5rem 1rem;
-    box-shadow: 0px 4px 10px #13173d29;
+    display: none;
 
-    .lista-filtro {
-        list-style: none;
-        padding: 0;
+    .modal-prefiltrado-pwa {
+        height: 20.5rem;
+        width: 100%;
+        background-color: #E6EFFD;
+        border-radius: 20px;
+        padding: 1.5rem 1rem;
+        box-shadow: 0px 4px 10px #13173d29;
+        position: relative;
+        top: 6.75rem;
 
-        .item-filtro {
-            width: 100%;
-            height: 2.5rem;
-            margin-bottom: 8px;
-            outline-color: #000000;
+        .lista-filtro {
+            list-style: none;
+            padding: 0;
+            margin: 0;
 
-            .contenido-item {
-                display: flex;
-                align-items: center;
-                height: 100%;
-                padding: .5rem .75rem;
-                text-decoration: none;
+            .item-filtro {
+                width: 100%;
+                height: 2.5rem;
+                margin-bottom: 8px;
+                outline-color: #000000;
 
-                .caja-icono-24-pwa {
+                .contenido-item {
+                    display: flex;
+                    align-items: center;
+                    height: 100%;
+                    padding: .5rem .75rem;
+                    text-decoration: none;
 
-                    .icono-item {
-                        width: 1.5rem;
-                        height: 1.5rem;
+                    .caja-icono-24-pwa {
+
+                        .icono-item {
+                            width: 1.5rem;
+                            height: 1.5rem;
+                        }
+                    }
+
+                    p {
+                        margin: 0 0 0 .5rem;
+                        font-family: 'WorkSans-Regular';
+                        font-size: .875em;
+                        color: #004884;
                     }
                 }
 
-                p {
-                    margin: 0 0 0 .5rem;
-                    font-family: 'WorkSans-Regular';
-                    font-size: .875em;
-                    color: #004884;
+            }
+
+            .item-filtro.active {
+                background-color: #FFFFFF;
+                border-radius: 5px;
+
+                .contenido-item {
+
+                    p {
+                        font-family: 'WorkSans-Medium';
+                    }
+                }
+            }
+
+            #prefiltro-0 {
+                .contenido-item {
+                    .icono-item {
+                        content: url(../../../../../assets/icons-fonts/description_inactivo.svg);
+                    }
+                }
+            }
+
+            #prefiltro-0.active {
+                .contenido-item {
+                    .icono-item {
+                        content: url(../../../../../assets/icons-fonts/description_activo.svg);
+                    }
+                }
+            }
+
+            #prefiltro-1 {
+                .contenido-item {
+                    .icono-item {
+                        content: url(../../../../../assets/icons-fonts/home_work_inactivo.svg);
+                    }
+                }
+            }
+
+            #prefiltro-1.active {
+                .contenido-item {
+                    .icono-item {
+                        content: url(../../../../../assets/icons-fonts/home_work_activo.svg);
+                    }
+                }
+            }
+
+            #prefiltro-2 {
+                .contenido-item {
+                    .icono-item {
+                        content: url(../../../../../assets/icons-fonts/feed_inactivo.svg);
+                    }
+                }
+            }
+
+            #prefiltro-2.active {
+                .contenido-item {
+                    .icono-item {
+                        content: url(../../../../../assets/icons-fonts/feed_activo.svg);
+                    }
+                }
+            }
+
+
+            #prefiltro-3 {
+                .contenido-item {
+                    .icono-item {
+                        content: url(../../../../../assets/icons-fonts/diversity.svg);
+                    }
+                }
+            }
+
+            #prefiltro-4 {
+                .contenido-item {
+                    .icono-item {
+                        content: url(../../../../../assets/icons-fonts/store_inactivo.svg);
+                    }
+                }
+            }
+
+            #prefiltro-4.active {
+                .contenido-item {
+                    .icono-item {
+                        content: url(../../../../../assets/icons-fonts/store_activo.svg);
+                    }
+                }
+            }
+
+            #prefiltro-5 {
+                .contenido-item {
+                    .icono-item {
+                        content: url(../../../../../assets/icons-fonts/computer_inactivo.svg);
+                    }
+                }
+            }
+
+            #prefiltro-5.active {
+                .contenido-item {
+                    .icono-item {
+                        content: url(../../../../../assets/icons-fonts/computer_activo.svg);
+                    }
                 }
             }
 
         }
+    }
+}
 
-        .item-filtro.active {
-            background-color: #FFFFFF;
-            border-radius: 5px;
+.on-modal {
+    animation: on-opacity .5s forwards;
 
-            .contenido-item {
-
-                p {
-                    font-family: 'WorkSans-Medium';
-                }
-            }
+    @keyframes on-opacity {
+        0% {
+            opacity: 0;
         }
 
-        #prefiltro-0 {
-            .contenido-item {
-                .icono-item {
-                    content: url(../../../../../assets/icons-fonts/description_inactivo.svg);
-                }
-            }
+        100% {
+            opacity: 1;
+        }
+    }
+}
+
+.off-modal {
+    animation: off-opacity .5s forwards;
+
+    @keyframes off-opacity {
+        100% {
+            opacity: 0;
         }
 
-        #prefiltro-0.active {
-            .contenido-item {
-                .icono-item {
-                    content: url(../../../../../assets/icons-fonts/description_activo.svg);
-                }
-            }
+        0% {
+            opacity: 1;
         }
-
-        #prefiltro-1 {
-            .contenido-item {
-                .icono-item {
-                    content: url(../../../../../assets/icons-fonts/home_work_inactivo.svg);
-                }
-            }
-        }
-
-        #prefiltro-1.active {
-            .contenido-item {
-                .icono-item {
-                    content: url(../../../../../assets/icons-fonts/home_work_activo.svg);
-                }
-            }
-        }
-
-        #prefiltro-2 {
-            .contenido-item {
-                .icono-item {
-                    content: url(../../../../../assets/icons-fonts/feed_inactivo.svg);
-                }
-            }
-        }
-
-        #prefiltro-2.active {
-            .contenido-item {
-                .icono-item {
-                    content: url(../../../../../assets/icons-fonts/feed_activo.svg);
-                }
-            }
-        }
-
-
-        #prefiltro-3 {
-            .contenido-item {
-                .icono-item {
-                    content: url(../../../../../assets/icons-fonts/diversity.svg);
-                }
-            }
-        }
-
-        #prefiltro-4 {
-            .contenido-item {
-                .icono-item {
-                    content: url(../../../../../assets/icons-fonts/store_inactivo.svg);
-                }
-            }
-        }
-
-        #prefiltro-4.active {
-            .contenido-item {
-                .icono-item {
-                    content: url(../../../../../assets/icons-fonts/store_activo.svg);
-                }
-            }
-        }
-
-        #prefiltro-5 {
-            .contenido-item {
-                .icono-item {
-                    content: url(../../../../../assets/icons-fonts/computer_inactivo.svg);
-                }
-            }
-        }
-
-        #prefiltro-5.active {
-            .contenido-item {
-                .icono-item {
-                    content: url(../../../../../assets/icons-fonts/computer_activo.svg);
-                }
-            }
-        }
-
     }
 }

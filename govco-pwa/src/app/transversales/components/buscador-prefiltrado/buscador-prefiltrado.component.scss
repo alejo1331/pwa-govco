@@ -56,24 +56,14 @@
             color: #004884;
         }
     }
-    .boton-filtro:active { 
-        outline-color: #E6EFFD;
+
+    .boton-filtro:active {
+        outline-color: #000000;
     }
 }
 
-#modal-prefiltrado {
+.modo-prefiltrado {
     position: fixed;
-    z-index: 9;
-    top: 6.75rem;
-    left: 0;
-    padding: 0 1rem;
-    width: 100%;
-    height: 20.5rem;
-    opacity: 1;
-    transition: opacity 0.4s;
-    display: none;
-}
-
-#modal-prefiltrado.active {
-    opacity: 0;
+    width: calc(100% - 2rem);
+    z-index: 10;
 }

@@ -1,4 +1,6 @@
-<div #contenidoHtml *ngIf="ocultar" class="barra-geolocalizacion-pwa-govco">
+<div #contenidoHtml *ngIf="ocultar" class="barra-geolocalizacion-pwa-govco" tabindex="0"
+    [attr.aria-label]="'Abrir formulario de ubicacion'" (click)="abrirFormularioGeo()"
+    (keypress)="abrirFormularioGeo()">
     <span class="caja-icono-pwa-govco">
         <span class="material-symbols-outlined geolocalizacion-pwa-govco-icon">pin_drop</span>
     </span>
