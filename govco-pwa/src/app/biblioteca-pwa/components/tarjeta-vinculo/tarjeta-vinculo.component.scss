@@ -1,83 +1,89 @@
-a{
-    text-decoration: none;
-    color: #000;
-    :hover{
-        color: #000;
-    }
-    .card-container {
-        min-width: 104px;
-        min-height: 104px;
-        box-shadow: 0px 4px 6px #13173D14;
-        border: 2px solid #E8EFFC;
-        border-radius: 5px;
+.card-container {
+    min-width: 104px;
+    min-height: 104px;
+    box-shadow: 0px 4px 6px #13173D14;
+    border: 2px solid #E8EFFC;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 8px 0px;
+    background-color: #fff;
+
+    .icon-container {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background-color: #E6EFFD;
         display: flex;
-        flex-direction: column;
+        justify-content: center;
         align-items: center;
-        padding: 8px 0px;
-        background-color: #fff;
-        .icon-container{
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background-color: #E6EFFD;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            .material-symbols-outlined{
-                color: #004884;
-            }
-            .filled{
-                font-size: 32px;
-                font-variation-settings:
-                        'FILL' 1,
-                        'wght' 500,
-                        'GRAD' 0,
-                        'opsz' 32
-            }
-            img{
-                width: 20px;
-                filter: brightness(0) saturate(100%) invert(17%) sepia(36%) saturate(4735%) hue-rotate(192deg) brightness(98%) contrast(101%);
-            }
+
+        .material-symbols-outlined {
+            color: #004884;
         }
-        .icon-container-color{
-            background-color: #F6F8F9;
+
+        .filled {
+            font-size: 32px;
+            font-variation-settings:
+                'FILL' 1,
+                'wght' 500,
+                'GRAD' 0,
+                'opsz' 32
         }
-        .text-container{
-            margin-top: 8px;
-            max-width: 80px;
-            p{
-                margin-bottom: 0px;
-                text-align: center;
-                font-family: 'WorkSans-Medium';
-                font-size: 14px;
-                line-height: 16px;
-            }
-            p.text-blue{
-                color: #004884;
-                font-size: 13px;
-            }
-        }
-        .text-container-max{
-            max-width: 100px;
+
+        img {
+            width: 20px;
+            filter: brightness(0) saturate(100%) invert(17%) sepia(36%) saturate(4735%) hue-rotate(192deg) brightness(98%) contrast(101%);
         }
     }
-    .lightgray-filled{
+
+    .icon-container-color {
         background-color: #F6F8F9;
-        border: none;
-        box-shadow: none;
+    }
+
+    .text-container {
+        margin-top: 8px;
+        max-width: 80px;
+
+        p {
+            margin-bottom: 0px;
+            text-align: center;
+            font-family: 'WorkSans-Medium';
+            font-size: 14px;
+            line-height: 16px;
+        }
+
+        p.text-blue {
+            color: #004884;
+            font-size: 13px;
+        }
+    }
+
+    .text-container-max {
+        max-width: 100px;
     }
 }
 
-.disabled-filled{
+.lightgray-filled {
+    background-color: #F6F8F9;
+    border: none;
+    box-shadow: none;
+}
+
+
+.disabled-filled {
     pointer-events: none;
-    .card-container{
-        .icon-container{
-            .material-symbols-outlined{
+
+    .card-container {
+        .icon-container {
+            .material-symbols-outlined {
                 color: #737373;
             }
         }
-        .text-container{
-            p.text-blue{
+
+        .text-container {
+            p.text-blue {
                 color: #737373;
             }
         }

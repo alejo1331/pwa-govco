@@ -1,252 +1,264 @@
 .puntos-atencion-govco-pwa {
     background-color: #E8EFFC;
-}
 
-.puntos-atencion-govco-pwa .barra-superior {
-    background-color: #E8EFFC;
-    height: 3.5rem;
-    display: flex;
-    position: fixed;
-    top:0;
-    z-index: 5;
-    width: 100%;
-    align-items: center;
-    justify-content: flex-end;
-}
-
-.puntos-atencion-govco-pwa .seccion-puntos-atencion {
-    padding-bottom: 2.5rem;
-    padding-top: 3.5rem;
-    height: 100vh;
-    overflow-y: scroll;
-}
-
-.puntos-atencion-govco-pwa .seccion-puntos-atencion::-webkit-scrollbar {
-    display: none;
-}
-
-.puntos-atencion-govco-pwa .caja-icono-48-pwa img {
-    height: 2.063rem;
-    width: 2.063rem;
-}
-
-.puntos-atencion-govco-pwa .seccion-puntos-atencion h1 {
-    margin: 1.5rem 0 0 0;
-    font-family: 'Montserrat-SemiBold';
-    color: #004884;
-    font-size: 1.25rem;
-}
-
-.puntos-atencion-govco-pwa .seccion-puntos-atencion h2 {
-    margin: 1.5rem 0 .5rem 0;
-    font-family: 'Montserrat-Medium';
-    color: #004884;
-    font-size: 0.875rem;
-}
-
-.puntos-atencion-govco-pwa .seccion-buscador {
-    width: 100%;
-    height: 2.75rem;
-    margin: 1.5rem 0 1.5rem 0;
-    transition-delay: 0.5s;
-
-    .buscador {
-        height: 2.75rem;
+    .barra-superior {
+        background-color: #E8EFFC;
+        height: 3.5rem;
+        display: flex;
+        position: fixed;
+        top:0;
+        z-index: 5;
         width: 100%;
-        font-family: 'WorkSans-Regular';
-        font-size: 0.875em;
-        border: .125rem solid #BABABA;
-        border-radius: 1.375rem;
-        padding: 1em 5rem 1em 1.429em;
-        background-color: #FFFFFF;
-        outline-color: #3366CC;
+        align-items: center;
+        justify-content: flex-end;
     }
 
-    .buscador::placeholder {
-        color: #BABABA;
+    .caja-icono-48-pwa img {
+        height: 2.063rem;
+        width: 2.063rem;
     }
 
-    .grupo-iconos-buscador {
-        position: relative;
-        left: calc(100% - 5.1rem);
-        bottom: 2.5rem;
-        display: inline-flex;
-        width: 4.813rem;
-        height: 2.25rem;
+    .botonImg {
+        border: 0;
+        background-color: transparent;
+        background-size: cover;
+        width: 33px;
+        height: 33px;
+        margin-right: 7px;
+    }
 
-        .caja-icono-36-pwa {
-            background: none;
-            border: none;
-            outline: none;
+    .close {
+        background-image: url('../../../../assets/icons-fonts/icono_cerrar_rojo.svg');
+    }
 
-            .icono-search {
-                content: url(../../../../assets/icons-fonts/search_FILL0_wght500_GRAD0_opsz20.svg);
-                width: 1.25rem;
-                height: 1.25rem;
+    .seccion-puntos-atencion {
+        padding-bottom: 2.5rem;
+        padding-top: 3.5rem;
+        height: 100vh;
+        overflow-y: scroll;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        h1 {
+            margin: 1.5rem 0 0 0;
+            font-family: 'Montserrat-SemiBold';
+            color: #004884;
+            font-size: 1.25rem;
+        }
+
+        h2 {
+            margin: 1.5rem 0 .5rem 0;
+            font-family: 'Montserrat-Medium';
+            color: #004884;
+            font-size: 0.875rem;
+        }
+    }
+
+    .seccion-buscador {
+        width: 100%;
+        height: 2.75rem;
+        margin: 1.5rem 0 1.5rem 0;
+        transition-delay: 0.5s;
+    
+        .buscador {
+            height: 2.75rem;
+            width: 100%;
+            font-family: 'WorkSans-Regular';
+            font-size: 0.875em;
+            border: .125rem solid #BABABA;
+            border-radius: 1.375rem;
+            padding: 1em 5rem 1em 1.429em;
+            background-color: #FFFFFF;
+            outline-color: #3366CC;
+
+            &::placeholder {
+                color: #BABABA;
+            }
+
+            &:focus~.grupo-iconos-buscador {
+    
+                .caja-icono-24-pwa {
+                    opacity: 1;
+                }
+        
+                .linea-vertical {
+                    opacity: 1;
+        
+                }
+        
+                .caja-icono-36-pwa {
+                    opacity: 1;
+        
+                    .icono-search {
+                        content: url(../../../../assets/icons-fonts/search_active.svg);
+                    }
+                }
             }
         }
-
-        .linea-vertical {
-            opacity: 0;
-            transition: 0.4s;
-            margin: .375rem 0.5rem;
-            border-left: 1px solid #000000;
-            height: 1.5rem;
-        }
-
-        .caja-icono-24-pwa {
-            opacity: 0;
-            transition: 0.4s;
-            margin: 0.375rem 0;
-
-            .icono-backspace {
-                content: url(../../../../assets/icons-fonts/backspace_active.svg);
-                width: 1.5rem;
+    
+        .grupo-iconos-buscador {
+            position: relative;
+            left: calc(100% - 5.1rem);
+            bottom: 2.5rem;
+            display: inline-flex;
+            width: 4.813rem;
+            height: 2.25rem;
+    
+            .caja-icono-36-pwa {
+                background: none;
+                border: none;
+                outline: none;
+    
+                .icono-search {
+                    content: url(../../../../assets/icons-fonts/search_FILL0_wght500_GRAD0_opsz20.svg);
+                    width: 1.25rem;
+                    height: 1.25rem;
+                }
+            }
+    
+            .linea-vertical {
+                opacity: 0;
+                transition: 0.4s;
+                margin: .375rem 0.5rem;
+                border-left: 1px solid #000000;
                 height: 1.5rem;
             }
-        }
-
-    }
-
-    .buscador:focus~.grupo-iconos-buscador {
-
-        .caja-icono-24-pwa {
-            opacity: 1;
-        }
-
-        .linea-vertical {
-            opacity: 1;
-
-        }
-
-        .caja-icono-36-pwa {
-            opacity: 1;
-
-            .icono-search {
-                content: url(../../../../assets/icons-fonts/search_active.svg);
+    
+            .caja-icono-24-pwa {
+                opacity: 0;
+                transition: 0.4s;
+                margin: 0.375rem 0;
+    
+                .icono-backspace {
+                    content: url(../../../../assets/icons-fonts/backspace_active.svg);
+                    width: 1.5rem;
+                    height: 1.5rem;
+                }
             }
+    
         }
     }
-}
 
-.puntos-atencion-govco-pwa .columa-informativa {
-    display: flex;
-    justify-content: space-between;
-    padding: 0.813rem 3.5rem 0.813rem 1rem;
-    height: 2.75rem;
-    width: 100%;
-    background-color: #004884;
-    border-radius: 0.313rem;
-    margin-bottom: 1rem;
-}
-
-.puntos-atencion-govco-pwa .columa-informativa h3 {
-    font-family: 'Montserrat-SemiBold';
-    color: #FFFFFF;
-    font-size: 0.875rem;
-}
-
-.puntos-atencion-govco-pwa .acordeon-pwa-govco {
-    width: 100%;
-
-    .card {
+    .columa-informativa {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.813rem 3.5rem 0.813rem 1rem;
+        height: 2.75rem;
         width: 100%;
-        border: 2px solid #E8EFFC;
-        border-radius: 4px;
-        background-color: #FFFFFF;
-        margin-bottom: 0.5rem;
+        background-color: #004884;
+        border-radius: 0.313rem;
+        margin-bottom: 1rem;
+    }
 
-        .card-header {
+    .columa-informativa h3 {
+        font-family: 'Montserrat-SemiBold';
+        color: #FFFFFF;
+        font-size: 0.875rem;
+    }
+
+    .acordeon-pwa-govco {
+        width: 100%;
+    
+        .card {
+            width: 100%;
+            border: 2px solid #E8EFFC;
+            border-radius: 4px;
             background-color: #FFFFFF;
-            border: 0;
-            padding: 0;
-
-            button {
-                padding: 0;
+            margin-bottom: 0.5rem;
+    
+            .card-header {
+                background-color: #FFFFFF;
                 border: 0;
-                text-decoration: none;
-                display: flex;
-                justify-content: space-between;
-
-                p {
-                    color: #000000;
-                    font-family: 'WorkSans-Regular';
-                    font-size: 0.875em;
-                    margin: 0;
-                    padding: .438rem 1rem .438rem 1rem;
-                    line-height: 1.063rem;
-                }
-
-                .grupo-iconos-acordeon {
+                padding: 0;
+    
+                button {
+                    padding: 0;
+                    border: 0;
+                    text-decoration: none;
                     display: flex;
-                    width: 6.5rem;
-                    height: auto;
-
-                    img {
-                        width: 30px;
-                        height: 30px;
+                    justify-content: space-between;
+    
+                    p {
+                        color: #000000;
+                        font-family: 'WorkSans-Regular';
+                        font-size: 0.875em;
+                        margin: 0;
+                        padding: .438rem 1rem .438rem 1rem;
+                        line-height: 1.063rem;
                     }
-
-                    .icono-expand-more {
-                        font-size: 32px;
-                        transition: 0.4s linear transform;
+    
+                    .grupo-iconos-acordeon {
+                        display: flex;
+                        width: 6.5rem;
+                        height: auto;
+    
+                        img {
+                            width: 30px;
+                            height: 30px;
+                        }
+    
+                        .icono-expand-more {
+                            font-size: 32px;
+                            transition: 0.4s linear transform;
+                        }
                     }
                 }
+    
+                button:focus {
+                    box-shadow: none;
+                }
             }
-
-            button:focus {
-                box-shadow: none;
-            }
-        }
-
-        .card-body {
-            color: #000000;
-            font-family: 'WorkSans-Regular';
-            font-size: .875rem;
-            padding: 1.5rem 1rem;
-
-            h4 {
-                color: #004884;
-                font-family: 'WorkSans-SemiBold';
-                font-size: .875rem;
-                margin-bottom: .5rem;
-                line-height: 1rem;
-            }
-
-            .descripcion {
+    
+            .card-body {
                 color: #000000;
                 font-family: 'WorkSans-Regular';
                 font-size: .875rem;
-                margin-bottom: 1.5rem;
-                padding-right: 7.5rem;
-                line-height: 1.125rem;
+                padding: 1.5rem 1rem;
+    
+                h4 {
+                    color: #004884;
+                    font-family: 'WorkSans-SemiBold';
+                    font-size: .875rem;
+                    margin-bottom: .5rem;
+                    line-height: 1rem;
+                }
+    
+                .descripcion {
+                    color: #000000;
+                    font-family: 'WorkSans-Regular';
+                    font-size: .875rem;
+                    margin-bottom: 1.5rem;
+                    padding-right: 7.5rem;
+                    line-height: 1.125rem;
+                }
+    
+                a.descripcion {
+                    text-decoration: underline;
+                    color: #3366CC;
+                }
             }
-
-            a.descripcion {
-                text-decoration: underline;
-                color: #3366CC;
+        }
+    
+        .card.active {
+            border: none;
+            background-color: #FFFFFF !important;
+    
+            .card-header button {
+                p {
+                    font-family: 'WorkSans-Medium';
+                }
+    
+                .icono-expand-more {
+                    display: inline;
+                    transform: rotate(-180deg);
+                }
             }
-
         }
     }
 
-    .card.active {
-        border: none;
-        background-color: #FFFFFF !important;
-
-        .card-header button {
-            p {
-                font-family: 'WorkSans-Medium';
-            }
-
-            .icono-expand-more {
-                display: inline;
-                transform: rotate(-180deg);
-            }
-        }
+    .seccion-acordeon {
+        margin-bottom: 40px;
     }
-}
-
-.puntos-atencion-govco-pwa .seccion-acordeon {
-    margin-bottom: 40px;
 }

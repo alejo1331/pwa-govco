@@ -1,14 +1,19 @@
 <div class="cards-container">
-    <app-tarjeta-vinculo [disabledCard]="!infoTramite.UrlManualEnLinea" textNameClass="Te explicamos con tutoriales"
+    <button [class.disabled-filled]="!infoTramite.UrlManualEnLinea" [attr.aria-label]="ariaTutoriales" (click)="openTutoriales()">
+        <app-tarjeta-vinculo textNameClass="Te explicamos con tutoriales"
         iconNameClass="lightbulb" [filledIcon]="true" [fondoTarjeta]="true" [colorTexto]="true" [fondoIcono]="true"
-        [textContainerMax]="true" (click)="openTutoriales()" [ariaLabelText]="ariaTutoriales">
-    </app-tarjeta-vinculo>
-    <app-tarjeta-vinculo iconNameClass="help" textNameClass="Tienes Dudas?" [filledIcon]="true" [fondoTarjeta]="true"
-        [colorTexto]="true" [fondoIcono]="true" (click)="openDudas()" [ariaLabelText]="ariaDudas">
-    </app-tarjeta-vinculo>
-    <app-tarjeta-vinculo [disabledCard]="!activarBotonPuntosAtencion"
-        (click)="activarBotonPuntosAtencion && abrirPuntosAtencionClic()" iconNameClass="map"
-        textNameClass="Puntos de atención" [filledIcon]="true" [fondoTarjeta]="true" [colorTexto]="true"
-        [fondoIcono]="true" [ariaLabelText]="ariaPuntos">
-    </app-tarjeta-vinculo>
+        [textContainerMax]="true">
+        </app-tarjeta-vinculo>
+    </button>
+    <button [class.disabled-filled]="!infoTramite.UrlManualEnLinea" [attr.aria-label]="ariaTutoriales" (click)="openDudas()">
+        <app-tarjeta-vinculo iconNameClass="help" textNameClass="Tienes Dudas?" [filledIcon]="true" [fondoTarjeta]="true"
+            [colorTexto]="true" [fondoIcono]="true">
+        </app-tarjeta-vinculo>
+    </button>
+    <button [class.disabled-filled]="!infoTramite.UrlManualEnLinea" [attr.aria-label]="ariaTutoriales" (click)="activarBotonPuntosAtencion && abrirPuntosAtencionClic()">
+        <app-tarjeta-vinculo
+            iconNameClass="map" textNameClass="Puntos de atención" [filledIcon]="true" [fondoTarjeta]="true" 
+            [colorTexto]="true" [fondoIcono]="true">
+        </app-tarjeta-vinculo>
+    </button>
 </div>

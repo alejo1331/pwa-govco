@@ -17,17 +17,23 @@
     justify-content: space-between;
 }
 
-.govco-pwa-icon-container{
+.govco-pwa-icon-container {
   align-items: center;
   width: 24px;
   height: 24px;
   justify-content: center;
   display: flex;
+  border: 0;
+  background-color: transparent;    
 }
 
-.material-symbols-outlined {
-    height: 48px;
-    width: 48px;
+.govco-pwa-icon-container:focus-visible {
+    outline: 2px  solid #000;
+}
+
+.govco-pwa-icon-container .material-symbols-outlined {
+    width: 24px;
+    height: 24px;
     display: flex;
     align-items: center;
     justify-content: center;

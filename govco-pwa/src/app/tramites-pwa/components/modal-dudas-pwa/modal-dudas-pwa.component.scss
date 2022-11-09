@@ -42,152 +42,192 @@
 }
 
 .modal-body {
-    padding: 0px;
-    .contenedor-tutoriales {
-        .box-ayuda {
-            background: #f6f8f9;
-            border: none !important;
-            position: relative;
-            width: 287px;
-            margin: 1em auto;
-            height: auto;
-            border-radius: 5px;
-            -webkit-box-shadow: 0px 4px 5px 0px rgba(186,186,186,0.3);
-            -moz-box-shadow: 0px 4px 5px 0px rgba(186,186,186,0.3);
-            box-shadow: 0px 4px 5px 0px rgba(186,186,186,0.3);
-            @media (max-width: 991px) {
-              width: 100%;
-            }
-            cursor: pointer;
-            &-header{
-              width: 100%;
-              padding: 1rem;
-              display: flex;
-              justify-content: space-between;
-              align-items: center;
-              h2{
-                margin: 0;
-                button {
-                  text-align: left;
-                  font: 600 16px/27px Montserrat;
-                  letter-spacing: 0px;
-                  color: #004884;
-                  opacity: 1;
-                  background: none;
-                  padding: 0;
-                }
-              }
-              .icon {
-                margin: 0;
-                width: 19px;
-                height: 14px;
-                background-image: url("/assets/images/spr-icons-govco.png");
-                background-position: 11% 14%;
-                -webkit-transform: rotate(0deg);
-                transform: rotate(0deg);
-            }
-            }
-            &-title{
-                color: #004884;
-                font-size: 16px;
-                font-weight: 600;
-                margin: 0;
-                cursor: pointer;
-            }
-            .btn:focus{
-              box-shadow: none;
-            }
-            &-body{
-              padding: 0;
-              padding-bottom: 16px;
-              &-title{
-                font-size: 15px;
-                color: #004884;
-                line-height: 27px;
-                padding: 0;
-              }
-              &-info{
-                display: flex;
-                align-items: center;
-                margin-top: 0.5em;
-                .govco-icon-email, .govco-icon-call-center{
-                  color: #3366CC;
-                }
-                a{
-                    font-family: 'workSans-Medium';
-                    font-size: 1rem;
-                    color: #3366CC;
-                  margin: 0 0.5em;
-                  word-break: break-all;
-                  text-decoration: underline;
-                }
-              }
-            }
-          }
-          .mobile{
-          @media (max-width: 768px) {
-            height: auto;
-            pointer-events: none;
-            .collapse{
-              display: block;
-            }
-            .icon{
-              display: none;
-            }
-          }
-          }
-          
-          .container-icono-ayuda {
-            width: 24px;
-            height: 24px;
-            background-color: #004884;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-content: center;
-            padding: 5px;
-          }
-          
-          .container-icono-ayuda img {
-            filter: invert(83%) sepia(93%) saturate(1018%) hue-rotate(184deg) brightness(126%) contrast(95%);
-            
-          }
-    }
+  padding: 0px;
 
-    .separador {
-        display: flex;
-        justify-content: center;
-    }
+  .contenedor-tutoriales {
+    .box-ayuda {
+      background: #f6f8f9;
+      border: none !important;
+      position: relative;
+      width: 287px;
+      margin: 1em auto;
+      height: auto;
+      border-radius: 5px;
+      -webkit-box-shadow: 0px 4px 5px 0px rgba(186,186,186,0.3);
+      -moz-box-shadow: 0px 4px 5px 0px rgba(186,186,186,0.3);
+      box-shadow: 0px 4px 5px 0px rgba(186,186,186,0.3);
+      cursor: pointer;
 
-    .separador::after {
-        content: "";
-        display: block;
+      @media (max-width: 991px) {
         width: 100%;
-        height: 2px;
-        background-color: #1c4780;
-        margin-top: 8px;
+      }
+        
+      &-header {
+        width: 100%;
+        padding: 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        h2 {
+          margin: 0;
+
+          button {
+            text-align: left;
+            font: 600 16px/27px Montserrat;
+            letter-spacing: 0px;
+            color: #004884;
+            opacity: 1;
+            background: none;
+            padding: 0;
+          }
+        }
+
+        .icon {
+          margin: 0;
+          width: 19px;
+          height: 14px;
+          background-image: url("/assets/images/spr-icons-govco.png");
+          background-position: 11% 14%;
+          -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+        }
+      }
+
+      &-title {
+        color: #004884;
+        font-size: 16px;
+        font-weight: 600;
+        margin: 0;
+        cursor: pointer;
+      }
+
+      .btn:focus {
+        box-shadow: none;
+      }
+
+      &-body {
+        padding: 0;
+        padding-bottom: 16px;
+
+        &-title {
+          font-size: 15px;
+          color: #004884;
+          line-height: 27px;
+          padding: 0;
+        }
+
+        &-info {
+          display: flex;
+          align-items: center;
+          margin-top: 0.5em;
+
+          .govco-icon-email, 
+          .govco-icon-call-center {
+            color: #3366CC;
+          }
+
+          a {
+            font-family: 'workSans-Medium';
+            font-size: 1rem;
+            color: #3366CC;
+            margin: 0 0.5em;
+            word-break: break-all;
+            text-decoration: underline;
+            display: flex;
+            
+            &:focus-visible {
+              outline: 2px solid #000;
+            }
+
+            .container-icono-ayuda {
+              width: 24px;
+              height: 24px;
+              background-color: #004884;
+              border-radius: 50%;
+              display: flex;
+              justify-content: center;
+              align-content: center;
+              padding: 5px;
+              margin-right: 0.5em;
+  
+              &::after {
+                content: '';
+                filter: invert(83%) sepia(93%) saturate(1018%) hue-rotate(184deg) brightness(126%) contrast(95%);
+                width: 14px;
+                height: 14px;
+                background-size: cover;
+              }
+  
+              &.tel::after {
+                background-image: url('https://govco-prod-webutils.s3.amazonaws.com/uploads/2022-06-03/e7702a0c-bf98-4a09-9b09-f36d94b9cf68-Icon_tel.svg');
+              }
+  
+              &.mail::after {
+                background-image: url('https://govco-prod-webutils.s3.amazonaws.com/uploads/2022-06-03/dafc13cb-aff3-4383-aa3e-f8e8bd73a2aa-Icon_mail.svg');
+              }
+            }
+          }
+        }
+      }
     }
+
+    .mobile {
+      @media (max-width: 768px) {
+        height: auto;
+        pointer-events: none;
+
+        .collapse {
+          display: block;
+        }
+
+        .icon {
+          display: none;
+        }
+      }
+    }          
+  }
+
+  .separador {
+    display: flex;
+    justify-content: center;
+  }
+
+  .separador::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: #1c4780;
+    margin-top: 8px;
+  }
 }
 
-.modal-footer{
-    border-top: none;
-    padding: 0px;
-    padding-top: 1rem;
-    justify-content: flex-start;
-    *{
-      margin: 0px;
-    }
-    button {
-        font-family: 'WorkSans-SemiBold';
-        font-size: 14px;
-        color: #3366CC;
-        border: 0;
-        background-color: transparent;
-        padding: 12px;
-        outline: none;
-    }
-    .btn-outline:focus, .btn-outline:focus-visible{
-        box-shadow: none !important;
-    }
-}
+.modal-footer {
+  border-top: none;
+  padding: 0px;
+  padding-top: 1rem;
+  justify-content: flex-start;
 
+  * {
+    margin: 0px;
+  }
+
+  button {
+    font-family: 'WorkSans-SemiBold';
+    font-size: 14px;
+    color: #3366CC;
+    border: 0;
+    background-color: transparent;
+    padding: 12px;
+    outline: none;
+
+    &:focus-visible {
+      outline: 2px solid #000;
+    }
+  }
+
+  .btn-outline:focus, .btn-outline:focus-visible {
+    box-shadow: none !important;
+  }
+}
