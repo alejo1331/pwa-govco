@@ -10,13 +10,11 @@ import { BuscadorPrefiltradoComponent } from '../buscador-prefiltrado.component'
 export class ModalPrefiltradoComponent implements OnInit {
 
   itemFiltro: number;
-  @Output() itemSelected = new EventEmitter<[string, boolean, number, string]>();
+  @Output() itemSelected = new EventEmitter<[ boolean, number]>();
   @ViewChildren('listaPrefiltro', { read: ElementRef }) listaPrefiltro: QueryList<ElementRef>
   @ViewChild('modal') modal: ElementRef;
 
-  tituloCorto: Array<string> = ['Trámites', 'Entidades', 'Noticias', 'Ejercicios', 'Ventanillas', 'Portales'];
-  titulo: Array<string> = ['Trámites y servicios', 'Entidades', 'Noticias', 'Ejercicios de participación', 'Ventanillas Únicas', 'Portales Transversales'];
-  palabraClable: Array<string> = ['tramite', 'entidad', 'noticia', 'participacion', 'tramiteventanilla', 'portaltransversal'];
+  txtLargo: string[] = ['Trámites y servicios', 'Entidades', 'Noticias', 'Ejercicios de participación', 'Ventanillas Únicas', 'Portales Transversales'];
   reiniciarFocus: boolean = false;
 
   constructor(
@@ -26,7 +24,7 @@ export class ModalPrefiltradoComponent implements OnInit {
 
   ngOnInit(): void {
     this.itemFiltro = 0;
-    this.itemSelected.emit(['Trámites', false, 0, 'tramite']);
+    this.itemSelected.emit([false, 0]);
     // Suscribe a los parametros de busqueda para actualizar el boton del filtro
     this.buscadorService.getBuscadorParams$.subscribe(
       (parametros: BuscadorParams) => {
@@ -35,9 +33,9 @@ export class ModalPrefiltradoComponent implements OnInit {
     )
   }
 
-  seleccionarItem(item: string, posicion: number, txtConsumoApi: string) {
+  seleccionarItem(posicion: number) {
     this.itemFiltro = posicion;
-    this.itemSelected.emit([item, false, posicion, txtConsumoApi]);
+    this.itemSelected.emit([false, posicion]);
   }
 
   focusBuscador() {
@@ -75,7 +73,7 @@ export class ModalPrefiltradoComponent implements OnInit {
   }
 
   onFocusLi(event: Event) {
-    this.listaPrefiltro.toArray()[this.titulo.length - 1].nativeElement == event.target ?
+    this.listaPrefiltro.toArray()[this.txtLargo.length - 1].nativeElement == event.target ?
       this.reiniciarFocus = true : null;
   }
 

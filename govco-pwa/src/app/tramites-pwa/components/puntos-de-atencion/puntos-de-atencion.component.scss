@@ -193,6 +193,13 @@
                         display: flex;
                         width: 6.5rem;
                         height: auto;
+
+                    a {
+                        img {
+                            width: 25px;
+                            height: 25px;
+                        }
+                    }
     
                         img {
                             width: 30px;

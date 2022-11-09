@@ -2,10 +2,12 @@
     <div class="card" *ngFor="let item of items; index as i;" [class.active]="item.active">
         <div class="card-header" id="headingOne">
             <button (click)="activarItem(i)" class="btn btn-link btn-block text-left" type="button"
-                data-toggle="collapse" [attr.data-target]="'#collapse-entidades' + i"
-                aria-expanded="false" [attr.aria-controls]="'collapse-entidades' + i">
-                <a *ngIf="href" (click)="validarUrlService.validarUrl(item.linkEntidad, '_blank')" class="line-clamp-3">{{item.titulo}}</a>
-                <a *ngIf="!href" routerLink="{{item.linkEntidad}}" class="line-clamp-3">{{item.titulo}}</a>
+                data-toggle="collapse" [attr.data-target]="'#collapse-entidades' + i" aria-expanded="false"
+                [attr.aria-controls]="'collapse-entidades' + i">
+                <a *ngIf="href" (click)="validarUrlService.validarUrl(item.linkEntidad, '_blank')" class="line-clamp-3"
+                    tabindex="0" [attr.aria-label]="'Abrir pagina ' + item.titulo">{{item.titulo}}</a>
+                <a *ngIf="!href" routerLink="{{item.linkEntidad}}" class="line-clamp-3" tabindex="0"
+                    [attr.aria-label]="'Abrir pagina ' + item.titulo">{{item.titulo}}</a>
                 <div class="caja-icono-24-pwa">
                     <span class="icono-expand-more" type="image"
                         alt="Expandir acordeon para ver más información"></span>
@@ -16,7 +18,7 @@
             data-parent="#acordeonEntidades">
             <div class="card-body">
                 <div class="descripcion contenido-pwa-govco">
-                    <p tabindex="0">Tipo de orden:
+                    <p>Tipo de orden:
                         <span>{{item.orden}}</span>
                     </p>
                 </div>

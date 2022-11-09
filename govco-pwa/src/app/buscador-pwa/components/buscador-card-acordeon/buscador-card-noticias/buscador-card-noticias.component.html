@@ -2,10 +2,12 @@
     <div class="card" *ngFor="let item of items; index as i;" [class.active]="item.active">
         <div class="card-header" id="headingOne">
             <button #botonAcordeon (click)="activarItem(i)" class="btn btn-link btn-block text-left" type="button"
-                data-toggle="collapse" [attr.data-target]="'#collapse-noticias' + i"
-                aria-expanded="false" [attr.aria-controls]="'collapse-noticias' + i">
-                <a *ngIf="href" href="{{item.link}}" target="_blank" class="line-clamp-3">{{item.titulo}}</a>
-                <a *ngIf="!href" routerLink="{{item.link}}" class="line-clamp-3">{{item.titulo}}</a>
+                data-toggle="collapse" [attr.data-target]="'#collapse-noticias' + i" aria-expanded="false"
+                [attr.aria-controls]="'collapse-noticias' + i">
+                <a *ngIf="href" href="{{item.link}}" target="_blank" class="line-clamp-3" tabindex="0"
+                    [attr.aria-label]="'Abrir pagina ' + item.titulo">{{item.titulo}}</a>
+                <a *ngIf="!href" routerLink="{{item.link}}" class="line-clamp-3" tabindex="0"
+                    [attr.aria-label]="'Abrir pagina ' + item.titulo">{{item.titulo}}</a>
                 <div class="caja-icono-24-pwa">
                     <span class="icono-expand-more" type="image"
                         alt="Expandir acordeon para ver más información"></span>
@@ -17,9 +19,12 @@
             <div class="card-body">
                 <div class="descripcion contenido-pwa-govco">
                     <p #texto class="line-clamp-3">{{item.descripcion}}</p>
-                    <a *ngIf="botonTexto[i]" (click)="expandirText(i)">{{ expandirTexto == true ? 'Leer menos' : 'Leer más'}}</a>
+                    <a *ngIf="botonTexto[i]" (click)="expandirText(i)" (keypress)="expandirText(i)" tabindex="0"
+                        [attr.aria-label]="expandirTexto == true ? 'minimizar contenido de la descripcion' : 'leer más contenido de la descripcion' ">
+                        {{ expandirTexto == true ? 'Leer menos' : 'Leer más'}}
+                    </a>
                 </div>
-                <p tabindex="0" class="contenido-pwa-govco">Fecha de publicación:</p>
+                <p class="contenido-pwa-govco">Fecha de publicación:</p>
                 <span class="contenido-pwa-govco">{{item.fechaPublicacion}}</span>
             </div>
         </div>

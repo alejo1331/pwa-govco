@@ -6,7 +6,7 @@
         style="background-image: url(../../../../assets/icons-fonts/search_FILL0_wght500_GRAD0_opsz20.svg)" type="text"
         [attr.aria-label]="'Este es el campo para acceder al buscador, puedes abrirlo dando clic o enter. Ademas puedes seleccionar un tipo de prefiltro dando tab'">
     <button #botonPrefiltro class="boton-filtro" (click)="filtrarPor()" [attr.aria-label]="'Boton para seleccionar el tipo de prefiltro'">
-        <p>{{titleSeccion[posicion]}}</p>
+        <p>{{itemsBuscador[posicion].txtCorto}}</p>
         <div class="caja-icono-36-pwa">
             <span class="icono-filtro" [class.active]="estadoBotonFiltro" type="image"
                 alt="Borrar contenido de la barra de busqueda"></span>
