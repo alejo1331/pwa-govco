@@ -5,6 +5,10 @@
   width: 100%;
 }
 
+::ng-deep .cdk-overlay-pane.busqueda-modal {
+  bottom: 9rem;
+}
+
 ::ng-deep .mat-dialog-container {
   border: 2px solid #e8effc;
   border-radius: 20px;

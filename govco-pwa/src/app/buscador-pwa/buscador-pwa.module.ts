@@ -19,7 +19,7 @@ import { NivelDosHeaderPrefiltrosComponent } from './components/buscador-nivel-d
 import { ListadoSugerenciasComponent } from './components/buscador-nivel-dos/listado-sugerencias/listado-sugerencias.component';
 import { BuscadorCardNoticiasComponent } from './components/buscador-card-acordeon/buscador-card-noticias/buscador-card-noticias.component';
 import { BuscadorAvisoComponent } from './components/buscador-aviso/buscador-aviso.component';
-
+import { HomePwaModule } from './../home-pwa/home-pwa.module';
 
 @NgModule({
   declarations: [
@@ -37,19 +37,15 @@ import { BuscadorAvisoComponent } from './components/buscador-aviso/buscador-avi
     ListadoSugerenciasComponent,
     BuscadorAvisoComponent,
     BuscadorCardNoticiasComponent,
-
   ],
   imports: [
     CommonModule,
     BuscadorPwaRoutingModule,
     BibliotecaPwaModule,
     NgxSkeletonLoaderModule,
-    BrowserAnimationsModule
-
+    BrowserAnimationsModule,
+    HomePwaModule,
   ],
-  exports:[
-    BuscadorPrincipalComponent,
-    BuscadorNivelDosComponent
-  ]
+  exports: [BuscadorPrincipalComponent, BuscadorNivelDosComponent],
 })
-export class BuscadorPwaModule { }
+export class BuscadorPwaModule {}
