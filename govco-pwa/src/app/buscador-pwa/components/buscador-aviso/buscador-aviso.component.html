@@ -6,8 +6,7 @@
 
     <div class="tarjeta-aviso-contenido">
         <p class=" tarjeta-aviso-contenido-mensaje">No aparecen coincidencias con la palabra
-            “<span>{{resBuscador}}</span>” en
-            <span>{{geoLocMunName}}</span>
+            “<span>{{resBuscador}}</span>”<span *ngIf="!(resIndex == 2 || resIndex == 3)"> en {{geoLocMunName}}</span>
         </p>
 
         <p *ngIf="sugBuscador != ''" class="tarjeta-aviso-mensaje-texto">¿Qué tal si pruebas con “<a
@@ -16,24 +15,25 @@
         </p>
         <p class="tarjeta-aviso-mensaje-texto">Te sugerimos: </p>
         <ul class="tarjeta-aviso-listado">
-            <li class="tarjeta-aviso-mensaje-texto">
+            <li *ngIf="!(resIndex == 2 || resIndex == 3)" class="tarjeta-aviso-mensaje-texto">
                 <a class="tarjeta-aviso-mensaje-link" href="javascript:void(0)" (click)="abrirGeolocalizacion()">
-                    Cambiar ubicación</a>
+                    Cambia la ubicación</a>
                 <span> para refinar la búsqueda.</span>
             </li>
             <li class="tarjeta-aviso-mensaje-texto">
                 <span>
-                    Asegúrate que las palabras estén escritas correctamente
+                    Asegúrate que las palabras estén escritas correctamente.
                 </span>
             </li>
             <li class="tarjeta-aviso-mensaje-texto">
                 <span>
-                    Seleccionar otro tipo de resultado. Recuerda que puedes escoger entre trámites, entidades. noticias,
-                    ejercicios de participación, ventanillas únicas y portales Transversales.
+                    Cambia el tipo de resultado que tienes seleccionado. Recuerda que puedes escoger entre trámites,
+                    entidades, noticias, ejercicios de participación, ventanillas únicas y portales transversales.
                 </span>
             </li>
             <li class="tarjeta-aviso-mensaje-texto">
-                <span>Escribir palabras clave</span>
+                <span>Escribe palabras sobre temas generales. Por ejemplo: “Certificados”, “Empleo”, “Salud”,
+                    “Educación”, “Ayudas”, etc.</span>
             </li>
         </ul>
     </div>
