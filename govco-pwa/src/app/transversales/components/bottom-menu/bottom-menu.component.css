@@ -47,7 +47,6 @@ ul {
 .navigation-bar .list-items .item .link p {
   margin-top: 4px;
   color: #4B4B4B;
-  /* margin-bottom: 0.875rem; */
   height: 1rem;
 }
 .navigation-bar .list-items .item.active .link {
@@ -62,13 +61,39 @@ ul {
   font-family: 'WorkSans-SemiBold';
 }
 
-.navigation-bar .list-items .item.active .link .material-symbols-outlined{
-  font-variation-settings:
-  'FILL' 1,
-  'wght' 500,
-  'GRAD' 0,
-  'opsz' 40;
+img {
+  vertical-align: middle;
+  border-style: none;
+  height: 20px;
+  width: 20px;
+  filter: invert(92%) sepia(6%) saturate(16%) hue-rotate(32deg) brightness(84%) contrast(81%)
 }
+
+.navigation-bar .list-items .item.active .link .govco-pwa-icon-bottom-menu img{
+  filter: invert(33%) sepia(96%) saturate(2610%) hue-rotate(212deg) brightness(87%) contrast(81%);
+  box-sizing:border-box;
+  display:block;
+  width:20px;
+  height:20px;
+  padding-left:20px;
+}
+
+.navigation-bar .list-items .item.active .link .govco-pwa-icon-bottom-menu.home img{
+  background: url('../../../../assets/icons-fonts/home_FILL1_wght500_GRAD0_opsz20.svg')
+}
+
+.navigation-bar .list-items .item.active .link .govco-pwa-icon-bottom-menu.task img{
+  background: url('../../../../assets/icons-fonts/task_FILL1_wght500_GRAD0_opsz20.svg')
+}
+
+.navigation-bar .list-items .item.active .link .govco-pwa-icon-bottom-menu.person img{
+  background: url('../../../../assets/icons-fonts/person_FILL1_wght500_GRAD0_opsz20.svg')
+}
+
+.navigation-bar .list-items .item.active .link .govco-pwa-icon-bottom-menu.apps img{
+  background: url('../../../../assets/icons-fonts/apps_FILL1_wght500_GRAD0_opsz20.svg')
+}
+
 
 .navigation-bar .list-items .pointer {
   position: absolute;

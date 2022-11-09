@@ -3,8 +3,9 @@
     <span class="pointer"></span>
     <li class="item">
       <a class="link" (click)="clickBottomMenu('/')">
-        <div class="govco-pwa-icon-bottom-menu">
-          <span class="material-symbols-outlined home">home</span>
+        <div class="govco-pwa-icon-bottom-menu home">
+          <!-- <span class="material-symbols-outlined home">home</span> -->
+          <img src="../../../../assets/icons-fonts/home_FILL0_wght500_GRAD0_opsz20.svg" alt="">
         </div>
         <p>Inicio</p>
       </a>
@@ -12,8 +13,9 @@
 
     <li class="item">
       <a class="link" (click)="clickBottomMenu('/ficha-tramites-y-servicios')">
-        <div class="govco-pwa-icon-bottom-menu">
-          <span class="material-symbols-outlined task">task</span>
+        <div class="govco-pwa-icon-bottom-menu task">
+          <!-- <span class="material-symbols-outlined task">task</span> -->
+          <img src="../../../../assets/icons-fonts/task_FILL0_wght500_GRAD0_opsz20.svg" alt="">
         </div>
           <p>Trámites</p>
       </a>
@@ -21,8 +23,9 @@
 
     <li class="item">
       <a class="link" routerLink="/perfil">
-        <div class="govco-pwa-icon-bottom-menu">
-          <span class="material-symbols-outlined person">person</span>
+        <div class="govco-pwa-icon-bottom-menu person">
+          <!-- <span class="material-symbols-outlined person">person</span> -->
+          <img src="../../../../assets/icons-fonts/person_FILL0_wght500_GRAD0_opsz20.svg" alt="">
         </div>
           <p *ngIf="userData">Perfil</p>
           <p *ngIf="userData == null">Ingresa</p>
@@ -31,8 +34,9 @@
 
     <li class="item">
       <a class="link" routerLink="/servicios">
-        <div class="govco-pwa-icon-bottom-menu">
-          <span class="material-symbols-outlined apps">apps</span>
+        <div class="govco-pwa-icon-bottom-menu apps">
+          <!-- <span class="material-symbols-outlined apps">apps</span> -->
+          <img src="../../../../assets/icons-fonts/apps_FILL1_wght500_GRAD0_opsz20.svg" alt="">
         </div>
           <p>Servicios</p>
       </a>
