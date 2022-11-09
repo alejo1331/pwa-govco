@@ -58,15 +58,6 @@ mat-sidenav {
   border: 1px solid rgba(255, 255, 255, 0.16);
 }
 
-.app-geolocalizacion-pwa-govco {
-  position: -webkit-sticky;
-  position: sticky;
-  opacity: 1;
-  z-index: 4;
-  background-color: #E6EFFD;
-  outline-color: #000000;
-}
-
 .contenido-principal {
   z-index: 0;
 }

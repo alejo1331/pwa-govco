@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { BarraSuperiorComponent } from './barra-superior.component';
 
@@ -9,6 +10,7 @@ describe('BarraSuperiorComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [RouterTestingModule],
       declarations: [ BarraSuperiorComponent ]
     })
     .compileComponents();
@@ -18,6 +20,7 @@ describe('BarraSuperiorComponent', () => {
     fixture = TestBed.createComponent(BarraSuperiorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+    fixture.autoDetectChanges();
   });
 
   it('should create', () => {
@@ -28,21 +31,20 @@ describe('BarraSuperiorComponent', () => {
     expect(component.estadoMenu).toBeFalse();
   });
 
-  it('Clic en el menu hamburguesa y abrir el menu lateral', () => {
-    const btnMenu = fixture.debugElement.query(By.css('span.menu-hamburgesa-pwa-govco'))
+  it('Clic en el menu hamburguesa y abrir el menu lateral',() => {
+    const btnMenu = fixture.debugElement.query(By.css('.menu-hamburgesa-pwa-govco'));
     btnMenu.nativeElement.click();
     expect(component.estadoMenu).toBeTrue();
   });
 
   it('Abrir y cerrar menu lateral', () => {
+
     const btnMenu = fixture.debugElement.query(By.css('span.menu-hamburgesa-pwa-govco'))
 
     btnMenu.nativeElement.click();
     expect(component.estadoMenu).toBeTrue();
-    console.log("Estado del menu", component.estadoMenu);
 
     btnMenu.nativeElement.click();
     expect(component.estadoMenu).toBeFalse();
-    console.log("Estado del menu", component.estadoMenu);
   });
 });

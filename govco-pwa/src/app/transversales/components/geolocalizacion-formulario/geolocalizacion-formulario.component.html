@@ -1,20 +1,22 @@
 <div class="modal-geolocalizacion-pwa-govco">
     <div class="pwa-govco-back-arrow-header">
-        <div class="caja-pwa-govco-back-arrow" (click)="closedFormulario()">
+        <div #botonAtras class="caja-pwa-govco-back-arrow" (keypress)="closedFormulario()" (click)="closedFormulario()"
+            [attr.aria-label]="'Cerrar formulario de ubicación'" tabindex="0">
             <span class="material-symbols-outlined pwa-govco-back-arrow">arrow_back</span>
         </div>
     </div>
     <section class="contenido-pwa-govco">
         <h1 class="titulo-general-pwa-govco">Elige tu ubicación actual</h1>
         <div class="linea-horizontal-2-pwa-govco"></div>
-        <p class="texto-general-pwa-govco">Podrás encontrar trámites, servicios e información
+        <p class="texto-general-pwa-govco" >Podrás encontrar trámites, servicios e información
             cercana a tu ubicación.</p>
-        <form [formGroup]="registerForm" (ngSubmit)="guardarUbicacion(registerForm.value)" class="formulario-pwa-govco">
+        <form [formGroup]="registerForm" (ngSubmit)="itemSeleccionado('codigoMunicipio') == false ? focus(): guardarUbicacion(registerForm.value)" class="formulario-pwa-govco">
             <div class="campo-inputs">
-                <label class="label-pwa-govco" for="listadoDepartmentos">Departamento*</label>
+                <label class="label-pwa-govco" for="listadoDepartmentos" >Departamento*</label>
                 <select (change)="getMunicipiosPorDepartamento($any($event.target).value)" style="z-index: 1;"
                     formControlName="codigoDepartamento" class="select-pwa-govco texto-select-pwa-govco"
-                    id=" listadoDepartmentos" [ngClass]="{ 'seleccionado': itemSeleccionado('codigoDepartamento')}">
+                    id=" listadoDepartmentos" [ngClass]="{ 'seleccionado': itemSeleccionado('codigoDepartamento')}"
+                    tabindex="0" [attr.aria-label]="'Seleccionar un departamento'">
                     <option value="" disabled>Departamento</option>
                     <option *ngFor="let departmentos of listaDepartamentos"
                         [selected]="departmentos.codigo === departLocalStorage" value="{{ departmentos.codigo }}">
@@ -23,7 +25,7 @@
                 </select>
                 <label class="label-pwa-govco margin-label-pwa-govco" for="listadoMunicipios">Municipio*</label>
                 <select formControlName="codigoMunicipio" class="select-pwa-govco texto-select-pwa-govco"
-                    style="z-index: 1;" id="listadoMunicipios"
+                    style="z-index: 1;" id="listadoMunicipios" tabindex="0" [attr.aria-label]="'Seleccionar un municipio'"
                     [ngClass]="{ 'seleccionado': itemSeleccionado('codigoMunicipio')}">
                     <option value="" disabled>Municipio</option>
                     <option *ngFor="let municipios of listaMunicipios"
@@ -32,7 +34,7 @@
                     </option>
                 </select>
             </div>
-            <button class="boton-pwa-govco texto-button-pwa-govco"
+            <button #botonGuardar class="boton-pwa-govco texto-button-pwa-govco" tabindex="0" [attr.aria-label]="'Guardar ubicación. Esta opción se habilita cuando se ha seleccionado tanto el departamento como el municipio'"
                 [ngClass]="{ 'off': !itemSeleccionado('codigoMunicipio') || !itemSeleccionado('codigoDepartamento')}">Guardar
                 ubicación</button>
         </form>

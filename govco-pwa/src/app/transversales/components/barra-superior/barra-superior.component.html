@@ -1,5 +1,5 @@
-<nav id="govco-header">
-    <div *ngIf="ocultar" [ngClass]="{
+<nav [hidden]="!ocultar" id="govco-header">
+    <div  [ngClass]="{
         'barra-superior-general-pwa-govco': !barraSuperiorInterna,
         'barra-superior-interna-pwa-govco': barraSuperiorInterna}">
         <div class="menu-logo-pwa-govco">
@@ -18,7 +18,7 @@
             </span>
             <div class="logo-pwa-govco">
                 <a (click)="clickHome(); desactivarItem()" (keypress)="desactivarItem(); clickHome()" tabindex="0"
-                    [attr.aria-label]="'Este es logo de GOV.CO y puedes ir a inicio o home'">
+                    (focus)="onFocusLogo()" [attr.aria-label]="'Este es logo de GOV.CO y puedes ir a inicio o home'">
                     <img src="../../../assets/logos/transversales/GOVCO.svg" alt="logo de gov.co">
                 </a>
             </div>
@@ -34,7 +34,8 @@
         </div>
         <div class="govco-pwa-buscador-header">
             <!-- to do  -->
-            <app-buscador-prefiltrado no-shadow="true" id="home1" *ngIf="!barraSuperiorInterna">
+            <app-buscador-prefiltrado no-shadow="true" id="home1" *ngIf="!barraSuperiorInterna"
+                (estadoFocusFiltro)="estadoFocusFiltro = $event">
             </app-buscador-prefiltrado>
             <!-- <govco-buscador-home no-shadow="true" id="home1" *ngIf="!barraSuperiorInterna"
                 class="app-buscador-pwa-govco"></govco-buscador-home> -->

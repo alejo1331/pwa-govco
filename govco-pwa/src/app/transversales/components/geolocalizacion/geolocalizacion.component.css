@@ -8,6 +8,7 @@
     position: -webkit-sticky;
     position: sticky;
     transition: 0.6s ease;
+    outline-color: #000000;
 }
 
 .geolocalizacion-pwa-govco-icon {

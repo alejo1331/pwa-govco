@@ -1,4 +1,4 @@
-import { Component, EventEmitter, HostListener, OnInit, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, HostListener, OnInit, Output, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { ConsultaUbicacionInterface } from '../../models/geolocalizacion/consulta-ubicacion-interface';
@@ -26,11 +26,14 @@ export class GeolocalizacionFormularioComponent implements OnInit {
   cerrarModal: [string, string];
   departLocalStorage: string;
   municiLocalStorage: string;
+  reiniciarFocus: boolean = false;
 
   modalClasico: ModalInterface;
 
   @Output() closedModal = new EventEmitter<[string, string]>();
   @Output() closedContent = new EventEmitter<string>();
+  @ViewChild('botonAtras') botonAtras: ElementRef;
+  @ViewChild('botonGuardar') botonGuardar: ElementRef;
 
   options = {
     enableHighAccuracy: true,
@@ -163,7 +166,9 @@ export class GeolocalizacionFormularioComponent implements OnInit {
     this.closedModal.emit(this.cerrarModal);
     const codigoDepartamento = String(localStorage.getItem("codigoDepartamento"));
     const codigoMunicipio = String(localStorage.getItem("codigoMunicipio"));
-    this.resetFormulario(codigoDepartamento, codigoMunicipio);
+    if (codigoDepartamento != 'null') {
+      this.resetFormulario(codigoDepartamento, codigoMunicipio);
+    }
   }
 
   guardarUbicacion(form: any) {
@@ -171,6 +176,16 @@ export class GeolocalizacionFormularioComponent implements OnInit {
     localStorage.setItem("codigoMunicipio", form.codigoMunicipio);
     this.ServicioGeolocalizacion.ubicacion(form.codigoDepartamento, form.codigoMunicipio);
     this.closedFormulario();
+  }
+
+  focus() {
+    this.botonAtras.nativeElement.focus();
+    this.reiniciarFocus = false;
+  }
+
+  @HostListener('window:keyup', ['$event']) onTab(event: KeyboardEvent) {
+    this.reiniciarFocus == true ? this.focus() : null;
+    this.botonGuardar.nativeElement == event.target ? this.reiniciarFocus = true : null;
   }
 
   @HostListener('window:load')

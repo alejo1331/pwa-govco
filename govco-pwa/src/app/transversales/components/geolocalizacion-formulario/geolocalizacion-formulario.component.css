@@ -9,6 +9,7 @@
 
 .modal-geolocalizacion-pwa-govco .titulo-general-pwa-govco {
     margin: 1.4em 0 0 0;
+    outline-color: #000000;
 }
 
 .modal-geolocalizacion-pwa-govco .linea-horizontal-2-pwa-govco {
@@ -17,6 +18,7 @@
 
 .modal-geolocalizacion-pwa-govco .texto-general-pwa-govco {
     margin: 2.25em 0 0 0;
+    outline-color: #000000;
 }
 
 .modal-geolocalizacion-pwa-govco .contenido-pwa-govco {

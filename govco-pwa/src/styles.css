@@ -218,6 +218,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  outline-color: #000000;
 }
 
 .caja-pwa-govco-back-arrow {
@@ -299,6 +300,7 @@ body {
   font-family: 'Work Sans', sans-serif;
   font-size: 1rem;
   color: #000000;
+  outline-color: #000000;
 }
 
 .texto-button-pwa-govco-fill {
@@ -350,7 +352,7 @@ body {
   height: 3rem;
   border: 0.125rem solid #737373;
   border-radius: 0.313rem;
-  outline: none;
+  outline-color: #000000;
   text-indent: 1em;
   background-color: #FFFFFF;
   background-image: url("./assets/icons-fonts/expand_more_predeterminado.svg");

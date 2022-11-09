@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, HostListener, OnInit, Output, ViewChild } from '@angular/core';
 import { MunicipioInterface } from '../../models/geolocalizacion/municipio-interface';
 import { GeolocalizacionService } from '../../services/geolocalizacion/geolocalizacion.service';
 import { HeaderService } from '../../services/header-service/header.service';
@@ -11,6 +11,7 @@ import { HeaderService } from '../../services/header-service/header.service';
 export class GeolocalizacionComponent implements OnInit {
 
   @ViewChild('contenidoHtml') contenidoHtml: ElementRef;
+  @Output() abrir = new EventEmitter<string[]>();
 
   ubicacionMunicipio: string;
   ocultar: boolean = false;
@@ -58,6 +59,10 @@ export class GeolocalizacionComponent implements OnInit {
             });
         }
       })
+  }
+
+  abrirFormularioGeo() {
+    this.abrir.emit(['translate(0%)', 'translate(-100%)']);
   }
 
 }
