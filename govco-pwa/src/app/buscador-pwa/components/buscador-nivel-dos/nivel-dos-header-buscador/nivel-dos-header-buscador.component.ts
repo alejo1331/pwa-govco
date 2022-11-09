@@ -29,7 +29,7 @@ export class NivelDosHeaderBuscadorComponent implements OnInit {
 
   ngOnInit() {
 
-    let input : any = document.querySelector("input");
+    let input : any = document.getElementById("buscador-pwa");
 
     this.buscadorService.getBuscadorParams$.subscribe(
       (parametros : BuscadorParams) => {
@@ -43,8 +43,8 @@ export class NivelDosHeaderBuscadorComponent implements OnInit {
     }
     )
 
-    input.addEventListener("keyup", (event:any) => {
-      if (event.keyCode === 13 && input.value != '') {
+    input.addEventListener("keypress", (event:any) => {
+      if (event.key === "Enter" && input.value != '') {
         this.buscar();
         const nuevoBuscadorParams : BuscadorParams = {
           index : this.index,
