@@ -1,5 +1,6 @@
 import { Component, ElementRef, Input, OnChanges, OnInit, QueryList, SimpleChanges, ViewChildren } from '@angular/core';
 import { NoticiasInterface } from 'src/app/buscador-pwa/models/noticias-interface';
+import { ValidarUrlService } from 'src/app/buscador-pwa/services/validar-url.service';
 import { urlsLocal } from 'src/variables-globales/urlsLocal';
 
 @Component({
@@ -26,7 +27,9 @@ export class BuscadorCardNoticiasComponent implements OnInit, OnChanges {
     titulo: string;
   }[] = [];
 
-  constructor() { }
+  constructor(
+    public validarUrlService: ValidarUrlService
+  ) { }
 
   ngOnInit(): void {
   }

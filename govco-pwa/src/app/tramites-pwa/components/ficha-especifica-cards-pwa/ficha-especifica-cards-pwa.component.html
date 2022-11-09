@@ -10,7 +10,7 @@
             [colorTexto]="true" [fondoIcono]="true">
         </app-tarjeta-vinculo>
     </button>
-    <button [class.disabled-filled]="!infoTramite.UrlManualEnLinea" [attr.aria-label]="ariaTutoriales" (click)="activarBotonPuntosAtencion && abrirPuntosAtencionClic()">
+    <button id="puntosAtencion" [class.disabled-filled]="!infoTramite.UrlManualEnLinea" [attr.aria-label]="ariaTutoriales" (click)="activarBotonPuntosAtencion && abrirPuntosAtencionClic()">
         <app-tarjeta-vinculo
             iconNameClass="map" textNameClass="Puntos de atención" [filledIcon]="true" [fondoTarjeta]="true" 
             [colorTexto]="true" [fondoIcono]="true">

@@ -20,12 +20,12 @@
                         <button class="material-symbols-outlined delete-selection" (click)="eliminarFiltro(filtro.id)">
                             close
                         </button>
-                    </app-etiqueta>                
-                    <app-descripcion-emergente *ngIf="filtro.id == 'nombreEstandarizado'" texto="Trámites que se repiten en diferentes entidades que realizan el mismo proceso y son agrupados bajo un nombre común.">
-                        <span class="material-symbols-outlined information">
+                    </app-etiqueta>
+                    <button class="infoBoton" *ngIf="filtro.id == 'nombreEstandarizado'" (click)="abrirModalInformativo()">
+                        <span class="material-symbols-outlined info">
                             question_mark
                         </span>
-                    </app-descripcion-emergente>                
+                    </button>
                     <div class="filtro-sin-seleccion" *ngIf="filtrosSeleccionados[filtro.id] == null">
                         {{filtro.nombre}}
                     </div>

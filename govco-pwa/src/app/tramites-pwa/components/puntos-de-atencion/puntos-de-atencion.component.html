@@ -3,8 +3,8 @@
         <button class="caja-icono-48-pwa botonImg close" (click)="cerrarPuntoAtencion()"></button>
     </div>
     <div #seccionPuntos class="contenido-pwa-govco seccion-puntos-atencion">
-        <h1 tabindex="0">Convalidación de títulos de estudios de posgrado obtenidos en el exterior</h1>
-        <h2 tabindex="0">Puntos de Atención</h2>
+        <h1>Convalidación de títulos de estudios de posgrado obtenidos en el exterior</h1>
+        <h2>Puntos de Atención</h2>
         <div class="linea-horizontal-2-pwa-govco"></div>
         <section class="seccion-buscador">
             <input #inputBuscador class="buscador" type="text" placeholder="Buscar" name="search">
@@ -14,9 +14,9 @@
                         alt="Borrar contenido de la barra de busqueda"></span>
                 </a>
                 <div class="linea-vertical"></div>
-                <a class="caja-icono-36-pwa" tabindex="0">
+                <div class="caja-icono-36-pwa">
                     <span class="icono-search" type="image" alt="Realizar busqueda"></span>
-                </a>
+                </div>
             </div>
         </section>
         <section class="seccion-acordeon">
@@ -30,15 +30,14 @@
                         <button (click)="activarItem(i)" class="btn btn-link btn-block text-left" type="button"
                             data-toggle="collapse" [attr.data-target]="'#collapse-puntos' + i" aria-expanded="false"
                             [attr.aria-controls]="'collapse-puntos' + i">
-                            <p tabindex="0">{{item.titulo}}</p>
+                            <p>{{item.titulo}}</p>
                             <div class="grupo-iconos-acordeon">
-                                <a (click)="printCoordenadas(item.latitud.replace(',','.'), item.longitud.replace(',','.'), item.direccion)"
+                                <button (click)="printCoordenadas(item.latitud.replace(',','.'), item.longitud.replace(',','.'), item.direccion)"
                                     class=" caja-icono-48-pwa mr-2">
                                     <img src="../../../../assets/icons-fonts/explore_FILL0_wght500_GRAD0_opsz20.svg"
                                         alt="Abrir enlace a Google Maps o Navegador">
-                                </a>
-                                <span class="caja-icono-48-pwa" tabindex="0"
-                                    alt="Expandir acordeon para ver más información">
+                                </button>
+                                <span class="caja-icono-48-pwa" alt="Expandir acordeon para ver más información">
                                     <img class="icono-expand-more" src="../../../../assets/icons-fonts/expand_more.svg"
                                         alt="Expandir acordeon para ver más información">
                                 </span>
@@ -48,13 +47,13 @@
                     <div [id]="'collapse-puntos' + i" class="collapse" [attr.aria-labelledby]="'heading' + i"
                         data-parent="#ejemploAcordeon">
                         <div class="card-body">
-                            <h4 tabindex="0">Departamento/Municipio</h4>
-                            <p class="descripcion" tabindex="0">{{item.departamento}}/{{item.municipio}}</p>
-                            <h4 tabindex="0">Dirección</h4>
-                            <p class="descripcion" tabindex="0">{{item.direccion}}</p>
-                            <h4 tabindex="0">Horario</h4>
-                            <p class="descripcion" tabindex="0">{{item.horario}}</p>
-                            <h4 tabindex="0">Teléfono</h4>
+                            <h4>Departamento/Municipio</h4>
+                            <p class="descripcion">{{item.departamento}}/{{item.municipio}}</p>
+                            <h4>Dirección</h4>
+                            <p class="descripcion">{{item.direccion}}</p>
+                            <h4>Horario</h4>
+                            <p class="descripcion">{{item.horario}}</p>
+                            <h4>Teléfono</h4>
                             <a href="tel: {{item.telefono}}" class="descripcion" [innerHTML]="item.telefono"></a>
                         </div>
                     </div>
