@@ -51,6 +51,9 @@ export class PuntosDeAtencionComponent implements OnInit, PipeTransform {
     this.bottomService.ajustandoPantalla(true);
     this.getPuntosAtencion();
     this.iOS = this.platform.IOS || this.platform.SAFARI ? true : false;
+
+    const closeButton: HTMLElement = <HTMLElement>document.querySelector('.caja-icono-48-pwa');
+    closeButton.focus();
   }
 
   activarItem(index: number) {
