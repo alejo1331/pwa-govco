@@ -19,11 +19,12 @@ export class BotonRetroalimentacionComponent implements OnInit {
     if (this.position) {
       this.dataModal = {
         disableClose: true,
-        panelClass: 'busqueda-modal',
+        panelClass: ['size-modal-retro', 'busqueda-modal'],
       };
     } else {
       this.dataModal = {
         disableClose: true,
+        panelClass: 'size-modal-retro',
       };
     }
     const dialogRef = this.dialog.open(

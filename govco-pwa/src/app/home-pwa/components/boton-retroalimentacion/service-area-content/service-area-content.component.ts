@@ -47,6 +47,7 @@ export class ServiceAreaContentComponent implements OnInit {
   openDialog() {
     const dialogRef = this.dialog.open(ModalAgradecimientoComponent, {
       disableClose: true,
+      panelClass: 'size-modal',
     });
   }
 }

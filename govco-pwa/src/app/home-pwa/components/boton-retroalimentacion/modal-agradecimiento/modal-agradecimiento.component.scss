@@ -34,13 +34,15 @@
 }
 
 ::ng-deep .cdk-overlay-pane {
-    max-width: 80vw !important;
     position: static !important;
 }
 
-::ng-deep .mat-dialog-container {
-    min-width: 280px;
-    border: 2px solid #e8effc;
-    border-radius: 4px;
-    padding: 24px 24px 16px 24px;
-}
+::ng-deep .cdk-overlay-pane.size-modal {
+    max-width: 80vw !important;
+    .mat-dialog-container {
+        min-width: 280px;
+        border: 2px solid #e8effc;
+        border-radius: 4px;
+        padding: 24px 24px 16px 24px;
+    }
+} 
