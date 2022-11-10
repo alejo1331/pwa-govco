@@ -24,6 +24,26 @@
     font-size: 16px;
     border-bottom: none;
 
+    .boton-img {
+        border: 0;
+        background-color: transparent;
+        background-size: cover;
+        width: 1.5rem;
+        height: 1.5rem;
+        margin-right: 7px;
+        opacity: 5;
+
+        &:focus-visible {
+            outline: 2px solid #000;
+        }
+    }
+
+    .close {
+        background-image: url('../../../../assets/icons-fonts/icono_cerrar_3366CC.svg');
+        margin: -1rem -0.5rem -1rem auto;
+        padding: 0;
+    }
+
     .modal-title {
         .titulo {
             font-family: 'WorkSans-Medium';
@@ -37,7 +57,7 @@
         }
     }
 
-    .icon-error {
+    .icon-close {
         text-align: end;
         cursor: pointer;
     }
