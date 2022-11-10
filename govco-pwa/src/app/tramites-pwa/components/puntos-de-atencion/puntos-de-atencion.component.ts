@@ -30,6 +30,7 @@ export class PuntosDeAtencionComponent implements OnInit, PipeTransform {
   public magnitudItemsAux: number = 0;
   public busqueda: string = '';
   numeroAcordeonPantalla: number = 5;
+  public elementActive:Element;
 
   active: boolean = false;
   contadorVerMas: number = 0;
@@ -52,6 +53,9 @@ export class PuntosDeAtencionComponent implements OnInit, PipeTransform {
     this.getPuntosAtencion();
     this.iOS = this.platform.IOS || this.platform.SAFARI ? true : false;
 
+    if (document.activeElement) {
+      this.elementActive = document.activeElement;
+    }    
     const closeButton: HTMLElement = <HTMLElement>document.querySelector('.caja-icono-48-pwa');
     closeButton.focus();
   }
@@ -114,12 +118,12 @@ export class PuntosDeAtencionComponent implements OnInit, PipeTransform {
   }
 
   cerrarPuntoAtencion() {
+    const element = <HTMLElement>this.elementActive;
+    element.focus();
     const cerrarPuntosAtencion: string = '100%';
     const AbrirTramitesId: string = '0%';
     this.cerrarPuntosAtencion.emit([cerrarPuntosAtencion, AbrirTramitesId]);
     this.verMenos();
-    const element = <HTMLElement>document.getElementById('puntosAtencion');
-    element.focus();
   }
 
   borrarContenido() {
