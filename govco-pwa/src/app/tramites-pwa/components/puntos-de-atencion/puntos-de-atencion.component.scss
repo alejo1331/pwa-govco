@@ -33,7 +33,7 @@
     }
 
     .close {
-        background-image: url('../../../../assets/icons-fonts/icono_cerrar_rojo.svg');
+        background-image: url('../../../../assets/icons-fonts/icono_cerrar_3366CC.svg');
     }
 
     .seccion-puntos-atencion {
@@ -205,6 +205,13 @@
                             display: flex;
                             justify-content: center;
                         }
+
+                    a {
+                        img {
+                            width: 25px;
+                            height: 25px;
+                        }
+                    }
     
                         img {
                             width: 30px;

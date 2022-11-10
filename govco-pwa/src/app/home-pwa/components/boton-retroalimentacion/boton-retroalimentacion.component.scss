@@ -1,9 +1,7 @@
 .button-container{
     position: fixed;
-    bottom: 1rem;
     margin-left: calc(100% - 4rem);
     z-index: 7;
-
     .mat-fab {
         box-sizing: border-box;
         position: relative;
@@ -41,4 +39,12 @@
                 'opsz' 20
         }
     }
+}
+
+.button-container:not(.position){
+    bottom: 1rem;
+}
+
+.button-container.position{
+    bottom: 5rem;
 }

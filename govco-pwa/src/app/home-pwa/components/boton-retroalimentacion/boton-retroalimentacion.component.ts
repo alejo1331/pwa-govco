@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ServiceAreaContentComponent } from './service-area-content/service-area-content.component';
 
@@ -8,13 +8,28 @@ import { ServiceAreaContentComponent } from './service-area-content/service-area
   styleUrls: ['./boton-retroalimentacion.component.scss'],
 })
 export class BotonRetroalimentacionComponent implements OnInit {
+  @Input() position = false;
+  dataModal: any;
+
   constructor(private dialog: MatDialog) {}
 
   ngOnInit(): void {}
 
   openDialog() {
-    const dialogRef = this.dialog.open(ServiceAreaContentComponent, {
-      disableClose: true,
-    });
+    if (this.position) {
+      this.dataModal = {
+        disableClose: true,
+        panelClass: ['size-modal-retro', 'busqueda-modal'],
+      };
+    } else {
+      this.dataModal = {
+        disableClose: true,
+        panelClass: 'size-modal-retro',
+      };
+    }
+    const dialogRef = this.dialog.open(
+      ServiceAreaContentComponent,
+      this.dataModal
+    );
   }
 }

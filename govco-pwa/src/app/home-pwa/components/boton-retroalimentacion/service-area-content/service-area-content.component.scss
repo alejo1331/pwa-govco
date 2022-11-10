@@ -1,8 +1,13 @@
-::ng-deep .cdk-overlay-pane {
+::ng-deep .cdk-overlay-pane.size-modal-retro {
   max-width: 100vw !important;
   position: absolute !important;
   bottom: 5rem;
   width: 100%;
+}
+
+::ng-deep .cdk-overlay-pane.busqueda-modal {
+  position: absolute !important;
+  bottom: 9rem;
 }
 
 ::ng-deep .mat-dialog-container {

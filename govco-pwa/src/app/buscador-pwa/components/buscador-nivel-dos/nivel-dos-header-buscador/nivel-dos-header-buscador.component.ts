@@ -2,6 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { BuscadorParams, BuscadorService } from 'src/app/buscador-pwa/services/buscador.service';
 import { Parametros } from 'src/app/buscador-pwa/services/global';
+import { ItemsBuscador } from 'src/variables-globales/items-buscador';
 import { SugerenciasService } from '../../../services/sugerencias.service'
 
 @Component({
@@ -49,7 +50,8 @@ export class NivelDosHeaderBuscadorComponent implements OnInit {
         const nuevoBuscadorParams : BuscadorParams = {
           index : this.index,
           txtConsumoApi : this.txtConsumoApi,
-          txtInputBuscador : input.value
+          txtInputBuscador : input.value,
+          aplicaGeoreferenciacion: ItemsBuscador[this.index].aplicaGeoreferenciacion
         }
         this.buscadorService.setBuscadorParams(nuevoBuscadorParams)
       }

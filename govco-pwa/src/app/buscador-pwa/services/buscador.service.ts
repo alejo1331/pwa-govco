@@ -4,13 +4,15 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export interface BuscadorParams {
   index : number,
   txtInputBuscador : string,
-  txtConsumoApi : string
+  txtConsumoApi : string,
+  aplicaGeoreferenciacion: string
 }
 
 const buscadorParamsInit : BuscadorParams  = {
   index : 0,
   txtInputBuscador : '',
-  txtConsumoApi : 'tramite'
+  txtConsumoApi : 'tramite',
+  aplicaGeoreferenciacion: 'si'
 }
 
 @Injectable({

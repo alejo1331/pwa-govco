@@ -4,8 +4,10 @@
             <button #botonAcordeon (click)="activarItem(i)" class="btn btn-link btn-block text-left" type="button"
                 data-toggle="collapse" [attr.data-target]="'#collapse-ventanillas' + i" aria-expanded="false"
                 [attr.aria-controls]="'collapse-ventanillas' + i">
-                <a *ngIf="href" (click)="validarUrlService.validarUrl(item.link, '_blank')" class="line-clamp-3">{{item.titulo}}</a>
-                <a *ngIf="!href" routerLink="{{item.link}}" class="line-clamp-3">{{item.titulo}}</a>
+                <a *ngIf="href" (click)="validarUrlService.validarUrl(item.link, '_blank')" class="line-clamp-3"
+                    tabindex="0" [attr.aria-label]="'Abrir pagina ' + item.titulo">{{item.titulo}}</a>
+                <a *ngIf="!href" routerLink="{{item.link}}" class="line-clamp-3" tabindex="0"
+                    [attr.aria-label]="'Abrir pagina ' + item.titulo">{{item.titulo}}</a>
                 <div class="caja-icono-24-pwa">
                     <span class="icono-expand-more" type="image"
                         alt="Expandir acordeon para ver más información"></span>
@@ -16,11 +18,14 @@
             data-parent="#acordeonVentanillas">
             <div class="card-body contenido-pwa-govco">
                 <span>Entidad responsable: </span>
-                <p tabindex="0"> {{item.entidadNombre}}</p>
+                <p> {{item.entidadNombre}}</p>
                 <div class="linea-horizontal-2-pwa-govco"></div>
                 <div class="descripcion">
                     <p #texto class="line-clamp-3">{{item.descripcion}}</p>
-                    <a *ngIf="botonTexto[i]" (click)="expandirText(i)">{{ expandirTexto == true ? 'Leer menos' : 'Leer más'}}</a>
+                    <a *ngIf="botonTexto[i]" (click)="expandirText(i)" (keypress)="expandirText(i)" tabindex="0"
+                        [attr.aria-label]="expandirTexto == true ? 'minimizar contenido de la desacripcion de ' + item.entidadNombre : 'leer más contenido de la descripcion de ' + item.entidadNombre">
+                        {{ expandirTexto == true ? 'Leer menos' : 'Leer más'}}
+                    </a>
                 </div>
             </div>
         </div>

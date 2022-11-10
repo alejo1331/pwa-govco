@@ -22,6 +22,7 @@
 
                 a {
                     color: #3366CC;
+                    outline-color: #000000;
                     font-family: 'WorkSans-Medium';
                     font-size: 1rem;
                     margin: 0;
@@ -62,6 +63,7 @@
 
                 a {
                     color: #3366CC;
+                    outline-color: #000000;
                     font-family: 'WorkSans-Medium';
                     font-size: .875rem;
                     text-decoration: underline;
@@ -82,6 +84,11 @@
                 font-size: .875rem;
             }
         }
+    }
+
+    .card:has(button:focus) {
+        border: 2px solid #000000;
+        border-radius: 4px;
     }
 
     .card.active {

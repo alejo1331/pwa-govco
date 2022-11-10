@@ -6,6 +6,7 @@ import {
   BuscadorService,
   BuscadorParams,
 } from 'src/app/buscador-pwa/services/buscador.service';
+import { ItemsBuscador } from 'src/variables-globales/items-buscador';
 
 @Component({
   selector: 'app-buscador-aviso',
@@ -86,6 +87,8 @@ export class BuscadorAvisoComponent implements OnInit {
       index: this.resIndex,
       txtConsumoApi: this.resConsumoApi,
       txtInputBuscador: this.sugBuscador,
+      aplicaGeoreferenciacion: ItemsBuscador[this.resIndex].aplicaGeoreferenciacion
+
     };
     this.buscadorService.setBuscadorParams(nuevoBuscadorParams);
   }
