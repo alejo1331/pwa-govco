@@ -1,44 +1,64 @@
 ::ng-deep .modal-lg {
-    max-width: 100% !important;
-    padding-left: 16px;
-    padding-right: 16px;
-    margin: 0;
+  max-width: 100% !important;
+  padding-left: 16px;
+  padding-right: 16px;
+  margin: 0;
 }
 
 ::ng-deep .background-modal {
-    background-color: #00000080;
+  background-color: #00000080;
 }
 
 ::ng-deep .modal-content {
-    padding: 24px 16px 16px 16px;
-    border: 2px solid #E6EFFD;
-    border-radius: 10px;
+  padding: 24px 16px 16px 16px;
+  border: 2px solid #E6EFFD;
+  border-radius: 10px;
 }
 
 .modal-header {
-    text-align: left;
-    display: block;
-    padding: 0px;
-    font-family: "WorkSans-Regular", sans-serif;
-    font-size: 16px;
-    border-bottom: none;
+  text-align: left;
+  display: block;
+  padding: 0px;
+  font-family: "WorkSans-Regular", sans-serif;
+  font-size: 16px;
+  border-bottom: none;
 
-    .modal-title {
-        .titulo {
-            font-family: 'WorkSans-Medium';
-            text-align: left;
-            font-size: 16px;
-        }
+  .boton-img {
+    border: 0;
+    background-color: transparent;
+    background-size: cover;
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: 7px;
+    opacity: 5;
 
-        .sub-titulo {
-            font-size: 14px;
-        }
+    &:focus-visible {
+      outline: 2px solid #000;
+    }
+  }
+
+  .close {
+    background-image: url('../../../../assets/icons-fonts/icono_cerrar_3366CC.svg');
+    margin: -1rem -0.5rem -1rem auto;
+    padding: 0;
+  }
+
+  .modal-title {
+    .titulo {
+      font-family: 'WorkSans-Medium';
+      text-align: left;
+      font-size: 16px;
     }
 
-    .icon-error {
-        text-align: end;
-        cursor: pointer;
+    .sub-titulo {
+      font-size: 14px;
     }
+  }
+
+  .icon-close {
+    text-align: end;
+    cursor: pointer;
+  }
 }
 
 .modal-body {
@@ -53,15 +73,15 @@
       margin: 1em auto;
       height: auto;
       border-radius: 5px;
-      -webkit-box-shadow: 0px 4px 5px 0px rgba(186,186,186,0.3);
-      -moz-box-shadow: 0px 4px 5px 0px rgba(186,186,186,0.3);
-      box-shadow: 0px 4px 5px 0px rgba(186,186,186,0.3);
+      -webkit-box-shadow: 0px 4px 5px 0px rgba(186, 186, 186, 0.3);
+      -moz-box-shadow: 0px 4px 5px 0px rgba(186, 186, 186, 0.3);
+      box-shadow: 0px 4px 5px 0px rgba(186, 186, 186, 0.3);
       cursor: pointer;
 
       @media (max-width: 991px) {
         width: 100%;
       }
-        
+
       &-header {
         width: 100%;
         padding: 1rem;
@@ -122,7 +142,7 @@
           align-items: center;
           margin-top: 0.5em;
 
-          .govco-icon-email, 
+          .govco-icon-email,
           .govco-icon-call-center {
             color: #3366CC;
           }
@@ -135,7 +155,7 @@
             word-break: break-all;
             text-decoration: underline;
             display: flex;
-            
+
             &:focus-visible {
               outline: 2px solid #000;
             }
@@ -150,7 +170,7 @@
               align-content: center;
               padding: 5px;
               margin-right: 0.5em;
-  
+
               &::after {
                 content: '';
                 filter: invert(83%) sepia(93%) saturate(1018%) hue-rotate(184deg) brightness(126%) contrast(95%);
@@ -158,11 +178,11 @@
                 height: 14px;
                 background-size: cover;
               }
-  
+
               &.tel::after {
                 background-image: url('https://govco-prod-webutils.s3.amazonaws.com/uploads/2022-06-03/e7702a0c-bf98-4a09-9b09-f36d94b9cf68-Icon_tel.svg');
               }
-  
+
               &.mail::after {
                 background-image: url('https://govco-prod-webutils.s3.amazonaws.com/uploads/2022-06-03/dafc13cb-aff3-4383-aa3e-f8e8bd73a2aa-Icon_mail.svg');
               }
@@ -185,7 +205,7 @@
           display: none;
         }
       }
-    }          
+    }
   }
 
   .separador {
@@ -227,7 +247,8 @@
     }
   }
 
-  .btn-outline:focus, .btn-outline:focus-visible {
+  .btn-outline:focus,
+  .btn-outline:focus-visible {
     box-shadow: none !important;
   }
 }

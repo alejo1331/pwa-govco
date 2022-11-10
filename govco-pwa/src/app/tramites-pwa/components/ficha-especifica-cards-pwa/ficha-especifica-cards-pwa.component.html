@@ -1,19 +1,19 @@
 <div class="cards-container">
-    <button [class.disabled-filled]="!infoTramite.UrlManualEnLinea" [attr.aria-label]="ariaTutoriales" (click)="openTutoriales()">
-        <app-tarjeta-vinculo textNameClass="Te explicamos con tutoriales"
-        iconNameClass="lightbulb" [filledIcon]="true" [fondoTarjeta]="true" [colorTexto]="true" [fondoIcono]="true"
-        [textContainerMax]="true">
+    <button [class.disabled-filled]="!infoTramite.UrlManualEnLinea" [attr.aria-label]="ariaTutoriales"
+        (click)="!infoTramite.UrlManualEnLinea ? validarUrlService.validarUrl(infoTramite.UrlManualEnLinea, '_blank') : openTutoriales()">
+        <app-tarjeta-vinculo textNameClass="Te explicamos con tutoriales" iconNameClass="lightbulb" [filledIcon]="true"
+            [fondoTarjeta]="true" [colorTexto]="true" [fondoIcono]="true" [textContainerMax]="true">
         </app-tarjeta-vinculo>
     </button>
-    <button [class.disabled-filled]="!infoTramite.UrlManualEnLinea" [attr.aria-label]="ariaTutoriales" (click)="openDudas()">
-        <app-tarjeta-vinculo iconNameClass="help" textNameClass="Tienes Dudas?" [filledIcon]="true" [fondoTarjeta]="true"
-            [colorTexto]="true" [fondoIcono]="true">
+    <button [class.disabled-filled]="!infoTramite.UrlManualEnLinea" [attr.aria-label]="ariaDudas" (click)="openDudas()">
+        <app-tarjeta-vinculo iconNameClass="help" textNameClass="Tienes Dudas?" [filledIcon]="true"
+            [fondoTarjeta]="true" [colorTexto]="true" [fondoIcono]="true">
         </app-tarjeta-vinculo>
     </button>
-    <button id="puntosAtencion" [class.disabled-filled]="!infoTramite.UrlManualEnLinea" [attr.aria-label]="ariaTutoriales" (click)="activarBotonPuntosAtencion && abrirPuntosAtencionClic()">
-        <app-tarjeta-vinculo
-            iconNameClass="map" textNameClass="Puntos de atención" [filledIcon]="true" [fondoTarjeta]="true" 
-            [colorTexto]="true" [fondoIcono]="true">
+    <button id="puntosAtencion" [class.disabled-filled]="!infoTramite.UrlManualEnLinea" [attr.aria-label]="ariaPuntos"
+        (click)="activarBotonPuntosAtencion && abrirPuntosAtencionClic()">
+        <app-tarjeta-vinculo iconNameClass="map" textNameClass="Puntos de atención" [filledIcon]="true"
+            [fondoTarjeta]="true" [colorTexto]="true" [fondoIcono]="true">
         </app-tarjeta-vinculo>
     </button>
 </div>

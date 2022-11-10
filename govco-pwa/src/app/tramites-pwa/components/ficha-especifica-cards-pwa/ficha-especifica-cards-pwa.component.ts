@@ -4,7 +4,7 @@ import { ModalTutorialesPwaComponent } from '../modal-tutoriales-pwa/modal-tutor
 import { ModalDudasPwaComponent } from '../modal-dudas-pwa/modal-dudas-pwa.component';
 import { TramitesPorIdService } from '../../services/tramites-por-id-service/tramites-por-id.service';
 import { DataBasicaPuntosInterface } from '../../models/puntos-de-atencion/data-basica-puntos-interface';
-
+import { ValidarUrlService } from './../../../buscador-pwa/services/validar-url.service';
 @Component({
   selector: 'app-ficha-especifica-cards-pwa',
   templateUrl: './ficha-especifica-cards-pwa.component.html',
@@ -25,7 +25,8 @@ export class FichaEspecificaCardsPwaComponent implements OnInit {
 
   constructor(
     private modalService: NgbModal,
-    private fichaTramiteService: TramitesPorIdService
+    private fichaTramiteService: TramitesPorIdService,
+    public validarUrlService: ValidarUrlService
   ) {}
 
   ngOnInit(): void {
