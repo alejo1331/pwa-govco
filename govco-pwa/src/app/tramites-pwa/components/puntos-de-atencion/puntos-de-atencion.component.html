@@ -21,8 +21,7 @@
         </section>
         <section class="seccion-acordeon">
             <div class="columa-informativa">
-                <h3>Punto</h3>
-                <h3>Ver Mapa</h3>
+                <h3>Información punto</h3>
             </div>
             <div class="accordion acordeon-pwa-govco" id="ejemploAcordeon">
                 <div class="card" *ngFor="let item of items; index as i;" [class.active]="item.active">
@@ -34,7 +33,7 @@
                             <div class="grupo-iconos-acordeon">
                                 <a (click)="printCoordenadas(item.latitud.replace(',','.'), item.longitud.replace(',','.'), item.direccion)"
                                     class=" caja-icono-48-pwa mr-2">
-                                    <img src="../../../../assets/icons-fonts/explore_FILL0_wght500_GRAD0_opsz20.svg"
+                                    <img src="../../../../assets/icons-fonts/location_on.svg"
                                         alt="Abrir enlace a Google Maps o Navegador">
                                 </a>
                                 <span class="caja-icono-48-pwa" tabindex="0"

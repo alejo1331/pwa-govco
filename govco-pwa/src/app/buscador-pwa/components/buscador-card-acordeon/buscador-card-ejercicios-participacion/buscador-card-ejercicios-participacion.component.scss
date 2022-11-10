@@ -19,9 +19,11 @@
                 text-decoration: none;
                 display: flex;
                 justify-content: space-between;
+                outline-color: #000000;
 
                 a {
                     color: #3366CC;
+                    outline-color: #000000;
                     font-family: 'WorkSans-Medium';
                     font-size: 1rem;
                     margin: 0;
@@ -62,6 +64,7 @@
 
                 a {
                     color: #3366CC;
+                    outline-color: #000000;
                     font-family: 'WorkSans-Medium';
                     font-size: .875rem;
                     text-decoration: underline;
@@ -85,6 +88,7 @@
                         font-family: 'WorkSans-Regular';
                         font-size: .875rem;
                     }
+
                     .status-off {
                         font-family: 'WorkSans-SemiBold';
                         color: #A80521;
@@ -96,6 +100,10 @@
                 }
             }
         }
+    }
+    .card:has(button:focus) {
+        border: 2px solid #000000;
+        border-radius: 4px;
     }
 
     .card.active {
@@ -114,12 +122,12 @@
         }
     }
 
-    div.card{
-      display: none;
+    div.card {
+        display: none;
     }
 
-    div.card.actived{
-      display: block;
+    div.card.actived {
+        display: block;
     }
 
 }

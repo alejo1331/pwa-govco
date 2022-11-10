@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { BuscadorService, BuscadorParams } from 'src/app/buscador-pwa/services/buscador.service';
+import { ItemsBuscador } from 'src/variables-globales/items-buscador';
 
 @Component({
   selector: 'app-nivel-dos-header-prefiltros',
@@ -33,7 +34,7 @@ export class NivelDosHeaderPrefiltrosComponent implements OnInit {
     )
   }
 
-  changePrefilter(index:number, txtApi: string){
+  changePrefilter(index:number){
    let currentActive = document.getElementsByClassName('filtro-active')[0];
    if (currentActive){
     currentActive.classList.remove('filtro-active')
@@ -43,7 +44,8 @@ export class NivelDosHeaderPrefiltrosComponent implements OnInit {
    const nuevosBuscadorParams : BuscadorParams ={
     index : index,
     txtInputBuscador: this.buscadorParams.txtInputBuscador,
-    txtConsumoApi: txtApi
+    txtConsumoApi: ItemsBuscador[index].txtConsumoApi,
+    aplicaGeoreferenciacion: ItemsBuscador[index].aplicaGeoreferenciacion
    }
    this.buscadorService.setBuscadorParams(nuevosBuscadorParams)
 
