@@ -134,7 +134,7 @@
                         }
                     }
 
-                    ::ng-deep app-descripcion-emergente button {
+                    .infoBoton {
                         position: absolute;
                         right: 44px;
                         width: 16px;
@@ -144,8 +144,12 @@
                         border: 0;
                         top: 50%;
                         transform: translateY(-50%);
+                        padding: 0;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
 
-                        .information {
+                        .info {
                             color: #fff;
                             font-size: 12px;
                             display: flex;

@@ -118,6 +118,8 @@ export class PuntosDeAtencionComponent implements OnInit, PipeTransform {
     const AbrirTramitesId: string = '0%';
     this.cerrarPuntosAtencion.emit([cerrarPuntosAtencion, AbrirTramitesId]);
     this.verMenos();
+    const element = <HTMLElement>document.getElementById('puntosAtencion');
+    element.focus();
   }
 
   borrarContenido() {

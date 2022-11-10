@@ -7,6 +7,9 @@ import { Subscription } from 'rxjs';
 import { Platform } from '@angular/cdk/platform';
 import { ResultadoFiltro } from '../../models/resultadoFiltroModel';
 import { filter } from '../../models/filtroBusquedaModel';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalInformativoComponent } from 'src/app/biblioteca-pwa/components/modal-informativo/modal-informativo.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-filtros-principal',
@@ -29,6 +32,8 @@ export class FiltrosPrincipalComponent implements OnInit {
   constructor(
     protected filtrosService: FiltrosService,
     public platform: Platform,
+    public dialog: MatDialog,
+    private modalService: NgbModal,
   ) { }
 
   ngOnInit(): void {
@@ -87,7 +92,7 @@ export class FiltrosPrincipalComponent implements OnInit {
   }
 
   seleccionaFiltroNivelUno(idFiltro: string, tituloFiltro: string, event:any) {
-    if (event.target.classList.contains('information') || event.target.classList.contains('delete-selection')) {
+    if (event.target.classList.contains('infoBoton') ||event.target.classList.contains('info') || event.target.classList.contains('delete-selection')) {
       return false;
     }
 
@@ -217,4 +222,14 @@ export class FiltrosPrincipalComponent implements OnInit {
     this.removerFocus();
   }
 
+  abrirModalInformativo() {
+    const modalRef = this.modalService.open(ModalInformativoComponent, {
+      size: 'lg',
+      backdrop: 'static',
+      keyboard: false,
+      centered: true,
+      windowClass: 'background-modal',
+    });
+    modalRef.componentInstance.data = "Trámites que se repiten en diferentes entidades que realizan el mismo proceso y son agrupados bajo un nombre común.";
+  }
 }

@@ -24,6 +24,7 @@ import { ChipComponent } from './components/chip/chip.component';
 import { MatIconModule } from '@angular/material/icon';
 import { ModalUrlNoDisponibleComponent } from './components/modal-url-no-disponible/modal-url-no-disponible.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
+import { ModalInformativoComponent } from './components/modal-informativo/modal-informativo.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
     DescripcionEmergenteComponent,
     ModalUrlNoDisponibleComponent,
     SpinnerComponent,
+    ModalInformativoComponent,
   ],
   imports: [
     CommonModule,
@@ -74,6 +76,7 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
     ModalUrlNoDisponibleComponent,
     ChipComponent,
     SpinnerComponent,
+    ModalInformativoComponent,
   ],
 })
 export class BibliotecaPwaModule {}
