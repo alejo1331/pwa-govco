@@ -4,33 +4,33 @@ import { ModalUrlNoDisponibleComponent } from 'src/app/biblioteca-pwa/components
 import { environment } from 'src/environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ValidarUrlService {
-
   servicioUrl = environment.serverUrlValidarUrl;
 
-  constructor(
-    public dialog: MatDialog
-  ) { }
+  constructor(public dialog: MatDialog) {}
 
-  valida(link:string) {
+  valida(link: string) {
     return new Promise((resolve, reject) => {
-      const validarFichaTramites = link.includes("ficha-tramites-y-servicios");
-      
+      const validarFichaTramites = link.includes('ficha-tramites-y-servicios');
+
       if (!validarFichaTramites) {
         const url = this.servicioUrl + `/utils/ValidateUrl?url=${link}`;
         fetch(url, {
           method: 'GET',
           headers: {
-            'Content-Type': 'application/json'
-          }
-        }).then(response => {
-            response.json().then(resp => {
-            resolve(resp);
-          }).catch( () => {
-            resolve(false);
-          });
+            'Content-Type': 'application/json',
+          },
+        }).then((response) => {
+          response
+            .json()
+            .then((resp) => {
+              resolve(resp);
+            })
+            .catch(() => {
+              resolve(false);
+            });
         });
       } else {
         resolve(false);
@@ -38,13 +38,13 @@ export class ValidarUrlService {
     });
   }
 
-  validarUrl(link:string, target:string) {
-    if (link !=""){
+  validarUrl(link: string, target: string) {
+    if (!(link == '' || link == null)) {
       this.valida(link).then((resp: any) => {
         try {
           if (resp) {
-            window.open(link, target == "_blank" ? "_blank" : "_self");
-          } else{
+            window.open(link, target == '_blank' ? '_blank' : '_self');
+          } else {
             this.abrirModalUrlNoDisponible();
             console.error('No se encuentra Url --> ' + link);
           }
@@ -53,15 +53,14 @@ export class ValidarUrlService {
           console.error('Error validacion Url --> ' + error);
         }
       });
-    } else{
+    } else {
       this.abrirModalUrlNoDisponible();
     }
   }
 
   abrirModalUrlNoDisponible() {
     this.dialog.open(ModalUrlNoDisponibleComponent, {
-      width: '280px'
-    });  
+      width: '280px',
+    });
   }
-
 }
