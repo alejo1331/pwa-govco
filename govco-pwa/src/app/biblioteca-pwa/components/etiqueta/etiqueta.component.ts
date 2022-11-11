@@ -1,17 +1,12 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-etiqueta',
   templateUrl: './etiqueta.component.html',
   styleUrls: ['./etiqueta.component.scss']
 })
-export class EtiquetaComponent implements OnInit {
+export class EtiquetaComponent {
 
   @Input() estado: '' | 'informative' | 'warning' | 'danger' = '';
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

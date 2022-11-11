@@ -1,7 +1,6 @@
-import { Component, Input, OnInit, SimpleChanges, ViewChild, ElementRef } from '@angular/core';
+import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 import { TramitesPorIdService } from 'src/app/tramites-pwa/services/tramites-por-id-service/tramites-por-id.service';
 import * as JSZip from 'jszip';
-import * as JSZipUtils from '../../../../../assets/scripts/jszip-utils.js';
 
 
 
@@ -24,10 +23,6 @@ export class QuintoItemAcordeonComponent implements OnInit {
 
   ngOnInit() {
     this.getNormatividadById();
-  }
-
-  ngAfterContentInit():void {
-
   }
 
   ngDoCheck() {

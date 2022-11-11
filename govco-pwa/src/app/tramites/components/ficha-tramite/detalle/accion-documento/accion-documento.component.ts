@@ -7,8 +7,6 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class AccionDocumentoComponent implements OnInit {
 
-  constructor() { }
-
   @Input() data: any;
 
   dataAccion: any[] = [];

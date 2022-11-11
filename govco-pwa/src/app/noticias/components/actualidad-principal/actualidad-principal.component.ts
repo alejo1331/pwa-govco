@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FiltrosNoticiasModel } from 'src/app/noticias//models/FiltrosNoticiasModel';
 import { esResponsive } from 'src/app/noticias/utils/utils';
@@ -21,7 +21,6 @@ export class ActualidadPrincipalComponent implements OnInit {
   @ViewChild('selectentidad') selectentidad: ElementRef<HTMLElement> | any;
   @ViewChild('selectano') selectano: ElementRef<HTMLElement> | any;
   @ViewChild('selectmes') selectmes: ElementRef<HTMLElement> | any;
-  // @ViewChild('fechapublicacion') fechapublicacion: ElementRef<HTMLElement>;
   @ViewChild('listadonoticias') listadonoticias: ElementRef<HTMLElement>;
 
   seleccionado: any = { codigo: "", nombre: "" }
@@ -62,8 +61,8 @@ export class ActualidadPrincipalComponent implements OnInit {
     //                                         1, 2, 3 -> Tramites, Ingresa
     //servicioSideNav.seleccionandoItem(a, b)  a -> Activa o inactiva menu lateral
     //                                         b -> String con el valor del item a seleccionar
-    //bottomService.ajustandoPantalla(true)    true -> Agrega clase de css para ajustar 
-    //                                                 la pantalla cuando en la seccion  
+    //bottomService.ajustandoPantalla(true)    true -> Agrega clase de css para ajustar
+    //                                                 la pantalla cuando en la seccion
     //                                                 consultada no tiene header
     this.servicioHeader.estadoHeader(true, true);
     this.bottomService.seleccionandoItem(0);
@@ -83,9 +82,6 @@ export class ActualidadPrincipalComponent implements OnInit {
       this.IniciarCampoAno();
       this.limpiarFiltros();
     }, 1000);
-  }
-
-  ngAfterViewInit() {
   }
 
   iniciarFiltro() {

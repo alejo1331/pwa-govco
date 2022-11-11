@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { UtilsService } from 'src/app/tramites/services/utils.service';
 import { ValidateUrlService } from 'src/app/tramites/services/validate-url.service';
@@ -8,7 +8,7 @@ import { ValidateUrlService } from 'src/app/tramites/services/validate-url.servi
   templateUrl: './modal-tutoriales.component.html',
   styleUrls: ['./modal-tutoriales.component.scss'],
 })
-export class ModalTutorialesComponent implements OnInit {
+export class ModalTutorialesComponent {
   @Input() data: any;
 
   constructor(
@@ -17,7 +17,6 @@ export class ModalTutorialesComponent implements OnInit {
     private utilsService: UtilsService
   ) {}
 
-  ngOnInit(): void {}
 
   validateUrl(url: string) {
     this.validateUrlService.validate(url).subscribe((data: boolean) => {

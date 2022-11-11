@@ -1,8 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Router, ActivatedRoute, NavigationEnd, PRIMARY_OUTLET } from '@angular/router';
-
-import { filter, partition } from 'rxjs/operators';
-import { map } from 'rxjs/internal/operators';
+import { Component, Input } from '@angular/core';
 import { BreadCrumb } from '../../models/breadcrumb';
 
 
@@ -12,18 +8,11 @@ import { BreadCrumb } from '../../models/breadcrumb';
   styleUrls: ['./bread-crumb.component.scss']
 })
 
-export class BreadCrumbComponent implements OnInit {
+export class BreadCrumbComponent {
   breadCrumb: BreadCrumb[];
 
   @Input() title: string;
 
-  constructor() { }
 
-  ngOnInit() {
-  }
-
-  ngOnChanges() {
-    
-  }
 
 }

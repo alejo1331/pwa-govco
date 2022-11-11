@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 import { NgbAccordionConfig} from '@ng-bootstrap/ng-bootstrap';
 import { PreguntaTramite } from '../../../../models/pregunta-tramite';
@@ -13,16 +13,14 @@ import { PreguntaTramite } from '../../../../models/pregunta-tramite';
     }
   `]
 })
-export class PreguntasCondicionantesCiiuComponent implements OnInit {
+export class PreguntasCondicionantesCiiuComponent {
 
   @Input() tramitePregunta: PreguntaTramite;
 
-  constructor( config: NgbAccordionConfig ) { 
+  constructor( config: NgbAccordionConfig ) {
     config.type = 'white';
   }
 
-  ngOnInit(): void {
-  }
 
   isIE() {
     const ua = navigator.userAgent;

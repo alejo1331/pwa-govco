@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
+import { Component, Input, SimpleChanges } from '@angular/core';
 import { TramitesPorIdService } from 'src/app/tramites-pwa/services/tramites-por-id-service/tramites-por-id.service';
 
 @Component({
@@ -6,17 +6,13 @@ import { TramitesPorIdService } from 'src/app/tramites-pwa/services/tramites-por
   templateUrl: './segundo-item-acordeon.component.html',
   styleUrls: ['./segundo-item-acordeon.component.css']
 })
-export class SegundoItemAcordeonComponent implements OnInit {
+export class SegundoItemAcordeonComponent {
   @Input() dataAcordeon: any;
   resultado : any;
 
   constructor(
     protected fichaTramiteService: TramitesPorIdService
   ) { }
-
-  ngOnInit() {
-
-  }
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.dataAcordeon.currentValue != undefined) {
@@ -29,7 +25,7 @@ export class SegundoItemAcordeonComponent implements OnInit {
     this.fichaTramiteService.GetDataFichaResult(dataAcordeon.idTramite)
     .subscribe(
       (data) => { // Success
-        this.resultado = data;        
+        this.resultado = data;
       },
       (error) => {
         console.error(error);

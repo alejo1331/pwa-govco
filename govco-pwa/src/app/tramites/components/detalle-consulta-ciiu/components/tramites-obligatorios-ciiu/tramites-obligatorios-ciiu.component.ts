@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 //Models
 import { CIIUTramite } from '../../../../models/ciiutramite';
@@ -11,7 +11,7 @@ import { ValidateUrlService } from '../../../../services/validate-url.service';
   templateUrl: './tramites-obligatorios-ciiu.component.html',
   styleUrls: ['./tramites-obligatorios-ciiu.component.scss']
 })
-export class TramitesObligatoriosCiiuComponent implements OnInit {
+export class TramitesObligatoriosCiiuComponent  {
 
   @Input() tramite:CIIUTramite;
 
@@ -21,8 +21,5 @@ export class TramitesObligatoriosCiiuComponent implements OnInit {
 
   constructor(public validateUrlService:ValidateUrlService) {
    }
-
-  ngOnInit(): void {
-  }
 
 }

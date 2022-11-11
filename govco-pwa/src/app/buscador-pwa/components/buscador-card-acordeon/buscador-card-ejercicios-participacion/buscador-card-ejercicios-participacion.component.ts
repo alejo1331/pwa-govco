@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnChanges, SimpleChanges, ViewChildren, QueryList, ElementRef } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges, ViewChildren, QueryList, ElementRef } from '@angular/core';
 import { EjerciciosParticipacionInterface } from 'src/app/buscador-pwa/models/ejercicios-participacion-interface';
 import { ValidarUrlService } from 'src/app/buscador-pwa/services/validar-url.service';
 import { urlsLocal } from 'src/variables-globales/urlsLocal';
@@ -8,7 +8,7 @@ import { urlsLocal } from 'src/variables-globales/urlsLocal';
   templateUrl: './buscador-card-ejercicios-participacion.component.html',
   styleUrls: ['./buscador-card-ejercicios-participacion.component.scss']
 })
-export class BuscadorCardEjerciciosParticipacionComponent implements OnInit, OnChanges {
+export class BuscadorCardEjerciciosParticipacionComponent implements OnChanges {
 
   @Input() data: EjerciciosParticipacionInterface[];
   @ViewChildren('texto', { read: ElementRef }) listaTexto: QueryList<ElementRef>;
@@ -34,9 +34,6 @@ export class BuscadorCardEjerciciosParticipacionComponent implements OnInit, OnC
   constructor(
     public validarUrlService: ValidarUrlService
   ) { }
-
-  ngOnInit(): void {
-  }
 
   ngDoCheck() {
     if (this.items.length > 0){

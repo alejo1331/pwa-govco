@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Tramite } from '../../../../models/tramite';
 import { ValidateUrlService } from '../../../../services/validate-url.service';
 
@@ -7,12 +7,9 @@ import { ValidateUrlService } from '../../../../services/validate-url.service';
   templateUrl: './tramites-condicionantes-ciiu.component.html',
   styleUrls: ['./tramites-condicionantes-ciiu.component.scss']
 })
-export class TramitesCondicionantesCiiuComponent implements OnInit {
+export class TramitesCondicionantesCiiuComponent{
 
   @Input() tramite:Tramite;
   constructor(public validateUrlService: ValidateUrlService) { }
-
-  ngOnInit(): void {
-  }
 
 }

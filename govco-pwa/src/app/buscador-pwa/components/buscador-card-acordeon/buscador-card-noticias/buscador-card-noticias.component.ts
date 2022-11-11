@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnChanges, OnInit, QueryList, SimpleChanges, ViewChildren } from '@angular/core';
+import { Component, ElementRef, Input, OnChanges, QueryList, SimpleChanges, ViewChildren } from '@angular/core';
 import { NoticiasInterface } from 'src/app/buscador-pwa/models/noticias-interface';
 import { ValidarUrlService } from 'src/app/buscador-pwa/services/validar-url.service';
 import { urlsLocal } from 'src/variables-globales/urlsLocal';
@@ -8,7 +8,7 @@ import { urlsLocal } from 'src/variables-globales/urlsLocal';
   templateUrl: './buscador-card-noticias.component.html',
   styleUrls: ['./buscador-card-noticias.component.scss']
 })
-export class BuscadorCardNoticiasComponent implements OnInit, OnChanges {
+export class BuscadorCardNoticiasComponent implements OnChanges {
 
   @Input() data: NoticiasInterface[];
   @ViewChildren('texto', { read: ElementRef }) listaTexto: QueryList<ElementRef>;
@@ -30,9 +30,6 @@ export class BuscadorCardNoticiasComponent implements OnInit, OnChanges {
   constructor(
     public validarUrlService: ValidarUrlService
   ) { }
-
-  ngOnInit(): void {
-  }
 
   ngDoCheck() {
     if (this.items.length > 0){

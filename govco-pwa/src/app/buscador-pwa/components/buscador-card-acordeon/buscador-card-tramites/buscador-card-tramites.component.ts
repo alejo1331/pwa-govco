@@ -1,7 +1,6 @@
 import {
   Component,
   Input,
-  OnInit,
   OnChanges,
   SimpleChanges,
   ViewChildren,
@@ -17,7 +16,7 @@ import { ValidarUrlService } from 'src/app/buscador-pwa/services/validar-url.ser
   templateUrl: './buscador-card-tramites.component.html',
   styleUrls: ['./buscador-card-tramites.component.scss'],
 })
-export class BuscadorCardTramitesComponent implements OnInit, OnChanges {
+export class BuscadorCardTramitesComponent implements OnChanges {
   @Input() data: TramitesServiciosInterface[];
   @ViewChildren('texto', { read: ElementRef })
   listaTexto: QueryList<ElementRef>;
@@ -41,8 +40,6 @@ export class BuscadorCardTramitesComponent implements OnInit, OnChanges {
   botonTexto: boolean[] = [];
 
   constructor(public validarUrlService: ValidarUrlService) {}
-
-  ngOnInit(): void {}
 
   ngDoCheck() {
     if (this.items.length > 0) {

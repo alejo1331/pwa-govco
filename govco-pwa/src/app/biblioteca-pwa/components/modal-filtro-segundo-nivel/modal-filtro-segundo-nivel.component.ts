@@ -1,5 +1,5 @@
 import { Platform } from '@angular/cdk/platform';
-import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { InformacionModalInterface } from '../../models/filtro-nivel-dos/filtro-nivel-dos-interface';
 
 @Component({
@@ -7,7 +7,7 @@ import { InformacionModalInterface } from '../../models/filtro-nivel-dos/filtro-
   templateUrl: './modal-filtro-segundo-nivel.component.html',
   styleUrls: ['./modal-filtro-segundo-nivel.component.scss']
 })
-export class ModalFiltroSegundoNivelComponent implements OnInit {
+export class ModalFiltroSegundoNivelComponent {
 
   @ViewChild('modalFiltro') modalFiltro: ElementRef;
   @Input() informacionModal: InformacionModalInterface;
@@ -17,8 +17,6 @@ export class ModalFiltroSegundoNivelComponent implements OnInit {
 
   constructor(public platform: Platform) { }
 
-  ngOnInit(): void {
-  }
 
   abrirModal() {
     this.modalFiltro.nativeElement.classList.add('show');
@@ -27,7 +25,7 @@ export class ModalFiltroSegundoNivelComponent implements OnInit {
       body.style.position = 'fixed';
       body.style.overflow = 'hidden';
     }
-    
+
     this.focusInput();
     this.focus();
   }
@@ -55,10 +53,10 @@ export class ModalFiltroSegundoNivelComponent implements OnInit {
       const focusableElements = currDialog.querySelectorAll(
         'a[href], button, input, textarea, select, details, [tabindex]:not([tabindex="-1"])'
       );
-  
+
       let first = <HTMLElement>focusableElements[0];
       let last = <HTMLElement>focusableElements[focusableElements.length - 1];
-  
+
       $(document.body).on("focusin", (event) => {
         if (currDialog && !currDialog.contains(<HTMLElement>event.target)) {
           event.preventDefault();

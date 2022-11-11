@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
+import { Component, Input, SimpleChanges } from '@angular/core';
 import { DataBasicaPuntosInterface } from 'src/app/tramites-pwa/models/puntos-de-atencion/data-basica-puntos-interface';
 import { TramitesPorIdService } from 'src/app/tramites-pwa/services/tramites-por-id-service/tramites-por-id.service';
 
@@ -7,7 +7,7 @@ import { TramitesPorIdService } from 'src/app/tramites-pwa/services/tramites-por
   templateUrl: './tercer-item-acordeon.component.html',
   styleUrls: ['./tercer-item-acordeon.component.scss']
 })
-export class TercerItemAcordeonComponent implements OnInit {
+export class TercerItemAcordeonComponent {
   @Input() dataAcordeon: any;
   canalesSeguimiento: any[];
   dataPuntosAtencion: DataBasicaPuntosInterface;
@@ -15,9 +15,6 @@ export class TercerItemAcordeonComponent implements OnInit {
   constructor(
     protected fichaTramiteService: TramitesPorIdService,
   ) { }
-
-  ngOnInit() {
-  }
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.dataAcordeon.currentValue != undefined) {

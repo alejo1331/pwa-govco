@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { UtilsService } from 'src/app/tramites/services/utils.service';
 import { ValidateUrlService } from 'src/app/tramites/services/validate-url.service';
 
@@ -7,7 +7,7 @@ import { ValidateUrlService } from 'src/app/tramites/services/validate-url.servi
   templateUrl: './fichaespecifica-header.component.html',
   styleUrls: ['./fichaespecifica-header.component.scss']
 })
-export class FichaespecificaHeaderComponent implements OnInit {
+export class FichaespecificaHeaderComponent {
 
   @Input() data: any;
 
@@ -15,9 +15,6 @@ export class FichaespecificaHeaderComponent implements OnInit {
     private validateUrlService: ValidateUrlService,
     private utilsService: UtilsService
   ) { }
-
-  ngOnInit(): void {
-  }
 
   validateUrl(url: string, e: any) {
     e.preventDefault();

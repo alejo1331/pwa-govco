@@ -5,8 +5,6 @@ import { Injectable } from '@angular/core';
 })
 export class FichaespecificaService {
 
-  constructor() { }
-
   private tramite: any;
 
   setTramite(data: any) {

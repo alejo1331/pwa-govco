@@ -7,8 +7,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ServiciosYTramitesBuscadorComponent implements OnInit {
 
-  constructor() { }
-
   ngOnInit(): void {
     localStorage.setItem("consumidor","tramites");
   }

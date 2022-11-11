@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { OrderPipe } from 'ngx-order-pipe';
 import { UtilsService } from 'src/app/tramites/services/utils.service';
@@ -9,7 +9,7 @@ import { ValidateUrlService } from 'src/app/tramites/services/validate-url.servi
   templateUrl: './modal-fechas-disponibles.component.html',
   styleUrls: ['./modal-fechas-disponibles.component.scss']
 })
-export class ModalFechasDisponiblesComponent implements OnInit {
+export class ModalFechasDisponiblesComponent  {
 
   @Input() fechas: string;
   p = 1;
@@ -26,9 +26,6 @@ export class ModalFechasDisponiblesComponent implements OnInit {
     private orderPipe: OrderPipe
   ) {
     this.sortedCollection = orderPipe.transform(this.fechas, 'PuntoAtencionNombre');
-  }
-
-  ngOnInit(): void {
   }
 
   closeModal() {

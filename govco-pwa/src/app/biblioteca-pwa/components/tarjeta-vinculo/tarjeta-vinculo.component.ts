@@ -1,11 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-tarjeta-vinculo',
   templateUrl: './tarjeta-vinculo.component.html',
   styleUrls: ['./tarjeta-vinculo.component.scss'],
 })
-export class TarjetaVinculoComponent implements OnInit {
+export class TarjetaVinculoComponent {
   @Input() fondoTarjeta = false;
   @Input() fondoIcono = false;
   @Input() filledIcon = false;
@@ -13,8 +13,4 @@ export class TarjetaVinculoComponent implements OnInit {
   @Input() textContainerMax = false;
   @Input() iconNameClass: string;
   @Input() textNameClass: string;
-
-  constructor() {}
-
-  ngOnInit(): void {}
 }

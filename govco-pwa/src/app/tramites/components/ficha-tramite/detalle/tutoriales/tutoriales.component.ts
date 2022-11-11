@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalTutorialesComponent } from '../modal-tutoriales/modal-tutoriales.component';
 
@@ -7,7 +7,7 @@ import { ModalTutorialesComponent } from '../modal-tutoriales/modal-tutoriales.c
   templateUrl: './tutoriales.component.html',
   styleUrls: ['./tutoriales.component.scss']
 })
-export class TutorialesComponent implements OnInit {
+export class TutorialesComponent {
 
   @Input() infoTramite:any;
 
@@ -15,8 +15,6 @@ export class TutorialesComponent implements OnInit {
     private modalService: NgbModal
   ) { }
 
-  ngOnInit(): void {
-  }
 
   open() {
     if(this.infoTramite?.UrlManualEnLinea){
@@ -26,10 +24,10 @@ export class TutorialesComponent implements OnInit {
         // keyboard: false,
         windowClass: 'login-modal-error'
       });
-  
+
       modalRef.componentInstance.data = this.infoTramite.UrlManualEnLinea;
     }
-    
+
   }
 
 }

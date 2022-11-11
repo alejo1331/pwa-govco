@@ -19,8 +19,6 @@ export class ModalService {
 
   private enEspera = new BehaviorSubject<boolean>(false);
   public siguienteModal = this.enEspera.asObservable();
-  
-  constructor() { }
 
   public async clasico(datosModal: ModalInterface) {
     await this.InformacionModal.next(datosModal);

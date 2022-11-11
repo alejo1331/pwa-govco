@@ -85,7 +85,9 @@ export class PuntosDeAtencionComponent implements OnInit, PipeTransform {
           );
         });
       },
-        (error) => {},
+        (error) => {
+          console.log(error)
+        },
         () => this.verMas(0, this.itemsAux)
       );
   }
@@ -148,7 +150,7 @@ export class PuntosDeAtencionComponent implements OnInit, PipeTransform {
     this.verMas(contador, filtrado);
   }
 
-  printCoordenadas(latitud:string, longitud:string, direccion:string){ 
+  printCoordenadas(latitud:string, longitud:string, direccion:string){
     const modal = this.modalService.open(ModalMapaComponent,{ size: 'lg', backdrop: 'static', keyboard: false});
     modal.componentInstance.latitud = latitud;
     modal.componentInstance.longitud = longitud;

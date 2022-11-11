@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ValidateUrlService } from '../../services/validate-url.service';
 
@@ -7,14 +7,13 @@ import { ValidateUrlService } from '../../services/validate-url.service';
   templateUrl: './modal-tutoriales-pwa.component.html',
   styleUrls: ['./modal-tutoriales-pwa.component.scss'],
 })
-export class ModalTutorialesPwaComponent implements OnInit {
+export class ModalTutorialesPwaComponent{
   @Input() data: any;
   constructor(
     public activeModal: NgbActiveModal,
     private validateUrlService: ValidateUrlService
   ) {}
 
-  ngOnInit(): void {}
 
   validateUrl(url: string) {
     this.validateUrlService.validate(url).subscribe((data: boolean) => {

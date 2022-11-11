@@ -9,8 +9,6 @@ export class AppService {
   previousUrl: string = '';
   private selectedServiceOption: number = 0;
 
-  constructor() { }
-
   getSelectedServiceOption(): number {
     return this.selectedServiceOption;
   }

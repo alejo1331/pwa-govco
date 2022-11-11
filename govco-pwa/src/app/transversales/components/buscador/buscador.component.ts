@@ -9,8 +9,6 @@ import { BottomMenuService } from '../../services/bottom-menu/bottom-menu.servic
 export class BuscadorComponent implements OnInit {
   bottomService: BottomMenuService;
 
-  constructor() { }
-
   ngOnInit(): void {
     this.bottomService.ajustandoPantalla(false);
   }

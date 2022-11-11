@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FichaTramiteService } from '../../../../services/ficha-tramite.service';
 import { ModalFechasDisponiblesComponent } from '../../modal-fechas-disponibles/modal-fechas-disponibles.component';
@@ -8,7 +8,7 @@ import { ModalFechasDisponiblesComponent } from '../../modal-fechas-disponibles/
   templateUrl: './no-suit-detalle.component.html',
   styleUrls: ['./no-suit-detalle.component.scss']
 })
-export class NoSuitDetalleComponent implements OnInit {
+export class NoSuitDetalleComponent {
 
   @Input() dataTratmite:any;
   @Input() informacionFicha:any;
@@ -19,7 +19,6 @@ export class NoSuitDetalleComponent implements OnInit {
     private modalService: NgbModal,
   ) { }
 
-  ngOnInit() {}
 
   getPuntosAtencion(){
     this.eventoGetPuntos.emit(true);

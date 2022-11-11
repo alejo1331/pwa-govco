@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { AccionDocumento } from 'src/app/tramites-pwa/models/acordeon/acordeon-interface';
 
 @Component({
@@ -6,13 +6,8 @@ import { AccionDocumento } from 'src/app/tramites-pwa/models/acordeon/acordeon-i
   templateUrl: './accion-documento.component.html',
   styleUrls: ['./accion-documento.component.scss']
 })
-export class AccionDocumentoComponent implements OnInit {
+export class AccionDocumentoComponent {
 
   @Input() data: AccionDocumento[];
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

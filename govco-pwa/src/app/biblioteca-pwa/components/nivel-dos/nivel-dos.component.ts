@@ -1,17 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-nivel-dos',
   templateUrl: './nivel-dos.component.html',
   styleUrls: ['./nivel-dos.component.scss']
 })
-export class NivelDosComponent implements OnInit {
+export class NivelDosComponent {
 
   topScroll: HTMLElement
 
-  constructor() { }
-
-  ngOnInit() {
-  }
 
 }

@@ -13,8 +13,6 @@ export class BreadCrumbService {
   private tittleChangeCiiu: BehaviorSubject<string> = new BehaviorSubject<string>('');
   public titleObserverCiiu = this.tittleChangeCiiu.asObservable();
 
-constructor() { }
-
 getTittle(): Observable<string> {
   return this.tittleChange.asObservable();
 }

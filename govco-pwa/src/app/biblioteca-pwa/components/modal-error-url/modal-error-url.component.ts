@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
@@ -6,14 +6,13 @@ import { MatDialogRef } from '@angular/material/dialog';
   templateUrl: './modal-error-url.component.html',
   styleUrls: ['./modal-error-url.component.scss']
 })
-export class ModalErrorUrlComponent implements OnInit {
+export class ModalErrorUrlComponent {
 
   constructor(
     public dialogRef: MatDialogRef<ModalErrorUrlComponent>,
   ) {
    }
 
-  ngOnInit(): void {
-  }
+
 
 }

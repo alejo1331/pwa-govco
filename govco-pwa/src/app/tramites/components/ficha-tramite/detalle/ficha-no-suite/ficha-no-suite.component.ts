@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FichaTramiteService } from '../../../../services/ficha-tramite.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -14,7 +14,7 @@ import { UtilsService } from '../../../../services/utils.service';
   templateUrl: './ficha-no-suite.component.html',
   styleUrls: ['./ficha-no-suite.component.scss']
 })
-export class FichaNoSuiteComponent implements OnInit, OnChanges {
+export class FichaNoSuiteComponent implements OnInit {
   @Input('tipoFicha') tipoFicha: string;
   @Input() informacionFicha: any;
   dataBase: any;
@@ -28,7 +28,7 @@ export class FichaNoSuiteComponent implements OnInit, OnChanges {
               private router: Router,
               private modalService: NgbModal,
               private breadCrumbService: BreadCrumbService,
-              private validateUrlService: ValidateUrlService, 
+              private validateUrlService: ValidateUrlService,
     private utilsService: UtilsService, ) {
   }
   ngOnInit (): void {
@@ -55,9 +55,6 @@ export class FichaNoSuiteComponent implements OnInit, OnChanges {
     }
   }
 
-  ngOnChanges() {
-    
-  }
   async getDatosPuntosAtencion(data:any) {
     for (const item of data) {
       const punto = await  this.fichaTramiteService.GetPuntoAtencionById(item.PuntosAtencionId).toPromise();

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
+import { Component, Input, SimpleChanges } from '@angular/core';
 import { TramitesPorIdService } from 'src/app/tramites-pwa/services/tramites-por-id-service/tramites-por-id.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalTutorialesPwaComponent } from '../../modal-tutoriales-pwa/modal-tutoriales-pwa.component';
@@ -8,7 +8,7 @@ import { ModalTutorialesPwaComponent } from '../../modal-tutoriales-pwa/modal-tu
   templateUrl: './cuarto-item-acordeon.component.html',
   styleUrls: ['./cuarto-item-acordeon.component.scss']
 })
-export class CuartoItemAcordeonComponent implements OnInit {
+export class CuartoItemAcordeonComponent{
   @Input() dataAcordeon: any;
   @Input() urlManualEnlinea: String;
   canalesMedios:any = []
@@ -17,9 +17,6 @@ export class CuartoItemAcordeonComponent implements OnInit {
     protected fichaTramiteService: TramitesPorIdService,
     private modalService: NgbModal,
   ) { }
-
-  ngOnInit() {
-  }
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.dataAcordeon.currentValue != undefined) {
