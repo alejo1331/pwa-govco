@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { FiltroBusqueda, filter } from '../../models/filtroBusquedaModel';
 import { FiltrosService } from '../../services/filtros.service';
 import { FiltrosPrincipalComponent } from '../filtros-principal/filtros-principal.component';
 
@@ -19,9 +20,15 @@ export class BarraFiltrosComponent implements OnInit {
   constructor(protected filtrosService: FiltrosService) { }
 
   ngOnInit(): void {
-    this.filtrosSubscription = this.filtrosService.Filters$.subscribe((resultados) => {
-      this.totalFiltros = resultados?.filters != undefined ?
-        Object.keys(resultados?.filters).length : 0
+    this.filtrosSubscription = this.filtrosService.Filters$.subscribe((resultados: FiltroBusqueda | undefined) => {
+      this.totalFiltros = 0;
+      if (resultados?.filters != undefined) {
+        Object.entries(resultados?.filters).forEach(element => {
+          if (element[0] != "departamento" && element[0] != "municipio") {
+            this.totalFiltros += element[1] != undefined ? 1 : 0
+          }
+        })
+      }
     });
   }
 

@@ -14,7 +14,7 @@ export class FiltrosService {
 
   private resultadoBusqueda = new BehaviorSubject<ResultadoFiltro | undefined>(undefined);
 
-  private data:ResultadoFiltro = {
+  private data: ResultadoFiltro = {
     success: 0,
     message: "",
     total: 0,
@@ -34,13 +34,15 @@ export class FiltrosService {
         tipoEntidad: [],
         nombreEstandarizado: [],
         anioPublicacionFiltro: [],
-        mesPublicacionFiltro: []
+        mesPublicacionFiltro: [],
+        departamento: { codigoDepartamento: 5 },
+        municipio: { codigoMunicipio: 5001 }
       }
     ]
   };
 
   constructor(private http: HttpClient) { }
-  
+
   obtenerResultadoFiltro(dataBusqueda: FiltroBusqueda): Observable<ResultadoFiltro> {
     const data = {
       filters: dataBusqueda.filters,
@@ -55,7 +57,7 @@ export class FiltrosService {
   }
 
   // Asigna un nuevo valor a filtros, de los seleccionados y dispara un evento para que en los suscribe lo escuchen
-  set Filters(filters: FiltroBusqueda | undefined) {
+  set setFilters(filters: FiltroBusqueda | undefined) {
     this.filters.next(filters);
   }
 
@@ -65,7 +67,7 @@ export class FiltrosService {
   }
 
   // Obtener el ultimo filtro seleccionado
-  get Filters(): FiltroBusqueda | undefined {
+  get getFilters(): FiltroBusqueda | undefined {
     return this.filters.getValue();
   }
 

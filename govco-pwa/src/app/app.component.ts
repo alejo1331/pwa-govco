@@ -24,6 +24,7 @@ import { AuthService } from './transversales/services/auth/auth.service';
 import { GeolocalizacionComponent } from './transversales/components/geolocalizacion/geolocalizacion.component';
 import { BuscadorService } from './buscador-pwa/services/buscador.service';
 import { BuscadorNivelDosComponent } from './buscador-pwa/components/buscador-nivel-dos/buscador-nivel-dos.component';
+import { urlsLocal } from 'src/variables-globales/urlsLocal';
 
 
 export interface OAuthErrorEventParams {
@@ -310,7 +311,7 @@ export class AppComponent implements OnInit, AfterContentChecked, AfterContentCh
 
   formularioGeolocalizacion(modalAndContect: string[]) {
     modalAndContect[0] == "translate(100%)" ?
-      this.GeolocalizacionComponent.contenidoHtml.nativeElement.focus()
+      this.GeolocalizacionComponent.boton.nativeElement.focus() 
       : this.formularioGeolocalizador.botonAtras.nativeElement.focus();
     this.appGeolocalizacionFormulario.nativeElement.style.transform = modalAndContect[0];
     this.matSidenavContent.transform = modalAndContect[1];
@@ -329,7 +330,7 @@ export class AppComponent implements OnInit, AfterContentChecked, AfterContentCh
   @HostListener('touchstart', ['$event']) onTouchStart(event: any): void {
     this.touchMoveInicial = event.changedTouches[0].screenY;
     if (this.appGeolocalizacion != undefined) {
-      this.router.url == '/buscar-pwa' ?
+      this.router.url == '/' + urlsLocal.buscador ?
         (this.appGeolocalizacion.removeAttribute('style'),
           this.appGeolocalizacion.classList.add('fixed'))
         : this.appGeolocalizacion.classList.remove('fixed')
@@ -337,7 +338,7 @@ export class AppComponent implements OnInit, AfterContentChecked, AfterContentCh
   }
 
   @HostListener('touchmove', ['$event']) onTouchMove(event: any): void {
-    if (this.router.url != '/buscar-pwa') {
+    if (this.router.url != '/' + urlsLocal.buscador) {
       if (this.appGeolocalizacion != undefined) {
         this.touchMoveFinal = event.changedTouches[0].screenY;
         if (this.touchMoveInicial < this.touchMoveFinal) {
@@ -375,7 +376,7 @@ export class AppComponent implements OnInit, AfterContentChecked, AfterContentCh
 
   @HostListener('document:mousewheel', ['$event']) onMousedown(event: any) {
     if (this.appGeolocalizacion != undefined) {
-      this.router.url == '/buscar-pwa' ?
+      this.router.url == '/' + urlsLocal.buscador ?
         (this.appGeolocalizacion.removeAttribute('style'),
           this.appGeolocalizacion.classList.add('fixed'))
         : this.appGeolocalizacion.classList.remove('fixed')

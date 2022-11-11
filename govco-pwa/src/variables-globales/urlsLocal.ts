@@ -7,5 +7,6 @@ export const urlsLocal = {
     entidadesEstado: '/entidades',
     sobreNosotros: '/sobre-nosotros',
     acercaPortal: '/acerca-del-portal',
-    serviciosEntidades: '/servicios-para-entidades'
+    serviciosEntidades: '/servicios-para-entidades',
+    buscador: 'buscador',
 }
