@@ -1,6 +1,5 @@
-import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { LoadingService } from '../../../services/loading.service';
-import { PageRequestTramite } from '../../../models/page-request-tramite';
 import { requestCodigo } from '../../../models/request-codigociiu';
 import { responseCodigoPaginated } from '../../../models/response-codigo-paginated';
 import { CodigoCIIU } from '../../../models/codigo-ciiu';
@@ -9,34 +8,37 @@ import { BackendApiService } from '../../../services/backend-api.service';
 @Component({
   selector: 'app-tabla-codigos-ciiu',
   templateUrl: './tabla-codigos-ciiu.component.html',
-  styleUrls: ['./tabla-codigos-ciiu.component.scss']
+  styleUrls: ['./tabla-codigos-ciiu.component.scss'],
 })
 export class TablaCodigosCiiuComponent implements OnInit {
   @Input() CodigosCIIU: CodigoCIIU[];
   @Input() MunicipioSeleccionado: string;
   @Input() DepartamentoSeleccionado: string;
-  @Input() totalRegistros : number;
+  @Input() totalRegistros: number;
   @Input() filtroBusqueda: string;
-  @Input() page : number;
-  @Input() pageSize : number;
+  @Input() page: number;
+  @Input() pageSize: number;
 
   public ordenar: boolean = false;
-  public ordenamiento: string = "sinOrden";
+  public ordenamiento: string = 'sinOrden';
   public nombreColumna: string;
-  public ascendente : boolean = true;
+  public ascendente: boolean = true;
   public descendente: boolean = true;
-  public ordenarNombre : boolean = false;
-  public ascendenteNombre : boolean = true;
+  public ordenarNombre: boolean = false;
+  public ascendenteNombre: boolean = true;
   public descendenteNombre: boolean = true;
-  public desc:boolean = false;
-  public columnOrder: string = "";
+  public desc: boolean = false;
+  public columnOrder: string = '';
   public pagina = '1';
   public data: CodigoCIIU[];
   public codigoActividades: CodigoCIIU[];
-    
-  constructor(private service: BackendApiService,private loadingService: LoadingService) { }
 
-  ngOnInit (): void {
+  constructor(
+    private service: BackendApiService,
+    private loadingService: LoadingService
+  ) {}
+
+  ngOnInit(): void {
     this.data = this.CodigosCIIU;
   }
 
@@ -48,7 +50,7 @@ export class TablaCodigosCiiuComponent implements OnInit {
     this.loadingService.stopLoading();
   }
 
-  public onPaginatorChange(number:any) {
+  public onPaginatorChange(number: any) {
     this.page = number;
     this.pagina = number.toString();
     let request = new requestCodigo();
@@ -65,98 +67,75 @@ export class TablaCodigosCiiuComponent implements OnInit {
 
   cargarActividadesValidadasPromise(val: requestCodigo) {
     let promise = new Promise<responseCodigoPaginated>((resolve, reject) => {
-      this.service.getCodigosCIIUValidadosPorTramite(val)
-      .toPromise()
-      .then(res => {
-        if (res) {
-          this.codigoActividades = [];
-          this.data = res.data;
-          this.loadingService.stopLoading();
-        }
-          else {
+      this.service
+        .getCodigosCIIUValidadosPorTramite(val)
+        .toPromise()
+        .then((res) => {
+          if (res) {
+            this.codigoActividades = [];
+            this.data = res.data;
+            this.loadingService.stopLoading();
+          } else {
             this.loadingService.stopLoading();
           }
-        }).catch(e=>{
+        })
+        .catch((e) => {
           this.loadingService.stopLoading();
         });
-      });
-      return promise;
+    });
+    return promise;
+  }
+
+  Ordenar(columna: string) {
+    this.columnOrder = columna;
+    if (this.ordenamiento === 'desc') {
+      this.ordenamiento = 'asc';
+      if (columna === 'codigo') {
+        this.nombreColumna = 'codigo';
+      } else {
+        this.nombreColumna = 'nombre';
+      }
+    } else {
+      this.ordenamiento = 'desc';
+      if (columna === 'codigo') {
+        this.nombreColumna = 'codigo';
+      } else {
+        this.nombreColumna = 'nombre';
+      }
     }
 
-  Ordenar(columna : string)
-  {
-    this.columnOrder = columna;
-    if(this.ordenamiento === "desc") {
-      this.ordenamiento = "asc";
-      if(columna === "codigo"){
-        this.nombreColumna = "codigo";
-      }else{
-        this.nombreColumna = "nombre";
-      }
-    }
-    else{
-      this.ordenamiento = "desc"
-      if(columna === "codigo"){
-        this.nombreColumna = "codigo";
-      }else{
-        this.nombreColumna = "nombre";
-      }
-    }
-    
-    if(this.nombreColumna === "codigo" && this.ordenamiento === "sinOrden")
-    {
-      this.ordenar = false;
-      this.ascendente = true;
-      this.descendente = true;
-    }
-    else if(this.nombreColumna === "codigo" && this.ordenamiento === "asc")
-    {
+    if (this.nombreColumna === 'codigo' && this.ordenamiento === 'asc') {
       this.ordenar = true;
       this.ascendente = false;
       this.descendente = true;
-    }
-    else if(this.nombreColumna !== "nombre")
-    {
+    } else if (this.nombreColumna !== 'nombre') {
       this.ordenar = true;
       this.ascendente = true;
       this.descendente = false;
-    }
-    else{
+    } else {
       this.ordenar = false;
       this.ascendente = true;
       this.descendente = true;
     }
-    
-    if(this.nombreColumna === "nombre" && this.ordenamiento === "sinOrden")
-    {
-      this.ordenarNombre = false;
-      this.ascendenteNombre = true;
-      this.descendenteNombre = true;
-    }
-    else if(this.nombreColumna === "nombre" && this.ordenamiento === "asc")
-    {
+
+    if (this.nombreColumna === 'nombre' && this.ordenamiento === 'asc') {
       this.ordenarNombre = true;
       this.ascendenteNombre = false;
       this.descendenteNombre = true;
-    }
-    else if(this.nombreColumna !== "codigo")
-    {
+    } else if (this.nombreColumna !== 'codigo') {
       this.ordenarNombre = true;
       this.ascendenteNombre = true;
       this.descendenteNombre = false;
-    }
-    else
-    {
+    } else {
       this.ordenarNombre = false;
       this.ascendenteNombre = true;
       this.descendenteNombre = true;
     }
-    if(this.ordenamiento == "asc")
-    {
+    if (this.ordenamiento == 'asc') {
       this.desc = false;
-    }else if(this.ordenamiento == "desc") { 
+    } else if (this.ordenamiento == 'desc') {
       this.desc = true;
-    }else{
+    } else {
       this.desc = false;
     }
     let request = new requestCodigo();
@@ -170,5 +149,4 @@ export class TablaCodigosCiiuComponent implements OnInit {
     this.cargarActividadesValidadasPromise(request);
     this.loadingService.startLoading();
   }
-
 }

@@ -12,17 +12,16 @@ import { LoadingService } from '../../../services/loading.service';
 import { requestCodigo } from '../../../models/request-codigociiu';
 import { requestHistoricoBusqueda } from '../../../models/request-historico-busqueda';
 import { responseCodigoPaginated } from '../../../models/response-codigo-paginated';
-import { Options } from 'select2'
+import { Options } from 'select2';
 
 @Component({
   selector: 'app-busqueda-codigos-ciiu',
   templateUrl: './busqueda-codigos-ciiu.component.html',
-  styleUrls: ['./busqueda-codigos-ciiu.component.scss']
+  styleUrls: ['./busqueda-codigos-ciiu.component.scss'],
 })
 export class BusquedaCodigosCiiuComponent implements OnInit {
-
-  seleccionado:any={codigo:"",nombre:""}
-  seleccionadoPaginas:any={codigo:10,nombre:10}
+  seleccionado: any = { codigo: '', nombre: '' };
+  seleccionadoPaginas: any = { codigo: 10, nombre: 10 };
   Departamentos: Departamento[] = [];
   Municipios: Municipio[] = [];
   public DepartamentoSeleccionado: string = '0';
@@ -43,50 +42,57 @@ export class BusquedaCodigosCiiuComponent implements OnInit {
   public page: number = 1;
   public pageSize: number = 10;
   public totalRegistros: number = 0;
-  optionsSelect = [{codigo:10,nombre:10}, {codigo:25,nombre:25}, {codigo:50,nombre:50}];
+  optionsSelect = [
+    { codigo: 10, nombre: 10 },
+    { codigo: 25, nombre: 25 },
+    { codigo: 50, nombre: 50 },
+  ];
 
-  constructor( private service: BackendApiService, private router: Router, private loadingService: LoadingService) { }
+  constructor(
+    private service: BackendApiService,
+    private router: Router,
+    private loadingService: LoadingService
+  ) {}
 
-  ngOnInit (): void {
+  ngOnInit(): void {
     this.habilitar = false;
     this.cargarDepartamentos();
     this.options = {
-      placeholder: "Escoja su departamento",
+      placeholder: 'Escoja su departamento',
       allowClear: true,
-      width: "100%"
-    }
+      width: '100%',
+    };
     this.loadingService.startLoading();
   }
 
   cargarDepartamentos() {
-    this.service.getListDepartamento().subscribe(data => {
+    this.service.getListDepartamento().subscribe((data) => {
       this.Departamentos = data;
       this.loadingService.stopLoading();
     });
   }
 
-  CargarMunicipios(Id: string){
-    this.service.getListMunicipio(Id).subscribe(data => {
+  CargarMunicipios(Id: string) {
+    this.service.getListMunicipio(Id).subscribe((data) => {
       this.HabilitarSelect = false;
       this.Municipios = data;
       this.loadingService.stopLoading();
     });
   }
-  
-  startLoading(e:any) {
+
+  startLoading(e: any) {
     this.loadingService.startLoading();
   }
 
-  stopLoading(e:any) {
+  stopLoading(e: any) {
     this.loadingService.stopLoading();
   }
 
-  public changed(e:any): void {
-    if (e.detail.codigo === "") {
+  public changed(e: any): void {
+    if (e.detail.codigo === '') {
       this.HabilitarSelect = true;
       this.HabilitarBusqueda = true;
-    }
-    else {
+    } else {
       this.DepartamentoSeleccionado = e.detail.codigo;
       this.HabilitarSelect = false;
       this.CargarMunicipios(this.DepartamentoSeleccionado);
@@ -95,176 +101,196 @@ export class BusquedaCodigosCiiuComponent implements OnInit {
   }
 
   public changedMunicipio(e: any): void {
-    if (e.detail.codigo === "") {
+    if (e.detail.codigo === '') {
       this.HabilitarBusqueda = true;
-    }
-    else {
+    } else {
       this.MunicipioSeleccionado = e.detail.codigo;
       this.HabilitarBusqueda = false;
     }
   }
 
   //eventos buscador
- selectEvent(item: any) {
-  this.renderizarTabla();
- }
-
- onChangeSearch(val: string) {
-  this.filtroBusqueda = val;
-  if(val.length > 1)
-    this.cargarActividadesBuscadorAsync(val);
-  else{
-    this.codigoActividades = [];
+  selectEvent(item: any) {
+    this.renderizarTabla();
   }
 
-  if(val.length > 0){
-    this.HabilitarBtnBusqueda = false;
-  } else {
+  onChangeSearch(val: string) {
+    this.filtroBusqueda = val;
+    if (val.length > 1) this.cargarActividadesBuscadorAsync(val);
+    else {
+      this.codigoActividades = [];
+    }
+
+    if (val.length > 0) {
+      this.HabilitarBtnBusqueda = false;
+    } else {
+      this.HabilitarBtnBusqueda = true;
+    }
+  }
+
+  clearEventStatic() {
     this.HabilitarBtnBusqueda = true;
+    this.filtroBusqueda = '';
+    this.codigoActividades = [];
+    this.habilitar = false;
+    this.muestraMensaje = false;
+    this.codigoActividadesTabla = [];
+    this.pageSize = 10;
+    this.page = 1;
+    this.optionsSelect = [
+      { codigo: 10, nombre: 10 },
+      { codigo: 25, nombre: 25 },
+      { codigo: 50, nombre: 50 },
+    ];
   }
-}
 
-clearEventStatic() {
-  this.HabilitarBtnBusqueda = true;
-  this.filtroBusqueda = "";
-  this.codigoActividades = [];
-  this.habilitar = false;
-  this.muestraMensaje = false;
-  this.codigoActividadesTabla = [];
-  this.pageSize = 10;
-  this.page = 1;
-  this.optionsSelect = [{codigo:10,nombre:10}, {codigo:25,nombre:25}, {codigo:50,nombre:50}];;
-}
-  
- clearEventStatic2() {
-  this.codigoActividades = [];
-  this.habilitar = false;
-  this.muestraMensaje = false;
-  this.codigoActividadesTabla = [];
-   this.pageSize = 10;
-  this.page = 1;
-  this.optionsSelect = [{codigo:10,nombre:10}, {codigo:25,nombre:25}, {codigo:50,nombre:50}];;
- }
-  
- onFocused(e: any) {
-  // do something when input is focused
-}
+  clearEventStatic2() {
+    this.codigoActividades = [];
+    this.habilitar = false;
+    this.muestraMensaje = false;
+    this.codigoActividadesTabla = [];
+    this.pageSize = 10;
+    this.page = 1;
+    this.optionsSelect = [
+      { codigo: 10, nombre: 10 },
+      { codigo: 25, nombre: 25 },
+      { codigo: 50, nombre: 50 },
+    ];
+  }
 
- cargarActividadesBuscadorPromise(val: string) {
-  let promise = new Promise<CodigoCIIU>((resolve, reject) => {
-    this.service.getActividadesEconomicas(val)
-      .toPromise()
-      .then(res => {
-        if (res) {
-          var numero = new RegExp(/[0-9]/);
-          var validar = numero.exec(val);
+  onFocused(e: any) {
+    // do something when input is focused
+  }
 
-          this.codigoActividades = res;
+  cargarActividadesBuscadorPromise(val: string) {
+    let promise = new Promise<CodigoCIIU>((resolve, reject) => {
+      this.service
+        .getActividadesEconomicas(val)
+        .toPromise()
+        .then((res) => {
+          if (res) {
+            let numero = new RegExp(/[0-9]/);
+            let validar = numero.exec(val);
 
-          if (validar == null) {
-            this.keyword = 'nombre';
+            this.codigoActividades = res;
+
+            if (validar == null) {
+              this.keyword = 'nombre';
+            } else {
+              this.keyword = 'codigo';
+            }
+          } else {
+            this.codigoActividades = [];
+            this.codigoActividadesTabla = [];
           }
-          else {
-            this.keyword = 'codigo';
-          }
-        }
-        else {
+        })
+        .catch((e) => {
           this.codigoActividades = [];
           this.codigoActividadesTabla = [];
-        }
-      }).catch(e=>{
-        this.codigoActividades = [];
-        this.codigoActividadesTabla = [];
-      });
-  });
-  return promise;
-}
-  
- cargarActividadesValidadasPromise(val: requestCodigo) {
-  let promise = new Promise<responseCodigoPaginated>((resolve, reject) => {
-    this.service.getCodigosCIIUValidadosPorTramite(val)
-    .toPromise()
-    .then(res => {
-      if (res) {
-        this.codigoActividades = [];
-        this.codigoActividadesTabla = res.data;
-        this.totalRegistros = res.totalRecords;
-        this.habilitar = true;
-        this.muestraMensaje = false;
-        this.loadingService.stopLoading();
-      }
-        else {
-          this.habilitar = false;
-          this.muestraMensaje = true;
-          this.codigoActividadesTabla = [];
-          this.codigoActividades = [];
-          this.loadingService.stopLoading();
-        }
-      }).catch(e=>{
-        this.habilitar=false;
-        this.muestraMensaje=false;
-        this.codigoActividades = [];
-        this.codigoActividadesTabla = [];
-      });
+        });
     });
     return promise;
   }
-  
- insertarHistoricoPromise(historico: requestHistoricoBusqueda) {
-  let promise = new Promise((resolve, reject) => {
-  this.service.insertarHistoricoDeBusquedaCIIU(historico)
-      .toPromise()
-      .then(res => {
-      });
-  });
- }
-  
- async cargarActividadesBuscadorAsync(filtro: string) {
-  return await Promise.resolve(this.cargarActividadesBuscadorPromise(filtro));
-}
-  
-async cargarActividadesValidadasAsync(request:requestCodigo) {
-  return await Promise.resolve(this.cargarActividadesValidadasPromise(request));
-}
-  
-  
- async insertarHistoricoAsync(historico: requestHistoricoBusqueda) {
-  return await this.insertarHistoricoPromise(historico);
-}
-  
- public renderizarTabla() {
-  if(!(this.filtroBusqueda.length > 0))
-    return false;
-  this.loadingService.startLoading();    
-  let historico = new requestHistoricoBusqueda();
-  historico.texto = this.filtroBusqueda;
-  let request = new requestCodigo();
-  request.IdDepartamento = this.DepartamentoSeleccionado;
-  request.IdMunicipio = this.MunicipioSeleccionado;
-  request.filtro = this.filtroBusqueda;
-  request.descending = this.desc;
-  request.fieldOrder = this.columnOrder;
-  request.pageSize = this.pageSize;
-  request.numPage = this.page;
-  this.clearEventStatic2();
-  this.insertarHistoricoAsync(historico);
-  const response = Promise.resolve(this.cargarActividadesValidadasPromise(request));
+
+  cargarActividadesValidadasPromise(val: requestCodigo) {
+    let promise = new Promise<responseCodigoPaginated>((resolve, reject) => {
+      this.service
+        .getCodigosCIIUValidadosPorTramite(val)
+        .toPromise()
+        .then((res) => {
+          if (res) {
+            this.codigoActividades = [];
+            this.codigoActividadesTabla = res.data;
+            this.totalRegistros = res.totalRecords;
+            this.habilitar = true;
+            this.muestraMensaje = false;
+            this.loadingService.stopLoading();
+          } else {
+            this.habilitar = false;
+            this.muestraMensaje = true;
+            this.codigoActividadesTabla = [];
+            this.codigoActividades = [];
+            this.loadingService.stopLoading();
+          }
+        })
+        .catch((e) => {
+          this.habilitar = false;
+          this.muestraMensaje = false;
+          this.codigoActividades = [];
+          this.codigoActividadesTabla = [];
+        });
+    });
+    return promise;
+  }
+
+  insertarHistoricoPromise(historico: requestHistoricoBusqueda) {
+    new Promise((resolve, reject) => {
+      this.service
+        .insertarHistoricoDeBusquedaCIIU(historico)
+        .toPromise()
+        .then((res) => {
+          console.log(res);
+        });
+    });
+  }
+
+  async cargarActividadesBuscadorAsync(filtro: string) {
+    return await Promise.resolve(this.cargarActividadesBuscadorPromise(filtro));
+  }
+
+  async cargarActividadesValidadasAsync(request: requestCodigo) {
+    return await Promise.resolve(
+      this.cargarActividadesValidadasPromise(request)
+    );
+  }
+
+  async insertarHistoricoAsync(historico: requestHistoricoBusqueda) {
+    return await this.insertarHistoricoPromise(historico);
+  }
+
+  public renderizarTabla() {
+    if (!(this.filtroBusqueda.length > 0)) return false;
+    this.loadingService.startLoading();
+    let historico = new requestHistoricoBusqueda();
+    historico.texto = this.filtroBusqueda;
+    let request = new requestCodigo();
+    request.IdDepartamento = this.DepartamentoSeleccionado;
+    request.IdMunicipio = this.MunicipioSeleccionado;
+    request.filtro = this.filtroBusqueda;
+    request.descending = this.desc;
+    request.fieldOrder = this.columnOrder;
+    request.pageSize = this.pageSize;
+    request.numPage = this.page;
+    this.clearEventStatic2();
+    this.insertarHistoricoAsync(historico);
+    Promise.resolve(this.cargarActividadesValidadasPromise(request));
   }
 
   selectQtyPages(dato: any) {
-    if(!(this.filtroBusqueda.length > 0))
-      return false;
+    if (this.filtroBusqueda.length <= 0) return false;
     this.habilitar = false;
     this.muestraMensaje = false;
     this.codigoActividadesTabla = [];
     this.pageSize = dato.detail.codigo;
     this.seleccionadoPaginas = dato.detail;
-    if(dato.detail.codigo == 50)
-      this.optionsSelect = [{codigo:50,nombre:50}, {codigo:10,nombre:10}, {codigo:25,nombre:25}];
-    else if(dato.detail.codigo == 25)
-      this.optionsSelect = [{codigo:25,nombre:25}, {codigo:10,nombre:10}, {codigo:50,nombre:50}];
+    if (dato.detail.codigo == 50)
+      this.optionsSelect = [
+        { codigo: 50, nombre: 50 },
+        { codigo: 10, nombre: 10 },
+        { codigo: 25, nombre: 25 },
+      ];
+    else if (dato.detail.codigo == 25)
+      this.optionsSelect = [
+        { codigo: 25, nombre: 25 },
+        { codigo: 10, nombre: 10 },
+        { codigo: 50, nombre: 50 },
+      ];
     else
-      this.optionsSelect = [{codigo:10,nombre:10}, {codigo:25,nombre:25}, {codigo:50,nombre:50}];
+      this.optionsSelect = [
+        { codigo: 10, nombre: 10 },
+        { codigo: 25, nombre: 25 },
+        { codigo: 50, nombre: 50 },
+      ];
     let request = new requestCodigo();
     request.IdDepartamento = this.DepartamentoSeleccionado;
     request.IdMunicipio = this.MunicipioSeleccionado;
@@ -277,7 +303,3 @@ async cargarActividadesValidadasAsync(request:requestCodigo) {
     this.loadingService.startLoading();
   }
 }
-
- 
-
-
