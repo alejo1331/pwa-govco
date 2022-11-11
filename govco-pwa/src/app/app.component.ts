@@ -137,6 +137,12 @@ export class AppComponent implements OnInit, AfterContentChecked, AfterContentCh
       .subscribe((event: any) => {
         this.appService.previousUrl = this.appService.currentUrl;
         this.appService.currentUrl = event.url;
+        if (this.appGeolocalizacion != undefined) {
+          event.url == '/' + urlsLocal.buscador ?
+            (this.appGeolocalizacion.removeAttribute('style'),
+              this.appGeolocalizacion.classList.add('fixed'))
+            : this.appGeolocalizacion.classList.remove('fixed')
+        }
       });
     this.bottomService.ajustePantalla.subscribe((estado) => {
       this.cambiarEstilo = estado;
@@ -311,7 +317,7 @@ export class AppComponent implements OnInit, AfterContentChecked, AfterContentCh
 
   formularioGeolocalizacion(modalAndContect: string[]) {
     modalAndContect[0] == "translate(100%)" ?
-      this.GeolocalizacionComponent.boton.nativeElement.focus() 
+      this.GeolocalizacionComponent.boton.nativeElement.focus()
       : this.formularioGeolocalizador.botonAtras.nativeElement.focus();
     this.appGeolocalizacionFormulario.nativeElement.style.transform = modalAndContect[0];
     this.matSidenavContent.transform = modalAndContect[1];
@@ -329,12 +335,6 @@ export class AppComponent implements OnInit, AfterContentChecked, AfterContentCh
 
   @HostListener('touchstart', ['$event']) onTouchStart(event: any): void {
     this.touchMoveInicial = event.changedTouches[0].screenY;
-    if (this.appGeolocalizacion != undefined) {
-      this.router.url == '/' + urlsLocal.buscador ?
-        (this.appGeolocalizacion.removeAttribute('style'),
-          this.appGeolocalizacion.classList.add('fixed'))
-        : this.appGeolocalizacion.classList.remove('fixed')
-    }
   }
 
   @HostListener('touchmove', ['$event']) onTouchMove(event: any): void {
