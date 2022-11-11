@@ -64,13 +64,18 @@
                 font-size: 14px;
                 padding: 14px 16px 14px 16px;
             }
-        }
-        .card.active {
-            .card-header h2 button {
-                span {
-                    display: inline;
-                    transform: rotate(-180deg);
+
+            &.active:not(:focus-within) {
+                .card-header h2 button {
+                    span {
+                        display: inline;
+                        transform: rotate(-180deg);
+                    }
                 }
+            }
+
+            &:focus-within {
+                border: 2px solid #000;
             }
         }
     } 

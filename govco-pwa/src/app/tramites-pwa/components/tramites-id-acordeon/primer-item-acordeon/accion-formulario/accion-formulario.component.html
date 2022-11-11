@@ -8,18 +8,18 @@
                     Disponible para ser
                 </div>
                 <div class="card-body">
-                    <a *ngIf="subItem.FormularioUrl" class="mb-1" (click)="validateUrlService.validateUrl(subItem.FormularioUrl)" target="_blank">
+                    <button *ngIf="subItem.FormularioUrl" class="enlace mb-1" (click)="validateUrlService.validateUrl(subItem.FormularioUrl)">
                         <span class="material-symbols-outlined">
                             laptop_mac
                         </span>
                         <span class="text">Transaccional</span>
-                    </a>
-                    <a *ngIf="subItem.FormularioUrlDescarga" (click)="validateUrlService.validateUrl(subItem.FormularioUrlDescarga)" target="_blank">
+                    </button>
+                    <button *ngIf="subItem.FormularioUrlDescarga" class="enlace" (click)="validateUrlService.validateUrl(subItem.FormularioUrlDescarga)">
                         <span class="material-symbols-outlined">
                             download
                         </span>
                         <span class="text">Descargar</span>
-                    </a>
+                    </button>
                 </div>
             </div>
             <div class="card" *ngIf="subItem.FormularioAnotacion">
@@ -35,7 +35,7 @@
                     Reclamar de forma presencial
                 </div>
                 <div class="card-body">
-                    <a class="punto-atencion" (click)="abrirPuntosAtencionClic(item.Orden, item.AccionCondicionId)">En los puntos de atención indicados por la institución</a>
+                    <button class="punto-atencion" (click)="abrirPuntosAtencionClic(item.Orden, item.AccionCondicionId)">En los puntos de atención indicados por la institución</button>
                 </div>
             </div>
         </div>

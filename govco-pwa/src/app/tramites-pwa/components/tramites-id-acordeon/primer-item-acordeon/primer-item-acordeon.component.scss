@@ -58,20 +58,25 @@
             font-size: 14px;
             padding: 12px 16px 12px 16px;
         }
-    }
-    .card.active {
-        background-color: #E8EFFC !important;
-        .card-header {
+
+        &.active:not(:focus-within) {
             background-color: #E8EFFC !important;
-            h2 button {
-                font-family: 'WorkSans-Medium';
-                h5 {
-                    display: block;
-                }
-                span {
-                    transform: rotate(-180deg);
-                }
-            }   
+            .card-header {
+                background-color: #E8EFFC !important;
+                h2 button {
+                    font-family: 'WorkSans-Medium';
+                    h5 {
+                        display: block;
+                    }
+                    span {
+                        transform: rotate(-180deg);
+                    }
+                }   
+            }
+        }
+
+        &:focus-within {
+            border: 2px solid #000;
         }
     }
 }
