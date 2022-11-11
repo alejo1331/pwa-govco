@@ -246,7 +246,7 @@ export class AppComponent implements OnInit, AfterContentChecked, AfterContentCh
             : 'EM',
       };
 
-      this.authService.createUsuarioLogin(usuarioLogin).subscribe((e) => { });
+      this.authService.createUsuarioLogin(usuarioLogin);
     } catch {
       console.log('error auth api');
     }
@@ -310,7 +310,7 @@ export class AppComponent implements OnInit, AfterContentChecked, AfterContentCh
 
   formularioGeolocalizacion(modalAndContect: string[]) {
     modalAndContect[0] == "translate(100%)" ?
-      this.GeolocalizacionComponent.contenidoHtml.nativeElement.focus() 
+      this.GeolocalizacionComponent.contenidoHtml.nativeElement.focus()
       : this.formularioGeolocalizador.botonAtras.nativeElement.focus();
     this.appGeolocalizacionFormulario.nativeElement.style.transform = modalAndContect[0];
     this.matSidenavContent.transform = modalAndContect[1];

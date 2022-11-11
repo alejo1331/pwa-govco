@@ -12,8 +12,6 @@ export class LoadingService {
   public loadingEnd$ = this.loadingEvent.asObservable();
   receivedFilter: EventEmitter<boolean> = new EventEmitter();
 
-  constructor() { }
-
   getLoading() {
     return this.isLoading;
   }

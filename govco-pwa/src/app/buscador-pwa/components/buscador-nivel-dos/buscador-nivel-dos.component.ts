@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { BottomMenuService } from 'src/app/transversales/services/bottom-menu/bottom-menu.service';
 import { Parametros } from '../../services/global';
 
@@ -7,13 +7,9 @@ import { Parametros } from '../../services/global';
   templateUrl: './buscador-nivel-dos.component.html',
   styleUrls: ['./buscador-nivel-dos.component.scss'],
 })
-export class BuscadorNivelDosComponent implements OnInit {
+export class BuscadorNivelDosComponent {
   constructor(
     public bottomService: BottomMenuService,
   ) { }
-
-  ngOnInit() {
-
-  }
 
 }

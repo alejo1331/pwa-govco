@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { BottomMenuService } from 'src/app/transversales/services/bottom-menu/bottom-menu.service';
 
@@ -7,7 +7,7 @@ import { BottomMenuService } from 'src/app/transversales/services/bottom-menu/bo
   templateUrl: './header-compartir-v1.component.html',
   styleUrls: ['./header-compartir-v1.component.css'],
 })
-export class HeaderCompartirV1Component implements OnInit {
+export class HeaderCompartirV1Component {
   @Input() urlTramite: string;
   @Input() titleTramite: any;
   @Input() botonAtras: { url: string, tipoNavegacion: string };
@@ -16,8 +16,6 @@ export class HeaderCompartirV1Component implements OnInit {
     private router: Router,
     public bottomService: BottomMenuService,
   ) { }
-
-  ngOnInit(): void { }
 
   async shareTramite() {
     let shareData = {

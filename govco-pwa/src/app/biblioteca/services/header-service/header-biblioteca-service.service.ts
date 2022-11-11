@@ -7,8 +7,6 @@ import { BehaviorSubject } from 'rxjs';
 export class HeaderBibliotecaService {
   private titleSource = new BehaviorSubject('Biblioteca');
   currentTitle = this.titleSource.asObservable();
-  
-  constructor() { }
 
   setTitle(categoria: string){
     this.titleSource.next(categoria);

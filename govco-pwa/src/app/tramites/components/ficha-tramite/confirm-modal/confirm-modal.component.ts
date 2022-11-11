@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { dialogModal } from 'src/app/tramites/models/dialogModal';
 
@@ -7,7 +7,7 @@ import { dialogModal } from 'src/app/tramites/models/dialogModal';
   templateUrl: './confirm-modal.component.html',
   styleUrls: ['./confirm-modal.component.scss']
 })
-export class ConfirmModalComponent implements OnInit {
+export class ConfirmModalComponent{
   public options: dialogModal[];
   public text: string;
   public title: string;
@@ -23,8 +23,6 @@ export class ConfirmModalComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {
-  }
 
   public setDialogInfo(title: string, text: string, type: string, showDismiss: boolean, options?: dialogModal[]) {
     this.title = title;

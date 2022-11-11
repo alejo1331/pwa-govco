@@ -5,8 +5,6 @@ import { Injectable } from '@angular/core';
 })
 export class PerfilService {
 
-constructor() { }
-
 checkLoginUser(){
   return localStorage.getItem('id_token_claims_obj')
 }

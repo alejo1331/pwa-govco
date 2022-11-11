@@ -1,16 +1,12 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-breadcumbs',
   templateUrl: './breadcumbs.component.html',
   styleUrls: ['./breadcumbs.component.scss']
 })
-export class BreadcumbsComponent implements OnInit {
+export class BreadcumbsComponent {
 
   @Input() title: string = '';
-  constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

@@ -1,20 +1,16 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-tramites-id-acordeon',
   templateUrl: './tramites-id-acordeon.component.html',
   styleUrls: ['./tramites-id-acordeon.component.scss']
 })
-export class TramitesIdAcordeonComponent implements OnInit {
+export class TramitesIdAcordeonComponent {
   @Input() dataAcordeon: { perfil: string, idTramite: number };
   @Input() tramiteEnLinea: boolean;
   @Input() urlManualEnlinea : String;
 
   public itemActivoAnterior:number;
-
-  constructor() { }
-
-  ngOnInit(): void {}
 
   activarItem(index:number) {
     const elements = document.querySelectorAll('#acordeonPerfilTramites > .card');
@@ -33,5 +29,5 @@ export class TramitesIdAcordeonComponent implements OnInit {
     setTimeout(()=>{
       document.getElementById(item)?.scrollIntoView({block: "start", behavior: "smooth"});
     }, 280)
-  }  
+  }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ValidateUrlService } from '../../services/validate-url.service';
 
 @Component({
@@ -6,11 +6,10 @@ import { ValidateUrlService } from '../../services/validate-url.service';
   templateUrl: './ficha-especifica-header-pwa.component.html',
   styleUrls: ['./ficha-especifica-header-pwa.component.scss'],
 })
-export class FichaEspecificaHeaderPwaComponent implements OnInit {
+export class FichaEspecificaHeaderPwaComponent {
   @Input() data: any;
   constructor(private validateUrlService: ValidateUrlService) {}
 
-  ngOnInit(): void {}
 
   validateUrl(url: string, e: any) {
     e.preventDefault();

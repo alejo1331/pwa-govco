@@ -1,15 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-breadcumb-momentos',
   templateUrl: './breadcumb-momentos.component.html',
   styleUrls: ['./breadcumb-momentos.component.css']
 })
-export class BreadcumbMomentosComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+export class BreadcumbMomentosComponent {
 
 }

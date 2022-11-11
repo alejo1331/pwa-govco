@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
@@ -8,15 +8,12 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
   templateUrl: './modal-informacion.component.html',
   styleUrls: ['./modal-informacion.component.scss']
 })
-export class ModalInformacionComponent implements OnInit {
+export class ModalInformacionComponent  {
   @Input() detail:any;
   constructor(
     public activeModal: NgbActiveModal,
     private router: Router,
   ) { }
-
-  ngOnInit() {
-  }
 
   direccionar(routePage:any){
     this.activeModal.close();

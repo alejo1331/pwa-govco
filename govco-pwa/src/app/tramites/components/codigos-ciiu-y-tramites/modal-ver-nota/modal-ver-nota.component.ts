@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 //Services
@@ -13,14 +13,14 @@ import { PageRequestTramite } from '../../../models/page-request-tramite';
   templateUrl: './modal-ver-nota.component.html',
   styleUrls: ['./modal-ver-nota.component.scss']
 })
-export class ModalVerNotaComponent implements OnInit {
+export class ModalVerNotaComponent{
 
 
   Codigo: CodigoCIIU;
   incluye: string[];
   excluye: string[];
   closeResult = '';
-  
+
   @Input() codigo: string;
   @Input() tieneTramites: boolean;
   @Input() IdCodigo: number;
@@ -32,12 +32,9 @@ export class ModalVerNotaComponent implements OnInit {
   public url: any;
   public titulo: string;
 
-  constructor( private modalService: NgbModal, private service: BackendApiService ) { 
+  constructor( private modalService: NgbModal, private service: BackendApiService ) {
     this.url = "/ficha-tramites-y-servicios/detalle-consulta-ciiu";
     this.titulo= "Detalle consulta CIIU";
-  }
-
-  ngOnInit(): void {
   }
 
   open(content: any, Id: any) {

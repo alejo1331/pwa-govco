@@ -1,20 +1,16 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-boton',
   templateUrl: './boton.component.html',
   styleUrls: ['./boton.component.scss']
 })
-export class BotonComponent implements OnInit {
+export class BotonComponent {
 
   @Input() symbol = false;
   @Input() inverted = false;
   @Input() border = false;
   @Input() disabled = false;
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnChanges, SimpleChanges, ViewChildren, ElementRef, QueryList } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges, ViewChildren, ElementRef, QueryList } from '@angular/core';
 import { PortalTransversalesInterface } from 'src/app/buscador-pwa/models/portal-transversales-interface';
 import { urlsLocal } from 'src/variables-globales/urlsLocal';
 import { ValidarUrlService } from 'src/app/buscador-pwa/services/validar-url.service';
@@ -8,7 +8,7 @@ import { ValidarUrlService } from 'src/app/buscador-pwa/services/validar-url.ser
   templateUrl: './buscador-card-portales.component.html',
   styleUrls: ['./buscador-card-portales.component.scss'],
 })
-export class BuscadorCardPortalesComponent implements OnInit, OnChanges {
+export class BuscadorCardPortalesComponent implements OnChanges {
 
   @Input() data: PortalTransversalesInterface[];
   @ViewChildren('texto', { read: ElementRef }) listaTexto: QueryList<ElementRef>;
@@ -30,10 +30,6 @@ export class BuscadorCardPortalesComponent implements OnInit, OnChanges {
   constructor(
     public validarUrlService: ValidarUrlService
   ) { }
-
-  ngOnInit(): void {
-
-  }
 
   ngDoCheck() {
     if (this.items.length > 0){

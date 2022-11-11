@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnChanges, SimpleChanges, ViewChild, ElementRef, QueryList, ViewChildren, HostListener } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges, ElementRef, QueryList, ViewChildren } from '@angular/core';
 import { VentanillasUnicasInterface } from 'src/app/buscador-pwa/models/ventanillas-unicas-interface';
 import { urlsLocal } from 'src/variables-globales/urlsLocal';
 import { ValidarUrlService } from 'src/app/buscador-pwa/services/validar-url.service';
@@ -8,7 +8,7 @@ import { ValidarUrlService } from 'src/app/buscador-pwa/services/validar-url.ser
   templateUrl: './buscador-card-ventanilla.component.html',
   styleUrls: ['./buscador-card-ventanilla.component.scss']
 })
-export class BuscadorCardVentanillaComponent implements OnInit, OnChanges {
+export class BuscadorCardVentanillaComponent implements OnChanges {
 
   @Input() data: VentanillasUnicasInterface[];
   @ViewChildren('texto', { read: ElementRef }) listaTexto: QueryList<ElementRef>;
@@ -30,10 +30,6 @@ export class BuscadorCardVentanillaComponent implements OnInit, OnChanges {
   constructor(
     public validarUrlService: ValidarUrlService
   ) { }
-
-  ngOnInit(): void {
-
-  }
 
   ngDoCheck() {
 

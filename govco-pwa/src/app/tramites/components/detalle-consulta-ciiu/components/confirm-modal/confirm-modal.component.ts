@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { dialogModal } from '../../../../models/dialogModal';
 
@@ -8,7 +8,7 @@ import { dialogModal } from '../../../../models/dialogModal';
   styleUrls: ['./confirm-modal.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class ConfirmModalComponent implements OnInit {
+export class ConfirmModalComponent {
 
   public options: dialogModal[];
   public text: string;
@@ -16,16 +16,13 @@ export class ConfirmModalComponent implements OnInit {
   public classes: any;
   public showDismiss: boolean;
   public isMaintenance: boolean;
-  constructor(public activeModal: NgbActiveModal) { 
+  constructor(public activeModal: NgbActiveModal) {
     this.classes = {
       content: 'modal-content-',
       title: ' modal-content-title content-govco ',
       iconModal: 'govco-icon ',
       btn: 'btn btn-round btn-modal '
     }
-  }
-
-  ngOnInit(): void {
   }
 
   public setDialogInfo(title: string, text: string, type: string, showDismiss: boolean, options?: dialogModal[]) {

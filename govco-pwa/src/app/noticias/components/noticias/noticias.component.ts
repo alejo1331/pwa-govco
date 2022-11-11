@@ -10,10 +10,6 @@ import { BottomMenuService } from 'src/app/transversales/services/bottom-menu/bo
 export class NoticiasComponent implements OnInit {
   bottomService: BottomMenuService;
 
-  constructor(
-
-  ) { }
-
   ngOnInit(): void {
     this.bottomService.ajustandoPantalla(false);
   }

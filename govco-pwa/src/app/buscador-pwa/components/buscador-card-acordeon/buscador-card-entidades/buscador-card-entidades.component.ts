@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { EntidadesInterface } from 'src/app/buscador-pwa/models/entidades-interface';
 import { urlsLocal } from 'src/variables-globales/urlsLocal';
 import { ValidarUrlService } from 'src/app/buscador-pwa/services/validar-url.service';
@@ -8,7 +8,7 @@ import { ValidarUrlService } from 'src/app/buscador-pwa/services/validar-url.ser
   templateUrl: './buscador-card-entidades.component.html',
   styleUrls: ['./buscador-card-entidades.component.scss'],
 })
-export class BuscadorCardEntidadesComponent implements OnInit, OnChanges {
+export class BuscadorCardEntidadesComponent implements OnChanges {
 
   @Input() data: EntidadesInterface[];
 
@@ -24,9 +24,6 @@ export class BuscadorCardEntidadesComponent implements OnInit, OnChanges {
   constructor(
     public validarUrlService: ValidarUrlService
   ) {}
-
-  ngOnInit(): void {
-  }
 
   ngDoCheck() {
 

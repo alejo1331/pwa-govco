@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NavigationStart, Event, Router } from '@angular/router';
 import { AppService } from 'src/app/app.service';
 import { HeaderService } from '../../services/header-service/header.service';
@@ -12,7 +12,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './bottom-menu.component.html',
   styleUrls: ['./bottom-menu.component.css']
 })
-export class BottomMenuComponent implements OnInit, AfterViewInit, OnDestroy {
+export class BottomMenuComponent implements OnInit, OnDestroy {
 
   contadorClic: number;
   currentRoute: string;
@@ -53,8 +53,6 @@ export class BottomMenuComponent implements OnInit, AfterViewInit, OnDestroy {
 
   }
 
-  ngAfterViewInit() {
-  }
 
   clickBottomMenu(url: string) {
     if ((document.getElementById('topScroll') as HTMLElement).scrollTop != 0 && window.location.pathname != '/ficha-tramites-y-servicios')

@@ -22,8 +22,6 @@ export class CarruselUnoComponent implements OnInit, OnChanges {
   estado: boolean = false;
   c: number = 0
 
-  constructor() { }
-
   ngOnChanges(): void {
     if (this.dataCarrusel != undefined) {
       if (this.dataCarruselUno?.dataTitulo != undefined) {

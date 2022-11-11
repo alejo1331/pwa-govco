@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, HostListener } from '@angular/core';
+import { Component, Inject, HostListener } from '@angular/core';
 import {DOCUMENT} from '@angular/common';
 
 @Component({
@@ -6,7 +6,7 @@ import {DOCUMENT} from '@angular/common';
   templateUrl: './scroll-to-top.component.html',
   styleUrls: ['./scroll-to-top.component.scss']
 })
-export class ScrollToTopComponent implements OnInit {
+export class ScrollToTopComponent {
 
   windowScrolled: boolean;
   constructor(@Inject(DOCUMENT) private document: Document) {}
@@ -27,8 +27,6 @@ export class ScrollToTopComponent implements OnInit {
         window.scrollTo(0, currentScroll - (currentScroll / 8));
       }
     })();
-  }
-  ngOnInit() {
   }
 
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalAgradecimientoComponent } from './../modal-agradecimiento/modal-agradecimiento.component';
 
@@ -7,14 +7,13 @@ import { ModalAgradecimientoComponent } from './../modal-agradecimiento/modal-ag
   templateUrl: './service-area-content.component.html',
   styleUrls: ['./service-area-content.component.scss'],
 })
-export class ServiceAreaContentComponent implements OnInit {
+export class ServiceAreaContentComponent {
   selectedY: boolean = false;
   selectedN: boolean = false;
   textLarge = '';
 
   constructor(private dialog: MatDialog) {}
 
-  ngOnInit(): void {}
 
   selectedOption(value: string) {
     if (

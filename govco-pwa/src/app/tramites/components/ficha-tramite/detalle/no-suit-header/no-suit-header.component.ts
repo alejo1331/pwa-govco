@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { UtilsService } from '../../../../services/utils.service';
 import { ValidateUrlService } from '../../../../services/validate-url.service';
 
@@ -7,7 +7,7 @@ import { ValidateUrlService } from '../../../../services/validate-url.service';
   templateUrl: './no-suit-header.component.html',
   styleUrls: ['./no-suit-header.component.scss']
 })
-export class NoSuitHeaderComponent implements OnInit {
+export class NoSuitHeaderComponent {
 
   @Input() data: any;
   @Input() informacionFicha: any;
@@ -17,8 +17,6 @@ export class NoSuitHeaderComponent implements OnInit {
     private utilsService: UtilsService
   ) { }
 
-  ngOnInit () {
-  }
 
   validateUrl(url: string, e:any) {
     e.preventDefault();

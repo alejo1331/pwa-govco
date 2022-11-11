@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { PipeTransform } from '@angular/core';
 
 @Component({
@@ -6,7 +6,7 @@ import { PipeTransform } from '@angular/core';
   templateUrl: './buscador-sencillo-v1.component.html',
   styleUrls: ['./buscador-sencillo-v1.component.scss']
 })
-export class BuscadorSencilloV1Component implements OnInit, PipeTransform {
+export class BuscadorSencilloV1Component implements PipeTransform {
 
   @ViewChild('inputBuscador') inputBuscador: ElementRef;
 
@@ -46,18 +46,8 @@ export class BuscadorSencilloV1Component implements OnInit, PipeTransform {
     ]
 
 
-  constructor() { }
-
-  ngOnInit(): void {
-
-  }
-
   borrarContenido() {
     this.inputBuscador.nativeElement.value = ''
-  }
-
-  buscarContenido() {
-
   }
 
   transform(items: { active: boolean, titulo: string, departamento: string }[], searchText: string): { active: boolean, titulo: string, departamento: string }[]{

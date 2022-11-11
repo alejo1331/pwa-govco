@@ -35,7 +35,7 @@ export class BibliotecaComponent implements OnInit {
     protected servicioSideNav: SidenavService,
     protected servicioHeader: HeaderService,
     public bottomService: BottomMenuService
-  ) { 
+  ) {
     this.bottomService.putOcultandoBottomMenu(false);
   }
 
@@ -180,7 +180,5 @@ export class BibliotecaComponent implements OnInit {
 class ModalTitulo {
   nombre: string;
   descripcion: string;
-  constructor() {
-  }
 }
 

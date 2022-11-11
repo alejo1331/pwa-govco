@@ -57,6 +57,4 @@ setSugerenrciasBuscador(sugerencias : any){
   this.sugerenciasBuscador$.next(sugerencias)
 }
 
-constructor() { }
-
 }

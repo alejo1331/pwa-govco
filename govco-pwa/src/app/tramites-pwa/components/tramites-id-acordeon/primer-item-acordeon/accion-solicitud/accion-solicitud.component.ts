@@ -1,4 +1,4 @@
-import { Component, Input, OnInit} from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ValidateUrlService } from 'src/app/tramites-pwa/services/validate-url.service';
 import { TramitesPorIdService } from 'src/app/tramites-pwa/services/tramites-por-id-service/tramites-por-id.service';
 import { AccionSolicitud } from 'src/app/tramites-pwa/models/acordeon/acordeon-interface';
@@ -9,7 +9,7 @@ import { DataBasicaPuntosInterface } from 'src/app/tramites-pwa/models/puntos-de
   templateUrl: './accion-solicitud.component.html',
   styleUrls: ['./accion-solicitud.component.scss']
 })
-export class AccionSolicitudComponent implements OnInit {
+export class AccionSolicitudComponent {
 
   @Input() data: AccionSolicitud[];
 
@@ -19,9 +19,6 @@ export class AccionSolicitudComponent implements OnInit {
     public validateUrlService: ValidateUrlService,
     protected TramitesPorIdservice: TramitesPorIdService
   ) { }
-
-  ngOnInit(): void {
-  }
 
   abrirPuntosAtencionClic(idMomento:number, idAccion:number) {
     this.dataPuntosAtencion = {

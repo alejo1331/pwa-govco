@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { LoadingService } from '../../services/loading.service';
 
@@ -7,7 +7,7 @@ import { LoadingService } from '../../services/loading.service';
   templateUrl: './loading.component.html',
   styleUrls: ['./loading.component.scss']
 })
-export class LoadingComponent implements OnInit {
+export class LoadingComponent {
 
   loading: boolean;
   loadingSubscription: Subscription;
@@ -16,12 +16,11 @@ export class LoadingComponent implements OnInit {
     this.loading = false;
   }
 
-  ngOnInit() {}
 
-  ngAfterViewInit() {     
+  ngAfterViewInit() {
     this.loadingService.receivedFilter.subscribe((param: boolean) => {
       this.loading = param;
-    });       
+    });
   }
 
   ngOnDestroy(): void {

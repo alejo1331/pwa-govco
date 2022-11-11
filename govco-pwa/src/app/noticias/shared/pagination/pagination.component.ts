@@ -17,8 +17,6 @@ export class PaginationComponent implements OnInit, OnChanges {
   @Output() next: EventEmitter<number> = new EventEmitter();
   esResponsive = esResponsive;
 
-  constructor() { }
-
   ngOnInit() {
     let a ="";
   }

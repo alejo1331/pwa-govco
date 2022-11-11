@@ -10,8 +10,6 @@ export class CarruselDosComponent {
 
   @Input() carruselItems: CarruselItem[];
 
-  constructor() { }
-
   ngAfterViewInit():void {
     $('#carruselDosTemasInteres .carousel-item').each(function() {
       let next = $(this).next();
@@ -19,7 +17,7 @@ export class CarruselDosComponent {
         next = $(this).siblings(':first');
       }
       next.children(':first-child').clone().appendTo($(this));
-      
+
       if (next.next().length>0) {
         next.next().children(':first-child').clone().appendTo($(this));
       } else {
