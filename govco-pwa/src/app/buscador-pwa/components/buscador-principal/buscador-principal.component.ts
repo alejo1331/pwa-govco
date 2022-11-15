@@ -24,6 +24,8 @@ export class BuscadorPrincipalComponent implements OnInit {
   dataResultado: any;
   seccion: String = '';
   cantidadResultados: number;
+  departamento: { codigoDepartamento: number };
+  municipio: { codigoMunicipio: number };
 
   constructor(
     protected filtrosService: FiltrosService,
@@ -53,10 +55,17 @@ export class BuscadorPrincipalComponent implements OnInit {
     //                                                 la pantalla cuando en la seccion
     //                                                 consultada no tiene header
 
+    this.servicioHeader.estadoHeader(false, true);
+    this.bottomService.seleccionandoItem(0);
+    this.bottomService.ajustandoPantalla(false);
+    this.servicioSideNav.seleccionandoItem(false, 'null');
+    (document.getElementById('topScroll') as HTMLElement).style.top = '7.25rem';
+    (document.getElementById('topScroll') as HTMLElement).scrollTop = 0;
+
     this.buscadorService.getBuscadorParams$.subscribe(
       (parametros: BuscadorParams) => {
         this.seccion = parametros.txtConsumoApi;
-        this.filtrosService.Filters = {
+        this.filtrosService.setFilters = {
           filters: null,
           pageNumber: 1,
           pageSize: 10,
@@ -67,13 +76,6 @@ export class BuscadorPrincipalComponent implements OnInit {
         };
       }
     );
-
-    this.servicioHeader.estadoHeader(false, true);
-    this.bottomService.seleccionandoItem(0);
-    this.bottomService.ajustandoPantalla(false);
-    this.servicioSideNav.seleccionandoItem(false, 'null');
-    (document.getElementById('topScroll') as HTMLElement).style.top = '7.25rem';
-    (document.getElementById('topScroll') as HTMLElement).scrollTop = 0;
 
     this.filterSubscription = this.filtrosService.Filters$.subscribe(
       async (filters) => {

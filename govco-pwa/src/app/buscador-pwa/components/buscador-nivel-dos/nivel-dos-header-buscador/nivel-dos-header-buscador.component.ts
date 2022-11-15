@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { BuscadorParams, BuscadorService } from 'src/app/buscador-pwa/services/buscador.service';
 import { Parametros } from 'src/app/buscador-pwa/services/global';
 import { ItemsBuscador } from 'src/variables-globales/items-buscador';
+import { urlsLocal } from 'src/variables-globales/urlsLocal';
 import { SugerenciasService } from '../../../services/sugerencias.service'
 
 @Component({
@@ -13,44 +14,44 @@ import { SugerenciasService } from '../../../services/sugerencias.service'
 export class NivelDosHeaderBuscadorComponent implements OnInit {
   numeroSugerencias: number = Parametros.numeroSugerencias;
   maxlength: number = Parametros.maxLength;
-  minCaracterTexto: number =  Parametros.minCaracterTexto;
+  minCaracterTexto: number = Parametros.minCaracterTexto;
   maxLargoSugerencia: number = Parametros.maxLargoSugerencia;
   numeroSugerenciasDevueltas: number = 0;
-  datosAutocompletar : any = [];
+  datosAutocompletar: any = [];
   txtConsumoApi = '';
   txtInputBuscador = '';
   index = 0;
 
 
   constructor(
-    private sugerenciasService : SugerenciasService,
-    private buscadorService : BuscadorService,
-    private router : Router
+    private sugerenciasService: SugerenciasService,
+    private buscadorService: BuscadorService,
+    private router: Router
   ) { }
 
   ngOnInit() {
 
-    let input : any = document.getElementById("buscador-pwa");
+    let input: any = document.getElementById("buscador-pwa");
 
     this.buscadorService.getBuscadorParams$.subscribe(
-      (parametros : BuscadorParams) => {
+      (parametros: BuscadorParams) => {
         this.txtConsumoApi = parametros.txtConsumoApi;
         this.txtInputBuscador = parametros.txtInputBuscador;
         this.index = parametros.index;
         input.value = this.txtInputBuscador
-        if((input.value == parametros.txtInputBuscador) && (input.value != '')){
+        if ((input.value == parametros.txtInputBuscador) && (input.value != '')) {
           this.buscar()
+        }
       }
-    }
     )
 
-    input.addEventListener("keypress", (event:any) => {
+    input.addEventListener("keypress", (event: any) => {
       if (event.key === "Enter" && input.value != '') {
         this.buscar();
-        const nuevoBuscadorParams : BuscadorParams = {
-          index : this.index,
-          txtConsumoApi : this.txtConsumoApi,
-          txtInputBuscador : input.value,
+        const nuevoBuscadorParams: BuscadorParams = {
+          index: this.index,
+          txtConsumoApi: this.txtConsumoApi,
+          txtInputBuscador: input.value,
           aplicaGeoreferenciacion: ItemsBuscador[this.index].aplicaGeoreferenciacion
         }
         this.buscadorService.setBuscadorParams(nuevoBuscadorParams)
@@ -58,33 +59,33 @@ export class NivelDosHeaderBuscadorComponent implements OnInit {
     });
   }
 
-  buscarSugerencias(event : any){
-    if(event.target.value.length < this.minCaracterTexto){
+  buscarSugerencias(event: any) {
+    if (event.target.value.length < this.minCaracterTexto) {
       this.datosAutocompletar = []
       this.buscadorService.setSugerenrciasBuscador(this.datosAutocompletar)
     }
-    else{
+    else {
       this.sugerenciasService.obtenerSugerencias(this.txtConsumoApi,
-      event.target.value,
-      this.numeroSugerencias).subscribe((data) => {
-        this.datosAutocompletar = data.filtros[0].sugerenciasFiltro;
-        let regEx = new RegExp(event.target.value, 'gi');
-        this.datosAutocompletar.forEach((name : any , index : any) => {
-          this.datosAutocompletar[index] = [name, name.replace(regEx, "<strong>$&</strong>")]
-        });
-        this.buscadorService.setSugerenrciasBuscador(this.datosAutocompletar)
-    }, (error) => {
-        console.error(error);
-    })
+        event.target.value,
+        this.numeroSugerencias).subscribe((data) => {
+          this.datosAutocompletar = data.filtros[0].sugerenciasFiltro;
+          let regEx = new RegExp(event.target.value, 'gi');
+          this.datosAutocompletar.forEach((name: any, index: any) => {
+            this.datosAutocompletar[index] = [name, name.replace(regEx, "<strong>$&</strong>")]
+          });
+          this.buscadorService.setSugerenrciasBuscador(this.datosAutocompletar)
+        }, (error) => {
+          console.error(error);
+        })
     }
   }
 
-  buscar(){
+  buscar() {
     this.cerrarBuscadorPWA()
-    this.router.navigateByUrl('/buscar-pwa')
+    this.router.navigateByUrl('/' + urlsLocal.buscador)
   }
 
-  cerrarBuscadorPWA(){
+  cerrarBuscadorPWA() {
     this.buscadorService.setAbrirBuscador(false)
   }
 

@@ -10,7 +10,10 @@ import { HeaderService } from '../../services/header-service/header.service';
 })
 export class GeolocalizacionComponent implements OnInit {
 
+  // ElementRef para el focus
   @ViewChild('contenidoHtml') contenidoHtml: ElementRef;
+  @ViewChild('boton') boton: ElementRef;
+
   @Output() abrir = new EventEmitter<string[]>();
 
   ubicacionMunicipio: string;

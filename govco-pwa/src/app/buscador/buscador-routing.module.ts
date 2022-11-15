@@ -5,7 +5,7 @@ import { BuscadorGeneralComponent } from './components/govco-buscador-general/go
 
 const routes: Routes = [
   {
-    path: 'buscador',
+    path: 'buscador-old',
     children: [
       {
         path: '',
