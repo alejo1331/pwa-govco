@@ -1,5 +1,5 @@
 <section #resultados class="contenido-buscador-pwa">
-    <app-barra-filtros *ngIf="dataResultado.length > 0" [totalResultados]="dataResultado.length"></app-barra-filtros>
+    <app-barra-filtros [totalResultados]="dataResultado.length"></app-barra-filtros>
     <div class="contenido-resultado contenido-pwa-govco">
         <app-buscador-aviso *ngIf="cantidadResultados < 1"></app-buscador-aviso>
         <app-buscador-card-entidades *ngIf="seccion == 'entidad' && dataResultado" [data]="dataResultado">

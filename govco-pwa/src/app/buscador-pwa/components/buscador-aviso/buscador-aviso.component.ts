@@ -27,7 +27,7 @@ export class BuscadorAvisoComponent implements OnInit {
     private appprincipal: AppComponent,
     protected ServicioGeolocalizacion: GeolocalizacionService,
     private buscadorService: BuscadorService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     if (localStorage.getItem('codigoDepartamento')) {
@@ -53,6 +53,11 @@ export class BuscadorAvisoComponent implements OnInit {
         this.resConsumoApi = parametros.txtConsumoApi;
       }
     );
+
+    this.ServicioGeolocalizacion.coordenadas.subscribe((ubicacion: string[]) => {
+      this.getMunicipiosPorDepartamento([ubicacion[0], ubicacion[1]])
+    });
+
   }
 
   abrirGeolocalizacion() {
@@ -62,10 +67,8 @@ export class BuscadorAvisoComponent implements OnInit {
     ]);
   }
 
-  getMunicipiosPorDepartamento([codigoDepartamento, codigoMunicipio]: [
-    string,
-    string
-  ]) {
+
+  getMunicipiosPorDepartamento([codigoDepartamento, codigoMunicipio]: string[]) {
     this.ServicioGeolocalizacion.cacheJsonMunicipiosPorDepartamento(
       codigoDepartamento
     ).then((existe) => {

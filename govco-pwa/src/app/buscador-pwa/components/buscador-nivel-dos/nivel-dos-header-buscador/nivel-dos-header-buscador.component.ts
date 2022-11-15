@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, ElementRef, Input, ViewChild, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BuscadorParams, BuscadorService } from 'src/app/buscador-pwa/services/buscador.service';
 import { Parametros } from 'src/app/buscador-pwa/services/global';
@@ -11,7 +11,10 @@ import { SugerenciasService } from '../../../services/sugerencias.service'
   templateUrl: './nivel-dos-header-buscador.component.html',
   styleUrls: ['./nivel-dos-header-buscador.component.scss']
 })
-export class NivelDosHeaderBuscadorComponent implements OnInit {
+export class NivelDosHeaderBuscadorComponent implements AfterViewInit {
+
+  @Input() activarServicio: boolean;
+  @ViewChild('input') input: ElementRef<HTMLInputElement>;
   numeroSugerencias: number = Parametros.numeroSugerencias;
   maxlength: number = Parametros.maxLength;
   minCaracterTexto: number = Parametros.minCaracterTexto;
@@ -22,17 +25,14 @@ export class NivelDosHeaderBuscadorComponent implements OnInit {
   txtInputBuscador = '';
   index = 0;
 
-
   constructor(
     private sugerenciasService: SugerenciasService,
     private buscadorService: BuscadorService,
     private router: Router
   ) { }
 
-  ngOnInit() {
-
-    let input: any = document.getElementById("buscador-pwa");
-
+  ngAfterViewInit() {
+    var input = this.input.nativeElement
     this.buscadorService.getBuscadorParams$.subscribe(
       (parametros: BuscadorParams) => {
         this.txtConsumoApi = parametros.txtConsumoApi;
@@ -40,23 +40,11 @@ export class NivelDosHeaderBuscadorComponent implements OnInit {
         this.index = parametros.index;
         input.value = this.txtInputBuscador
         if ((input.value == parametros.txtInputBuscador) && (input.value != '')) {
-          this.buscar()
+          this.cerrarBuscadorPWA();
+          this.activarServicio == true ? this.buscar() : null;
         }
       }
     )
-
-    input.addEventListener("keypress", (event: any) => {
-      if (event.key === "Enter" && input.value != '') {
-        this.buscar();
-        const nuevoBuscadorParams: BuscadorParams = {
-          index: this.index,
-          txtConsumoApi: this.txtConsumoApi,
-          txtInputBuscador: input.value,
-          aplicaGeoreferenciacion: ItemsBuscador[this.index].aplicaGeoreferenciacion
-        }
-        this.buscadorService.setBuscadorParams(nuevoBuscadorParams)
-      }
-    });
   }
 
   buscarSugerencias(event: any) {
@@ -80,13 +68,27 @@ export class NivelDosHeaderBuscadorComponent implements OnInit {
     }
   }
 
+  keypressInput(event: KeyboardEvent) {
+    var input = this.input.nativeElement;
+    if (event.key === "Enter" && input.value != '') {
+      this.activarServicio == true ? this.buscar() : null;
+      this.cerrarBuscadorPWA();
+      const nuevoBuscadorParams: BuscadorParams = {
+        index: this.index,
+        txtConsumoApi: this.txtConsumoApi,
+        txtInputBuscador: input.value,
+        aplicaGeoreferenciacion: ItemsBuscador[this.index].aplicaGeoreferenciacion
+      }
+      this.buscadorService.setBuscadorParams(nuevoBuscadorParams)
+    }
+  }
+
   buscar() {
-    this.cerrarBuscadorPWA()
-    this.router.navigateByUrl('/' + urlsLocal.buscador)
+    this.router.navigate(['/' + urlsLocal.buscador]);
   }
 
   cerrarBuscadorPWA() {
-    this.buscadorService.setAbrirBuscador(false)
+    this.buscadorService.setAbrirBuscador(false);
   }
 
 }
