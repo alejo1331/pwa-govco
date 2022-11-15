@@ -20,8 +20,13 @@
             name="{{norma.TipoNorma}} {{norma.NumeroNorma}} de {{norma.AnoNorma}}"
             value="{{norma.UrlDescarga ?  norma.UrlDescarga : norma.UrlNorma}}"
             (change)="toogleSeleccionItem($event)">
-            <span class="govco-pwa-checkbox-list-input-show govco-pwa-checkbox-list-input-show-checkbox"></span>
+            <span class="govco-pwa-checkbox-list-input-show govco-pwa-checkbox-list-input-show-checkbox" tabindex="0"></span>
           </label>
+
+          <!-- <div class="checkbox-seleccion-govco m-2">
+            <input id="opt1" type="checkbox"/>
+            <label for="opt1">Checkbox 1</label>
+          </div> -->
         </td>
         <td style="width: 63%;">
           <div>
