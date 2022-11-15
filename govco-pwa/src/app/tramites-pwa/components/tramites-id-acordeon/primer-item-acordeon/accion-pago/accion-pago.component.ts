@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { AccionPago, DataAccionPago } from 'src/app/tramites-pwa/models/acordeon/acordeon-interface';
+import { AccionPago } from 'src/app/tramites-pwa/models/acordeon/acordeon-interface';
 import { ValidateUrlService } from 'src/app/tramites-pwa/services/validate-url.service';
 
 @Component({
@@ -52,15 +52,23 @@ export class AccionPagoComponent implements OnInit {
 
   verMasPagos(item:any, e:any) {
     if (item['data'].length > 0) {
-        if (item['dataInicial'].length < item['data'].length) {
-          item['dataInicial'] = item['data'].slice(0, item['dataInicial'].length + 5);
-          if (item['dataInicial'].length == item['data'].length) {
-            e.target.textContent = 'Ver menos';
-          }
-        } else {
-          item['dataInicial'] = item['data'].slice(0, 5);
-          e.target.textContent = 'Ver más';
+      if (item['dataInicial'].length < item['data'].length) {
+
+        const element:HTMLElement = <HTMLElement>document.querySelector('[aria-controls="collapsePago' + (item['dataInicial'].length-1) + '"]');
+        element.focus();
+
+        item['dataInicial'] = item['data'].slice(0, item['dataInicial'].length + 5);
+        
+        if (item['dataInicial'].length == item['data'].length) {
+          e.target.textContent = 'Ver menos';
         }
+      } else {
+        item['dataInicial'] = item['data'].slice(0, 5);
+        e.target.textContent = 'Ver más';
+        
+        const element:HTMLElement = <HTMLElement>document.querySelector('[aria-controls="collapsePago0"]');
+        element.focus();
+      }
     }
   }
 }

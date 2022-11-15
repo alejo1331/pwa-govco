@@ -14,14 +14,12 @@
       <p *ngIf="canal.TipoCanal != 'TELEFONICO' && canal.TipoCanal != 'CORREO'">
         {{canal.TipoCanal | titlecase }}:
       </p>
-      <a *ngIf="canal.TipoCanal === 'PRESENCIAL'" (click)="getPuntosAtencion()">
+      <button *ngIf="canal.TipoCanal === 'PRESENCIAL'" (click)="getPuntosAtencion()">
         Ver puntos de atención
-      </a>
+      </button>
       <a href="{{ canal.UrlCanalWeb }}" target="_blank" *ngIf="canal.TipoCanal === 'WEB'">
         {{canal.NombreCanalWeb}}
       </a>
     </div>
-
-
   </div>
 </section>
