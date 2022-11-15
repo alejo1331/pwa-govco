@@ -26,14 +26,11 @@ export class QuintoItemAcordeonComponent implements OnInit {
   }
 
   ngDoCheck() {
-
-    if (this.normatividad.length > 0){
-      if(document.getElementById('legislacionContenido')){
+    if (this.normatividad.length > 0) {
+      if (document.getElementById('legislacionContenido')) {
         $('table tr:nth-child(n+1):nth-child(-n+5)').addClass('actived');
       }
-
     }
-
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -50,22 +47,20 @@ export class QuintoItemAcordeonComponent implements OnInit {
         this.normatividad = n;
         ;
       });
-
   }
 
-  toogleSeleccion(){
+  toogleSeleccion() {
     let estadoSelectorGeneral : any = document.getElementsByName('selectorGeneral')[0];
     let normas : any = document.getElementsByClassName('normas');
 
-    if (estadoSelectorGeneral.checked){
-      for (let i=0; i < normas.length; i++){
+    if (estadoSelectorGeneral.checked) {
+      for (let i=0; i < normas.length; i++) {
         normas[i].checked=true;
         this.toggleBool = false;
       }
       this.selectedAllItems = true;
-    }
-    else{
-      for (let i=0; i < normas.length; i++){
+    } else {
+      for (let i=0; i < normas.length; i++) {
         normas[i].checked=false;
         this.toggleBool = true;
       }
@@ -73,13 +68,15 @@ export class QuintoItemAcordeonComponent implements OnInit {
     }
   }
 
-  descargarSeleccion(){
+  descargarSeleccion() {
 
     let normas : any = document.getElementsByClassName('normas');
     const zip = new JSZip();
     let cuentaNorma = 0;
-    for (let i=0; i < normas.length; i++){
-      if(normas[i].checked==true){
+    this.selectedItemsListUrls = [];
+    this.selectedItemsListNames = [];
+    for (let i=0; i < normas.length; i++) {
+      if (normas[i].checked==true) {
         this.selectedItemsListUrls.push(normas[i].value);
         this.selectedItemsListNames.push(normas[i].name);
       }
@@ -87,32 +84,30 @@ export class QuintoItemAcordeonComponent implements OnInit {
     this.selectedItemsListUrls.forEach((e : any) =>  self.open(e),"_self")
    }
 
-   toogleSeleccionItem(event : any){
+   toogleSeleccionItem(event : any) {
     if (event.target.checked) {
       this.toggleBool = false;
-    }
-    else {
+    } else {
       let normas : any = document.getElementsByClassName('normas');
       let normasCheck = 0
-      for (let i=0; i < normas.length; i++){
-        if (normas[i].checked){
+      for (let i=0; i < normas.length; i++) {
+        if (normas[i].checked) {
           normasCheck =+ 1;
         }
       }
-      if (normasCheck < normas.length){
+      if (normasCheck < normas.length) {
         let estadoSelectorGeneral : any = document.getElementsByName('selectorGeneral')[0];
         estadoSelectorGeneral.checked =false
       }
-      if (normasCheck == 0){
+      if (normasCheck == 0) {
         this.toggleBool = true;
       }
     }
   }
 
-  VerMasLegislacion(){
+  VerMasLegislacion() {
     let legislacionActiva = $('tr#legislacionContenido');
     let ultimoActivo = legislacionActiva.filter('.actived:last').index();
     legislacionActiva.filter(':lt(' + (ultimoActivo + 6) + ')').addClass('actived');
   }
-
 }

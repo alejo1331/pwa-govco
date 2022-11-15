@@ -22,13 +22,12 @@ export class DesplegableUnoComponent implements OnInit {
   touchMoveInicial: number = 0;
   touchMoveFinal: number = 0;
   touchMoveDiferencia: number = 0;
-
   itemSelected: number;
 
+  desplegableVisible: boolean = false;
 
   constructor(
     public platform: Platform,
-
   ) { }
 
   ngOnInit(): void {
@@ -49,7 +48,6 @@ export class DesplegableUnoComponent implements OnInit {
       }
       this.titulo[i] = element.titulo.split(" ").join("<br/>")
     });
-
   }
 
   seleccionarItem(dataItem: number) {
@@ -57,19 +55,25 @@ export class DesplegableUnoComponent implements OnInit {
   }
 
   abrirModal() {
-    this.botonRetroalimentaciona.emit('ocultar');
-    var espaldar = (document.getElementById('espaldarModal') as HTMLElement);
-    espaldar.style.zIndex = '5';
-    espaldar.style.opacity = '1';
-    espaldar.style.backgroundColor = '#00000080'
-    var body = (document.getElementsByTagName('body') as HTMLCollectionOf<HTMLElement>)[0];
-    body.style.overscrollBehavior = 'contain';
-    var contenedor = (document.querySelector('.modal-desplegable-pwa.contenedor') as HTMLElement);
-    contenedor.style.bottom = '0';
-    contenedor.style.transition = '0.6s';
-    if (this.platform.IOS || this.platform.SAFARI) {
-      body.style.position = 'fixed';
-      body.style.overflow = 'hidden';
+    this.desplegableVisible = !this.desplegableVisible;
+
+    if (this.desplegableVisible) {
+      this.botonRetroalimentaciona.emit('ocultar');
+      var espaldar = (document.getElementById('espaldarModal') as HTMLElement);
+      espaldar.style.zIndex = '5';
+      espaldar.style.opacity = '1';
+      espaldar.style.backgroundColor = '#00000080'
+      var body = (document.getElementsByTagName('body') as HTMLCollectionOf<HTMLElement>)[0];
+      body.style.overscrollBehavior = 'contain';
+      var contenedor = (document.querySelector('.modal-desplegable-pwa.contenedor') as HTMLElement);
+      contenedor.style.bottom = '0';
+      contenedor.style.transition = '0.6s';
+      if (this.platform.IOS || this.platform.SAFARI) {
+        body.style.position = 'fixed';
+        body.style.overflow = 'hidden';
+      }
+    } else {
+      this.cerrarModal();
     }
   }
 
@@ -90,6 +94,7 @@ export class DesplegableUnoComponent implements OnInit {
       body.style.removeProperty('position')
       body.style.removeProperty('overflow')
     }
+    this.desplegableVisible = false;
   }
 
   @HostListener('touchstart', ['$event']) onTouchStart(event: any): void {
@@ -111,7 +116,5 @@ export class DesplegableUnoComponent implements OnInit {
         this.abrirModal();
       }
     }
-
   }
-
 }

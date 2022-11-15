@@ -2,10 +2,9 @@
   <table class="govco-pwa-acerca-tabla" id="legislacion">
     <div class="govco-pwa-legislacion-header">
         <th class="checkbox" style="width: 17%; height: 100%;">
-          <label class="govco-pwa-checkbox-header">
-            <input class="govco-pwa-checkbox-header-input" type="checkbox" name="selectorGeneral" (change)="toogleSeleccion()">
-            <span class="govco-pwa-checkbox-header-input-show govco-pwa-checkbox-header-input-show-checkbox"></span>
-          </label>
+          <div class="checkbox-seleccion-govco-pwa select-all">
+            <input type="checkbox" name="selectorGeneral" (change)="toogleSeleccion()" aria-label="seleccionar todos los documentos"/>
+          </div>
         </th>
         <th style="width: 63%;">Documento</th>
         <th style="width: 20%;">Acción</th>
@@ -14,19 +13,13 @@
     <tbody>
       <tr id='legislacionContenido' class="govco-pwa-elemento-container" *ngFor="let norma of normatividad">
         <td style="width: 17%; height: 100%; display: flex;">
-          <label class="govco-pwa-checkbox-list">
-            <input class="normas govco-pwa-checkbox-list-input"
-            type="checkbox"
+          <div class="checkbox-seleccion-govco-pwa">
+            <input type="checkbox" class="normas"
             name="{{norma.TipoNorma}} {{norma.NumeroNorma}} de {{norma.AnoNorma}}"
             value="{{norma.UrlDescarga ?  norma.UrlDescarga : norma.UrlNorma}}"
-            (change)="toogleSeleccionItem($event)">
-            <span class="govco-pwa-checkbox-list-input-show govco-pwa-checkbox-list-input-show-checkbox" tabindex="0"></span>
-          </label>
-
-          <!-- <div class="checkbox-seleccion-govco m-2">
-            <input id="opt1" type="checkbox"/>
-            <label for="opt1">Checkbox 1</label>
-          </div> -->
+            (change)="toogleSeleccionItem($event)"
+            aria-label="seleccionar el documento"/>
+          </div>
         </td>
         <td style="width: 63%;">
           <div>
