@@ -16,7 +16,6 @@ export class AccionVerificacionComponent implements OnInit {
   }
 
   private validarEstadoExcepcion() {
-  console.log('data', this.data)
     if (typeof(this.data.length) !== 'undefined') {
       this.dataAccion = this.data;
     } else {

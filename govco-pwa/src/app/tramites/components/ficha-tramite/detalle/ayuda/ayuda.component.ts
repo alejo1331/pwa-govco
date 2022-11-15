@@ -26,9 +26,7 @@ export class AyudaComponent implements OnInit {
     this.fichaTramiteService.GetDataContactoDudas(tramiteid)
     .subscribe(
       (data) => { // Success
-      // console.log('TRAMITE', tramiteid);
         this.canalesSeguimiento = data;
-        // console.log('sidsjd', this.canalesSeguimiento)
       },
       (error) => {
         console.error(error);
