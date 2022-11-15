@@ -1,16 +1,17 @@
-.govco-pwa-acerca-tabla{
+.govco-pwa-acerca-tabla {
   width: 100%;
+
   .govco-pwa-titulo-tabla {
     background: #E6EFFD 0% 0% no-repeat padding-box;
-      text-align: left;
-      font-family: "WorkSans-Medium";
-      letter-spacing: 0px;
-      opacity: 1;
-      padding: 14px;
-      border-radius: 5px;
+    text-align: left;
+    font-family: "WorkSans-Medium";
+    letter-spacing: 0px;
+    opacity: 1;
+    padding: 14px;
+    border-radius: 5px;
   }
 
-  .govco-pwa-elemento-container{
+  .govco-pwa-elemento-container {
     border: 2px solid #E8EFFC;
     border-radius: 5px;
     display: flex;
@@ -18,10 +19,11 @@
     margin: 8px 0px 8px 0px;
   }
 
-  .govco-pwa-seguimiento-icono{
+  .govco-pwa-seguimiento-icono {
     padding: 16px;
     display: flex;
-    .govco-pwa-seguimiento-icono-background{
+
+    .govco-pwa-seguimiento-icono-background {
       height: 24px;
       width: 24px;
       background-color: #004884;
@@ -29,23 +31,29 @@
     }
   }
 
-  .govco-pwa-seguimiento-info{
+  .govco-pwa-seguimiento-info {
     display: flex;
     flex-direction: column;
     width: 100%;
     font-family: 'WorkSans-Medium';
     align-self: center;
     margin: 8px 0px 8px 0px;
-    p{
+
+    p {
       margin-bottom: 0 !important;
       min-height: 16px;
       overflow-wrap: anywhere;
     }
-    a{
+
+    a, button {
       color: #3366CC;
       text-decoration: underline;
       min-height: 16px;
       overflow-wrap: anywhere;
+      text-align: left;
+      background-color: transparent;
+      border: 0;
+      padding: 0;
     }
   }
 
@@ -62,7 +70,4 @@
     'GRAD' 0,
     'opsz' 48;
   }
-
 }
-
-

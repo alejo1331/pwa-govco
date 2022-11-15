@@ -17,9 +17,9 @@
                 <app-boton *ngIf="item.TipoCanal === 'PRESENCIAL'" [inverted]="true"  [border]="true" (click)="abrirPuntosAtencionClic(tipoAccion.Orden, tipoAccion.AccionCondicionId)">
                     Ver los puntos de atención
                 </app-boton>
-                <a *ngIf="item.TipoCanal === 'WEB'" (click)="validateUrlService.validateUrl(item.UrlCanalWeb)" target="_blank">
+                <button class="enlace" *ngIf="item.TipoCanal === 'WEB'" (click)="validateUrlService.validateUrl(item.UrlCanalWeb)">
                     {{item.NombreCanalWeb}}
-                </a>
+                </button>
                 <div class="tel" *ngIf="item.TipoCanal === 'TELEFONICO'">
                     <span>
                         {{item.TipoTelefono}}:

@@ -1,14 +1,12 @@
 <section>
   <table class="govco-pwa-acerca-tabla">
     <thead>
-
       <tr>
         <th scope="col" class="govco-pwa-titulo-tabla">Medio</th>
       </tr>
     </thead>
 
     <tbody>
-
       <tr class="govco-pwa-elemento-container" *ngFor="let canal of canalesMedios">
         <div class="govco-pwa-seguimiento-icono">
           <div class="govco-pwa-seguimiento-icono-background">
@@ -33,9 +31,9 @@
 
         <div class="govco-pwa-seguimiento-info" *ngIf="canal.TipoCanal == 'Aprenda con tutoriales'">
           <p>{{canal.Indice}}:</p>
-           <a (click)="aprenderConTutoriales()">
+           <button (click)="aprenderConTutoriales()">
             {{canal.Correo}}
-          </a>
+          </button>
         </div>
 
         <div class="govco-pwa-seguimiento-info" *ngIf="canal.TipoCanal == 'TELEFONICO'">
@@ -43,11 +41,7 @@
           <p>Fijo: <a [href]="'tel: ' + canal.NumeroTelefono">{{canal.NumeroTelefono}} {{canal.ExtensionTelFijo}}</a></p>
           <p>Horario de Atención: {{canal.HorarioAtencionTelef}}</p>
         </div>
-
       </tr>
-
     </tbody>
-
   </table>
-
 </section>
