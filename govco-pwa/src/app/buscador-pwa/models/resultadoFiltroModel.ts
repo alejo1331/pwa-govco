@@ -27,5 +27,7 @@ export interface DataFiltros {
     tipoEntidad: [],
     nombreEstandarizado: [],
     anioPublicacionFiltro: [],
-    mesPublicacionFiltro: []
+    mesPublicacionFiltro: [],
+    departamento: { codigoDepartamento: number }
+    municipio : { codigoMunicipio: number }
 }

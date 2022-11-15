@@ -9,17 +9,33 @@ export interface FiltroBusqueda {
 }
 
 export interface filter {
-    sector?: string;
     categorias?: name;
     subcategorias?: name;
     entidadNombre?: string;
+    sector?: string;
+    fechaPublicacionFiltro?: string;
+    fechaCierreFiltro?: string;
     nombreEstandarizado?: string;
     tipoEntidad?: string;
     anioPublicacion?: string;
     mesPublicacion?: string;
     estado?: string;
+    departamento: { codigoDepartamento: number } | null;
+    municipio: { codigoMunicipio: number } | null;
+}
+
+export interface filterMordal {
+    categorias?: name;
+    subcategorias?: name;
+    entidadNombre?: string;
+    sector?: string;
     fechaPublicacionFiltro?: string;
     fechaCierreFiltro?: string;
+    nombreEstandarizado?: string;
+    tipoEntidad?: string;
+    anioPublicacion?: string;
+    mesPublicacion?: string;
+    estado?: string;
 }
 
 export interface name {
