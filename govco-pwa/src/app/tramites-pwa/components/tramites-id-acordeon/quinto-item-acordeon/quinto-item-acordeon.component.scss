@@ -1,4 +1,4 @@
-.govco-pwa-acerca-tabla{
+.govco-pwa-acerca-tabla {
   width: 100%;
   font-family: 'WorkSans-Regular';
 
@@ -11,23 +11,27 @@
     border-radius: 5px;
   }
 
-  .govco-pwa-legislacion-header{
+  .govco-pwa-legislacion-header {
     height: 44px;
     background-color: #004884;
     border-radius: 5px;
     color: white;
     display: flex;
     align-items: center;
-    .checkbox{
+
+    .checkbox {
       margin: 0;
+
       .checkbox-govco {
         margin-bottom: 0;
+
         .label-checkbox {
           &:before {
             border: 3px solid #3366cc;
             margin-top: 1px;
           }
-          .govco-icon{
+
+          .govco-icon {
             color: #004884;
           }
         }
@@ -48,7 +52,7 @@
     display: flex;
   }
 
-  .govco-pwa-elemento-container{
+  .govco-pwa-elemento-container {
     border: 2px solid #E8EFFC;
     border-radius: 5px;
     display: flex;
@@ -57,57 +61,17 @@
     align-items: center;
   }
 
-  .govco-pwa-seguimiento-icono{
+  .govco-pwa-seguimiento-icono {
     padding: 16px;
     display: flex;
     justify-content: flex-end;
-    .govco-pwa-seguimiento-icono-background{
+
+    .govco-pwa-seguimiento-icono-background {
       height: 24px;
       width: 24px;
       background-color: #3366CC;
       border-radius: 50%;
     }
-  }
-
-  .govco-pwa-checkbox-header,
-  .govco-pwa-checkbox-list {
-    display: inline-flex;
-    align-items: center;
-    cursor: pointer;
-    font-family: arial;
-    height: 100%;
-    width: 100%;
-    justify-content: center;
-}
-
-  .govco-pwa-checkbox-header-input-show-checkbox {
-      background-image: url('../../../../../assets/images/tramites-servicios/checkbox/CheckBox-Invertido.png');
-  }
-
-  .govco-pwa-checkbox-header > .govco-pwa-checkbox-header-input:checked + .govco-pwa-checkbox-header-input-show-checkbox {
-      background-image: url('../../../../../assets/images/tramites-servicios/checkbox/CheckBox-Invertido-Activo.png');
-  }
-
-  .govco-pwa-checkbox-list-input-show-checkbox {
-    background-image: url('../../../../../assets/images/tramites-servicios/checkbox/CheckBox.png');
-  }
-
-  .govco-pwa-checkbox-list > .govco-pwa-checkbox-list-input:checked + .govco-pwa-checkbox-list-input-show-checkbox {
-    background-image: url('../../../../../assets/images/tramites-servicios/checkbox/CheckBox-Activo.png');
-}
-
-  .govco-pwa-checkbox-list > .govco-pwa-checkbox-list-input,
-  .govco-pwa-checkbox-header > .govco-pwa-checkbox-header-input {
-      display: none;
-  }
-
-  .govco-pwa-checkbox-list > .govco-pwa-checkbox-list-input-show,
-  .govco-pwa-checkbox-header > .govco-pwa-checkbox-header-input-show {
-      display: inline-block;
-      width: 20px;
-      height: 20px;
-      margin-right: .5rem;
-      background-size: cover;
   }
 
   table tr {
@@ -117,19 +81,21 @@
     display: table-row;
   }
 
-  .govco-pwa-seguimiento-info{
+  .govco-pwa-seguimiento-info {
     display: flex;
     flex-direction: column;
     width: 100%;
     font-family: 'WorkSans-Medium';
     align-self: center;
     margin: 8px 0px 8px 0px;
-    p{
+
+    p {
       margin-bottom: 0 !important;
       min-height: 16px;
       overflow-wrap: anywhere;
     }
-    a{
+
+    a {
       color: #3366CC;
       text-decoration: underline;
       min-height: 16px;
@@ -155,7 +121,8 @@
 
 .govco-pwa-legislacion-body-button {
   margin-top: 1em;
-  .govco-pwa-seguimiento-icono-background{
+
+  .govco-pwa-seguimiento-icono-background {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -164,17 +131,19 @@
     background-color: #3366cc;
     border-radius: 50%;
     margin-right: 10px;
-      span{
-        color: white;
-        font-size: 12px;
-      }
+
+    span{
+      color: white;
+      font-size: 12px;
+    }
   }
-  .govco-pwa-boton-seleccion{
+
+  .govco-pwa-boton-seleccion {
     display: flex;
     justify-content: center;
     align-items: center;
-
   }
+
   button {
     color: #3366cc;
     font-family: 'WorkSans-Medium';
@@ -187,33 +156,38 @@
     width: 100%;
     cursor: pointer;
   }
-  .disabled {
-    .govco-pwa-boton-seleccion{
+
+  .disabled {    
+    border: 2px solid #737373;
+    color: rgba($color: #4b4b4b, $alpha: 0.5);
+    background: transparent;
+    pointer-events: none;
+
+    .govco-pwa-boton-seleccion {
       display: flex;
       justify-content: center;
       align-items: center;
       color: #737373;
     }
-    .govco-pwa-seguimiento-icono-background{
+
+    .govco-pwa-seguimiento-icono-background {
       height: 20px;
       width: 20px;
       background-color: #737373;
       border-radius: 50%;
       margin-right: 10px;
-      span{
+
+      span {
         color: white;
         font-size: 12px;
       }
     }
-    border: 2px solid #737373;
-    color: rgba($color: #4b4b4b, $alpha: 0.5);
-    background: transparent;
-    pointer-events: none;
   }
 }
 
-.govco-pwa-ver-mas-button{
+.govco-pwa-ver-mas-button {
   margin-top: 1em;
+
   button {
     color: white;
     font-family: 'WorkSans-Medium';
@@ -236,84 +210,98 @@
 
 
 
-.checkbox-seleccion-govco {
+.checkbox-seleccion-govco-pwa {
   display: block;
   cursor: pointer;
-}
- 
-.checkbox-seleccion-govco label {
- font-size: 16px;
- color: #4b4b4b;
- font-family: WorkSans-Regular;
-}
 
-.checkbox-seleccion-govco input[type="checkbox"] + label {
-  color: #4B4B4B;
-  font-size: 16px;
-  cursor: pointer;
-}
+  label {
+    font-size: 16px;
+    color: #4b4b4b;
+    font-family: 'WorkSans-Regular';
+  }
 
-.checkbox-seleccion-govco input[type="checkbox"] {
-  -webkit-appearance: none;
-  appearance: none;
-  background-color: #fff;
-  margin: 0;
-  font: inherit;
-  color: #3366CC;
-  width: 1.25rem;
-  height: 1.25rem;
-  border: 0.188rem solid #3366cc;
-  transform: translateY(-0.075em);
-  border-radius: 0.25rem;
-  display: inline-grid;
-  place-content: center;
-  float: left;
-  margin-right: 0.5em;
-  margin-top: 0.25em;
-  position: relative!important;
-  opacity: 1!important;
-  cursor: pointer;
-}
+  input[type="checkbox"] {
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #fff;
+    font: inherit;
+    color: #3366CC;
+    width: 20px;
+    height: 20px;
+    border: 3px solid #3366CC;
+    transform: translateY(-0.075em);
+    border-radius: 0.25rem;
+    display: inline-grid;
+    place-content: center;
+    float: left;
+    margin: 0;
+    position: relative!important;
+    opacity: 1!important;
+    cursor: pointer;
+    margin-left: 12px;
 
-.checkbox-seleccion-govco input[type="checkbox"]:checked::after {
-  content: "";
-  margin: 0;
-  padding: 0;
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0.188rem;
-  width: 0.438rem;
-  height: 0.813rem;
-  border: solid #ffffff;
-  border-width: 0 0.188rem 0.188rem 0;
-  transform: rotate(45deg);
-  border-radius: 0.125rem;
-}
+    & + label {
+      color: #4B4B4B;
+      font-size: 16px;
+      cursor: pointer;
+    }
 
-.checkbox-seleccion-govco input[type="checkbox"]:not(:checked), 
-.checkbox-seleccion-govco input[type="checkbox"]:checked {
-  pointer-events: auto!important;
-}
+    &:checked::after {
+      content: "";
+      margin: 0;
+      padding: 0;
+      display: block;
+      position: absolute;
+      top: -1px;
+      left: 0.188rem;
+      width: 8px;
+      height: 13px;
+      border: solid #ffffff;
+      border-width: 0px 3px 3px 0;
+      transform: rotate(45deg);
+      border-radius: 0.125rem;
+    }
 
-.checkbox-seleccion-govco input[type="checkbox"]:checked {
-  background-color: #3366CC;
-}
+    &:not(:checked), 
+    &:checked {
+      pointer-events: auto!important;
+    }
 
-.checkbox-seleccion-govco input[type="checkbox"]:focus-visible {
-  outline: max(0.125rem, 0.15em) solid #000000;
-  outline-offset: max(0.125rem, 0.15em);
-}
+    &:checked {
+      background-color: #004884;
+      border-color: #004884;
+    }
 
-.checkbox-seleccion-govco input[type="checkbox"]:disabled {
-  border: 0.188rem solid #737373;
-}
+    &:focus-visible {
+      outline: max(0.125rem, 0.15em) solid #000000;
+      outline-offset: max(0.125rem, 0.15em);
+    }
 
-.checkbox-seleccion-govco input[type="checkbox"]:checked:disabled {
-  background-color: #737373;
-}
+    &:disabled {
+      border: 0.188rem solid #737373;
+    }
 
-.checkbox-seleccion-govco input[type="checkbox"]:disabled + label {
-  color: #737373;
-}
+    &:checked:disabled {
+      background-color: #737373;
+    }
 
+    &:disabled + label {
+      color: #737373;
+    }
+  }
+
+  &.select-all input[type="checkbox"] {
+    background-color: #004884;
+    border-color: #FFFFFF;
+    margin-top: 10px;
+
+    &:checked {
+      background-color: #FFFFFF;
+      border-color: #FFFFFF;
+    }
+    
+    &:checked::after {
+      border-color: #004884;
+    }
+  }
+}

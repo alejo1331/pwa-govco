@@ -2,7 +2,7 @@
 <div class="modal-desplegable-pwa contenedor">
     <div class="modal-contenido">
         <div class="header-modal">
-            <button id="modalDesplegable" (click)="abrirModal()" class="button" data-dismiss="modal">
+            <button id="modalDesplegable" (click)="abrirModal()" class="button" data-dismiss="modal" tabindex="1">
                 <hr class="hr">
                 Selecciona tu perfil
             </button>
@@ -12,21 +12,22 @@
                 completo para ti.</p>
             <div class="govco-servicios-content">
                 <div *ngFor="let itemPerfil of estructura; let i = index">
-                    <div class="govco-candybox-element" [class.govco-active]="itemSelected == i" [class.off]="estado[i]"
-                        (click)="seleccionarItem(i)">
+                    <button class="govco-candybox-element" [class.govco-active]="itemSelected == i" [class.off]="estado[i]"
+                        (click)="seleccionarItem(i)" tabindex="1" [disabled]="!desplegableVisible">
                         <div class="govco-candybox-icon" [class.off]="estado[i]">
                             <span>
                                 <img src="{{estructura[i].icono}}" alt="Ingresar Ciudadano">
                             </span>
                         </div>
                         <p [innerHTML]="titulo[i]" [class.off]="estado[i]"></p>
-                    </div>
+                    </button>
                 </div>
             </div>
         </div>
         <div class="footer-modal">
-            <app-boton (click)="cerrarModal()">Continuar</app-boton>
+            <button type="button" class="btn-pwa-govco" (click)="cerrarModal()" tabindex="1" [disabled]="!desplegableVisible">
+                Continuar
+            </button>
         </div>
     </div>
-
 </div>

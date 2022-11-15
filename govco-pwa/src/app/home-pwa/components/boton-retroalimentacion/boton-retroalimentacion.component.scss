@@ -1,7 +1,8 @@
-.button-container{
+.button-container {
     position: fixed;
     margin-left: calc(100% - 4rem);
     z-index: 7;
+
     .mat-fab {
         box-sizing: border-box;
         position: relative;
@@ -27,7 +28,8 @@
         padding: 0;
         flex-shrink: 0;
         background-color: #004884;
-        .material-symbols-outlined{
+
+        .material-symbols-outlined {
             color: #fff;
             font-variation-settings:
                 'FILL' 1,
@@ -35,13 +37,17 @@
                 'GRAD' 0,
                 'opsz' 20
         }
+
+        &:focus-visible {
+            outline: 2px solid #000;
+        }
     }
-}
 
-.button-container:not(.position){
-    bottom: 1rem;
-}
+    &:not(.position) {
+        bottom: 1rem;
+    }
 
-.button-container.position{
-    bottom: 5rem;
+    &.position {
+        bottom: 5rem;
+    }
 }

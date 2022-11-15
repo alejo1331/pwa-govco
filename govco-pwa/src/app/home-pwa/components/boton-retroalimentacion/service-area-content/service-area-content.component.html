@@ -1,23 +1,23 @@
 <p mat-dialog-title class="mat-dialog-title">¿Esta página fue útil para ti?</p>
 <div mat-dialog-content class="mat-typography">
     <div class="options">
-        <div class="selectionY" (click)="selectedOption('Y')">
+        <button class="selectionY" (click)="selectedOption('Y')">
             <span class="material-symbols-outlined size-icon" [ngClass]="selectedY ? 'selected-icon': 'default-icon'">
                 check_circle
             </span>
             <p class="text-icon">
                 Si
             </p>
-        </div>
+        </button>
 
-        <div class="selectionN" (click)="selectedOption('N')">
+        <button class="selectionN" (click)="selectedOption('N')">
             <span class="material-symbols-outlined size-icon" [ngClass]="selectedN ? 'selected-icon': 'default-icon'">
                 cancel
             </span>
             <p class="text-icon">
                 No
             </p>
-        </div>
+        </button>
     </div>
     <div class="comentarios-content">
         <p class="comentarios-text">Escribe tus comentarios</p>
