@@ -25,7 +25,6 @@ export class AccionFormularioComponent implements OnInit {
   dataAccion: any[] = [];
 
   ngOnInit(): void {
-  console.log('tramite', this.tramite)
     this.validarEstadoExcepcion();
   }
 

@@ -21,7 +21,7 @@ export class BuscadorPrincipalComponent implements OnInit {
 
   filterSubscription: Subscription;
   resultadosBusqueda: ResultadoFiltro;
-  dataResultado: any;
+  dataResultado: any = [];
   seccion: String = '';
   cantidadResultados: number;
   departamento: { codigoDepartamento: number };
@@ -41,7 +41,7 @@ export class BuscadorPrincipalComponent implements OnInit {
   ngOnInit(): void {
     if (!this.buscadorService.getBuscadorParams.txtInputBuscador) {
       this.activarSpinner(false);
-      this.router.navigate(['']);
+      this.router.navigate(['/']);
     }
 
     // servicioHeader.estadoHeader(a, b)       a -> true = header seccion internas
@@ -94,8 +94,7 @@ export class BuscadorPrincipalComponent implements OnInit {
           // Se almacena la respuesta de la búsqueda
           this.resultadosBusqueda = resultado;
           this.filtrosService.ResultadoBusqueda = resultado;
-          this.dataResultado = this.resultadosBusqueda.data;
-
+          this.dataResultado  = this.resultadosBusqueda.data.length > 0 ? this.resultadosBusqueda.data : [];
           this.activarSpinner(false);
           this.cantidadResultados = resultado.data.length;
         } catch (error) {

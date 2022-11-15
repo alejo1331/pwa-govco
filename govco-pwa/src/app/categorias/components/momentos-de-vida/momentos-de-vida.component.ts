@@ -75,7 +75,6 @@ export class MomentosDeVidaComponent implements OnInit {
   salir(evento: any) {
     try {
       if (evento.key === 'Escape') {
-        console.log('Acaba de oprimir la tecla escape')
         document.getElementById('salir-categorias')?.focus()
       }
     } catch (error) {

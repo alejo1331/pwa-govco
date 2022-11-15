@@ -78,7 +78,6 @@ export class DetalleMomentosComponent implements OnInit {
   }
 
   @HostListener('click', ['$event']) onClick(event: Event) {
-    console.log('evento', event.target)
     var verMasNoticias: HTMLElement = document.querySelector('.btn.btn-round.link-see-more') as HTMLElement;
     if (event.target == verMasNoticias) {
       verMasNoticias.setAttribute('href', '/noticias')

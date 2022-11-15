@@ -69,7 +69,6 @@ export class BuscadorSencilloV1Component implements PipeTransform {
     if (this.inputBuscador.nativeElement == event.target) {
       this.busqueda = (event.target as HTMLInputElement).value;
       let filtrado: { active: boolean, titulo: string, departamento: string }[] = this.transform(this.items, this.busqueda);
-      console.log('datos filtrados',filtrado)
     }
   }
 

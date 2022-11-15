@@ -30,7 +30,6 @@ export class ValidateUrlService {
         if (data) {
             window.open(url, "target='_blank'");
         } else {
-            console.log('validateUrl', url);
             this.dialog.open(ModalErrorUrlComponent, {
               width: '280px'
             });

@@ -29,7 +29,6 @@ export class AccionSolicitudComponent implements OnInit {
   }
 
   private validarEstadoExcepcion() {
-    console.log('data accion solicitud', this.data)
     if (typeof (this.data.length) !== 'undefined') {
       this.dataAccion = this.data;
     } else {
@@ -52,7 +51,6 @@ export class AccionSolicitudComponent implements OnInit {
   }
 
   getPuntosAtencion(IdTramite: number, OrdenMomento: number, AccionCondicionId: number) {
-    console.log('dataaa',OrdenMomento,AccionCondicionId)
     const tipoAtencionPresencial = this.fichaTramiteService.getTipoAtencionPresencial();
     this.fichaTramiteService.GetPuntosAtencion(tipoAtencionPresencial, 2, IdTramite, OrdenMomento, AccionCondicionId).subscribe(
       // Success response
