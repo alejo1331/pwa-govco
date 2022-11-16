@@ -45,7 +45,7 @@ export class CarruselUnoComponent implements OnInit, OnChanges {
       n = arr.length;
 
     while (i < n) {
-      dataAgrupado.push(arr.slice(i, i += len));
+      dataAgrupado.push(arr.slice(i, i = i + len));
     }
     return dataAgrupado;
   }

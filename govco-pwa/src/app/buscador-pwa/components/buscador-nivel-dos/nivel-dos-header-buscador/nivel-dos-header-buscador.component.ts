@@ -41,7 +41,7 @@ export class NivelDosHeaderBuscadorComponent implements AfterViewInit {
         input.value = this.txtInputBuscador
         if ((input.value == parametros.txtInputBuscador) && (input.value != '')) {
           this.cerrarBuscadorPWA();
-          this.activarServicio == true ? this.buscar() : null;
+          if (this.activarServicio === true) this.buscar();
         }
       }
     )
@@ -71,7 +71,7 @@ export class NivelDosHeaderBuscadorComponent implements AfterViewInit {
   keypressInput(event: KeyboardEvent) {
     var input = this.input.nativeElement;
     if (event.key === "Enter" && input.value != '') {
-      this.activarServicio == true ? this.buscar() : null;
+      if (this.activarServicio === true) this.buscar();
       this.cerrarBuscadorPWA();
       const nuevoBuscadorParams: BuscadorParams = {
         index: this.index,

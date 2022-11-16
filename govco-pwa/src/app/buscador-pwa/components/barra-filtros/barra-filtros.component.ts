@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { FiltroBusqueda, filter } from '../../models/filtroBusquedaModel';
+import { FiltroBusqueda } from '../../models/filtroBusquedaModel';
 import { FiltrosService } from '../../services/filtros.service';
 import { FiltrosPrincipalComponent } from '../filtros-principal/filtros-principal.component';
 

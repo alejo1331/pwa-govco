@@ -19,9 +19,6 @@
   <div class="row">
     <div class="col-md-12 col-lg-6 item-important-left">
       <div *ngFor="let recurso of seccionNivelUno.recursosPriorizados | search: query ">
-        <!-- to do  -->
-        <!-- <span class="| slice:0:3"></span> -->
-        <!-- end, to do -->
         <h3><a (click)="abrirRecurso(recurso)">{{recurso.nombre}}</a></h3>
         <p class="intro mt-2">{{recurso.descripcion}}</p>
         <div class="text-right see-more">
@@ -35,9 +32,6 @@
     </div>
     <div class="col-md-12 col-lg-6 item-important-right mt-6">
       <div *ngFor="let recurso of seccionNivelUno.recursosPriorizados | search: query">
-        <!-- to do  -->
-        <!-- <span class="| slice:3:6"></span> -->
-        <!-- end, to do -->
         <h3><a (click)="abrirRecurso(recurso)">{{recurso.nombre}}</a></h3>
         <p class="intro mt-2">{{recurso.descripcion}}</p>
         <div class="text-right see-more">

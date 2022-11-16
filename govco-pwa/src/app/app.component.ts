@@ -138,17 +138,17 @@ export class AppComponent implements OnInit, AfterContentChecked, AfterContentCh
         this.appService.previousUrl = this.appService.currentUrl;
         this.appService.currentUrl = event.url;
         if (this.appGeolocalizacion != undefined) {
-          event.url == '/' + urlsLocal.buscador ?
-            (this.appGeolocalizacion.removeAttribute('style'),
-              this.appGeolocalizacion.classList.add('fixed'))
-            : this.appGeolocalizacion.classList.remove('fixed')
+          if (event.url == '/' + urlsLocal.buscador) {
+            this.appGeolocalizacion.removeAttribute('style');
+            this.appGeolocalizacion.classList.add('fixed')
+          } else this.appGeolocalizacion.classList.remove('fixed')
         }
       });
     this.bottomService.ajustePantalla.subscribe((estado) => {
       this.cambiarEstilo = estado;
     });
-    this.modalService.siguienteModal.subscribe((estado) => {
-      if (estado == true) {
+    this.modalService.siguienteModal.subscribe((estado: boolean) => {
+      if (estado === true) {
         this.updatePWA();
       }
     });
@@ -215,10 +215,10 @@ export class AppComponent implements OnInit, AfterContentChecked, AfterContentCh
     this.buscadorService.getAbrirBuscador$.subscribe(
       (abrir: boolean) => {
         this.abrirBuscadorCheck = abrir
-        if (this.abrirBuscadorCheck == true) {
+        if (this.abrirBuscadorCheck === true) {
           this.abrirBuscadorPWA()
         }
-        else if (this.abrirBuscadorCheck == false && this.ulitmoEstadoBuscador == true) {
+        else if (this.abrirBuscadorCheck === false && this.ulitmoEstadoBuscador === true) {
           this.cerrarBuscadorPWA()
         }
       })
@@ -283,7 +283,7 @@ export class AppComponent implements OnInit, AfterContentChecked, AfterContentCh
             width: '280px',
           });
           respuestaModalClasico.afterClosed().subscribe((resultado) => {
-            if (resultado == true) {
+            if (resultado === true) {
               this.swUpdate
                 .activateUpdate()
                 .then(() => window.location.reload());
@@ -299,7 +299,7 @@ export class AppComponent implements OnInit, AfterContentChecked, AfterContentCh
     const bottomMenu = document.querySelector(
       '.govco-pwa-bottom-menu'
     ) as HTMLElement;
-    if (estado == true) {
+    if (estado === true) {
       this.sidenav.opened = true;
       bottomMenu.style.borderBottomLeftRadius = '20px';
       bottomMenu.style.transition = '0.6s';
@@ -338,17 +338,13 @@ export class AppComponent implements OnInit, AfterContentChecked, AfterContentCh
   }
 
   @HostListener('touchmove', ['$event']) onTouchMove(event: any): void {
-    if (this.router.url != '/' + urlsLocal.buscador) {
-      if (this.appGeolocalizacion != undefined) {
-        this.touchMoveFinal = event.changedTouches[0].screenY;
-        if (this.touchMoveInicial < this.touchMoveFinal) {
-          this.touchMoveDiferencia = this.touchMoveFinal - this.touchMoveInicial;
-          if (this.touchMoveDiferencia >= 50) {
-            this.appGeolocalizacion.style.top = '0rem';
-          }
-        } else {
-          this.appGeolocalizacion.style.top = '-2.25rem';
-        }
+    if (this.router.url != ('/' + urlsLocal.buscador) && this.appGeolocalizacion != undefined) {
+      this.touchMoveFinal = event.changedTouches[0].screenY;
+      this.touchMoveDiferencia = this.touchMoveFinal - this.touchMoveInicial;
+      if (this.touchMoveInicial < this.touchMoveFinal) {
+        this.touchMoveDiferencia >= 50 ? this.appGeolocalizacion.style.top = '0rem' : null;
+      } else {
+        this.appGeolocalizacion.style.top = '-2.25rem';
       }
     }
 
@@ -356,19 +352,16 @@ export class AppComponent implements OnInit, AfterContentChecked, AfterContentCh
     var id_temas_de_interes: HTMLElement = (document.getElementsByTagName('temas-de-interes') as HTMLCollectionOf<HTMLElement>)[0];
     if (id_temas_de_interes != undefined || id_temas_de_interes != null) {
       var etiqueta_a = Array.from(id_temas_de_interes.getElementsByTagName('a') as HTMLCollectionOf<HTMLElement>);
-      var get_href: String = '', ventanillas: number, portales: number
+      var get_href: string = '';
+      var conincidencias: string[] = ['/ventanillas-unicas', '/portales'];
       etiqueta_a.forEach(element => {
-        get_href = String(element.getAttribute('href'))
-        ventanillas = get_href.indexOf('/ventanillas-unicas');
-        portales = get_href.indexOf('/portales');
-        if (ventanillas >= 0) {
-          element.removeAttribute('href');
-          element.removeAttribute('target');
-        }
-        if (portales >= 0) {
-          element.removeAttribute('href');
-          element.removeAttribute('target');
-        }
+        get_href = String(element.getAttribute('href'));
+        conincidencias.forEach(palabraClave => {
+          if (get_href.indexOf(palabraClave) >= 0) {
+            element.removeAttribute('href');
+            element.removeAttribute('target');
+          }
+        })
       });
     }
     // Fin solucion redireccionamiento slide
@@ -388,7 +381,7 @@ export class AppComponent implements OnInit, AfterContentChecked, AfterContentCh
     var id_temas_de_interes: HTMLElement = (document.getElementById('temas-de-interes') as HTMLElement);
     if (id_temas_de_interes != undefined || id_temas_de_interes != null) {
       var slide_activo: HTMLElement = id_temas_de_interes.querySelector('.contenedor-img.activo') as HTMLElement;
-      var etiqueta_a: HTMLAnchorElement = (slide_activo.getElementsByTagName('a') as HTMLCollectionOf<HTMLAnchorElement>)[0];
+      var etiqueta_a: HTMLElement = (slide_activo.getElementsByTagName('a') as HTMLCollectionOf<HTMLElement>)[0];
       let get_href = String((<HTMLElement>etiqueta_a).getAttribute('aria-label'));
       let ventanillas: number = get_href.indexOf('Ventanillas Únicas');
       let portales: number = get_href.indexOf('Portales');

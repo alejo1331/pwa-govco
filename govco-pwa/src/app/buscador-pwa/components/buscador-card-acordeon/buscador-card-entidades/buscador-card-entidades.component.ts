@@ -42,7 +42,11 @@ export class BuscadorCardEntidadesComponent implements OnChanges {
     changes.data.currentValue.forEach((element: EntidadesInterface) => {
       this.href = true;
       Object.values(urlsLocal).find(url => {
-         element.link.indexOf(url) >= 0 ? this.href = false : null;
+        if (element.link.indexOf(url) >= 0) {
+          return this.href = false;
+        } else {
+          return null;
+        }
       })
       this.items.push(
         {

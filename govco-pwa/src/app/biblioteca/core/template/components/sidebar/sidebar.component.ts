@@ -27,7 +27,6 @@ export class SidebarComponent implements OnInit {
   ngOnInit() {
     this.getMenu();
     this.getArbol();
-    //this.headerService.currentTitle.subscribe(categoria => this.categoria = categoria);
     this.buscadorService.currentSearch.pipe(skip(1)).subscribe(query => setTimeout(() => {
       this.query = query
     }));

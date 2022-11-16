@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import { GlobalConstants } from '../../common/global-constants';
-import categoria from '../models/categoria';
-import { Publicacion } from '../models/publicacion';
 
 @Injectable({
   providedIn: 'root'

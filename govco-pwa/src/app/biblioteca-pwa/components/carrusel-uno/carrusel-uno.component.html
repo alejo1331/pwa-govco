@@ -8,7 +8,6 @@
     <div class="carousel-inner">
         <div class="carousel-item" [class.active]="i==0" *ngFor="let slide of this.dataCarrusel; let i = index">
             <div [class]="'d-block card-item card-' + j" *ngFor="let item of slide; let j = index">
-                <!-- <a role="link" href="{{'/ficha-tramites-y-servicios/T' + contenidoTarjetas[j + i * catidadTarjetas].id }}"> -->
                 <a role="link" routerLink="{{'/ficha-tramites-y-servicios/T' + contenidoTarjetas[j + i * catidadTarjetas].id }}">
                     <div class="tarjeta-pwa">
                         <img src="{{contenidoTarjetas[j + i * catidadTarjetas].iconoCategoria != '' ? contenidoTarjetas[j + i * catidadTarjetas].iconoCategoria :

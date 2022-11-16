@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ModalComponent } from './modal/modal.component';
-import { HomeComponent } from 'src/app/inicio/components/home/home.component';
 import { SafePipe } from '../pipes/safe.pipe';
 import { SearchPipe } from '../pipes/search.pipe';
 import { CategoriasComponent } from '../components/categorias/categorias.component';
@@ -9,7 +8,7 @@ import { RecursosComponent } from '../components/recursos/recursos.component';
 import { ResultadosComponent } from '../components/resultados/resultados.component';
 import { WordLimitPipe } from '../pipes/word-limit.pipe';
 import { LoadingComponent } from './loading/components/loading/loading.component';
-import { NgbDateParserFormatter, NgbModalModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDateParserFormatter, NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { CategoriasService } from '../services/categorias-service/categorias-service.service';

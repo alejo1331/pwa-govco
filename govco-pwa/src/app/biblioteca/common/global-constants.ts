@@ -1,5 +1,5 @@
 import { ParametricasService } from '../services/parametricas-service/parametricas-service.service';
-import { Injectable, OnInit } from "@angular/core";
+import { Injectable } from "@angular/core";
 
 @Injectable()
 export class GlobalConstants {

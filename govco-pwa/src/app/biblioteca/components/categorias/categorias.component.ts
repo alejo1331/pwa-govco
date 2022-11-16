@@ -18,7 +18,6 @@ export class CategoriasComponent implements OnInit {
 
   articulosInteres: any = [];
   infoCategoria: Categoria = new Categoria();
-  // importantes: ArchivosPublicacion[] = [];
   importante = {};
   datos: any[];
   seccionNivelUno: SeccionNivelUno;
@@ -34,23 +33,14 @@ export class CategoriasComponent implements OnInit {
     private publicacionesService: PublicacionesService) { }
 
   ngOnInit() {
-    this.onInitElements();
     this.headerService.currentTitle.subscribe(categoria => this.categoria = categoria);
 
     this.activatedRoute.url.subscribe(() => {
       this.categoria = this.activatedRoute.snapshot.paramMap.get('categoria')!;
-      //this.getInfoCategoria(this.categoria);
       this.headerService.setTitle(this.categoria);
-
-      //this.getPublicacionesByCategoria(this.categoria);
-
       this.obtenerSeccionNivelUnoPortal(this.activatedRoute.snapshot.paramMap.get('id')!);
     });
 
-  }
-
-  private onInitElements() {
-    // $('select').selectpicker();
   }
 
   private getInfoCategoria(categoria: string) {
@@ -60,28 +50,6 @@ export class CategoriasComponent implements OnInit {
       console.error(error);
     });
   }
-
-  // private getPublicacionesByCategoria(categoria: string) {
-
-  //   this.publicacionesService.getPublicacionesByCategoria(categoria).subscribe((data) => {
-
-  //     if (data.length > 0) {
-  //       this.importantes = data.filter(d => d.destacado == 1);
-  //       this.datos = data.filter(d => d.destacado != 1);
-  //       this.cargando = false;
-  //     } else {
-  //       this.importantes = undefined;
-  //       this.datos = undefined;
-  //       this.cargando = false;
-  //     }
-  //   }, (error) => {
-
-  //     this.cargando = false;
-  //     console.error(error);
-
-  //   });
-
-  // }
 
   private obtenerSeccionNivelUnoPortal(nivel: string) {
     this.publicacionesService.obtenerSeccionNivelUnoPortal(nivel).subscribe((data: SeccionNivelUno) => {

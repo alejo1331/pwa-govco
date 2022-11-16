@@ -17,8 +17,6 @@ export class ValidarUrlService {
   private validate(url: string) {
     return this.http.get(`https://api-interno.www.gov.co/api/utils/validateurl?url=${url}`)
                     .pipe(map( m => {
-                      // Pruebas
-                      //m = false;
                       if(!m){
                         this.loadingSubject.next(true);
                       }

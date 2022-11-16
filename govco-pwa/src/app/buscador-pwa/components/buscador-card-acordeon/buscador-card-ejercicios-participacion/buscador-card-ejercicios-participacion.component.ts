@@ -36,9 +36,9 @@ export class BuscadorCardEjerciciosParticipacionComponent implements OnChanges {
   ) { }
 
   ngDoCheck() {
-    if (this.items.length > 0){
+    if (this.items.length > 0) {
 
-      if(document.getElementById('acordeonEjercicios')){
+      if (document.getElementById('acordeonEjercicios')) {
         $('#acordeonEjercicios div.card:nth-child(-n+5)').addClass('actived')
       }
     }
@@ -47,22 +47,26 @@ export class BuscadorCardEjerciciosParticipacionComponent implements OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.data.previousValue != changes.data.currentValue) {
       this.items = []
-    };
+    }
     changes.data.currentValue.forEach((element: EjerciciosParticipacionInterface, i: number) => {
-      var fechaPublicacion: Array<String> = Array.from((element.fechaPublicacion.split(/\s+/).join('')).split("de"));
-      var fechaCierre: Array<String> = Array.from((element.fechaCierre.split(/\s+/).join('')).split("de"));
-      this.meses.forEach((mes, i) => {
-        mes == fechaPublicacion[1] ?
-          element.fechaPublicacion = fechaPublicacion[0] + '/' + this.mesesNum[i] + '/' + fechaPublicacion[2]
-          : null;
-        mes == fechaCierre[1] ?
-          element.fechaCierre = fechaCierre[0] + '/' + this.mesesNum[i] + '/' + fechaCierre[2]
-          : null;
+      var fechaPublicacion: Array<string> = Array.from((element.fechaPublicacion.split(/\s+/).join('')).split("de"));
+      var fechaCierre: Array<string> = Array.from((element.fechaCierre.split(/\s+/).join('')).split("de"));
+      this.meses.forEach((mes, j) => {
+        if (mes == fechaPublicacion[1]) {
+          element.fechaPublicacion = fechaPublicacion[0] + '/' + this.mesesNum[j] + '/' + fechaPublicacion[2]
+        }
+        if (mes == fechaCierre[1]) {
+          element.fechaCierre = fechaCierre[0] + '/' + this.mesesNum[j] + '/' + fechaCierre[2]
+        }
       });
       this.href = true;
       this.botonTexto[i] = false;
       Object.values(urlsLocal).find(url => {
-         element.link.indexOf(url) >= 0 ? this.href = false : null;
+        if (element.link.indexOf(url) >= 0) {
+          return this.href = false;
+        } else {
+          return null;
+        }
       })
       this.items.push(
         {
@@ -89,7 +93,7 @@ export class BuscadorCardEjerciciosParticipacionComponent implements OnChanges {
     this.listaTexto.toArray()[index].nativeElement.classList.add('line-clamp-3');
     var element: HTMLElement = this.listaTexto.toArray()[index].nativeElement;
     this.ListaAcordeon.toArray()[index].nativeElement.addEventListener('transitionend', () => {
-      if (this.botonTexto[index] == false) {
+      if (this.botonTexto[index] === false) {
         if (element.offsetHeight < element.scrollHeight ||
           element.offsetWidth < element.scrollWidth) {
           this.botonTexto[index] = true;
@@ -103,10 +107,10 @@ export class BuscadorCardEjerciciosParticipacionComponent implements OnChanges {
 
   expandirText(index: number) {
     this.listaTexto.toArray()[index].nativeElement.classList.toggle('line-clamp-3');
-    this.expandirTexto = (this.expandirTexto == true) ? false : true;
+    this.expandirTexto = (this.expandirTexto === true) ? false : true;
   }
 
-  VerMasResultados(){
+  VerMasResultados() {
     let resultadosActivos = $('div.card');
     let ultimoActivo = resultadosActivos.filter('.actived:last').index();
     resultadosActivos.filter(':lt(' + (ultimoActivo + 6) + ')').addClass('actived');
