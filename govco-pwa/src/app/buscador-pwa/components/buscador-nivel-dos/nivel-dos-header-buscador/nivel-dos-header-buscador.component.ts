@@ -33,6 +33,7 @@ export class NivelDosHeaderBuscadorComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     var input = this.input.nativeElement
+    let prefiltroInicial : any = document.getElementsByClassName('filtro-active')[0]
     this.buscadorService.getBuscadorParams$.subscribe(
       (parametros: BuscadorParams) => {
         this.txtConsumoApi = parametros.txtConsumoApi;
@@ -40,24 +41,30 @@ export class NivelDosHeaderBuscadorComponent implements AfterViewInit {
         this.index = parametros.index;
         input.value = this.txtInputBuscador
         if ((input.value == parametros.txtInputBuscador) && (input.value != '')) {
-          this.cerrarBuscadorPWA();
-          if (this.activarServicio === true) this.buscar();
+          let prefiltroActual = document.getElementsByClassName('filtro-active')[0]
+          if (prefiltroInicial == prefiltroActual && this.activarServicio === true){
+            this.cerrarBuscadorPWA();
+            this.buscar()
+          }
+          prefiltroInicial = prefiltroActual;
+          this.buscarSugerencias()
         }
       }
     )
   }
 
-  buscarSugerencias(event: any) {
-    if (event.target.value.length < this.minCaracterTexto) {
+  buscarSugerencias() {
+    let inputBuscador : any = document.getElementById('buscador-pwa')
+    if (inputBuscador.value.length < this.minCaracterTexto) {
       this.datosAutocompletar = []
       this.buscadorService.setSugerenrciasBuscador(this.datosAutocompletar)
     }
     else {
       this.sugerenciasService.obtenerSugerencias(this.txtConsumoApi,
-        event.target.value,
+        inputBuscador.value,
         this.numeroSugerencias).subscribe((data) => {
           this.datosAutocompletar = data.filtros[0].sugerenciasFiltro;
-          let regEx = new RegExp(event.target.value, 'gi');
+          let regEx = new RegExp(inputBuscador.value, 'gi');
           this.datosAutocompletar.forEach((name: any, index: any) => {
             this.datosAutocompletar[index] = [name, name.replace(regEx, "<strong>$&</strong>")]
           });

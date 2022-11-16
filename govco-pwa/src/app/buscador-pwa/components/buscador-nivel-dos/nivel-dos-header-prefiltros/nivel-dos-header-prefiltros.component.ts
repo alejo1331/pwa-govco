@@ -18,6 +18,7 @@ export class NivelDosHeaderPrefiltrosComponent implements OnInit {
   ngOnInit() {
     this.buscadorService.getBuscadorParams$.subscribe(
       (parametros : BuscadorParams) => {
+        // debugger;
         this.tramiteIndex = parametros.index;
         this.buscadorParams = parametros;
         let currentActive = document.getElementsByClassName('filtro-active')[0];
@@ -35,19 +36,20 @@ export class NivelDosHeaderPrefiltrosComponent implements OnInit {
   }
 
   changePrefilter(index:number){
-   let currentActive = document.getElementsByClassName('filtro-active')[0];
-   if (currentActive){
+    let textoInputBuscador : any = document.getElementById('buscador-pwa');
+    let currentActive = document.getElementsByClassName('filtro-active')[0];
+    if (currentActive){
     currentActive.classList.remove('filtro-active')
-   }
-   let activePrefilter = document.getElementsByClassName('govco-pwa-prefiltro-element')[index]
-   activePrefilter.classList.add('filtro-active')
-   const nuevosBuscadorParams : BuscadorParams ={
+    }
+    let activePrefilter = document.getElementsByClassName('govco-pwa-prefiltro-element')[index]
+    activePrefilter.classList.add('filtro-active')
+    const nuevosBuscadorParams : BuscadorParams ={
     index : index,
-    txtInputBuscador: this.buscadorParams.txtInputBuscador,
+    txtInputBuscador: textoInputBuscador.value,
     txtConsumoApi: ItemsBuscador[index].txtConsumoApi,
     aplicaGeoreferenciacion: ItemsBuscador[index].aplicaGeoreferenciacion
-   }
-   this.buscadorService.setBuscadorParams(nuevosBuscadorParams)
+    }
+    this.buscadorService.setBuscadorParams(nuevosBuscadorParams)
 
   }
 
