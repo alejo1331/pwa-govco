@@ -14,7 +14,8 @@
         </app-buscador-card-portales>
         <app-buscador-card-tramites *ngIf="seccion == 'tramite' && dataResultado" [data]="dataResultado">
         </app-buscador-card-tramites>
+        <app-banner-ciiu-buscador *ngIf="dataResultado.length > 0"></app-banner-ciiu-buscador>
     </div>
 </section>
 <app-boton-retroalimentacion [position]="true"></app-boton-retroalimentacion>
-<app-footer [fixed]="dataResultado.length > 0 && dataResultado.length <= 5 ? true: false"></app-footer>
+<app-footer [fixed]="dataResultado.length > 0 && dataResultado.length <= 1 ? true: false"></app-footer>
