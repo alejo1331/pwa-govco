@@ -13,6 +13,4 @@ export class ModalInformativoComponent {
   constructor(
     public activeModal: NgbActiveModal,
   ) { }
-
-
 }

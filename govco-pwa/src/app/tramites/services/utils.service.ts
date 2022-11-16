@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { dialogModal } from '../models/dialogModal';
 import { ConfirmModalService } from '../services/confirm-modal.service';
 
 @Injectable({

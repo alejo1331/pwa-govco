@@ -28,18 +28,12 @@
                     <span class="icono-search" type="image" alt="Realizar busqueda"></span>
                 </div>
             </a>
-            <!-- <a routerLink="/buscador" class="caja-buscador-pwa-govco" *ngIf="barraSuperiorInterna">
-                <span class="icono-buscador-pwa-govco"
-                    style="background-image: url(../../../../assets/icons-fonts/search_bababa.svg);"></span>
-            </a> -->
         </div>
         <div class="govco-pwa-buscador-header">
             <!-- to do  -->
             <app-buscador-prefiltrado no-shadow="true" id="home1" *ngIf="!barraSuperiorInterna"
                 (estadoFocusFiltro)="estadoFocusFiltro = $event">
             </app-buscador-prefiltrado>
-            <!-- <govco-buscador-home no-shadow="true" id="home1" *ngIf="!barraSuperiorInterna"
-                class="app-buscador-pwa-govco"></govco-buscador-home> -->
         </div>
 
     </div>
