@@ -5,7 +5,7 @@ $color-marine: #3366CC;
 $color-dark-blue: #004884;
 $color-green: #069169;
 $color-gold: #FFAB00;
-$color-orange:#F3561F;
+$color-orange: #F3561F;
 $color-concrete: #F2F2F2;
 $color-silver: #BABABA;
 $color-tundora: #4B4B4B;
@@ -14,460 +14,587 @@ $color-radical-red: #F42E62;
 $color-shiraz: #A80521;
 
 $color-pale-sky: #6c757d;
-$color-hawkes-blue:#E6EFFD;
-$color-hawkes-blue-300:  rgba(157,190,255, 0.3); // #E6EFFD + opacidad del 0.3
+$color-hawkes-blue: #E6EFFD;
+$color-hawkes-blue-300: rgba(157, 190, 255, 0.3); // #E6EFFD + opacidad del 0.3
 $color-catalina-blue: #0B457F;
 $color-catalina-blue-600: rgba(11, 69, 127, 0.6); // #0B457F + opacidad del 0.6;
 $color-black-160: rgba(0, 0, 0, 0.16); // black + opacidad del 0.16
-$color-marine-400: rgba(51,102,204, 0.4); // #3366CC + opacidad del 0.4
-$color-dark-blue-500: rgba(0,72,132,0.5); // 004884 + opacidad del 0.5
-$color-dark-blue-200: rgba(0,72,132,0.2); // 004884 + opacidad del 0.2
-$color-shiraz-600: rgba(168,5,33, 0.6); // #A80521 + opacidad del 0.6;
+$color-marine-400: rgba(51, 102, 204, 0.4); // #3366CC + opacidad del 0.4
+$color-dark-blue-500: rgba(0, 72, 132, 0.5); // 004884 + opacidad del 0.5
+$color-dark-blue-200: rgba(0, 72, 132, 0.2); // 004884 + opacidad del 0.2
+$color-shiraz-600: rgba(168, 5, 33, 0.6); // #A80521 + opacidad del 0.6;
 
-$color-white-contrast:rgb(255, 255, 255);
-$color-black-contrast:rgb(0, 0, 0);
-$color-yellow-contrast:rgb(221, 251, 0);
-$color-orange-contrast:rgb(251, 194, 0);
+$color-white-contrast: rgb(255, 255, 255);
+$color-black-contrast: rgb(0, 0, 0);
+$color-yellow-contrast: rgb(221, 251, 0);
+$color-orange-contrast: rgb(251, 194, 0);
 
 .card-title-b {
-    font-size: 1.3rem;
-    margin-bottom: 0.65rem;
-    font-weight: 300;
+  font-size: 1.3rem;
+  margin-bottom: 0.65rem;
+  font-weight: 300;
+}
+
+.title-news {
+  font-size: 1rem;
+  line-height: 1.2;
+  font-weight: 900;
+}
+
+.p100 {
+  padding: 100px;
+}
+
+.mh48 {
+  min-height: 48px;
+}
+
+.small84 {
+  font-size: 84%;
+}
+
+.p-20 {
+  padding: 10px;
+}
+
+.m-20 {
+  margin-left: 20px;
+}
+
+.new-notification {
+  height: 1.5em;
+  text-align: center;
+
+  .new-item {
+    font-size: 12px;
+    color: #fff;
+    background: #f42e62;
+    padding: 2px 12px;
+    border-radius: 10px;
   }
-  
-  .title-news {
-    font-size: 1rem;
-    line-height: 1.2;
-    font-weight: 900;
+}
+
+.link {
+  color: #2175ff;
+  cursor: pointer;
+  font-weight: 400;
+  text-decoration: none;
+}
+
+.link--arrowed {
+  display: inline-block;
+  height: 2rem;
+  line-height: 2rem;
+
+  .arrow-icon {
+    position: relative;
+    top: -1px;
+    -webkit-transition: -webkit-transform 0.3s ease;
+    transition: -webkit-transform 0.3s ease;
+    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, -webkit-transform 0.3s ease;
+    vertical-align: middle;
   }
-  
-  .p100 {
-    padding: 100px;
+
+  .arrow-icon--circle {
+    transition: stroke-dashoffset 0.3s ease;
+    stroke-dasharray: 95;
+    stroke-dashoffset: 95;
   }
-  
-  .mh48 {
-    min-height: 48px;
-  }
-  
-  .small84 {
-    font-size: 84%;
-  }
-  
-  .p-20 {
-    padding: 10px;
-  }
-  
-  .m-20 {
-    margin-left: 20px;
-  }
-  .new-notification {
-    height: 1.5em;
-    text-align: center;
-    .new-item {
-      font-size: 12px;
-      color: #fff;
-      background: #f42e62;
-      padding: 2px 12px;
-      border-radius: 10px;
-    }
-  }
-  .link {
-    color: #2175ff;
-    cursor: pointer;
-    font-weight: 400;
+}
+
+.item-separator {
+  margin-top: 0 !important;
+  margin-bottom: 20px !important;
+  border-bottom: 2px solid #dddddd;
+  border-radius: 0px !important;
+}
+
+// Estilos para visualizador de código fuente
+// ------------------------------------------
+
+div.code-toolbar>.toolbar {
+  position: absolute;
+  top: 0.3em;
+  right: 1em;
+  opacity: 1;
+}
+
+div.code-toolbar>.toolbar button {
+  font-size: 0.8em;
+  cursor: pointer;
+  padding: 0 0.5em;
+  margin-right: 10px;
+}
+
+div.code-toolbar>.toolbar span {
+  font-size: 0.8em;
+  padding: 0 0.5em;
+  line-height: inherit;
+}
+
+div.code-toolbar>.toolbar button:hover,
+div.code-toolbar>.toolbar button:focus {
+  color: white;
+}
+
+div.code-toolbar>.toolbar span:hover,
+div.code-toolbar>.toolbar span:focus {
+  color: white;
+}
+
+// Estilos Marly Ortiz
+// ------------------------------------------
+.biblioteca-spa {
+  margin-top: 4em;
+
+  a:not([href]):not([tabindex]) {
+    color: $color-dodger-blue;
     text-decoration: none;
   }
-  
-  .link--arrowed {
-    display: inline-block;
-    height: 2rem;
-    line-height: 2rem;
-  
-    .arrow-icon {
-      position: relative;
-      top: -1px;
-      -webkit-transition: -webkit-transform 0.3s ease;
-      transition: -webkit-transform 0.3s ease;
-      transition: transform 0.3s ease;
-      transition: transform 0.3s ease, -webkit-transform 0.3s ease;
-      vertical-align: middle;
+
+  .form-inline {
+    .bootstrap-select {
+      width: 100% !important;
     }
-  
-    .arrow-icon--circle {
-      transition: stroke-dashoffset 0.3s ease;
-      stroke-dasharray: 95;
-      stroke-dashoffset: 95;
-    }
-  }
-  
-  .item-separator {
-    margin-top: 0 !important;
-    margin-bottom: 20px !important;
-    border-bottom: 2px solid #dddddd;
-    border-radius: 0px !important;
-  }
-  
-  // Estilos para visualizador de código fuente
-  // ------------------------------------------
-  
-  div.code-toolbar > .toolbar {
-    position: absolute;
-    top: 0.3em;
-    right: 1em;
-    opacity: 1;
-  }
-  div.code-toolbar > .toolbar button {
-    font-size: 0.8em;
-    cursor: pointer;
-    padding: 0 0.5em;
-    margin-right: 10px;
-  }
-  
-  div.code-toolbar > .toolbar span {
-    font-size: 0.8em;
-    padding: 0 0.5em;
-    line-height: inherit;
-  }
-  
-  div.code-toolbar > .toolbar button:hover,
-  div.code-toolbar > .toolbar button:focus {
-    color: white;
-  }
-  
-  div.code-toolbar > .toolbar span:hover,
-  div.code-toolbar > .toolbar span:focus {
-    color: white;
-  }
-  
-  // Estilos Marly Ortiz
-  // ------------------------------------------
-  .biblioteca-spa {
-    margin-top: 4em;
-    a:not([href]):not([tabindex]) {
-      color: $color-dodger-blue;
-      text-decoration: none;
-    }
-    .form-inline {
-      .bootstrap-select {
-        width: 100% !important;
-      }
-    }
-    .btn {
-      &:hover {
-        text-decoration: underline !important;
-      }
-    }
-    .see-more {
-      display: flex;
-      justify-content: flex-end;
-      a {
-          align-items: center;
-          display:flex;
-          color: $color-dodger-blue;
-          padding: 0;
-          span::before {
-              color: $color-dodger-blue;
-          }
-          &:hover {
-            color: $color-dark-blue;
-            text-decoration: underline;
-            span::before {
-              color: $color-dark-blue;
-              text-decoration: none !important;
-            }
-          }
-      }
-    }
-    .media-conozco, .media-desarrollo {
-      margin-left: 4rem !important;
-    }
-    .doc-conozco {
-      margin-left: 4rem !important;
-    }
-    .multimedia, .codigo {
-      margin-left: 6rem !important;
-    }
-    .page__footer {
-      margin-top: 0!important;
-    }
-    .select-govco .bootstrap-select .dropdown-menu.show {
-      max-height: 250px!important;
-      overflow: hidden !important;
-      // z-index: 1;
-      .dropdown-menu{
-        overflow: auto !important;
-      }
-    }
-    .input-button {
-      background-color: transparent;
-    }
-  }
-  @media (max-width: 992px) {
-    .biblioteca-spa {
-      margin-top: 3em;
-      .form-inline {
-        label {
-          justify-content: left !important;
-          padding-left: 3em !important;
-        }
-      }
-    }
-  
-  }
-  /* Contraste */
-  body.all{
-    background-color:$color-black-contrast !important;
-    div{background-color:$color-black-contrast !important;}
-    a{
-      color:$color-yellow-contrast !important;
-      p{
-        &.title-contact-link,
-        &.content-link{
-          color:$color-dark-blue !important;
-        }
-      }
-      strong{
-        color:$color-yellow-contrast !important;
-      }
-    }
-    .page__footer .container .footer-container .nav-footer .item-footer a:hover,
-    .page__footer .container .footer-container .nav-footer .item-footer .nav-link:hover
-    {
-      p{
-        color:$color-dark-blue !important;
-      }
-    }
-    a:hover, div.nav-link:hover{
-      background-color:$color-yellow-contrast !important; color: $color-dark-blue !important;
-      p{
-        color:$color-dark-blue !important;
-      }
-      * {background-color: $color-yellow-contrast !important; color:$color-dark-blue !important;}
-      .title-contact-link,
-      .govco-icon::before{
-        color:$color-dark-blue !important;
-      }
-      strong{
-        color:$color-dark-blue !important;
-      }
-    }
-    p{color:$color-yellow-contrast !important;}
-    p:hover{background-color: transparent !important; color:$color-yellow-contrast!important;}
-    span{color:$color-white-contrast;}
-    i{background-color:$color-yellow-contrast !important;}
-    li:hover{background-color:transparent !important;}
-    .block--gov-accessibility{
-      background: transparent !important;
-    }
-  
-    .nav-item.activo .nav-link em span,
-    .nav-item .nav-link.activo em span {
-        color: #004884 !important;
-    }
-    /* Constraste Biblioteca */
-    .navbar {
-      border-bottom: 1px solid #fff !important  ;
-    }
-    .vl {
-      border-left: 2px solid #fff !important;
-    }
-    .biblioteca-spa{
-      /* Sidebar */
-      .sidebar-nav {
-        li {
-          a{
-            &:active, &:focus {
-              background-color: $color-yellow-contrast !important; color: $color-dark-blue !important;
-              span{
-                color: $color-dark-blue !important;
-              }
-            }
-            .icon-fav {color: $color-yellow-contrast !important;}
-            div {background-color: transparent !important;}
-            &:hover{em::before{color: $color-dark-blue;}}
-          }
-          em::before { color: $color-white-contrast;}
-        }
-        li.activo, a.activo {
-          background-color: $color-yellow-contrast !important;
-          em::before { color: $color-dark-blue;}
-          .icon-fav {color: $color-dark-blue !important;}
-        }
-        .sidebar-subnav {
-          a.activo span {
-            color: $color-dark-blue!important;
-          }
-        }
-      }
-      .input-button  {background-color: $color-yellow-contrast !important;}
-      .form-control {
-        color: $color-white-contrast;
-        background-color: transparent;
-      }
-      .multimedia, .file {
-        a {background: transparent !important;
-            em {
-              color: $color-white-contrast;
-              &:hover {
-                background: transparent !important;
-                color: $color-yellow-contrast !important;
-                text-decoration: none !important;
-            }
-          }
-        }
-      }
-      .see-more a{
-        &:hover {text-decoration: none !important;}
-        span::before {color:$color-yellow-contrast;}
-      }
-      .card-govco{
-        border: 1px solid $color-white-contrast;
-        p.card-title, .tags b {color: $color-white-contrast !important;}
-      }
-      .search-form {
-        .select-govco {
-          background-color: #000 !important;
-          .calendar {
-            div {background-color: $color-white-contrast !important;}
-          }
-          .bootstrap-select {
-            .dropdown-toggle{
-              border-bottom: 1px solid $color-white-contrast!important;
-              &::after { color: $color-yellow-contrast !important;}
-            }
-            .dropdown-menu{background-color: $color-yellow-contrast !important; border: 1px solid $color-white-contrast;
-              .dropdown-item:hover span { color: $color-dark-blue !important; text-decoration: underline; }
-            }
-            button {
-              .filter-option-inner-inner {color: $color-white-contrast!important;}
-              background-color: $color-black-contrast !important;
-            }
-          }
-        }
-      }
-    }
-    .page__footer .container .submenu-footer a,
-    #header-webcomponent .container ul.navbar-nav.nav-items.nav-items-desktop li
-    {
-        &:hover{
-            color: #004884 !important;
-            background-color: #ddfb00  !important;
-        }
-    }
-  
-  }
-  
-  ngb-datepicker-navigation-select{
-    .custom-select{
-      background-color: white;
-      border: 0px solid white;
-    }
-  }
-  
-  .salto-linea{
-    white-space: pre-wrap;
   }
 
-  body {
-    top: 0!important;
-  }
-  
-  .page-header {
-    background-color: transparent;
-    padding: 2% 0;
-    border-radius: 10px;
-    h2 {
-        font-weight: 300 !important;
+  .btn {
+    &:hover {
+      text-decoration: underline !important;
     }
-    .container{
-      padding-left: 0;
-    }
-  
-    // Dispositivos mayores a 1200px
-    // Se adapta el contenido
-    @media (min-width: 1200px) {
-      .container {
-        max-width: 2140px;
-      }
-    }
-    
-  }
-  
-  h3{
-    font-size: .75rem !important;
-    font-weight: 700 !important;
-    font-family: "Montserrat-Bold",sans-serif;
-    line-height: 1.2;
   }
 
-  .see-more{
+  .see-more {
     display: flex;
     justify-content: flex-end;
-  }
 
-  .see-more a:hover{
-    color: #004884;
+    a {
+      align-items: center;
+      display: flex;
+      color: $color-dodger-blue;
+      padding: 0;
 
-    .govco-icon-right-arrow{
-        color: #004884;
+      span::before {
+        color: $color-dodger-blue;
+      }
+
+      &:hover {
+        color: $color-dark-blue;
+        text-decoration: underline;
+
+        span::before {
+          color: $color-dark-blue;
+          text-decoration: none !important;
+        }
+      }
     }
   }
-  
-  .see-more a{
-    align-items: center;
-    display: flex;
-    color: #3772ff;
-    padding: 0;
+
+  .media-conozco,
+  .media-desarrollo {
+    margin-left: 4rem !important;
+  }
+
+  .doc-conozco {
+    margin-left: 4rem !important;
+  }
+
+  .multimedia,
+  .codigo {
+    margin-left: 6rem !important;
+  }
+
+  .page__footer {
+    margin-top: 0 !important;
+  }
+
+  .select-govco .bootstrap-select .dropdown-menu.show {
+    max-height: 250px !important;
+    overflow: hidden !important;
+
+    // z-index: 1;
+    .dropdown-menu {
+      overflow: auto !important;
+    }
+  }
+
+  .input-button {
+    background-color: transparent;
+  }
+}
+
+@media (max-width: 992px) {
+  .biblioteca-spa {
+    margin-top: 3em;
+
+    .form-inline {
+      label {
+        justify-content: left !important;
+        padding-left: 3em !important;
+      }
+    }
+  }
+
+}
+
+/* Contraste */
+body.all {
+  background-color: $color-black-contrast !important;
+
+  div {
+    background-color: $color-black-contrast !important;
   }
 
   a {
-    font-family: "Montserrat-Regular",sans-serif;
+    color: $color-yellow-contrast !important;
+
+    p {
+
+      &.title-contact-link,
+      &.content-link {
+        color: $color-dark-blue !important;
+      }
+    }
+
+    strong {
+      color: $color-yellow-contrast !important;
+    }
   }
 
-  a:not([href]):not([class]) {
-    color: #3772ff;
-    text-decoration: none;
+  .page__footer .container .footer-container .nav-footer .item-footer a:hover,
+  .page__footer .container .footer-container .nav-footer .item-footer .nav-link:hover {
+    p {
+      color: $color-dark-blue !important;
+    }
   }
 
-  .govco-icon-right-arrow{
-    color: #3772ff;
+  a:hover,
+  div.nav-link:hover {
+    background-color: $color-yellow-contrast !important;
+    color: $color-dark-blue !important;
+
+    p {
+      color: $color-dark-blue !important;
+    }
+
+    * {
+      background-color: $color-yellow-contrast !important;
+      color: $color-dark-blue !important;
+    }
+
+    .title-contact-link,
+    .govco-icon::before {
+      color: $color-dark-blue !important;
+    }
+
+    strong {
+      color: $color-dark-blue !important;
+    }
   }
 
-  .page-header h2{
+  p {
+    color: $color-yellow-contrast !important;
+  }
+
+  p:hover {
+    background-color: transparent !important;
+    color: $color-yellow-contrast !important;
+  }
+
+  span {
+    color: $color-white-contrast;
+  }
+
+  i {
+    background-color: $color-yellow-contrast !important;
+  }
+
+  li:hover {
+    background-color: transparent !important;
+  }
+
+  .block--gov-accessibility {
+    background: transparent !important;
+  }
+
+  .nav-item.activo .nav-link em span,
+  .nav-item .nav-link.activo em span {
+    color: #004884 !important;
+  }
+
+  /* Constraste Biblioteca */
+  .navbar {
+    border-bottom: 1px solid #fff !important;
+  }
+
+  .vl {
+    border-left: 2px solid #fff !important;
+  }
+
+  .biblioteca-spa {
+
+    /* Sidebar */
+    .sidebar-nav {
+      li {
+        a {
+
+          &:active,
+          &:focus {
+            background-color: $color-yellow-contrast !important;
+            color: $color-dark-blue !important;
+
+            span {
+              color: $color-dark-blue !important;
+            }
+          }
+
+          .icon-fav {
+            color: $color-yellow-contrast !important;
+          }
+
+          div {
+            background-color: transparent !important;
+          }
+
+          &:hover {
+            em::before {
+              color: $color-dark-blue;
+            }
+          }
+        }
+
+        em::before {
+          color: $color-white-contrast;
+        }
+      }
+
+      li.activo,
+      a.activo {
+        background-color: $color-yellow-contrast !important;
+
+        em::before {
+          color: $color-dark-blue;
+        }
+
+        .icon-fav {
+          color: $color-dark-blue !important;
+        }
+      }
+
+      .sidebar-subnav {
+        a.activo span {
+          color: $color-dark-blue !important;
+        }
+      }
+    }
+
+    .input-button {
+      background-color: $color-yellow-contrast !important;
+    }
+
+    .form-control {
+      color: $color-white-contrast;
+      background-color: transparent;
+    }
+
+    .multimedia,
+    .file {
+      a {
+        background: transparent !important;
+
+        em {
+          color: $color-white-contrast;
+
+          &:hover {
+            background: transparent !important;
+            color: $color-yellow-contrast !important;
+            text-decoration: none !important;
+          }
+        }
+      }
+    }
+
+    .see-more a {
+      &:hover {
+        text-decoration: none !important;
+      }
+
+      span::before {
+        color: $color-yellow-contrast;
+      }
+    }
+
+    .card-govco {
+      border: 1px solid $color-white-contrast;
+
+      p.card-title,
+      .tags b {
+        color: $color-white-contrast !important;
+      }
+    }
+
+    .search-form {
+      .select-govco {
+        background-color: #000 !important;
+
+        .calendar {
+          div {
+            background-color: $color-white-contrast !important;
+          }
+        }
+
+        .bootstrap-select {
+          .dropdown-toggle {
+            border-bottom: 1px solid $color-white-contrast !important;
+
+            &::after {
+              color: $color-yellow-contrast !important;
+            }
+          }
+
+          .dropdown-menu {
+            background-color: $color-yellow-contrast !important;
+            border: 1px solid $color-white-contrast;
+
+            .dropdown-item:hover span {
+              color: $color-dark-blue !important;
+              text-decoration: underline;
+            }
+          }
+
+          button {
+            .filter-option-inner-inner {
+              color: $color-white-contrast !important;
+            }
+
+            background-color: $color-black-contrast !important;
+          }
+        }
+      }
+    }
+  }
+
+  .page__footer .container .submenu-footer a,
+  #header-webcomponent .container ul.navbar-nav.nav-items.nav-items-desktop li {
+    &:hover {
+      color: #004884 !important;
+      background-color: #ddfb00 !important;
+    }
+  }
+
+}
+
+ngb-datepicker-navigation-select {
+  .custom-select {
+    background-color: white;
+    border: 0px solid white;
+  }
+}
+
+.salto-linea {
+  white-space: pre-wrap;
+}
+
+body {
+  top: 0 !important;
+}
+
+.page-header {
+  background-color: transparent;
+  padding: 2% 0;
+  border-radius: 10px;
+
+  h2 {
+    font-weight: 300 !important;
     color: #004884;
     font-size: 1.125rem;
     line-height: 1.2;
-    font-family: "Montserrat-Light",sans-serif;
+    font-family: "Montserrat-Light", sans-serif;
   }
 
-  .page-header p{
-    font-family: "Work Sans",sans-serif;
-    font-size: .75rem;
-    font-weight: 400;
-    color: #004884;
+  .container {
+    padding-left: 0;
   }
 
-  .page-content h3{
-    color: #004884;
-  }
-
-  .page-content p{
-    font-family: "Work Sans",sans-serif;
-    font-size: .75rem;
-    font-weight: 400;
-    color: #004884;
-  }
-
-  .intro{
-    font-size: .875rem;
-  }
-
-  .col img{
-    cursor: pointer;
-  }
-
-  @media only screen and (max-device-width: 767px) {
-    p.intro {
-      font-size: 0.625rem !important;
+  // Dispositivos mayores a 1200px
+  // Se adapta el contenido
+  @media (min-width: 1200px) {
+    .container {
+      max-width: 2140px;
     }
   }
+
+}
+
+h3 {
+  font-size: .75rem !important;
+  font-weight: 700 !important;
+  font-family: "Montserrat-Bold", sans-serif;
+  line-height: 1.2;
+}
+
+.see-more {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.see-more a:hover {
+  color: #004884;
+
+  .govco-icon-right-arrow {
+    color: #004884;
+  }
+}
+
+.see-more a {
+  align-items: center;
+  display: flex;
+  color: #3772ff;
+  padding: 0;
+}
+
+a {
+  font-family: "Montserrat-Regular", sans-serif;
+}
+
+a:not([href]):not([class]) {
+  color: #3772ff;
+  text-decoration: none;
+}
+
+.govco-icon-right-arrow {
+  color: #3772ff;
+}
+
+.page-header p {
+  font-family: "Work Sans", sans-serif;
+  font-size: .75rem;
+  font-weight: 400;
+  color: #004884;
+}
+
+.page-content h3 {
+  color: #004884;
+}
+
+.page-content p {
+  font-family: "Work Sans", sans-serif;
+  font-size: .75rem;
+  font-weight: 400;
+  color: #004884;
+}
+
+.intro {
+  font-size: .875rem;
+}
+
+.col img {
+  cursor: pointer;
+}
+
+@media only screen and (max-device-width: 767px) {
+  p.intro {
+    font-size: 0.625rem !important;
+  }
+}

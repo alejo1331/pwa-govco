@@ -12,7 +12,6 @@
         </h3>
     </div>
 </div>
-<!-- routerLink="/recurso/{{recurso.nivel==='dos'?hyphenateUrlParams(recurso.nombreNivelUno+'/'+recurso.nombreNivelDos+'/dos/'+recurso.idNivel):hyphenateUrlParams(recurso.nombreNivelUno+'/'+recurso.nombreNivelDos+'/'+recurso.nombreNivelTres+'/tres/'+recurso.idNivel)}}" -->
 <div class="row" *ngFor="let resultado of resultadosBuscador">
     <div class="col-12" *ngIf="resultado.nombreNivelUno">
         <a routerLink="/biblioteca/categoria/{{hyphenateUrlParams(resultado.nombreNivelUno+'/'+resultado.idNivelUno)}}">

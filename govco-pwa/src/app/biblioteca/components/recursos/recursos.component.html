@@ -1,177 +1,106 @@
-<!-- <div *ngIf="infoRecurso">
-    <div class="row">
-        <div class="col-12">
-            <h2>{{infoRecurso?.nombre }}</h2>
-            <h3>{{infoRecurso.subtitulo}}</h3>
-            <p class="mt-4">{{infoRecurso.descripcion}}</p>
-            <div *ngIf="infoRecurso.imagen">
-                <div class="text-center">
-                   <img class="w-100" src="{{infoRecurso.imagen}}" alt="{{infoRecurso.descripcion | wordLimit: 10}}">
-                </div>
-                <div class="item-separator pt-3"></div>
-            </div>
-            <div class="ml-5 my-4" *ngIf="infoRecurso.enfasis">
-                <h3>Énfasis</h3>
-                <p>{{infoRecurso.enfasis}}</p>
-            </div>
-            <div class="item-separator"></div>
-            <div *ngFor="let tarea of infoRecurso.publicaciones" id="tarea-{{tarea.id}}">
-                <h2>{{tarea.nombre}}</h2>
-                <div >
-                    <p>{{tarea.descripcion}}</p>
-                    <div *ngIf="tarea.archivos.length > 0 else archivosBlock">
-                        <div class="row justify-content-between pt-3">
-                            <div class="col-4">
-                                <h3>Descargar documentación</h3>
-                            </div>
-                            <div class="col-auto text-uppercase mr-3">
-                                <a class="btn" (click)="descargarZip(infoRecurso.nombre, tarea.id)">Descargar todo</a>
-                            </div>
-                        </div>
-
-                        <div class="row p-3">
-                            <div class="cont-{{tarea.id}}" [ngClass]="archivo.tipoContenido === 'Código' ? 'col-12 pb-4' : 'col-lg-3 col-6 text-center pb-3'" *ngFor="let archivo of tarea.archivos let i=index" [ngStyle]="{'display': i < 8 ? '' : 'none'}">
-                                <div *ngIf="archivo.tipoContenido !== 'Código' else elseBlock">
-                                    <a class="archivo-{{tarea.id}} {{archivo.tipoArchivo}}" href="{{archivo.ubicacion}}" style="display: none;"></a>
-                                    <div class="container file d-flex flex-column">
-                                        <a (click)="open(archivo)"  class="mb-3" *ngIf="archivo.tipoArchivo != 'video'">
-                                            <em class="far fa-7x " [ngClass]="{
-                                            'fa-file-image':archivo.tipoArchivo?.includes('imagen'),
-                                            'fa-file-pdf':archivo.tipoArchivo?.includes('pdf'),
-                                            'fa-file-excel':archivo.tipoArchivo?.includes('excel'),
-                                            'fa-file-word':archivo.tipoArchivo?.includes('word'),
-                                            'fa-file-powerpoint':archivo.tipoArchivo?.includes('powerpoint'),
-                                            'fa-file-audio':archivo.tipoArchivo?.includes('audio')
-                                        }"></em>
-                                        </a>
-                                        <a (click)="open(archivo)">
-                                            <em class="fa-8x" [ngClass]="{
-                                            'far fa-play-circle':archivo.tipoArchivo.includes('video')
-                                        }"></em>
-                                        </a>
-                                        <div class="text-center"><p>{{archivo.nombre}}</p></div>
-                                    </div>
-                                </div>
-                                <ng-template #elseBlock>
-                                    <span>{{archivo.nombre}}</span>
-                                    <pre><code [ngClass]="{
-                                    'language-markup':archivo.tipoArchivo != null && (archivo.tipoArchivo == 'html' || archivo.tipoArchivo == 'xml'),
-                                    'language-javascript':archivo.tipoArchivo != null && archivo.tipoArchivo == 'javascript',
-                                    'language-css':archivo.tipoArchivo != null && archivo.tipoArchivo ==  'css',
-                                    'language-java':archivo.tipoArchivo != null && archivo.tipoArchivo == 'java'
-                                    }">{{ archivo.ubicacion }}</code></pre>
-                                </ng-template>
-                            </div>
-                        </div>
-                        <div class="text-right text-uppercase mr-3 pb-2">
-                            <a id="mostrar-{{tarea.id}}" (click)="mostrarTodo(tarea.id)"
-                                *ngIf="tarea.archivos?.length > 8" class="btn">Mostrar
-                                todo</a>
-                            <a id="ocultar-{{tarea.id}}" (click)="mostrarTodo(tarea.id)" style="display: none;" class="btn">Ocultar</a>
-                        </div>
-                    </div>
-                    <ng-template #archivosBlock class="row p-3">
-                        <h3>No hay documentación relacionada a la tarea.</h3>
-                    </ng-template>
-                    <div class="item-separator"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->
-
-
-
 <div *ngIf="seccionNivel">
     <div class="row" *ngIf="seccionNivel.recursos">
         <div class="col-12 mt-5">
             <h2>{{seccionNivel.nivelHijo?.nombreRecurso }}</h2>
             <p class="mt-4 mb-5 salto-linea">{{seccionNivel.nivelHijo.descripcion}}</p>
             <div class="item-separator"></div>
-              <div *ngIf="seccionNivel.recursos.length > 0 else archivosBlock">
-                  <div class="row col-12 pt-3">
-                      <div class="col-md-12">
-                          <h3>Descargar documentación</h3>
-                          <p class="mt-4 mb-5">Seleccione los recursos que desea descargar.</p>
-                          <!-- <div *ngIf="cargando" class="progress">
-                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
-                          </div> -->
-                      </div>
-  
-                      <div id="col-auto mr-auto checkbox-active">
+            <div *ngIf="seccionNivel.recursos.length > 0 else archivosBlock">
+                <div class="row col-12 pt-3">
+                    <div class="col-md-12">
+                        <h3>Descargar documentación</h3>
+                        <p class="mt-4 mb-5">Seleccione los recursos que desea descargar.</p>
+                    </div>
+
+                    <div id="col-auto mr-auto checkbox-active">
                         <label class="chk-govco mt-2">
-                          <input type="checkbox" id="checkbox_1"  [(ngModel)]="checkAll" (click)="seleccionarTodo()"/>
-                          <label for="checkbox_1">
-                            Seleccionar todo
-                          </label>
-                          <div class="chk-govco__indicator"></div>
+                            <input type="checkbox" id="checkbox_1" [(ngModel)]="checkAll" (click)="seleccionarTodo()" />
+                            <label for="checkbox_1">
+                                Seleccionar todo
+                            </label>
+                            <div class="chk-govco__indicator"></div>
                         </label>
-                      </div>
-                      <div class="col-auto mr-auto p-2 ml-4">
-                        <a class="btn btn-low text-uppercase " ngClass="{{idsRecursos.length>0?'':'disabled'}}" (click)="descargarRecursos()" >Descargar</a>
-                        <!-- <a class="btn-low text-uppercase" (click)="descargarZip('infoRecurso nombre', 16)">Descargar</a> -->
-                      </div>
-                      <div class="col-auto">
+                    </div>
+                    <div class="col-auto mr-auto p-2 ml-4">
+                        <a class="btn btn-low text-uppercase " ngClass="{{idsRecursos.length>0?'':'disabled'}}"
+                            (click)="descargarRecursos()">Descargar</a>
+                    </div>
+                    <div class="col-auto">
                         <span class="ml-2">Seleccionados: </span> <span>{{seleccionados}}</span><br>
                         <span class="ml-2">Peso: </span> <span>{{pesoTotal}}MB</span>
-                      </div>
-  
-  
-  
-  
-  
-                  </div>
-                  <div class="row p-3">
-                      <div class="col-12 col-sm-6 col-md-4 col-lg-3 text-center pb-3" *ngFor="let archivo of seccionNivel.recursos  | slice:0:visibles;let i=index">
-                          <div>
-                              <a  href="{{archivo.url}}" style="display: none;"></a>
-                              <div class="container file d-flex flex-column">
-                                  <a (click)="abrirRecurso(archivo)"  class="mb-3">
-                                    <img width="60" height="80" [src]="archivo.externo===1 ? 'assets/images/pdf-externo-biblioteca.svg' : 'assets/images/pdf-biblioteca.svg'" *ngIf="archivo.tipoRecurso?.includes('pdf')">
-                                    <img width="60" height="80" src="assets/images/video-externo-biblioteca.svg" *ngIf="archivo.tipoRecurso?.includes('video')">
-                                    <img width="60" height="80" [src]="archivo.externo===1 ? 'assets/images/xls-externo-biblioteca.svg' : 'assets/images/xls-biblioteca.svg'" *ngIf="archivo.tipoRecurso?.includes('excel')">
-                                    <img width="60" height="80" [src]="archivo.externo===1 ? 'assets/images/doc-externo-biblioteca.svg' : 'assets/images/doc-biblioteca.svg'" *ngIf="archivo.tipoRecurso?.includes('word')">
-                                    <img width="60" height="80" [src]="archivo.externo===1 ? 'assets/images/ppt-externo-biblioteca.svg' : 'assets/images/ppt-biblioteca.svg'" *ngIf="archivo.tipoRecurso?.includes('ppt')">
-                                    <img width="60" height="80" [src]="archivo.externo===1 ? 'assets/images/img-externo-biblioteca.svg' : 'assets/images/img-biblioteca.svg'" *ngIf="archivo.tipoRecurso?.includes('image')">
-                                    <img width="60" height="80" [src]="archivo.externo===1 ? 'assets/images/mmp-externo-biblioteca.svg' : 'assets/images/mmp-biblioteca.svg'" *ngIf="archivo.tipoRecurso?.includes('project')">
-                                    <img width="60" height="80" src="assets/images/url-externo-biblioteca.svg" *ngIf="archivo.tipoRecurso?.includes('url')">
-                                    <em *ngIf="archivo.tipoRecurso?.includes('zip')"
-                                    class="far fa-file-zip-o fa-5x"></em>
-                                    <em *ngIf="archivo.tipoRecurso?.includes('audio')"
-                                    class="far fa-file-audio fa-5x"></em>
-                                  </a>
-                                  <div class="text-center" *ngIf="archivo.tipoRecurso?.includes('url') || archivo.tipoRecurso?.includes('video')  || archivo.externo===1"><p>{{archivo.nombre}}</p></div>
-                                  <div id="checkbox-active"  *ngIf="!archivo.tipoRecurso?.includes('url')  && !archivo.tipoRecurso?.includes('video') && archivo.externo===0">
-                                    <label class="chk-govco">
-                                      <input type="checkbox"  id="{{i}}" [checked]="archivo.checked"  (click)="sumarSeleccionados(i, $event)"/>
-                                      <label for="{{i}}">
-                                        {{archivo.nombre}}
-                                      </label>
-                                      <div class="chk-govco__indicator"></div>
-                                    </label>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="row p-3">
-                    <div class="col align-self-start">
-                      <a class="btn btn-round text-uppercase btn-high" ngClass="{{idsRecursos.length>0?'':'disabled'}}" (click)="descargarRecursos()">Descargar</a>
                     </div>
-                    <div class="float-right text-uppercase mr-5 ml-2">
-                        <a (click)="mostrar()"
-                        *ngIf="seccionNivel.recursos.length > visibles" class="btn">Mostrar
-                            todo</a>
-                        <a *ngIf="seccionNivel.recursos.length <= visibles &&seccionNivel.recursos.length>8" (click)="mostrar()" class="btn">Ocultar</a>
+
+                </div>
+                <div class="row p-3">
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 text-center pb-3"
+                        *ngFor="let archivo of seccionNivel.recursos  | slice:0:visibles;let i=index">
+                        <div>
+                            <a href="{{archivo.url}}" style="display: none;"></a>
+                            <div class="container file d-flex flex-column">
+                                <a (click)="abrirRecurso(archivo)" class="mb-3">
+                                    <img width="60" height="80"
+                                        [src]="archivo.externo===1 ? 'assets/images/pdf-externo-biblioteca.svg' : 'assets/images/pdf-biblioteca.svg'"
+                                        *ngIf="archivo.tipoRecurso?.includes('pdf')" [attr.aria-label]="'tipo de archivo pdf'">
+                                    <img width="60" height="80" src="assets/images/video-externo-biblioteca.svg"
+                                        *ngIf="archivo.tipoRecurso?.includes('video')" [attr.aria-label]="'tipo de archivo video'">
+                                    <img width="60" height="80"
+                                        [src]="archivo.externo===1 ? 'assets/images/xls-externo-biblioteca.svg' : 'assets/images/xls-biblioteca.svg'"
+                                        *ngIf="archivo.tipoRecurso?.includes('excel')" [attr.aria-label]="'tipo de archivo xls'">
+                                    <img width="60" height="80"
+                                        [src]="archivo.externo===1 ? 'assets/images/doc-externo-biblioteca.svg' : 'assets/images/doc-biblioteca.svg'"
+                                        *ngIf="archivo.tipoRecurso?.includes('word')" [attr.aria-label]="'tipo de archivo doc'">
+                                    <img width="60" height="80"
+                                        [src]="archivo.externo===1 ? 'assets/images/ppt-externo-biblioteca.svg' : 'assets/images/ppt-biblioteca.svg'"
+                                        *ngIf="archivo.tipoRecurso?.includes('ppt')" [attr.aria-label]="'tipo de archivo ppt'">
+                                    <img width="60" height="80"
+                                        [src]="archivo.externo===1 ? 'assets/images/img-externo-biblioteca.svg' : 'assets/images/img-biblioteca.svg'"
+                                        *ngIf="archivo.tipoRecurso?.includes('image')" [attr.aria-label]="'tipo de archivo imagen'">
+                                    <img width="60" height="80"
+                                        [src]="archivo.externo===1 ? 'assets/images/mmp-externo-biblioteca.svg' : 'assets/images/mmp-biblioteca.svg'"
+                                        *ngIf="archivo.tipoRecurso?.includes('project')" [attr.aria-label]="'tipo de archivo mmp'">
+                                    <img width="60" height="80" src="assets/images/url-externo-biblioteca.svg"
+                                        *ngIf="archivo.tipoRecurso?.includes('url')">
+                                    <em *ngIf="archivo.tipoRecurso?.includes('zip')"
+                                        class="far fa-file-zip-o fa-5x"></em>
+                                    <em *ngIf="archivo.tipoRecurso?.includes('audio')"
+                                        class="far fa-file-audio fa-5x"></em>
+                                </a>
+                                <div class="text-center"
+                                    *ngIf="archivo.tipoRecurso?.includes('url') || archivo.tipoRecurso?.includes('video')  || archivo.externo===1">
+                                    <p>{{archivo.nombre}}</p>
+                                </div>
+                                <div id="checkbox-active"
+                                    *ngIf="!archivo.tipoRecurso?.includes('url')  && !archivo.tipoRecurso?.includes('video') && archivo.externo===0">
+                                    <label class="chk-govco">
+                                        <input type="checkbox" id="{{i}}" [checked]="archivo.checked"
+                                            (click)="sumarSeleccionados(i, $event)" />
+                                        <label for="{{i}}">
+                                            {{archivo.nombre}}
+                                        </label>
+                                        <div class="chk-govco__indicator"></div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-              </div>
-              <ng-template #archivosBlock class="row p-3">
-                  <h3>No hay documentación relacionada a la sección.</h3>
-              </ng-template>
-              <div class="item-separator"></div>
-          </div>
-  
+                <div class="row p-3">
+                    <div class="col align-self-start">
+                        <a class="btn btn-round text-uppercase btn-high"
+                            ngClass="{{idsRecursos.length>0?'':'disabled'}}" (click)="descargarRecursos()">Descargar</a>
+                    </div>
+                    <div class="float-right text-uppercase mr-5 ml-2">
+                        <a (click)="mostrar()" *ngIf="seccionNivel.recursos.length > visibles" class="btn">Mostrar
+                            todo</a>
+                        <a *ngIf="seccionNivel.recursos.length <= visibles &&seccionNivel.recursos.length>8"
+                            (click)="mostrar()" class="btn">Ocultar</a>
+                    </div>
+                </div>
+            </div>
+            <ng-template #archivosBlock class="row p-3">
+                <h3>No hay documentación relacionada a la sección.</h3>
+            </ng-template>
+            <div class="item-separator"></div>
+        </div>
+
     </div>
-  </div>
-  
+</div>

@@ -58,7 +58,11 @@ export class BuscadorCardTramitesComponent implements OnChanges {
         this.href = true;
         this.botonTexto[i] = false;
         Object.values(urlsLocal).find((url) => {
-          element.link.indexOf(url) >= 0 ? (this.href = false) : null;
+          if (element.link.indexOf(url) >= 0) {
+            return this.href = false;
+          } else {
+            return null;
+          }
         });
         this.items.push({
           active: false,
@@ -90,7 +94,7 @@ export class BuscadorCardTramitesComponent implements OnChanges {
     this.ListaAcordeon.toArray()[index].nativeElement.addEventListener(
       'transitionend',
       () => {
-        if (this.botonTexto[index] == false) {
+        if (this.botonTexto[index] === false) {
           if (
             element.offsetHeight < element.scrollHeight ||
             element.offsetWidth < element.scrollWidth
@@ -108,7 +112,7 @@ export class BuscadorCardTramitesComponent implements OnChanges {
     this.listaTexto
       .toArray()
       [index].nativeElement.classList.toggle('line-clamp-3');
-    this.expandirTexto = this.expandirTexto == true ? false : true;
+    this.expandirTexto = this.expandirTexto === true ? false : true;
   }
   VerMasResultados() {
     let resultadosActivos = $('div.card');

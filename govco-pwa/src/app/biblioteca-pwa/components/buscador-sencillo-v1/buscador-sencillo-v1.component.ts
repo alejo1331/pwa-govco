@@ -1,5 +1,4 @@
-import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
-import { PipeTransform } from '@angular/core';
+import { Component, ElementRef, HostListener, ViewChild, PipeTransform } from '@angular/core';
 
 @Component({
   selector: 'app-buscador-sencillo-v1',
@@ -68,7 +67,7 @@ export class BuscadorSencilloV1Component implements PipeTransform {
   @HostListener('window:keyup', ['$event']) onInput(event: KeyboardEvent) {
     if (this.inputBuscador.nativeElement == event.target) {
       this.busqueda = (event.target as HTMLInputElement).value;
-      let filtrado: { active: boolean, titulo: string, departamento: string }[] = this.transform(this.items, this.busqueda);
+      console.log('filtrado',this.transform(this.items, this.busqueda));
     }
   }
 

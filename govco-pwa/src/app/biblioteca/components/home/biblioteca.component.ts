@@ -153,11 +153,11 @@ export class BibliotecaComponent implements OnInit {
     div.id = "contenedor-" + tipo + "-" + categoria;
     if (tipo == "multimedia" || tipo == "ofimatica") {
       div.className = "multimedia row w-100";
-      contenido = document.getElementsByClassName("col-4 text-center mlmd " + categoria);
+      contenido = document.getElementsByClassName("col-4 text-center mlmd " + categoria) as HTMLCollectionOf<HTMLElement>;
       divArchivos = document.getElementById("contenedor-" + tipo + "-" + categoria);
     } else {
       div.className = "codigo row w-100";
-      contenido = document.getElementsByClassName("col-6 cod " + categoria);
+      contenido = document.getElementsByClassName("col-6 cod " + categoria) as HTMLCollectionOf<HTMLElement>;
       divArchivos = document.getElementById("contenedor-" + tipo + "-" + categoria);
     }
 
@@ -169,9 +169,13 @@ export class BibliotecaComponent implements OnInit {
 
         let cont = document.getElementById("contenedor-" + tipo + "-" + categoria);
 
-        for (let i = 0; i < contenido.length; i++) {
-          cont!.appendChild(contenido[i]);
-        }
+        // for (let i = 0; i < contenido.length; i++) {
+        //   cont!.appendChild(contenido[i]);
+        // }
+        Array.from(contenido).forEach((element) => {
+          cont!.appendChild(element);
+        });
+
       }
     }
   }

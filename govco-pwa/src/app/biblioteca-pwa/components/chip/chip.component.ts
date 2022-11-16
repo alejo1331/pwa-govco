@@ -6,6 +6,6 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./chip.component.scss']
 })
 export class ChipComponent {
-  @Input() public chipLabel : String = "";
+  @Input() public chipLabel : string = "";
 
 }

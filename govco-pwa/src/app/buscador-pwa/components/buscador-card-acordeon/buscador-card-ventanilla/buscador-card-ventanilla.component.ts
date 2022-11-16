@@ -49,7 +49,11 @@ export class BuscadorCardVentanillaComponent implements OnChanges {
       this.href = true;
       this.botonTexto[i] = false;
       Object.values(urlsLocal).find(url => {
-        element.link.indexOf(url) >= 0 ? this.href = false : null;
+        if (element.link.indexOf(url) >= 0) {
+          return this.href = false;
+        } else {
+          return null;
+        }
       })
       this.items.push(
         {
@@ -75,7 +79,7 @@ export class BuscadorCardVentanillaComponent implements OnChanges {
     this.listaTexto.toArray()[index].nativeElement.classList.add('line-clamp-3');
     var element: HTMLElement = this.listaTexto.toArray()[index].nativeElement;
     this.ListaAcordeon.toArray()[index].nativeElement.addEventListener('transitionend', () => {
-      if (this.botonTexto[index] == false) {
+      if (this.botonTexto[index] === false) {
         if (element.offsetHeight < element.scrollHeight ||
           element.offsetWidth < element.scrollWidth) {
           this.botonTexto[index] = true;
@@ -88,7 +92,7 @@ export class BuscadorCardVentanillaComponent implements OnChanges {
 
   expandirText(index: number) {
     this.listaTexto.toArray()[index].nativeElement.classList.toggle('line-clamp-3');
-    this.expandirTexto = (this.expandirTexto == true) ? false : true;
+    this.expandirTexto = (this.expandirTexto === true) ? false : true;
   }
   VerMasResultados(){
     let resultadosActivos = $('div.card');

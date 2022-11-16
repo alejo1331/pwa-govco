@@ -23,8 +23,6 @@ export class ResultadosComponent implements OnInit {
   constructor(private buscadorService: BuscadorService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    this.onInitElements();
-
     this.activatedRoute.queryParams
       .subscribe(params => {
         this.busqueda = params.busqueda == undefined ? "" : params.busqueda;
@@ -32,31 +30,23 @@ export class ResultadosComponent implements OnInit {
 
     this.buscadorService.currentSearch.subscribe(query => setTimeout(() => {
       this.filtro = query == "" ? this.busqueda : query;
-      // this.getResultados();
       this.getResultadosBuscador();
     }));
 
     this.buscadorService.currentContenido.subscribe(contenidoId => setTimeout(() => {
-      this.contenidoId = contenidoId
-      // this.getResultados();
+      this.contenidoId = contenidoId;
       this.getResultadosBuscador();
     }));
 
     this.buscadorService.currentSeccion.subscribe(seccionId => setTimeout(() => {
       this.seccionId = seccionId
-      // this.getResultados();
       this.getResultadosBuscador();
     }));
 
     this.buscadorService.currentFecha.subscribe(fechaPublicacion => setTimeout(() => {
       this.fechaPublicacion = fechaPublicacion;
-      // this.getResultados();
       this.getResultadosBuscador();
     }));
-  }
-
-  private onInitElements() {
-    // $('select').selectpicker();
   }
 
   getResultados() {
@@ -71,21 +61,21 @@ export class ResultadosComponent implements OnInit {
 
   getResultadosBuscador() {
     if (this.filtro != "" || this.contenidoId != "" || this.seccionId != "" || this.fechaPublicacion != "") {
-      this.buscadorService.getResultadosBuscador(this.filtro, this.fechaPublicacion, this.contenidoId, this.seccionId).subscribe((data) => {
-        this.resultadosBuscador = data;
-      }, (error) => {
-        console.error(error);
-      })
-    }else if (this.filtro == "" && this.contenidoId == "" && this.seccionId == "" && this.fechaPublicacion == "") {
-      this.buscadorService.getResultadosBuscador(this.filtro, this.fechaPublicacion, this.contenidoId, this.seccionId).subscribe((data) => {
-        this.resultadosBuscador = data;
-      }, (error) => {
-        console.error(error);
-      })
+      this.getResultadosBuscadorData();
+    } else if (this.filtro == "" && this.contenidoId == "" && this.seccionId == "" && this.fechaPublicacion == "") {
+      this.getResultadosBuscadorData();
     }
   }
 
-  hyphenateUrlParams(str:string){
+  getResultadosBuscadorData() {
+    this.buscadorService.getResultadosBuscador(this.filtro, this.fechaPublicacion, this.contenidoId, this.seccionId).subscribe((data) => {
+      this.resultadosBuscador = data;
+    }, (error) => {
+      console.error(error);
+    })
+  }
+
+  hyphenateUrlParams(str: string) {
     return str.split(' ').join('-').toLowerCase();
   }
 

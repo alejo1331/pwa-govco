@@ -19,11 +19,6 @@
         }
     }
 
-    .carousel-control-next,
-    .carousel-control-prev {
-        top: 38px
-    }
-
     .carousel-inner {
         height: 100%;
 
@@ -144,6 +139,7 @@
 
     .carousel-control-prev,
     .carousel-control-next {
+        top: 38px;
         opacity: initial;
         width: 12%;
 

@@ -7,14 +7,11 @@ import { SidebarComponent } from './template/components/sidebar/sidebar.componen
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { MainComponent } from './template/components/main/main.component';
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
-import { LoadingComponent } from '../shared/loading/components/loading/loading.component';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core'; 
 import { InteresComponent } from './template/components/interes/interes.component';
 import { SharedModule } from '../shared/shared.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BuscadorBibliotecaComponent } from './template/components/buscador/buscador-biblioteca.component';
-
-
 
 @NgModule({
   declarations: [
