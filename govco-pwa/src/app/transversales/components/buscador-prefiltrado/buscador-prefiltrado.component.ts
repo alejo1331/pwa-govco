@@ -50,9 +50,9 @@ export class BuscadorPrefiltradoComponent implements OnInit {
       this.componentPrefiltrado.abrirModal() : this.componentPrefiltrado.cerrarModal();
   }
 
-  itemSelected([estado, index]: [boolean, number]) {
+  itemSelected([estado, index, abrirSelectorBusqueda]: [boolean, number, boolean]) {
     this.botonPrefiltro != undefined ? this.botonPrefiltro.nativeElement.focus() : null;
-    if (this.componentPrefiltrado != undefined) {
+    if (this.componentPrefiltrado != undefined && abrirSelectorBusqueda == true) {
       this.filtrarPor();
     }
     this.posicion = index;
