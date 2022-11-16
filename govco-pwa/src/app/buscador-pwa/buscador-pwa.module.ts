@@ -20,6 +20,7 @@ import { ListadoSugerenciasComponent } from './components/buscador-nivel-dos/lis
 import { BuscadorCardNoticiasComponent } from './components/buscador-card-acordeon/buscador-card-noticias/buscador-card-noticias.component';
 import { BuscadorAvisoComponent } from './components/buscador-aviso/buscador-aviso.component';
 import { HomePwaModule } from './../home-pwa/home-pwa.module';
+import { BannerCiiuBuscadorComponent } from './components/banner-ciiu-buscador/banner-ciiu-buscador.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { HomePwaModule } from './../home-pwa/home-pwa.module';
     ListadoSugerenciasComponent,
     BuscadorAvisoComponent,
     BuscadorCardNoticiasComponent,
+    BannerCiiuBuscadorComponent,
   ],
   imports: [
     CommonModule,
