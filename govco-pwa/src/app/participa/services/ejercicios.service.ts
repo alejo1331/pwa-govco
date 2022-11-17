@@ -24,7 +24,6 @@ export class EjerciciosService {
     try {
       const headers = { 'content-type': 'application/json'};
       const body=JSON.stringify(filtro);
-      console.log(body)
       return this.http.post<any>(`${API_URL}Ejercicios/paginated`,body,{'headers':headers});
     } catch (error) {
       console.log("Error obtenerEjerciciosPaginacion --> "+error);

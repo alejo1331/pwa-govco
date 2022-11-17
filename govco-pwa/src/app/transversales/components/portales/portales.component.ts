@@ -64,7 +64,6 @@ export class PortalesComponent implements OnInit {
     this.sedesElectronicasService.getPortales(params);
     this.sedesElectronicasService.getPortales(params).subscribe(
       (resp: any) => {
-        console.log(resp);
         this.portales = resp.data;
         this.count = resp.totalItems;
         this.paginador = Array.from(Array(resp.totalPages), (x, i) => i + 1);

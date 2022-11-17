@@ -33,33 +33,16 @@ export class ActualidadPrincipalService {
   }
 
   getSubCategorias(codigoCategoria: any) {
-    //try {
     return this.http.get<any>(`${this.url_apiCategoriasSubcategorias}CategoriasSubcategorias/Subcategoria/Categoria/Subcategorias/` + codigoCategoria)
-    //  } 
-    //catch (error) {
-    //console.log("Error getSubcategoria --> "+error);
-    // return null;
-    //}
   }
 
   getSectores() {
-    //try {
     return this.http.get<any>(`${this.url_apiEntidades}Sector/ObtenerSectores`)
-    // } catch (error) {
-    // console.log("Error getSectores --> "+error);
-    // return null;
-    //}
   }
 
   getEntidades(filtro: any) {
-    //  try {
-    // const filter = {categoria:categoria,subCategoria:subCategoria,sector:sector,entidad:entidad,fechaPublicacion:fechaPublicacion};
     const headers = { 'content-type': 'application/json' };
     const body = JSON.stringify(filtro);
     return this.http.post<any>(`${this.url_apiNoticias}Noticias/ObtenerEntidadesNoticiasFiltradas`, body, { 'headers': headers });
-    //    } catch (error) {
-    //   console.log("Error getSectores --> "+error);
-    //      return null;
-    //}
   }
 }

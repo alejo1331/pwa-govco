@@ -67,11 +67,11 @@ export class SobreNosotrosLineaDeTiempoComponent implements OnInit {
   validarModeloLineaTemporal(modelo: any) {
     var estado = true;
     if (modelo == null) {
-      console.log("Error validarModeloLineaTemporal() --> Falta modelo SobreNosotros");
+      // "Error validarModeloLineaTemporal() --> Falta modelo SobreNosotros"
       estado = false;
     } else {
       if (!modelo.lineaTemporal) {
-        console.log("Error validarModeloLineaTemporal() --> Falta lineaTemporal");
+        //  "Error validarModeloLineaTemporal() --> Falta lineaTemporal"
         estado = false;
       }
     }
