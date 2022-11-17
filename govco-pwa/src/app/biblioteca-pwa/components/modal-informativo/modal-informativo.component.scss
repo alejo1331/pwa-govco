@@ -1,7 +1,7 @@
 ::ng-deep .modal-lg {
     max-width: 100% !important;
-    padding-left: 16px;
-    padding-right: 16px;
+    padding-left: 40px;
+    padding-right: 40px;
     margin: 0;
 }
 
@@ -10,32 +10,34 @@
 }
 
 ::ng-deep .modal-content {
-    padding: 24px 16px 14px 16px;
+    padding: 24px 24px 0 24px;
     border: 2px solid #E6EFFD;
-    border-radius: 10px;
+    border-radius: 4px;
 }
 
 .modal-header {
     text-align: left;
     display: block;
     padding: 0px;
-    padding-bottom: 24px;
+    margin-bottom: 14px;
     font-family: "WorkSans-Regular", sans-serif;
     font-size: 16px;
     border-bottom: none;
 
     .modal-title {
-        font-family: 'WorkSans-Medium';
+        font-family: 'Roboto-Medium';
+        color: #000000DE;
         text-align: left;
         font-size: 16px;
-        margin-bottom: 26px;
+        margin: 0;
     }
 }
 
 .modal-body {
-    font-family: "WorkSans-Regular", sans-serif;
+    font-family: "Roboto-Regular";
     font-size: 14px;
     padding: 0px;
+    color: #00000099;
 
     .separador {
         display: flex;
@@ -57,11 +59,12 @@
     padding: 0px;
     padding-top: 1rem;
     justify-content: flex-start;
+    margin-left: -14px;
 
     button {
-        font-family: 'WorkSans-SemiBold';
+        font-family: 'Roboto-Medium';
         font-size: 14px;
-        color: #3366CC;
+        color: #6200EE;
         border: 0;
         background-color: transparent;
         padding: 12px;

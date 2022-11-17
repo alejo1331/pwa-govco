@@ -52,11 +52,7 @@ export class ContenidoSideNavComponent implements OnInit, AfterViewInit {
     this.navigation_items_elms.forEach((item: any, index: any) => {
       item.addEventListener("click", (e: any) => {
         e.preventDefault();
-        this.navigation_items_elms.forEach((itm: any) => {
-          if (itm.classList.contains("active")) {
-            itm.classList.remove("active");
-          }
-        });
+        this.desactivarItem();
         item.classList.add("active");
         setTimeout(() => {
           this.sidenav.cerrar();

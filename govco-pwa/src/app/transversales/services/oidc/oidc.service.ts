@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { OAuthErrorEvent, OAuthService } from 'angular-oauth2-oidc';
 import { BehaviorSubject, combineLatest, Observable, ReplaySubject } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
-import { OAuthErrorEventParams } from '../../../app.component';
 import { authConfig } from '../../../auth.config';
 
 @Injectable({

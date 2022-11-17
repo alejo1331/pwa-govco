@@ -1,65 +1,60 @@
-.modal-header{
-  // padding-top: 200px;
-}
-
-.modal-body{
-  color: #4B4B4B !important;
-  font-family: "Work Sans", sans-serif;
-  font-size: 14px;
-}
-.modal-header{
+.modal-header {
   text-align: center;
   display: block;
   padding-bottom: 0px;
-  .modal-title{
-      text-align: center;
-      font-size: 32px;
-      color: #A80521;
-      font-weight: 800;
+
+  .modal-title {
+    text-align: center;
+    font-size: 32px;
+    color: #A80521;
+    font-weight: 800;
   }
 
-  .icon-error{
-      display: block;
-      width: 56px;
-      height: 56px;
-      background-color: #A80521;
-      border-radius: 50%;
-      margin: auto;
+  .icon-error {
+    display: block;
+    width: 56px;
+    height: 56px;
+    background-color: #A80521;
+    border-radius: 50%;
+    margin: auto;
 
-      p{
-          color: #fff;
-          line-height: 56px;
-          font-size: 40px;
-          font-weight: bold;
-          font-family: sans-serif;
-      }
+    p {
+      color: #fff;
+      line-height: 56px;
+      font-size: 40px;
+      font-weight: bold;
+      font-family: sans-serif;
+    }
   }
 }
-.modal-body{
-  p{
-      width:380px;
-      color: #4B4B4B !important;
-      font-family: "Work Sans", sans-serif;
-      font-size: 14px;
-      margin: auto;
-      text-align: center;
+
+.modal-body {
+  color: #4B4B4B !important;
+  font-family: "Work Sans", sans-serif;
+  font-size: 14px;
+
+  p {
+    width:380px;
+    color: #4B4B4B !important;
+    font-family: "Work Sans", sans-serif;
+    font-size: 14px;
+    margin: auto;
+    text-align: center;
   }
 
-  .btn-registrar-usuario{
-      &:hover{
+  .btn-registrar-usuario {
+    &:hover {
       background-color: #004884 !important;
       color: #fff !important;
-      }
+    }
   }
 
   @media (max-width: 768px) {
-      .buttons{
-          button{
-              width: 100%;
-              margin-top: 5px !important;
-          }
+    .buttons {
+      button {
+        width: 100%;
+        margin-top: 5px !important;
       }
+    }
   }
-
-
 }

@@ -49,7 +49,6 @@
         justify-content: center;
       }
       label {
-        color: #004884;
         background: #fff;
         font-weight: 700;
         font-size: 18px;
@@ -114,7 +113,6 @@
         color: #fff;
         left: 0;
         display: flex;
-        font-family: "Montserrat", sans-serif;
         font-weight: 600;
         justify-content: center;
         align-items: center;
@@ -660,10 +658,6 @@
 //   src: url("../fonts/icons/Govco-icons.eot");
 //   src: local("Govco Icon"), local("Govco-Icon"), url("../fonts/icons/Govco-icons.eot?#iefix") format("embedded-opentype"), url("../fonts/icons/Govco-icons.woff2") format("woff2"), url("../fonts/icons/Govco-icons.woff") format("woff"), url("../fonts/icons/Govco-icons.ttf") format("truetype"), url("../fonts/icons/Govco-icons.svg#GovcoIcon") format("svg")
 // }
-
-.hidden {
-  display: none !important
-}
 
 * {
   font-family: "Montserrat", sans-serif;
@@ -1948,142 +1942,6 @@ h3.result-section {
   content: '\e930'
 }
 
-.bg-color-white {
-  background: #fff
-}
-
-.bg-color-selago {
-  background: #E5EEFB
-}
-
-.bg-color-dodger-blue {
-  background: #3772FF
-}
-
-.bg-color-marine {
-  background: #36c
-}
-
-.bg-color-dark-blue {
-  background: #004884
-}
-
-.bg-color-green {
-  background: #069169
-}
-
-.bg-color-gold {
-  background: #FFAB00
-}
-
-.bg-color-orange {
-  background: #F3561F
-}
-
-.bg-color-concrete {
-  background: #F2F2F2
-}
-
-.bg-color-silver {
-  background: #BABABA
-}
-
-.bg-color-tundora {
-  background: #4B4B4B
-}
-
-.bg-color-tutu {
-  background: #FFF2FA
-}
-
-.bg-color-radical-red {
-  background: #F42E62
-}
-
-.bg-color-shiraz {
-  background: #A80521
-}
-
-.bg-color-pale-sky {
-  background: #6c757d
-}
-
-.bg-color-hawkes-blue {
-  background: #E6EFFD
-}
-
-.bg-color-hawkes-blue-300 {
-  background: rgba(157, 190, 255, 0.3)
-}
-
-.bg-color-catalina-blue {
-  background: #0B457F
-}
-
-.bg-color-catalina-blue-600 {
-  background: rgba(11, 69, 127, 0.6)
-}
-
-.bg-color-black-160 {
-  background: rgba(0, 0, 0, 0.16)
-}
-
-.bg-color-marine-400 {
-  background: rgba(51, 102, 204, 0.4)
-}
-
-.bg-color-dark-blue-500 {
-  background: rgba(0, 72, 132, 0.5)
-}
-
-.bg-color-shiraz-600 {
-  background: rgba(168, 5, 33, 0.6)
-}
-
-.bg-color-white-contrast {
-  background: #fff
-}
-
-.bg-color-black-contrast {
-  background: #000
-}
-
-.bg-color-yellow-contrast {
-  background: #ddfb00
-}
-
-.bg-color-orange-contrast {
-  background: #fbc200
-}
-
-.color-shiraz {
-  color: #A80521 !important
-}
-
-.color-green {
-  color: #069169 !important
-}
-
-.color-gold {
-  color: #FFAB00 !important
-}
-
-.color-marine {
-  color: #36c !important
-}
-
-.color-dodger-blue {
-  color: #3772FF !important
-}
-
-.color-white {
-  color: white !important
-}
-
-.color-dark-blue {
-  color: #004884 !important
-}
-
 .navbar {
   width: 100%;
   z-index: 3 !important
@@ -2478,7 +2336,7 @@ h3.result-section {
   justify-content: center;
   margin-top: 0px;
   text-align: center;
-  font: normal 30px/35px "Montserrat", sans-serif, sans-serif;
+  font: normal 30px/35px "Montserrat", sans-serif;
   letter-spacing: 0;
   color: #fff;
   font-weight: 300;
@@ -2514,14 +2372,18 @@ h3.result-section {
 
 .page__footer .container .footer-container .nav-footer .item-footer .title-contact-link {
   text-align: center;
-  font: normal 14px/19px "Work Sans", sans-serif, sans-serif;
+  font-family: "Work Sans", sans-serif;
+  font-size: 14px;
+  font-weight: normal;
   letter-spacing: 0;
   color: #fff
 }
 
 .page__footer .container .footer-container .nav-footer .item-footer .content-link {
   text-align: center;
-  font: normal 14px/19px "Work Sans", sans-serif, sans-serif;
+  font-family: "Work Sans", sans-serif;
+  font-size: 14px;
+  font-weight: normal;
   letter-spacing: 0;
   color: #fff;
   margin-top: 1px !important
@@ -2546,7 +2408,9 @@ h3.result-section {
   font-weight: 400;
   text-rendering: geometricPrecision;
   text-align: center;
-  font: normal 14px/19px "Work Sans", sans-serif, sans-serif;
+  font-family: "Work Sans", sans-serif;
+  font-size: 14px;
+  font-weight: normal;
   letter-spacing: 0;
   color: #fff
 }
@@ -2622,7 +2486,9 @@ h3.result-section {
     text-align: left;
     margin-bottom: 0px;
     margin-top: 0px;
-    font: 300 30px/35px "Montserrat", sans-serif, sans-serif;
+    font-family: "Montserrat", sans-serif;
+    font-size: 30px;
+    font-weight: 300;
     letter-spacing: 0;
     color: #fff
   }
@@ -2663,7 +2529,9 @@ h3.result-section {
   .page__footer .container .footer-container .title-footer {
     margin-top: 0px;
     text-align: center;
-    font: 300 30px/35px "Montserrat", sans-serif, sans-serif;
+    font-family: "Montserrat", sans-serif;
+    font-size: 30px;
+    font-weight: 300;
     letter-spacing: 0;
     color: #fff
   }
@@ -2942,10 +2810,7 @@ h3.result-section {
 }
 
 .btn-symbolic-govco {
-  text-decoration: none !important
-}
-
-.btn-symbolic-govco {
+  text-decoration: none !important;
   margin: auto !important;
   font-weight: bold
 }
@@ -3249,10 +3114,10 @@ h3.result-section {
 
 .btn-up-hover:hover,
 .btn-up-hover:focus {
-  -webkit-transform: translateX(-10.2em);
-  transform: translateX(-10.2em);
+  -webkit-transform: translateX(-12.9em);
+  transform: translateX(-12.9em);
   background-color: white;
-  border-color: #3772FF;
+  border: #3772FF 1px solid;
   border-radius: 1em 0em 0em 1em
 }
 
@@ -3340,7 +3205,8 @@ h3.result-section {
   position: fixed;
   bottom: 3em;
   right: -10.5em;
-  z-index: 4
+  z-index: 4;
+  line-height: 4;
 }
 
 .btn-up-hover {
@@ -3349,18 +3215,19 @@ h3.result-section {
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-  border-radius: 1em 1em 1em 1em;
+  border-radius: 0.8em 0.8em 0.8em 0.8em;
   background-color: #F2F2F2;
   vertical-align: middle;
-  -webkit-transform: perspective(1em) translateZ(0);
-  transform: perspective(1em) translateZ(0);
+  -webkit-transform: perspective(0em) translateZ(0);
+  transform: perspective(0em) translateZ(0);
   -webkit-transition-duration: 0.8s;
   transition-duration: 0.8s;
   -webkit-transition-property: transform;
   -webkit-transition-property: -webkit-transform;
   transition-property: -webkit-transform;
   transition-property: transform;
-  transition-property: transform, -webkit-transform
+  transition-property: transform, -webkit-transform;
+  border: rgba(75, 75, 75, 0.2) 1px solid;
 }
 
 .btn-svg-up-hover {
@@ -3371,7 +3238,7 @@ h3.result-section {
   visibility: visible;
   text-decoration: none !important;
   font-size: 1.4em;
-  color: #3772FF;
+  color: #4B4B4B !important;
   font-style: unset
 }
 
@@ -3391,40 +3258,6 @@ h3.result-section {
 
 .hide {
   opacity: 0
-}
-
-.btn-up-hover:hover,
-.btn-up-hover:focus {
-  -webkit-transform: translateX(-10.2em);
-  transform: translateX(-10.2em);
-  background-color: white;
-  border-color: #3772FF;
-  border-radius: 1em 0em 0em 1em
-}
-
-.btn-up-hover:hover .a-start-up .btn-svg-up-hover,
-.btn-up-hover:focus .a-start-up .btn-svg-up-hover {
-  fill: #3772FF
-}
-
-.btn-up-hover:focus {
-  outline: none
-}
-
-.btn-up-hover:active {
-  background-color: #3772FF
-}
-
-.btn-up-hover:active .a-start-up {
-  visibility: visible;
-  text-decoration: none !important;
-  font-size: 1.4em;
-  color: white;
-  font-style: unset
-}
-
-.btn-up-hover:active .a-start-up .btn-svg-up-hover {
-  fill: white
 }
 
 .chk-govco,
@@ -3471,7 +3304,6 @@ h3.result-section {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   margin: 0;
-  padding: 0;
   content: '';
   -webkit-appearance: none;
   background-color: transparent;
@@ -4194,7 +4026,6 @@ h3.result-section {
   border-bottom: 1.5px solid #A80521 !important;
   background: #FFF2FA !important;
   color: #A80521 !important;
-  border-bottom: 1.5px solid #A80521
 }
 
 .select-govco--error .bootstrap-select .dropdown-toggle:hover,
@@ -4402,7 +4233,6 @@ h3.result-section {
   border-bottom: 1.5px solid #BABABA !important;
   background: #F2F2F2 !important;
   color: #BABABA !important;
-  border-bottom: 1.5px solid #BABABA
 }
 
 .select-govco--inactive .bootstrap-select .dropdown-toggle:hover,
@@ -4585,11 +4415,12 @@ h3.result-section {
   opacity: 0.8;
   -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
   filter: alpha(opacity=80);
-  line-height: 1
+  line-height: 1;
+  margin-top: 13px;
 }
 
 .toast-close-button .icon {
-  font-size: 18px;
+  font-size: 15px !important;
   color: #36c
 }
 
@@ -4776,14 +4607,6 @@ button.toast-close-button {
   opacity: 0.4;
   -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=40);
   filter: alpha(opacity=40)
-}
-
-.toast-close-button {
-  margin-top: 13px
-}
-
-.toast-close-button .icon {
-  font-size: 15px !important
 }
 
 @media all and (max-width: 240px) {
@@ -5440,11 +5263,8 @@ td button.btn-low-mix-govco {
   margin-left: 30px;
   border: 0.5px transparent solid !important;
   padding: 0 !important;
-  border-radius: 20px
-}
-
-.table-detail .form-search {
-  background-color: #E6EFFD !important
+  border-radius: 20px;
+  background-color: #E6EFFD !important;
 }
 
 .table-detail .form-search input {
@@ -5533,7 +5353,9 @@ td button.btn-low-mix-govco {
 }
 
 .table-simple-headblue-govco .table thead th {
-  border: 0px
+  border: 0px;
+  color: white;
+  font-weight: normal
 }
 
 .table-simple-headblue-govco .table thead .table-head-overflow::after {
@@ -5556,11 +5378,6 @@ td button.btn-low-mix-govco {
   background-color: #004884;
   width: 1rem;
   height: 48px
-}
-
-.table-simple-headblue-govco .table thead th {
-  color: white;
-  font-weight: normal
 }
 
 .table-simple-headblue-govco .table td.state-success {
@@ -5818,12 +5635,8 @@ td button.btn-low-mix-govco {
   -ms-flex-align: center;
   align-items: center;
   display: -ms-flexbox;
-  display: flex
-}
-
-.block--gov-accessibility .block-options a:hover {
-  cursor: pointer;
-  text-decoration: none
+  display: flex;
+  text-decoration: none;
 }
 
 .block--gov-accessibility .block-options a:hover .govco-icon {
@@ -6082,49 +5895,6 @@ td button.btn-low-mix-govco {
   box-shadow: 0px 3px 10px -3px #4B4B4B
 }
 
-.div-star-up {
-  position: fixed;
-  bottom: 3em;
-  right: -10.5em;
-  z-index: 4;
-  line-height: 4
-}
-
-.btn-up-hover {
-  cursor: pointer;
-  border: #004884 2px solid;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  border-radius: 0.8em 0.8em 0.8em 0.8em;
-  background-color: #F2F2F2;
-  vertical-align: middle;
-  -webkit-transform: perspective(0em) translateZ(0);
-  transform: perspective(0em) translateZ(0);
-  -webkit-transition-duration: 0.8s;
-  transition-duration: 0.8s;
-  -webkit-transition-property: transform;
-  transition-property: transform
-}
-
-.a-start-up {
-  visibility: visible;
-  text-decoration: none !important;
-  font-size: 1.4em;
-  color: #4B4B4B !important;
-  font-style: unset
-}
-
-.a-start-up:hover,
-.a-start-up:visited,
-.a-start-up:active {
-  color: #3772FF
-}
-
-.a-start-up svg {
-  vertical-align: middle
-}
-
 .backtoTop .div-star-up {
   position: fixed;
   bottom: 3em;
@@ -6172,23 +5942,6 @@ td button.btn-low-mix-govco {
   display: inline-block;
   font-size: 1.625rem;
   font-family: "Work Sans", sans-serif
-}
-
-.btn-up-hover:hover,
-.btn-up-hover:focus {
-  -webkit-transform: translateX(-12.9em);
-  transform: translateX(-12.9em);
-  background-color: white;
-  border: #3772FF 1px solid;
-  border-radius: 1em 0em 0em 1em
-}
-
-.btn-up-hover {
-  border: rgba(75, 75, 75, 0.2) 1px solid
-}
-
-.btn-up-hover:active {
-  background-color: #3772FF
 }
 
 .btn-up-hover:active .label-button-star-up {
