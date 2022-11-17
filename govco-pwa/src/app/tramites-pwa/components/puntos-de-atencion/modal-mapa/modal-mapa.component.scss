@@ -1,4 +1,4 @@
-.content-modal {
+.puntos-atencion.content-modal {
     padding: 1rem;
 
     .modal-header {
@@ -40,20 +40,22 @@
 
 }
 
-
-::ng-deep.modal-open .modal {
-    background-color: #00000080;
-    height: 100%;
-    padding: 0.5rem;
+::ng-deep .ajuste-modal {
+    background-color: #00000080 !important;
+    height: 100% !important;
+    padding: 0.5rem !important;
 }
 
-::ng-deep.modal-content {
-    border-radius: 1.25rem;
-    height: 100%;
+::ng-deep.ajuste-modal-content {
+    border-radius: 1.25rem !important;
+    height: 100% !important;
+    padding: 0 !important;
+    border: none !important;
 }
 
-::ng-deep.modal.show .modal-dialog {
-    height: 100%;
+::ng-deep.ajuste-modal-dialog {
+    height: 100% !important;
     max-width: 100% !important;
-    margin: 0;
+    margin: 0 !important;
+    padding: 0 !important;
 }

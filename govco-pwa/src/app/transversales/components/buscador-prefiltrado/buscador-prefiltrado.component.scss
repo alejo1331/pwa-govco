@@ -57,7 +57,7 @@
         }
     }
 
-    .boton-filtro:active {
+    .boton-filtro:focus-visible {
         outline-color: #000000;
     }
 }

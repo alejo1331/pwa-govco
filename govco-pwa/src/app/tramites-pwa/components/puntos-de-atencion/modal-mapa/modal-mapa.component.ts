@@ -17,6 +17,9 @@ export class ModalMapaComponent implements OnInit {
   @ViewChild('contentModal') contentModal: ElementRef;
 
   bodyElement: HTMLElement;
+  modalMapa: HTMLElement;
+  modalDialog: HTMLElement;
+  modalContent: HTMLElement;
   heightPantalla: number;
   widthPantalla: number;
   heightBody: number = 0;
@@ -40,11 +43,16 @@ export class ModalMapaComponent implements OnInit {
 
   ngAfterViewInit(): void {
     this.contentModal.nativeElement.style.height = 'calc(' + this.heightBody + 'px - 1rem)';
+    this.modalMapa = (document.getElementsByTagName('ngb-modal-window') as HTMLCollectionOf<HTMLElement>)[0];
+    this.modalDialog = (this.modalMapa.getElementsByClassName('modal-dialog') as HTMLCollectionOf<HTMLElement> as HTMLCollectionOf<HTMLElement>)[0];
+    this.modalContent = (this.modalDialog.getElementsByClassName('modal-content') as HTMLCollectionOf<HTMLElement> as HTMLCollectionOf<HTMLElement>)[0];
+    this.modalMapa.classList.add('ajuste-modal');
+    this.modalDialog.classList.add('ajuste-modal-dialog');
+    this.modalContent.classList.add('ajuste-modal-content');
     this.mapInitializer();
   }
 
   mapInitializer(): void {
-
     this.map = L.map('map', {
       center: [Number(this.latitud), Number(this.longitud)],
       zoom: 16
@@ -72,6 +80,9 @@ export class ModalMapaComponent implements OnInit {
 
   closeModal() {
     this.activeModal.close();
+    this.modalMapa.classList.remove('ajuste-modal');
+    this.modalDialog.classList.remove('ajuste-modal-dialog');
+    this.modalContent.classList.remove('ajuste-modal-content');
   }
 
   @HostListener('window:orientationchange', ['$event']) onOrientationchange(event: any) {

@@ -53,7 +53,7 @@
         }
     }
 
-    .card:has(button:focus) {
+    .card:has(button:focus-visible) {
         border: 2px solid #000000;
         border-radius: 4px;
     }

@@ -352,7 +352,6 @@ body {
   height: 3rem;
   border: 0.125rem solid #737373;
   border-radius: 0.313rem;
-  outline-color: #000000;
   text-indent: 1em;
   background-color: #FFFFFF;
   background-image: url("./assets/icons-fonts/expand_more_predeterminado.svg");
@@ -363,6 +362,10 @@ body {
   -webkit-appearance: none !important;
   appearance: none !important;
   padding-right: 2rem !important;
+}
+
+.select-pwa-govco:focus-visible {
+  outline-color: #000000;
 }
 
 .select-pwa-govco.seleccionado {

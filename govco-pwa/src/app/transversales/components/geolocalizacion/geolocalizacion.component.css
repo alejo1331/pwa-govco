@@ -39,7 +39,7 @@
     margin-left: 1.75em;
 }
 
-.barra-geolocalizacion-pwa-govco:has(button:focus) {
+.barra-geolocalizacion-pwa-govco:has(button:focus-visible) {
     border: 2px solid #000000;
     border-radius: 4px;
 }

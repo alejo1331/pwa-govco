@@ -1,5 +1,5 @@
 export interface FiltroBusqueda {
-    filters: filter | null;
+    filters: Filter | null;
     pageNumber: number;
     pageSize: number;
     search: string;
@@ -8,7 +8,7 @@ export interface FiltroBusqueda {
     spinner?: boolean;
 }
 
-export interface filter {
+export interface Filter {
     categorias?: name;
     subcategorias?: name;
     entidadNombre?: string;

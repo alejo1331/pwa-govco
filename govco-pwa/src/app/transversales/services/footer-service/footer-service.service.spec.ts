@@ -93,7 +93,6 @@ describe('FooterServiceService', () => {
     httpClientSpy.get.and.returnValue(of(mockInformacionFooter));
 
     serviceFooter.getInformacionFooter().subscribe((resultado:FooterInterface)=>{
-      console.log(resultado)
       expect(resultado).toEqual(mockInformacionFooter);
       done();
     });

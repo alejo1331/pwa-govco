@@ -1,28 +1,26 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ResultadoFiltro } from '../../models/resultadoFiltroModel';
 import { FiltrosService } from '../../services/filtros.service';
 import { Subscription } from 'rxjs';
 import { BottomMenuService } from 'src/app/transversales/services/bottom-menu/bottom-menu.service';
 import { HeaderService } from 'src/app/transversales/services/header-service/header.service';
 import { SidenavService } from 'src/app/transversales/services/sidenav-service/sidenav-service.service';
-import {
-  BuscadorService,
-  BuscadorParams,
-} from '../../services/buscador.service';
+import { BuscadorService, BuscadorParams } from '../../services/buscador.service';
 import { Router } from '@angular/router';
+import { GeolocalizacionComponent } from 'src/app/transversales/components/geolocalizacion/geolocalizacion.component';
 
 @Component({
   selector: 'app-buscador-principal',
   templateUrl: './buscador-principal.component.html',
   styleUrls: ['./buscador-principal.component.scss'],
 })
-export class BuscadorPrincipalComponent implements OnInit {
+export class BuscadorPrincipalComponent implements OnInit, AfterViewInit {
   @ViewChild('resultados') resultados: ElementRef;
 
   filterSubscription: Subscription;
   resultadosBusqueda: ResultadoFiltro;
   dataResultado: any = [];
-  seccion: String = '';
+  seccion: string = '';
   cantidadResultados: number;
   departamento: { codigoDepartamento: number };
   municipio: { codigoMunicipio: number };
@@ -94,7 +92,7 @@ export class BuscadorPrincipalComponent implements OnInit {
           // Se almacena la respuesta de la búsqueda
           this.resultadosBusqueda = resultado;
           this.filtrosService.ResultadoBusqueda = resultado;
-          this.dataResultado  = this.resultadosBusqueda.data.length > 0 ? this.resultadosBusqueda.data : [];
+          this.dataResultado = this.resultadosBusqueda.data.length > 0 ? this.resultadosBusqueda.data : [];
           this.activarSpinner(false);
           this.cantidadResultados = resultado.data.length;
         } catch (error) {
@@ -103,6 +101,12 @@ export class BuscadorPrincipalComponent implements OnInit {
         }
       }
     );
+  }
+
+  ngAfterViewInit(): void {
+    let barraGeolocalizador: HTMLElement = (document.getElementsByClassName('barra-geolocalizacion-pwa-govco') as HTMLCollectionOf<HTMLElement>)[0];
+    barraGeolocalizador.removeAttribute('style');
+    barraGeolocalizador.classList.add('fixed');
   }
 
   activarSpinner(activa: boolean) {
