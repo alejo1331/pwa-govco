@@ -2,6 +2,7 @@ import { Component, Input, OnChanges, SimpleChanges, ElementRef, QueryList, View
 import { VentanillasUnicasInterface } from 'src/app/buscador-pwa/models/ventanillas-unicas-interface';
 import { urlsLocal } from 'src/variables-globales/urlsLocal';
 import { ValidarUrlService } from 'src/app/buscador-pwa/services/validar-url.service';
+import { FiltrosService } from 'src/app/buscador-pwa/services/filtros.service';
 
 @Component({
   selector: 'app-buscador-card-ventanilla',
@@ -11,6 +12,7 @@ import { ValidarUrlService } from 'src/app/buscador-pwa/services/validar-url.ser
 export class BuscadorCardVentanillaComponent implements OnChanges {
 
   @Input() data: VentanillasUnicasInterface[];
+  @Input() cantidadResultados: number;
   @ViewChildren('texto', { read: ElementRef }) listaTexto: QueryList<ElementRef>;
   @ViewChildren('botonAcordeon', { read: ElementRef }) ListaAcordeon: QueryList<ElementRef>;
 
@@ -28,23 +30,15 @@ export class BuscadorCardVentanillaComponent implements OnChanges {
   botonTexto: boolean[] = [];
 
   constructor(
-    public validarUrlService: ValidarUrlService
+    public validarUrlService: ValidarUrlService,
+    public filtrosService: FiltrosService
   ) { }
 
-  ngDoCheck() {
-
-    if (this.items.length > 0){
-
-      if(document.getElementById('acordeonVentanillas')){
-        $('#acordeonVentanillas div.card:nth-child(-n+5)').addClass('actived')
-      }
-    }
-  }
-
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes.data.previousValue != changes.data.currentValue) {
-      this.items = []
-    };
+    const pageNumber = this.filtrosService.getFilters ? this.filtrosService.getFilters.pageNumber : 1;
+    if (pageNumber == 1) {
+      this.items = [];
+    }
     changes.data.currentValue.forEach((element: VentanillasUnicasInterface, i: number) => {
       this.href = true;
       this.botonTexto[i] = false;
@@ -94,9 +88,18 @@ export class BuscadorCardVentanillaComponent implements OnChanges {
     this.listaTexto.toArray()[index].nativeElement.classList.toggle('line-clamp-3');
     this.expandirTexto = (this.expandirTexto === true) ? false : true;
   }
-  VerMasResultados(){
-    let resultadosActivos = $('div.card');
-    let ultimoActivo = resultadosActivos.filter('.actived:last').index();
-    resultadosActivos.filter(':lt(' + (ultimoActivo + 6) + ')').addClass('actived');
+  
+  VerMasResultados() {
+    const pageNumber = this.filtrosService.getFilters ? this.filtrosService.getFilters.pageNumber : 1;
+
+    this.filtrosService.setFilters = {
+      filters: this.filtrosService.getFilters ? this.filtrosService.getFilters?.filters : null,
+      pageNumber: pageNumber + 1,
+      pageSize: 5,
+      search: this.filtrosService.getFilters  ? this.filtrosService.getFilters?.search : '',
+      sort: '',
+      seccion: this.filtrosService.getFilters?.seccion,
+      spinner: false,
+    };
   }
 }

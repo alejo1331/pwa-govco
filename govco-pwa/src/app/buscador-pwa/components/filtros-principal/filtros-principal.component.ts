@@ -212,7 +212,7 @@ export class FiltrosPrincipalComponent implements OnInit {
             municipio: this.ubicacionAux[1]
           },
           pageNumber: 1,
-          pageSize: 10,
+          pageSize: 5,
           search: parametros.txtInputBuscador,
           sort: '',
           seccion: parametros.txtConsumoApi,

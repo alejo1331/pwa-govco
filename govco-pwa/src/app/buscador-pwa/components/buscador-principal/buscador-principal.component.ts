@@ -68,7 +68,7 @@ export class BuscadorPrincipalComponent implements OnInit {
         this.filtrosService.setFilters = {
           filters: null,
           pageNumber: 1,
-          pageSize: 10,
+          pageSize: 5,
           search: parametros.txtInputBuscador,
           sort: '',
           seccion: parametros.txtConsumoApi,
@@ -96,7 +96,7 @@ export class BuscadorPrincipalComponent implements OnInit {
           this.filtrosService.ResultadoBusqueda = resultado;
           this.dataResultado  = this.resultadosBusqueda.data.length > 0 ? this.resultadosBusqueda.data : [];
           this.activarSpinner(false);
-          this.cantidadResultados = resultado.data.length;
+          this.cantidadResultados = resultado.total;
         } catch (error) {
           this.activarSpinner(false);
           console.error(error);
