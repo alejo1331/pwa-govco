@@ -6,6 +6,7 @@ import {
   BuscadorService,
   BuscadorParams,
 } from 'src/app/buscador-pwa/services/buscador.service';
+import { FiltrosService } from '../../services/filtros.service';
 import { ItemsBuscador } from 'src/variables-globales/items-buscador';
 
 @Component({
@@ -26,8 +27,9 @@ export class BuscadorAvisoComponent implements OnInit {
   constructor(
     private appprincipal: AppComponent,
     protected ServicioGeolocalizacion: GeolocalizacionService,
-    private buscadorService: BuscadorService
-  ) { }
+    private buscadorService: BuscadorService,
+    private filtrosService: FiltrosService
+  ) {}
 
   ngOnInit(): void {
     if (localStorage.getItem('codigoDepartamento')) {
@@ -39,12 +41,10 @@ export class BuscadorAvisoComponent implements OnInit {
       ]);
     }
 
-    this.buscadorService.getSugerenciasBuscador$.subscribe(
-      (sugerencias: any) => {
-        if (sugerencias.length > 0) this.sugBuscador = sugerencias[0][0];
-        else this.sugBuscador = '';
-      }
-    );
+    this.filtrosService.ResultadoBusqueda$.subscribe((resultado: any) => {
+      if (resultado.tituloSugerido) this.sugBuscador = resultado.tituloSugerido;
+      else this.sugBuscador = '';
+    });
 
     this.buscadorService.getBuscadorParams$.subscribe(
       (parametros: BuscadorParams) => {
@@ -54,10 +54,11 @@ export class BuscadorAvisoComponent implements OnInit {
       }
     );
 
-    this.ServicioGeolocalizacion.coordenadas.subscribe((ubicacion: string[]) => {
-      this.getMunicipiosPorDepartamento([ubicacion[0], ubicacion[1]])
-    });
-
+    this.ServicioGeolocalizacion.coordenadas.subscribe(
+      (ubicacion: string[]) => {
+        this.getMunicipiosPorDepartamento([ubicacion[0], ubicacion[1]]);
+      }
+    );
   }
 
   abrirGeolocalizacion() {
@@ -67,8 +68,10 @@ export class BuscadorAvisoComponent implements OnInit {
     ]);
   }
 
-
-  getMunicipiosPorDepartamento([codigoDepartamento, codigoMunicipio]: string[]) {
+  getMunicipiosPorDepartamento([
+    codigoDepartamento,
+    codigoMunicipio,
+  ]: string[]) {
     this.ServicioGeolocalizacion.cacheJsonMunicipiosPorDepartamento(
       codigoDepartamento
     ).then((existe) => {
@@ -90,8 +93,8 @@ export class BuscadorAvisoComponent implements OnInit {
       index: this.resIndex,
       txtConsumoApi: this.resConsumoApi,
       txtInputBuscador: this.sugBuscador,
-      aplicaGeoreferenciacion: ItemsBuscador[this.resIndex].aplicaGeoreferenciacion
-
+      aplicaGeoreferenciacion:
+        ItemsBuscador[this.resIndex].aplicaGeoreferenciacion,
     };
     this.buscadorService.setBuscadorParams(nuevoBuscadorParams);
   }
