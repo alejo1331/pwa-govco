@@ -98,7 +98,6 @@ describe('TramitesMasConsultadosService', () => {
     httpClientSpy.get.and.returnValue(of(mockEstadoTramites));
 
     service.getTramitesMasConsultados().subscribe((resultado: GeneralInterface) => {
-      console.log(resultado)
       expect(resultado).toEqual(mockEstadoTramites);
       done();
     });
@@ -126,7 +125,6 @@ describe('TramitesMasConsultadosService', () => {
     httpClientSpy.get.and.returnValue(of(mockEstadoTramites));
 
     service.getTramitesMasConsultadosEstado().subscribe((resultado: EstadoInterface) => {
-      console.log(resultado)
       expect(resultado).toEqual(mockEstadoTramites);
       done();
     });
@@ -150,7 +148,6 @@ describe('TramitesMasConsultadosService', () => {
     httpClientSpy.get.and.returnValue(of(mockTituloTramites));
 
     service.getTramitesMasConsultadosTitulo('LoMasConsultadoHome').subscribe((resultado: TituloInterface) => {
-      console.log(resultado)
       expect(resultado).toEqual(mockTituloTramites);
       done();
     });
@@ -230,7 +227,6 @@ describe('TramitesMasConsultadosService', () => {
     httpClientSpy.get.and.returnValue(of(mockTramitesPorMunicipio));
 
     service.getTramitesMasConsultadosPorMunicipio('27205').subscribe((resultado: PorMunicipioInterface) => {
-      console.log(resultado)
       expect(resultado).toEqual(mockTramitesPorMunicipio);
       done();
     });

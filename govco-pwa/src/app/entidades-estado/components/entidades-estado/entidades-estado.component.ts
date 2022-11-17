@@ -93,14 +93,9 @@ export class EntidadesEstadoComponent implements OnInit {
         var seccionEntidadScrollBottom = seccionEntidadScrollTop+seccionEntidad.clientHeight+seccionMenu.clientHeight;
 
         if(seccionEntidadScrollTop<seccionMenuScrollTop && seccionEntidadScrollBottom>seccionMenuScrollBottom){
-          console.log("Dentro "+rama.titulo+"->"+seccionEntidadScrollTop +" < "+ seccionMenuScrollTop + " | " +seccionEntidadScrollBottom + ">" + seccionMenuScrollBottom)
-          // document.querySelectorAll(".items-menu").forEach(function(item,index){
-          //   item.classList.remove("activo");
-          // });
           document.getElementById("item_menu_"+rama.titulo)?.classList.add("activo");
           fueraSeccionEntidades = true;
         }else{
-          console.log("Afuera "+rama.titulo+"->"+seccionEntidadScrollTop +" < "+ seccionMenuScrollTop + " | " +seccionEntidadScrollBottom + ">" + seccionMenuScrollBottom)
           document.getElementById("item_menu_"+rama.titulo)?.classList.remove("activo");
         }
       });

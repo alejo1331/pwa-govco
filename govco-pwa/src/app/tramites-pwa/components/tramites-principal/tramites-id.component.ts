@@ -135,7 +135,7 @@ export class TramitesIdComponent implements OnInit {
       );
   }
 
-  // to do
+  //TODO este servicio no esta funcionando
   private async GenerarTrackingTramite(id: number) {
     this.fichaTramiteService.GenerarTrackingTramite(String(id)).subscribe(
       (resp: any) => {
