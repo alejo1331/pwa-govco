@@ -39,6 +39,7 @@ export class ListadoSugerenciasComponent implements OnInit {
       aplicaGeoreferenciacion: ItemsBuscador[this.buscadorParams.index].aplicaGeoreferenciacion
     }
     this.buscadorService.setBuscadorParams(nuevoBuscadorParams)
+    this.buscadorService.setAbrirBuscador(false);
   }
 
 }
