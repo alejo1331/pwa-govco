@@ -5,6 +5,7 @@ import { ModalDudasPwaComponent } from '../modal-dudas-pwa/modal-dudas-pwa.compo
 import { TramitesPorIdService } from '../../services/tramites-por-id-service/tramites-por-id.service';
 import { DataBasicaPuntosInterface } from '../../models/puntos-de-atencion/data-basica-puntos-interface';
 import { ValidarUrlService } from './../../../buscador-pwa/services/validar-url.service';
+import { PlatformLocation } from '@angular/common';
 @Component({
   selector: 'app-ficha-especifica-cards-pwa',
   templateUrl: './ficha-especifica-cards-pwa.component.html',
@@ -25,11 +26,13 @@ export class FichaEspecificaCardsPwaComponent implements OnInit {
 
   constructor(
     private modalService: NgbModal,
+    private platformLocation: PlatformLocation,
     private fichaTramiteService: TramitesPorIdService,
     public validarUrlService: ValidarUrlService
   ) {}
 
   ngOnInit(): void {
+    this.platformLocation.onPopState(() => this.modalService.dismissAll());
     if (!this.infoTramite.EnLinea) {
       this.activarBotonPuntosAtencion = false;
     }
@@ -64,11 +67,12 @@ export class FichaEspecificaCardsPwaComponent implements OnInit {
   openDudas() {
     const modalRef = this.modalService.open(ModalDudasPwaComponent, {
       size: 'lg',
-      backdrop: 'static',
+      backdrop: true,
       keyboard: false,
       centered: true,
       windowClass: 'background-modal',
     });
+
     modalRef.componentInstance.canalesSeguimiento = this.canalesSeguimiento;
   }
 
