@@ -11,7 +11,7 @@ import { FiltrosPrincipalComponent } from '../filtros-principal/filtros-principa
 })
 export class BarraFiltrosComponent implements OnInit {
 
-  @Input() totalResultados: any[];
+  @Input() totalResultados: number;
   @ViewChild(FiltrosPrincipalComponent) FiltrosPrincipalComponent: FiltrosPrincipalComponent;
 
   public filtrosSubscription: Subscription

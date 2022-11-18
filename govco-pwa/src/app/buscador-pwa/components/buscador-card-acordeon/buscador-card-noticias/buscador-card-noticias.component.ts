@@ -1,5 +1,6 @@
 import { Component, ElementRef, Input, OnChanges, QueryList, SimpleChanges, ViewChildren } from '@angular/core';
 import { NoticiasInterface } from 'src/app/buscador-pwa/models/noticias-interface';
+import { FiltrosService } from 'src/app/buscador-pwa/services/filtros.service';
 import { ValidarUrlService } from 'src/app/buscador-pwa/services/validar-url.service';
 import { urlsLocal } from 'src/variables-globales/urlsLocal';
 
@@ -11,6 +12,7 @@ import { urlsLocal } from 'src/variables-globales/urlsLocal';
 export class BuscadorCardNoticiasComponent implements OnChanges {
 
   @Input() data: NoticiasInterface[];
+  @Input() cantidadResultados: number;
   @ViewChildren('texto', { read: ElementRef }) listaTexto: QueryList<ElementRef>;
   @ViewChildren('botonAcordeon', { read: ElementRef }) ListaAcordeon: QueryList<ElementRef>;
 
@@ -28,21 +30,15 @@ export class BuscadorCardNoticiasComponent implements OnChanges {
   }[] = [];
 
   constructor(
-    public validarUrlService: ValidarUrlService
+    public validarUrlService: ValidarUrlService,
+    public filtrosService: FiltrosService
   ) { }
 
-  ngDoCheck() {
-    if (this.items.length > 0){
-      if(document.getElementById('acordeonNoticias')){
-        $('#acordeonNoticias div.card:nth-child(-n+5)').addClass('actived')
-      }
-    }
-  }
-
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes.data.previousValue != changes.data.currentValue) {
-      this.items = []
-    };
+    const pageNumber = this.filtrosService.getFilters ? this.filtrosService.getFilters.pageNumber : 1;
+    if (pageNumber == 1) {
+      this.items = [];
+    }
     changes.data.currentValue.forEach((element: NoticiasInterface, i: number) => {
       this.href = true;
       this.botonTexto[i] = false;
@@ -93,10 +89,17 @@ export class BuscadorCardNoticiasComponent implements OnChanges {
     this.expandirTexto = (this.expandirTexto === true) ? false : true;
   }
 
-  VerMasResultados(){
-    let resultadosActivos = $('div.card');
-    let ultimoActivo = resultadosActivos.filter('.actived:last').index();
-    resultadosActivos.filter(':lt(' + (ultimoActivo + 6) + ')').addClass('actived');
+  VerMasResultados() {
+    const pageNumber = this.filtrosService.getFilters ? this.filtrosService.getFilters.pageNumber : 1;
 
+    this.filtrosService.setFilters = {
+      filters: this.filtrosService.getFilters ? this.filtrosService.getFilters?.filters : null,
+      pageNumber: pageNumber + 1,
+      pageSize: 5,
+      search: this.filtrosService.getFilters  ? this.filtrosService.getFilters?.search : '',
+      sort: '',
+      seccion: this.filtrosService.getFilters?.seccion,
+      spinner: false,
+    };
   }
 }

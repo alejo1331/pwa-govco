@@ -10,6 +10,7 @@ import {
 import { TramitesServiciosInterface } from 'src/app/buscador-pwa/models/tramites-servicios-interface';
 import { urlsLocal } from 'src/variables-globales/urlsLocal';
 import { ValidarUrlService } from 'src/app/buscador-pwa/services/validar-url.service';
+import { FiltrosService } from 'src/app/buscador-pwa/services/filtros.service';
 
 @Component({
   selector: 'app-buscador-card-tramites',
@@ -18,6 +19,7 @@ import { ValidarUrlService } from 'src/app/buscador-pwa/services/validar-url.ser
 })
 export class BuscadorCardTramitesComponent implements OnChanges {
   @Input() data: TramitesServiciosInterface[];
+  @Input() cantidadResultados: number;
   @ViewChildren('texto', { read: ElementRef })
   listaTexto: QueryList<ElementRef>;
   @ViewChildren('botonAcordeon', { read: ElementRef })
@@ -39,18 +41,14 @@ export class BuscadorCardTramitesComponent implements OnChanges {
   expandirTexto: boolean = false;
   botonTexto: boolean[] = [];
 
-  constructor(public validarUrlService: ValidarUrlService) {}
-
-  ngDoCheck() {
-    if (this.items.length > 0) {
-      if(document.getElementById('acordeonTramites')){
-        $('#acordeonTramites div.card:nth-child(-n+5)').addClass('actived')
-      }
-    }
-  }
+  constructor(
+    public validarUrlService: ValidarUrlService,
+    public filtrosService: FiltrosService
+    ) {}
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes.data.previousValue != changes.data.currentValue) {
+    const pageNumber = this.filtrosService.getFilters ? this.filtrosService.getFilters.pageNumber : 1;
+    if (pageNumber == 1) {
       this.items = [];
     }
     changes.data.currentValue.forEach(
@@ -114,11 +112,18 @@ export class BuscadorCardTramitesComponent implements OnChanges {
       [index].nativeElement.classList.toggle('line-clamp-3');
     this.expandirTexto = this.expandirTexto === true ? false : true;
   }
+
   VerMasResultados() {
-    let resultadosActivos = $('div.card');
-    let ultimoActivo = resultadosActivos.filter('.actived:last').index();
-    resultadosActivos
-      .filter(':lt(' + (ultimoActivo + 6) + ')')
-      .addClass('actived');
+    const pageNumber = this.filtrosService.getFilters ? this.filtrosService.getFilters.pageNumber : 1;
+
+    this.filtrosService.setFilters = {
+      filters: this.filtrosService.getFilters ? this.filtrosService.getFilters?.filters : null,
+      pageNumber: pageNumber + 1,
+      pageSize: 5,
+      search: this.filtrosService.getFilters  ? this.filtrosService.getFilters?.search : '',
+      sort: '',
+      seccion: this.filtrosService.getFilters?.seccion,
+      spinner: false,
+    };
   }
 }
