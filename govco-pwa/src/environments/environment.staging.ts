@@ -4,7 +4,7 @@ export const environment = {
   serverEntidades: 'https://preapi-interno.www.gov.co/api/entidades/',
   serverUrl: 'https://preapi-interno.www.gov.co/api/entidades/',
   serverUrlNoticia: 'https://preapi-interno.www.gov.co/api/noticias/',
-  urlApiEntidades: 'https://preapi-interno.www.gov.co/api/entidades',
+  urlApiEntidades: 'https://api-interno.www.gov.co/api/entidades',
   apiUrl: "https://preapi-interno.www.gov.co/api/participacion/",
   apiUrlUrna: "https://preapi-interno.www.gov.co/api/participacion/",
 

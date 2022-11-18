@@ -8,6 +8,7 @@ import {
 } from 'src/app/buscador-pwa/services/buscador.service';
 import { FiltrosService } from '../../services/filtros.service';
 import { ItemsBuscador } from 'src/variables-globales/items-buscador';
+import { DepartamentoInterface } from 'src/app/transversales/models/geolocalizacion/departamento-interface';
 
 @Component({
   selector: 'app-buscador-aviso',
@@ -29,16 +30,13 @@ export class BuscadorAvisoComponent implements OnInit {
     protected ServicioGeolocalizacion: GeolocalizacionService,
     private buscadorService: BuscadorService,
     private filtrosService: FiltrosService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     if (localStorage.getItem('codigoDepartamento')) {
       this.codDepartamento = localStorage.getItem('codigoDepartamento')!;
       this.codMunicipio = localStorage.getItem('codigoMunicipio')!;
-      this.getMunicipiosPorDepartamento([
-        this.codDepartamento,
-        this.codMunicipio,
-      ]);
+      this.getMunicipiosPorDepartamento([this.codDepartamento, this.codMunicipio]);
     }
 
     this.filtrosService.ResultadoBusqueda$.subscribe((resultado: any) => {
@@ -68,21 +66,26 @@ export class BuscadorAvisoComponent implements OnInit {
     ]);
   }
 
-  getMunicipiosPorDepartamento([
-    codigoDepartamento,
-    codigoMunicipio,
-  ]: string[]) {
-    this.ServicioGeolocalizacion.cacheJsonMunicipiosPorDepartamento(
-      codigoDepartamento
-    ).then((existe) => {
+
+  getMunicipiosPorDepartamento([codigoDepartamento, codigoMunicipio]: string[]) {
+    let departamentoSeleccionado: DepartamentoInterface;
+    let municipioSeleccionado;
+    this.ServicioGeolocalizacion.getCacheJsonDepartamentos().then((departamentos: DepartamentoInterface[]) => {
+      departamentoSeleccionado = departamentos.filter((data: DepartamentoInterface) => {
+        return data.codigo === codigoDepartamento;
+      })[0];
+    })
+    this.ServicioGeolocalizacion.cacheJsonMunicipiosPorDepartamento(codigoDepartamento).then((existe) => {
       if (existe) {
         this.ServicioGeolocalizacion.getCacheJsonMunicipiosPorDepartamento(
           codigoDepartamento
         ).then((municipios: MunicipioInterface[]) => {
-          let municipioSeleccionado = municipios.filter((elemento: any) => {
+          municipioSeleccionado = municipios.filter((elemento: any) => {
             return elemento.codigo === codigoMunicipio;
           })[0];
-          this.geoLocMunName = municipioSeleccionado.nombre.toUpperCase();
+          this.geoLocMunName = codigoMunicipio === '11001' ?
+            municipioSeleccionado.nombre.toUpperCase()
+            : departamentoSeleccionado.nombre.toUpperCase() + ', ' + municipioSeleccionado.nombre.toUpperCase();
         });
       }
     });
