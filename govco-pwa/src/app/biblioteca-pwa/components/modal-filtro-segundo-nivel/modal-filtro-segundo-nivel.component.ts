@@ -11,23 +11,33 @@ export class ModalFiltroSegundoNivelComponent {
 
   @ViewChild('modalFiltro') modalFiltro: ElementRef;
   @Input() informacionModal: InformacionModalInterface;
-  @Output() itemSelected = new EventEmitter<string>() ;
+  @Output() itemSelected = new EventEmitter<string>();
 
   searchText: string = '';
 
   constructor(public platform: Platform) { }
 
-
   abrirModal() {
-    this.modalFiltro.nativeElement.classList.add('show');
+    this.modalFiltro.nativeElement.style.display = 'block';
+    this.modalFiltro.nativeElement.classList.add('on-modal');
+    this.modalFiltro.nativeElement.classList.remove('off-modal');
     if (this.platform.IOS || this.platform.SAFARI) {
       var body = (document.getElementsByTagName('body') as HTMLCollectionOf<HTMLElement>)[0];
       body.style.position = 'fixed';
       body.style.overflow = 'hidden';
     }
-
     this.focusInput();
     this.focus();
+  }
+
+  cerrarModal() {
+    this.modalFiltro.nativeElement.classList.remove('on-modal');
+    this.modalFiltro.nativeElement.classList.add('off-modal');
+  }
+
+  onAnimationEnd(event: Event) {
+    (event.target as HTMLElement).className == 'modal-filtro-pwa off-modal' ?
+      this.modalFiltro.nativeElement.removeAttribute('style') : null;
   }
 
   focusInput() {
@@ -37,7 +47,7 @@ export class ModalFiltroSegundoNivelComponent {
 
   itemSeleccionado(idItem: string | number, item: string) {
     this.itemSelected.emit(item)
-    this.modalFiltro.nativeElement.classList.remove('show');
+    this.cerrarModal();
     if (this.platform.IOS || this.platform.SAFARI) {
       var body = (document.getElementsByTagName('body') as HTMLCollectionOf<HTMLElement>)[0];
       body.style.removeProperty('position')
@@ -75,7 +85,7 @@ export class ModalFiltroSegundoNivelComponent {
   }
 
   removeFocus() {
-    document.body.removeEventListener("focus", () => {});
+    document.body.removeEventListener("focus", () => { });
   }
 
   ngOnDestroy() {

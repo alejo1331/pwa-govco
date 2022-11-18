@@ -112,3 +112,31 @@
 .show {
     display: block;
 }
+
+.on-modal {
+    animation: on-opacity .5s forwards;
+
+    @keyframes on-opacity {
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+}
+
+.off-modal {
+    animation: off-opacity .5s forwards;
+
+    @keyframes off-opacity {
+        100% {
+            opacity: 0;
+        }
+
+        0% {
+            opacity: 1;
+        }
+    }
+}

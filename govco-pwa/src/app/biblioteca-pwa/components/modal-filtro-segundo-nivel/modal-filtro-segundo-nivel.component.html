@@ -1,4 +1,5 @@
-<div #modalFiltro class="modal-filtro-pwa" tabindex="-1" aria-labelledby="exampleModalPopoversLabel" aria-modal="true" role="dialog">
+<div #modalFiltro class="modal-filtro-pwa" (animationend)="onAnimationEnd($event)" (click)="cerrarModal()" tabindex="-1"
+    aria-labelledby="exampleModalPopoversLabel" aria-modal="true" role="dialog">
     <div class="contenido">
         <div class="form-group">
             <label for="search-text">
@@ -7,7 +8,8 @@
             <input type="text" id="search-text" [(ngModel)]="searchText" placeholder="Buscar" tabindex="0">
         </div>
         <div class="listado">
-            <button *ngFor="let item of informacionModal.contendioModal | filterSegundoNivel: searchText; let idItem = index;"
+            <button
+                *ngFor="let item of informacionModal.contendioModal | filterSegundoNivel: searchText; let idItem = index;"
                 (click)="itemSeleccionado(idItem, item)" class="item"
                 [class.active]="informacionModal.itemSeleccionado == item" tabindex="0">
                 <p>{{item}}</p>
