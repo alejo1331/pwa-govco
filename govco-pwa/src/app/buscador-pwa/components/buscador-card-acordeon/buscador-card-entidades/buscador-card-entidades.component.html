@@ -19,10 +19,9 @@
             <div class="card-body">
                 <div class="descripcion contenido-pwa-govco">
                     <p>Tipo de orden:
-                        <span>{{item.orden}}</span>
+                        <span>{{item.orden[0] | uppercase}}{{item.orden | lowercase | slice: 1 : item.orden.length}}</span>
                     </p>
                 </div>
-
             </div>
         </div>
     </div>

@@ -24,7 +24,7 @@ export class FiltrosService {
     filtros: [
       {
         categorias: [],
-        subCategorias: [],
+        subcategorias: [],
         entidadNombre: [],
         sector: [],
         fechaPublicacionFiltro: [],

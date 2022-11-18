@@ -17,7 +17,7 @@ export interface DataResultadoFiltro {
 
 export interface DataFiltros {
     categorias: [],
-    subCategorias: [],
+    subcategorias: [],
     entidadNombre: [],
     sector: [],
     fechaPublicacionFiltro: [],

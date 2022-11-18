@@ -17,8 +17,8 @@ export interface Filter {
     fechaCierreFiltro?: string;
     nombreEstandarizado?: string;
     tipoEntidad?: string;
-    anioPublicacion?: string;
-    mesPublicacion?: string;
+    anioPublicacionFiltro?: string;
+    mesPublicacionFiltro?: string;
     estado?: string;
     departamento: { codigoDepartamento: number } | null;
     municipio: { codigoMunicipio: number } | null;
@@ -26,15 +26,15 @@ export interface Filter {
 
 export interface filterMordal {
     categorias?: name;
-    subcategorias?: name;
+    subCategorias?: name;
     entidadNombre?: string;
     sector?: string;
     fechaPublicacionFiltro?: string;
     fechaCierreFiltro?: string;
     nombreEstandarizado?: string;
     tipoEntidad?: string;
-    anioPublicacion?: string;
-    mesPublicacion?: string;
+    anioPublicacionFiltro?: string;
+    mesPublicacionFiltro?: string;
     estado?: string;
 }
 

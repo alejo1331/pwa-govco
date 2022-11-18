@@ -124,7 +124,6 @@ export class MomentosDeVidaComponent implements OnInit {
 
         }
         this.focus = !this.focus;
-        //  this.nameButton=!this.nameButton;
       }, 100);
 
     } catch (error) {

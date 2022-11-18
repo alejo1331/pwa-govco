@@ -4,7 +4,7 @@
         <div class="dropdown-arrow"></div>
         <div class="header">
             <h5>Filtrar por:</h5>
-            <button class="clean" (click)="limpiarFiltros()">Limpiar filtros</button>
+            <button class="clean" (click)="limpiarFiltros()" [disabled]="itemSeleccionados == 0 ? true : false">Limpiar filtros</button>
         </div>
         <hr>
         <ngx-skeleton-loader appearance="line" count="3" *ngIf="!resultadosBusqueda"

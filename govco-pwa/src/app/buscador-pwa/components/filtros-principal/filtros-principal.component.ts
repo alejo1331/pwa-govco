@@ -31,6 +31,7 @@ export class FiltrosPrincipalComponent implements OnInit {
   public busqueda = '';
   public filtrosSeleccionados: filterMordal = {};
   ubicacionAux: Array<any> = [];
+  itemSeleccionados:number = 0;
 
   constructor(
     protected filtrosService: FiltrosService,
@@ -139,7 +140,10 @@ export class FiltrosPrincipalComponent implements OnInit {
   }
 
   itemFiltroNivelDos(item: string) {
-    // this.filtrosSeleccionados = this.filtrosService.getFilters?.filters? != null ? this.filtrosService.getFilters.filters.filtroModal : {};
+    if (item && this.filtrosSeleccionados[this.filtroSeleccionado] == undefined) {
+      this.itemSeleccionados++;
+    }
+
     this.filtrosSeleccionados = this.filtrosService.getFilters?.filters != null ? this.filtrosService.getFilters.filters : {};
     if (this.filtroSeleccionado == 'categorias' || this.filtroSeleccionado == 'subCategorias') {
       this.filtrosSeleccionados[this.filtroSeleccionado] = { 'nombre': item }
@@ -157,6 +161,7 @@ export class FiltrosPrincipalComponent implements OnInit {
 
   eliminarFiltro(item: string) {
     delete this.filtrosSeleccionados[item];
+    this.itemSeleccionados--;
 
     if (item == 'categorias') {
       delete this.filtrosSeleccionados['subCategorias'];
@@ -169,6 +174,7 @@ export class FiltrosPrincipalComponent implements OnInit {
 
   limpiarFiltros() {
     this.filtrosSeleccionados = {};
+    this.itemSeleccionados = 0;
     this.actualizarBusqueda();
   }
 
@@ -198,15 +204,15 @@ export class FiltrosPrincipalComponent implements OnInit {
         this.filtrosService.setFilters = {
           filters: {
             categorias: this.filtrosSeleccionados.categorias,
-            subcategorias: this.filtrosSeleccionados.subcategorias,
+            subcategorias: this.filtrosSeleccionados.subCategorias,
             entidadNombre: this.filtrosSeleccionados.entidadNombre,
             sector: this.filtrosSeleccionados.sector,
             fechaPublicacionFiltro: this.filtrosSeleccionados.fechaPublicacionFiltro,
             fechaCierreFiltro: this.filtrosSeleccionados.fechaCierreFiltro,
             nombreEstandarizado: this.filtrosSeleccionados.nombreEstandarizado,
             tipoEntidad: this.filtrosSeleccionados.tipoEntidad,
-            anioPublicacion: this.filtrosSeleccionados.anioPublicacion,
-            mesPublicacion: this.filtrosSeleccionados.mesPublicacion,
+            anioPublicacionFiltro: this.filtrosSeleccionados.anioPublicacionFiltro,
+            mesPublicacionFiltro: this.filtrosSeleccionados.mesPublicacionFiltro,
             estado: this.filtrosSeleccionados.estado,
             departamento: this.ubicacionAux[0],
             municipio: this.ubicacionAux[1]
