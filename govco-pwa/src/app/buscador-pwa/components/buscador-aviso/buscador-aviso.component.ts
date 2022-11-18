@@ -30,7 +30,7 @@ export class BuscadorAvisoComponent implements OnInit {
     protected ServicioGeolocalizacion: GeolocalizacionService,
     private buscadorService: BuscadorService,
     private filtrosService: FiltrosService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     if (localStorage.getItem('codigoDepartamento')) {
@@ -83,7 +83,9 @@ export class BuscadorAvisoComponent implements OnInit {
           municipioSeleccionado = municipios.filter((elemento: any) => {
             return elemento.codigo === codigoMunicipio;
           })[0];
-          this.geoLocMunName = departamentoSeleccionado.nombre.toUpperCase() + '-' +  municipioSeleccionado.nombre.toUpperCase();
+          this.geoLocMunName = codigoMunicipio === '11001' ?
+            municipioSeleccionado.nombre.toUpperCase()
+            : departamentoSeleccionado.nombre.toUpperCase() + ', ' + municipioSeleccionado.nombre.toUpperCase();
         });
       }
     });
