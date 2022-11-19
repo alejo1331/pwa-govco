@@ -25,7 +25,7 @@ export class BotonRetroalimentacionComponent {
         panelClass: 'size-modal-retro',
       };
     }
-    const dialogRef = this.dialog.open(
+    this.dialog.open(
       ServiceAreaContentComponent,
       this.dataModal
     );

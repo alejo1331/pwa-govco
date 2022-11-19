@@ -4,7 +4,6 @@ import { HeaderService } from 'src/app/transversales/services/header-service/hea
 import { SidenavService } from 'src/app/transversales/services/sidenav-service/sidenav-service.service';
 import { EntidadesService } from '../../services/entidades-service/entidades-service.service';
 import { esResponsive, isMobile } from '../utils/utils';
-// import { Window } from '../../models/categoria-model';
 
 @Component({
   selector: 'app-entidades-estado',
@@ -55,9 +54,6 @@ export class EntidadesEstadoComponent implements OnInit {
         obj.activarDesacticarItemsMenuCollapse();
       }
     });
-    // window.addEventListener('resize', () => {
-    //   isMobile()?null:window.scrollTo(0,0);
-    // })
     window.scrollTo(0,0)
   }
 
@@ -146,7 +142,6 @@ export class EntidadesEstadoComponent implements OnInit {
 
   activarEventosAccesibilidad(evt: any){
     if(evt.keyCode==9){
-        // window["Objeto"]=this;
         window.addEventListener('keyup',this.setEventos);
         window.addEventListener('keypress',this.setEventos);
     }else if(evt.keyCode==27){
@@ -163,7 +158,6 @@ export class EntidadesEstadoComponent implements OnInit {
 
   setEventos(evt: any){
     if(evt.key==="Escape"){
-      // window.removeEventListener('keyup', window["objeto"].setEventos);
       document.getElementById("salir-seccion-entidades")?.focus();
     }
     if(evt.code==="Space"){
@@ -177,5 +171,4 @@ export class EntidadesEstadoComponent implements OnInit {
       window.scrollTo(0, 300);
     }, 1000);
   }
-
 }
