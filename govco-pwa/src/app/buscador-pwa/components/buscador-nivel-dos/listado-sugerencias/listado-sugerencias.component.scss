@@ -1,7 +1,7 @@
 .govco-pwa-sugerencia{
-  height: 48px;
+  min-height: 48px;
   border-bottom: 1px solid #000;
-  padding-left: 24px;
+  padding: 16px 0px 16px 24px;
   display: flex;
   align-items: center;
   color: #737373;
@@ -19,4 +19,8 @@ p{
     -webkit-line-clamp: 2;
     display: -webkit-box;
     -webkit-box-orient: vertical;
+    font-family: 'WorkSans-Regular';
+    span {
+      color: #000000;
+    }
 }

@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { BuscadorService, BuscadorParams } from 'src/app/buscador-pwa/services/buscador.service';
 import { ItemsBuscador } from 'src/variables-globales/items-buscador';
 
 @Component({
   selector: 'app-listado-sugerencias',
   templateUrl: './listado-sugerencias.component.html',
-  styleUrls: ['./listado-sugerencias.component.scss']
+  styleUrls: ['./listado-sugerencias.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class ListadoSugerenciasComponent implements OnInit {
 
