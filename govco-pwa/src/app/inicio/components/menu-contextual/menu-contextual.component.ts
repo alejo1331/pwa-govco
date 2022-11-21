@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-menu-contextual',
-  templateUrl: './menu-contextual.component.html',
-  styleUrls: ['./menu-contextual.component.scss']
+  templateUrl: './menu-contextual.component.html'
 })
 export class MenuContextualComponent{
 

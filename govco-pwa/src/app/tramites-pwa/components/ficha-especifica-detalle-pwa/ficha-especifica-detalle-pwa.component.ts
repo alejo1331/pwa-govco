@@ -83,9 +83,7 @@ export class FichaEspecificaDetallePwaComponent implements OnInit {
   }
 
   getIconoCosto(data: any) {
-    data === 'SI'
-      ? (this.iconoCosto = 'monetization_on')
-      : (this.iconoCosto = 'money_off');
+    this.iconoCosto = data === 'SI'? 'monetization_on' : 'money_off';
   }
 
   showBotonFecha() {

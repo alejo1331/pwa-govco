@@ -1,4 +1,3 @@
-import { async } from '@angular/core/testing';
 import { Component, OnInit } from '@angular/core';
 import { NoticiasServiceService } from 'src/app/noticias/services/noticias-service/noticias-service.service';
 import { NoticiaPublicadaModel } from 'src/app/noticias/models/noticiaPublicadaModel';

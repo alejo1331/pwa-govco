@@ -148,10 +148,6 @@
         background-color: #3366CC;
       }
 
-      input:checked + .slider:before {
-        background-color: #ffffff;
-      }
-
       input:focus-visible + .slider {
         border: 2px solid rgb(0, 0, 0) !important;
         outline: 2px solid rgb(255, 255, 255) !important;
@@ -160,6 +156,7 @@
       }
 
       input:checked + .slider:before {
+        background-color: #ffffff;
         -webkit-transform: translateX(15px);
         -ms-transform: translateX(15px);
         transform: translateX(15px);

@@ -25,8 +25,6 @@ export class ValidarUrlService {
   public validate(url: string) {    
     return this.http.get(this.url_apiUtils+`validateurl?url=${url}`)
                     .pipe(map( m => {
-                      // Pruebas
-                      //m = false;
                       if(!m){
                         this.loadingSubject.next(true);
                       }

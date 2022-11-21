@@ -5,9 +5,9 @@
                 data-toggle="collapse" [attr.data-target]="'#collapse-ventanillas' + i" aria-expanded="false"
                 [attr.aria-controls]="'collapse-ventanillas' + i">
                 <a *ngIf="href" (click)="validarUrlService.validarUrl(item.link, '_blank')" class="line-clamp-3"
-                    tabindex="0" [attr.aria-label]="'Abrir pagina ' + item.titulo">{{item.titulo[0] | uppercase}}{{item.titulo | slice: 1 : item.titulo.length}}</a>
+                    tabindex="0" [attr.aria-label]="'Abrir pagina ' + item.titulo">{{item.titulo}}</a>
                 <a *ngIf="!href" routerLink="{{item.link}}" class="line-clamp-3" tabindex="0"
-                    [attr.aria-label]="'Abrir pagina ' + item.titulo">{{item.titulo[0] | uppercase}}{{item.titulo | slice: 1 : item.titulo.length}}</a>
+                    [attr.aria-label]="'Abrir pagina ' + item.titulo">{{item.titulo}}</a>
                 <div class="caja-icono-24-pwa">
                     <span class="icono-expand-more" type="image"
                         alt="Expandir acordeon para ver más información"></span>

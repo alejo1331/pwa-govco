@@ -342,7 +342,9 @@ export class AppComponent implements OnInit, AfterContentChecked, AfterContentCh
       this.touchMoveFinal = event.changedTouches[0].screenY;
       this.touchMoveDiferencia = this.touchMoveFinal - this.touchMoveInicial;
       if (this.touchMoveInicial < this.touchMoveFinal) {
-        this.touchMoveDiferencia >= 50 ? this.appGeolocalizacion.style.top = '0rem' : null;
+        if (this.touchMoveDiferencia >= 50) {
+          this.appGeolocalizacion.style.top = '0rem';
+        }
       } else {
         this.appGeolocalizacion.style.top = '-2.25rem';
       }
@@ -369,10 +371,12 @@ export class AppComponent implements OnInit, AfterContentChecked, AfterContentCh
 
   @HostListener('document:mousewheel', ['$event']) onMousedown(event: any) {
     if (this.appGeolocalizacion != undefined) {
-      this.router.url == '/' + urlsLocal.buscador ?
-        (this.appGeolocalizacion.removeAttribute('style'),
-          this.appGeolocalizacion.classList.add('fixed'))
-        : this.appGeolocalizacion.classList.remove('fixed')
+      if (this.router.url == '/' + urlsLocal.buscador) {
+        this.appGeolocalizacion.removeAttribute('style');
+        this.appGeolocalizacion.classList.add('fixed');
+      } else {
+        this.appGeolocalizacion.classList.remove('fixed');
+      }
     }
   }
 

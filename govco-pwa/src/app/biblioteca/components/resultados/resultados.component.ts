@@ -60,9 +60,8 @@ export class ResultadosComponent implements OnInit {
   }
 
   getResultadosBuscador() {
-    if (this.filtro != "" || this.contenidoId != "" || this.seccionId != "" || this.fechaPublicacion != "") {
-      this.getResultadosBuscadorData();
-    } else if (this.filtro == "" && this.contenidoId == "" && this.seccionId == "" && this.fechaPublicacion == "") {
+    if (this.filtro != "" || this.contenidoId != "" || this.seccionId != "" || this.fechaPublicacion != "" || 
+      (this.filtro == "" && this.contenidoId == "" && this.seccionId == "" && this.fechaPublicacion == "")) {
       this.getResultadosBuscadorData();
     }
   }

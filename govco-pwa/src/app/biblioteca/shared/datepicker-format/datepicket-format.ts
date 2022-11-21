@@ -34,9 +34,10 @@ export function toInteger(value: any): number {
     }
   
     format(date: NgbDateStruct): string {
-      return date ?
-        `${date.year}/${isNumber(date.month) ? padNumber(date.month) : ''}/${isNumber(date.day) ? padNumber(date.day) : ''}` :
-        '';
+      const month = isNumber(date.month) ? padNumber(date.month) : '';
+      const day = isNumber(date.day) ? padNumber(date.day) : ''
+
+      return date ? `${date.year}/${month}/${day}` : '';
     }
   
   }

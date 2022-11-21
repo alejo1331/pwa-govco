@@ -133,7 +133,6 @@ export class ListadoNoticiasFiltroComponent implements OnInit, OnChanges {
         window["objeto"]=this;
         window.addEventListener('keyup',this.setEventos);
         window.addEventListener('keypress',this.setEventos);
-        // document.addEventListener("click", this.desActivarEventosClickPorFuera);
         this.estadoPaginadorAccesible=true;
     }else if(evt.keyCode==27){
       document.getElementById("salir-seccion-noticias")?.focus();
@@ -170,7 +169,6 @@ export class ListadoNoticiasFiltroComponent implements OnInit, OnChanges {
   }
 
   cargarPaginaAccesible(evet:any){
-    // evet.preventDefault();
     if(+evet.target.value>this.totalPages){
       this.estadoAlertaAccesible=true;
       setTimeout(() => {
