@@ -65,7 +65,6 @@ export class NivelDosHeaderBuscadorComponent implements AfterViewInit {
           this.datosAutocompletar.forEach((name: any, index: any) => {
             this.datosAutocompletar[index] = [name, name.replace(regEx, "<span>$&</span>")]
           });
-          console.log(this.datosAutocompletar)
           this.buscadorService.setSugerenrciasBuscador(this.datosAutocompletar)
         }, (error) => {
           console.error(error);
