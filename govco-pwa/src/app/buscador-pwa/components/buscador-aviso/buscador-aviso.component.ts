@@ -30,13 +30,16 @@ export class BuscadorAvisoComponent implements OnInit {
     protected ServicioGeolocalizacion: GeolocalizacionService,
     private buscadorService: BuscadorService,
     private filtrosService: FiltrosService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     if (localStorage.getItem('codigoDepartamento')) {
       this.codDepartamento = localStorage.getItem('codigoDepartamento')!;
       this.codMunicipio = localStorage.getItem('codigoMunicipio')!;
-      this.getMunicipiosPorDepartamento([this.codDepartamento, this.codMunicipio]);
+      this.getMunicipiosPorDepartamento([
+        this.codDepartamento,
+        this.codMunicipio,
+      ]);
     }
 
     this.filtrosService.ResultadoBusqueda$.subscribe((resultado: any) => {
@@ -66,16 +69,24 @@ export class BuscadorAvisoComponent implements OnInit {
     ]);
   }
 
-
-  getMunicipiosPorDepartamento([codigoDepartamento, codigoMunicipio]: string[]) {
+  getMunicipiosPorDepartamento([
+    codigoDepartamento,
+    codigoMunicipio,
+  ]: string[]) {
     let departamentoSeleccionado: DepartamentoInterface;
     let municipioSeleccionado;
-    this.ServicioGeolocalizacion.getCacheJsonDepartamentos().then((departamentos: DepartamentoInterface[]) => {
-      departamentoSeleccionado = departamentos.filter((data: DepartamentoInterface) => {
-        return data.codigo === codigoDepartamento;
-      })[0];
-    })
-    this.ServicioGeolocalizacion.cacheJsonMunicipiosPorDepartamento(codigoDepartamento).then((existe) => {
+    this.ServicioGeolocalizacion.getCacheJsonDepartamentos().then(
+      (departamentos: DepartamentoInterface[]) => {
+        departamentoSeleccionado = departamentos.filter(
+          (data: DepartamentoInterface) => {
+            return data.codigo === codigoDepartamento;
+          }
+        )[0];
+      }
+    );
+    this.ServicioGeolocalizacion.cacheJsonMunicipiosPorDepartamento(
+      codigoDepartamento
+    ).then((existe) => {
       if (existe) {
         this.ServicioGeolocalizacion.getCacheJsonMunicipiosPorDepartamento(
           codigoDepartamento
@@ -83,9 +94,17 @@ export class BuscadorAvisoComponent implements OnInit {
           municipioSeleccionado = municipios.filter((elemento: any) => {
             return elemento.codigo === codigoMunicipio;
           })[0];
-          this.geoLocMunName = codigoMunicipio === '11001' ?
-            municipioSeleccionado.nombre.toUpperCase()
-            : departamentoSeleccionado.nombre.toUpperCase() + ', ' + municipioSeleccionado.nombre.toUpperCase();
+          this.geoLocMunName =
+            codigoMunicipio === '11001'
+              ? this.capitalizeGeo(municipioSeleccionado.nombre.toLowerCase())
+              : this.capitalizeGeo(
+                  departamentoSeleccionado.nombre.toLowerCase()
+                ) +
+                ', ' +
+                this.capitalizeMunicipio(
+                  municipioSeleccionado.nombre.toLowerCase()
+                );
+          console.log(this.geoLocMunName);
         });
       }
     });
@@ -100,5 +119,21 @@ export class BuscadorAvisoComponent implements OnInit {
         ItemsBuscador[this.resIndex].aplicaGeoreferenciacion,
     };
     this.buscadorService.setBuscadorParams(nuevoBuscadorParams);
+  }
+
+  capitalizeGeo(str: string) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  }
+
+  capitalizeMunicipio(str: string) {
+    let municipio = str.split(' ');
+    let municipioMod = municipio.map((letter) => {
+      if (!(letter == 'de' || letter == 'del')) {
+        return this.capitalizeGeo(letter);
+      } else {
+        return letter;
+      }
+    });
+    return municipioMod.join(' ');
   }
 }
