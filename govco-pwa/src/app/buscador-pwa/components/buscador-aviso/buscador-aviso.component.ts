@@ -36,6 +36,7 @@ export class BuscadorAvisoComponent implements OnInit {
     if (localStorage.getItem('codigoDepartamento')) {
       this.codDepartamento = localStorage.getItem('codigoDepartamento')!;
       this.codMunicipio = localStorage.getItem('codigoMunicipio')!;
+      console.log(this.codDepartamento, this.codMunicipio);
       this.getMunicipiosPorDepartamento([
         this.codDepartamento,
         this.codMunicipio,
@@ -75,39 +76,43 @@ export class BuscadorAvisoComponent implements OnInit {
   ]: string[]) {
     let departamentoSeleccionado: DepartamentoInterface;
     let municipioSeleccionado;
-    this.ServicioGeolocalizacion.getCacheJsonDepartamentos().then(
-      (departamentos: DepartamentoInterface[]) => {
-        departamentoSeleccionado = departamentos.filter(
-          (data: DepartamentoInterface) => {
-            return data.codigo === codigoDepartamento;
-          }
-        )[0];
-      }
-    );
-    this.ServicioGeolocalizacion.cacheJsonMunicipiosPorDepartamento(
-      codigoDepartamento
-    ).then((existe) => {
-      if (existe) {
-        this.ServicioGeolocalizacion.getCacheJsonMunicipiosPorDepartamento(
-          codigoDepartamento
-        ).then((municipios: MunicipioInterface[]) => {
-          municipioSeleccionado = municipios.filter((elemento: any) => {
-            return elemento.codigo === codigoMunicipio;
-          })[0];
-          this.geoLocMunName =
-            codigoMunicipio === '11001'
-              ? this.capitalizeGeo(municipioSeleccionado.nombre.toLowerCase())
-              : this.capitalizeGeo(
-                  departamentoSeleccionado.nombre.toLowerCase()
-                ) +
-                ', ' +
-                this.capitalizeMunicipio(
-                  municipioSeleccionado.nombre.toLowerCase()
-                );
-          console.log(this.geoLocMunName);
-        });
-      }
-    });
+    if (codigoDepartamento != 'TodosLosDepartamentos') {
+      this.ServicioGeolocalizacion.getCacheJsonDepartamentos().then(
+        (departamentos: DepartamentoInterface[]) => {
+          departamentoSeleccionado = departamentos.filter(
+            (data: DepartamentoInterface) => {
+              return data.codigo === codigoDepartamento;
+            }
+          )[0];
+        }
+      );
+      this.ServicioGeolocalizacion.cacheJsonMunicipiosPorDepartamento(
+        codigoDepartamento
+      ).then((existe) => {
+        console.log('codigoDepartamento', codigoDepartamento);
+        if (existe) {
+          this.ServicioGeolocalizacion.getCacheJsonMunicipiosPorDepartamento(
+            codigoDepartamento
+          ).then((municipios: MunicipioInterface[]) => {
+            municipioSeleccionado = municipios.filter((elemento: any) => {
+              return elemento.codigo === codigoMunicipio;
+            })[0];
+            this.geoLocMunName =
+              codigoMunicipio === '11001'
+                ? this.capitalizeGeo(municipioSeleccionado.nombre.toLowerCase())
+                : this.capitalizeGeo(
+                    departamentoSeleccionado.nombre.toLowerCase()
+                  ) +
+                  ', ' +
+                  this.capitalizeMunicipio(
+                    municipioSeleccionado.nombre.toLowerCase()
+                  );
+          });
+        }
+      });
+    } else {
+      this.geoLocMunName = 'Toda Colombia';
+    }
   }
 
   seleccionarSugerencia() {
