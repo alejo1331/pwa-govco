@@ -36,7 +36,6 @@ export class BuscadorAvisoComponent implements OnInit {
     if (localStorage.getItem('codigoDepartamento')) {
       this.codDepartamento = localStorage.getItem('codigoDepartamento')!;
       this.codMunicipio = localStorage.getItem('codigoMunicipio')!;
-      console.log(this.codDepartamento, this.codMunicipio);
       this.getMunicipiosPorDepartamento([
         this.codDepartamento,
         this.codMunicipio,
@@ -89,7 +88,6 @@ export class BuscadorAvisoComponent implements OnInit {
       this.ServicioGeolocalizacion.cacheJsonMunicipiosPorDepartamento(
         codigoDepartamento
       ).then((existe) => {
-        console.log('codigoDepartamento', codigoDepartamento);
         if (existe) {
           this.ServicioGeolocalizacion.getCacheJsonMunicipiosPorDepartamento(
             codigoDepartamento
