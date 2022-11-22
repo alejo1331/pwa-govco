@@ -2,6 +2,7 @@ import { Platform } from '@angular/cdk/platform';
 import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { InformacionModalInterface } from '../../models/filtro-nivel-dos/filtro-nivel-dos-interface';
 
+
 @Component({
   selector: 'app-modal-filtro-segundo-nivel',
   templateUrl: './modal-filtro-segundo-nivel.component.html',
@@ -28,6 +29,10 @@ export class ModalFiltroSegundoNivelComponent {
     }
     this.focusInput();
     this.focus();
+  }
+
+  clickCerrarModal(event: Event) {
+    (event.target as HTMLElement) === this.modalFiltro.nativeElement ? this.cerrarModal() : null;
   }
 
   cerrarModal() {
