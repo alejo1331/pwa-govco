@@ -29,9 +29,12 @@ export class BuscadorPrefiltradoComponent implements OnInit {
               private router: Router) {
                 router.events.subscribe((event: Event) => {
                   if (event instanceof NavigationStart) {
+                    let regex = /([T][0-9])\w+/;
                     if(event.url != '/buscador'){
-                      let input: any = document.querySelector("input");
-                      input.value = '';
+                      if(regex.test(event.url) == false){
+                        let input: any = document.querySelector("input");
+                        input.value = '';
+                      }
                     }
                   }
                 })
