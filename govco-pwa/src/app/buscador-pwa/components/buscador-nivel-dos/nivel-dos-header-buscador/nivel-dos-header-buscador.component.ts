@@ -62,9 +62,16 @@ export class NivelDosHeaderBuscadorComponent implements AfterViewInit {
         this.numeroSugerencias).subscribe((data) => {
           this.datosAutocompletar = data.filtros[0].sugerenciasFiltro;
           let regEx = new RegExp(inputBuscadorSinTildes, 'gi');
+          // this.datosAutocompletar.forEach((name: any, index: any) => {
+          //   this.datosAutocompletar[index] = [name, name.replace(regEx, "<span>$&</span>")]
+          // })
           this.datosAutocompletar.forEach((name: any, index: any) => {
-            this.datosAutocompletar[index] = [name, name.replace(regEx, "<span>$&</span>")]
+            this.datosAutocompletar[index] = [name,
+            this.buscadorService.fnResaltarCoincidenciasXPalabras(
+              this.buscadorService.fnSugerenciasSintaxis(name, this.maxLargoSugerencia), inputBuscadorSinTildes,  'i')
+            ]
           });
+
           this.buscadorService.setSugerenrciasBuscador(this.datosAutocompletar)
         }, (error) => {
           console.error(error);

@@ -21,9 +21,9 @@ export class ServiciosYTramitesListComponent implements OnInit {
     pullDrag: false,
     dots: true,
     navSpeed: 700,
-    navText: [ 
-      '<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAA0ElEQVRIibXVIU4DURCA4Q9EBaLBoJrgKiEcoBfoATCcgBOgOQMXwGFx1VhIkMgmBQEGSJAkQDFvkidoRZn57Wa/TXb3zfD/JnhMcP7sCO9YVuCHeGv4RzY+xkvDPzHNxPexaPgXjjPxEeYN/8ZJJr6Hh4b/4DQT38V9w5c4y8SHuOvw80x8BzcdfpGJDzDr8EtsZT7gusOvsL0Jsu6mkuPfV/6KKP7I0RC3in7TqPSgRaWjIioddlHpuI7GeFa0cKIDvCpamVHp0o8meFp18RepAkYE7nsHmgAAAABJRU5ErkJggg==">', 
-      '<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAA0ElEQVRIic3WIW4CMBQA0DcUAgHB4EhwW8LcHG4exQW4wO6A3Ql2AuQuwCyTLEHiWKYWECgSssBMkzUkYNZP+LbNf8lv+385HZ/onVn/dxywwUMUsEnICt0I4BHbhHzjNgLpY5eQL3QikAF+ErJEOwIZYp+QBVoRyFMCDpijGYGMMmSGegTynCFT1EoDN3jJkAmqpZEKxhnyem7j1cVxid4ULlF+yO8KH3J+TT/QKJk89KGFtorQZhfaro8Hzl3J5PyNzDXuSyfnAkN/qcC35RecbkUnJ/dOewAAAABJRU5ErkJggg==">' 
+    navText: [
+      '<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAA0ElEQVRIibXVIU4DURCA4Q9EBaLBoJrgKiEcoBfoATCcgBOgOQMXwGFx1VhIkMgmBQEGSJAkQDFvkidoRZn57Wa/TXb3zfD/JnhMcP7sCO9YVuCHeGv4RzY+xkvDPzHNxPexaPgXjjPxEeYN/8ZJJr6Hh4b/4DQT38V9w5c4y8SHuOvw80x8BzcdfpGJDzDr8EtsZT7gusOvsL0Jsu6mkuPfV/6KKP7I0RC3in7TqPSgRaWjIioddlHpuI7GeFa0cKIDvCpamVHp0o8meFp18RepAkYE7nsHmgAAAABJRU5ErkJggg==">',
+      '<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAA0ElEQVRIic3WIW4CMBQA0DcUAgHB4EhwW8LcHG4exQW4wO6A3Ql2AuQuwCyTLEHiWKYWECgSssBMkzUkYNZP+LbNf8lv+385HZ/onVn/dxywwUMUsEnICt0I4BHbhHzjNgLpY5eQL3QikAF+ErJEOwIZYp+QBVoRyFMCDpijGYGMMmSGegTynCFT1EoDN3jJkAmqpZEKxhnyem7j1cVxid4ULlF+yO8KH3J+TT/QKJk89KGFtorQZhfaro8Hzl3J5PyNzDXuSyfnAkN/qcC35RecbkUnJ/dOewAAAABJRU5ErkJggg==">'
     ],
     responsive: {
       0: {
@@ -76,11 +76,11 @@ export class ServiciosYTramitesListComponent implements OnInit {
     const cantidad = 5;
     const columnas  = Math.ceil(data.length/cantidad);
     const slider = Math.ceil(data.length/10);
-  
+
     for (let index = 0; index < columnas; index++) {
 
       let temporal = [];
-      
+
       if(data.length >= cantidad){
         temporal = data.slice(0,cantidad);
         data.splice(0,cantidad);
@@ -89,7 +89,7 @@ export class ServiciosYTramitesListComponent implements OnInit {
       }
       this.tramitesListGroup.push(temporal);
     }
-  
+
     this.listSlider = [];
     for (let index = 0; index < slider; index++) {
       let temList = [];
@@ -99,7 +99,7 @@ export class ServiciosYTramitesListComponent implements OnInit {
       this.tramitesListGroup.splice(0,1);
       this.tramitesListGroup.splice(0,1);
     }
-        
+
   }
 
 }

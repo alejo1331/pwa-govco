@@ -18,7 +18,6 @@ export class NivelDosHeaderPrefiltrosComponent implements OnInit {
   ngOnInit() {
     this.buscadorService.getBuscadorParams$.subscribe(
       (parametros : BuscadorParams) => {
-        // debugger;
         this.tramiteIndex = parametros.index;
         this.buscadorParams = parametros;
         let currentActive = document.getElementsByClassName('filtro-active')[0];
@@ -29,7 +28,7 @@ export class NivelDosHeaderPrefiltrosComponent implements OnInit {
         tramiteSelected.classList.add('filtro-active');
         let container : any = document.getElementById(this.tramiteIndex.toString())?.offsetLeft;
         document.getElementById('govco-pwa-prefiltros-container')!.scrollLeft = 0;
-        document.getElementById('govco-pwa-prefiltros-container')!.scrollLeft += container;
+        document.getElementById('govco-pwa-prefiltros-container')!.scrollLeft += (container - 8);
         this.estadoClick = false
       }
     )
