@@ -16,6 +16,9 @@ export class BuscadorCardEjerciciosParticipacionComponent implements OnChanges {
   @ViewChildren('texto', { read: ElementRef }) listaTexto: QueryList<ElementRef>;
   @ViewChildren('botonAcordeon', { read: ElementRef }) ListaAcordeon: QueryList<ElementRef>;
 
+  pageSize = 5;
+  contadorResultados = 0;
+
   meses: string[] = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
   mesesNum: string[] = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"];
   href: boolean = true;
@@ -117,5 +120,18 @@ export class BuscadorCardEjerciciosParticipacionComponent implements OnChanges {
       seccion: this.filtrosService.getFilters?.seccion,
       spinner: false,
     };
+  }
+
+  VerMenosResultados(){
+    this.filtrosService.setFilters = {
+      filters: this.filtrosService.getFilters ? this.filtrosService.getFilters?.filters : null,
+      pageNumber: 1,
+      pageSize: this.pageSize,
+      search: this.filtrosService.getFilters  ? this.filtrosService.getFilters?.search : '',
+      sort: '',
+      seccion: this.filtrosService.getFilters?.seccion,
+      spinner: false,
+    };
+    this.contadorResultados = 0;
   }
 }

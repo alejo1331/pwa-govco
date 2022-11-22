@@ -16,6 +16,9 @@ export class BuscadorCardVentanillaComponent implements OnChanges {
   @ViewChildren('texto', { read: ElementRef }) listaTexto: QueryList<ElementRef>;
   @ViewChildren('botonAcordeon', { read: ElementRef }) ListaAcordeon: QueryList<ElementRef>;
 
+  pageSize = 5;
+  contadorResultados = 0;
+
   public items: {
     active: boolean,
     descripcion: string;
@@ -88,7 +91,7 @@ export class BuscadorCardVentanillaComponent implements OnChanges {
     this.listaTexto.toArray()[index].nativeElement.classList.toggle('line-clamp-3');
     this.expandirTexto = (this.expandirTexto === true) ? false : true;
   }
-  
+
   VerMasResultados() {
     const pageNumber = this.filtrosService.getFilters ? this.filtrosService.getFilters.pageNumber : 1;
 
@@ -101,5 +104,18 @@ export class BuscadorCardVentanillaComponent implements OnChanges {
       seccion: this.filtrosService.getFilters?.seccion,
       spinner: false,
     };
+  }
+
+  VerMenosResultados(){
+    this.filtrosService.setFilters = {
+      filters: this.filtrosService.getFilters ? this.filtrosService.getFilters?.filters : null,
+      pageNumber: 1,
+      pageSize: this.pageSize,
+      search: this.filtrosService.getFilters  ? this.filtrosService.getFilters?.search : '',
+      sort: '',
+      seccion: this.filtrosService.getFilters?.seccion,
+      spinner: false,
+    };
+    this.contadorResultados = 0;
   }
 }

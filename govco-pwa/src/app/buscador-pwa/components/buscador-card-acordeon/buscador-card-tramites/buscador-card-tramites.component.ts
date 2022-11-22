@@ -24,6 +24,8 @@ export class BuscadorCardTramitesComponent implements OnChanges {
   listaTexto: QueryList<ElementRef>;
   @ViewChildren('botonAcordeon', { read: ElementRef })
   ListaAcordeon: QueryList<ElementRef>;
+  pageSize = 5;
+  contadorResultados = 0;
 
   items: {
     active: boolean;
@@ -119,11 +121,26 @@ export class BuscadorCardTramitesComponent implements OnChanges {
     this.filtrosService.setFilters = {
       filters: this.filtrosService.getFilters ? this.filtrosService.getFilters?.filters : null,
       pageNumber: pageNumber + 1,
-      pageSize: 5,
+      pageSize: this.pageSize,
       search: this.filtrosService.getFilters  ? this.filtrosService.getFilters?.search : '',
       sort: '',
       seccion: this.filtrosService.getFilters?.seccion,
       spinner: false,
     };
+    this.contadorResultados = this.pageSize * (pageNumber + 1);
+
+  }
+
+  VerMenosResultados(){
+    this.filtrosService.setFilters = {
+      filters: this.filtrosService.getFilters ? this.filtrosService.getFilters?.filters : null,
+      pageNumber: 1,
+      pageSize: this.pageSize,
+      search: this.filtrosService.getFilters  ? this.filtrosService.getFilters?.search : '',
+      sort: '',
+      seccion: this.filtrosService.getFilters?.seccion,
+      spinner: false,
+    };
+    this.contadorResultados = 0;
   }
 }

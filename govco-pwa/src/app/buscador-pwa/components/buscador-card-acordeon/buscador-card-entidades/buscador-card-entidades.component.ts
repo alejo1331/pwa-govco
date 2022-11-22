@@ -14,6 +14,9 @@ export class BuscadorCardEntidadesComponent implements OnChanges {
   @Input() data: EntidadesInterface[];
   @Input() cantidadResultados: number;
 
+  pageSize = 5;
+  contadorResultados = 0;
+
   public items: {
     active: boolean,
     link: string;
@@ -76,4 +79,18 @@ export class BuscadorCardEntidadesComponent implements OnChanges {
       spinner: false,
     };
   }
+
+  VerMenosResultados(){
+    this.filtrosService.setFilters = {
+      filters: this.filtrosService.getFilters ? this.filtrosService.getFilters?.filters : null,
+      pageNumber: 1,
+      pageSize: this.pageSize,
+      search: this.filtrosService.getFilters  ? this.filtrosService.getFilters?.search : '',
+      sort: '',
+      seccion: this.filtrosService.getFilters?.seccion,
+      spinner: false,
+    };
+    this.contadorResultados = 0;
+  }
+
 }

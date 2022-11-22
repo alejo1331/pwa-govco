@@ -16,6 +16,9 @@ export class BuscadorCardNoticiasComponent implements OnChanges {
   @ViewChildren('texto', { read: ElementRef }) listaTexto: QueryList<ElementRef>;
   @ViewChildren('botonAcordeon', { read: ElementRef }) ListaAcordeon: QueryList<ElementRef>;
 
+  pageSize = 5;
+  contadorResultados = 0;
+
   href: boolean = true;
 
   expandirTexto: boolean = false;
@@ -102,4 +105,18 @@ export class BuscadorCardNoticiasComponent implements OnChanges {
       spinner: false,
     };
   }
+
+  VerMenosResultados(){
+    this.filtrosService.setFilters = {
+      filters: this.filtrosService.getFilters ? this.filtrosService.getFilters?.filters : null,
+      pageNumber: 1,
+      pageSize: this.pageSize,
+      search: this.filtrosService.getFilters  ? this.filtrosService.getFilters?.search : '',
+      sort: '',
+      seccion: this.filtrosService.getFilters?.seccion,
+      spinner: false,
+    };
+    this.contadorResultados = 0;
+  }
+
 }

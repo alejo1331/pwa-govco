@@ -1,4 +1,5 @@
 import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { NavigationStart, Router, Event } from '@angular/router';
 import { BuscadorService, BuscadorParams } from 'src/app/buscador-pwa/services/buscador.service';
 import { ItemsBuscador } from 'src/variables-globales/items-buscador';
 import { ItemsInterface } from '../../models/bucador-pwa/items-interface';
@@ -24,7 +25,17 @@ export class BuscadorPrefiltradoComponent implements OnInit {
   @ViewChild(ModalPrefiltradoComponent) componentPrefiltrado: ModalPrefiltradoComponent;
   @Output() estadoFocusFiltro = new EventEmitter<boolean>()
 
-  constructor(private buscadorService: BuscadorService) { }
+  constructor(private buscadorService: BuscadorService,
+              private router: Router) {
+                router.events.subscribe((event: Event) => {
+                  if (event instanceof NavigationStart) {
+                    if(event.url != '/buscador'){
+                      let input: any = document.querySelector("input");
+                      input.value = '';
+                    }
+                  }
+                })
+               }
 
   ngOnInit(): void {
     this.itemsBuscador = ItemsBuscador;
