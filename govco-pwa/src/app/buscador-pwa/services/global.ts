@@ -12,6 +12,6 @@ export enum Parametros
     DepNom ="Antioquia",
     MunCod ="05001",
     //MunNom ="MEDELLÍN"
-    MunNom ="toda colombia" ,       // todos
+    MunNom ="toda colombia" ,       // all
     tipoCatagoriaGlobal =""
 }

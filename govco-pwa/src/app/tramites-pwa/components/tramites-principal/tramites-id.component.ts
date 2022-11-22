@@ -1,5 +1,4 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { BottomMenuService } from 'src/app/transversales/services/bottom-menu/bottom-menu.service';
 import { HeaderService } from 'src/app/transversales/services/header-service/header.service';
 import { SidenavService } from 'src/app/transversales/services/sidenav-service/sidenav-service.service';
@@ -135,7 +134,7 @@ export class TramitesIdComponent implements OnInit {
       );
   }
 
-  //TODO este servicio no esta funcionando
+  //este servicio no esta funcionando
   private async GenerarTrackingTramite(id: number) {
     this.fichaTramiteService.GenerarTrackingTramite(String(id)).subscribe(
       (resp: any) => {
@@ -156,7 +155,7 @@ export class TramitesIdComponent implements OnInit {
 
   abrirPuntosAtencion(data: DataBasicaPuntosInterface) {
     this.activarPuntosAtecion = data.activar;
-    if (this.activarPuntosAtecion == true) {
+    if (this.activarPuntosAtecion) {
       this.dataPuntosAtencion = data;
       this.seccionTramitesId.nativeElement.style.left = data.transitionTramitesId;
       this.seccionPuntoAtencion.nativeElement.style.left = data.transitionPuntosAtencion;
@@ -169,9 +168,9 @@ export class TramitesIdComponent implements OnInit {
     this.seccionTramitesId.nativeElement.addEventListener(
       'transitionend',
       () => {
-        this.seccionTramitesId.nativeElement.style.left == '0%'
-          ? (this.activarPuntosAtecion = false)
-          : null;
+        if (this.seccionTramitesId.nativeElement.style.left == '0%') {
+          this.activarPuntosAtecion = false;
+        }
       }
     );
   }

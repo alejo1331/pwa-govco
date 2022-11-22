@@ -67,7 +67,7 @@ export class BuscadorSencilloV1Component implements PipeTransform {
   @HostListener('window:keyup', ['$event']) onInput(event: KeyboardEvent) {
     if (this.inputBuscador.nativeElement == event.target) {
       this.busqueda = (event.target as HTMLInputElement).value;
-      //todo este es un ejemplo para la implementacion de transform
+      //este es un ejemplo para la implementacion de transform
       console.log('filtrado',this.transform(this.items, this.busqueda));
     }
   }

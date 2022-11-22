@@ -92,7 +92,7 @@
       }
     }
 
-    @media all and (transform-3d), (-webkit-transform-3d) {
+    @media all {
       .carousel-inner > .carousel-item {
         transition: transform .6s linear;
         backface-visibility: visible;

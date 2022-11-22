@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd, PRIMARY_OUTLET } from '@angular/router';
 
-import { filter, partition } from 'rxjs/operators';
+import { filter } from 'rxjs/operators';
 import { map } from 'rxjs/internal/operators';
 import { BreadCrumb } from '../../models/breadcrumb';
 import { ParticipaService } from 'src/app/participa/services/participa.service';

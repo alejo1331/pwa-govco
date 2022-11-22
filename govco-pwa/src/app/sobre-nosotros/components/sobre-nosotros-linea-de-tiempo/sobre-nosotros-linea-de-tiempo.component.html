@@ -1,22 +1,10 @@
 <div id="linea-tiempo-sobre-nosotros" class="container-fluid background-linea pb-5" *ngIf="lineaTiempo.length>0">
     <div class="container">
-        <!-- <div class="controles-accesibles ">
-            <a class="descripcion-skipe skip-link" href="javascript:void(0)"
-                (keydown)="activarEventosAccesibilidad($event)" title="Saltar carrusel"
-                aria-label="A continuación encontrará la línea de tiempo de los datos más relevantes de gov.co .  Si en algún momento desea salir de la sección presione la tecla escape.">A
-                continuación encontrará la línea de tiempo de los datos más relevantes de gov.co . Si en algún momento
-                desea salir de la sección presione la tecla escape.</a>
-        </div> -->
         <div class="row">
             <div class="col-lg-12">
                 <h2 class="titulo-seccion-linea pt-5 pb-4" tabindex="0"
                     aria-label="Los comienzos de gov.co. Para consultar la información, presione la tecla tab; Si en algún momento desea  salir de la sección presione la tecla escape.">
                     Los comienzos del GOV.CO</h2>
-                <!-- <div class="controles-accesibles">
-                    <a class="descripcion-skipe skip-link" href="javascript:void(0)" title="Navegar linea tiempo"
-                        aria-label="Utilice las teclas derecha o izquierda para navegar entre la linea de tiempo.">Utilice
-                        las teclas derecha ó izquierda para navegar entre la línea de tiempo.</a>
-                </div> -->
             </div>
             <div class="col-12 d-flex align-items-center contenedor-componete-linea">
                 <div class="boton-siguiente-atras" [ngClass]="estadoBotonAtras?'':'bloquearBoton'"><a
@@ -64,10 +52,11 @@
                     </div>
                 </div>
 
-                <div class="boton-siguiente-atras" [ngClass]="estadoBotonAdelante?'':'bloquearBoton'"><a
-                        href="javascript:void(0)" [tabindex]="estadoBotonAdelante?'':'-1'" aria-label="siguiente"
-                        title="siguiente" (click)="estadoBotonAdelante?siguiente():null"><i
-                            class="fa fa-angle-right"></i></a></div>
+                <div class="boton-siguiente-atras" [ngClass]="estadoBotonAdelante?'':'bloquearBoton'">
+                    <a href="javascript:void(0)" [tabindex]="estadoBotonAdelante?'':'-1'" aria-label="siguiente" title="siguiente" (click)="estadoBotonAdelante?siguiente():null">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                </div>
             </div>
             <div class="col-12 ">
                 <div class="d-flex flex-column align-items-center contenedor-descripcion">
@@ -81,12 +70,5 @@
                 </div>
             </div>
         </div>
-        <!-- <div class="controles-accesibles">
-            <a id="salir-seccion-linea-tiempo" class="descripcion-skipe skip-link" href="javascript:void(0)"
-                (keydown)="desActivarEventosAccesibilidad($event)"
-                aria-label="Ha salido de la sección línea de tiempo de los datos más relevantes de gov.co">Ha salido de
-                la
-                sección línea de tiempo de los datos más relevantes de gov.co</a>
-        </div> -->
     </div>
 </div>
