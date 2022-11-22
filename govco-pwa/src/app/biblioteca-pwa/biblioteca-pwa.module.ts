@@ -25,6 +25,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { ModalUrlNoDisponibleComponent } from './components/modal-url-no-disponible/modal-url-no-disponible.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { ModalInformativoComponent } from './components/modal-informativo/modal-informativo.component';
+import { OrderByDatePipe } from './pipes/filtro-segundo-nivel/order-by-date.pipe';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { ModalInformativoComponent } from './components/modal-informativo/modal-
     ModalUrlNoDisponibleComponent,
     SpinnerComponent,
     ModalInformativoComponent,
+    OrderByDatePipe,
   ],
   imports: [
     CommonModule,
