@@ -36,7 +36,7 @@ export class BuscadorCardEntidadesComponent implements OnChanges {
     if (pageNumber == 1) {
       this.items = [];
     }
-    changes.data.currentValue.forEach((element: EntidadesInterface) => {
+    changes.data.currentValue.forEach((element: EntidadesInterface, i: number) => {
       this.href = true;
       Object.values(urlsLocal).find(url => {
         if (element.link.indexOf(url) >= 0) {
@@ -54,21 +54,32 @@ export class BuscadorCardEntidadesComponent implements OnChanges {
           orden: element.orden
         }
       )
+
+      if ((i + 1) == changes.data.currentValue.length) {
+        setTimeout(() => {
+          this.focusCard(pageNumber);
+        }, 100);
+      }
     })
+  }
 
-    const buttons = document.querySelectorAll('#acordeonNoticias .card button');
+  focusCard(pageNumber:number) {
+    const buttons = document.querySelectorAll('#acordeonEntidades .card button');
     let button:HTMLElement;
+    let buttonFocus:HTMLElement;
     if (pageNumber == 1) {
-      button = <HTMLElement>buttons[0];
+      buttonFocus = <HTMLElement>buttons[0];
+      if (buttonFocus) {
+        buttonFocus.focus();
+      }
     } else {
-      button = <HTMLElement>buttons[buttons.length - 1];
+      button = <HTMLElement>buttons[buttons.length - 6];
+      buttonFocus = <HTMLElement>buttons[buttons.length - 5];
+      if (button && buttonFocus) {
+        buttonFocus.focus();
+        button.scrollIntoView();
+      }
     }
-
-    if (button) {
-      setTimeout(() => {
-        button.focus();
-      }, 100);   
-    } 
   }
 
   activarItem(index: number) {

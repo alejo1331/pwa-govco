@@ -25,6 +25,7 @@ export class BuscadorPrincipalComponent implements OnInit, AfterViewInit {
   cantidadResultados: number;
   departamento: { codigoDepartamento: number };
   municipio: { codigoMunicipio: number };
+  loading: boolean;
 
   constructor(
     protected filtrosService: FiltrosService,
@@ -100,24 +101,29 @@ export class BuscadorPrincipalComponent implements OnInit, AfterViewInit {
         if (filters == undefined) {
           return;
         }
-
+        this.dataResultado = [];
+        this.loading = true;
         if (filters.spinner) {
           this.activarSpinner(true);
         }
 
         try {
-          const resultado: ResultadoFiltro = await this.filtrosService
-            .obtenerResultadoFiltro(filters)
-            .toPromise();
+          let resultado: ResultadoFiltro;
+          if (filters.search !== "") {
+            resultado = await this.filtrosService.obtenerResultadoFiltro(filters).toPromise();
+          } else {
+            resultado = this.filtrosService.EmptyData;
+          }
           // Se almacena la respuesta de la búsqueda
           this.resultadosBusqueda = resultado;
           this.filtrosService.ResultadoBusqueda = resultado;
           this.dataResultado = this.resultadosBusqueda.data.length > 0 ? this.resultadosBusqueda.data : [];
-          this.activarSpinner(false);
           this.cantidadResultados = resultado.total;
         } catch (error) {
-          this.activarSpinner(false);
           console.error(error);
+        } finally {
+          this.activarSpinner(false);
+          this.loading = false;
         }
       }
     );
