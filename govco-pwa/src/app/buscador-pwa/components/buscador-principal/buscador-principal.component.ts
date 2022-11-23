@@ -43,6 +43,7 @@ export class BuscadorPrincipalComponent implements OnInit, AfterViewInit {
     if (!this.buscadorService.getBuscadorParams.txtInputBuscador) {
       this.activarSpinner(false);
       this.router.navigate(['/']);
+      return;
     }
 
     // servicioHeader.estadoHeader(a, b)       a -> true = header seccion internas
@@ -131,8 +132,10 @@ export class BuscadorPrincipalComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     let barraGeolocalizador: HTMLElement = (document.getElementsByClassName('barra-geolocalizacion-pwa-govco') as HTMLCollectionOf<HTMLElement>)[0];
-    barraGeolocalizador.removeAttribute('style');
-    barraGeolocalizador.classList.add('fixed');
+    if (barraGeolocalizador) {
+      barraGeolocalizador.removeAttribute('style');
+      barraGeolocalizador.classList.add('fixed');
+    }
   }
 
   activarSpinner(activa: boolean) {
@@ -148,6 +151,8 @@ export class BuscadorPrincipalComponent implements OnInit, AfterViewInit {
   }
 
   ngOnDestroy() {
-    this.filterSubscription.unsubscribe();
+    if (this.filterSubscription) {
+      this.filterSubscription.unsubscribe();
+    }
   }
 }
