@@ -43,7 +43,7 @@ export class BuscadorAvisoComponent implements OnInit {
     }
 
     this.filtrosService.ResultadoBusqueda$.subscribe((resultado: any) => {
-      if (resultado.tituloSugerido) this.sugBuscador = resultado.tituloSugerido;
+      if (resultado?.tituloSugerido) this.sugBuscador = resultado.tituloSugerido;
       else this.sugBuscador = '';
     });
 

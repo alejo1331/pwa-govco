@@ -36,25 +36,28 @@
         background-color: #E6EFFD;
         outline-color: #000000;
 
-        .caja-icono-36-pwa {
-            .icono-filtro {
-                content: url(../../../../assets/icons-fonts/arrow_drop_down.svg);
-                width: 1.25rem;
-                height: 1.25rem;
-            }
-
-            .icono-filtro.active {
-                content: url(../../../../assets/icons-fonts/arrow_drop_up.svg);
-                width: 1.25rem;
-                height: 1.25rem;
-            }
-        }
-
         p {
             margin: 0;
             font-family: 'WorkSans-Medium';
             font-size: 0.875em;
             color: #004884;
+            display: inline-block;
+            white-space: nowrap;
+            width: 75px;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            text-align: left;
+        }
+
+        .icono-filtro {
+            content: url(../../../../assets/icons-fonts/arrow_drop_down.svg);
+            width: 1.563rem;
+            height: 1.563rem;
+            margin-right: 0.313rem;
+        }
+
+        .icono-filtro.active {
+            content: url(../../../../assets/icons-fonts/arrow_drop_up.svg);
         }
     }
 

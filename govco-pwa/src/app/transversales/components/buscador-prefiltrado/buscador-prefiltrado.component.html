@@ -1,19 +1,15 @@
 <section class="seccion-buscador" [class.modo-prefiltrado]="estadoBotonFiltro">
     <input #inputBuscador class="buscador" id="buscador-pwa-general" readonly="readonly"
         (click)="estadoBotonFiltro == false ? abrirBuscadorPWA() : filtrarPor()"
-        (keypress)="estadoBotonFiltro == false ? abrirBuscadorPWA() : filtrarPor()"
-        placeholder="Buscar en GOV.CO" 
+        (keypress)="estadoBotonFiltro == false ? abrirBuscadorPWA() : filtrarPor()" placeholder="Buscar en GOV.CO"
         style="background-image: url(../../../../assets/icons-fonts/search_bababa.svg)" type="text"
         [attr.aria-label]="'Este es el campo para acceder al buscador, puedes abrirlo dando clic o enter. Ademas puedes seleccionar un tipo de prefiltro dando tab'">
-    <button #botonPrefiltro class="boton-filtro" (click)="filtrarPor()" [attr.aria-label]="'Boton para seleccionar el tipo de prefiltro'">
+    <button #botonPrefiltro class="boton-filtro" (click)="filtrarPor()"
+        [attr.aria-label]="'Boton para seleccionar el tipo de prefiltro'">
         <p>{{itemsBuscador[posicion].txtCorto}}</p>
-        <div class="caja-icono-36-pwa">
-            <span class="icono-filtro" [class.active]="estadoBotonFiltro" type="image"
-                alt="Borrar contenido de la barra de busqueda"></span>
-        </div>
+        <span class="icono-filtro" [class.active]="estadoBotonFiltro" type="image"
+            alt="Borrar contenido de la barra de busqueda"></span>
     </button>
 </section>
 <app-modal-prefiltrado (itemSelected)="itemSelected($event)">
 </app-modal-prefiltrado>
-
-
