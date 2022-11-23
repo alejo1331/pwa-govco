@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 // @ts-ignore
 import ASCIIFolder from 'fold-to-ascii';
-;
 
 export interface BuscadorParams {
   index : number,
