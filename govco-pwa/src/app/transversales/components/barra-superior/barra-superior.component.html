@@ -31,10 +31,11 @@
         </div>
         <div class="govco-pwa-buscador-header">
             <!-- to do  -->
+            <!-- <govco-buscador-home no-shadow="true" id="home1" *ngIf="!barraSuperiorInterna"
+                class="app-buscador-pwa-govco"></govco-buscador-home> -->
             <app-buscador-prefiltrado no-shadow="true" id="home1" *ngIf="!barraSuperiorInterna"
                 (estadoFocusFiltro)="estadoFocusFiltro = $event">
             </app-buscador-prefiltrado>
         </div>
-
     </div>
 </nav>
