@@ -62,6 +62,20 @@ export class BuscadorCardNoticiasComponent implements OnChanges {
         }
       )
     })
+
+    const buttons = document.querySelectorAll('#acordeonNoticias .card button');
+    let button:HTMLElement;
+    if (pageNumber == 1) {
+      button = <HTMLElement>buttons[0];
+    } else {
+      button = <HTMLElement>buttons[buttons.length - 1];
+    }
+
+    if (button) {
+      setTimeout(() => {
+        button.focus();
+      }, 100);   
+    } 
   }
 
   activarItem(index: number) {
@@ -118,5 +132,4 @@ export class BuscadorCardNoticiasComponent implements OnChanges {
     };
     this.contadorResultados = 0;
   }
-
 }

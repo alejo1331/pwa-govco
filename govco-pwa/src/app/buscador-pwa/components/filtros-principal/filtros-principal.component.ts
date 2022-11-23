@@ -63,7 +63,6 @@ export class FiltrosPrincipalComponent implements OnInit {
 
     this.ServicioGeolocalizacion.coordenadas.subscribe((ubicacion: string[]) => {
       this.actualizarBusquedaPorUbicacion(ubicacion[0], ubicacion[1]);
-      this.actualizarBusqueda();
     })
 
     this.clickBackdrop();

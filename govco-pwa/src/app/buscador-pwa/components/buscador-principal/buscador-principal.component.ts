@@ -7,7 +7,8 @@ import { HeaderService } from 'src/app/transversales/services/header-service/hea
 import { SidenavService } from 'src/app/transversales/services/sidenav-service/sidenav-service.service';
 import { BuscadorService, BuscadorParams } from '../../services/buscador.service';
 import { Router } from '@angular/router';
-import { GeolocalizacionComponent } from 'src/app/transversales/components/geolocalizacion/geolocalizacion.component';
+import { GeolocalizacionService } from 'src/app/transversales/services/geolocalizacion/geolocalizacion.service';
+import { Filter } from '../../models/filtroBusquedaModel';
 
 @Component({
   selector: 'app-buscador-principal',
@@ -31,7 +32,8 @@ export class BuscadorPrincipalComponent implements OnInit, AfterViewInit {
     protected servicioHeader: HeaderService,
     protected servicioSideNav: SidenavService,
     private buscadorService: BuscadorService,
-    private router: Router
+    private router: Router,
+    protected ServicioGeolocalizacion: GeolocalizacionService,
   ) {
     this.bottomService.putOcultandoBottomMenu(false);
   }
@@ -62,9 +64,27 @@ export class BuscadorPrincipalComponent implements OnInit, AfterViewInit {
 
     this.buscadorService.getBuscadorParams$.subscribe(
       (parametros: BuscadorParams) => {
+
         this.seccion = parametros.txtConsumoApi;
+        let filters:Filter = {
+          departamento: null,
+          municipio: null
+        };
+
+        if (parametros.aplicaGeoreferenciacion == 'si') {
+          const codigoDepartamento = String(localStorage.getItem("codigoDepartamento"));
+          const codigoMunicipio = String(localStorage.getItem("codigoMunicipio"));
+
+          if (codigoDepartamento.toLowerCase() != 'todoslosmunicipios' && codigoMunicipio != 'null') {
+            filters = {
+              departamento: { 'codigoDepartamento': Number(codigoDepartamento) },
+              municipio: { 'codigoMunicipio': Number(codigoMunicipio) }
+            };
+          }
+        }
+
         this.filtrosService.setFilters = {
-          filters: null,
+          filters: filters,
           pageNumber: 1,
           pageSize: 5,
           search: parametros.txtInputBuscador,

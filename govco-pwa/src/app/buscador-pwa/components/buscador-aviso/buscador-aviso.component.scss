@@ -1,30 +1,49 @@
-.tarjeta-aviso-cabecera{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 24px;
-    .tarjeta-aviso-cabecera-img{
-        height: 160px;
-        margin-bottom: 24px;
-    }
-    .tarjeta-aviso-cabecera-titulo{
-        font-family: 'Montserrat-SemiBold';
-        font-size: 24px;
-        color: #004884;
-    }
-}
+.tarjeta-aviso {
+    margin-top: -2rem;
 
-.tarjeta-aviso-contenido{
-    font-size: 14px;
-    font-family: 'workSans-Regular';
-    .tarjeta-aviso-contenido-mensaje{
-        font-family: 'workSans-Medium';
+    .tarjeta-aviso-cabecera {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 24px;
+    
+        .tarjeta-aviso-cabecera-img {
+            height: 160px;
+            margin-bottom: 24px;
+        }
+    
+        .tarjeta-aviso-cabecera-titulo {
+            font-family: 'Montserrat-SemiBold';
+            font-size: 24px;
+            color: #004884;
+            margin: 0;
+        }
     }
-    .tarjeta-aviso-mensaje-link{
-        color: #3366CC;
-        text-decoration: underline;
-    }
-    .tarjeta-aviso-listado{
-        padding-left: 1rem;
+    
+    .tarjeta-aviso-contenido {
+        font-size: 14px;
+        font-family: 'workSans-Regular';
+    
+        .tarjeta-aviso-contenido-mensaje {
+            font-family: 'workSans-Medium';
+            margin-bottom: 16px;
+        }
+    
+        p.tarjeta-aviso-mensaje-texto {
+            margin-bottom: 16px;
+        }
+    
+        li.tarjeta-aviso-mensaje-texto {
+            margin-bottom: 8px;
+        }
+    
+        .tarjeta-aviso-mensaje-link {
+            color: #3366CC;
+            text-decoration: underline;
+        }
+    
+        .tarjeta-aviso-listado {
+            padding-left: 1rem;
+        }
     }
 }
