@@ -1,4 +1,4 @@
-import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
 import { Platform } from '@angular/cdk/platform';
 
 
@@ -7,7 +7,7 @@ import { Platform } from '@angular/cdk/platform';
   templateUrl: './desplegable-uno.component.html',
   styleUrls: ['./desplegable-uno.component.css']
 })
-export class DesplegableUnoComponent implements OnInit {
+export class DesplegableUnoComponent implements OnInit, AfterViewInit {
 
   active = 1;
   @Input() data: any[];
@@ -48,6 +48,12 @@ export class DesplegableUnoComponent implements OnInit {
       }
       this.titulo[i] = element.titulo.split(" ").join("<br/>")
     });
+  }
+
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      this.abrirModal();
+    }, 800);
   }
 
   seleccionarItem(dataItem: number) {

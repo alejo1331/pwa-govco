@@ -30,7 +30,7 @@
                     <option value="" disabled>Municipio</option>
                     <option *ngFor="let municipios of listaMunicipios"
                         [selected]="municipios.codigo === municiLocalStorage" value="{{ municipios.codigo }}">
-                        {{municipios.nombre.toUpperCase()}}
+                        {{municipios.nombre.charAt(0).toUpperCase() + municipios.nombre.slice(1).toLowerCase() }}
                     </option>
                 </select>
             </div>
