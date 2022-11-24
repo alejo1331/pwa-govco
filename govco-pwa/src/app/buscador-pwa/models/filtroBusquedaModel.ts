@@ -9,8 +9,8 @@ export interface FiltroBusqueda {
 }
 
 export interface Filter {
-    categorias?: name;
-    subcategorias?: name;
+    categorias?: Name;
+    subcategorias?: Name;
     entidadNombre?: string;
     sector?: string;
     fechaPublicacionFiltro?: string;
@@ -24,9 +24,9 @@ export interface Filter {
     municipio: { codigoMunicipio: number } | null;
 }
 
-export interface filterMordal {
-    categorias?: name;
-    subCategorias?: name;
+export interface FilterMordal {
+    categorias?: Name;
+    subCategorias?: Name;
     entidadNombre?: string;
     sector?: string;
     fechaPublicacionFiltro?: string;
@@ -38,6 +38,6 @@ export interface filterMordal {
     estado?: string;
 }
 
-export interface name {
+export interface Name {
     nombre: string;
 }

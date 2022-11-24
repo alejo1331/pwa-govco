@@ -122,7 +122,7 @@ export class AppComponent implements OnInit, AfterContentChecked, AfterContentCh
     this.oidcService.runInitialLoginSequence();
 
     this.oauthService.loadDiscoveryDocumentAndTryLogin().then((_) => {
-      var claims = this.oauthService.getIdentityClaims();
+      let claims = this.oauthService.getIdentityClaims();
       if (claims) {
         if (claims['LOA'] == 'loa:2') {
           this.LoginGovCo(claims);
@@ -360,11 +360,11 @@ export class AppComponent implements OnInit, AfterContentChecked, AfterContentCh
     }
 
     // solucion redireccionamiento slide
-    var id_temas_de_interes: HTMLElement = (document.getElementsByTagName('temas-de-interes') as HTMLCollectionOf<HTMLElement>)[0];
+    const id_temas_de_interes: HTMLElement = (document.getElementsByTagName('temas-de-interes') as HTMLCollectionOf<HTMLElement>)[0];
     if (id_temas_de_interes != undefined || id_temas_de_interes != null) {
-      var etiqueta_a = Array.from(id_temas_de_interes.getElementsByTagName('a') as HTMLCollectionOf<HTMLElement>);
-      var get_href: string = '';
-      var conincidencias: string[] = ['/ventanillas-unicas', '/portales'];
+      const etiqueta_a = Array.from(id_temas_de_interes.getElementsByTagName('a') as HTMLCollectionOf<HTMLElement>);
+      let get_href: string = '';
+      const conincidencias: string[] = ['/ventanillas-unicas', '/portales'];
       etiqueta_a.forEach(element => {
         get_href = String(element.getAttribute('href'));
         conincidencias.forEach(palabraClave => {
@@ -391,17 +391,17 @@ export class AppComponent implements OnInit, AfterContentChecked, AfterContentCh
 
   // solucion redireccionamiento slide
   @HostListener('click', ['$event']) onClick(event: Event) {
-    var id_temas_de_interes: HTMLElement = (document.getElementById('temas-de-interes') as HTMLElement);
+    const id_temas_de_interes: HTMLElement = (document.getElementById('temas-de-interes') as HTMLElement);
     if (id_temas_de_interes != undefined || id_temas_de_interes != null) {
-      var slide_activo: HTMLElement = id_temas_de_interes.querySelector('.contenedor-img.activo') as HTMLElement;
-      var etiqueta_a: HTMLElement = (slide_activo.getElementsByTagName('a') as HTMLCollectionOf<HTMLElement>)[0];
-      let get_href = String((<HTMLElement>etiqueta_a).getAttribute('aria-label'));
+      const slide_activo: HTMLElement = id_temas_de_interes.querySelector('.contenedor-img.activo') as HTMLElement;
+      const etiqueta_a: HTMLElement = (slide_activo.getElementsByTagName('a') as HTMLCollectionOf<HTMLElement>)[0];
+      let get_href = String(etiqueta_a.getAttribute('aria-label'));
       let ventanillas: number = get_href.indexOf('Ventanillas Únicas');
       let portales: number = get_href.indexOf('Portales');
 
-      var hijo_1: HTMLElement = etiqueta_a.querySelector('.descripcion-span') as HTMLElement;
-      var hijo_2: HTMLElement = etiqueta_a.querySelector('.titulo-span') as HTMLElement;
-      var hijo_3: HTMLElement = etiqueta_a.querySelector('.titulo-block ') as HTMLElement;
+      const hijo_1: HTMLElement = etiqueta_a.querySelector('.descripcion-span') as HTMLElement;
+      const hijo_2: HTMLElement = etiqueta_a.querySelector('.titulo-span') as HTMLElement;
+      const hijo_3: HTMLElement = etiqueta_a.querySelector('.titulo-block ') as HTMLElement;
       if (event.target == hijo_1 || event.target == hijo_2 || event.target == hijo_3) {
         if (ventanillas >= 0) {
           this.router.navigate(['/ventanillas-unicas']);

@@ -111,20 +111,17 @@ fnSugerenciasSintaxis(texto: string , longitudMin:any){
   var caracter     = texto.charAt(longitudMin-1);
   var cacterersig  = texto.charAt(longitudMin  );
   var cortar = 1;
-  if (texto.split(' ').length > 1){  // Si tiene mas de una palabara
-      if (longitudMin  >= texto.length){
+  if (texto.split(' ').length > 1) {  // Si tiene mas de una palabara
+      if (longitudMin  >= texto.length) {
           caracter=' ';   cacterersig =' ';
-      } else{
-              if (caracter == ' ') {  // Si la longitud maxima es en un espacio
-                  texto = texto.substring(0 ,longitudMin -1 ).trim();
-              }else{
-                      if (caracter != ' ' && cacterersig !=' '){ // Si la longitud maxima esta en una palabara
-                          texto = texto.substring(0 ,longitudMin+1).trim();
-                          cortar=2;
-                      }
-                      else{ texto = texto.substring(0 ,longitudMin+1).trim(); }
-                  }
-              }
+      } else if (caracter == ' ') {  // Si la longitud maxima es en un espacio
+          texto = texto.substring(0 ,longitudMin -1 ).trim();
+      } else if (caracter != ' ' && cacterersig !=' ') { // Si la longitud maxima esta en una palabara
+          texto = texto.substring(0 ,longitudMin+1).trim();
+          cortar=2;
+      } else { 
+        texto = texto.substring(0 ,longitudMin+1).trim(); 
+      }
 
       var txtArray = texto.split(' ');  // La frase dividas en palabras
       texto ='';
@@ -134,7 +131,7 @@ fnSugerenciasSintaxis(texto: string , longitudMin:any){
           if (pos <0 && swStopWord)
               swStopWord = false;
 
-          if  (!swStopWord)
+          if (!swStopWord)
               texto =  txtArray[i] + ' ' +  texto ;
       }
   }

@@ -6,7 +6,7 @@ import { InformacionModalInterface } from '../../../biblioteca-pwa/models/filtro
 import { Subscription } from 'rxjs';
 import { Platform } from '@angular/cdk/platform';
 import { ResultadoFiltro } from '../../models/resultadoFiltroModel';
-import { filterMordal } from '../../models/filtroBusquedaModel';
+import { FilterMordal } from '../../models/filtroBusquedaModel';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalInformativoComponent } from 'src/app/biblioteca-pwa/components/modal-informativo/modal-informativo.component';
 import { BuscadorParams, BuscadorService } from '../../services/buscador.service';
@@ -29,7 +29,7 @@ export class FiltrosPrincipalComponent implements OnInit {
   private filtroSeleccionado = '';
   public seccion = '';
   public busqueda = '';
-  public filtrosSeleccionados: filterMordal = {};
+  public filtrosSeleccionados: FilterMordal = {};
   ubicacionAux: Array<any> = [];
   itemSeleccionados:number = 0;
 

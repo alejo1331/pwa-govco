@@ -23,7 +23,7 @@ export class ModalFiltroSegundoNivelComponent {
     this.modalFiltro.nativeElement.classList.add('on-modal');
     this.modalFiltro.nativeElement.classList.remove('off-modal');
     if (this.platform.IOS || this.platform.SAFARI) {
-      var body = (document.getElementsByTagName('body') as HTMLCollectionOf<HTMLElement>)[0];
+      const body = (document.getElementsByTagName('body') as HTMLCollectionOf<HTMLElement>)[0];
       body.style.position = 'fixed';
       body.style.overflow = 'hidden';
     }
@@ -32,7 +32,9 @@ export class ModalFiltroSegundoNivelComponent {
   }
 
   clickCerrarModal(event: Event) {
-    (event.target as HTMLElement) === this.modalFiltro.nativeElement ? this.cerrarModal() : null;
+    if ((event.target as HTMLElement) === this.modalFiltro.nativeElement) {
+      this.cerrarModal();
+    }
   }
 
   cerrarModal() {
@@ -41,8 +43,9 @@ export class ModalFiltroSegundoNivelComponent {
   }
 
   onAnimationEnd(event: Event) {
-    (event.target as HTMLElement).className == 'modal-filtro-pwa off-modal' ?
-      this.modalFiltro.nativeElement.removeAttribute('style') : null;
+    if ((event.target as HTMLElement).className == 'modal-filtro-pwa off-modal') {
+      this.modalFiltro.nativeElement.removeAttribute('style');
+    }
   }
 
   focusInput() {
@@ -54,7 +57,7 @@ export class ModalFiltroSegundoNivelComponent {
     this.itemSelected.emit(item)
     this.cerrarModal();
     if (this.platform.IOS || this.platform.SAFARI) {
-      var body = (document.getElementsByTagName('body') as HTMLCollectionOf<HTMLElement>)[0];
+      const body = (document.getElementsByTagName('body') as HTMLCollectionOf<HTMLElement>)[0];
       body.style.removeProperty('position')
       body.style.removeProperty('overflow')
     }
@@ -73,7 +76,7 @@ export class ModalFiltroSegundoNivelComponent {
       let last = <HTMLElement>focusableElements[focusableElements.length - 1];
 
       $(document.body).on("focusin", (event) => {
-        if (currDialog && !currDialog.contains(<HTMLElement>event.target)) {
+        if (!currDialog.contains(event.target)) {
           event.preventDefault();
           event.stopPropagation();
 
@@ -90,7 +93,9 @@ export class ModalFiltroSegundoNivelComponent {
   }
 
   removeFocus() {
-    document.body.removeEventListener("focus", () => { });
+    document.body.removeEventListener("focus", () => { 
+      // Remover focus
+    });
   }
 
   ngOnDestroy() {

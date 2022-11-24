@@ -82,7 +82,6 @@ export class EntidadesEstadoComponent implements OnInit {
       var seccionMenu = document.getElementById("seccion-uno")!;
       var seccionMenuScrollTop = seccionMenu.getBoundingClientRect().top;
       var seccionMenuScrollBottom = seccionMenuScrollTop+seccionMenu.clientHeight;
-      var fueraSeccionEntidades = false;
       this.objeto.rama.items.map(function(rama: any) {
         var seccionEntidad = document.getElementById("seccion_"+rama.titulo)!;
         var seccionEntidadScrollTop = seccionEntidad.getBoundingClientRect().top-seccionMenu.clientHeight;
@@ -90,7 +89,6 @@ export class EntidadesEstadoComponent implements OnInit {
 
         if(seccionEntidadScrollTop<seccionMenuScrollTop && seccionEntidadScrollBottom>seccionMenuScrollBottom){
           document.getElementById("item_menu_"+rama.titulo)?.classList.add("activo");
-          fueraSeccionEntidades = true;
         }else{
           document.getElementById("item_menu_"+rama.titulo)?.classList.remove("activo");
         }
