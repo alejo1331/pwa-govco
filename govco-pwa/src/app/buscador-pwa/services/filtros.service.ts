@@ -86,4 +86,7 @@ export class FiltrosService {
     return this.resultadoBusqueda.getValue();
   }
 
+  get EmptyData(): ResultadoFiltro {
+    return JSON.parse(JSON.stringify(this.data));
+  }
 }

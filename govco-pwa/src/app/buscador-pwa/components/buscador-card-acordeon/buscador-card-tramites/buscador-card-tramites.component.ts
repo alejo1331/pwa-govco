@@ -50,6 +50,7 @@ export class BuscadorCardTramitesComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     const pageNumber = this.filtrosService.getFilters ? this.filtrosService.getFilters.pageNumber : 1;
+    
     if (pageNumber == 1) {
       this.items = [];
     }
@@ -75,22 +76,33 @@ export class BuscadorCardTramitesComponent implements OnChanges {
           tiempoObtencion: element.tiempoObtencion,
           titulo: element.titulo,
         });
+
+        if ((i + 1) == changes.data.currentValue.length) {
+          setTimeout(() => {
+            this.focusCard(pageNumber);
+          }, 100);
+        }
       }
     );
+  }
 
-    const buttons = document.querySelectorAll('#acordeonNoticias .card button');
+  focusCard(pageNumber:number) {
+    const buttons = document.querySelectorAll('#acordeonTramites .card button');
     let button:HTMLElement;
+    let buttonFocus:HTMLElement;
     if (pageNumber == 1) {
-      button = <HTMLElement>buttons[0];
+      buttonFocus = <HTMLElement>buttons[0];
+      if (buttonFocus) {
+        buttonFocus.focus();
+      }
     } else {
-      button = <HTMLElement>buttons[buttons.length - 1];
+      button = <HTMLElement>buttons[buttons.length - 6];
+      buttonFocus = <HTMLElement>buttons[buttons.length - 5];
+      if (button && buttonFocus) {
+        buttonFocus.focus();
+        button.scrollIntoView();
+      }
     }
-
-    if (button) {
-      setTimeout(() => {
-        button.focus();
-      }, 100);   
-    } 
   }
 
   activarItem(index: number) {
