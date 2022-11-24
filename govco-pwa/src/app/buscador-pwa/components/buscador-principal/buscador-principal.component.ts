@@ -58,7 +58,7 @@ export class BuscadorPrincipalComponent implements OnInit, AfterViewInit {
     //                                                 consultada no tiene header
 
     this.servicioHeader.estadoHeader(false, true);
-    this.bottomService.seleccionandoItem(0);
+    this.bottomService.desactivarSeleccion();
     this.bottomService.ajustandoPantalla(false);
     this.servicioSideNav.seleccionandoItem(false, 'null');
     (document.getElementById('topScroll') as HTMLElement).style.top = '7.25rem';

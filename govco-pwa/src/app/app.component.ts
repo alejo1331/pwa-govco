@@ -1,4 +1,4 @@
-import { Component, HostListener, ViewChild, OnInit, AfterContentChecked, ElementRef } from '@angular/core';
+import { Component, HostListener, ViewChild, OnInit, AfterContentChecked, ElementRef, AfterViewInit } from '@angular/core';
 import { MatSidenav, MatSidenavContent } from '@angular/material/sidenav';
 import { SidenavService } from './transversales/services/sidenav-service/sidenav-service.service';
 import { AppService } from './app.service';
@@ -38,7 +38,7 @@ export interface OAuthErrorEventParams {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent implements OnInit, AfterContentChecked, AfterContentChecked {
+export class AppComponent implements OnInit, AfterContentChecked, AfterContentChecked, AfterViewInit {
   isAuthenticated: Observable<boolean>;
   isDoneLoading: Observable<boolean>;
   canActivateProtectedRoutes: Observable<boolean>;
@@ -59,7 +59,7 @@ export class AppComponent implements OnInit, AfterContentChecked, AfterContentCh
   statusMenu: boolean = false;
   cambiarEstilo: boolean = false;
 
-  matSidenavContent: any;
+  matSidenavContent: HTMLElement;
   appGeolocalizacion: HTMLElement;
 
   touchMoveInicial: number = 0;
@@ -72,6 +72,8 @@ export class AppComponent implements OnInit, AfterContentChecked, AfterContentCh
 
   abrirBuscadorCheck: boolean = false;
   ulitmoEstadoBuscador: boolean = false;
+
+  activarSeccion: boolean = false;
 
   public parametroBuscador: string;
   title: string = 'govco-pwa';
@@ -224,6 +226,12 @@ export class AppComponent implements OnInit, AfterContentChecked, AfterContentCh
       })
   }
 
+  ngAfterViewInit(): void {
+    this.matSidenavContent = (
+      document.getElementsByTagName('mat-sidenav-container') as HTMLCollectionOf<HTMLElement>
+    )[0];
+  }
+
   loadUserProfile(): void {
     this.oauthService.loadUserProfile().then((up) => (this.userProfile = up));
   }
@@ -316,21 +324,22 @@ export class AppComponent implements OnInit, AfterContentChecked, AfterContentCh
   }
 
   formularioGeolocalizacion(modalAndContect: string[]) {
-    modalAndContect[0] == "translate(100%)" ?
-      this.GeolocalizacionComponent.boton.nativeElement.focus()
-      : this.formularioGeolocalizador.botonAtras.nativeElement.focus();
-    this.appGeolocalizacionFormulario.nativeElement.style.transform = modalAndContect[0];
-    this.matSidenavContent.transform = modalAndContect[1];
-    this.formularioGeolocalizador.abrirFormulario();
+    if (this.appGeolocalizacionFormulario != undefined) {
+      modalAndContect[0] == "translate(100%)" ?
+        this.GeolocalizacionComponent.boton.nativeElement.focus()
+        : this.formularioGeolocalizador.botonAtras.nativeElement.focus();
+      this.appGeolocalizacionFormulario.nativeElement.style.transform = modalAndContect[0];
+      this.matSidenavContent.style.transform = modalAndContect[1];
+      this.matSidenavContent.style.transition = '0.6s ease';
+      this.formularioGeolocalizador.abrirFormulario();
+    }
   }
 
   @HostListener('window:load') onLoad() {
+    this.activarSeccion = true;
     if (this.GeolocalizacionComponent != undefined) {
       this.appGeolocalizacion = this.GeolocalizacionComponent.contenidoHtml.nativeElement;
     }
-    this.matSidenavContent = (
-      document.getElementsByTagName('mat-sidenav-container') as HTMLCollectionOf<HTMLElement>
-    )[0].style;
   }
 
   @HostListener('touchstart', ['$event']) onTouchStart(event: any): void {
@@ -406,16 +415,23 @@ export class AppComponent implements OnInit, AfterContentChecked, AfterContentCh
 
   // Función para abrir el buscador
   abrirBuscadorPWA() {
-    this.seccionBuscador.nativeElement.style.transform = 'translate(0%)';
-    this.matSidenavContent.transform = 'translate(-100%)';
-    this.ulitmoEstadoBuscador = true;
-
+    if (this.seccionBuscador != undefined) {
+      this.seccionBuscador.nativeElement.style.transform = 'translate(0%)';
+      this.seccionBuscador.nativeElement.style.transition = '0.6s ease';
+      this.matSidenavContent.style.transform = 'translate(-100%)';
+      this.matSidenavContent.style.transition = '0.6s ease';
+      this.ulitmoEstadoBuscador = true;
+    }
   }
 
   // Función para cerrar el buscador
   cerrarBuscadorPWA() {
-    this.seccionBuscador.nativeElement.style.transform = 'translate(100%)';
-    this.matSidenavContent.transform = 'translate(0%)';
-    this.ulitmoEstadoBuscador = false;
+    if (this.seccionBuscador != undefined) {
+      this.seccionBuscador.nativeElement.style.transform = 'translate(100%)';
+      this.seccionBuscador.nativeElement.style.transition = '0.6s ease';
+      this.matSidenavContent.style.transform = 'translate(0%)';
+      this.matSidenavContent.style.transition = '0.6s ease';
+      this.ulitmoEstadoBuscador = false;
+    }
   }
 }
