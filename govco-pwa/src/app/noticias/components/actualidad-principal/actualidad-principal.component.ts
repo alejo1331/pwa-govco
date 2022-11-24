@@ -74,9 +74,6 @@ export class ActualidadPrincipalComponent implements OnInit {
     this.activatedRouter.url.subscribe(() => {
       this.idCategoriaParam = this.activatedRouter.snapshot.paramMap.get('idCategoria');
       this.estadoComboCategoria = this.idCategoriaParam ? false : true;
-      if (this.idCategoriaParam) {
-
-      }
     });
     setTimeout(() => {
       this.IniciarCampoAno();
@@ -105,7 +102,7 @@ export class ActualidadPrincipalComponent implements OnInit {
       listTmp.push({ nombre: anoInicio, codigo: anoInicio });
       anoInicio++;
     }
-    // anoInicio++;
+    
     listTmp.push({ nombre: anoInicio, codigo: anoInicio });
     this.listaAnos = listTmp;
   }
@@ -125,7 +122,9 @@ export class ActualidadPrincipalComponent implements OnInit {
   abrirSeccionFiltros() {
     this.fitrosDesplegados = !this.fitrosDesplegados;
     setTimeout(() => {
-      this.fitrosDesplegados ? document.getElementById("seccion-filtros")?.focus() : null;
+      if (this.fitrosDesplegados) {
+        document.getElementById("seccion-filtros")?.focus();
+      }
     }, 200);
   }
 
@@ -238,7 +237,6 @@ export class ActualidadPrincipalComponent implements OnInit {
     filtroTmp.subCategoria = this.selectsubcategoria.nativeElement["seleccionado"].codigo ? this.selectsubcategoria.nativeElement["seleccionado"].codigo : "";
     filtroTmp.sector = this.selectsector.nativeElement["seleccionado"].codigo ? this.selectsector.nativeElement["seleccionado"].codigo : "";
     filtroTmp.entidad = this.selectentidad.nativeElement["seleccionado"].codigo ? this.selectentidad.nativeElement["seleccionado"].codigo : "";
-    // filtroTmp.fechaPublicacion = this.fechapublicacion.nativeElement["value"];
     filtroTmp.fechaPublicacion = this.construirFecha();
     this.filtro = filtroTmp;
   }
@@ -258,7 +256,6 @@ export class ActualidadPrincipalComponent implements OnInit {
     this.iniciarFiltro();
     this.cargarCombosBox();
     this.selectsubcategoria.nativeElement["list"] = [];
-    // this.fechapublicacion.nativeElement["value"]="";
     this.selectano.nativeElement["seleccionado"] = { codigo: "", nombre: "" };
     this.selectmes.nativeElement["list"] = [];
   }

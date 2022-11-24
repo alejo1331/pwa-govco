@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BuscadorService, BuscadorParams } from 'src/app/buscador-pwa/services/buscador.service';
 import { ItemsBuscador } from 'src/variables-globales/items-buscador';
 

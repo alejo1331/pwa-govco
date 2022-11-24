@@ -17,8 +17,6 @@ export class FichaEspecificaHeaderPwaComponent {
       if (data) {
         url = url.match(/^https?:/) ? url : '//' + url;
         window.open(url);
-      } else {
-        // this.utilsService.openModalErrorValidateUrl();
       }
     });
   }

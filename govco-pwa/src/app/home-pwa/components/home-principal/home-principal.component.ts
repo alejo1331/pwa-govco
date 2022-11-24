@@ -75,14 +75,29 @@ export class HomePrincipalComponent implements OnInit {
   }
 
   getMunicipiosPorDepartamento([codigoDepartamento, codigoMunicipio]: [string, string]) {
-    codigoDepartamento == 'TodosLosDepartamentos' ? this.nombreMunicipio = 'Toda Colombia' : ''
-    codigoDepartamento = codigoDepartamento != null ? (codigoDepartamento != 'TodosLosDepartamentos' ? codigoDepartamento : '') : '';
-    codigoMunicipio = codigoMunicipio != null ? (codigoMunicipio != 'TodosLosMunicipios' ? codigoMunicipio : '') : ''
+    if (codigoDepartamento == 'TodosLosDepartamentos') {
+      this.nombreMunicipio = 'Toda Colombia';
+    }
+
+    if (codigoDepartamento != null) {
+      codigoDepartamento = codigoDepartamento != 'TodosLosDepartamentos' ? codigoDepartamento : '';
+    } else {
+      codigoDepartamento = '';
+    }
+
+    if (codigoMunicipio != null) {
+      codigoMunicipio = codigoMunicipio != 'TodosLosMunicipios' ? codigoMunicipio : '';
+    } else {
+      codigoMunicipio = '';
+    }
+
     if (codigoMunicipio != '') {
       this.ServicioGeolocalizacion.getCacheJsonMunicipiosPorDepartamento(codigoDepartamento)
         .then((municipios: any) => {
           municipios.forEach((data: any) => {
-            data['codigo'] == codigoMunicipio ? this.nombreMunicipio = data['nombre'] : '';
+            if (data['codigo'] == codigoMunicipio) {
+              this.nombreMunicipio = data['nombre'];
+            }
           });
         })
     }

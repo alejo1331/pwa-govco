@@ -14,7 +14,6 @@ export class OrderByDatePipe implements PipeTransform {
     if (fechaConvertida.length > 0) {
       fechaOrdenada = ordenBy === 'desc' ? fechaConvertida.sort((a, b) => b.localeCompare(a))
         : fechaConvertida.sort((a, b) => a.localeCompare(b));
-      fechaConvertida = [];
       fechaConvertida = this.convertirFecha(fechaOrdenada, this.meses, this.mesesNum);
       return fechaConvertida;
     } else return in_array;
