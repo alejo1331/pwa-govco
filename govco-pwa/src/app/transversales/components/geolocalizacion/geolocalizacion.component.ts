@@ -1,4 +1,5 @@
-import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { ModalInterface } from 'src/app/modal-natvivo/models/modal-interface';
 import { MunicipioInterface } from '../../models/geolocalizacion/municipio-interface';
 import { GeolocalizacionService } from '../../services/geolocalizacion/geolocalizacion.service';
 import { HeaderService } from '../../services/header-service/header.service';
@@ -8,11 +9,12 @@ import { HeaderService } from '../../services/header-service/header.service';
   templateUrl: './geolocalizacion.component.html',
   styleUrls: ['./geolocalizacion.component.css']
 })
-export class GeolocalizacionComponent implements OnInit {
+export class GeolocalizacionComponent implements OnInit, AfterViewInit {
 
   // ElementRef para el focus
   @ViewChild('contenidoHtml') contenidoHtml: ElementRef;
   @ViewChild('boton') boton: ElementRef;
+  modalClasico: ModalInterface;
 
   @Output() abrir = new EventEmitter<string[]>();
 
@@ -21,7 +23,7 @@ export class GeolocalizacionComponent implements OnInit {
 
   constructor(
     protected ServicioGeolocalizacion: GeolocalizacionService,
-    protected servicioHeader: HeaderService
+    protected servicioHeader: HeaderService,
   ) { }
 
   ngOnInit(): void {
@@ -29,7 +31,7 @@ export class GeolocalizacionComponent implements OnInit {
       this.ocultar = estado[1];
     })
 
-    this.ServicioGeolocalizacion.coordenadas.subscribe(([codigoDepartamento, codigoMunicipio]) => {
+    this.ServicioGeolocalizacion.getUbicacion.subscribe(([codigoDepartamento, codigoMunicipio]) => {
       switch (codigoDepartamento) {
         case 'null':
           this.ubicacionMunicipio = 'Ingresa tu ubicación'
@@ -43,6 +45,15 @@ export class GeolocalizacionComponent implements OnInit {
       }
     })
 
+  }
+
+  ngAfterViewInit(): void {
+    const departamento = localStorage.getItem("codigoDepartamento");
+    const municipio = localStorage.getItem("codigoMunicipio");
+
+    if (departamento && municipio) {
+      this.ServicioGeolocalizacion.setUbicacion(departamento, municipio);
+    }
   }
 
   getMunicipiosPorDepartamento([codigoDepartamento, codigoMunicipio]: [string, string]) {

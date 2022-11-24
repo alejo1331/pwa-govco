@@ -15,15 +15,19 @@ export class GeolocalizacionService {
   urlApiEntidades: string = environment.urlApiEntidades;
 
   private datosUbicacion = new BehaviorSubject<[string, string]>(['null', 'null']);
-  public coordenadas = this.datosUbicacion.asObservable();
+  // public coordenadas = this.datosUbicacion.asObservable();
 
   constructor(
     private http: HttpClient,
-    protected servicioCache:CacheStorageService
-    ) { }
+    protected servicioCache: CacheStorageService
+  ) { }
 
-  public ubicacion(codigoDepartamento: string, codigoMunicipio: string): void {
+  public setUbicacion(codigoDepartamento: string, codigoMunicipio: string): void {
     this.datosUbicacion.next([codigoDepartamento, codigoMunicipio]);
+  }
+
+  get getUbicacion(): Observable<[string, string]> {
+    return this.datosUbicacion.asObservable();
   }
 
   getEstadoServicioGeolocalizacion(): Observable<boolean> {
@@ -31,13 +35,13 @@ export class GeolocalizacionService {
     return this.http.get<boolean>(url)
   }
 
-  cacheJsonDepartamentos(){
+  cacheJsonDepartamentos() {
     let url = this.urlApiEntidades + '/GeoLocalizacion/ObtenerDepartamentos';
     return this.servicioCache.cacheStorege(url, 'geolocalizacion', 'departamentos', '.json').then(data => { return data })
   }
 
-  getCacheJsonDepartamentos(){
-    return this.servicioCache.getCacheStorage('departamentos','.json').then(json => { return json });
+  getCacheJsonDepartamentos() {
+    return this.servicioCache.getCacheStorage('departamentos', '.json').then(json => { return json });
   }
 
   getDepartamentos(): Observable<DepartamentoInterface[]> {
@@ -45,13 +49,13 @@ export class GeolocalizacionService {
     return this.http.get<DepartamentoInterface[]>(url);
   }
 
-  cacheJsonMunicipiosPorDepartamento(codigoDepartamento: string){
+  cacheJsonMunicipiosPorDepartamento(codigoDepartamento: string) {
     let url = this.urlApiEntidades + '/GeoLocalizacion/ObtenerMunicipiosPorDepartamento?codigo=' + codigoDepartamento;
-    return this.servicioCache.cacheStorege(url, 'geolocalizacion', codigoDepartamento,'.json').then(data => { return data })
+    return this.servicioCache.cacheStorege(url, 'geolocalizacion', codigoDepartamento, '.json').then(data => { return data })
   }
 
-  getCacheJsonMunicipiosPorDepartamento(codigoDepartamento: string){
-    return this.servicioCache.getCacheStorage(codigoDepartamento,'.json').then(json => { return json });
+  getCacheJsonMunicipiosPorDepartamento(codigoDepartamento: string) {
+    return this.servicioCache.getCacheStorage(codigoDepartamento, '.json').then(json => { return json });
   }
 
   getMunicipiosPorDepartamento(codigoDepartamento: string): Observable<MunicipioInterface[]> {

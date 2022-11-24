@@ -55,7 +55,7 @@ export class BuscadorAvisoComponent implements OnInit {
       }
     );
 
-    this.ServicioGeolocalizacion.coordenadas.subscribe(
+    this.ServicioGeolocalizacion.getUbicacion.subscribe(
       (ubicacion: string[]) => {
         this.getMunicipiosPorDepartamento([ubicacion[0], ubicacion[1]]);
       }

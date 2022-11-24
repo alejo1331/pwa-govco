@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, HostListener, OnInit, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, HostListener, OnInit, Output, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { ConsultaUbicacionInterface } from '../../models/geolocalizacion/consulta-ubicacion-interface';
@@ -16,7 +16,7 @@ import { ModalClasicoComponent } from 'src/app/modal-natvivo/components/modal-cl
   templateUrl: './geolocalizacion-formulario.component.html',
   styleUrls: ['./geolocalizacion-formulario.component.css']
 })
-export class GeolocalizacionFormularioComponent implements OnInit {
+export class GeolocalizacionFormularioComponent implements OnInit, AfterViewInit {
 
   listaDepartamentos: DepartamentoInterface[] = [];
   listaMunicipios: MunicipioInterface[] = [];
@@ -75,7 +75,38 @@ export class GeolocalizacionFormularioComponent implements OnInit {
 
     this.getDepartamentos();
 
-    this.ServicioGeolocalizacion.coordenadas.subscribe(msg => this.datosUbicacion = msg);
+    this.ServicioGeolocalizacion.getUbicacion.subscribe(msg => this.datosUbicacion = msg);
+  }
+
+  ngAfterViewInit(): void {
+    const modalVisto = sessionStorage.getItem('modalVisto');
+
+    if (modalVisto != 'true') {
+      //inicio - contruccion modal natico clasico
+      this.modalClasico = {
+        campoTitulo: "Ingresa tu ubicación",
+        campoTexto: "Podrás encontrar trámites, servicios e información según tu ubicación",
+        botonCancelar: "CANCELAR",
+        botonAceptar: "INGRESAR"
+      };
+      this.modalService.clasico(this.modalClasico);
+      //fin - contruccion modal natico clasico
+      setTimeout(() => {
+        let IngresarUbicacion = this.dialog.open(ModalClasicoComponent, {
+          width: '280px'
+        });
+        IngresarUbicacion.afterClosed().subscribe(resultado => {
+          sessionStorage.setItem('modalVisto', 'true');
+          this.modalService.activarSiguienteModal(true);
+          if (resultado) {
+            this.getGeolocalizacion();
+            this.closedModal.emit(['translate(0%)', 'translate(-100%)']);
+          }
+        });
+      }, 1000);
+    } else {
+      this.modalService.activarSiguienteModal(true);
+    }
   }
 
   getDepartamentos() {
@@ -174,7 +205,7 @@ export class GeolocalizacionFormularioComponent implements OnInit {
   guardarUbicacion(form: any) {
     localStorage.setItem("codigoDepartamento", form.codigoDepartamento);
     localStorage.setItem("codigoMunicipio", form.codigoMunicipio);
-    this.ServicioGeolocalizacion.ubicacion(form.codigoDepartamento, form.codigoMunicipio);
+    this.ServicioGeolocalizacion.setUbicacion(form.codigoDepartamento, form.codigoMunicipio);
     this.closedFormulario();
   }
 
@@ -186,45 +217,6 @@ export class GeolocalizacionFormularioComponent implements OnInit {
   @HostListener('window:keyup', ['$event']) onTab(event: KeyboardEvent) {
     this.reiniciarFocus == true ? this.focus() : null;
     this.botonGuardar.nativeElement == event.target ? this.reiniciarFocus = true : null;
-  }
-
-  @HostListener('window:load')
-  onLoad() {
-    const modalVisto = sessionStorage.getItem('modalVisto');
-    const departamento = localStorage.getItem("codigoDepartamento");
-    const municipio = localStorage.getItem("codigoMunicipio");
-
-    if (departamento && municipio) {
-      this.ServicioGeolocalizacion.ubicacion(departamento, municipio);
-      this.resetFormulario(departamento, municipio);
-    }
-
-    if (modalVisto != 'true') {
-      //inicio - contruccion modal natico clasico
-      this.modalClasico = {
-        campoTitulo: "Ingresa tu ubicación",
-        campoTexto: "Podrás encontrar trámites, servicios e información según tu ubicación",
-        botonCancelar: "CANCELAR",
-        botonAceptar: "INGRESAR"
-      };
-      this.modalService.clasico(this.modalClasico);
-      //fin - contruccion modal natico clasico
-      setTimeout(() => {
-        let IngresarUbicacion = this.dialog.open(ModalClasicoComponent, {
-          width: '280px'
-        });
-        IngresarUbicacion.afterClosed().subscribe(resultado => {
-          sessionStorage.setItem('modalVisto', 'true');
-          this.modalService.activarSiguienteModal(true);
-          if (resultado) {
-            this.getGeolocalizacion();
-            this.closedModal.emit(['translate(0%)', 'translate(-100%)']);
-          }
-        });
-      }, 1000);
-    } else {
-      this.modalService.activarSiguienteModal(true);
-    }
   }
 
   resetFormulario(codigoDepartamento: string, codigoMunicipio: string) {

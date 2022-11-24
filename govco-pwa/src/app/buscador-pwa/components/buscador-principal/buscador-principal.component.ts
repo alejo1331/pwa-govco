@@ -7,7 +7,6 @@ import { HeaderService } from 'src/app/transversales/services/header-service/hea
 import { SidenavService } from 'src/app/transversales/services/sidenav-service/sidenav-service.service';
 import { BuscadorService, BuscadorParams } from '../../services/buscador.service';
 import { Router } from '@angular/router';
-import { GeolocalizacionService } from 'src/app/transversales/services/geolocalizacion/geolocalizacion.service';
 import { Filter } from '../../models/filtroBusquedaModel';
 
 @Component({
@@ -34,7 +33,6 @@ export class BuscadorPrincipalComponent implements OnInit, AfterViewInit {
     protected servicioSideNav: SidenavService,
     private buscadorService: BuscadorService,
     private router: Router,
-    protected ServicioGeolocalizacion: GeolocalizacionService,
   ) {
     this.bottomService.putOcultandoBottomMenu(false);
   }
@@ -66,7 +64,6 @@ export class BuscadorPrincipalComponent implements OnInit, AfterViewInit {
 
     this.buscadorService.getBuscadorParams$.subscribe(
       (parametros: BuscadorParams) => {
-
         this.seccion = parametros.txtConsumoApi;
         let filters:Filter = {
           departamento: null,
@@ -84,7 +81,7 @@ export class BuscadorPrincipalComponent implements OnInit, AfterViewInit {
             };
           }
         }
-
+        console.log('filtros', filters)
         this.filtrosService.setFilters = {
           filters: filters,
           pageNumber: 1,
@@ -119,6 +116,7 @@ export class BuscadorPrincipalComponent implements OnInit, AfterViewInit {
           this.resultadosBusqueda = resultado;
           this.filtrosService.ResultadoBusqueda = resultado;
           this.dataResultado = this.resultadosBusqueda.data.length > 0 ? this.resultadosBusqueda.data : [];
+          console.log('data resultads', resultado)
           this.cantidadResultados = resultado.total;
         } catch (error) {
           console.error(error);

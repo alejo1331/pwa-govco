@@ -31,7 +31,7 @@ export class FiltrosPrincipalComponent implements OnInit {
   public busqueda = '';
   public filtrosSeleccionados: FilterMordal = {};
   ubicacionAux: Array<any> = [];
-  itemSeleccionados:number = 0;
+  itemSeleccionados: number = 0;
 
   constructor(
     protected filtrosService: FiltrosService,
@@ -43,6 +43,7 @@ export class FiltrosPrincipalComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    console.log('ha iniciado filtros')
     this.seccion = this.filtrosService.getFilters?.seccion || '';
     this.busqueda = this.filtrosService.getFilters?.search || '';
 
@@ -61,9 +62,13 @@ export class FiltrosPrincipalComponent implements OnInit {
       }
     });
 
-    this.ServicioGeolocalizacion.coordenadas.subscribe((ubicacion: string[]) => {
-      this.actualizarBusquedaPorUbicacion(ubicacion[0], ubicacion[1]);
-    })
+    // this.ServicioGeolocalizacion.getUbicacion.subscribe((ubicacion: string[]) => {
+    //   // this.actualizarBusquedaPorUbicacion(ubicacion[0], ubicacion[1]);
+    //   // const codigoDepartamento = String(localStorage.getItem("codigoDepartamento"));
+    //   // console.log('ubicacion', ubicacion[0], codigoDepartamento)
+    //   // codigoDepartamento != ubicacion[0] ?
+    //   //   this.actualizarBusqueda() : null
+    // })
 
     this.clickBackdrop();
     this.clickEscape();
@@ -102,7 +107,7 @@ export class FiltrosPrincipalComponent implements OnInit {
   }
 
   seleccionaFiltroNivelUno(idFiltro: string, tituloFiltro: string, event: any) {
-    if (event.target.classList.contains('infoBoton') ||event.target.classList.contains('info') || event.target.classList.contains('delete-selection')) {
+    if (event.target.classList.contains('infoBoton') || event.target.classList.contains('info') || event.target.classList.contains('delete-selection')) {
       return false;
     }
 
@@ -192,9 +197,10 @@ export class FiltrosPrincipalComponent implements OnInit {
     this.buscadorService.getBuscadorParams$.subscribe(
       (parametros: BuscadorParams) => {
         if (parametros.aplicaGeoreferenciacion == 'si') {
-          const codigoDepartamento = String(localStorage.getItem("codigoDepartamento"));
-          const codigoMunicipio = String(localStorage.getItem("codigoMunicipio"));
-          this.actualizarBusquedaPorUbicacion(codigoDepartamento, codigoMunicipio)
+          this.ServicioGeolocalizacion.getUbicacion.subscribe((ubicacion: string[]) => {
+            this.actualizarBusquedaPorUbicacion(ubicacion[0], ubicacion[1]);
+
+          })
         } else {
           this.ubicacionAux[0] = null;
           this.ubicacionAux[1] = null;
@@ -225,10 +231,12 @@ export class FiltrosPrincipalComponent implements OnInit {
         };
       }
     );
-
-
   }
 
+  actualizar_Busquea() { 
+
+  }
+  
   focus() {
     const currDialog = document.querySelector(".container-filtros");
 
