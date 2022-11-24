@@ -528,3 +528,17 @@ select-search-1 a,
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
 }
+
+.off-buscador {
+  animation: off-opacity .2s forwards;
+
+  @keyframes off-opacity {
+      100% {
+          opacity: 0;
+      }
+
+      0% {
+          opacity: 1;
+      }
+  }
+}

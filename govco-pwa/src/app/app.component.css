@@ -74,10 +74,6 @@ mat-sidenav {
   transform: translate(100%);
 }
 
-.sidenav-container {
-  transition: 0.6s ease;
-}
-
 dialog[open] {
   position: fixed;
   width: 50%;
@@ -93,7 +89,6 @@ dialog[open] {
   height: 100%;
   top: 0;
   left: 0;
-  transition: 0.6s ease;
   background-color: white;
   transform: translate(100%);
 }

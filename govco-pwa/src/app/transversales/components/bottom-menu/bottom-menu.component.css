@@ -117,6 +117,10 @@ img {
   border-radius: 0 0 30px 30px;
 }
 
+.list-items .change-pointer::before {
+  border-bottom: 6px solid #F6F8F9;
+}
+
 p{
   font-family: 'work sans';
   font-size: 14px;

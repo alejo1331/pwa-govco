@@ -22,11 +22,11 @@
 
   </mat-sidenav-content>
 </mat-sidenav-container>
-<section #formulario class="app-geolocalizacion-formulario-pwa-govco">
+<section #formulario class="app-geolocalizacion-formulario-pwa-govco" *ngIf="activarSeccion">
   <app-geolocalizacion-formulario (closedModal)="formularioGeolocalizacion($event)"></app-geolocalizacion-formulario>
 </section>
 
-<section #seccionBuscador class="seccion-buscador">
+<section #seccionBuscador class="seccion-buscador" *ngIf="activarSeccion">
   <app-buscador-nivel-dos (cerrarBuscador)="cerrarBuscadorPWA()" [activarServicio]="ulitmoEstadoBuscador"></app-buscador-nivel-dos>
 </section>
 

@@ -34,6 +34,7 @@ export class BottomMenuService {
     await this.item.next(seleccionado);
     const navigation_items_elms: any = document.querySelectorAll(".navigation-bar .list-items .item");
     const navigation_pointer: any = document.querySelector(".navigation-bar .pointer");
+    navigation_pointer.classList.remove('change-pointer');
 
     await navigation_items_elms.forEach((item: any, index: number) => {
       if (index == seleccionado) {
@@ -44,9 +45,17 @@ export class BottomMenuService {
     })
   }
 
+  public desactivarSeleccion() {
+    const navigation_items_elms: any = document.querySelectorAll(".navigation-bar .list-items .item");
+    const navigation_pointer: any = document.querySelector(".navigation-bar .pointer");
+    navigation_pointer.classList.add('change-pointer');
+    this.quitarClaseActivo(navigation_items_elms, navigation_pointer);
+  }
+
   public quitarActive() {
     const navigation_items_elms: any = document.querySelectorAll(".navigation-bar .list-items .item");
     const navigation_pointer: any = document.querySelector(".navigation-bar .pointer");
+    navigation_pointer.classList.remove('change-pointer');
     let lefPercent = this.lastPointer;
     this.quitarClaseActivo(navigation_items_elms, navigation_pointer);
     navigation_pointer.style.left = lefPercent;
@@ -57,6 +66,7 @@ export class BottomMenuService {
   public toogleActive() {
     const navigation_items_elms: any = document.querySelectorAll(".navigation-bar .list-items .item");
     const navigation_pointer: any = document.querySelector(".navigation-bar .pointer");
+    navigation_pointer.classList.remove('change-pointer');
 
     navigation_items_elms.forEach((item: any, index: number) => {
       item.addEventListener("click", (e: any) => {
