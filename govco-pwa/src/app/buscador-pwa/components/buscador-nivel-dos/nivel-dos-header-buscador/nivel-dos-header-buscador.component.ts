@@ -1,5 +1,6 @@
 import { Component, ElementRef, Input, ViewChild, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AppComponent } from 'src/app/app.component';
 import { BuscadorParams, BuscadorService } from 'src/app/buscador-pwa/services/buscador.service';
 import { Parametros } from 'src/app/buscador-pwa/services/global';
 import { ItemsBuscador } from 'src/variables-globales/items-buscador';
@@ -24,14 +25,19 @@ export class NivelDosHeaderBuscadorComponent implements AfterViewInit {
   txtConsumoApi = '';
   txtInputBuscador = '';
   index = 0;
+  matSidenavContent: HTMLElement;
 
   constructor(
     private sugerenciasService: SugerenciasService,
     private buscadorService: BuscadorService,
-    private router: Router
+    private router: Router,
+    private appComponent: AppComponent
   ) { }
 
   ngAfterViewInit() {
+    this.matSidenavContent = (
+      document.getElementsByTagName('mat-sidenav-container') as HTMLCollectionOf<HTMLElement>
+    )[0];
     var input = this.input.nativeElement
     this.buscadorService.getBuscadorParams$.subscribe(
       (parametros: BuscadorParams) => {
@@ -40,9 +46,9 @@ export class NivelDosHeaderBuscadorComponent implements AfterViewInit {
         this.index = parametros.index;
         input.value = this.txtInputBuscador
         if ((input.value == parametros.txtInputBuscador) && (input.value != '')) {
-         if (this.activarServicio === true){
-                this.buscar()
-        }
+          if (this.activarServicio === true) {
+            this.buscar()
+          }
           this.buscarSugerencias()
         }
       }
@@ -50,7 +56,7 @@ export class NivelDosHeaderBuscadorComponent implements AfterViewInit {
   }
 
   buscarSugerencias() {
-    let inputBuscador : any = document.getElementById('buscador-pwa')
+    let inputBuscador: any = document.getElementById('buscador-pwa')
     if (inputBuscador.value.length < this.minCaracterTexto) {
       this.datosAutocompletar = []
       this.buscadorService.setSugerenrciasBuscador(this.datosAutocompletar)
@@ -67,8 +73,8 @@ export class NivelDosHeaderBuscadorComponent implements AfterViewInit {
           // })
           this.datosAutocompletar.forEach((name: any, index: any) => {
             this.datosAutocompletar[index] = [name,
-            this.buscadorService.fnResaltarCoincidenciasXPalabras(
-              this.buscadorService.fnSugerenciasSintaxis(name, this.maxLargoSugerencia), inputBuscadorSinTildes,  'i')
+              this.buscadorService.fnResaltarCoincidenciasXPalabras(
+                this.buscadorService.fnSugerenciasSintaxis(name, this.maxLargoSugerencia), inputBuscadorSinTildes, 'i')
             ]
           });
 
@@ -83,7 +89,7 @@ export class NivelDosHeaderBuscadorComponent implements AfterViewInit {
     var input = this.input.nativeElement;
     if (event.key === "Enter" && input.value != '') {
       if (this.activarServicio === true) this.buscar();
-      this.cerrarBuscadorPWA();
+      this.styleOpacity();
       const nuevoBuscadorParams: BuscadorParams = {
         index: this.index,
         txtConsumoApi: this.txtConsumoApi,
@@ -100,6 +106,16 @@ export class NivelDosHeaderBuscadorComponent implements AfterViewInit {
 
   cerrarBuscadorPWA() {
     this.buscadorService.setAbrirBuscador(false);
+  }
+
+  styleOpacity() {
+    this.matSidenavContent.removeAttribute('style');
+    let seccionBuscador: HTMLElement = this.appComponent.seccionBuscador.nativeElement;
+    seccionBuscador.classList.add('off-buscador');
+    this.appComponent.seccionBuscador.nativeElement.addEventListener('animationend', function (event: Event) {
+      seccionBuscador.removeAttribute('style');
+      seccionBuscador.classList.remove('off-buscador');
+    });
   }
 
 }
