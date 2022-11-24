@@ -44,7 +44,8 @@ export class BuscadorCardEjerciciosParticipacionComponent implements OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     const pageNumber = this.filtrosService.getFilters ? this.filtrosService.getFilters.pageNumber : 1;
     if (pageNumber == 1) {
-      this.items = []
+      this.items = [];
+      this.contadorResultados = 0;
     }
     changes.data.currentValue.forEach((element: EjerciciosParticipacionInterface, i: number) => {
       var fechaPublicacion: Array<string> = Array.from((element.fechaPublicacion.split(/\s+/).join('')).split("de"));
@@ -80,13 +81,13 @@ export class BuscadorCardEjerciciosParticipacionComponent implements OnChanges {
 
       if ((i + 1) == changes.data.currentValue.length) {
         setTimeout(() => {
-          this.focusCard(pageNumber);
+          this.focusCard(pageNumber, changes.data.currentValue.length);
         }, 100);
       }
     })
   }
 
-  focusCard(pageNumber:number) {
+  focusCard(pageNumber:number, cantidadResultados:number) {
     const buttons = document.querySelectorAll('#acordeonEjercicios .card button');
     let button:HTMLElement;
     let buttonFocus:HTMLElement;
@@ -96,8 +97,8 @@ export class BuscadorCardEjerciciosParticipacionComponent implements OnChanges {
         buttonFocus.focus();
       }
     } else {
-      button = <HTMLElement>buttons[buttons.length - 6];
-      buttonFocus = <HTMLElement>buttons[buttons.length - 5];
+      button = <HTMLElement>buttons[buttons.length - cantidadResultados + 1];
+      buttonFocus = <HTMLElement>buttons[buttons.length - cantidadResultados];
       if (button && buttonFocus) {
         buttonFocus.focus();
         button.scrollIntoView();
@@ -145,6 +146,7 @@ export class BuscadorCardEjerciciosParticipacionComponent implements OnChanges {
       seccion: this.filtrosService.getFilters?.seccion,
       spinner: false,
     };
+    this.contadorResultados = this.pageSize * (pageNumber + 1);
   }
 
   VerMenosResultados(){

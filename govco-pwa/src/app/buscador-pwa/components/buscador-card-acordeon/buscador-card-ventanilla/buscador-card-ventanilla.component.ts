@@ -41,6 +41,7 @@ export class BuscadorCardVentanillaComponent implements OnChanges {
     const pageNumber = this.filtrosService.getFilters ? this.filtrosService.getFilters.pageNumber : 1;
     if (pageNumber == 1) {
       this.items = [];
+      this.contadorResultados = 0;
     }
     changes.data.currentValue.forEach((element: VentanillasUnicasInterface, i: number) => {
       this.href = true;
@@ -65,13 +66,13 @@ export class BuscadorCardVentanillaComponent implements OnChanges {
 
       if ((i + 1) == changes.data.currentValue.length) {
         setTimeout(() => {
-          this.focusCard(pageNumber);
+          this.focusCard(pageNumber, changes.data.currentValue.length);
         }, 100);
       }
     })
   }
 
-  focusCard(pageNumber:number) {
+  focusCard(pageNumber:number, cantidadResultados:number) {
     const buttons = document.querySelectorAll('#acordeonVentanillas .card button');
     let button:HTMLElement;
     let buttonFocus:HTMLElement;
@@ -81,8 +82,8 @@ export class BuscadorCardVentanillaComponent implements OnChanges {
         buttonFocus.focus();
       }
     } else {
-      button = <HTMLElement>buttons[buttons.length - 6];
-      buttonFocus = <HTMLElement>buttons[buttons.length - 5];
+      button = <HTMLElement>buttons[buttons.length - cantidadResultados + 1];
+      buttonFocus = <HTMLElement>buttons[buttons.length - cantidadResultados];
       if (button && buttonFocus) {
         buttonFocus.focus();
         button.scrollIntoView();
@@ -129,6 +130,7 @@ export class BuscadorCardVentanillaComponent implements OnChanges {
       seccion: this.filtrosService.getFilters?.seccion,
       spinner: false,
     };
+    this.contadorResultados = this.pageSize * (pageNumber + 1);
   }
 
   VerMenosResultados(){
