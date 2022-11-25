@@ -14,6 +14,7 @@ export class BuscadorPrefiltradoComponent implements OnInit {
 
   estadoBotonFiltro: boolean = false;
   tituloFiltro: string = '';
+  estadoInput = true;
   public itemsBuscador : ItemsInterface[];
 
   posicion: number = 0;
@@ -34,7 +35,14 @@ export class BuscadorPrefiltradoComponent implements OnInit {
                       if(regex.test(event.url) == false){
                         let input: any = document.querySelector("input");
                         input.value = '';
+                        this.estadoInput = true
                       }
+                      else{
+                        this.estadoInput = false
+                      }
+                    }
+                    else{
+                      this.estadoInput = false
                     }
                   }
                 })
@@ -51,7 +59,12 @@ export class BuscadorPrefiltradoComponent implements OnInit {
 
     this.buscadorService.getBuscadorParams$.subscribe(
       (parametros: BuscadorParams) => {
-        input.value = parametros.txtInputBuscador;
+        if (this.estadoInput){
+          input.value = parametros.txtInputBuscador;
+        }
+        else{
+          input.value = '';
+        }
         this.tituloFiltro = parametros.txtConsumoApi;
         this.estadoBotonFiltro = false;
       })
