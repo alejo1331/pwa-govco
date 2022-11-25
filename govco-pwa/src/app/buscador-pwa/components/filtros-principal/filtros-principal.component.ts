@@ -6,7 +6,7 @@ import { InformacionModalInterface } from '../../../biblioteca-pwa/models/filtro
 import { Subscription } from 'rxjs';
 import { Platform } from '@angular/cdk/platform';
 import { ResultadoFiltro } from '../../models/resultadoFiltroModel';
-import { filterMordal, FiltroBusqueda } from '../../models/filtroBusquedaModel';
+import { FilterMordal, FiltroBusqueda } from '../../models/filtroBusquedaModel';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalInformativoComponent } from 'src/app/biblioteca-pwa/components/modal-informativo/modal-informativo.component';
 import { BuscadorParams, BuscadorService } from '../../services/buscador.service';
