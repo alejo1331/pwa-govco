@@ -48,7 +48,7 @@ export class BottomMenuService {
   public desactivarSeleccion() {
     const navigation_items_elms: any = document.querySelectorAll(".navigation-bar .list-items .item");
     const navigation_pointer: any = document.querySelector(".navigation-bar .pointer");
-    navigation_pointer.classList.add('change-pointer');
+    navigation_pointer?.classList.add('change-pointer');
     this.quitarClaseActivo(navigation_items_elms, navigation_pointer);
   }
 

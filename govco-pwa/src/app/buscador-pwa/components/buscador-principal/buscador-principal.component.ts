@@ -15,7 +15,7 @@ import { Filter } from '../../models/filtroBusquedaModel';
   templateUrl: './buscador-principal.component.html',
   styleUrls: ['./buscador-principal.component.scss'],
 })
-export class BuscadorPrincipalComponent implements OnInit, AfterViewInit {
+export class BuscadorPrincipalComponent implements OnInit {
   @ViewChild('resultados') resultados: ElementRef;
 
   filterSubscription: Subscription;
@@ -128,14 +128,6 @@ export class BuscadorPrincipalComponent implements OnInit, AfterViewInit {
         }
       }
     );
-  }
-
-  ngAfterViewInit(): void {
-    let barraGeolocalizador: HTMLElement = (document.getElementsByClassName('barra-geolocalizacion-pwa-govco') as HTMLCollectionOf<HTMLElement>)[0];
-    if (barraGeolocalizador) {
-      barraGeolocalizador.removeAttribute('style');
-      barraGeolocalizador.classList.add('fixed');
-    }
   }
 
   activarSpinner(activa: boolean) {
