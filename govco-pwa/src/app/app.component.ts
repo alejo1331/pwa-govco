@@ -139,6 +139,11 @@ export class AppComponent implements OnInit, AfterContentChecked, AfterContentCh
       .subscribe((event: any) => {
         this.appService.previousUrl = this.appService.currentUrl;
         this.appService.currentUrl = event.url;
+        
+        setTimeout(() => {
+          this.appGeolocalizacion = (document.getElementsByClassName('barra-geolocalizacion-pwa-govco') as HTMLCollectionOf<HTMLElement>)[0];
+        }, 100);
+
         if (this.appGeolocalizacion != undefined) {
           if (event.url == '/' + urlsLocal.buscador) {
             this.appGeolocalizacion.removeAttribute('style');
