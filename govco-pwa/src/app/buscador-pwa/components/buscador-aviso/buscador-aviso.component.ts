@@ -9,6 +9,8 @@ import {
 import { FiltrosService } from '../../services/filtros.service';
 import { ItemsBuscador } from 'src/variables-globales/items-buscador';
 import { DepartamentoInterface } from 'src/app/transversales/models/geolocalizacion/departamento-interface';
+import { Subscription } from 'rxjs';
+import { FiltroBusqueda } from '../../models/filtroBusquedaModel';
 
 @Component({
   selector: 'app-buscador-aviso',
@@ -20,27 +22,25 @@ export class BuscadorAvisoComponent implements OnInit {
   resBuscador = 'Ebuxación';
   geoLocMunName = 'Toda Colombia';
   sugBuscador = '';
-  codDepartamento: string = '';
-  codMunicipio: string = '';
   resIndex: number;
   resConsumoApi = '';
+  filterSubscription: Subscription;
 
   constructor(
     private appprincipal: AppComponent,
     protected ServicioGeolocalizacion: GeolocalizacionService,
     private buscadorService: BuscadorService,
     private filtrosService: FiltrosService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
-    if (localStorage.getItem('codigoDepartamento')) {
-      this.codDepartamento = localStorage.getItem('codigoDepartamento')!;
-      this.codMunicipio = localStorage.getItem('codigoMunicipio')!;
-      this.getMunicipiosPorDepartamento([
-        this.codDepartamento,
-        this.codMunicipio,
-      ]);
-    }
+    this.filterSubscription = this.filtrosService.getFilters$.subscribe(
+      async (data: FiltroBusqueda | undefined) => {
+        let codDepartamento: string, codMunicipio: string;
+        codDepartamento = localStorage.getItem('codigoDepartamento')!;
+        codMunicipio = localStorage.getItem('codigoMunicipio')!;
+        this.getMunicipiosPorDepartamento([codDepartamento, codMunicipio]);
+      });
 
     this.filtrosService.ResultadoBusqueda$.subscribe((resultado: any) => {
       if (resultado?.tituloSugerido) this.sugBuscador = resultado.tituloSugerido;
@@ -54,12 +54,6 @@ export class BuscadorAvisoComponent implements OnInit {
         this.resConsumoApi = parametros.txtConsumoApi;
       }
     );
-
-    this.ServicioGeolocalizacion.coordenadas.subscribe(
-      (ubicacion: string[]) => {
-        this.getMunicipiosPorDepartamento([ubicacion[0], ubicacion[1]]);
-      }
-    );
   }
 
   abrirGeolocalizacion() {
@@ -69,10 +63,7 @@ export class BuscadorAvisoComponent implements OnInit {
     ]);
   }
 
-  getMunicipiosPorDepartamento([
-    codigoDepartamento,
-    codigoMunicipio,
-  ]: string[]) {
+  getMunicipiosPorDepartamento([codigoDepartamento, codigoMunicipio]: string[]) {
     let departamentoSeleccionado: DepartamentoInterface;
     let municipioSeleccionado;
     if (codigoDepartamento != 'TodosLosDepartamentos') {
@@ -99,12 +90,12 @@ export class BuscadorAvisoComponent implements OnInit {
               codigoMunicipio === '11001'
                 ? this.capitalizeGeo(municipioSeleccionado.nombre.toLowerCase())
                 : this.capitalizeGeo(
-                    departamentoSeleccionado.nombre.toLowerCase()
-                  ) +
-                  ', ' +
-                  this.capitalizeMunicipio(
-                    municipioSeleccionado.nombre.toLowerCase()
-                  );
+                  departamentoSeleccionado.nombre.toLowerCase()
+                ) +
+                ', ' +
+                this.capitalizeMunicipio(
+                  municipioSeleccionado.nombre.toLowerCase()
+                );
           });
         }
       });
@@ -139,4 +130,12 @@ export class BuscadorAvisoComponent implements OnInit {
     });
     return municipioMod.join(' ');
   }
+
+  ngOnDestroy() {
+    if (this.filterSubscription) {
+      this.filterSubscription.unsubscribe();
+    }
+  }
 }
+
+

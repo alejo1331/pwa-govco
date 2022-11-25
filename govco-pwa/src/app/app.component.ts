@@ -8,7 +8,6 @@ import { BarraSuperiorComponent } from './transversales/components/barra-superio
 import { HeaderService } from './transversales/services/header-service/header.service';
 import { BottomMenuService } from './transversales/services/bottom-menu/bottom-menu.service';
 import { Platform } from '@angular/cdk/platform';
-import { GeolocalizacionService } from './transversales/services/geolocalizacion/geolocalizacion.service';
 import { GeolocalizacionFormularioComponent } from './transversales/components/geolocalizacion-formulario/geolocalizacion-formulario.component';
 import { SwUpdate } from '@angular/service-worker';
 import { MatDialog } from '@angular/material/dialog';
@@ -85,7 +84,6 @@ export class AppComponent implements OnInit, AfterContentChecked, AfterContentCh
     protected servicioHeader: HeaderService,
     public bottomService: BottomMenuService,
     public platform: Platform,
-    protected ServicioGeolocalizacion: GeolocalizacionService,
     private swUpdate: SwUpdate,
     public dialog: MatDialog,
     protected modalService: ModalService,

@@ -20,7 +20,7 @@ export class BarraFiltrosComponent implements OnInit {
   constructor(protected filtrosService: FiltrosService) { }
 
   ngOnInit(): void {
-    this.filtrosSubscription = this.filtrosService.Filters$.subscribe((resultados: FiltroBusqueda | undefined) => {
+    this.filtrosSubscription = this.filtrosService.getFilters$.subscribe((resultados: FiltroBusqueda | undefined) => {
       this.totalFiltros = 0;
       if (resultados?.filters != undefined) {
         Object.entries(resultados?.filters).forEach(element => {

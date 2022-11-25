@@ -6,7 +6,7 @@ import { InformacionModalInterface } from '../../../biblioteca-pwa/models/filtro
 import { Subscription } from 'rxjs';
 import { Platform } from '@angular/cdk/platform';
 import { ResultadoFiltro } from '../../models/resultadoFiltroModel';
-import { FilterMordal } from '../../models/filtroBusquedaModel';
+import { FilterMordal, FiltroBusqueda } from '../../models/filtroBusquedaModel';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalInformativoComponent } from 'src/app/biblioteca-pwa/components/modal-informativo/modal-informativo.component';
 import { BuscadorParams, BuscadorService } from '../../services/buscador.service';
@@ -25,13 +25,15 @@ export class FiltrosPrincipalComponent implements OnInit {
 
   public seccionFiltros = DATA_FILTRO_SECCIONES;
   public resultadosSubscription: Subscription;
+  filterSubscription: Subscription;
   public resultadosBusqueda: ResultadoFiltro;
   private filtroSeleccionado = '';
   public seccion = '';
   public busqueda = '';
   public filtrosSeleccionados: FilterMordal = {};
   ubicacionAux: Array<any> = [];
-  itemSeleccionados:number = 0;
+  itemSeleccionados: number = 0;
+  filters: any;
 
   constructor(
     protected filtrosService: FiltrosService,
@@ -45,6 +47,14 @@ export class FiltrosPrincipalComponent implements OnInit {
   ngOnInit(): void {
     this.seccion = this.filtrosService.getFilters?.seccion || '';
     this.busqueda = this.filtrosService.getFilters?.search || '';
+
+    this.filterSubscription = this.filtrosService.getFilters$.subscribe(
+      async (data: FiltroBusqueda | undefined) => {
+          this.filters = {
+            departamento: data?.filters?.departamento,
+            municipio: data?.filters?.municipio
+          };
+      });
 
     this.resultadosSubscription = this.filtrosService.ResultadoBusqueda$.subscribe((resultados) => {
       const filter = this.filtrosService.getFilters;
@@ -60,10 +70,6 @@ export class FiltrosPrincipalComponent implements OnInit {
         this.actualizaFiltrosActivos();
       }
     });
-
-    this.ServicioGeolocalizacion.coordenadas.subscribe((ubicacion: string[]) => {
-      this.actualizarBusquedaPorUbicacion(ubicacion[0], ubicacion[1]);
-    })
 
     this.clickBackdrop();
     this.clickEscape();
@@ -97,12 +103,12 @@ export class FiltrosPrincipalComponent implements OnInit {
       if (element.padre) {
         condicionPadre = this.filtrosSeleccionados[element.padre] != undefined;
       }
-      element.active = filtrosResultadoBusqueda[element.id].length > 0 && condicionPadre;
+      element.active = filtrosResultadoBusqueda[element.id]?.length > 0 && condicionPadre;
     });
   }
 
   seleccionaFiltroNivelUno(idFiltro: string, tituloFiltro: string, event: any) {
-    if (event.target.classList.contains('infoBoton') ||event.target.classList.contains('info') || event.target.classList.contains('delete-selection')) {
+    if (event.target.classList.contains('infoBoton') || event.target.classList.contains('info') || event.target.classList.contains('delete-selection')) {
       return false;
     }
 
@@ -178,7 +184,7 @@ export class FiltrosPrincipalComponent implements OnInit {
   }
 
   actualizarBusquedaPorUbicacion(departamento: string, municipio: string) {
-    if (municipio.toLowerCase() != 'todoslosmunicipios' && municipio != 'null') {
+    if (municipio != 'TodosLosDepartamentos' && municipio != 'null') {
       this.ubicacionAux[0] = { 'codigoDepartamento': Number(departamento) };
       this.ubicacionAux[1] = { 'codigoMunicipio': Number(municipio) };
     }
@@ -225,8 +231,6 @@ export class FiltrosPrincipalComponent implements OnInit {
         };
       }
     );
-
-
   }
 
   focus() {
@@ -276,6 +280,9 @@ export class FiltrosPrincipalComponent implements OnInit {
   ngOnDestroy() {
     this.resultadosSubscription.unsubscribe();
     this.removerFocus();
+    if (this.filterSubscription) {
+      this.filterSubscription.unsubscribe();
+    }
   }
 
   abrirModalInformativo() {

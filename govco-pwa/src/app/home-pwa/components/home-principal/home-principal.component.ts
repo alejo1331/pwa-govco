@@ -33,7 +33,7 @@ export class HomePrincipalComponent implements OnInit {
     protected tramitesService: TramitesMasConsultadosService,
     protected ServicioGeolocalizacion: GeolocalizacionService,
   ) {
-    this.ServicioGeolocalizacion.coordenadas.subscribe(([codigoDepartamento, codigoMunicipio]) => {
+    this.ServicioGeolocalizacion.getUbicacion.subscribe(([codigoDepartamento, codigoMunicipio]) => {
       if (codigoDepartamento != null && codigoMunicipio != null) {
         this.dataGeolocalizacion();
         this.dataFichaTramite();

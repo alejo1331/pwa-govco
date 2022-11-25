@@ -62,7 +62,7 @@ export class FiltrosService {
   }
 
   // Observable para suscribirse a los filtros seleccionado, es decir cada vez que se asigne un valor a filters, se consulta nuevamente los resultados de busqueda
-  get Filters$(): Observable<FiltroBusqueda | undefined> {
+  get getFilters$(): Observable<FiltroBusqueda | undefined> {
     return this.filters;
   }
 

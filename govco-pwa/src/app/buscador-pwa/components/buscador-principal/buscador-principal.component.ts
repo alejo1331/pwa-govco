@@ -7,8 +7,7 @@ import { HeaderService } from 'src/app/transversales/services/header-service/hea
 import { SidenavService } from 'src/app/transversales/services/sidenav-service/sidenav-service.service';
 import { BuscadorService, BuscadorParams } from '../../services/buscador.service';
 import { Router } from '@angular/router';
-import { GeolocalizacionService } from 'src/app/transversales/services/geolocalizacion/geolocalizacion.service';
-import { Filter } from '../../models/filtroBusquedaModel';
+import { Filter, FiltroBusqueda } from '../../models/filtroBusquedaModel';
 
 @Component({
   selector: 'app-buscador-principal',
@@ -26,6 +25,7 @@ export class BuscadorPrincipalComponent implements OnInit {
   departamento: { codigoDepartamento: number };
   municipio: { codigoMunicipio: number };
   loading: boolean;
+  filters: any;
 
   constructor(
     protected filtrosService: FiltrosService,
@@ -34,7 +34,6 @@ export class BuscadorPrincipalComponent implements OnInit {
     protected servicioSideNav: SidenavService,
     private buscadorService: BuscadorService,
     private router: Router,
-    protected ServicioGeolocalizacion: GeolocalizacionService,
   ) {
     this.bottomService.putOcultandoBottomMenu(false);
   }
@@ -64,57 +63,29 @@ export class BuscadorPrincipalComponent implements OnInit {
     (document.getElementById('topScroll') as HTMLElement).style.top = '7.25rem';
     (document.getElementById('topScroll') as HTMLElement).scrollTop = 0;
 
-    this.buscadorService.getBuscadorParams$.subscribe(
-      (parametros: BuscadorParams) => {
-
-        this.seccion = parametros.txtConsumoApi;
-        let filters:Filter = {
-          departamento: null,
-          municipio: null
-        };
-
-        if (parametros.aplicaGeoreferenciacion == 'si') {
-          const codigoDepartamento = String(localStorage.getItem("codigoDepartamento"));
-          const codigoMunicipio = String(localStorage.getItem("codigoMunicipio"));
-
-          if (codigoDepartamento.toLowerCase() != 'todoslosmunicipios' && codigoMunicipio != 'null') {
-            filters = {
-              departamento: { 'codigoDepartamento': Number(codigoDepartamento) },
-              municipio: { 'codigoMunicipio': Number(codigoMunicipio) }
-            };
-          }
-        }
-
-        this.filtrosService.setFilters = {
-          filters: filters,
-          pageNumber: 1,
-          pageSize: 5,
-          search: parametros.txtInputBuscador,
-          sort: '',
-          seccion: parametros.txtConsumoApi,
-          spinner: false,
-        };
-      }
-    );
-
-    this.filterSubscription = this.filtrosService.Filters$.subscribe(
-      async (filters) => {
-        if (filters == undefined) {
+    this.filterSubscription = this.filtrosService.getFilters$.subscribe(
+      async (data: FiltroBusqueda | undefined) => {
+        if (data == undefined) {
           return;
         }
         this.dataResultado = [];
         this.loading = true;
-        if (filters.spinner) {
+        if (data.spinner) {
           this.activarSpinner(true);
         }
 
         try {
           let resultado: ResultadoFiltro;
-          if (filters.search !== "") {
-            resultado = await this.filtrosService.obtenerResultadoFiltro(filters).toPromise();
+          if (data.search !== "") {
+            resultado = await this.filtrosService.obtenerResultadoFiltro(data).toPromise();
           } else {
             resultado = this.filtrosService.EmptyData;
           }
+          this.filters = {
+            departamento: data?.filters?.departamento,
+            municipio: data?.filters?.municipio
+          };
+
           // Se almacena la respuesta de la búsqueda
           this.resultadosBusqueda = resultado;
           this.filtrosService.ResultadoBusqueda = resultado;
@@ -128,6 +99,22 @@ export class BuscadorPrincipalComponent implements OnInit {
         }
       }
     );
+
+    this.buscadorService.getBuscadorParams$.subscribe(
+      (parametros: BuscadorParams) => {
+        this.seccion = parametros.txtConsumoApi;
+        this.filtrosService.setFilters = {
+          filters: this.filters,
+          pageNumber: 1,
+          pageSize: 5,
+          search: parametros.txtInputBuscador,
+          sort: '',
+          seccion: parametros.txtConsumoApi,
+          spinner: false,
+        };
+      }
+    );
+
   }
 
   activarSpinner(activa: boolean) {
