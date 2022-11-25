@@ -7,7 +7,7 @@
                 </ngx-skeleton-loader>
             </div>
         </div>
-        <app-buscador-aviso *ngIf="dataResultado.length < 1 && !loading"></app-buscador-aviso>
+        <app-buscador-aviso *ngIf="dataResultado.length === 0 && !loading"></app-buscador-aviso>
         <app-buscador-card-entidades *ngIf="seccion == 'entidad' && dataResultado" [data]="dataResultado"
             [cantidadResultados]="cantidadResultados">
         </app-buscador-card-entidades>

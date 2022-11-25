@@ -6,7 +6,7 @@ import { InformacionModalInterface } from '../../../biblioteca-pwa/models/filtro
 import { Subscription } from 'rxjs';
 import { Platform } from '@angular/cdk/platform';
 import { ResultadoFiltro } from '../../models/resultadoFiltroModel';
-import { FilterMordal } from '../../models/filtroBusquedaModel';
+import { filterMordal, FiltroBusqueda } from '../../models/filtroBusquedaModel';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalInformativoComponent } from 'src/app/biblioteca-pwa/components/modal-informativo/modal-informativo.component';
 import { BuscadorParams, BuscadorService } from '../../services/buscador.service';
@@ -25,6 +25,7 @@ export class FiltrosPrincipalComponent implements OnInit {
 
   public seccionFiltros = DATA_FILTRO_SECCIONES;
   public resultadosSubscription: Subscription;
+  filterSubscription: Subscription;
   public resultadosBusqueda: ResultadoFiltro;
   private filtroSeleccionado = '';
   public seccion = '';
@@ -32,6 +33,7 @@ export class FiltrosPrincipalComponent implements OnInit {
   public filtrosSeleccionados: FilterMordal = {};
   ubicacionAux: Array<any> = [];
   itemSeleccionados: number = 0;
+  filters: any;
 
   constructor(
     protected filtrosService: FiltrosService,
@@ -43,9 +45,16 @@ export class FiltrosPrincipalComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log('ha iniciado filtros')
     this.seccion = this.filtrosService.getFilters?.seccion || '';
     this.busqueda = this.filtrosService.getFilters?.search || '';
+
+    this.filterSubscription = this.filtrosService.getFilters$.subscribe(
+      async (data: FiltroBusqueda | undefined) => {
+          this.filters = {
+            departamento: data?.filters?.departamento,
+            municipio: data?.filters?.municipio
+          };
+      });
 
     this.resultadosSubscription = this.filtrosService.ResultadoBusqueda$.subscribe((resultados) => {
       const filter = this.filtrosService.getFilters;
@@ -61,14 +70,6 @@ export class FiltrosPrincipalComponent implements OnInit {
         this.actualizaFiltrosActivos();
       }
     });
-
-    // this.ServicioGeolocalizacion.getUbicacion.subscribe((ubicacion: string[]) => {
-    //   // this.actualizarBusquedaPorUbicacion(ubicacion[0], ubicacion[1]);
-    //   // const codigoDepartamento = String(localStorage.getItem("codigoDepartamento"));
-    //   // console.log('ubicacion', ubicacion[0], codigoDepartamento)
-    //   // codigoDepartamento != ubicacion[0] ?
-    //   //   this.actualizarBusqueda() : null
-    // })
 
     this.clickBackdrop();
     this.clickEscape();
@@ -102,7 +103,7 @@ export class FiltrosPrincipalComponent implements OnInit {
       if (element.padre) {
         condicionPadre = this.filtrosSeleccionados[element.padre] != undefined;
       }
-      element.active = filtrosResultadoBusqueda[element.id].length > 0 && condicionPadre;
+      element.active = filtrosResultadoBusqueda[element.id]?.length > 0 && condicionPadre;
     });
   }
 
@@ -183,7 +184,7 @@ export class FiltrosPrincipalComponent implements OnInit {
   }
 
   actualizarBusquedaPorUbicacion(departamento: string, municipio: string) {
-    if (municipio.toLowerCase() != 'todoslosmunicipios' && municipio != 'null') {
+    if (municipio != 'TodosLosDepartamentos' && municipio != 'null') {
       this.ubicacionAux[0] = { 'codigoDepartamento': Number(departamento) };
       this.ubicacionAux[1] = { 'codigoMunicipio': Number(municipio) };
     }
@@ -197,10 +198,9 @@ export class FiltrosPrincipalComponent implements OnInit {
     this.buscadorService.getBuscadorParams$.subscribe(
       (parametros: BuscadorParams) => {
         if (parametros.aplicaGeoreferenciacion == 'si') {
-          this.ServicioGeolocalizacion.getUbicacion.subscribe((ubicacion: string[]) => {
-            this.actualizarBusquedaPorUbicacion(ubicacion[0], ubicacion[1]);
-
-          })
+          const codigoDepartamento = String(localStorage.getItem("codigoDepartamento"));
+          const codigoMunicipio = String(localStorage.getItem("codigoMunicipio"));
+          this.actualizarBusquedaPorUbicacion(codigoDepartamento, codigoMunicipio)
         } else {
           this.ubicacionAux[0] = null;
           this.ubicacionAux[1] = null;
@@ -233,10 +233,6 @@ export class FiltrosPrincipalComponent implements OnInit {
     );
   }
 
-  actualizar_Busquea() { 
-
-  }
-  
   focus() {
     const currDialog = document.querySelector(".container-filtros");
 
@@ -284,6 +280,9 @@ export class FiltrosPrincipalComponent implements OnInit {
   ngOnDestroy() {
     this.resultadosSubscription.unsubscribe();
     this.removerFocus();
+    if (this.filterSubscription) {
+      this.filterSubscription.unsubscribe();
+    }
   }
 
   abrirModalInformativo() {

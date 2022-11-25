@@ -50,7 +50,7 @@ export class GeolocalizacionFormularioComponent implements OnInit, AfterViewInit
     protected ServicioGeolocalizacion: GeolocalizacionService,
     protected ServicioCache: CacheStorageService,
     public dialog: MatDialog,
-    protected modalService: ModalService
+    protected modalService: ModalService,
   ) {
   }
 

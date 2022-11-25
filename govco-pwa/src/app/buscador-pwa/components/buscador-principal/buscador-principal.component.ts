@@ -7,7 +7,7 @@ import { HeaderService } from 'src/app/transversales/services/header-service/hea
 import { SidenavService } from 'src/app/transversales/services/sidenav-service/sidenav-service.service';
 import { BuscadorService, BuscadorParams } from '../../services/buscador.service';
 import { Router } from '@angular/router';
-import { Filter } from '../../models/filtroBusquedaModel';
+import { Filter, FiltroBusqueda } from '../../models/filtroBusquedaModel';
 
 @Component({
   selector: 'app-buscador-principal',
@@ -25,6 +25,7 @@ export class BuscadorPrincipalComponent implements OnInit, AfterViewInit {
   departamento: { codigoDepartamento: number };
   municipio: { codigoMunicipio: number };
   loading: boolean;
+  filters: any;
 
   constructor(
     protected filtrosService: FiltrosService,
@@ -62,28 +63,48 @@ export class BuscadorPrincipalComponent implements OnInit, AfterViewInit {
     (document.getElementById('topScroll') as HTMLElement).style.top = '7.25rem';
     (document.getElementById('topScroll') as HTMLElement).scrollTop = 0;
 
+    this.filterSubscription = this.filtrosService.getFilters$.subscribe(
+      async (data: FiltroBusqueda | undefined) => {
+        if (data == undefined) {
+          return;
+        }
+        this.dataResultado = [];
+        this.loading = true;
+        if (data.spinner) {
+          this.activarSpinner(true);
+        }
+
+        try {
+          let resultado: ResultadoFiltro;
+          if (data.search !== "") {
+            resultado = await this.filtrosService.obtenerResultadoFiltro(data).toPromise();
+          } else {
+            resultado = this.filtrosService.EmptyData;
+          }
+          this.filters = {
+            departamento: data?.filters?.departamento,
+            municipio: data?.filters?.municipio
+          };
+
+          // Se almacena la respuesta de la búsqueda
+          this.resultadosBusqueda = resultado;
+          this.filtrosService.ResultadoBusqueda = resultado;
+          this.dataResultado = this.resultadosBusqueda.data.length > 0 ? this.resultadosBusqueda.data : [];
+          this.cantidadResultados = resultado.total;
+        } catch (error) {
+          console.error(error);
+        } finally {
+          this.activarSpinner(false);
+          this.loading = false;
+        }
+      }
+    );
+
     this.buscadorService.getBuscadorParams$.subscribe(
       (parametros: BuscadorParams) => {
         this.seccion = parametros.txtConsumoApi;
-        let filters:Filter = {
-          departamento: null,
-          municipio: null
-        };
-
-        if (parametros.aplicaGeoreferenciacion == 'si') {
-          const codigoDepartamento = String(localStorage.getItem("codigoDepartamento"));
-          const codigoMunicipio = String(localStorage.getItem("codigoMunicipio"));
-
-          if (codigoDepartamento.toLowerCase() != 'todoslosmunicipios' && codigoMunicipio != 'null') {
-            filters = {
-              departamento: { 'codigoDepartamento': Number(codigoDepartamento) },
-              municipio: { 'codigoMunicipio': Number(codigoMunicipio) }
-            };
-          }
-        }
-        console.log('filtros', filters)
         this.filtrosService.setFilters = {
-          filters: filters,
+          filters: this.filters,
           pageNumber: 1,
           pageSize: 5,
           search: parametros.txtInputBuscador,
@@ -94,38 +115,6 @@ export class BuscadorPrincipalComponent implements OnInit, AfterViewInit {
       }
     );
 
-    this.filterSubscription = this.filtrosService.Filters$.subscribe(
-      async (filters) => {
-        if (filters == undefined) {
-          return;
-        }
-        this.dataResultado = [];
-        this.loading = true;
-        if (filters.spinner) {
-          this.activarSpinner(true);
-        }
-
-        try {
-          let resultado: ResultadoFiltro;
-          if (filters.search !== "") {
-            resultado = await this.filtrosService.obtenerResultadoFiltro(filters).toPromise();
-          } else {
-            resultado = this.filtrosService.EmptyData;
-          }
-          // Se almacena la respuesta de la búsqueda
-          this.resultadosBusqueda = resultado;
-          this.filtrosService.ResultadoBusqueda = resultado;
-          this.dataResultado = this.resultadosBusqueda.data.length > 0 ? this.resultadosBusqueda.data : [];
-          console.log('data resultads', resultado)
-          this.cantidadResultados = resultado.total;
-        } catch (error) {
-          console.error(error);
-        } finally {
-          this.activarSpinner(false);
-          this.loading = false;
-        }
-      }
-    );
   }
 
   ngAfterViewInit(): void {
