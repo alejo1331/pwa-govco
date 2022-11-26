@@ -245,7 +245,7 @@ export class FiltrosPrincipalComponent implements OnInit {
       let last = <HTMLElement>focusableElements[focusableElements.length - 1];
 
       $(document.body).on("focusin", (event) => {
-        if (currDialog && !currDialog.contains(<HTMLElement>event.target)) {
+        if (!currDialog.contains(<HTMLElement>event.target)) {
           event.preventDefault();
           event.stopPropagation();
 

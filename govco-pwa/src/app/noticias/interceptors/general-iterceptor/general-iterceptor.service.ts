@@ -11,17 +11,12 @@ export class GeneralIterceptorService implements HttpInterceptor {
   constructor(private router: Router) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    
-    let request = req;
-    
-    const link = document.getElementsByTagName('link');
-    
-    for (let i = 0; i < link.length; i++) {
-      if (link[i].getAttribute('rel') === "canonical") {
-        link[i].setAttribute('href', `${window.location.href}` );
+    document.querySelectorAll('link').forEach((link) => {
+      if (link.getAttribute('rel') === "canonical") {
+        link.setAttribute('href', `${window.location.href}` );
       }
-    }
+    });
   
-    return next.handle(request);
+    return next.handle(req);
   }
 }
