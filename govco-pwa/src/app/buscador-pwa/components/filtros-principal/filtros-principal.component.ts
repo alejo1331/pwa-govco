@@ -183,28 +183,9 @@ export class FiltrosPrincipalComponent implements OnInit {
     this.actualizarBusqueda();
   }
 
-  actualizarBusquedaPorUbicacion(departamento: string, municipio: string) {
-    if (municipio != 'TodosLosDepartamentos' && municipio != 'null') {
-      this.ubicacionAux[0] = { 'codigoDepartamento': Number(departamento) };
-      this.ubicacionAux[1] = { 'codigoMunicipio': Number(municipio) };
-    }
-    else {
-      this.ubicacionAux[0] = null;
-      this.ubicacionAux[1] = null;
-    }
-  }
-
   actualizarBusqueda() {
     this.buscadorService.getBuscadorParams$.subscribe(
       (parametros: BuscadorParams) => {
-        if (parametros.aplicaGeoreferenciacion == 'si') {
-          const codigoDepartamento = String(localStorage.getItem("codigoDepartamento"));
-          const codigoMunicipio = String(localStorage.getItem("codigoMunicipio"));
-          this.actualizarBusquedaPorUbicacion(codigoDepartamento, codigoMunicipio)
-        } else {
-          this.ubicacionAux[0] = null;
-          this.ubicacionAux[1] = null;
-        }
         this.seccion = parametros.txtConsumoApi;
         this.filtrosService.setFilters = {
           filters: {
@@ -219,8 +200,8 @@ export class FiltrosPrincipalComponent implements OnInit {
             anioPublicacionFiltro: this.filtrosSeleccionados.anioPublicacionFiltro,
             mesPublicacionFiltro: this.filtrosSeleccionados.mesPublicacionFiltro,
             estado: this.filtrosSeleccionados.estado,
-            departamento: this.ubicacionAux[0],
-            municipio: this.ubicacionAux[1]
+            departamento: this.filters['departamento'],
+            municipio: this.filters['municipio']
           },
           pageNumber: 1,
           pageSize: 5,

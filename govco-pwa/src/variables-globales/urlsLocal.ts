@@ -3,6 +3,7 @@ export const urlsLocal = {
     fichaTramiteId: '/ficha-tramites-y-servicios/T',
     servicios: '/servicios',
     noticias: '/noticias',
+    noticiasDetalle: '/noticias/detalle/',
     biblioteca: '/participa',
     entidadesEstado: '/entidades',
     sobreNosotros: '/sobre-nosotros',

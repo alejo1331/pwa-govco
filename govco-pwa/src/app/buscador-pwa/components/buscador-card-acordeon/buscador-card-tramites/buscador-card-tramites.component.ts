@@ -46,11 +46,11 @@ export class BuscadorCardTramitesComponent implements OnChanges {
   constructor(
     public validarUrlService: ValidarUrlService,
     public filtrosService: FiltrosService
-    ) {}
+  ) { }
 
   ngOnChanges(changes: SimpleChanges): void {
     const pageNumber = this.filtrosService.getFilters ? this.filtrosService.getFilters.pageNumber : 1;
-    
+
     if (pageNumber == 1) {
       this.items = [];
       this.contadorResultados = 0;
@@ -61,6 +61,13 @@ export class BuscadorCardTramitesComponent implements OnChanges {
         this.botonTexto[i] = false;
         Object.values(urlsLocal).find((url) => {
           if (element.link.indexOf(url) >= 0) {
+            switch (url) {
+              case urlsLocal.fichaTramiteId:
+                const id: string = element.link.replace(/[^0-9]+/g, "");
+                element.link = '';
+                element.link = urlsLocal.fichaTramiteId + id;
+                break;
+            }
             return this.href = false;
           } else {
             return null;
@@ -87,10 +94,10 @@ export class BuscadorCardTramitesComponent implements OnChanges {
     );
   }
 
-  focusCard(pageNumber:number, cantidadResultados:number) {
+  focusCard(pageNumber: number, cantidadResultados: number) {
     const buttons = document.querySelectorAll('#acordeonTramites .card button');
-    let button:HTMLElement;
-    let buttonFocus:HTMLElement;
+    let button: HTMLElement;
+    let buttonFocus: HTMLElement;
     if (pageNumber == 1) {
       buttonFocus = <HTMLElement>buttons[0];
       if (buttonFocus) {
@@ -116,7 +123,7 @@ export class BuscadorCardTramitesComponent implements OnChanges {
     this.expandirTexto = false;
     this.listaTexto
       .toArray()
-      [index].nativeElement.classList.add('line-clamp-3');
+    [index].nativeElement.classList.add('line-clamp-3');
     var element: HTMLElement = this.listaTexto.toArray()[index].nativeElement;
     this.ListaAcordeon.toArray()[index].nativeElement.addEventListener(
       'transitionend',
@@ -138,7 +145,7 @@ export class BuscadorCardTramitesComponent implements OnChanges {
   expandirText(index: number) {
     this.listaTexto
       .toArray()
-      [index].nativeElement.classList.toggle('line-clamp-3');
+    [index].nativeElement.classList.toggle('line-clamp-3');
     this.expandirTexto = this.expandirTexto === true ? false : true;
   }
 
@@ -149,7 +156,7 @@ export class BuscadorCardTramitesComponent implements OnChanges {
       filters: this.filtrosService.getFilters ? this.filtrosService.getFilters?.filters : null,
       pageNumber: pageNumber + 1,
       pageSize: this.pageSize,
-      search: this.filtrosService.getFilters  ? this.filtrosService.getFilters?.search : '',
+      search: this.filtrosService.getFilters ? this.filtrosService.getFilters?.search : '',
       sort: '',
       seccion: this.filtrosService.getFilters?.seccion,
       spinner: false,
@@ -157,12 +164,12 @@ export class BuscadorCardTramitesComponent implements OnChanges {
     this.contadorResultados = this.pageSize * (pageNumber + 1);
   }
 
-  VerMenosResultados(){
+  VerMenosResultados() {
     this.filtrosService.setFilters = {
       filters: this.filtrosService.getFilters ? this.filtrosService.getFilters?.filters : null,
       pageNumber: 1,
       pageSize: this.pageSize,
-      search: this.filtrosService.getFilters  ? this.filtrosService.getFilters?.search : '',
+      search: this.filtrosService.getFilters ? this.filtrosService.getFilters?.search : '',
       sort: '',
       seccion: this.filtrosService.getFilters?.seccion,
       spinner: false,
