@@ -184,34 +184,32 @@ export class FiltrosPrincipalComponent implements OnInit {
   }
 
   actualizarBusqueda() {
-    this.buscadorService.getBuscadorParams$.subscribe(
-      (parametros: BuscadorParams) => {
-        this.seccion = parametros.txtConsumoApi;
-        this.filtrosService.setFilters = {
-          filters: {
-            categorias: this.filtrosSeleccionados.categorias,
-            subcategorias: this.filtrosSeleccionados.subcategorias,
-            entidadNombre: this.filtrosSeleccionados.entidadNombre,
-            sector: this.filtrosSeleccionados.sector,
-            fechaPublicacionFiltro: this.filtrosSeleccionados.fechaPublicacionFiltro,
-            fechaCierreFiltro: this.filtrosSeleccionados.fechaCierreFiltro,
-            nombreEstandarizado: this.filtrosSeleccionados.nombreEstandarizado,
-            tipoEntidad: this.filtrosSeleccionados.tipoEntidad,
-            anioPublicacionFiltro: this.filtrosSeleccionados.anioPublicacionFiltro,
-            mesPublicacionFiltro: this.filtrosSeleccionados.mesPublicacionFiltro,
-            estado: this.filtrosSeleccionados.estado,
-            departamento: this.filters['departamento'],
-            municipio: this.filters['municipio']
-          },
-          pageNumber: 1,
-          pageSize: 5,
-          search: parametros.txtInputBuscador,
-          sort: '',
-          seccion: parametros.txtConsumoApi,
-          spinner: false,
-        };
-      }
-    );
+    const parametrosBuscador = this.buscadorService.getBuscadorParams;
+    this.seccion = parametrosBuscador.txtConsumoApi;
+
+    this.filtrosService.setFilters = {
+      filters: {
+        categorias: this.filtrosSeleccionados.categorias,
+        subcategorias: this.filtrosSeleccionados.subcategorias,
+        entidadNombre: this.filtrosSeleccionados.entidadNombre,
+        sector: this.filtrosSeleccionados.sector,
+        fechaPublicacionFiltro: this.filtrosSeleccionados.fechaPublicacionFiltro,
+        fechaCierreFiltro: this.filtrosSeleccionados.fechaCierreFiltro,
+        nombreEstandarizado: this.filtrosSeleccionados.nombreEstandarizado,
+        tipoEntidad: this.filtrosSeleccionados.tipoEntidad,
+        anioPublicacionFiltro: this.filtrosSeleccionados.anioPublicacionFiltro,
+        mesPublicacionFiltro: this.filtrosSeleccionados.mesPublicacionFiltro,
+        estado: this.filtrosSeleccionados.estado,
+        departamento: this.filters['departamento'],
+        municipio: this.filters['municipio']
+      },
+      pageNumber: 1,
+      pageSize: 5,
+      search: parametrosBuscador.txtInputBuscador,
+      sort: '',
+      seccion: parametrosBuscador.txtConsumoApi,
+      spinner: false,
+    };
   }
 
   focus() {
