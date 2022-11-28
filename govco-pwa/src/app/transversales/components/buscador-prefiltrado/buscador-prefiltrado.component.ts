@@ -1,5 +1,6 @@
 import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { NavigationStart, Router, Event } from '@angular/router';
+import { BehaviorSubject, Subscription } from 'rxjs';
 import { BuscadorService, BuscadorParams } from 'src/app/buscador-pwa/services/buscador.service';
 import { ItemsBuscador } from 'src/variables-globales/items-buscador';
 import { ItemsInterface } from '../../models/bucador-pwa/items-interface';
@@ -14,8 +15,9 @@ export class BuscadorPrefiltradoComponent implements OnInit {
 
   estadoBotonFiltro: boolean = false;
   tituloFiltro: string = '';
-  estadoInput = true;
+  estadoInicialInput = true;
   public itemsBuscador : ItemsInterface[];
+  getParametros : Subscription
 
   posicion: number = 0;
   abrirBuscadorCheck: boolean = false;
@@ -35,14 +37,11 @@ export class BuscadorPrefiltradoComponent implements OnInit {
                       if(regex.test(event.url) == false){
                         let input: any = document.querySelector("input");
                         input.value = '';
-                        this.estadoInput = true
-                      }
-                      else{
-                        this.estadoInput = false
+                        this.estadoInicialInput = true;
                       }
                     }
                     else{
-                      this.estadoInput = false
+                      this.estadoInicialInput = true
                     }
                   }
                 })
@@ -57,9 +56,9 @@ export class BuscadorPrefiltradoComponent implements OnInit {
         this.abrirBuscadorCheck = abrir
       })
 
-    this.buscadorService.getBuscadorParams$.subscribe(
+    this.getParametros = this.buscadorService.getBuscadorParams$.subscribe(
       (parametros: BuscadorParams) => {
-        if (this.estadoInput){
+        if (this.estadoInicialInput ){
           input.value = parametros.txtInputBuscador;
         }
         else{
@@ -99,5 +98,18 @@ export class BuscadorPrefiltradoComponent implements OnInit {
   // Función de abrir el buscador
   abrirBuscadorPWA() {
     this.buscadorService.setAbrirBuscador(true)
+  }
+
+  ngOnDestroy(): void {
+    if (this.getParametros) {
+      const buscadorParams: BuscadorParams = {
+        index: 0,
+        txtInputBuscador: '',
+        txtConsumoApi: 'tramite',
+        aplicaGeoreferenciacion: 'no'
+      }
+      this.buscadorService.setBuscadorParams(buscadorParams)
+      this.getParametros.unsubscribe();
+    }
   }
 }
