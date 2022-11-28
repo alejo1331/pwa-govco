@@ -83,19 +83,21 @@ export class BuscadorAvisoComponent implements OnInit {
           this.ServicioGeolocalizacion.getCacheJsonMunicipiosPorDepartamento(
             codigoDepartamento
           ).then((municipios: MunicipioInterface[]) => {
-            municipioSeleccionado = municipios.filter((elemento: any) => {
-              return elemento.codigo === codigoMunicipio;
-            })[0];
-            this.geoLocMunName =
-              codigoMunicipio === '11001'
-                ? this.capitalizeGeo(municipioSeleccionado.nombre.toLowerCase())
-                : this.capitalizeGeo(
-                  departamentoSeleccionado.nombre.toLowerCase()
-                ) +
-                ', ' +
-                this.capitalizeMunicipio(
-                  municipioSeleccionado.nombre.toLowerCase()
-                );
+            if (municipios) {
+              municipioSeleccionado = municipios.filter((elemento: any) => {
+                return elemento.codigo === codigoMunicipio;
+              })[0];
+              this.geoLocMunName =
+                codigoMunicipio === '11001'
+                  ? this.capitalizeGeo(municipioSeleccionado.nombre.toLowerCase())
+                  : this.capitalizeGeo(
+                    departamentoSeleccionado.nombre.toLowerCase()
+                  ) +
+                  ', ' +
+                  this.capitalizeMunicipio(
+                    municipioSeleccionado.nombre.toLowerCase()
+                  );
+            }
           });
         }
       });

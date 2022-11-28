@@ -1,4 +1,4 @@
-<div #contenidoHtml *ngIf="ocultar" class="barra-geolocalizacion-pwa-govco">
+<div #contenidoHtml [hidden]="!ocultar" class="barra-geolocalizacion-pwa-govco">
     <button #boton class="seccion-clic" (click)="abrirFormularioGeo()" (keypress)="abrirFormularioGeo()" 
         [attr.aria-label]="'Abrir formulario de ubicacion'" tabindex="0">
         <span class="caja-icono-pwa-govco">
