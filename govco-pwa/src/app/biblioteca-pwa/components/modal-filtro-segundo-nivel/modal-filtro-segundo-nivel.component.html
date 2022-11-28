@@ -9,7 +9,7 @@
         </div>
         <div class="listado">
             <button
-                *ngFor="let item of informacionModal.contendioModal | filterSegundoNivel: searchText | orderByDate: 'desc' ; let idItem = index;"
+                *ngFor="let item of informacionModal.contendioModal | filterSegundoNivel: searchText | orderByDate: informacionModal.titulo : 'desc' : 'asc' ; let idItem = index;"
                 (click)="itemSeleccionado(idItem, item)" class="item"
                 [class.active]="informacionModal.itemSeleccionado == item" tabindex="0">
                 <p>{{item}}</p>
