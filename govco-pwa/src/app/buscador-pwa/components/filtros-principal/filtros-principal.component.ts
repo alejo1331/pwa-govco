@@ -112,11 +112,11 @@ export class FiltrosPrincipalComponent implements OnInit {
       return false;
     }
 
-    this.filtroSeleccionado = idFiltro;
+    this.filtroSeleccionado = idFiltro == 'subCategorias' ? 'subcategorias' : idFiltro;
     let subFiltroSeleccionado = '';
 
     if (this.filtrosSeleccionados != null && this.filtrosSeleccionados[idFiltro]) {
-      subFiltroSeleccionado = this.filtroSeleccionado == 'categorias' || this.filtroSeleccionado == 'subCategorias' ? this.filtrosSeleccionados[idFiltro].nombre : this.filtrosSeleccionados[idFiltro];
+      subFiltroSeleccionado = this.filtroSeleccionado == 'categorias' || this.filtroSeleccionado == 'subcategorias' ? this.filtrosSeleccionados[idFiltro].nombre : this.filtrosSeleccionados[idFiltro];
     }
 
     //inicia el servicio para el filtro de segundo nivel
@@ -150,11 +150,11 @@ export class FiltrosPrincipalComponent implements OnInit {
     }
 
     this.filtrosSeleccionados = this.filtrosService.getFilters?.filters != null ? this.filtrosService.getFilters.filters : {};
-    if (this.filtroSeleccionado == 'categorias' || this.filtroSeleccionado == 'subCategorias') {
+    if (this.filtroSeleccionado == 'categorias' || this.filtroSeleccionado == 'subcategorias') {
       this.filtrosSeleccionados[this.filtroSeleccionado] = { 'nombre': item }
     } else {
       this.filtrosSeleccionados[this.filtroSeleccionado] = item;
-    }
+    }    
     this.focus();
 
     if (this.filtroSeleccionado) {
@@ -169,7 +169,7 @@ export class FiltrosPrincipalComponent implements OnInit {
     this.itemSeleccionados--;
 
     if (item == 'categorias') {
-      delete this.filtrosSeleccionados['subCategorias'];
+      delete this.filtrosSeleccionados['subcategorias'];
     } else if (item == 'anioPublicacionFiltro') {
       delete this.filtrosSeleccionados['mesPublicacionFiltro'];
     }
@@ -209,7 +209,7 @@ export class FiltrosPrincipalComponent implements OnInit {
         this.filtrosService.setFilters = {
           filters: {
             categorias: this.filtrosSeleccionados.categorias,
-            subcategorias: this.filtrosSeleccionados.subCategorias,
+            subcategorias: this.filtrosSeleccionados.subcategorias,
             entidadNombre: this.filtrosSeleccionados.entidadNombre,
             sector: this.filtrosSeleccionados.sector,
             fechaPublicacionFiltro: this.filtrosSeleccionados.fechaPublicacionFiltro,
