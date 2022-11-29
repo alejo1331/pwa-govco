@@ -26,7 +26,7 @@ export interface Filter {
 
 export interface FilterMordal {
     categorias?: Name;
-    subCategorias?: Name;
+    subcategorias?: Name;
     entidadNombre?: string;
     sector?: string;
     fechaPublicacionFiltro?: string;

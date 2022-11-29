@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { AppComponent } from 'src/app/app.component';
+import { Filter } from 'src/app/buscador-pwa/models/filtroBusquedaModel';
 import { BuscadorService, BuscadorParams } from 'src/app/buscador-pwa/services/buscador.service';
+import { FiltrosService } from 'src/app/buscador-pwa/services/filtros.service';
 import { ItemsBuscador } from 'src/variables-globales/items-buscador';
 
 @Component({
@@ -18,7 +20,8 @@ export class ListadoSugerenciasComponent implements OnInit {
 
   constructor(
     private buscadorService: BuscadorService,
-    private appComponent: AppComponent
+    private appComponent: AppComponent,
+    protected filtrosService: FiltrosService,
   ) { }
 
   ngOnInit() {
@@ -31,6 +34,22 @@ export class ListadoSugerenciasComponent implements OnInit {
     this.buscadorService.getBuscadorParams$.subscribe(
       (parametros: BuscadorParams) => {
         this.buscadorParams = parametros;
+
+        const filters: Filter = {departamento: null, municipio: null};
+        if (this.filtrosService.getFilters?.filters != null) {
+          filters.departamento = this.filtrosService.getFilters.filters.departamento;
+          filters.municipio = this.filtrosService.getFilters.filters.municipio;
+        }
+
+        this.filtrosService.setFilters = {
+          filters: filters,
+          pageNumber: 1,
+          pageSize: 5,
+          search: parametros.txtInputBuscador,
+          sort: '',
+          seccion: parametros.txtConsumoApi,
+          spinner: false,
+        };
       }
     )
 

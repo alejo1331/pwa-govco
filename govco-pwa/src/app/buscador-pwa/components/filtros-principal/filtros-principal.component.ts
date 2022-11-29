@@ -112,11 +112,11 @@ export class FiltrosPrincipalComponent implements OnInit {
       return false;
     }
 
-    this.filtroSeleccionado = idFiltro;
+    this.filtroSeleccionado = idFiltro == 'subCategorias' ? 'subcategorias' : idFiltro;
     let subFiltroSeleccionado = '';
 
     if (this.filtrosSeleccionados != null && this.filtrosSeleccionados[idFiltro]) {
-      subFiltroSeleccionado = this.filtroSeleccionado == 'categorias' || this.filtroSeleccionado == 'subCategorias' ? this.filtrosSeleccionados[idFiltro].nombre : this.filtrosSeleccionados[idFiltro];
+      subFiltroSeleccionado = this.filtroSeleccionado == 'categorias' || this.filtroSeleccionado == 'subcategorias' ? this.filtrosSeleccionados[idFiltro].nombre : this.filtrosSeleccionados[idFiltro];
     }
 
     //inicia el servicio para el filtro de segundo nivel
@@ -150,11 +150,11 @@ export class FiltrosPrincipalComponent implements OnInit {
     }
 
     this.filtrosSeleccionados = this.filtrosService.getFilters?.filters != null ? this.filtrosService.getFilters.filters : {};
-    if (this.filtroSeleccionado == 'categorias' || this.filtroSeleccionado == 'subCategorias') {
+    if (this.filtroSeleccionado == 'categorias' || this.filtroSeleccionado == 'subcategorias') {
       this.filtrosSeleccionados[this.filtroSeleccionado] = { 'nombre': item }
     } else {
       this.filtrosSeleccionados[this.filtroSeleccionado] = item;
-    }
+    }    
     this.focus();
 
     if (this.filtroSeleccionado) {
@@ -169,7 +169,7 @@ export class FiltrosPrincipalComponent implements OnInit {
     this.itemSeleccionados--;
 
     if (item == 'categorias') {
-      delete this.filtrosSeleccionados['subCategorias'];
+      delete this.filtrosSeleccionados['subcategorias'];
     } else if (item == 'anioPublicacionFiltro') {
       delete this.filtrosSeleccionados['mesPublicacionFiltro'];
     }
@@ -184,34 +184,32 @@ export class FiltrosPrincipalComponent implements OnInit {
   }
 
   actualizarBusqueda() {
-    this.buscadorService.getBuscadorParams$.subscribe(
-      (parametros: BuscadorParams) => {
-        this.seccion = parametros.txtConsumoApi;
-        this.filtrosService.setFilters = {
-          filters: {
-            categorias: this.filtrosSeleccionados.categorias,
-            subcategorias: this.filtrosSeleccionados.subCategorias,
-            entidadNombre: this.filtrosSeleccionados.entidadNombre,
-            sector: this.filtrosSeleccionados.sector,
-            fechaPublicacionFiltro: this.filtrosSeleccionados.fechaPublicacionFiltro,
-            fechaCierreFiltro: this.filtrosSeleccionados.fechaCierreFiltro,
-            nombreEstandarizado: this.filtrosSeleccionados.nombreEstandarizado,
-            tipoEntidad: this.filtrosSeleccionados.tipoEntidad,
-            anioPublicacionFiltro: this.filtrosSeleccionados.anioPublicacionFiltro,
-            mesPublicacionFiltro: this.filtrosSeleccionados.mesPublicacionFiltro,
-            estado: this.filtrosSeleccionados.estado,
-            departamento: this.filters['departamento'],
-            municipio: this.filters['municipio']
-          },
-          pageNumber: 1,
-          pageSize: 5,
-          search: parametros.txtInputBuscador,
-          sort: '',
-          seccion: parametros.txtConsumoApi,
-          spinner: false,
-        };
-      }
-    );
+    const parametrosBuscador = this.buscadorService.getBuscadorParams;
+    this.seccion = parametrosBuscador.txtConsumoApi;
+
+    this.filtrosService.setFilters = {
+      filters: {
+        categorias: this.filtrosSeleccionados.categorias,
+        subcategorias: this.filtrosSeleccionados.subcategorias,
+        entidadNombre: this.filtrosSeleccionados.entidadNombre,
+        sector: this.filtrosSeleccionados.sector,
+        fechaPublicacionFiltro: this.filtrosSeleccionados.fechaPublicacionFiltro,
+        fechaCierreFiltro: this.filtrosSeleccionados.fechaCierreFiltro,
+        nombreEstandarizado: this.filtrosSeleccionados.nombreEstandarizado,
+        tipoEntidad: this.filtrosSeleccionados.tipoEntidad,
+        anioPublicacionFiltro: this.filtrosSeleccionados.anioPublicacionFiltro,
+        mesPublicacionFiltro: this.filtrosSeleccionados.mesPublicacionFiltro,
+        estado: this.filtrosSeleccionados.estado,
+        departamento: this.filters['departamento'],
+        municipio: this.filters['municipio']
+      },
+      pageNumber: 1,
+      pageSize: 5,
+      search: parametrosBuscador.txtInputBuscador,
+      sort: '',
+      seccion: parametrosBuscador.txtConsumoApi,
+      spinner: false,
+    };
   }
 
   focus() {

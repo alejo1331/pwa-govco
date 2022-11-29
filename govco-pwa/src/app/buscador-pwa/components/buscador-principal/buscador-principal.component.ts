@@ -65,6 +65,7 @@ export class BuscadorPrincipalComponent implements OnInit {
 
     this.filterSubscription = this.filtrosService.getFilters$.subscribe(
       async (data: FiltroBusqueda | undefined) => {
+        const parametrosBuscador = this.buscadorService.getBuscadorParams;
         if (data == undefined) {
           return;
         }
@@ -73,6 +74,10 @@ export class BuscadorPrincipalComponent implements OnInit {
         if (data.spinner) {
           this.activarSpinner(true);
         }
+
+        data.search = parametrosBuscador.txtInputBuscador;
+        data.seccion = parametrosBuscador.txtConsumoApi;
+        this.seccion = parametrosBuscador.txtConsumoApi;
 
         try {
           let resultado: ResultadoFiltro;
@@ -99,22 +104,6 @@ export class BuscadorPrincipalComponent implements OnInit {
         }
       }
     );
-
-    this.buscadorService.getBuscadorParams$.subscribe(
-      (parametros: BuscadorParams) => {
-        this.seccion = parametros.txtConsumoApi;
-        this.filtrosService.setFilters = {
-          filters: this.filters,
-          pageNumber: 1,
-          pageSize: 5,
-          search: parametros.txtInputBuscador,
-          sort: '',
-          seccion: parametros.txtConsumoApi,
-          spinner: false,
-        };
-      }
-    );
-
   }
 
   activarSpinner(activa: boolean) {
