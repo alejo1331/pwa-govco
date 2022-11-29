@@ -81,7 +81,7 @@ export class BuscadorPrefiltradoComponent implements OnInit {
       this.componentPrefiltrado.abrirModal() : this.componentPrefiltrado.cerrarModal();
   }
 
-  itemSelected([estado, index, abrirSelectorBusqueda]: [boolean, number, boolean]) {
+  itemSelected([estado, index, abrirSelectorBusqueda, generarBusqueda]: [boolean, number, boolean, boolean]) {
     this.botonPrefiltro != undefined ? this.botonPrefiltro.nativeElement.focus() : null;
     if (this.componentPrefiltrado != undefined && abrirSelectorBusqueda == true) {
       this.filtrarPor();
@@ -97,7 +97,9 @@ export class BuscadorPrefiltradoComponent implements OnInit {
       txtConsumoApi: ItemsBuscador[index].txtConsumoApi,
       aplicaGeoreferenciacion: ItemsBuscador[index].aplicaGeoreferenciacion
     }
-    this.buscadorService.setBuscadorParams(buscadorParams)
+    if (generarBusqueda) {
+      this.buscadorService.setBuscadorParams(buscadorParams);
+    }
   }
 
   // Función de abrir el buscador

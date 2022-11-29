@@ -9,7 +9,7 @@ import { ResultadoFiltro } from '../../models/resultadoFiltroModel';
 import { FilterMordal, FiltroBusqueda } from '../../models/filtroBusquedaModel';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalInformativoComponent } from 'src/app/biblioteca-pwa/components/modal-informativo/modal-informativo.component';
-import { BuscadorParams, BuscadorService } from '../../services/buscador.service';
+import { BuscadorService } from '../../services/buscador.service';
 import { GeolocalizacionService } from 'src/app/transversales/services/geolocalizacion/geolocalizacion.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
@@ -139,7 +139,7 @@ export class FiltrosPrincipalComponent implements OnInit {
     this.filtroPrimerNivel.nativeElement.classList.toggle('show');
     this.focus();
     if (this.platform.IOS || this.platform.SAFARI) {
-      var body = (document.getElementsByTagName('body') as HTMLCollectionOf<HTMLElement>)[0];
+      const body = (document.getElementsByTagName('body') as HTMLCollectionOf<HTMLElement>)[0];
       body.classList.toggle('contenido-body');
     }
   }
@@ -208,7 +208,7 @@ export class FiltrosPrincipalComponent implements OnInit {
       search: parametrosBuscador.txtInputBuscador,
       sort: '',
       seccion: parametrosBuscador.txtConsumoApi,
-      spinner: false,
+      spinner: true,
     };
   }
 

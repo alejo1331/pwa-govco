@@ -10,7 +10,7 @@ import { BuscadorPrefiltradoComponent } from '../buscador-prefiltrado.component'
 export class ModalPrefiltradoComponent implements OnInit {
 
   itemFiltro: number;
-  @Output() itemSelected = new EventEmitter<[ boolean, number, boolean]>();
+  @Output() itemSelected = new EventEmitter<[ boolean, number, boolean, boolean]>();
   @ViewChildren('listaPrefiltro', { read: ElementRef }) listaPrefiltro: QueryList<ElementRef>
   @ViewChild('modal') modal: ElementRef;
 
@@ -24,13 +24,13 @@ export class ModalPrefiltradoComponent implements OnInit {
 
   ngOnInit(): void {
     this.itemFiltro = 0;
-    this.itemSelected.emit([false, 0, true]);
+    this.itemSelected.emit([false, 0, true, true]);
     // Suscribe a los parametros de busqueda para actualizar el boton del filtro
     this.buscadorService.getBuscadorParams$.subscribe(
       (parametros: BuscadorParams) => {
         if(this.itemFiltro != parametros.index){
           this.itemFiltro = parametros.index;
-          this.itemSelected.emit([false, this.itemFiltro, false]);
+          this.itemSelected.emit([false, this.itemFiltro, false, false]);
         }
       }
     )
@@ -38,7 +38,7 @@ export class ModalPrefiltradoComponent implements OnInit {
 
   seleccionarItem(posicion: number) {
     this.itemFiltro = posicion;
-    this.itemSelected.emit([false, posicion, true]);
+    this.itemSelected.emit([false, posicion, true, true]);
   }
 
   focusBuscador() {
