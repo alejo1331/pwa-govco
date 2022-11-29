@@ -1,9 +1,10 @@
 import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { BuscadorService } from 'src/app/buscador-pwa/services/buscador.service';
+import { BuscadorService, BuscadorParams } from 'src/app/buscador-pwa/services/buscador.service';
 import { HeaderService } from '../../services/header-service/header.service';
 import { SidenavService } from '../../services/sidenav-service/sidenav-service.service';
 import { BuscadorPrefiltradoComponent } from '../buscador-prefiltrado/buscador-prefiltrado.component';
+
 
 @Component({
   selector: 'app-barra-superior',
@@ -47,6 +48,16 @@ export class BarraSuperiorComponent implements OnInit {
   clickHome() {
     this.router.navigate(['/']);
     document.querySelector('#topScroll')!.scrollTop = 0;
+  }
+
+  limpiarBuscador(){
+    const nuevosBuscadorParams : BuscadorParams ={
+      index : 0,
+      txtInputBuscador: '',
+      txtConsumoApi: 'tramite',
+      aplicaGeoreferenciacion: 'no'
+      }
+    this.buscadorService.setBuscadorParams(nuevosBuscadorParams)
   }
 
   abrirBuscadorPWA() {
