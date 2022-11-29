@@ -1,13 +1,13 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ResultadoFiltro } from '../../models/resultadoFiltroModel';
 import { FiltrosService } from '../../services/filtros.service';
 import { Subscription } from 'rxjs';
 import { BottomMenuService } from 'src/app/transversales/services/bottom-menu/bottom-menu.service';
 import { HeaderService } from 'src/app/transversales/services/header-service/header.service';
 import { SidenavService } from 'src/app/transversales/services/sidenav-service/sidenav-service.service';
-import { BuscadorService, BuscadorParams } from '../../services/buscador.service';
+import { BuscadorService } from '../../services/buscador.service';
 import { Router } from '@angular/router';
-import { Filter, FiltroBusqueda } from '../../models/filtroBusquedaModel';
+import { FiltroBusqueda } from '../../models/filtroBusquedaModel';
 
 @Component({
   selector: 'app-buscador-principal',
