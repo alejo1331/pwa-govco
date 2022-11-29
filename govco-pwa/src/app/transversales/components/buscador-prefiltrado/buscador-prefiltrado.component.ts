@@ -18,7 +18,7 @@ export class BuscadorPrefiltradoComponent implements OnInit {
   estadoInicialInput = true;
   public itemsBuscador : ItemsInterface[];
   getParametros : Subscription
-
+  inputBuscadorSegundoNivel: any
   posicion: number = 0;
   abrirBuscadorCheck: boolean = false;
 
@@ -37,6 +37,11 @@ export class BuscadorPrefiltradoComponent implements OnInit {
                       if(regex.test(event.url) == false){
                         let input: any = document.querySelector("input");
                         input.value = '';
+                        this.inputBuscadorSegundoNivel = document.getElementById('buscador-pwa');
+                        if (this.inputBuscadorSegundoNivel){
+                          this.inputBuscadorSegundoNivel.value = '';
+                        }
+                        this.buscadorService.setSugerenrciasBuscador([])
                         this.estadoInicialInput = true;
                       }
                     }
@@ -108,7 +113,12 @@ export class BuscadorPrefiltradoComponent implements OnInit {
         txtConsumoApi: 'tramite',
         aplicaGeoreferenciacion: 'no'
       }
+      this.inputBuscadorSegundoNivel = document.getElementById('buscador-pwa');
+      if (this.inputBuscadorSegundoNivel){
+        this.inputBuscadorSegundoNivel.value = '';
+      }
       this.buscadorService.setBuscadorParams(buscadorParams)
+      this.buscadorService.setSugerenrciasBuscador([])
       this.getParametros.unsubscribe();
     }
   }
