@@ -100,7 +100,12 @@ export class BuscadorPrincipalComponent implements OnInit {
           this.resultadosBusqueda = resultado;
           this.filtrosService.ResultadoBusqueda = resultado;
           this.dataResultado = this.resultadosBusqueda.data.length > 0 ? this.resultadosBusqueda.data : [];
-          this.cantidadResultados = resultado.total;
+          if(this.dataResultado.length > 0){
+            this.cantidadResultados = resultado.total;
+          }
+          else{
+            this.cantidadResultados = 0;
+          }
         } catch (error) {
           console.error(error);
         } finally {
