@@ -26,5 +26,7 @@
         </div>
     </div>
 </div>
+{{cantidadResultados}}
+{{contadorResultados}}
 <app-boton [inverted]="false" *ngIf="cantidadResultados > 5 && contadorResultados < cantidadResultados" (click)="VerMasResultados()">Ver más</app-boton>
 <app-boton [inverted]="false" *ngIf="cantidadResultados > 5 && contadorResultados >= cantidadResultados" (click)="VerMenosResultados()">Ver menos</app-boton>
