@@ -63,6 +63,8 @@ export class FiltrosPrincipalComponent implements OnInit {
         this.seccion = filter?.seccion || '';
         this.busqueda = filter?.search || '';
         this.filtrosSeleccionados = {};
+      } else {
+        this.actualizarFiltrosSeleccionados(filter);
       }
 
       if (resultados) {
@@ -73,6 +75,21 @@ export class FiltrosPrincipalComponent implements OnInit {
 
     this.clickBackdrop();
     this.clickEscape();
+  }
+
+  actualizarFiltrosSeleccionados(filter:FiltroBusqueda) {
+    this.filtrosSeleccionados = {};
+
+    const filtrosS = filter? filter.filters : {};
+    if (!filtrosS) {
+      return false;
+    }
+    this.seccionFiltros[this.seccion].forEach((element: { active: boolean; id: string, padre: string }) => {
+      const filtroId = element.id == 'subCategorias' ? 'subcategorias' : element.id;
+      if (filtrosS[filtroId] && filtrosS[filtroId] != undefined) {
+        this.filtrosSeleccionados[filtroId] = filtrosS[filtroId];
+      }
+    });
   }
 
   clickBackdrop() {

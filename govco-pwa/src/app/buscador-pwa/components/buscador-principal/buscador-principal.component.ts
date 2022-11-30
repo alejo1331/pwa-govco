@@ -71,6 +71,11 @@ export class BuscadorPrincipalComponent implements OnInit {
         }
         this.dataResultado = [];
         this.loading = true;
+
+        if (data.pageNumber == 1) {
+          this.cantidadResultados = 0;
+        }
+        
         if (data.spinner) {
           this.activarSpinner(true);
         }

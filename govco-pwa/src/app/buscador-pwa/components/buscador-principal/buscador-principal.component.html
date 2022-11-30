@@ -1,5 +1,5 @@
 <section #resultados class="contenido-buscador-pwa">
-    <app-barra-filtros *ngIf="dataResultado.length > 0 || loading" [totalResultados]="loading ? 0 : cantidadResultados"></app-barra-filtros>
+    <app-barra-filtros *ngIf="dataResultado.length > 0 || loading" [totalResultados]="cantidadResultados"></app-barra-filtros>
     <div class="contenido-resultado contenido-pwa-govco">        
         <div class="container-skeleton" *ngIf="loading">
             <div *ngFor="let i of [1,2,3,4,5]">
