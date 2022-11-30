@@ -17,7 +17,9 @@
                 </span>
             </span>
             <div class="logo-pwa-govco">
-                <a (click)="clickHome(); desactivarItem()" (keypress)="desactivarItem(); clickHome()" tabindex="0"
+                <a  (click)="clickHome(); desactivarItem(); limpiarBuscador()"
+                    (keypress)="desactivarItem(); clickHome(); limpiarBuscador()"
+                    tabindex="0"
                     (focus)="onFocusLogo()" [attr.aria-label]="'Este es logo de GOV.CO y puedes ir a inicio o home'">
                     <img src="../../../assets/logos/transversales/GOVCO.svg" alt="logo de gov.co">
                 </a>
