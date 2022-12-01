@@ -1,9 +1,11 @@
 <section #resultados class="contenido-buscador-pwa">
-    <app-barra-filtros *ngIf="dataResultado.length > 0 || loading" [totalResultados]="cantidadResultados"></app-barra-filtros>
-    <div class="contenido-resultado contenido-pwa-govco">        
+    <app-barra-filtros *ngIf="dataResultado.length > 0 || loading" [totalResultados]="cantidadResultados">
+    </app-barra-filtros>
+    <div class="contenido-resultado contenido-pwa-govco">
         <div class="container-skeleton" *ngIf="loading">
             <div *ngFor="let i of [1,2,3,4,5]">
-                <ngx-skeleton-loader appearance="line" count="2" [theme]="{height: '12px', 'background-color': '#888cc93d'}">
+                <ngx-skeleton-loader appearance="line" count="2"
+                    [theme]="{height: '12px', 'background-color': '#888cc93d'}">
                 </ngx-skeleton-loader>
             </div>
         </div>
@@ -15,18 +17,19 @@
             [cantidadResultados]="cantidadResultados">
         </app-buscador-card-noticias>
         <app-buscador-card-ejercicios-participacion *ngIf="seccion == 'participacion' && dataResultado"
-            [data]="dataResultado" [cantidadResultados]="cantidadResultados"></app-buscador-card-ejercicios-participacion>
+            [data]="dataResultado" [cantidadResultados]="cantidadResultados">
+        </app-buscador-card-ejercicios-participacion>
         <app-buscador-card-ventanilla *ngIf="seccion == 'tramiteventanilla'&& dataResultado" [data]="dataResultado"
             [cantidadResultados]="cantidadResultados">
         </app-buscador-card-ventanilla>
         <app-buscador-card-portales *ngIf="seccion == 'portaltransversal' && dataResultado" [data]="dataResultado"
             [cantidadResultados]="cantidadResultados">
         </app-buscador-card-portales>
-        <app-buscador-card-tramites *ngIf="seccion == 'tramite' && dataResultado" [data]="dataResultado" 
+        <app-buscador-card-tramites *ngIf="seccion == 'tramite' && dataResultado" [data]="dataResultado"
             [cantidadResultados]="cantidadResultados">
         </app-buscador-card-tramites>
         <app-banner-ciiu-buscador *ngIf="dataResultado.length > 0"></app-banner-ciiu-buscador>
     </div>
 </section>
 <app-boton-retroalimentacion [position]="true"></app-boton-retroalimentacion>
-<app-footer [fixed]="dataResultado.length > 0 && dataResultado.length <= 1 ? true: false"></app-footer>
+<app-footer></app-footer>
