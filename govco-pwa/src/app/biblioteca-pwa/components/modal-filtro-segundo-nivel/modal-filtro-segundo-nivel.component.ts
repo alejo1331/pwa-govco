@@ -34,13 +34,13 @@ export class ModalFiltroSegundoNivelComponent {
 
   clickCerrarModal(event: Event) {
     if ((event.target as HTMLElement) === this.modalFiltro.nativeElement) {
-      let inputBuscadorModal : any = document.getElementById('search-text');
-      inputBuscadorModal.value = '';
       this.cerrarModal();
     }
   }
 
   cerrarModal() {
+    let inputBuscadorModal : any = document.getElementById('search-text');
+    inputBuscadorModal.value = '';
     this.modalFiltro.nativeElement.classList.remove('on-modal');
     this.modalFiltro.nativeElement.classList.add('off-modal');
   }
