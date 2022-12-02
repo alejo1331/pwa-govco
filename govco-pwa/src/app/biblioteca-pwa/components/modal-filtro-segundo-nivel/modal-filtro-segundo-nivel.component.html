@@ -2,9 +2,12 @@
     aria-labelledby="exampleModalPopoversLabel" aria-modal="true" role="dialog">
     <div class="contenido">
         <div class="form-group">
-            <label for="search-text">
-                <p>{{informacionModal.titulo}}</p>
-            </label>
+            <div class="header-form-group">
+                <label for="search-text">
+                    <p>{{informacionModal.titulo}}</p>
+                </label>
+                <button class="boton-img close" (click)="cerrarModal()"></button>
+            </div>
             <input type="text" id="search-text" [(ngModel)]="searchText" placeholder="Buscar" tabindex="0">
         </div>
         <div class="listado">

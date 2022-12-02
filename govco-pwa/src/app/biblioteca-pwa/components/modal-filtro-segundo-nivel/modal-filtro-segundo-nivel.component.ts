@@ -19,6 +19,7 @@ export class ModalFiltroSegundoNivelComponent {
   constructor(public platform: Platform) { }
 
   abrirModal() {
+    this.searchText = '';
     this.modalFiltro.nativeElement.style.display = 'block';
     this.modalFiltro.nativeElement.classList.add('on-modal');
     this.modalFiltro.nativeElement.classList.remove('off-modal');
@@ -36,7 +37,6 @@ export class ModalFiltroSegundoNivelComponent {
       let inputBuscadorModal : any = document.getElementById('search-text');
       inputBuscadorModal.value = '';
       this.cerrarModal();
-
     }
   }
 
