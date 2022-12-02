@@ -28,29 +28,36 @@ export class BuscadorPrefiltradoComponent implements OnInit {
   @ViewChild(ModalPrefiltradoComponent) componentPrefiltrado: ModalPrefiltradoComponent;
   @Output() estadoFocusFiltro = new EventEmitter<boolean>()
 
-  constructor(private buscadorService: BuscadorService,
-              private router: Router) {
-                router.events.subscribe((event: Event) => {
-                  if (event instanceof NavigationStart) {
-                    let regex = /([T][0-9])\w+/;
-                    if(event.url != '/buscador'){
-                      if(regex.test(event.url) == false){
-                        let input: any = document.querySelector("input");
-                        input.value = '';
-                        this.inputBuscadorSegundoNivel = document.getElementById('buscador-pwa');
-                        if (this.inputBuscadorSegundoNivel){
-                          this.inputBuscadorSegundoNivel.value = '';
-                        }
-                        this.buscadorService.setSugerenrciasBuscador([])
-                        this.estadoInicialInput = true;
-                      }
-                    }
-                    else{
-                      this.estadoInicialInput = true
-                    }
-                  }
-                })
-               }
+  constructor(
+    private buscadorService: BuscadorService,
+    private router: Router
+  ) {
+    router.events.subscribe((event: Event) => {
+      if (event instanceof NavigationStart) {
+        let regex = /([T][0-9])\w+/;
+        if (event.url != '/buscador') {
+          if (regex.test(event.url) == false && !event.url.includes('noticias/detalle')) {
+            this.inputBuscadorSegundoNivel = document.getElementById('buscador-pwa');
+            if (this.inputBuscadorSegundoNivel) {
+              this.inputBuscadorSegundoNivel.value = '';
+            }
+            this.buscadorService.setSugerenrciasBuscador([])
+            this.estadoInicialInput = true;
+            
+            const buscadorParams: BuscadorParams = {
+              index: 0,
+              txtInputBuscador: '',
+              txtConsumoApi: 'tramite',
+              aplicaGeoreferenciacion: 'no'
+            }
+            this.buscadorService.setBuscadorParams(buscadorParams);
+          }
+        } else {
+          this.estadoInicialInput = true
+        }
+      }
+    })
+  }
 
   ngOnInit(): void {
     this.itemsBuscador = ItemsBuscador;
@@ -109,6 +116,7 @@ export class BuscadorPrefiltradoComponent implements OnInit {
 
   ngOnDestroy(): void {
     if (this.getParametros) {
+      const params = this.buscadorService.getBuscadorParams;
       const buscadorParams: BuscadorParams = {
         index: 0,
         txtInputBuscador: '',
