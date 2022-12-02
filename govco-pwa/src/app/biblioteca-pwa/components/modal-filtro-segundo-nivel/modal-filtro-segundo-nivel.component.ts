@@ -33,7 +33,10 @@ export class ModalFiltroSegundoNivelComponent {
 
   clickCerrarModal(event: Event) {
     if ((event.target as HTMLElement) === this.modalFiltro.nativeElement) {
+      let inputBuscadorModal : any = document.getElementById('search-text');
+      inputBuscadorModal.value = '';
       this.cerrarModal();
+
     }
   }
 
@@ -93,7 +96,7 @@ export class ModalFiltroSegundoNivelComponent {
   }
 
   removeFocus() {
-    document.body.removeEventListener("focus", () => { 
+    document.body.removeEventListener("focus", () => {
       // Remover focus
     });
   }
