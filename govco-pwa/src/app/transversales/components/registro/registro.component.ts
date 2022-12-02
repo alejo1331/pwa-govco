@@ -72,7 +72,6 @@ export class RegistroComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     const modals = document.querySelectorAll('.modal .modal-header .close');
-    console.log(modals)
     modals.forEach(modal => (<HTMLElement>modal).click());
   }
 
