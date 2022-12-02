@@ -65,7 +65,6 @@ export class BuscadorAvisoComponent implements OnInit {
 
   getMunicipiosPorDepartamento([codigoDepartamento, codigoMunicipio]: string[]) {
     let departamentoSeleccionado: DepartamentoInterface;
-    let municipioSeleccionado;
     if (codigoDepartamento != 'TodosLosDepartamentos') {
       this.ServicioGeolocalizacion.getCacheJsonDepartamentos().then(
         (departamentos: DepartamentoInterface[]) => {
@@ -80,30 +79,35 @@ export class BuscadorAvisoComponent implements OnInit {
         codigoDepartamento
       ).then((existe) => {
         if (existe) {
-          this.ServicioGeolocalizacion.getCacheJsonMunicipiosPorDepartamento(
-            codigoDepartamento
-          ).then((municipios: MunicipioInterface[]) => {
-            if (municipios) {
-              municipioSeleccionado = municipios.filter((elemento: any) => {
-                return elemento.codigo === codigoMunicipio;
-              })[0];
-              this.geoLocMunName =
-                codigoMunicipio === '11001'
-                  ? this.capitalizeGeo(municipioSeleccionado.nombre.toLowerCase())
-                  : this.capitalizeGeo(
-                    departamentoSeleccionado.nombre.toLowerCase()
-                  ) +
-                  ', ' +
-                  this.capitalizeMunicipio(
-                    municipioSeleccionado.nombre.toLowerCase()
-                  );
-            }
-          });
+          this.getMunicipios([codigoDepartamento, codigoMunicipio], departamentoSeleccionado);
         }
       });
     } else {
       this.geoLocMunName = 'Toda Colombia';
     }
+  }
+
+  getMunicipios([codigoDepartamento, codigoMunicipio]: string[], departamentoSeleccionado:DepartamentoInterface) {
+    let municipioSeleccionado;
+    this.ServicioGeolocalizacion.getCacheJsonMunicipiosPorDepartamento(
+      codigoDepartamento
+    ).then((municipios: MunicipioInterface[]) => {
+      if (municipios) {
+        municipioSeleccionado = municipios.filter((elemento: any) => {
+          return elemento.codigo === codigoMunicipio;
+        })[0];
+        this.geoLocMunName =
+          codigoMunicipio === '11001'
+            ? this.capitalizeGeo(municipioSeleccionado.nombre.toLowerCase())
+            : this.capitalizeGeo(
+              departamentoSeleccionado.nombre.toLowerCase()
+            ) +
+            ', ' +
+            this.capitalizeMunicipio(
+              municipioSeleccionado.nombre.toLowerCase()
+            );
+      }
+    });
   }
 
   seleccionarSugerencia() {

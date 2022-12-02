@@ -48,8 +48,8 @@ export class BuscadorCardEjerciciosParticipacionComponent implements OnChanges {
       this.contadorResultados = 0;
     }
     changes.data.currentValue.forEach((element: EjerciciosParticipacionInterface, i: number) => {
-      var fechaPublicacion: Array<string> = Array.from((element.fechaPublicacion.split(/\s+/).join('')).split("de"));
-      var fechaCierre: Array<string> = Array.from((element.fechaCierre.split(/\s+/).join('')).split("de"));
+      let fechaPublicacion: Array<string> = Array.from((element.fechaPublicacion.split(/\s+/).join('')).split("de"));
+      let fechaCierre: Array<string> = Array.from((element.fechaCierre.split(/\s+/).join('')).split("de"));
       this.meses.forEach((mes, j) => {
         if (mes == fechaPublicacion[1]) {
           element.fechaPublicacion = fechaPublicacion[0] + '/' + this.mesesNum[j] + '/' + fechaPublicacion[2]
@@ -115,7 +115,7 @@ export class BuscadorCardEjerciciosParticipacionComponent implements OnChanges {
     });
     this.expandirTexto = false;
     this.listaTexto.toArray()[index].nativeElement.classList.add('line-clamp-3');
-    var element: HTMLElement = this.listaTexto.toArray()[index].nativeElement;
+    const element: HTMLElement = this.listaTexto.toArray()[index].nativeElement;
     this.ListaAcordeon.toArray()[index].nativeElement.addEventListener('transitionend', () => {
       if (this.botonTexto[index] === false) {
         if (element.offsetHeight < element.scrollHeight ||

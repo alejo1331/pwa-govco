@@ -86,7 +86,7 @@ export class NivelDosHeaderBuscadorComponent implements AfterViewInit {
   }
 
   keypressInput(event: KeyboardEvent) {
-    var input = this.input.nativeElement;
+    let input = this.input.nativeElement;
     if (event.key === "Enter" && input.value != '') {
       if (this.activarServicio === true) this.buscar();
       this.styleOpacity();
