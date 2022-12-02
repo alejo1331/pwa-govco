@@ -13,9 +13,10 @@
                 class="tarjeta-aviso-mensaje-link" href="javascript:void(0)"
                 (click)="seleccionarSugerencia()">{{sugBuscador | titlecase}}</a>” ?
         </p>
-        <p class="tarjeta-aviso-mensaje-texto">Te sugerimos: </p>
+        <p class="tarjeta-aviso-mensaje-texto">Sigue estas sugerencias:</p>
         <ul class="tarjeta-aviso-listado">
-            <li *ngIf="!(resIndex == 2 || resIndex == 3)" class="tarjeta-aviso-mensaje-texto">
+            <li *ngIf="!(resIndex == 2 || resIndex == 3 || geoLocMunName == 'Toda Colombia')"
+                class="tarjeta-aviso-mensaje-texto">
                 <a class="tarjeta-aviso-mensaje-link" href="javascript:void(0)" (click)="abrirGeolocalizacion()">
                     Cambia la ubicación</a>
                 <span> para refinar la búsqueda.</span>
