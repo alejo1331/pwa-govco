@@ -1,15 +1,17 @@
-<div class="card-container" [class.lightgray-filled]="fondoTarjeta">
-    <div class="icon-container" [class.icon-container-color]="fondoIcono" *ngIf="iconNameClass; else templateImage">
-        <span class="material-symbols-outlined" [class.filled]="filledIcon">
-            {{iconNameClass}}
-        </span>
-    </div>
-    <ng-template #templateImage>
-        <div class="icon-container">
-            <img class="logo-carpeta" src="../../../../../assets/icons-fonts/folder-user.svg" alt="">
+<div [class.disabled-filled]="disabledTarjeta">
+    <div class="card-container" [class.lightgray-filled]="fondoTarjeta">
+        <div class="icon-container" [class.icon-container-color]="fondoIcono" *ngIf="iconNameClass; else templateImage">
+            <span class="material-symbols-outlined" [class.filled]="filledIcon">
+                {{iconNameClass}}
+            </span>
         </div>
-    </ng-template>
-    <div class="text-container" [class.text-container-max]="textContainerMax">
-        <p [class.text-blue]="colorTexto">{{textNameClass}}</p>
+        <ng-template #templateImage>
+            <div class="icon-container">
+                <img class="logo-carpeta" src="../../../../../assets/icons-fonts/folder-user.svg" alt="">
+            </div>
+        </ng-template>
+        <div class="text-container" [class.text-container-max]="textContainerMax">
+            <p [class.text-blue]="colorTexto">{{textNameClass}}</p>
+        </div>
     </div>
 </div>

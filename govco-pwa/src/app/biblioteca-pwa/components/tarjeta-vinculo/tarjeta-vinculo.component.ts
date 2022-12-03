@@ -6,6 +6,7 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./tarjeta-vinculo.component.scss'],
 })
 export class TarjetaVinculoComponent {
+  @Input() disabledTarjeta = false;
   @Input() fondoTarjeta = false;
   @Input() fondoIcono = false;
   @Input() filledIcon = false;

@@ -85,19 +85,22 @@ export class NivelDosHeaderBuscadorComponent implements AfterViewInit {
     }
   }
 
-  keypressInput(event: KeyboardEvent) {
+  keyUpInput(event: KeyboardEvent) {
     var input = this.input.nativeElement;
-    if (event.key === "Enter" && input.value != '') {
-      if (this.activarServicio === true) this.buscar();
-      this.styleOpacity();
-      const nuevoBuscadorParams: BuscadorParams = {
-        index: this.index,
-        txtConsumoApi: this.txtConsumoApi,
-        txtInputBuscador: input.value,
-        aplicaGeoreferenciacion: ItemsBuscador[this.index].aplicaGeoreferenciacion
+    if (input.value.length >= 2) {
+      if (event.key === "Enter" && input.value != '') {
+        if (this.activarServicio === true) this.buscar();
+        this.styleOpacity();
+        const nuevoBuscadorParams: BuscadorParams = {
+          index: this.index,
+          txtConsumoApi: this.txtConsumoApi,
+          txtInputBuscador: input.value,
+          aplicaGeoreferenciacion: ItemsBuscador[this.index].aplicaGeoreferenciacion
+        }
+        this.buscadorService.setBuscadorParams(nuevoBuscadorParams)
       }
-      this.buscadorService.setBuscadorParams(nuevoBuscadorParams)
     }
+
   }
 
   buscar() {
