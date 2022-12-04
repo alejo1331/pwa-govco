@@ -20,9 +20,6 @@
                 aria-label="Descargar Guión, descargará un archivo pdf con el guion del video">{{videoHome.nombreFuncionalidad}}</a>
             </div>
           </div>
-          <!-- <div class="contendor-guion col-12">
-                  <a [href]="videoHome.urlFuncionalidad" target="_blank" title="Ir a descargar guión" aria-label="Descargar Guión, descargará un archivo pdf con el guion del video">{{videoHome.nombreFuncionalidad}}</a>
-                </div> -->
         </div>
       </div>
     </div>
@@ -37,13 +34,6 @@
 
 <div class="content-participa-pwa" *ngIf="videoHome">
   <div class="contenedor-filtros-participa align-items-center">
-    <!-- <div class="controles-accesibles">
-        <a class="descripcion-skipe skip-link" href="javascript:void(0)" (keydown)="activarEventosAccesibilidad($event)"
-          title="Saltar carrusel"
-          aria-label="A continuación encontrará los  temas de participación de gov.co .  Si en algún momento desea salir de la sección presione la tecla escape.">A
-          continuación encontrará los temas de participación de gov.co . Si en algún momento desea salir de la sección
-          presione la tecla escape.</a>
-      </div> -->
     <div class="mb-4">
       <h3 id="seccionParticipa" class="titulo-lista-participa mb-4" tabindex="0">{{videoHome.tituloSecundario}}</h3>
       <div class="contenedor-switch">
@@ -96,12 +86,10 @@
     </div>
   </div>
   <div class="justify-content-center">
-    <!-- <div class="controles-accesibles"> -->
     <div id="mensaje-numero-paginas" *ngIf="estadoAlertaAccesible" tabindex="0"
       class="descripcion-skipe skip-link mb-4">
       No puede ingresar páginas mayores que {{totalPages}}, presione la tecla tab para ingresar nuevamente la página.
     </div>
-    <!-- </div> -->
     <div *ngIf="estadoPaginadorAccesible" class="paginador-accesible mb-4 p-2">
       <span class="mb-4">
         Este es el paginador accesible. Ingrese el número de página que desea visitar y presione la tecla enter.

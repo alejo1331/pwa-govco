@@ -27,31 +27,29 @@ display: flex;
   width: 100%;
   input{
     border: none !important;
-  }
-
-  input::placeholder {
-    font-family: 'WorkSans-Regular';
-    color: #BABABA;
-    font-size: 14px;
-  }
-
-  input:focus {
-    border-color: inherit;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-  }
-
-  input[type="search"]::-webkit-search-cancel-button {
-    -webkit-appearance: none;
-    height: 20px;
-    width: 25px;
-    display: block;
-    background-image: url('../../../../../assets/icons-fonts/backspace_black.svg');
-    background-repeat: no-repeat;
-    background-size: 25px;
-  }
-  input{
     text-overflow: ellipsis;
+
+    &::placeholder {
+      font-family: 'WorkSans-Regular';
+      color: #BABABA;
+      font-size: 14px;
+    }
+  
+    &:focus {
+      border-color: inherit;
+      -webkit-box-shadow: none;
+      box-shadow: none;
+    }
+  
+    &[type="search"]::-webkit-search-cancel-button {
+      -webkit-appearance: none;
+      height: 20px;
+      width: 25px;
+      display: block;
+      background-image: url('../../../../../assets/icons-fonts/backspace_black.svg');
+      background-repeat: no-repeat;
+      background-size: 25px;
+    }
   }
 }
 
