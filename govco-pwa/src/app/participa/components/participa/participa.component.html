@@ -11,9 +11,9 @@
           </div>
           <div class="col-12 col-md-12 col-lg-5 contendor-video" tabindex="0" aria-label="Video">
             <div class="video-c">
-              <iframe scrolling="no" [src]="videoHome.urlVideo | safe" title="Video" frameborder="0"
+              <iframe [src]="videoHome.urlVideo | safe" title="Video"
                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
-                crossorigin="anonymous"></iframe>
+                crossorigin="anonymous" style="overflow:hidden; border: 0px;"></iframe>
             </div>
             <div class="contendor-guion">
               <a [href]="videoHome.urlFuncionalidad" target="_blank" title="Ir a descargar guión"

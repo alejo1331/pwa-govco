@@ -1,4 +1,4 @@
-export interface sobreNosotrosLineaTemporalModel {
+export interface SobreNosotrosLineaTemporalModel {
     estado: boolean,
     titulo: string,
     descripcion: string

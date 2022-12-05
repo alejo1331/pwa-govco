@@ -63,6 +63,10 @@ export class BuscadorPrincipalComponent implements OnInit {
     (document.getElementById('topScroll') as HTMLElement).style.top = '7.25rem';
     (document.getElementById('topScroll') as HTMLElement).scrollTop = 0;
 
+    this.suscripcionFilter();    
+  }
+
+  suscripcionFilter() {
     this.filterSubscription = this.filtrosService.getFilters$.subscribe(
       async (data: FiltroBusqueda | undefined) => {
         const parametrosBuscador = this.buscadorService.getBuscadorParams;
@@ -84,36 +88,41 @@ export class BuscadorPrincipalComponent implements OnInit {
         data.seccion = parametrosBuscador.txtConsumoApi;
         this.seccion = parametrosBuscador.txtConsumoApi;
 
-        try {
-          let resultado: ResultadoFiltro;
-          if (data.search !== "") {
-            resultado = await this.filtrosService.obtenerResultadoFiltro(data).toPromise();
-          } else {
-            resultado = this.filtrosService.EmptyData;
-          }
-          this.filters = {
-            departamento: data?.filters?.departamento,
-            municipio: data?.filters?.municipio
-          };
-
-          // Se almacena la respuesta de la búsqueda
-          this.resultadosBusqueda = resultado;
-          this.filtrosService.ResultadoBusqueda = resultado;
-          this.dataResultado = this.resultadosBusqueda.data.length > 0 ? this.resultadosBusqueda.data : [];
-          if(this.dataResultado.length > 0){
-            this.cantidadResultados = resultado.total;
-          }
-          else{
-            this.cantidadResultados = 0;
-          }
-        } catch (error) {
-          console.error(error);
-        } finally {
-          this.activarSpinner(false);
-          this.loading = false;
-        }
+        this.realizarBusqueda(data);
       }
     );
+  }
+
+  async realizarBusqueda(data: FiltroBusqueda) {
+    try {
+      let resultado: ResultadoFiltro;
+      if (data.search !== "") {
+        resultado = await this.filtrosService.obtenerResultadoFiltro(data).toPromise();
+      } else {
+        resultado = this.filtrosService.EmptyData;
+      }
+
+      this.filters = {
+        departamento: data?.filters?.departamento,
+        municipio: data?.filters?.municipio
+      };
+
+      // Se almacena la respuesta de la búsqueda
+      this.resultadosBusqueda = resultado;
+      this.filtrosService.ResultadoBusqueda = resultado;
+      this.dataResultado = this.resultadosBusqueda.data.length > 0 ? this.resultadosBusqueda.data : [];
+      
+      if (this.dataResultado.length > 0) {
+        this.cantidadResultados = resultado.total;
+      } else {
+        this.cantidadResultados = 0;
+      }
+    } catch (error) {
+      console.error(error);
+    } finally {
+      this.activarSpinner(false);
+      this.loading = false;
+    }
   }
 
   activarSpinner(activa: boolean) {

@@ -1,7 +1,5 @@
 import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 import { TramitesPorIdService } from 'src/app/tramites-pwa/services/tramites-por-id-service/tramites-por-id.service';
-import * as JSZip from 'jszip';
-
 
 
 @Component({
@@ -15,7 +13,7 @@ export class QuintoItemAcordeonComponent implements OnInit {
   toggleBool=true;
   selectedItemsListUrls : any = [];
   selectedItemsListNames : any = [];
-  selectedAllItems : Boolean;
+  selectedAllItems : boolean;
 
   constructor(
     protected fichaTramiteService: TramitesPorIdService
@@ -45,7 +43,6 @@ export class QuintoItemAcordeonComponent implements OnInit {
       .GetNormatividadById(this.dataAcordeon.idTramite)
       .subscribe((n) => {
         this.normatividad = n;
-        ;
       });
   }
 
@@ -54,14 +51,14 @@ export class QuintoItemAcordeonComponent implements OnInit {
     let normas : any = document.getElementsByClassName('normas');
 
     if (estadoSelectorGeneral.checked) {
-      for (let i=0; i < normas.length; i++) {
-        normas[i].checked=true;
+      for (const norma of normas) {
+        norma.checked=true;
         this.toggleBool = false;
       }
       this.selectedAllItems = true;
     } else {
-      for (let i=0; i < normas.length; i++) {
-        normas[i].checked=false;
+      for (const norma of normas) {
+        norma.checked=false;
         this.toggleBool = true;
       }
       this.selectedAllItems = false;
@@ -71,14 +68,12 @@ export class QuintoItemAcordeonComponent implements OnInit {
   descargarSeleccion() {
 
     let normas : any = document.getElementsByClassName('normas');
-    const zip = new JSZip();
-    let cuentaNorma = 0;
     this.selectedItemsListUrls = [];
     this.selectedItemsListNames = [];
-    for (let i=0; i < normas.length; i++) {
-      if (normas[i].checked==true) {
-        this.selectedItemsListUrls.push(normas[i].value);
-        this.selectedItemsListNames.push(normas[i].name);
+    for (const norma of normas) {
+      if (norma.checked==true) {
+        this.selectedItemsListUrls.push(norma.value);
+        this.selectedItemsListNames.push(norma.name);
       }
     }
     this.selectedItemsListUrls.forEach((e : any) =>  self.open(e),"_self")
@@ -90,8 +85,8 @@ export class QuintoItemAcordeonComponent implements OnInit {
     } else {
       let normas : any = document.getElementsByClassName('normas');
       let normasCheck = 0
-      for (let i=0; i < normas.length; i++) {
-        if (normas[i].checked) {
+      for (const norma of normas) {
+        if (norma.checked) {
           normasCheck =+ 1;
         }
       }

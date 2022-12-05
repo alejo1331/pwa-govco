@@ -8,10 +8,10 @@
         <iframe *ngIf="data.type.includes('video')" style="width:'50%'; height:'315'; border:0;"
             class="embed-responsive-item" allowfullscreen [src]="data.url | safe:1" title="iframe">
         </iframe>
-        <iframe *ngIf="data.type.includes('audio')" [src]="data.url | safe:2" style="width:'100%'; height:'232'; border:0;"
-            allowtransparency="true" allow="encrypted-media" title="iframe"></iframe>
-        <iframe *ngIf="data.contenido.includes('Ofimática')" [src]="data.url | safe:3" style="width:'100%'; height:'232'; border:0;"
-            allowtransparency="true" allow="encrypted-media" title="iframe"></iframe>
+        <iframe *ngIf="data.type.includes('audio')" [src]="data.url | safe:2" style="width:'100%'; height:'232'; border:0; background-color:transparent;"
+            allow="encrypted-media" title="iframe"></iframe>
+        <iframe *ngIf="data.contenido.includes('Ofimática')" [src]="data.url | safe:3" style="width:'100%'; height:'232'; border:0; background-color:transparent;"
+            allow="encrypted-media" title="iframe"></iframe>
     </div>
 </div>
 <div class="modal-footer">
