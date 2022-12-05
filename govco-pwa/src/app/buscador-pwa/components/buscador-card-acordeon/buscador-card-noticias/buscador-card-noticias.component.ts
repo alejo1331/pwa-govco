@@ -46,20 +46,19 @@ export class BuscadorCardNoticiasComponent implements OnChanges {
     changes.data.currentValue.forEach((element: NoticiasInterface, i: number) => {
       this.href = true;
       this.botonTexto[i] = false;
-      Object.values(urlsLocal).find(url => {
-        if (element.link.indexOf(url) >= 0) {
-          switch (url) {
-            case urlsLocal.noticiasDetalle:
-              const id: string = element.link.replace(/[^0-9]+/g, "");
-              element.link = ''
-              element.link = urlsLocal.noticiasDetalle + id;
-              break;
+      for (const url of Object.values(urlsLocal)) {
+        if (element.link.includes(url)) {
+          if (url == urlsLocal.noticiasDetalle) {
+            const id: string = element.link.replace(/[^0-9]+/g, "");
+            element.link = ''
+            element.link = urlsLocal.noticiasDetalle + id;
           }
-          return this.href = false;
-        } else {
-          return null;
+          this.href = false;
         }
-      })
+      }
+
+      console.log('this.href', this.href)
+
       this.items.push(
         {
           active: false,

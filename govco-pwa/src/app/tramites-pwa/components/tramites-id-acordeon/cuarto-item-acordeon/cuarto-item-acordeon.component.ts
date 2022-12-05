@@ -10,7 +10,7 @@ import { ModalTutorialesPwaComponent } from '../../modal-tutoriales-pwa/modal-tu
 })
 export class CuartoItemAcordeonComponent{
   @Input() dataAcordeon: any;
-  @Input() urlManualEnlinea: String;
+  @Input() urlManualEnlinea: string;
   canalesMedios:any = []
 
   constructor(

@@ -59,20 +59,16 @@ export class BuscadorCardTramitesComponent implements OnChanges {
       (element: TramitesServiciosInterface, i: number) => {
         this.href = true;
         this.botonTexto[i] = false;
-        Object.values(urlsLocal).find((url) => {
-          if (element.link.indexOf(url) >= 0) {
-            switch (url) {
-              case urlsLocal.fichaTramiteId:
-                const id: string = element.link.replace(/[^0-9]+/g, "");
-                element.link = '';
-                element.link = urlsLocal.fichaTramiteId + id;
-                break;
+        for (const url of Object.values(urlsLocal)) {
+          if (element.link.includes(url)) {
+            if (url == urlsLocal.fichaTramiteId) {
+              const id: string = element.link.replace(/[^0-9]+/g, "");
+              element.link = '';
+              element.link = urlsLocal.fichaTramiteId + id;
             }
-            return this.href = false;
-          } else {
-            return null;
+            this.href = false;
           }
-        });
+        }
         this.items.push({
           active: false,
           costo: element.costo,

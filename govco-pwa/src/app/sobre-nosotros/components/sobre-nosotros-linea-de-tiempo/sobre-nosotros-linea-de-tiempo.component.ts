@@ -141,7 +141,7 @@ export class SobreNosotrosLineaDeTiempoComponent implements OnInit {
 
   atras() {
     let left = this.contenedor.nativeElement.style.marginLeft === "" ? 0 : parseFloat(this.contenedor.nativeElement.style.marginLeft.replace("px", ""));
-    left = left + (this.esResponsive() ? ((this.contenedor.nativeElement.offsetWidth / 2) + 10) : ((this.contenedor.nativeElement.offsetWidth / 5)));
+    left = left + (this.esResponsive() ? ((this.contenedor.nativeElement.offsetWidth / 2) + 10) : (this.contenedor.nativeElement.offsetWidth / 5));
     this.mostrarVisibilidadAccesible();
     this.contenedor.nativeElement.style.marginLeft = left + "px";
     left = parseInt("" + left);
@@ -192,11 +192,8 @@ export class SobreNosotrosLineaDeTiempoComponent implements OnInit {
           document.getElementById("label_checkbox_" + i)!.style.opacity = "0";
           document.getElementById("label_checkbox_" + i)!.style.visibility = "hidden";
         }
-      } else {
-        if (i >= this.slideMove && i < this.slideMove + 5) {
-        } else {
-          document.getElementById("label_checkbox_" + i)!.style.visibility = "hidden";
-        }
+      } else if (!(i >= this.slideMove && i < this.slideMove + 5)) {
+        document.getElementById("label_checkbox_" + i)!.style.visibility = "hidden";
       }
     }
   }
@@ -218,9 +215,9 @@ export class SobreNosotrosLineaDeTiempoComponent implements OnInit {
   splitTitulo(titulo: any) {
     let arrTitulo = titulo.split(" ");
     let texto = "";
-    for (let i = 0; i < arrTitulo.length; i++) {
-      if (arrTitulo[i] != "") {
-        texto += arrTitulo[i] + "<br>";
+    for (const value of arrTitulo) {
+      if (value != "") {
+        texto += value + "<br>";
       }
     }
     return texto;
@@ -274,13 +271,19 @@ export class SobreNosotrosLineaDeTiempoComponent implements OnInit {
 
   siguiente() {
     let left = this.contenedor.nativeElement.style.marginLeft === "" ? 0 : parseFloat(this.contenedor.nativeElement.style.marginLeft.replace("px", ""));
-    left = left - (this.esResponsive() ? ((this.contenedor.nativeElement.offsetWidth / 2) + 10) : ((this.contenedor.nativeElement.offsetWidth / 5)));
+    left = left - (this.esResponsive() ? ((this.contenedor.nativeElement.offsetWidth / 2) + 10) : (this.contenedor.nativeElement.offsetWidth / 5));
     this.mostrarVisibilidadAccesible();
     this.contenedor.nativeElement.style.marginLeft = left + "px";
     this.estadoBotonAtras = true;
     let width = (this.esResponsive() ? this.widthTotalSlideResponsive : this.widthTotalSlide - this.contenedor.nativeElement.offsetWidth);
     left = left * -1;
-    this.estadoBotonAdelante = this.esResponsive() ? left < width ? true : false : left >= width ? false : true;
+    this.estadoBotonAdelante = true;
+    if (this.esResponsive()) {
+      this.estadoBotonAdelante = left < width ? true : false;
+    } else {
+      this.estadoBotonAdelante = left >= width ? false : true;
+    }
+    
     this.slideMove++;
     this.posicionActual++;
     if (this.esResponsive()) {

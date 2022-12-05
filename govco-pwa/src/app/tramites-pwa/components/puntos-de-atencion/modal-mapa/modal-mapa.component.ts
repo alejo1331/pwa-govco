@@ -32,20 +32,23 @@ export class ModalMapaComponent implements OnInit {
   constructor(private activeModal: NgbActiveModal) { }
 
   ngOnInit(): void {
-    this.bodyElement = (document.getElementsByTagName('body') as HTMLCollectionOf<HTMLBodyElement>)[0]
+    this.bodyElement = document.getElementsByTagName('body')[0];
     this.heightPantalla = screen.height;
     this.widthPantalla = screen.width;
     this.heightBarraNavegador = this.heightPantalla - this.bodyElement.clientHeight;
-    this.heightBarraNavegador > 0 ?
-      (this.heightBody = this.heightPantalla - this.heightBarraNavegador, this.widthBody = this.widthPantalla - this.heightBarraNavegador)
-      : (this.heightBody = this.bodyElement.clientHeight, this.widthBody = this.bodyElement.clientWidth);
+
+    if (this.heightBarraNavegador > 0) {
+      this.heightBody = this.heightPantalla - this.heightBarraNavegador, this.widthBody = this.widthPantalla - this.heightBarraNavegador;
+    } else {
+      this.heightBody = this.bodyElement.clientHeight, this.widthBody = this.bodyElement.clientWidth;
+    }
   }
 
   ngAfterViewInit(): void {
     this.contentModal.nativeElement.style.height = 'calc(' + this.heightBody + 'px - 1rem)';
     this.modalMapa = (document.getElementsByTagName('ngb-modal-window') as HTMLCollectionOf<HTMLElement>)[0];
-    this.modalDialog = (this.modalMapa.getElementsByClassName('modal-dialog') as HTMLCollectionOf<HTMLElement> as HTMLCollectionOf<HTMLElement>)[0];
-    this.modalContent = (this.modalDialog.getElementsByClassName('modal-content') as HTMLCollectionOf<HTMLElement> as HTMLCollectionOf<HTMLElement>)[0];
+    this.modalDialog = (this.modalMapa.getElementsByClassName('modal-dialog') as HTMLCollectionOf<HTMLElement>)[0];
+    this.modalContent = (this.modalDialog.getElementsByClassName('modal-content') as HTMLCollectionOf<HTMLElement>)[0];
     this.modalMapa.classList.add('ajuste-modal');
     this.modalDialog.classList.add('ajuste-modal-dialog');
     this.modalContent.classList.add('ajuste-modal-content');
@@ -87,17 +90,18 @@ export class ModalMapaComponent implements OnInit {
 
   @HostListener('window:orientationchange', ['$event']) onOrientationchange(event: any) {
     let rotacion: number = event.target.screen.orientation.angle;
-    switch (rotacion) {
-      case 0:
-        this.heightBody < this.widthBody ?
-          this.contentModal.nativeElement.style.height = 'calc(' + this.widthBody + 'px - 1rem)'
-          : this.contentModal.nativeElement.style.height = 'calc(' + this.heightBody + 'px - 1rem)';
-        break;
-      default:
-        this.heightBody < this.widthBody ?
-          this.contentModal.nativeElement.style.height = 'calc(' + this.heightBody + 'px - 1rem)'
-          : this.contentModal.nativeElement.style.height = 'calc(' + this.widthBody + 'px - 1rem)';
-        break;
+    if (rotacion == 0) {
+      if (this.heightBody < this.widthBody) {
+        this.contentModal.nativeElement.style.height = 'calc(' + this.widthBody + 'px - 1rem)';
+      } else {
+        this.contentModal.nativeElement.style.height = 'calc(' + this.heightBody + 'px - 1rem)';
+      }
+    } else {
+      if (this.heightBody < this.widthBody) {
+        this.contentModal.nativeElement.style.height = 'calc(' + this.heightBody + 'px - 1rem)';
+      } else {
+        this.contentModal.nativeElement.style.height = 'calc(' + this.widthBody + 'px - 1rem)';
+      }
     }
   }
 

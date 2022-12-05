@@ -60,13 +60,12 @@ export class BuscadorCardEjerciciosParticipacionComponent implements OnChanges {
       });
       this.href = true;
       this.botonTexto[i] = false;
-      Object.values(urlsLocal).find(url => {
-        if (element.link.indexOf(url) >= 0) {
-          return this.href = false;
-        } else {
-          return null;
+      for (const url of Object.values(urlsLocal)) {
+        if (element.link.includes(url)) {
+          this.href = false;
         }
-      })
+      }
+
       this.items.push(
         {
           active: false,
