@@ -10,6 +10,7 @@ import { CacheStorageService } from '../../services/cache-storage-service/cache-
 import { ModalService } from 'src/app/modal-natvivo/services/modal.service';
 import { ModalInterface } from 'src/app/modal-natvivo/models/modal-interface';
 import { ModalClasicoComponent } from 'src/app/modal-natvivo/components/modal-clasico/modal-clasico.component';
+import { SwUpdate } from '@angular/service-worker';
 
 @Component({
   selector: 'app-geolocalizacion-formulario',
@@ -51,6 +52,7 @@ export class GeolocalizacionFormularioComponent implements OnInit, AfterViewInit
     protected ServicioCache: CacheStorageService,
     public dialog: MatDialog,
     protected modalService: ModalService,
+    private swUpdate: SwUpdate,
   ) {
   }
 
@@ -97,7 +99,7 @@ export class GeolocalizacionFormularioComponent implements OnInit, AfterViewInit
         });
         IngresarUbicacion.afterClosed().subscribe(resultado => {
           sessionStorage.setItem('modalVisto', 'true');
-          this.modalService.activarSiguienteModal(true);
+          this.updatePWA();
           if (resultado) {
             this.getGeolocalizacion();
             this.closedModal.emit(['translate(0%)', 'translate(-100%)']);
@@ -105,7 +107,38 @@ export class GeolocalizacionFormularioComponent implements OnInit, AfterViewInit
         });
       }, 1000);
     } else {
-      this.modalService.activarSiguienteModal(true);
+      this.updatePWA();
+    }
+  }
+
+  updatePWA() {
+    //inicio - contruccion modal natico clasico
+    this.modalClasico = {
+      campoTitulo: 'Actualización',
+      campoTexto: 'Nueva versión de GOV.CO disponible.',
+      botonCancelar: 'CANCELAR',
+      botonAceptar: 'ACTUALIZAR',
+    };
+    this.modalService.clasico(this.modalClasico);
+    //fin - contruccion modal natico clasico
+
+    const modalVisto = sessionStorage.getItem('modalVisto');
+
+    if (modalVisto == 'true') {
+      if (this.swUpdate.isEnabled) {
+        this.swUpdate.available.subscribe(() => {
+          let respuestaModalClasico = this.dialog.open(ModalClasicoComponent, {
+            width: '280px',
+          });
+          respuestaModalClasico.afterClosed().subscribe((resultado) => {
+            if (resultado === true) {
+              this.swUpdate
+                .activateUpdate()
+                .then(() => window.location.reload());
+            }
+          });
+        });
+      }
     }
   }
 

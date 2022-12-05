@@ -84,9 +84,7 @@ export class AppComponent implements OnInit, AfterContentChecked, AfterContentCh
     protected servicioHeader: HeaderService,
     public bottomService: BottomMenuService,
     public platform: Platform,
-    private swUpdate: SwUpdate,
     public dialog: MatDialog,
-    protected modalService: ModalService,
     private oidcService: OidcService,
     private oauthService: OAuthService,
     private authService: AuthService,
@@ -147,11 +145,6 @@ export class AppComponent implements OnInit, AfterContentChecked, AfterContentCh
       });
     this.bottomService.ajustePantalla.subscribe((estado) => {
       this.cambiarEstilo = estado;
-    });
-    this.modalService.siguienteModal.subscribe((estado: boolean) => {
-      if (estado === true) {
-        this.updatePWA();
-      }
     });
   }
 
@@ -268,37 +261,6 @@ export class AppComponent implements OnInit, AfterContentChecked, AfterContentCh
 
   ngAfterContentChecked(): void {
     this.sidenavService.setSidnav(this.sidenav);
-  }
-
-  updatePWA() {
-    //inicio - contruccion modal natico clasico
-    this.modalClasico = {
-      campoTitulo: 'Actualización',
-      campoTexto: 'Nueva versión de GOV.CO disponible.',
-      botonCancelar: 'CANCELAR',
-      botonAceptar: 'ACTUALIZAR',
-    };
-    this.modalService.clasico(this.modalClasico);
-    //fin - contruccion modal natico clasico
-
-    const modalVisto = sessionStorage.getItem('modalVisto');
-
-    if (modalVisto == 'true') {
-      if (this.swUpdate.isEnabled) {
-        this.swUpdate.available.subscribe(() => {
-          let respuestaModalClasico = this.dialog.open(ModalClasicoComponent, {
-            width: '280px',
-          });
-          respuestaModalClasico.afterClosed().subscribe((resultado) => {
-            if (resultado === true) {
-              this.swUpdate
-                .activateUpdate()
-                .then(() => window.location.reload());
-            }
-          });
-        });
-      }
-    }
   }
 
   estadoMenu(estado: boolean) {

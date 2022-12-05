@@ -16,8 +16,8 @@ export class BuscadorPrefiltradoComponent implements OnInit {
   estadoBotonFiltro: boolean = false;
   tituloFiltro: string = '';
   estadoInicialInput = true;
-  public itemsBuscador : ItemsInterface[];
-  getParametros : Subscription
+  public itemsBuscador: ItemsInterface[];
+  getParametros: Subscription
   inputBuscadorSegundoNivel: any
   posicion: number = 0;
   abrirBuscadorCheck: boolean = false;
@@ -44,11 +44,12 @@ export class BuscadorPrefiltradoComponent implements OnInit {
             this.buscadorService.setSugerenrciasBuscador([])
             this.estadoInicialInput = true;
             
+            const i: number = 0;
             const buscadorParams: BuscadorParams = {
-              index: 0,
+              index: ItemsBuscador[i].id,
               txtInputBuscador: '',
-              txtConsumoApi: 'tramite',
-              aplicaGeoreferenciacion: 'no'
+              txtConsumoApi: ItemsBuscador[i].txtConsumoApi,
+              aplicaGeoreferenciacion: ItemsBuscador[i].aplicaGeoreferenciacion
             }
             this.buscadorService.setBuscadorParams(buscadorParams);
           }
@@ -70,10 +71,10 @@ export class BuscadorPrefiltradoComponent implements OnInit {
 
     this.getParametros = this.buscadorService.getBuscadorParams$.subscribe(
       (parametros: BuscadorParams) => {
-        if (this.estadoInicialInput ){
+        if (this.estadoInicialInput) {
           input.value = parametros.txtInputBuscador;
         }
-        else{
+        else {
           input.value = '';
         }
         this.tituloFiltro = parametros.txtConsumoApi;
@@ -124,7 +125,7 @@ export class BuscadorPrefiltradoComponent implements OnInit {
         aplicaGeoreferenciacion: 'no'
       }
       this.inputBuscadorSegundoNivel = document.getElementById('buscador-pwa');
-      if (this.inputBuscadorSegundoNivel){
+      if (this.inputBuscadorSegundoNivel) {
         this.inputBuscadorSegundoNivel.value = '';
       }
       this.buscadorService.setBuscadorParams(buscadorParams)

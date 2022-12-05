@@ -1,7 +1,10 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { AfterViewInit, Component, HostListener, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { BuscadorParams, BuscadorService } from 'src/app/buscador-pwa/services/buscador.service';
 import { BottomMenuService } from 'src/app/transversales/services/bottom-menu/bottom-menu.service';
 import { HeaderService } from 'src/app/transversales/services/header-service/header.service';
 import { SidenavService } from 'src/app/transversales/services/sidenav-service/sidenav-service.service';
+import { ItemsBuscador } from 'src/variables-globales/items-buscador';
 import { CategoriasInterface } from '../../models/categorias-interface';
 import { CategoriasService } from '../../services/categorias.service';
 
@@ -10,7 +13,7 @@ import { CategoriasService } from '../../services/categorias.service';
   templateUrl: './momentos-de-vida.component.html',
   styleUrls: ['./momentos-de-vida.component.css']
 })
-export class MomentosDeVidaComponent implements OnInit {
+export class MomentosDeVidaComponent implements OnInit, AfterViewInit {
 
   categorias: CategoriasInterface[] = [];
   show: number = this.numeroTarjetas();
@@ -24,7 +27,8 @@ export class MomentosDeVidaComponent implements OnInit {
     protected categoriasService: CategoriasService,
     protected servicioSideNav: SidenavService,
     protected servicioHeader: HeaderService,
-    public bottomService: BottomMenuService
+    public bottomService: BottomMenuService,
+    protected router: Router
   ) {
     this.bottomService.putOcultandoBottomMenu(false);
   }
@@ -111,8 +115,6 @@ export class MomentosDeVidaComponent implements OnInit {
     }
   }
 
-
-
   eventoFocus() {
     try {
       setTimeout(() => {
@@ -178,6 +180,20 @@ export class MomentosDeVidaComponent implements OnInit {
     var clicSeccionCiuu = (seccionCiuu.getElementsByTagName('a'))[0];
     clicSeccionCiuu.target = "_self"
     clicSeccionCiuu.href = '/ficha-tramites-y-servicios/codigos-ciiu-y-tramites';
+  }
+
+  // Este host unicamente se utiliza para las webcomponents .... en un futuro posiblemente
+  // se puede borrar 
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      let buscadorNoticias: NodeListOf<HTMLElement> = (document.querySelectorAll("[href='/noticias/']") as NodeListOf<HTMLElement>);
+      buscadorNoticias.forEach((etiqueta_a) => {
+        etiqueta_a.addEventListener('click', () => {
+          this.router.navigate(['/noticias']);
+        });
+        etiqueta_a.removeAttribute('href');
+      });
+    }, 1500);
   }
 
 }

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { BuscadorParams, BuscadorService } from 'src/app/buscador-pwa/services/buscador.service';
 import { BottomMenuService } from 'src/app/transversales/services/bottom-menu/bottom-menu.service';
 import { HeaderService } from 'src/app/transversales/services/header-service/header.service';
 import { SidenavService } from 'src/app/transversales/services/sidenav-service/sidenav-service.service';
+import { ItemsBuscador } from 'src/variables-globales/items-buscador';
 import { EntidadesService } from '../../services/entidades-service/entidades-service.service';
 import { esResponsive, isMobile } from '../utils/utils';
 
@@ -28,7 +30,8 @@ export class EntidadesEstadoComponent implements OnInit {
   constructor(private serviceEntidades:EntidadesService,
     protected servicioSideNav: SidenavService,
     protected servicioHeader: HeaderService,
-    public bottomService: BottomMenuService
+    public bottomService: BottomMenuService,
+    private buscadorService: BuscadorService,
     ) {
     this.bottomService.putOcultandoBottomMenu(false);
   }
@@ -168,5 +171,17 @@ export class EntidadesEstadoComponent implements OnInit {
       document.getElementById("contenedor-noticias-focus")?.focus();
       window.scrollTo(0, 300);
     }, 1000);
+  }
+
+  abrirBuscadorPWA() {
+    const i: number = 1;
+    this.buscadorService.setAbrirBuscador(true);
+    const buscadorParams: BuscadorParams = {
+      index: ItemsBuscador[i].id,
+      txtInputBuscador: '',
+      txtConsumoApi: ItemsBuscador[i].txtConsumoApi,
+      aplicaGeoreferenciacion: ItemsBuscador[i].aplicaGeoreferenciacion
+    }
+    this.buscadorService.setBuscadorParams(buscadorParams);
   }
 }
