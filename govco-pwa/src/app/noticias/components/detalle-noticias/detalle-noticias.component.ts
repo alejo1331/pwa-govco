@@ -1,17 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NoticiasServiceService } from 'src/app/noticias/services/noticias-service/noticias-service.service';
 import { NoticiaPublicadaModel } from 'src/app/noticias/models/noticiaPublicadaModel';
 import { SidenavService } from 'src/app/transversales/services/sidenav-service/sidenav-service.service';
 import { HeaderService } from 'src/app/transversales/services/header-service/header.service';
 import { BottomMenuService } from 'src/app/transversales/services/bottom-menu/bottom-menu.service';
-
+import { BuscadorParams, BuscadorService } from 'src/app/buscador-pwa/services/buscador.service';
+import { ItemsBuscador } from 'src/variables-globales/items-buscador';
 @Component({
   selector: 'noticias-govco-detalle-noticias',
   templateUrl: './detalle-noticias.component.html',
   styleUrls: ['./detalle-noticias.component.scss']
 })
-export class DetalleNoticiasComponent implements OnInit {
+export class DetalleNoticiasComponent implements OnInit, AfterViewInit {
   public idRecurso: string;
   noticiasError: boolean = false;
   loadingInfo: boolean = true;
@@ -23,7 +24,8 @@ export class DetalleNoticiasComponent implements OnInit {
     private noticiasService: NoticiasServiceService,
     protected servicioSideNav: SidenavService,
     protected servicioHeader: HeaderService,
-    public bottomService: BottomMenuService
+    public bottomService: BottomMenuService,
+    private buscadorService: BuscadorService,
   ) {
     this.bottomService.putOcultandoBottomMenu(false);
   }
@@ -63,4 +65,34 @@ export class DetalleNoticiasComponent implements OnInit {
       }
     );
   }
+
+  // Este host unicamente se utiliza para las webcomponents .... en un futuro posiblemente
+  // se puede borrar 
+  abrirBuscadorPWA() {
+    const i: number = 2;
+    this.buscadorService.setAbrirBuscador(true);
+    const buscadorParams: BuscadorParams = {
+      index: ItemsBuscador[i].id,
+      txtInputBuscador: '',
+      txtConsumoApi: ItemsBuscador[i].txtConsumoApi,
+      aplicaGeoreferenciacion: ItemsBuscador[i].aplicaGeoreferenciacion
+    }
+    this.buscadorService.setBuscadorParams(buscadorParams);
+  }
+
+  // Este host unicamente se utiliza para las webcomponents .... en un futuro posiblemente
+  // se puede borrar 
+
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      let buscadorNoticias: NodeListOf<HTMLElement> = (document.querySelectorAll("[href='/buscador?ver=Noticias']") as NodeListOf<HTMLElement>);
+      buscadorNoticias.forEach((etiqueta_a) => {
+        etiqueta_a.addEventListener('click', () => {
+          this.abrirBuscadorPWA();
+        });
+        etiqueta_a.removeAttribute('href');
+      });
+    }, 1500);
+  }
+  
 }

@@ -1,25 +1,30 @@
 <app-banner-principal codigo="entidades"></app-banner-principal>
 <!-- SECCIÓN DE MENÚ ACCESO A ENTIDADES  -->
-<div id="seccion-uno" [class]="estadoContenedor?'container-fluid contenedor-seccion-uno py-2':'container-fluid contenedor-seccion-uno py-5'"
-[ngStyle]="(estadoContenedor?estiloFijo:'')">
+<div id="seccion-uno"
+  [class]="estadoContenedor?'container-fluid contenedor-seccion-uno py-2':'container-fluid contenedor-seccion-uno py-5'"
+  [ngStyle]="(estadoContenedor?estiloFijo:'')">
   <div class="container" *ngIf="objeto">
     <div class="titulo-entidades" *ngIf="!estadoContenedor">
       <h1 tabindex="0">{{objeto.rama.titulo}}</h1>
     </div>
-    <div *ngIf="objeto" [class]="estadoContenedor?'row contenedor-menu-entidades-collapse':'row contenedor-menu-entidades'">
-        <a id="item_menu_{{rama.titulo}}" class="items-menu" *ngFor="let rama of objeto.rama.items;let i=index;" href="javascript:void(0)" [attr.aria-label]="rama.titulo"  (click)="arrasteASeccion($event,rama.titulo)" title="Ir a la sección {{rama.titulo}}">
-          <div class="contenedor-icono">
-            <img src="{{rama.iconoUrl}}" alt="Ícono decorativo">
-          </div>
-          <div class="texto-items-menu"><span>{{rama.titulo}}</span></div>
-        </a>
+    <div *ngIf="objeto"
+      [class]="estadoContenedor?'row contenedor-menu-entidades-collapse':'row contenedor-menu-entidades'">
+      <a id="item_menu_{{rama.titulo}}" class="items-menu" *ngFor="let rama of objeto.rama.items;let i=index;"
+        href="javascript:void(0)" [attr.aria-label]="rama.titulo" (click)="arrasteASeccion($event,rama.titulo)"
+        title="Ir a la sección {{rama.titulo}}">
+        <div class="contenedor-icono">
+          <img src="{{rama.iconoUrl}}" alt="Ícono decorativo">
+        </div>
+        <div class="texto-items-menu"><span>{{rama.titulo}}</span></div>
+      </a>
     </div>
   </div>
 </div>
 
 <!-- SECCION DE ENTIDADES -->
 <div class="container pt-4" *ngIf="objeto">
-  <div id="seccion_{{rama.titulo}}" class="" *ngFor="let rama of objeto.rama.items;let i=index;" tabindex="0" [attr.aria-label]="rama.titulo" (focus)="arrasteASeccion(null,rama.titulo)">
+  <div id="seccion_{{rama.titulo}}" class="" *ngFor="let rama of objeto.rama.items;let i=index;" tabindex="0"
+    [attr.aria-label]="rama.titulo" (focus)="arrasteASeccion(null,rama.titulo)">
     <div class="contenedor-seccion-dos py-4">
       <div class="contenedor-titulo-entidad">
         <div class="icono">
@@ -39,7 +44,10 @@
             </p>
           </div>
           <div class="contenedor-enlace-entidades">
-            <a class="enlace-entidades" href="/buscador/?ver=Entidades">
+            <!-- <a class="enlace-entidades" href="/buscador/?ver=Entidades">
+              <i class="fa fa-search mx-2" aria-hidden="true"></i>{{rama.buscarTexto}}
+            </a> -->
+            <a class="enlace-entidades" (click)="abrirBuscadorPWA()">
               <i class="fa fa-search mx-2" aria-hidden="true"></i>{{rama.buscarTexto}}
             </a>
           </div>
@@ -56,62 +64,66 @@
 <div class="container-fluid contenedor-seccion-tres">
   <div class="container py-4">
     <div class="row">
-      <h1 class="col-12 titulo py-3" tabindex="0" aria-label="A continuación encontrará la sección de ¿Qué pueden hacer por ti las Entidades del Estado?">¿Qué pueden hacer por ti las Entidades del Estado?</h1>
+      <h1 class="col-12 titulo py-3" tabindex="0"
+        aria-label="A continuación encontrará la sección de ¿Qué pueden hacer por ti las Entidades del Estado?">¿Qué
+        pueden hacer por ti las Entidades del Estado?</h1>
     </div>
-      <div class="row">
-        <div class="col-12 col-md-6 col-lg-4 col-xl-3 my-3" tabindex="0" aria-label="Considerar la Experiencia del Ciudadano como punto de partida.">
-          <div class="contenedor-hacer-por-ti">
-            <div class="icono">
-              <img
-                src="https://govco-prod-webutils.s3.amazonaws.com/uploads/2022-06-03/fd724095-c9c9-400c-8220-ec85114ae5fe-Icono_user_check.svg"
-                alt="Imagen decorativa">
-            </div>
-            <p>
-              Considerar la Experiencia del Ciudadano como punto de partida.
-            </p>
+    <div class="row">
+      <div class="col-12 col-md-6 col-lg-4 col-xl-3 my-3" tabindex="0"
+        aria-label="Considerar la Experiencia del Ciudadano como punto de partida.">
+        <div class="contenedor-hacer-por-ti">
+          <div class="icono">
+            <img
+              src="https://govco-prod-webutils.s3.amazonaws.com/uploads/2022-06-03/fd724095-c9c9-400c-8220-ec85114ae5fe-Icono_user_check.svg"
+              alt="Imagen decorativa">
           </div>
-        </div>
-        <div class="col-12 col-md-6 col-lg-4 col-xl-3 my-3" tabindex="0" aria-label="Comunicarse e interactuar contigo a través de diversos canales manteniendo además los principios de
-        igualdad, accesibilidad y servicio que todo Estado propone para sus ciudadanos.">
-          <div class="contenedor-hacer-por-ti">
-            <div class="icono">
-              <img
-                src="https://govco-prod-webutils.s3.amazonaws.com/uploads/2022-06-03/1885811c-e29d-4444-af10-e0a43d538d9a-Icono_Convers.svg"
-                alt="Imagen decorativa">
-            </div>
-            <p>
-              Comunicarse e interactuar contigo a través de diversos canales manteniendo además los principios de
-              igualdad, accesibilidad y servicio que todo Estado propone para sus ciudadanos.
-            </p>
-          </div>
-        </div>
-        <div class="col-12 col-md-6 col-lg-4 col-xl-3 my-3" tabindex="0" aria-label="Trabajar en nuevos diseños de servicios y sistemas para lograr que la burocracia se vuelva fácil y ahorrarte
-        tiempo y dinero.">
-          <div class="contenedor-hacer-por-ti">
-            <div class="icono">
-              <img
-                src="https://govco-prod-webutils.s3.amazonaws.com/uploads/2022-06-03/995d4934-7836-4562-aae0-708e5d5fd8c2-Icono_compartir.svg"
-                alt="Imagen decorativa">
-            </div>
-            <p>
-              Trabajar en nuevos diseños de servicios y sistemas para lograr que la burocracia se vuelva fácil y ahorrarte
-              tiempo y dinero.
-            </p>
-          </div>
-        </div>
-        <div class="col-12 col-md-6 col-lg-4 col-xl-3 my-3" tabindex="0" aria-label="Facilitarte a ti y a todos los ciudadanos el acceso a trámites y servicios en igualdad de condiciones.">
-          <div class="contenedor-hacer-por-ti">
-            <div class="icono">
-              <img
-                src="https://govco-prod-webutils.s3.amazonaws.com/uploads/2022-06-03/ce9fc316-310a-421e-920b-e490aa510796-Icono_Folder.svg"
-                alt="Imagen decorativa">
-            </div>
-            <p>
-              Facilitarte a ti y a todos los ciudadanos el acceso a trámites y servicios en igualdad de condiciones.
-            </p>
-          </div>
+          <p>
+            Considerar la Experiencia del Ciudadano como punto de partida.
+          </p>
         </div>
       </div>
+      <div class="col-12 col-md-6 col-lg-4 col-xl-3 my-3" tabindex="0" aria-label="Comunicarse e interactuar contigo a través de diversos canales manteniendo además los principios de
+        igualdad, accesibilidad y servicio que todo Estado propone para sus ciudadanos.">
+        <div class="contenedor-hacer-por-ti">
+          <div class="icono">
+            <img
+              src="https://govco-prod-webutils.s3.amazonaws.com/uploads/2022-06-03/1885811c-e29d-4444-af10-e0a43d538d9a-Icono_Convers.svg"
+              alt="Imagen decorativa">
+          </div>
+          <p>
+            Comunicarse e interactuar contigo a través de diversos canales manteniendo además los principios de
+            igualdad, accesibilidad y servicio que todo Estado propone para sus ciudadanos.
+          </p>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 col-xl-3 my-3" tabindex="0" aria-label="Trabajar en nuevos diseños de servicios y sistemas para lograr que la burocracia se vuelva fácil y ahorrarte
+        tiempo y dinero.">
+        <div class="contenedor-hacer-por-ti">
+          <div class="icono">
+            <img
+              src="https://govco-prod-webutils.s3.amazonaws.com/uploads/2022-06-03/995d4934-7836-4562-aae0-708e5d5fd8c2-Icono_compartir.svg"
+              alt="Imagen decorativa">
+          </div>
+          <p>
+            Trabajar en nuevos diseños de servicios y sistemas para lograr que la burocracia se vuelva fácil y ahorrarte
+            tiempo y dinero.
+          </p>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 col-xl-3 my-3" tabindex="0"
+        aria-label="Facilitarte a ti y a todos los ciudadanos el acceso a trámites y servicios en igualdad de condiciones.">
+        <div class="contenedor-hacer-por-ti">
+          <div class="icono">
+            <img
+              src="https://govco-prod-webutils.s3.amazonaws.com/uploads/2022-06-03/ce9fc316-310a-421e-920b-e490aa510796-Icono_Folder.svg"
+              alt="Imagen decorativa">
+          </div>
+          <p>
+            Facilitarte a ti y a todos los ciudadanos el acceso a trámites y servicios en igualdad de condiciones.
+          </p>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 <!-- SECCION 4 BANNER FIXED -->
@@ -122,13 +134,23 @@
         <div class="icono">
           <i class="fa fa-search mx-2" aria-hidden="true"></i>
         </div>
+        <!-- <div class="texto">
+          ¿Estas buscando una entidad? Usa <a class="enlace" href="/buscador/?ver=Entidades"
+            aria-label="Ventana Emergente ¿Estas buscando una entidad? Usa nuestro buscador para encontrar lo que necesitas.">nuestro
+            buscador</a> para encontrar lo que necesitas.
+        </div> -->
         <div class="texto">
-          ¿Estas buscando una entidad? Usa <a class="enlace" href="/buscador/?ver=Entidades" aria-label="Ventana Emergente ¿Estas buscando una entidad? Usa nuestro buscador para encontrar lo que necesitas.">nuestro buscador</a> para encontrar lo que necesitas.
+          ¿Estas buscando una entidad? Usa <a class="enlace" (click)="abrirBuscadorPWA()"
+            aria-label="Ventana Emergente ¿Estas buscando una entidad? Usa nuestro buscador para encontrar lo que necesitas.">nuestro
+            buscador</a> para encontrar lo que necesitas.
         </div>
       </div>
       <div class="cerrar">
-        <a href="javascript:void(0)" (click)="cerrarVentana($event)" role="button" aria-label="Cerrar ventana emergente.">
-          <img src="https://govco-prod-webutils.s3.amazonaws.com/uploads/2021-09-17/19db2a60-fe1e-41a4-9b58-e3cb92931484-clear-24px.svg" alt="">
+        <a href="javascript:void(0)" (click)="cerrarVentana($event)" role="button"
+          aria-label="Cerrar ventana emergente.">
+          <img
+            src="https://govco-prod-webutils.s3.amazonaws.com/uploads/2021-09-17/19db2a60-fe1e-41a4-9b58-e3cb92931484-clear-24px.svg"
+            alt="">
         </a>
       </div>
     </div>
