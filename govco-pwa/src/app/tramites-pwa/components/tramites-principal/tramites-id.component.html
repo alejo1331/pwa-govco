@@ -25,6 +25,6 @@
 
 <section #seccionPuntoAtencion class="seccion-puntos-atencion">
     <app-puntos-de-atencion *ngIf="activarPuntosAtecion && activarTramitesId" [perfil_idTramite]="perfil_idTramite"
-        [dataPuntosAtencion]="dataPuntosAtencion" (cerrarPuntosAtencion)="cerrarPuntosAtencion($event)">
+        [dataPuntosAtencion]="dataPuntosAtencion" [data]="infoBasicaTramite" (cerrarPuntosAtencion)="cerrarPuntosAtencion($event)">
     </app-puntos-de-atencion>
 </section>

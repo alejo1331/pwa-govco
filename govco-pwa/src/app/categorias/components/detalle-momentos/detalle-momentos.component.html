@@ -17,7 +17,7 @@
   </div>
 </div>
 <div class="contenedor-buscador-momentos" *ngIf="categoria.item !== '' || categoria.item!== null ">
-  <govco-buscador-detalle-momentos (click)="tramitesServicio($event)" seed="" solobusqueda="tramites" filtros="true" categoriabusqueda='tramites'
+  <govco-buscador-detalle-momentos seed="" solobusqueda="tramites" filtros="true" categoriabusqueda='tramites'
     [categoriaNombre]=nombreTramite [nombreMomentos]=categoria.item></govco-buscador-detalle-momentos>
 </div>
 

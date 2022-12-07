@@ -1,16 +1,17 @@
-import { Component, HostListener, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CategoriasService } from '../../services/categorias.service';
 import { BottomMenuService } from 'src/app/transversales/services/bottom-menu/bottom-menu.service';
 import { HeaderService } from 'src/app/transversales/services/header-service/header.service';
 import { SidenavService } from 'src/app/transversales/services/sidenav-service/sidenav-service.service';
+import { urlsLocal } from 'src/variables-globales/urlsLocal';
 
 @Component({
   selector: 'app-detalle-momentos',
   templateUrl: './detalle-momentos.component.html',
   styleUrls: ['./detalle-momentos.component.css']
 })
-export class DetalleMomentosComponent implements OnInit {
+export class DetalleMomentosComponent implements OnInit, AfterViewInit {
 
   categoria!: any;
   idRecurso: string;
@@ -27,7 +28,8 @@ export class DetalleMomentosComponent implements OnInit {
     private activatedRouter: ActivatedRoute,
     protected servicioSideNav: SidenavService,
     protected servicioHeader: HeaderService,
-    public bottomService: BottomMenuService
+    public bottomService: BottomMenuService,
+    protected router: Router
   ) {
     this.bottomService.putOcultandoBottomMenu(false);
 
@@ -67,20 +69,32 @@ export class DetalleMomentosComponent implements OnInit {
     window.scroll(0, 0)
   }
 
-  tramitesServicio(event: Event) {
-    var elementos = Array.from(document.getElementsByTagName('a') as HTMLCollectionOf<HTMLElement>)
+  // Esta seccion es provisional pues realiza un cambio de href por router.navigate para la webcomponent
+  // govco-buscador-detalle-momentos. Esto permite que la navegación sea fluido y no cargue o se actualice
+  // inncesariamente.
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      var etiquetas_a: Array<HTMLElement> = Array.from(document.getElementsByTagName('a') as HTMLCollectionOf<HTMLElement>);
+      let get_href: string = '';
+      etiquetas_a.forEach((a) => {
+        get_href = String(a.getAttribute('href'));
+        if (get_href.indexOf(urlsLocal.fichaTramiteId) >= 0) {
+          const id = get_href!.replace(/[^0-9]+/g, "");
+          a.addEventListener('click', () => {
+            this.router.navigate([urlsLocal.fichaTramiteId + id]);
+          });
+          a.removeAttribute('href');
+          a.removeAttribute('target');
+        }
+      })
+      var verMasNoticias: HTMLElement = document.querySelector('.btn.btn-round.link-see-more') as HTMLElement;
+      verMasNoticias.addEventListener('click', () => {
+        this.router.navigate([urlsLocal.noticias]);
+      });
+      verMasNoticias.removeAttribute('href');
+      verMasNoticias.removeAttribute('target');
+    }, 1500);
 
-    elementos.forEach(elemento => {
-      if (event.target == elemento.firstChild) {
-        elemento.setAttribute('target', '_self');
-      }
-    });
   }
 
-  @HostListener('click', ['$event']) onClick(event: Event) {
-    var verMasNoticias: HTMLElement = document.querySelector('.btn.btn-round.link-see-more') as HTMLElement;
-    if (event.target == verMasNoticias) {
-      verMasNoticias.setAttribute('href', '/noticias')
-    }
-  }
 }

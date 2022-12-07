@@ -3,7 +3,7 @@
         <button class="caja-icono-48-pwa botonImg close" (click)="cerrarPuntoAtencion()"></button>
     </div>
     <div #seccionPuntos class="contenido-pwa-govco seccion-puntos-atencion">
-        <h1>Convalidación de títulos de estudios de posgrado obtenidos en el exterior</h1>
+        <h1>{{ data?.NombreEstandarizado }}</h1>
         <h2>Puntos de Atención</h2>
         <div class="linea-horizontal-2-pwa-govco"></div>
         <section class="seccion-buscador">
@@ -26,19 +26,21 @@
             <div class="accordion acordeon-pwa-govco" id="ejemploAcordeon">
                 <div class="card" *ngFor="let item of items; index as i;" [class.active]="item.active">
                     <div class="card-header" id="headingOne">
-                        <button (click)="activarItem(i)" class="btn btn-link btn-block text-left" type="button"
-                            data-toggle="collapse" [attr.data-target]="'#collapse-puntos' + i" aria-expanded="false"
-                            [attr.aria-controls]="'collapse-puntos' + i">
-                            <p>{{item.titulo}}</p>
+                        <button #button_acordeon (click)="activarItem(i)" class="btn btn-link btn-block text-left" type="button" tabindex="-1"
+                            aria-expanded="false" [attr.aria-controls]="'collapse-puntos' + i">
+                            <p data-toggle="collapse" [attr.data-target]="'#collapse-puntos' + i">{{item.titulo}}</p>
                             <div class="grupo-iconos-acordeon">
-                                <button (click)="printCoordenadas(item.latitud.replace(',','.'), item.longitud.replace(',','.'), item.direccion)"
+                                <button
+                                    (click)="printCoordenadas(item.latitud.replace(',','.'), item.longitud.replace(',','.'), item.direccion)"
                                     class=" caja-icono-48-pwa mr-2">
                                     <img src="../../../../assets/icons-fonts/location_on.svg"
                                         alt="Abrir enlace a Google Maps o Navegador">
                                 </button>
-                                <span class="caja-icono-48-pwa" alt="Expandir acordeon para ver más información">
+                                <span #expand_more class="caja-icono-48-pwa" alt="Expandir acordeon para ver más información"
+                                    data-toggle="collapse" [attr.data-target]="'#collapse-puntos' + i" tabindex="0" (keypress)="click(i)">
                                     <img class="icono-expand-more" src="../../../../assets/icons-fonts/expand_more.svg"
-                                        alt="Expandir acordeon para ver más información">
+                                        alt="Expandir acordeon para ver más información" data-toggle="collapse"
+                                        [attr.data-target]="'#collapse-puntos' + i">
                                 </span>
                             </div>
                         </button>

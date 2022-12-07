@@ -113,13 +113,13 @@ export class GeolocalizacionComponent implements OnInit, AfterViewInit {
           this.ServicioGeolocalizacion.getCacheJsonMunicipiosPorDepartamento(codigoDepartamento)
             .then((municipios: MunicipioInterface[]) => {
               var municipioSeleccionado = municipios.filter((elemento: any) => { return elemento.codigo === codigoMunicipio })[0]
-              this.ubicacionMunicipio = 'Información para ' + municipioSeleccionado.nombre.toUpperCase();
+              this.ubicacionMunicipio = 'Información para ' + municipioSeleccionado.nombre;
             })
         } else {
           this.ServicioGeolocalizacion.getMunicipiosPorDepartamento(codigoDepartamento)
             .subscribe((municipios: MunicipioInterface[]) => {
               var municipioSeleccionado = municipios.filter((elemento: any) => { return elemento.codigo === codigoMunicipio })[0]
-              this.ubicacionMunicipio = 'Información para ' + municipioSeleccionado.nombre.toUpperCase();
+              this.ubicacionMunicipio = 'Información para ' + municipioSeleccionado.nombre;
             });
         }
       })
