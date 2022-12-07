@@ -182,8 +182,9 @@ export class MomentosDeVidaComponent implements OnInit, AfterViewInit {
     clicSeccionCiuu.href = '/ficha-tramites-y-servicios/codigos-ciiu-y-tramites';
   }
 
-  // Este host unicamente se utiliza para las webcomponents .... en un futuro posiblemente
-  // se puede borrar 
+  // Esta seccion es provisional pues realiza un cambio de href por router.navigate para la webcomponent
+  // seccion-actualidad. Esto permite que la navegación sea fluido y no cargue o se actualice
+  // inncesariamente.
   ngAfterViewInit(): void {
     setTimeout(() => {
       let buscadorNoticias: NodeListOf<HTMLElement> = (document.querySelectorAll("[href='/noticias/']") as NodeListOf<HTMLElement>);

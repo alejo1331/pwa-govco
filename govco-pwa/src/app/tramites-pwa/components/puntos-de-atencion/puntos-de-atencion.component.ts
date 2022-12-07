@@ -1,5 +1,5 @@
 import { Platform } from '@angular/cdk/platform';
-import { Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output, ViewChild, PipeTransform } from '@angular/core';
+import { Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output, ViewChild, PipeTransform, ViewChildren, QueryList } from '@angular/core';
 import { BottomMenuService } from 'src/app/transversales/services/bottom-menu/bottom-menu.service';
 import { HeaderService } from 'src/app/transversales/services/header-service/header.service';
 import { SidenavService } from 'src/app/transversales/services/sidenav-service/sidenav-service.service';
@@ -19,6 +19,9 @@ export class PuntosDeAtencionComponent implements OnInit, PipeTransform {
 
   @ViewChild('inputBuscador') inputBuscador: ElementRef;
   @ViewChild('seccionPuntos') seccionPuntos: ElementRef;
+  @ViewChildren('expand_more', { read: ElementRef }) expand_more: QueryList<ElementRef>;
+  @ViewChildren('button_acordeon', { read: ElementRef }) button_acordeon: QueryList<ElementRef>;
+
 
   @Output() cerrarPuntosAtencion = new EventEmitter<[string, string]>();
   @Input() perfil_idTramite: { perfil: string, idTramite: number };
@@ -160,6 +163,10 @@ export class PuntosDeAtencionComponent implements OnInit, PipeTransform {
     modal.componentInstance.direccion = direccion;
   }
 
+  click(index: number) {
+    this.expand_more.toArray()[index].nativeElement.click();
+    this.button_acordeon.toArray()[index].nativeElement.click();
+  }
 
   @HostListener('window:keyup', ['$event']) onInput(event: KeyboardEvent) {
     if (this.inputBuscador.nativeElement == event.target) {
