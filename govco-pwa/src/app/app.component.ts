@@ -9,10 +9,7 @@ import { HeaderService } from './transversales/services/header-service/header.se
 import { BottomMenuService } from './transversales/services/bottom-menu/bottom-menu.service';
 import { Platform } from '@angular/cdk/platform';
 import { GeolocalizacionFormularioComponent } from './transversales/components/geolocalizacion-formulario/geolocalizacion-formulario.component';
-import { SwUpdate } from '@angular/service-worker';
 import { MatDialog } from '@angular/material/dialog';
-import { ModalClasicoComponent } from './modal-natvivo/components/modal-clasico/modal-clasico.component';
-import { ModalService } from './modal-natvivo/services/modal.service';
 import { ModalInterface } from './modal-natvivo/models/modal-interface';
 import { OidcService } from './transversales/services/oidc/oidc.service';
 import { OAuthService, OAuthErrorEvent } from 'angular-oauth2-oidc';
