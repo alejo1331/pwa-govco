@@ -16,6 +16,14 @@ export class OrderByDatePipe implements PipeTransform {
         : [...fechaConvertida].sort((a, b) => a.localeCompare(b));
       fechaConvertida = this.convertirFecha(fechaOrdenada, this.meses, this.mesesNum);
       return fechaConvertida;
+    } else if (titulo === 'Año de publicación') {      
+      fechaOrdenada = ordenFecha === 'desc' ?
+      [...in_array].sort((a, b) => b.localeCompare(a)) : [...in_array].sort((a, b) => a.localeCompare(b));
+      return fechaOrdenada;
+    } else if (titulo === 'Mes de publicación') {
+      fechaOrdenada = ordenFecha === 'desc' ?
+      [...in_array].sort((a, b) => this.obtenerPosicionMes(b) - this.obtenerPosicionMes(a)) : [...in_array].sort((a, b) => this.obtenerPosicionMes(a) - this.obtenerPosicionMes(b));
+      return fechaOrdenada;
     } else {
       fechaOrdenada = ordenGeneral === 'desc' ?
       [...in_array].sort((a, b) => b.localeCompare(a)) : [...in_array].sort((a, b) => a.localeCompare(b));
@@ -33,6 +41,10 @@ export class OrderByDatePipe implements PipeTransform {
       });
     })
     return transformar;
+  }
+
+  obtenerPosicionMes(mes: string) {
+    return this.meses.findIndex(m => m == mes.toLowerCase());
   }
 
 }

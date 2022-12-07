@@ -19,6 +19,7 @@ export class ModalFiltroSegundoNivelComponent {
   constructor(public platform: Platform) { }
 
   abrirModal() {
+    console.log('contendioModal', this.informacionModal.contendioModal);
     this.searchText = '';
     this.modalFiltro.nativeElement.style.display = 'block';
     this.modalFiltro.nativeElement.classList.add('on-modal');

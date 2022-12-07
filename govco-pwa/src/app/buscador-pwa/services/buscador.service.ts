@@ -60,11 +60,11 @@ export class BuscadorService {
     this.sugerenciasBuscador$.next(sugerencias)
   }
 
-  fnSugerenciasSintaxis(texto: string , longitudMin:any){
+  fnSugerenciasSintaxis(texto: string, longitudMin:any){
     const simbolos = ['.', '-', '_']; 
     texto = texto.trim();
     //Eliminar los caracteres especiales en el ultimo caracter
-    const ultimoCaracter: string  = texto.substring(texto.length, texto.length - 1);
+    const ultimoCaracter: string = texto.substring(texto.length, texto.length - 1);
 
     if (simbolos.includes(ultimoCaracter))
       texto = texto.substring(0,texto.length-1);
@@ -78,23 +78,28 @@ export class BuscadorService {
           texto = texto.substring(0 ,longitudMin -1 ).trim();
         } else if (caracter != ' ' && cacterersig !=' ') { // Si la longitud maxima esta en una palabara
           texto = texto.substring(0 ,longitudMin+1).trim();
-          cortar=2;
+          cortar = 2;
         } else { 
           texto = texto.substring(0 ,longitudMin+1).trim(); 
         }
       }
+      
+      texto = this.verificarfnSugerenciasSintaxis(texto, cortar);      
+    }
+    return texto;
+  }
 
-      const txtArray = texto.split(' ');  // La frase dividas en palabras
-      texto = '';
-      let swStopWord = true;
-      for (let i = txtArray.length - cortar; i >=0; i--) { // Recorremos de atras hacia adelante la frase para validar su terminación
-        let pos = this.stopWord.indexOf(txtArray[i]);          // Verificar si la ultima palabra es un stopword
-        if (pos <0 && swStopWord)
-          swStopWord = false;
+  verificarfnSugerenciasSintaxis(texto: string, cortar:number) {
+    const txtArray = texto.split(' ');  // La frase dividas en palabras
+    texto = '';
+    let swStopWord = true;
+    for (let i = txtArray.length - cortar; i >=0; i--) { // Recorremos de atras hacia adelante la frase para validar su terminación
+      let pos = this.stopWord.indexOf(txtArray[i]);          // Verificar si la ultima palabra es un stopword
+      if (pos <0 && swStopWord)
+        swStopWord = false;
 
-        if (!swStopWord)
-          texto =  txtArray[i] + ' ' +  texto ;
-      }
+      if (!swStopWord)
+        texto =  txtArray[i] + ' ' +  texto ;
     }
     return texto;
   }
@@ -105,34 +110,17 @@ export class BuscadorService {
     let posicion: number;
     let auxTexto: string = ASCIIFolder.foldReplacing(texto.toLowerCase());
     let auxBuscarQue: string = ASCIIFolder.foldReplacing(buscarQue.toLowerCase());
-    let listaPalabra: any[]=[];
+    let listaPalabra: any[] = [];
     let largo: number = auxBuscarQue.length;
     texto = ASCIIFolder.foldReplacing(texto.toLowerCase());
     posicion = auxTexto.indexOf(auxBuscarQue);
-    if ( posicion == -1 ) {  // Si la palabra o frase a buscar no coincide totalmente, se realiza el resaltado por c/u de las palabras.
-      let contar = auxTexto.indexOf(' ');
-      if (contar > 0) {
-        const txtArray = buscarQue.split(' ');
-        for (var j = 0 ; j <= txtArray.length-1; j++) {
-          let pos = this.stopWord.indexOf(txtArray[j]);  // Verificar si es un stopword
-          if (pos < 0 ){ // Al no ser stop Word se guarda la palabra a resaltar
-            if (!listaPalabra.find(x => x === txtArray[j]))
-              listaPalabra.push(txtArray[j]);
-          }
-        }
-
-        for (const cadena of listaPalabra) {
-          if (cadena != '' && cadena.length > 1) {
-            const reemplazarCon = "<span>" + cadena.replace(/\$(?=[$&`'\d])/g, "$$$$") + "</span>";
-            texto = texto.replaceAll(cadena, reemplazarCon);
-          }
-        }
-      }
+    if (posicion == -1) {  // Si la palabra o frase a buscar no coincide totalmente, se realiza el resaltado por c/u de las palabras.
+      texto = this.buscarPalabrasaResaltar(auxTexto, buscarQue, listaPalabra, texto);
     } else {
       posicion = auxTexto.indexOf(auxBuscarQue);
       while ( posicion != -1 ) {
         let textoEncontrado = texto.substring(posicion, posicion + largo);
-          if (!listaPalabra.includes(textoEncontrado))
+        if (!listaPalabra.includes(textoEncontrado))
           listaPalabra.push(textoEncontrado);
         posicion = auxTexto.indexOf(auxBuscarQue, posicion + 1);
       }
@@ -140,7 +128,34 @@ export class BuscadorService {
       for (const cadena of listaPalabra) {
         const reemplazarCon = "<span>" + cadena.replace(/\$(?=[$&`'\d])/g, "$$$$") + "</span>";
         texto = texto.replaceAll(cadena,reemplazarCon);
-        
+      }
+    }
+    return texto;
+  }
+
+  buscarPalabrasaResaltar(auxTexto:string, buscarQue:any, listaPalabra: any[], texto:any) {
+    let contar = auxTexto.indexOf(' ');
+    if (contar > 0) {
+      const txtArray = buscarQue.split(' ');
+      for (let j=0; j <= txtArray.length-1; j++) {
+        let pos = this.stopWord.indexOf(txtArray[j]);  // Verificar si es un stopword
+        if (pos < 0 ){ // Al no ser stop Word se guarda la palabra a resaltar
+          if (!listaPalabra.find(x => x === txtArray[j]))
+            listaPalabra.push(txtArray[j]);
+        }
+      }
+
+      texto = this.resaltarPalabras(listaPalabra, texto);
+    }
+
+    return texto;
+  }
+
+  resaltarPalabras(listaPalabra: any[], texto:any) {
+    for (const cadena of listaPalabra) {
+      if (cadena != '' && cadena.length > 1) {
+        const reemplazarCon = "<span>" + cadena.replace(/\$(?=[$&`'\d])/g, "$$$$") + "</span>";
+        texto = texto.replaceAll(cadena, reemplazarCon);
       }
     }
     return texto;
