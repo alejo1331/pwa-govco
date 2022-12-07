@@ -1,6 +1,7 @@
 import { Component, Input, SimpleChanges } from '@angular/core';
 import { DataBasicaPuntosInterface } from 'src/app/tramites-pwa/models/puntos-de-atencion/data-basica-puntos-interface';
 import { TramitesPorIdService } from 'src/app/tramites-pwa/services/tramites-por-id-service/tramites-por-id.service';
+import { ValidateUrlService } from 'src/app/tramites-pwa/services/validate-url.service';
 
 @Component({
   selector: 'app-tercer-item-acordeon',
@@ -14,6 +15,7 @@ export class TercerItemAcordeonComponent {
 
   constructor(
     protected fichaTramiteService: TramitesPorIdService,
+    public validarUrlService: ValidateUrlService,
   ) { }
 
   ngOnChanges(changes: SimpleChanges) {

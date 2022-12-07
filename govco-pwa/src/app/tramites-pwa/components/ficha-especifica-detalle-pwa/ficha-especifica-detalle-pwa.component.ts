@@ -2,6 +2,7 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { DataBasicaPuntosInterface } from '../../models/puntos-de-atencion/data-basica-puntos-interface';
 import { TramitesPorIdService } from '../../services/tramites-por-id-service/tramites-por-id.service';
 import { TipoEnlace } from '../../models/tramites-id-models/tramites-por-id-interface';
+import { ValidateUrlService } from '../../services/validate-url.service';
 
 
 @Component({
@@ -25,7 +26,9 @@ export class FichaEspecificaDetallePwaComponent implements OnInit {
 
   showBotonFechas: boolean;
 
-  constructor(protected fichaTramiteService: TramitesPorIdService) { }
+  constructor(
+    protected fichaTramiteService: TramitesPorIdService,
+    public validarUrlService: ValidateUrlService) { }
 
   ngOnInit(): void {
     this.fichaTramiteService
