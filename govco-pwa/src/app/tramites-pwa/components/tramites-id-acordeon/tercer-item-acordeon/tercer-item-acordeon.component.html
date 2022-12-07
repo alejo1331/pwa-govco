@@ -17,7 +17,7 @@
       <button *ngIf="canal.TipoCanal === 'PRESENCIAL'" (click)="getPuntosAtencion()">
         Ver puntos de atención
       </button>
-      <a href="{{ canal.UrlCanalWeb }}" target="_blank" *ngIf="canal.TipoCanal === 'WEB'">
+      <a (click)="validarUrlService.validateUrl(canal.UrlCanalWeb)" target="_blank" *ngIf="canal.TipoCanal === 'WEB'">
         {{canal.NombreCanalWeb}}
       </a>
     </div>
