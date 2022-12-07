@@ -26,6 +26,7 @@ export class PuntosDeAtencionComponent implements OnInit, PipeTransform {
   @Output() cerrarPuntosAtencion = new EventEmitter<[string, string]>();
   @Input() perfil_idTramite: { perfil: string, idTramite: number };
   @Input() dataPuntosAtencion: DataBasicaPuntosInterface;
+  @Input() data: any;
 
   public items: ItemsAcordeon[] = [];
   public itemsAux: ItemsAcordeon[] = [];
