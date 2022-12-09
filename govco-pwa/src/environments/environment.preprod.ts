@@ -37,7 +37,7 @@ export const environment = {
   urlApiTramites: "https://preapi-interno.www.gov.co/api/ficha-tramites-y-servicios",
   serverUrlNoticias: "https://preapi-interno.www.gov.co/api/noticias/",
   //Categorias-Subcategorias o momentos de vida
-  serverCategorias: "https://preapi-interno.www.gov.co/api/categorias-subcategorias/",
+  serverCategorias: "https://api-interno.www.gov.co/api/categorias-subcategorias/",
 
   //URL plan de integracion
   urlPlanIntegracion: "https://preadmin.www.gov.co/Autenticacion/Autenticacion/RegistroAutoridad",
