@@ -63,25 +63,20 @@ export class BuscadorAvisoComponent implements OnInit {
     ]);
   }
 
-  getMunicipiosPorDepartamento([codigoDepartamento, codigoMunicipio]: string[]) {
+  async getMunicipiosPorDepartamento([codigoDepartamento, codigoMunicipio]: string[]) {
     let departamentoSeleccionado: DepartamentoInterface;
     if (codigoDepartamento != 'TodosLosDepartamentos') {
-      this.ServicioGeolocalizacion.getCacheJsonDepartamentos().then(
-        (departamentos: DepartamentoInterface[]) => {
-          departamentoSeleccionado = departamentos.filter(
-            (data: DepartamentoInterface) => {
-              return data.codigo === codigoDepartamento;
-            }
-          )[0];
+      let departamentos: DepartamentoInterface[] = await this.ServicioGeolocalizacion.getCacheJsonDepartamentos();
+      departamentoSeleccionado = departamentos.filter(
+        (data: DepartamentoInterface) => {
+          return data.codigo === codigoDepartamento;
         }
-      );
-      this.ServicioGeolocalizacion.cacheJsonMunicipiosPorDepartamento(
-        codigoDepartamento
-      ).then((existe) => {
-        if (existe) {
-          this.getMunicipios([codigoDepartamento, codigoMunicipio], departamentoSeleccionado);
-        }
-      });
+      )[0];
+
+      let existe = await this.ServicioGeolocalizacion.cacheJsonMunicipiosPorDepartamento(codigoDepartamento);
+      if (existe) {
+        this.getMunicipios([codigoDepartamento, codigoMunicipio], departamentoSeleccionado);
+      }
     } else {
       this.geoLocMunName = 'Toda Colombia';
     }
@@ -99,13 +94,9 @@ export class BuscadorAvisoComponent implements OnInit {
         this.geoLocMunName =
           codigoMunicipio === '11001'
             ? this.capitalizeGeo(municipioSeleccionado.nombre.toLowerCase())
-            : this.capitalizeGeo(
-              departamentoSeleccionado.nombre.toLowerCase()
-            ) +
+            : this.capitalizeGeo(departamentoSeleccionado.nombre.toLowerCase()) +
             ', ' +
-            this.capitalizeMunicipio(
-              municipioSeleccionado.nombre.toLowerCase()
-            );
+            this.capitalizeMunicipio(municipioSeleccionado.nombre.toLowerCase());
       }
     });
   }
