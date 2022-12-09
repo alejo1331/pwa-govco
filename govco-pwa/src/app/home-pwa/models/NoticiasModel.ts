@@ -11,18 +11,18 @@ export interface BannerNoticiaDetalle {
 }
 
 export interface ListadoActualidadNoticia {
-    id: number;
+    id: number | null;
     titulo: string;
     sumario: string;
     cuerpo: string;
     imagen: string;
     fecha: string;
-    idEstado: number;
-    idCategoria: number;
-    idSubCategoria: number;
+    idEstado: number | null;
+    idCategoria: number | null;
+    idSubCategoria: number | null;
     textoFecha: string;
     codigoEntidad: string;
-    estado: string;
+    estado: string | null;
 }
 
 export interface ListadoActualidadBanner {
@@ -31,4 +31,54 @@ export interface ListadoActualidadBanner {
     titulo: string;
     descripcion: string;
     mensaje: string;
+}
+
+export interface CabeceraActualidad {
+    data: ActualidadGeneral;
+    succeeded: boolean;
+    errors: string[] | null;
+    message: string;
+}
+export interface ActualidadGeneral {
+    botonTexto: string;
+    botonTextoAlternativo: string;
+    codigo: string;
+    descripcion: string;
+    id: number;
+    mensaje: string | null;
+    titulo: string;
+}
+
+export interface DataNoticias {
+    data: ContenidoNoticias[];
+    succeeded: boolean;
+    errors: string[] | null;
+    message: string;
+}
+export interface ContenidoNoticias {
+    categoriaMvId: number;
+    certificaLibreUso: boolean;
+    codigoEntidad: string;
+    cuerpo: string;
+    estado: null | string;
+    fecha: string;
+    fechaActualizacion: string;
+    fechaCreacion: string;
+    fechaExpira: string;
+    id: number | null;
+    idCategoria: null | number;
+    idEstado: number | null;
+    idSector: number | null;
+    idSubCategoria: number | null;
+    imagen: string;
+    noticiaSector: [];
+    palabrasClave: string;
+    razonBorrado: string | null;
+    subcategoriaMvId: number | string | null;
+    sumario: string;
+    textoAlternativo: string;
+    textoFecha: string;
+    titulo: string;
+    urlCorta: string | null;
+    usuarioId: number | null;
 }

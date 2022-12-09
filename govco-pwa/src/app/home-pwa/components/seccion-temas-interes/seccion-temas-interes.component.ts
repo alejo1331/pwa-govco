@@ -16,15 +16,15 @@ export class SeccionTemasInteresComponent implements OnInit {
 
   ngOnInit(): void {
     this.homeService.obtenerTemasInteres().subscribe(
-      (data:ObtenerTemasInteresRespuesta) => {
+      (data: ObtenerTemasInteresRespuesta) => {
         if (data.succeeded) {
-          this.titulo = data.data.panelSuperior.mapaDeSitio.tituloSeccion;
           this.dataTemasInteres = data.data.contenidoPanelInferior;
+          this.titulo = data.data.panelSuperior.mapaDeSitio == null ?
+            data.data.panelInferior.mapaDeSitio.tituloSeccion : data.data.panelSuperior.mapaDeSitio.tituloSeccion;
         } else {
           console.log('error al consultar temas de interés.');
         }
       }
     )
   }
-
 }

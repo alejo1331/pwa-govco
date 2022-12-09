@@ -15,13 +15,9 @@
     </div>
 
     <div class="container-tarjeta-noticias" *ngFor="let noticia of dataNoticias">
-        <app-tarjeta-informativa
-        [imagen]="noticia.imagen"
-        [descripcionImagen]="noticia.titulo"
-        [url]="'/noticias/detalle/' + noticia.id"
-        [descripcioUrl]="noticia.titulo"
-        [titulo]="noticia.titulo">
-        </app-tarjeta-informativa>    
+        <app-tarjeta-informativa [imagen]="noticia.imagen" [descripcionImagen]="noticia.titulo"
+            [url]="'/noticias/detalle/' + noticia.id" [descripcioUrl]="noticia.titulo" [titulo]="noticia.titulo">
+        </app-tarjeta-informativa>
         <div class="container-etiqueta-noticias">
             <app-etiqueta estado="informative">
                 <span class="material-symbols-outlined">
@@ -39,6 +35,6 @@
         </div>
     </div>
     <a routerLink="/noticias" tabindex="-1">
-        <app-boton *ngIf="!noticiasError && !noticiasEmpty">Ver más noticias</app-boton>
+        <app-boton *ngIf="!noticiasError && !noticiasEmpty">{{ botonTexto }}</app-boton>
     </a>
 </div>
