@@ -87,8 +87,7 @@ export class FichaNoSuiteComponent implements OnInit {
 
   isIE() {
     const ua = navigator.userAgent;
-    const isIe = ua.indexOf('MSIE ') > -1 || ua.indexOf('Trident/') > -1;
-    return isIe;
+    return ua.indexOf('MSIE ') > -1 || ua.indexOf('Trident/') > -1;
   }
 
   validateUrl(url: string, e:any) {
@@ -97,7 +96,7 @@ export class FichaNoSuiteComponent implements OnInit {
       this.validateUrlService.validate(url)
         .subscribe((data: boolean) => {
           if (data) {
-            window.open(url, "target='_blank'");;
+            window.open(url, "target='_blank'");
           } else {
             this.utilsService.openModalErrorValidateUrl();
           }

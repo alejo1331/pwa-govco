@@ -44,7 +44,9 @@ export class FichaEspecificaComponent implements OnInit {
   private async loadDataInfoFicha(dataTramite: any) {
 
     this.fichaTramiteService.GetTipoTramiteFichaEspecificaById(dataTramite.id).subscribe(dataFicha => {
-      dataTramite?this.GenerarTrackingTramite(dataTramite.id):null;
+      if (dataTramite) {
+        this.GenerarTrackingTramite(dataTramite.id);
+      }
       this.infoBasicaTramite = dataFicha;
       this.breadCrumbService.setTittle(this.infoBasicaTramite.NombreEstandarizado);
       this.nombreTramite = this.infoBasicaTramite.NombreEstandarizado;
@@ -57,7 +59,7 @@ export class FichaEspecificaComponent implements OnInit {
       });
       // Obtiene la URL de trámite en linea
       this.fichaTramiteService.GetBarraProcesoTramite(dataTramite.id).subscribe(res => {
-        this.infoBasicaTramite.UrlTramiteEnLinea = res.urlTramite.match(/^https?:/) ? res.urlTramite : res.urlTramite.includes("embebido") && res.urlTramite.includes("tramites-y-servicios") ? res.urlTramite : res.urlTramite;
+        this.infoBasicaTramite.UrlTramiteEnLinea = res.urlTramite;
         this.infoBasicaTramite.EnLinea = res.isEnlinea;
       });
     });

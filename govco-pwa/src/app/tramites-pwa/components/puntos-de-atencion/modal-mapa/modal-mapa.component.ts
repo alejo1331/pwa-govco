@@ -38,9 +38,11 @@ export class ModalMapaComponent implements OnInit {
     this.heightBarraNavegador = this.heightPantalla - this.bodyElement.clientHeight;
 
     if (this.heightBarraNavegador > 0) {
-      this.heightBody = this.heightPantalla - this.heightBarraNavegador, this.widthBody = this.widthPantalla - this.heightBarraNavegador;
+      this.heightBody = this.heightPantalla - this.heightBarraNavegador;
+      this.widthBody = this.widthPantalla - this.heightBarraNavegador;
     } else {
-      this.heightBody = this.bodyElement.clientHeight, this.widthBody = this.bodyElement.clientWidth;
+      this.heightBody = this.bodyElement.clientHeight;
+      this.widthBody = this.bodyElement.clientWidth;
     }
   }
 

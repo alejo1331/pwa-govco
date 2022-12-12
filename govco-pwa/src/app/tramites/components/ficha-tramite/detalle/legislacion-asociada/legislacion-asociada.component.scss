@@ -127,12 +127,10 @@
                 display: initial;
                 &:before {
                   border: 3px solid #3366cc;
-                  margin-top: 1px;
                   -webkit-box-sizing: border-box;
                   -moz-box-sizing: border-box;
                   box-sizing: border-box;
                   margin: 0;
-                  padding: 0;
                   content: '';
                   -webkit-appearance: none;
                   background-color: transparent;

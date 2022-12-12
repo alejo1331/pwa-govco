@@ -1,6 +1,6 @@
 import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { NavigationStart, Router, Event } from '@angular/router';
-import { BehaviorSubject, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { BuscadorService, BuscadorParams } from 'src/app/buscador-pwa/services/buscador.service';
 import { ItemsBuscador } from 'src/variables-globales/items-buscador';
 import { ItemsInterface } from '../../models/bucador-pwa/items-interface';
@@ -36,7 +36,7 @@ export class BuscadorPrefiltradoComponent implements OnInit {
       if (event instanceof NavigationStart) {
         let regex = /([T][0-9])\w+/;
         if (event.url != '/buscador') {
-          if (regex.test(event.url) == false && !event.url.includes('noticias/detalle')) {
+          if (!(regex.test(event.url) && event.url.includes('noticias/detalle'))) {
             this.inputBuscadorSegundoNivel = document.getElementById('buscador-pwa');
             if (this.inputBuscadorSegundoNivel) {
               this.inputBuscadorSegundoNivel.value = '';
@@ -85,13 +85,15 @@ export class BuscadorPrefiltradoComponent implements OnInit {
   filtrarPor() {
     this.estadoBotonFiltro = !this.estadoBotonFiltro;
     this.estadoFocusFiltro.emit(this.estadoBotonFiltro);
-    this.estadoBotonFiltro == true ?
+    this.estadoBotonFiltro ?
       this.componentPrefiltrado.abrirModal() : this.componentPrefiltrado.cerrarModal();
   }
 
   itemSelected([estado, index, abrirSelectorBusqueda, generarBusqueda]: [boolean, number, boolean, boolean]) {
-    this.botonPrefiltro != undefined ? this.botonPrefiltro.nativeElement.focus() : null;
-    if (this.componentPrefiltrado != undefined && abrirSelectorBusqueda == true) {
+    if (this.botonPrefiltro != undefined) {
+      this.botonPrefiltro.nativeElement.focus();
+    }
+    if (this.componentPrefiltrado != undefined && abrirSelectorBusqueda) {
       this.filtrarPor();
     }
     this.posicion = index;
@@ -117,7 +119,6 @@ export class BuscadorPrefiltradoComponent implements OnInit {
 
   ngOnDestroy(): void {
     if (this.getParametros) {
-      const params = this.buscadorService.getBuscadorParams;
       const buscadorParams: BuscadorParams = {
         index: 0,
         txtInputBuscador: '',

@@ -14,14 +14,12 @@ export class FichaespecificaAccordionComponent implements OnInit {
   @Input() tramite: any;
   @Output() cargarDetalleMomento =  new EventEmitter<any>();
   @Output() cargarMomentosAudiencia =  new EventEmitter<any>();
-  IE: Boolean;
+  IE: boolean;
   estadoAcordeon: string;
 
   constructor(
     config: NgbAccordionConfig
-  ) {
-    // config.type = 'white';
-  }
+  ) {}
 
   ngOnInit(): void {
     this.IE = this.isIE();
@@ -29,8 +27,7 @@ export class FichaespecificaAccordionComponent implements OnInit {
 
   isIE() {
     const ua = navigator.userAgent;
-    const isIe = ua.indexOf('MSIE ') > -1 || ua.indexOf('Trident/') > -1;
-    return isIe;
+    return ua.indexOf('MSIE ') > -1 || ua.indexOf('Trident/') > -1;
   }
 
   eventoTabAudiencia(data: any) {

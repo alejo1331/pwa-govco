@@ -248,8 +248,13 @@ export class GeolocalizacionFormularioComponent implements OnInit, AfterViewInit
   }
 
   @HostListener('window:keyup', ['$event']) onTab(event: KeyboardEvent) {
-    this.reiniciarFocus == true ? this.focus() : null;
-    this.botonGuardar.nativeElement == event.target ? this.reiniciarFocus = true : null;
+    if (this.reiniciarFocus == true) {
+      this.focus();
+    }
+
+    if (this.botonGuardar.nativeElement == event.target) {
+      this.reiniciarFocus = true;
+    }
   }
 
   resetFormulario(codigoDepartamento: string, codigoMunicipio: string) {

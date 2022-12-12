@@ -12,7 +12,7 @@
                     <a class="nav-link" [ngClass]="{ 'active': j == 0 }" data-toggle="tab" href="#tab{{j+1}}" role="tab"
                         aria-controls="tab{{j+1}" [attr.aria-selected]="j == 0"
                         (click)="eventoTabAudiencia(itemAudiencia)">
-                        <img [src]="urlIconos(itemAudiencia.detalle)">
+                        <img [src]="urlIconos(itemAudiencia.detalle)" alt="Imagen decorativa">
                         <span>{{itemAudiencia.detalle}}</span>
                         <div class="linea-vertical"></div>
                     </a>

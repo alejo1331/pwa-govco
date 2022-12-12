@@ -58,26 +58,26 @@ export class ModalPrefiltradoComponent implements OnInit {
   }
 
   onAnimationEnd(event: Event) {
-    (event.target as HTMLElement).className == 'contenido-modal-pwa off-modal' ?
-      this.modal.nativeElement.removeAttribute('style') : null;
+    if ((event.target as HTMLElement).className == 'contenido-modal-pwa off-modal') {
+      this.modal.nativeElement.removeAttribute('style');
+    }
   }
 
   onKeyDown(event: KeyboardEvent) {
-    switch (event.key) {
-      case 'Tab':
-        this.reiniciarFocus == true ? this.focusBuscador() : null;
-        break;
-      case 'Escape':
-        this.cerrarModal();
-        this.buscadorPrefiltrado.botonPrefiltro.nativeElement.focus();
-        this.buscadorPrefiltrado.filtrarPor();
-        break;
+    if (event.key == 'Tab') {
+      if (this.reiniciarFocus == true) {
+        this.focusBuscador();
+      }
+    } else if (event.key == 'Escape') {
+      this.cerrarModal();
+      this.buscadorPrefiltrado.botonPrefiltro.nativeElement.focus();
+      this.buscadorPrefiltrado.filtrarPor();
     }
   }
 
   onFocusLi(event: Event) {
-    this.listaPrefiltro.toArray()[this.txtLargo.length - 1].nativeElement == event.target ?
-      this.reiniciarFocus = true : null;
+    if (this.listaPrefiltro.toArray()[this.txtLargo.length - 1].nativeElement == event.target) {
+      this.reiniciarFocus = true;
+    }
   }
-
 }

@@ -1,10 +1,8 @@
 import { AfterViewInit, Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { BuscadorParams, BuscadorService } from 'src/app/buscador-pwa/services/buscador.service';
 import { BottomMenuService } from 'src/app/transversales/services/bottom-menu/bottom-menu.service';
 import { HeaderService } from 'src/app/transversales/services/header-service/header.service';
 import { SidenavService } from 'src/app/transversales/services/sidenav-service/sidenav-service.service';
-import { ItemsBuscador } from 'src/variables-globales/items-buscador';
 import { CategoriasInterface } from '../../models/categorias-interface';
 import { CategoriasService } from '../../services/categorias.service';
 
@@ -189,7 +187,7 @@ export class MomentosDeVidaComponent implements OnInit, AfterViewInit {
   // inncesariamente.
   ngAfterViewInit(): void {
     setTimeout(() => {
-      let buscadorNoticias: NodeListOf<HTMLElement> = (document.querySelectorAll("[href='/noticias/']") as NodeListOf<HTMLElement>);
+      let buscadorNoticias: NodeListOf<HTMLElement> = document.querySelectorAll("[href='/noticias/']");
       buscadorNoticias.forEach((etiqueta_a) => {
         etiqueta_a.addEventListener('click', () => {
           this.router.navigate(['/noticias']);

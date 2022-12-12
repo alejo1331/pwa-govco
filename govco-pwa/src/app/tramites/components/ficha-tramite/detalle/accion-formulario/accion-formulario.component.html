@@ -20,15 +20,13 @@
               </thead>
               <tbody>
                 <tr>
-                  <td width="70">
+                  <td style="width:'70';">
                     <p class="nombredocumento">
-
                       <a *ngIf="item.FormularioUrl" (click)="validateUrl(item.FormularioUrl, $event)" target="_blank">
                         Transaccional
                         <img class="iconodisponible" src="assets/icon-fichatramite/transaccional.svg"
                           alt="transaccional">
                       </a>
-
                       <a *ngIf="item.FormularioUrlDescarga" [href]="item.FormularioUrlDescarga"
                         (click)="validateUrl(item.FormularioUrlDescarga, $event)">
                         Descargar
@@ -36,13 +34,13 @@
                       </a>
                     </p>
                   </td>
-                  <td width="70" *ngIf="item.FormularioAnotacion">
+                  <td style="width:'70';" *ngIf="item.FormularioAnotacion">
                     <p class="anotacion-adional">
                       {{item.FormularioAnotacion}}
                     </p>
                   </td>
                   <td *ngIf="tramite && tramite.Tipotramite!= 'Realizar trámite en línea' && accion.AccCondPtoAtencions"
-                    width="70">
+                    style="width:'70';">
                     <p class="nombredocumento" *ngIf="tramite && tramite.Tipotramite!= 'Realizar trámite en línea'">
                       <a class="texto-presencial"
                         (click)="getPuntosAtencion(tramite.IdTramite, accion.Orden, accion.AccionCondicionId)">
@@ -54,10 +52,7 @@
               </tbody>
             </ng-container>
           </table>
-
         </div>
-
-
       </div>
     </div>
   </div>

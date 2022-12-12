@@ -71,7 +71,7 @@ export class QuintoItemAcordeonComponent implements OnInit {
     this.selectedItemsListUrls = [];
     this.selectedItemsListNames = [];
     for (const norma of normas) {
-      if (norma.checked==true) {
+      if (norma.checked) {
         this.selectedItemsListUrls.push(norma.value);
         this.selectedItemsListNames.push(norma.name);
       }
