@@ -7,7 +7,8 @@
         <a *ngIf="caracteresCategoria" class="contenido-expandido">{{nombreExpanded}}</a>
     </div>
     <div class="container-boton">
-        <app-boton *ngIf="data.Tipotramite === 'En línea'" (click)="validarUrlService.validateUrl(urlBoton)">{{textoBoton}}</app-boton>
+        <app-boton *ngIf="data.Tipotramite === 'En línea'" (click)="validarUrlService.validateUrl(urlBoton)">
+            {{textoBoton}}</app-boton>
         <app-boton *ngIf="data.Tipotramite !== 'En línea'" (click)="abrirPuntosAtencionClic()">{{textoBoton}}
         </app-boton>
     </div>
@@ -36,7 +37,7 @@
             </div>
             <div class="container-text-detalle">
                 <p class="tramite-type">
-                    Tiene costo?
+                    ¿Tiene costo?
                 </p>
                 <p class="tramite-type-detalle">
                     {{infoDescripcionTramite?.Costo | titlecase}}
@@ -66,7 +67,7 @@
             </div>
             <div class="container-text-detalle">
                 <p class="tramite-type">
-                    Cuándo hacerlo?
+                    ¿Cuándo hacerlo?
                 </p>
                 <p *ngIf="showBotonFechas" class="tramite-type-detalle">
                     <a tabindex="0" class="enlace-fechas" (click)="getFechas()">Ver fechas</a>
