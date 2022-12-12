@@ -176,10 +176,12 @@ export class MomentosDeVidaComponent implements OnInit, AfterViewInit {
   }
 
   @HostListener('click', ['$event']) onClick(event: Event) {
-    var seccionCiuu = (document.getElementsByClassName('enlace-ciiu') as HTMLCollectionOf<HTMLElement>)[0];
-    var clicSeccionCiuu = (seccionCiuu.getElementsByTagName('a'))[0];
-    clicSeccionCiuu.target = "_self"
-    clicSeccionCiuu.href = '/ficha-tramites-y-servicios/codigos-ciiu-y-tramites';
+    const seccionCiuu = (document.getElementsByClassName('enlace-ciiu') as HTMLCollectionOf<HTMLElement>)[0];
+    if (seccionCiuu) {
+      let clicSeccionCiuu = (seccionCiuu.getElementsByTagName('a'))[0];
+      clicSeccionCiuu.target = "_self"
+      clicSeccionCiuu.href = '/ficha-tramites-y-servicios/codigos-ciiu-y-tramites';
+    }
   }
 
   // Esta seccion es provisional pues realiza un cambio de href por router.navigate para la webcomponent

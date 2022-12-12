@@ -15,7 +15,7 @@ export class ServiciosHomeComponent implements OnInit {
   anteriorUrl:any;
   itemSelected:number;
   urlItems = [
-    "https://www.gov.co/home/",
+    "/",
     "https://carpetaciudadana.and.gov.co/",
     "/ficha-tramites-y-servicios/codigos-ciiu-y-tramites"
   ];
@@ -49,6 +49,7 @@ export class ServiciosHomeComponent implements OnInit {
     this.itemSelected = dataItem;
     this.appService.setSelectedServiceOption(this.itemSelected);
     let url = this.urlItems[this.itemSelected];
+    console.log('url', url)
     setTimeout(() => {
         window.open(url, target);
     }, 100);
