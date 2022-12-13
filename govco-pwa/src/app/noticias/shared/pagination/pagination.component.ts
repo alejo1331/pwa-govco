@@ -61,8 +61,8 @@ export class PaginationComponent implements OnInit, OnChanges {
     let minPage: number = 0;
     let maxPage: number = this.totalPages>4?4:this.totalPages-1;
     this.pages = new Array(6);
-    let minPage = this.totalPages - 6;
-    let maxPage = this.totalPages - 1;
+    minPage = this.totalPages - 6;
+    maxPage = this.totalPages - 1;
     for (let i = minPage; i <= maxPage; i++) {
       let pos:any = i == minPage ? 1 : i + 1;
       pos = i == minPage + 1 ? -1 : pos;
