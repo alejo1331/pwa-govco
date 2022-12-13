@@ -12,26 +12,27 @@
         </div>
     </div>
     <div class="container contenedor-seccion-conocenos my-5 " *ngIf="loadData">
-        <div class="contenido-seccion">
+        <div class="contenido-seccion" *ngIf="dataNosotrosV2.data.seccionUno.estado">
             <div class="contenedor-contenidos col-lg-6 col-sm-12">
-                <div tabindex="0" *ngIf="dataNosotros.data.seccionUno.estado">
-                    <h3 class="titulo-conocenos">{{dataNosotros.data.seccionUno.titulo}}</h3>
+                <div tabindex="0">
+                    <h3 class="titulo-conocenos">{{dataNosotrosV2.data.seccionUno.tituloUno}}</h3>
                     <div class="descripcion-conocenos">
                         <span class="nosotros-template-span"
-                            [innerHtml]="dataNosotros.data.seccionUno.descripcion"></span>
+                            [innerHtml]="dataNosotrosV2.data.seccionUno.descripcionUno"></span>
                     </div>
                 </div>
-                <div class="mt-5" tabindex="0" *ngIf="dataNosotros.data.seccionDos.estado">
-                    <h3 class="titulo-conocenos">{{dataNosotros.data.seccionDos.titulo}}</h3>
+                <div class="mt-5" tabindex="0">
+                    <h3 class="titulo-conocenos">{{dataNosotrosV2.data.seccionUno.tituloDos}}</h3>
                     <div class="descripcion-conocenos">
                         <span class="nosotros-template-span"
-                            [innerHtml]="dataNosotros.data.seccionDos.descripcion"></span>
+                            [innerHtml]="dataNosotrosV2.data.seccionUno.descripcionDos"></span>
                     </div>
                 </div>
             </div>
             <div class="contenedor-multimedia col-lg-6 col-sm-12" tabindex="0">
                 <div class="contenido-imagen-conocenos mt-5">
-                    <img [src]="dataNosotros.data.seccionUnoImagen.urlImagen" alt="Imagen decorativa">
+                    <img [src]="dataNosotrosV2.data.seccionUno.recursoAudiovisual.url"
+                    alt={{dataNosotrosV2.data.seccionUno.recursoAudiovisual.alt}}>
                 </div>
             </div>
         </div>
@@ -39,26 +40,26 @@
     <div class="contenedor-seccion-ciudadanos" *ngIf="loadData">
         <div class="container contenido-seccion py-5">
             <div class="col-sm-12 col-lg-6">
-                <div *ngIf="dataNosotros.data.seccionTres.estado">
-                    <h3 class="titulo-conocenos" tabindex="0">{{dataNosotros.data.seccionTres.titulo}}</h3>
+                <div *ngIf="dataNosotrosV2.data.seccionDos.estado">
+                    <h3 class="titulo-conocenos" tabindex="0">{{dataNosotrosV2.data.seccionDos.titulo}}</h3>
                     <div class="contenedor-logo-govco">
                         <img src="https://govco-prod-webutils.s3.amazonaws.com/uploads/2022-05-18/7ea5dcda-924d-4a88-a45e-aed9d0e67cf6-Logo_Govco_Azul.svg"
                             alt="Icono gov.co">
                     </div>
                 </div>
                 <div class="contenedor-imagen-ciudadanos" tabindex="0">
-                    <img [src]="dataNosotros.data.seccionTres.urlImagen" alt="Imagen decorativa">
+                    <img [src]="dataNosotrosV2.data.seccionDos.urlImagen"
+                    alt={{dataNosotrosV2.data.seccionDos.altImagen}}>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-12 col-lg-6">
-                    <div class="tarjeta-ciudadanos" *ngFor="let dato of dataNosotros.data.seccionCuatro.items">
-                        <div class="contenido-tarjeta" tabindex="0" *ngIf="dato.estado">
+                    <div class="tarjeta-ciudadanos" *ngFor="let dato of dataNosotrosV2.data.seccionDos.tarjetas">
+                        <div class="contenido-tarjeta" tabindex="0" *ngIf="dato.titulo">
                             <h3 class="titulos-tarjeta">{{dato.titulo}}</h3>
                             <div class="descripcion-tarjeta descripcion-seccion">
                                 <span class="nosotros-template-span" [innerHtml]="dato.descripcion"></span>
                             </div>
-                            <a *ngIf="dato.url !=''" class="enlace-tarjeta" [href]="dato.url">{{dato.urlTexto}}</a>
                         </div>
                     </div>
                 </div>
@@ -66,15 +67,15 @@
         </div>
     </div>
     <div *ngIf="loadData">
-        <div class="container my-5" *ngIf="dataNosotros.data.seccionCinco.estado">
+        <div class="container my-5" *ngIf="dataNosotrosV2.data.seccionTres.estado">
             <div class="text-center titulo-protagonista mx-lg-5" tabindex="0"
-                [innerHtml]="dataNosotros.data.seccionCinco.titulo"></div>
+                [innerHtml]="dataNosotrosV2.data.seccionTres.titulo"></div>
 
             <div class="row mt-3">
-                <div class="col-sm-12 col-md-12 col-lg-3" *ngFor="let dato of dataNosotros.data.seccionCinco.items">
+                <div class="col-sm-12 col-md-12 col-lg-3" *ngFor="let dato of dataNosotrosV2.data.seccionTres.fichasInformativas">
                     <div class="tarjeta-protagonista" tabindex="0">
                         <div class="icono-protagonista">
-                            <img [src]="dato.urlImagen" class="filter-white my-4" alt="Icono decorativo">
+                            <img [src]="dato.urlIcono" class="filter-white my-4" alt={{dato.altIcono}}>
                         </div>
                         <h4>{{dato.titulo}}</h4>
                         <div class="descripcion-tarjeta">

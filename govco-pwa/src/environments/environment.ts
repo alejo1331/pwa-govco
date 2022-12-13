@@ -17,14 +17,14 @@ export const environment = {
   //Nosotros
   serverUrlHomeSNosotros: 'https://preapi-interno.www.gov.co/api/home',
   //Transversales
-  urlApiFooter: 'https://preapi-interno.www.gov.co/api/cross',
+  urlApiFooter: 'http://3.237.183.133:8091/api',
   //Noticias o Actualidad
   apiNoticiasDetalle: 'https://preapi-interno.www.gov.co/api/noticias/',
   serverCategoriaSubcategoriaUrl:
     'https://preapi-interno.www.gov.co/api/categorias-subcategorias/',
   codNoticias: 'actualidadprincipal',
   codParticipa: 'participacion',
-  codSobreNosotros: 'sobrenosotros',
+  codSobreNosotros: 'sobre-nosotros',
   codEntidades: 'servicios-para-entidades',
   //Entidades
   serverIntegracion:
