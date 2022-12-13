@@ -72,8 +72,9 @@ export class BarraSuperiorComponent implements OnInit {
   }
 
   onFocusLogo() {
-    this.estadoFocusFiltro === true ?
-      this.buscadorPrefiltrado.inputBuscador.nativeElement.focus() : null;
+    if (this.estadoFocusFiltro) {
+      this.buscadorPrefiltrado.inputBuscador.nativeElement.focus()
+    }
   }
 
 }

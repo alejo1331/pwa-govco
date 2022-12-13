@@ -1,4 +1,3 @@
-import { from } from 'rxjs';
 import { Pregunta } from './pregunta';
 import { Tramite } from './tramite';
 

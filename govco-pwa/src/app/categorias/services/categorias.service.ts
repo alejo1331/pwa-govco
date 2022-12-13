@@ -24,12 +24,7 @@ export class CategoriasService {
     return this.http.get<CategoriasInterface[]>(`${this.urlcategorias}Categorias/Categorias/TipoCategoria/${this.parametroMomentos}`)
       .pipe(
         catchError(error => {
-          if (error.error instanceof ErrorEvent) {
-            this.errorMsg = `Error: ${error.error.message}`
-          }else {
-            this.errorMsg = this.getServerErrorMessage(error)
-          }
-          return throwError(this.errorMsg)
+          return this.errorMensaje(error);
         })
       );
   }
@@ -38,12 +33,7 @@ export class CategoriasService {
     return this.http.get<CategoriasInterface[]>(`${this.urlcategorias}CategoriasSubcategorias/Categoria/${id}`)
     .pipe(
       catchError(error => {
-        if (error.error instanceof ErrorEvent) {
-          this.errorMsg = `Error: ${error.error.message}`
-        }else {
-          this.errorMsg = this.getServerErrorMessage(error)
-        }
-        return throwError(this.errorMsg)
+        return this.errorMensaje(error);
       })
     );
   }
@@ -53,16 +43,19 @@ export class CategoriasService {
     return this.http.get<Momentos>(`${this.url_apiCross}cross/ObtenerTituloPagina`, { params })
     .pipe(
       catchError(error => {
-        if (error.error instanceof ErrorEvent) {
-          this.errorMsg = `Error: ${error.error.message}`
-        }else {
-          this.errorMsg = this.getServerErrorMessage(error)
-        }
-        return throwError(this.errorMsg)
+        return this.errorMensaje(error);
       })
     );
   }
 
+  private errorMensaje(error:any) {
+    if (error.error instanceof ErrorEvent) {
+      this.errorMsg = `Error: ${error.error.message}`
+    } else {
+      this.errorMsg = this.getServerErrorMessage(error)
+    }
+    return throwError(this.errorMsg)
+  }
 
   private getServerErrorMessage(error: HttpErrorResponse): string {
     switch (error.status) {

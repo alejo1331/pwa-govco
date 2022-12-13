@@ -1,6 +1,6 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { dialogModal } from '../../../../models/dialogModal';
+import { DialogModal } from '../../../../models/dialogModal';
 
 @Component({
   selector: 'app-confirm-modal',
@@ -10,7 +10,7 @@ import { dialogModal } from '../../../../models/dialogModal';
 })
 export class ConfirmModalComponent {
 
-  public options: dialogModal[];
+  public options: DialogModal[];
   public text: string;
   public title: string;
   public classes: any;
@@ -25,7 +25,7 @@ export class ConfirmModalComponent {
     }
   }
 
-  public setDialogInfo(title: string, text: string, type: string, showDismiss: boolean, options?: dialogModal[]) {
+  public setDialogInfo(title: string, text: string, type: string, showDismiss: boolean, options?: DialogModal[]) {
     this.title = title;
     this.text = text;
     this.options = options!;

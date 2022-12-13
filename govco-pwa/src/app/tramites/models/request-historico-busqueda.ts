@@ -1,3 +1,3 @@
-export class requestHistoricoBusqueda {
+export class RequestHistoricoBusqueda {
     texto: string;
 }

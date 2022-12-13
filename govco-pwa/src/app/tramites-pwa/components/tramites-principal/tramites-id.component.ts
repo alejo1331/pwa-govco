@@ -3,7 +3,7 @@ import { BottomMenuService } from 'src/app/transversales/services/bottom-menu/bo
 import { HeaderService } from 'src/app/transversales/services/header-service/header.service';
 import { SidenavService } from 'src/app/transversales/services/sidenav-service/sidenav-service.service';
 import { TramitesPorIdService } from '../../services/tramites-por-id-service/tramites-por-id.service';
-import { TipoEnlace, TipoAudiencia, informacionFicha } from '../../models/tramites-id-models/tramites-por-id-interface';
+import { TipoEnlace, TipoAudiencia, InformacionFicha } from '../../models/tramites-id-models/tramites-por-id-interface';
 import { DataBasicaPuntosInterface } from '../../models/puntos-de-atencion/data-basica-puntos-interface';
 import { AppService } from 'src/app/app.service';
 
@@ -15,7 +15,7 @@ import { AppService } from 'src/app/app.service';
 export class TramitesIdComponent implements OnInit {
   @ViewChild('seccionTramitesId') seccionTramitesId: ElementRef;
   @ViewChild('seccionPuntoAtencion') seccionPuntoAtencion: ElementRef;
-  @Input() informacionFicha: informacionFicha;
+  @Input() informacionFicha: InformacionFicha;
 
   botonAtras: { url: string, tipoNavegacion: string };
   dataPuntosAtencion: DataBasicaPuntosInterface
@@ -42,9 +42,7 @@ export class TramitesIdComponent implements OnInit {
 
   ) {
     this.fichaTramiteService.abrirPuntosAtencion.subscribe(
-      async (data: DataBasicaPuntosInterface) => {
-        await this.abrirPuntosAtencion(data);
-      }
+      (data: DataBasicaPuntosInterface) => this.abrirPuntosAtencion(data)
     );
     this.previousUrl = appService.previousUrl;
   }
@@ -90,7 +88,7 @@ export class TramitesIdComponent implements OnInit {
     this.urlPage = window.location.href;
   }
 
-  private async cargarInformacionFicha(dataTramite: informacionFicha) {
+  private async cargarInformacionFicha(dataTramite: InformacionFicha) {
 
     this.fichaTramiteService
       .GetTipoTramiteFichaEspecificaById(String(dataTramite.id))
@@ -117,20 +115,12 @@ export class TramitesIdComponent implements OnInit {
           // Obtiene la URL de trámite en linea
           this.fichaTramiteService.GetBarraProcesoTramite(String(dataTramite.id)).subscribe((res) => {
             if (res.urlTramite != undefined) {
-              if (res.urlTramite.match(/^https?:/)) {
-                this.infoBasicaTramite.UrlTramiteEnLinea = res.urlTramite
-              } else {
-                if (res.urlTramite.includes('embebido') && res.urlTramite.includes('tramites-y-servicios')) {
-                  this.infoBasicaTramite.UrlTramiteEnLinea = res.urlTramite;
-                } else {
-                  this.infoBasicaTramite.UrlTramiteEnLinea = res.urlTramite;
-                }
-              }
+              this.infoBasicaTramite.UrlTramiteEnLinea = res.urlTramite;
               this.infoBasicaTramite.EnLinea = res.isEnlinea;
             }
           },
             (error) => {
-              console.log('error', error); this.activarTramitesId = true;
+              console.log('error', error), (this.activarTramitesId = true);
             }, () => {
               this.activarTramitesId = true;
             }
@@ -184,10 +174,18 @@ export class TramitesIdComponent implements OnInit {
     let botonRetroalimentacion: HTMLElement = (
       document.querySelector('app-boton-retroalimentacion .button-container') as HTMLElement
     );
-    botonRetroalimentacion.style.opacity = estado == 'ocultar' ? '0' : '1';
-    estado == 'ocultar' ? null : botonRetroalimentacion.style.zIndex = '7';
+    if (estado == 'ocultar') {
+      botonRetroalimentacion.style.opacity = '0';
+    } else {
+      botonRetroalimentacion.style.opacity = '1';
+      botonRetroalimentacion.style.zIndex = '7';
+    }
     botonRetroalimentacion.addEventListener('transitionend', () => {
-      botonRetroalimentacion.style.zIndex = estado == 'mostrar' ? '7' : '-1';
+      if (estado == 'mostrar') {
+        botonRetroalimentacion.style.zIndex = '7';
+      } else {
+        botonRetroalimentacion.style.zIndex = '-1';
+      }
     });
   }
 }

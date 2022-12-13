@@ -2,16 +2,16 @@ import { Injectable } from '@angular/core';
 
 //Client
 import { HttpClient, HttpHeaders } from '@angular/common/http'
-import { from, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 
 //Models
 import { Departamento } from '../models/departamento';
 import { Municipio } from '../models/municipio';
 import { CodigoCIIU } from '../models/codigo-ciiu';
 import { environment } from 'src/environments/environment';
-import { requestCodigo } from '../models/request-codigociiu';
-import { requestHistoricoBusqueda } from '../models/request-historico-busqueda';
-import { responseCodigoPaginated } from '../models/response-codigo-paginated';
+import { RequestCodigo } from '../models/request-codigociiu';
+import { RequestHistoricoBusqueda } from '../models/request-historico-busqueda';
+import { ResponseCodigoPaginated } from '../models/response-codigo-paginated';
 import { PageRequestTramite } from '../models/page-request-tramite';
 import { CIIUTramite } from '../models/ciiutramite';
 import { Response } from '../models/response';
@@ -49,11 +49,11 @@ export class BackendApiService {
     return this.http.get<CodigoCIIU[]>( this.restUrl+"codigoCIIU/ObtenerActividadesEconomicas/"+filtro);
   }
 
-  getCodigosCIIUValidadosPorTramite(requestCod: requestCodigo): Observable<responseCodigoPaginated>{
-    return this.http.post<responseCodigoPaginated>(this.restUrl+"codigoCIIU/ObtenerActividadesEconomicas/requestCodigo",requestCod, this.httpOptions);
+  getCodigosCIIUValidadosPorTramite(requestCod: RequestCodigo): Observable<ResponseCodigoPaginated>{
+    return this.http.post<ResponseCodigoPaginated>(this.restUrl+"codigoCIIU/ObtenerActividadesEconomicas/requestCodigo",requestCod, this.httpOptions);
   }
 
-  insertarHistoricoDeBusquedaCIIU(request: requestHistoricoBusqueda){
+  insertarHistoricoDeBusquedaCIIU(request: RequestHistoricoBusqueda){
     return this.http.post(this.auditoriUrl+"BuscadorCIIU/HistoricoBusqueda",request,{responseType: 'text'});
   }
 

@@ -65,7 +65,7 @@ export class ModalPrefiltradoComponent implements OnInit {
 
   onKeyDown(event: KeyboardEvent) {
     if (event.key == 'Tab') {
-      if (this.reiniciarFocus == true) {
+      if (this.reiniciarFocus) {
         this.focusBuscador();
       }
     } else if (event.key == 'Escape') {

@@ -44,9 +44,6 @@
             </p>
           </div>
           <div class="contenedor-enlace-entidades">
-            <!-- <a class="enlace-entidades" href="/buscador/?ver=Entidades">
-              <i class="fa fa-search mx-2" aria-hidden="true"></i>{{rama.buscarTexto}}
-            </a> -->
             <a class="enlace-entidades" (click)="abrirBuscadorPWA()">
               <i class="fa fa-search mx-2" aria-hidden="true"></i>{{rama.buscarTexto}}
             </a>
@@ -134,11 +131,6 @@
         <div class="icono">
           <i class="fa fa-search mx-2" aria-hidden="true"></i>
         </div>
-        <!-- <div class="texto">
-          ¿Estas buscando una entidad? Usa <a class="enlace" href="/buscador/?ver=Entidades"
-            aria-label="Ventana Emergente ¿Estas buscando una entidad? Usa nuestro buscador para encontrar lo que necesitas.">nuestro
-            buscador</a> para encontrar lo que necesitas.
-        </div> -->
         <div class="texto">
           ¿Estas buscando una entidad? Usa <a class="enlace" (click)="abrirBuscadorPWA()"
             aria-label="Ventana Emergente ¿Estas buscando una entidad? Usa nuestro buscador para encontrar lo que necesitas.">nuestro

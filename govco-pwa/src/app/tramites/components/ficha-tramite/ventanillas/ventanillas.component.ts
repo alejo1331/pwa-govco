@@ -6,10 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./ventanillas.component.scss']
 })
 export class VentanillasComponent {
-
-  constructor() { }
-
   url = '/ventanillas-unicas'
   titulo = 'Ventanillas Únicas Digitales'
-
 }
