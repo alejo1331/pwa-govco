@@ -1,4 +1,4 @@
-export class requestCodigo {
+export class RequestCodigo {
     IdDepartamento: string;
     IdMunicipio: string;
     filtro: string;

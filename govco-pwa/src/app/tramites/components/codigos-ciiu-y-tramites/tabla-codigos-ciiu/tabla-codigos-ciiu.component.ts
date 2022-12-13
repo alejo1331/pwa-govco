@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { LoadingService } from '../../../services/loading.service';
-import { requestCodigo } from '../../../models/request-codigociiu';
-import { responseCodigoPaginated } from '../../../models/response-codigo-paginated';
+import { RequestCodigo } from '../../../models/request-codigociiu';
+import { ResponseCodigoPaginated } from '../../../models/response-codigo-paginated';
 import { CodigoCIIU } from '../../../models/codigo-ciiu';
 import { BackendApiService } from '../../../services/backend-api.service';
 
@@ -53,7 +53,7 @@ export class TablaCodigosCiiuComponent implements OnInit {
   public onPaginatorChange(number: any) {
     this.page = number;
     this.pagina = number.toString();
-    let request = new requestCodigo();
+    let request = new RequestCodigo();
     request.IdDepartamento = this.DepartamentoSeleccionado;
     request.IdMunicipio = this.MunicipioSeleccionado;
     request.filtro = this.filtroBusqueda;
@@ -65,8 +65,8 @@ export class TablaCodigosCiiuComponent implements OnInit {
     this.loadingService.startLoading();
   }
 
-  cargarActividadesValidadasPromise(val: requestCodigo) {
-    let promise = new Promise<responseCodigoPaginated>((resolve, reject) => {
+  cargarActividadesValidadasPromise(val: RequestCodigo) {
+    let promise = new Promise<ResponseCodigoPaginated>((resolve, reject) => {
       this.service
         .getCodigosCIIUValidadosPorTramite(val)
         .toPromise()
@@ -138,7 +138,7 @@ export class TablaCodigosCiiuComponent implements OnInit {
     } else {
       this.desc = false;
     }
-    let request = new requestCodigo();
+    let request = new RequestCodigo();
     request.IdDepartamento = this.DepartamentoSeleccionado;
     request.IdMunicipio = this.MunicipioSeleccionado;
     request.filtro = this.filtroBusqueda;

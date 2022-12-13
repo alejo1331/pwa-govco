@@ -248,7 +248,7 @@ export class GeolocalizacionFormularioComponent implements OnInit, AfterViewInit
   }
 
   @HostListener('window:keyup', ['$event']) onTab(event: KeyboardEvent) {
-    if (this.reiniciarFocus == true) {
+    if (this.reiniciarFocus) {
       this.focus();
     }
 

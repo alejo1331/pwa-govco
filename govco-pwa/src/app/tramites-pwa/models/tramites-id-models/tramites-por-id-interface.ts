@@ -2,7 +2,7 @@ export class TipoFichaTramite {
     message: string;
     StatusCode: string;
 }
-export class informacionFicha {
+export class InformacionFicha {
     id: number;
     tipo: string | null;
     prefijo: string

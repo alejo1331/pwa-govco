@@ -45,22 +45,21 @@ export class PaginationComponent implements OnInit, OnChanges {
   }
 
   calculatePagesDesktop(){
-    let minPage: number = 0;
-    let maxPage: number = this.totalPages>4?4:this.totalPages-1;
-    let index: number = 0;
-
     if (this.totalPages > 4 && this.page > 2 && (this.page + 2) > (this.totalPages - 1)) {
-      this.calculatePagesDesktopCaso1(minPage, maxPage, index);
+      this.calculatePagesDesktopCaso1();
     } else if (this.totalPages > 4 && this.page > 2) {
-      this.calculatePagesDesktopCaso2(minPage, maxPage, index);
+      this.calculatePagesDesktopCaso2();
     } else if (this.totalPages > 4) {
-      this.calculatePagesDesktopCaso3(minPage, maxPage, index);
+      this.calculatePagesDesktopCaso3();
     } else {
-      this.calculatePagesDesktopCaso4(minPage, maxPage, index);
+      this.calculatePagesDesktopCaso4();
     }
   }
 
-  calculatePagesDesktopCaso1(minPage:number, maxPage:number, index:number) {
+  calculatePagesDesktopCaso1() {
+    let index: number = 0;
+    let minPage: number = 0;
+    let maxPage: number = this.totalPages>4?4:this.totalPages-1;
     this.pages = new Array(6);
     minPage = this.totalPages - 6;
     maxPage = this.totalPages - 1;
@@ -72,7 +71,10 @@ export class PaginationComponent implements OnInit, OnChanges {
     }
   }
 
-  calculatePagesDesktopCaso2(minPage:number, maxPage:number, index:number) {
+  calculatePagesDesktopCaso2() {
+    let index: number = 0;
+    let minPage: number = 0;
+    let maxPage: number = this.totalPages>4?4:this.totalPages-1;
     this.pages = new Array(7);
     minPage = this.page - 3;
     maxPage = this.page + 3;
@@ -86,7 +88,10 @@ export class PaginationComponent implements OnInit, OnChanges {
     }
   }
 
-  calculatePagesDesktopCaso3(minPage:number, maxPage:number, index:number) {
+  calculatePagesDesktopCaso3() {
+    let index: number = 0;
+    let minPage: number = 0;
+    let maxPage: number = this.totalPages>4?4:this.totalPages-1;
     this.pages = new Array(6);
     maxPage = 5;
     for (let i = minPage; i <= maxPage; i++) {
@@ -97,7 +102,10 @@ export class PaginationComponent implements OnInit, OnChanges {
     }
   }
 
-  calculatePagesDesktopCaso4(minPage:number, maxPage:number, index:number) {
+  calculatePagesDesktopCaso4() {
+    let index: number = 0;
+    let minPage: number = 0;
+    let maxPage: number = this.totalPages>4?4:this.totalPages-1;
     this.pages = new Array(this.totalPages);
     maxPage = this.totalPages - 1;
     for (let i = minPage; i <= maxPage; i++) {

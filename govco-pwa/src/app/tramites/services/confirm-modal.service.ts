@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ConfirmModalComponent } from '../components/detalle-consulta-ciiu/components/confirm-modal/confirm-modal.component';
-import { dialogModal } from '../models/dialogModal';
+import { DialogModal } from '../models/dialogModal';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ export class ConfirmModalService {
   constructor(private modalService: NgbModal) { }
 
   //Genera un modal de acuerdo con las opciones definidas por su implementación 
-  openDialogCustom(title: string, text: string,  options: dialogModal[], type: string, showDismissButton?: boolean, sizeModal?: 'sm' | 'lg' | 'xl' ){
+  openDialogCustom(title: string, text: string,  options: DialogModal[], type: string, showDismissButton?: boolean, sizeModal?: 'sm' | 'lg' | 'xl' ){
     let modalOpen = this.modalService.open(ConfirmModalComponent, { 
       backdrop: "static",
       keyboard: false,

@@ -3,7 +3,7 @@ import { BottomMenuService } from 'src/app/transversales/services/bottom-menu/bo
 import { HeaderService } from 'src/app/transversales/services/header-service/header.service';
 import { SidenavService } from 'src/app/transversales/services/sidenav-service/sidenav-service.service';
 import { TramitesPorIdService } from '../../services/tramites-por-id-service/tramites-por-id.service';
-import { TipoEnlace, TipoAudiencia, informacionFicha } from '../../models/tramites-id-models/tramites-por-id-interface';
+import { TipoEnlace, TipoAudiencia, InformacionFicha } from '../../models/tramites-id-models/tramites-por-id-interface';
 import { DataBasicaPuntosInterface } from '../../models/puntos-de-atencion/data-basica-puntos-interface';
 import { AppService } from 'src/app/app.service';
 
@@ -15,7 +15,7 @@ import { AppService } from 'src/app/app.service';
 export class TramitesIdComponent implements OnInit {
   @ViewChild('seccionTramitesId') seccionTramitesId: ElementRef;
   @ViewChild('seccionPuntoAtencion') seccionPuntoAtencion: ElementRef;
-  @Input() informacionFicha: informacionFicha;
+  @Input() informacionFicha: InformacionFicha;
 
   botonAtras: { url: string, tipoNavegacion: string };
   dataPuntosAtencion: DataBasicaPuntosInterface
@@ -88,7 +88,7 @@ export class TramitesIdComponent implements OnInit {
     this.urlPage = window.location.href;
   }
 
-  private async cargarInformacionFicha(dataTramite: informacionFicha) {
+  private async cargarInformacionFicha(dataTramite: InformacionFicha) {
 
     this.fichaTramiteService
       .GetTipoTramiteFichaEspecificaById(String(dataTramite.id))
@@ -174,10 +174,18 @@ export class TramitesIdComponent implements OnInit {
     let botonRetroalimentacion: HTMLElement = (
       document.querySelector('app-boton-retroalimentacion .button-container') as HTMLElement
     );
-    estado == 'ocultar' ? botonRetroalimentacion.style.opacity = '0'
-      : botonRetroalimentacion.style.opacity = '1', botonRetroalimentacion.style.zIndex = '7';
+    if (estado == 'ocultar') {
+      botonRetroalimentacion.style.opacity = '0';
+    } else {
+      botonRetroalimentacion.style.opacity = '1';
+      botonRetroalimentacion.style.zIndex = '7';
+    }
     botonRetroalimentacion.addEventListener('transitionend', () => {
-      estado == 'mostrar' ? botonRetroalimentacion.style.zIndex = '7' : botonRetroalimentacion.style.zIndex = '-1';
+      if (estado == 'mostrar') {
+        botonRetroalimentacion.style.zIndex = '7';
+      } else {
+        botonRetroalimentacion.style.zIndex = '-1';
+      }
     });
   }
 }

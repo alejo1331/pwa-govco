@@ -9,9 +9,9 @@ import { CodigoCIIU } from '../../../models/codigo-ciiu';
 import { Router } from '@angular/router';
 import { BackendApiService } from '../../../services/backend-api.service';
 import { LoadingService } from '../../../services/loading.service';
-import { requestCodigo } from '../../../models/request-codigociiu';
-import { requestHistoricoBusqueda } from '../../../models/request-historico-busqueda';
-import { responseCodigoPaginated } from '../../../models/response-codigo-paginated';
+import { RequestCodigo } from '../../../models/request-codigociiu';
+import { RequestHistoricoBusqueda } from '../../../models/request-historico-busqueda';
+import { ResponseCodigoPaginated } from '../../../models/response-codigo-paginated';
 import { Options } from 'select2';
 
 @Component({
@@ -192,8 +192,8 @@ export class BusquedaCodigosCiiuComponent implements OnInit {
     return promise;
   }
 
-  cargarActividadesValidadasPromise(val: requestCodigo) {
-    let promise = new Promise<responseCodigoPaginated>((resolve, reject) => {
+  cargarActividadesValidadasPromise(val: RequestCodigo) {
+    let promise = new Promise<ResponseCodigoPaginated>((resolve, reject) => {
       this.service
         .getCodigosCIIUValidadosPorTramite(val)
         .toPromise()
@@ -223,7 +223,7 @@ export class BusquedaCodigosCiiuComponent implements OnInit {
     return promise;
   }
 
-  insertarHistoricoPromise(historico: requestHistoricoBusqueda) {
+  insertarHistoricoPromise(historico: RequestHistoricoBusqueda) {
     new Promise((resolve, reject) => {
       this.service
         .insertarHistoricoDeBusquedaCIIU(historico)
@@ -238,22 +238,22 @@ export class BusquedaCodigosCiiuComponent implements OnInit {
     return await Promise.resolve(this.cargarActividadesBuscadorPromise(filtro));
   }
 
-  async cargarActividadesValidadasAsync(request: requestCodigo) {
+  async cargarActividadesValidadasAsync(request: RequestCodigo) {
     return await Promise.resolve(
       this.cargarActividadesValidadasPromise(request)
     );
   }
 
-  async insertarHistoricoAsync(historico: requestHistoricoBusqueda) {
+  async insertarHistoricoAsync(historico: RequestHistoricoBusqueda) {
     return await this.insertarHistoricoPromise(historico);
   }
 
   public renderizarTabla() {
     if (!(this.filtroBusqueda.length > 0)) return false;
     this.loadingService.startLoading();
-    let historico = new requestHistoricoBusqueda();
+    let historico = new RequestHistoricoBusqueda();
     historico.texto = this.filtroBusqueda;
-    let request = new requestCodigo();
+    let request = new RequestCodigo();
     request.IdDepartamento = this.DepartamentoSeleccionado;
     request.IdMunicipio = this.MunicipioSeleccionado;
     request.filtro = this.filtroBusqueda;
@@ -291,7 +291,7 @@ export class BusquedaCodigosCiiuComponent implements OnInit {
         { codigo: 25, nombre: 25 },
         { codigo: 50, nombre: 50 },
       ];
-    let request = new requestCodigo();
+    let request = new RequestCodigo();
     request.IdDepartamento = this.DepartamentoSeleccionado;
     request.IdMunicipio = this.MunicipioSeleccionado;
     request.filtro = this.filtroBusqueda;

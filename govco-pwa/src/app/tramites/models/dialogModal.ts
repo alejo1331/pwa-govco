@@ -1,5 +1,5 @@
 
-export interface dialogModal {
+export interface DialogModal {
     name: string;
 
     styleClass: string;
