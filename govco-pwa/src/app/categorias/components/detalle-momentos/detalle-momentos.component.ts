@@ -79,7 +79,7 @@ export class DetalleMomentosComponent implements OnInit, AfterViewInit {
       etiquetas_a.forEach((a) => {
         get_href = String(a.getAttribute('href'));
         if (get_href.indexOf(urlsLocal.fichaTramiteId) >= 0) {
-          const id = get_href!.replace(/[^0-9]+/g, "");
+          const id = get_href.replace(/[^0-9]+/g, "");
           a.addEventListener('click', () => {
             this.router.navigate([urlsLocal.fichaTramiteId + id]);
           });
