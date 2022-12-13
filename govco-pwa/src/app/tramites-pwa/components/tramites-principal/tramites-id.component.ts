@@ -120,8 +120,7 @@ export class TramitesIdComponent implements OnInit {
             }
           },
             (error) => {
-              console.log('error', error); 
-              this.activarTramitesId = true;
+              console.log('error', error), (this.activarTramitesId = true);
             }, () => {
               this.activarTramitesId = true;
             }
@@ -175,19 +174,10 @@ export class TramitesIdComponent implements OnInit {
     let botonRetroalimentacion: HTMLElement = (
       document.querySelector('app-boton-retroalimentacion .button-container') as HTMLElement
     );
-
-    if (estado == 'ocultar') {
-      botonRetroalimentacion.style.opacity = '0';
-    } else {
-      botonRetroalimentacion.style.opacity = '1'; 
-      botonRetroalimentacion.style.zIndex = '7';
-    }
+    estado == 'ocultar' ? botonRetroalimentacion.style.opacity = '0'
+      : botonRetroalimentacion.style.opacity = '1', botonRetroalimentacion.style.zIndex = '7';
     botonRetroalimentacion.addEventListener('transitionend', () => {
-      if (estado == 'mostrar') {
-        botonRetroalimentacion.style.zIndex = '7';
-      } else {
-        botonRetroalimentacion.style.zIndex = '-1';
-      }
+      estado == 'mostrar' ? botonRetroalimentacion.style.zIndex = '7' : botonRetroalimentacion.style.zIndex = '-1';
     });
   }
 }

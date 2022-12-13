@@ -4,7 +4,7 @@ import { Injectable } from "@angular/core";
 import { ConoceModel, NosotrosResponse } from "../models/conoce.model";
 import { Observable } from 'rxjs';
 import { SobreNosotrosModel } from '../models/sobre-nosotros.model';
-import { NosotrosModel } from '../models/nosotros.model';
+import { NosotrosModel, NosotrosModelV2 } from '../models/nosotros.model';
 
 @Injectable({
     providedIn: 'root'
@@ -27,10 +27,10 @@ export class SobreNosotrosService {
     }
 
     ObtenerSeccion(): Observable<SobreNosotrosModel> {
-        return this.http.get<SobreNosotrosModel>(`${this.urlHomeAdmin}/SobreNosotros/ObtenerSeccion`);
+        return this.http.get<SobreNosotrosModel>(`${this.urlHomeAdmin}/sobre-nosotros/ObtenerSeccion`);
     }
 
-    getInfoPaginaSobreNosotros(): Observable<NosotrosModel> {
-        return this.http.get<NosotrosModel>(`${this.urlHome}/SobreNosotros`);
+    getInfoPaginaSobreNosotros(): Observable<NosotrosModelV2> {
+        return this.http.get<NosotrosModelV2>(`${this.urlHome}/sobre-nosotros`);
       }
 }

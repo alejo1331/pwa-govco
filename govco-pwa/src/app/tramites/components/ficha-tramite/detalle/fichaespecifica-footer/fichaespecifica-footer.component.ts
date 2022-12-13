@@ -27,7 +27,15 @@ export class FichaespecificaFooterComponent implements OnInit {
 
   ngOnInit(): void {
     this.fichaTramiteService.GetBarraProcesoTramite(this.data.IdTramite).subscribe(res => {
-      this.urlTramite = res.urlTramite;
+      if (res.urlTramite.match(/^https?:/)) {
+        this.urlTramite = res.urlTramite;
+      } else {
+        if (res.urlTramite.includes("embebido") && res.urlTramite.includes("tramites-y-servicios")) {
+          this.urlTramite = res.urlTramite;
+        } else {
+          this.urlTramite = res.urlTramite;
+        }
+      }
       this.isEnLinea = res.isEnlinea;
     });
   }
@@ -53,14 +61,14 @@ export class FichaespecificaFooterComponent implements OnInit {
       // Success response
       response => {
         console.log(response);
-          this.showModal({tipo: 'puntos', data:  response});
+        this.showModal({ tipo: 'puntos', data: response });
       },
       // Failure response
       error => {
         console.error(error);
       },
     );
-   }
+  }
   getNormatividadById() {
     this.fichaTramiteService.GetNormatividadById(this.data.IdTramite).subscribe(
       // Success response
@@ -91,7 +99,7 @@ export class FichaespecificaFooterComponent implements OnInit {
   }
 
   openModalAlerta(entidad: string, url: string) {
-    const modalRef = this.modalService.open(ModalAlertasComponent, {centered: true, windowClass: 'modal-alerta-salida vw-100'});
+    const modalRef = this.modalService.open(ModalAlertasComponent, { centered: true, windowClass: 'modal-alerta-salida vw-100' });
     // tslint:disable-next-line: max-line-length
     modalRef.componentInstance.message = 'Estás ingresando al sitio de ' + entidad + ', con esta acción abrirás una nueva pestaña. ¡Te esperamos pronto!';
     modalRef.componentInstance.linkUrl = url;

@@ -39,7 +39,7 @@ export class BottomMenuComponent implements OnInit, OnDestroy {
         }
       }
     })
-    this.bottomMenuService.getOcultandoBottomMenu.subscribe(estado =>{
+    this.bottomMenuService.getOcultandoBottomMenu.subscribe(estado => {
       this.ocultar = estado
     })
   }
@@ -55,8 +55,13 @@ export class BottomMenuComponent implements OnInit, OnDestroy {
 
 
   clickBottomMenu(url: string) {
-    if ((document.getElementById('topScroll') as HTMLElement).scrollTop != 0 && window.location.pathname != '/ficha-tramites-y-servicios')
-      url = window.location.pathname != url ? (url == '/' ? window.location.pathname : url) : url;
+    if ((document.getElementById('topScroll') as HTMLElement).scrollTop != 0 && window.location.pathname != '/ficha-tramites-y-servicios') {
+      if (window.location.pathname != url) {
+        url = url == '/' ? window.location.pathname : url;
+      } else {
+        url = url
+      }
+    }
     if (window.location.pathname != url) {
       this.router.navigateByUrl(url);
     }

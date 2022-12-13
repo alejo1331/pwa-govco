@@ -33,9 +33,13 @@ export class MapaModalComponent implements OnInit, AfterViewInit {
     this.heightPantalla = screen.height;
     this.widthPantalla = screen.width;
     this.heightBarraNavegador = this.heightPantalla - this.bodyElement.clientHeight;
-    this.heightBarraNavegador > 0 ?
-      (this.heightBody = this.heightPantalla - this.heightBarraNavegador, this.widthBody = this.widthPantalla - this.heightBarraNavegador)
-      : (this.heightBody = this.bodyElement.clientHeight, this.widthBody = this.bodyElement.clientWidth);
+    if (this.heightBarraNavegador > 0) {
+      this.heightBody = this.heightPantalla - this.heightBarraNavegador;
+      this.widthBody = this.widthPantalla - this.heightBarraNavegador;
+    } else {
+      this.heightBody = this.bodyElement.clientHeight;
+      this.widthBody = this.bodyElement.clientWidth
+    }
   }
 
   ngAfterViewInit(): void {
@@ -78,14 +82,12 @@ export class MapaModalComponent implements OnInit, AfterViewInit {
     let rotacion: number = event.target.screen.orientation.angle;
     switch (rotacion) {
       case 0:
-        this.heightBody < this.widthBody ?
-          this.contentModal.nativeElement.style.height = 'calc(' + this.widthBody + 'px - 1rem)'
-          : this.contentModal.nativeElement.style.height = 'calc(' + this.heightBody + 'px - 1rem)';
+        this.contentModal.nativeElement.style.height = this.heightBody < this.widthBody ?
+          'calc(' + this.widthBody + 'px - 1rem)' : 'calc(' + this.heightBody + 'px - 1rem)';
         break;
       default:
-        this.heightBody < this.widthBody ?
-          this.contentModal.nativeElement.style.height = 'calc(' + this.heightBody + 'px - 1rem)'
-          : this.contentModal.nativeElement.style.height = 'calc(' + this.widthBody + 'px - 1rem)';
+        this.contentModal.nativeElement.style.height = this.heightBody < this.widthBody ?
+          'calc(' + this.heightBody + 'px - 1rem)' : 'calc(' + this.widthBody + 'px - 1rem)';
         break;
     }
   }

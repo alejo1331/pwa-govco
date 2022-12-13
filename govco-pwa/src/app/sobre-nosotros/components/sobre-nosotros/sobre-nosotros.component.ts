@@ -4,7 +4,7 @@ import { BottomMenuService } from 'src/app/transversales/services/bottom-menu/bo
 import { HeaderService } from 'src/app/transversales/services/header-service/header.service';
 import { SidenavService } from 'src/app/transversales/services/sidenav-service/sidenav-service.service';
 import { ConoceModel, } from '../../models/conoce.model';
-import { NosotrosModel } from '../../models/nosotros.model';
+import { NosotrosModel, NosotrosModelV2 } from '../../models/nosotros.model';
 import { SobreNosotrosModel } from '../../models/sobre-nosotros.model';
 import { SobreNosotrosService } from '../../services/sobre-nosotros.service';
 import { environment } from "src/environments/environment";
@@ -18,6 +18,7 @@ export class SobreNosotrosComponent implements OnInit {
 
   codigo: string = environment.codSobreNosotros;
   dataNosotros: NosotrosModel;
+  dataNosotrosV2 : NosotrosModelV2;
   description: string;
   infoConoce: ConoceModel;
   loadData: boolean;
@@ -31,11 +32,12 @@ export class SobreNosotrosComponent implements OnInit {
     protected servicioSideNav: SidenavService,
     protected servicioHeader: HeaderService,
     public bottomService: BottomMenuService
-  ) { 
+  ) {
     this.bottomService.putOcultandoBottomMenu(false);
   }
 
   ngOnInit(): void {
+
     this.servicioHeader.estadoHeader(true,true);
     this.bottomService.seleccionandoItem(0);
     this.servicioSideNav.seleccionandoItem(true,'sobreNosotros');
@@ -67,15 +69,15 @@ export class SobreNosotrosComponent implements OnInit {
         }
       );
 
+      this.consultarDataNosotros();
 
-    this.consultarDataNosotros();
   }
 
   //Suscribe extrae la data de la pagina sobre nosotros
   consultarDataNosotros() {
     this.sobreNosotrosService.getInfoPaginaSobreNosotros()
-      .subscribe((data: NosotrosModel) => {
-        this.dataNosotros = data;
+      .subscribe((data: NosotrosModelV2) => {
+        this.dataNosotrosV2 = data;
         this.loadData = true;
       })
   }
