@@ -1,0 +1,14 @@
+<div class="mapaSitio-container" *ngIf="mapaSitio">
+    <div class="container mb-4 pt-5">
+        <!--Header-->
+        <div class="row mt-4">
+            <div class="col-12">
+                <h2>Mapa del sitio</h2>
+            </div>
+            <div class="col-12" *ngFor="let ms of mapaSitio">
+                <h3>{{ms.tituloSeccion}}</h3>
+                <div class="resumen" [innerHTML]="ms.itemsSeccion"></div>
+            </div>
+        </div>
+    </div>
+</div>
