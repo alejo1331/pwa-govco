@@ -10,10 +10,10 @@ import { FooterInterface } from '../../models/footer-models/footer-interface';
 export class FooterServiceService {
 
   ulrApiFooter : string =  environment.urlApiFooter;
-  
+
   constructor(private htpp: HttpClient) { }
 
   getInformacionFooter():Observable<FooterInterface>{
-    return this.htpp.get<FooterInterface>(this.ulrApiFooter + '/footer')
+    return this.htpp.get<FooterInterface>(this.ulrApiFooter + '/Footer/Movil')
   }
 }
