@@ -77,9 +77,7 @@ export class SobreNosotrosComponent implements OnInit {
   consultarDataNosotros() {
     this.sobreNosotrosService.getInfoPaginaSobreNosotros()
       .subscribe((data: NosotrosModelV2) => {
-        // this.dataNosotros = data;
         this.dataNosotrosV2 = data;
-        console.log(this.dataNosotrosV2)
         this.loadData = true;
       })
   }
