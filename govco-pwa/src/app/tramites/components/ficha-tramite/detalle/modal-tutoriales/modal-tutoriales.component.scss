@@ -1,9 +1,10 @@
-.modal-header{
+.modal-header {
     text-align: left;
     display: block;
     padding-bottom: 0px;
-    .modal-title{
-        .titulo{
+
+    .modal-title {
+        .titulo {
             font-family: Montserrat;
             text-align: left;
             font-size: 24px;
@@ -11,40 +12,44 @@
             font-weight: 600;
             margin-bottom: 0rem;
         }
-        
-        .sub-titulo{
+
+        .sub-titulo {
             font-size: 16px;
             color: #4B4B4B;
 
         }
     }
 
-    .icon-error{
+    .icon-error {
         text-align: end;
         cursor: pointer;
     }
 }
-.modal-body{
+
+.modal-body {
     color: #4B4B4B !important;
     font-family: "Work Sans", sans-serif;
     font-size: 14px;
-   .contenedor-tutoriales{
-       border: 1px solid #E6EFFD;
-       border-radius: 5px;
 
-       .item-tutorial{
-            
+    .contenedor-tutoriales {
+        border: 1px solid #E6EFFD;
+        border-radius: 5px;
+
+        .item-tutorial {
+
             text-align: center;
             width: 252px;
-            height: 100px;margin: 23px;
+            height: 100px;
+            margin: 23px;
             display: block;
 
-            img{
+            img {
                 cursor: pointer;
             }
-            p{
+
+            p {
                 cursor: pointer;
             }
-       }
-   }
+        }
+    }
 }

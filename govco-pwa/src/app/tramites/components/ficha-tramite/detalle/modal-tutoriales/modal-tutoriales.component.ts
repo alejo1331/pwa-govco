@@ -29,8 +29,4 @@ export class ModalTutorialesComponent {
     });
   }
 
-  direccionar(routePage: any) {
-    // this.activeModal.close();
-    // this.router.navigate([routePage]);
-  }
 }
