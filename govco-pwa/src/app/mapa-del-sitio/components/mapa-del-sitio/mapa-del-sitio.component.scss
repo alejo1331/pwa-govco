@@ -1,0 +1,28 @@
+.mapaSitio-container {
+    .container  {
+        padding-bottom: 3.125rem;
+    }
+
+    div.resumen {
+        white-space: pre-wrap;
+        
+        a.urlActiva {
+            color: #3772FF !important;
+            font-weight: bold;
+        }
+    }
+    div h2 {
+        font-weight: 300;
+        font-size: 2.16rem !important;
+        color: #004884;
+    } 
+    div h3 {
+        margin: 1em 0;
+        font-size: 1.5rem;
+        font-weight: 300;
+        color: #004884;
+    }
+    p, div{
+        color: #4B4B4B !important;
+    }
+}
