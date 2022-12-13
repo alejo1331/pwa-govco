@@ -1,7 +1,6 @@
 <div class="container container-bread-crumb">
   <app-bread-crumb class="bread-crumb-main"></app-bread-crumb>
 </div>
-<!-- <app-boton-retroalimentacion></app-boton-retroalimentacion> -->
 <div id="fichaContainer" class="container">
   <div class="row">
     <div class="col-lg-8 col-sm-12" (keyup)="salir($event)" tabindex="0"
@@ -32,7 +31,6 @@
   <app-fichaespecifica-accordion *ngIf="audiencias" [data]="audiencias" [tramite]="infoBasicaTramite"
     (cargarMomentosAudiencia)="cargarMomentosAudiencia($event)" (cargarDetalleMomento)="cargarDetalleMomento($event)">
   </app-fichaespecifica-accordion>
-  <!-- <div class="container"> -->
   <div class="col-lg-10 col-sm-12 p-0">
     <app-fichaespecifica-resultado [itemid]="idTramite" [infoTramite]="infoBasicaTramite">
     </app-fichaespecifica-resultado>
@@ -46,11 +44,9 @@
     <app-btn-tramite-linea class="" [data]="infoBasicaTramite"></app-btn-tramite-linea>
   </div>
   <app-fichaespecifica-footer [data]="infoBasicaTramite"></app-fichaespecifica-footer>
-  <!-- </div> -->
   <a id="salir-seccion-acordeon" tabindex="0" aria-label="Ha salido de la sección"></a>
 </div>
 <div class="experience">
   <govco-iteraccion-component module="Tramites" [itemid]="idTramite" [nombretramite]="nombreTramite">
   </govco-iteraccion-component>
-  <!-- <govco-tu-experiencia module="Tramites" [itemid]="idTramite"></govco-tu-experiencia> -->
 </div>

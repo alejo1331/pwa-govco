@@ -46,52 +46,63 @@ export class PaginationComponent implements OnInit {
 
   calculatePagesDesktop(){
     let minPage: number = 0;
-    let maxPage: number = this.totalPages>4?4:this.totalPages-1;
+    let maxPage: number = this.totalPages > 4 ? 4 : this.totalPages - 1;
     let index: number = 0;
 
-    if(this.totalPages>4){
-      if (this.page > 2)
-      {
-        if ((this.page + 2) > (this.totalPages - 1)){
-          this.pages = new Array(6);
-          minPage=this.totalPages-6;
-          maxPage=this.totalPages-1;
-          for (let i = minPage; i <= maxPage; i++){
-            let pos:any = i==minPage?1:i + 1;
-            pos = i==minPage+1?-1:pos;
-            this.pages[index]= pos;
-            index++;
-          }
-        } else {
-          this.pages = new Array(7);
-          minPage=this.page-3;
-          maxPage=this.page+3;
-          for (let i = minPage; i <= maxPage; i++){
-            let pos:any = i==minPage+0?1:i + 1;
-            pos = i==minPage+1?-1:pos;
-            pos = i==minPage+5?-1:pos;
-            pos = i==minPage+6?this.totalPages:pos;
-            this.pages[index]= pos;
-            index++;
-          }
-        }
-      }else{
-        this.pages = new Array(6);
-        maxPage=5;
-        for (let i = minPage; i <= maxPage; i++){
-          let pos:any = i==4?-1:i + 1;
-          pos = i==5?this.totalPages:pos;
-          this.pages[index]= pos;
-          index++;
-        }
-      }
-    }else{
-      this.pages = new Array(this.totalPages);
-      maxPage = this.totalPages-1;
-      for (let i = minPage; i <= maxPage; i++){
-        this.pages[index]= i + 1;
-        index++;
-      }
+    if (this.totalPages > 4 && this.page > 2 && (this.page + 2) > (this.totalPages - 1)) {
+      this.calculatePagesDesktopCaso1(minPage, maxPage, index);
+    } else if (this.totalPages > 4 && this.page > 2) {
+      this.calculatePagesDesktopCaso2(minPage, maxPage, index);
+    } else if (this.totalPages > 4) {
+      this.calculatePagesDesktopCaso3(minPage, maxPage, index);
+    } else {
+      this.calculatePagesDesktopCaso4(minPage, maxPage, index);
+    }
+  }
+
+  calculatePagesDesktopCaso1(minPage:number, maxPage:number, index:number) {
+    this.pages = new Array(6);
+    minPage = this.totalPages - 6;
+    maxPage = this.totalPages - 1;
+    for (let i = minPage; i <= maxPage; i++){
+      let pos:any = i == minPage ? 1 : i + 1;
+      pos = i == minPage + 1 ? -1 : pos;
+      this.pages[index] = pos;
+      index++;
+    }
+  }
+
+  calculatePagesDesktopCaso2(minPage:number, maxPage:number, index:number) {
+    this.pages = new Array(7);
+    minPage = this.page - 3;
+    maxPage = this.page + 3;
+    for (let i = minPage; i <= maxPage; i++) {
+      let pos:any = i == minPage + 0 ? 1 : i + 1;
+      pos = i == minPage + 1 ? -1 : pos;
+      pos = i == minPage + 5 ? -1 : pos;
+      pos = i == minPage + 6 ? this.totalPages : pos;
+      this.pages[index] = pos;
+      index++;
+    }
+  }
+
+  calculatePagesDesktopCaso3(minPage:number, maxPage:number, index:number) {
+    this.pages = new Array(6);
+    maxPage = 5;
+    for (let i = minPage; i <= maxPage; i++) {
+      let pos:any = i == 4 ? -1 : i + 1;
+      pos = i == 5 ? this.totalPages:pos;
+      this.pages[index] = pos;
+      index++;
+    }
+  }
+
+  calculatePagesDesktopCaso4(minPage:number, maxPage:number, index:number) {
+    this.pages = new Array(this.totalPages);
+    maxPage = this.totalPages - 1;
+    for (let i = minPage; i <= maxPage; i++) {
+      this.pages[index] = i + 1;
+      index++;
     }
   }
 

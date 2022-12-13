@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, HostListener, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NoticiasServiceService } from 'src/app/noticias/services/noticias-service/noticias-service.service';
 import { NoticiaPublicadaModel } from 'src/app/noticias/models/noticiaPublicadaModel';
@@ -85,7 +85,7 @@ export class DetalleNoticiasComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     setTimeout(() => {
-      let buscadorNoticias: NodeListOf<HTMLElement> = (document.querySelectorAll("[href='/buscador?ver=Noticias']") as NodeListOf<HTMLElement>);
+      let buscadorNoticias: NodeListOf<HTMLElement> = document.querySelectorAll("[href='/buscador?ver=Noticias']");
       buscadorNoticias.forEach((etiqueta_a) => {
         etiqueta_a.addEventListener('click', () => {
           this.abrirBuscadorPWA();

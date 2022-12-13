@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 export class CacheStorageService {
 
   async cacheStorege(url: string, cacheComponent: string, nombreJson: string, tipoArchivo: string) {
-    const existe = await caches.has(cacheComponent).then(existe => { return existe })
+    const existe = await caches.has(cacheComponent).then(exist => { return exist })
     switch (existe) {
       case true:
         return caches.match('/' + nombreJson + tipoArchivo).then(json => {

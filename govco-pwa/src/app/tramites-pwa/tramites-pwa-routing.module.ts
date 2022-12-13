@@ -5,7 +5,6 @@ import { ConsultaCertificadosComponent } from '../tramites/components/ficha-tram
 import { GeneralComponent } from '../tramites/components/ficha-tramite/detalle/general/general.component';
 import { VentanillasUnicasComponent } from '../tramites/components/ficha-tramite/ventanillas-unicas/ventanillas-unicas.component';
 import { TramitesHomeComponent } from '../tramites/components/tramites-home/tramites-home.component';
-import { TramitesIdComponent } from './components/tramites-principal/tramites-id.component';
 
 const routes: Routes = [
   {

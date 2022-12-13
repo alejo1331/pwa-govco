@@ -27,7 +27,7 @@ export class FichaespecificaFooterComponent implements OnInit {
 
   ngOnInit(): void {
     this.fichaTramiteService.GetBarraProcesoTramite(this.data.IdTramite).subscribe(res => {
-      this.urlTramite = res.urlTramite.match(/^https?:/) ? res.urlTramite : res.urlTramite.includes("embebido") && res.urlTramite.includes("tramites-y-servicios") ? res.urlTramite : res.urlTramite;
+      this.urlTramite = res.urlTramite;
       this.isEnLinea = res.isEnlinea;
     });
   }

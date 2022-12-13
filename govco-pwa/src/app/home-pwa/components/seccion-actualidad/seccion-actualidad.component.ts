@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ObtenerBannerNoticiaRespuesta, ListadoActualidadNoticia, CabeceraActualidad, DataNoticias } from '../../models/NoticiasModel';
+import { ListadoActualidadNoticia, CabeceraActualidad, DataNoticias } from '../../models/NoticiasModel';
 import { HomeService } from '../../services/home.service';
 
 @Component({
@@ -19,23 +19,6 @@ export class SeccionActualidadComponent implements OnInit {
   constructor(private homeService: HomeService) { }
 
   ngOnInit(): void {
-    // this.homeService.obtenerNoticias().subscribe(
-    //   (data: ObtenerBannerNoticiaRespuesta) => {
-    //     if (data.succeeded) {
-    //       this.titulo = data.data.banner.titulo;
-    //       this.descripcion = data.data.banner.descripcion;
-    //       if (data.data.noticias.length > 0) {
-    //         this.dataNoticias = data.data.noticias.slice(0, 2);
-    //       } else {
-    //         this.noticiasEmpty = true;
-    //       }
-    //     } else {
-    //       console.log('error al consultar noticias.');
-    //       this.noticiasError = true;
-    //     }
-    //   }
-    // )
-
     this.homeService.obtenerActualidadGeneral().subscribe((actualidad: CabeceraActualidad) => {
       if (actualidad.succeeded) {
         this.botonTexto = actualidad.data.botonTexto;

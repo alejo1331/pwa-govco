@@ -9,9 +9,6 @@ import { TramitesObligatoriosCiiuComponent } from './components/tramites-obligat
 import { PreguntasCondicionantesCiiuComponent } from './components/preguntas-condicionantes-ciiu/preguntas-condicionantes-ciiu.component';
 import { TramitesCondicionantesCiiuComponent } from './components/tramites-condicionantes-ciiu/tramites-condicionantes-ciiu.component';
 import { NotaLegalCiiuComponent } from './components/nota-legal-ciiu/nota-legal-ciiu.component';
-import { ConfirmModalComponent } from './components/confirm-modal/confirm-modal.component';
-import { BreadCrumbComponent } from './components/bread-crumb/bread-crumb.component';
-import { WordLimitPipe } from '../../pipes/word-limit/word-limit.pipe';
 import { TramitesModule } from '../../tramites.module';
 
 

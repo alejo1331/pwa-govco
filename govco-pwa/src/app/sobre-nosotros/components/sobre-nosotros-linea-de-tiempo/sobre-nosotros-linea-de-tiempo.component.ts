@@ -125,15 +125,6 @@ export class SobreNosotrosLineaDeTiempoComponent implements OnInit {
   }
 
   desActivarEventosClickPorFuera(evt: any) {
-    var element = evt.target["parentNode"];
-    while (element) {
-      if (element["id"] === "linea-tiempo-sobre-nosotros") {
-        element = undefined;
-        return;
-      } else {
-        element = element["parentNode"];
-      }
-    }
     window.removeEventListener('keyup', window["objeto"].setEventos);
     window.removeEventListener('keypress', window["objeto"].setEventos);
     document.removeEventListener("click", window["objeto"].desActivarEventosClick);

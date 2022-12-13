@@ -24,7 +24,7 @@ export class BtnTramiteLineaComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.cambioNombreAccion();
+    this.nombreAccion = this.cambioNombreAccion();
   }
 
   validateUrl(url: string, e: any) {
@@ -51,11 +51,7 @@ export class BtnTramiteLineaComponent implements OnInit {
   }
 
   cambioNombreAccion() {
-    if(this.integrated === true){
-      return this.nombreAccion = "Ir al siguiente paso ";
-    }else {
-      return this.nombreAccion = "Realizar trámite ";
-    }
+    return this.integrated === true ? "Ir al siguiente paso " : "Realizar trámite ";
   }
 
 }

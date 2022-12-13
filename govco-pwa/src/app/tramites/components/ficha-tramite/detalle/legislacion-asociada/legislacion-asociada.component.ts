@@ -1,6 +1,5 @@
 import { Platform } from '@angular/cdk/platform';
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
 import { FichaTramiteService } from 'src/app/tramites/services/ficha-tramite.service';
 
 @Component({
