@@ -1,6 +1,6 @@
 <ng-template #content let-modal>
     <div class="modal-header header-modal-ver-nota">
-        <table *ngIf="Codigo">
+        <table *ngIf="Codigo" aria-hidden="true">
             <tr>
                 <td>
                     <div class="title-section-main">
@@ -60,7 +60,8 @@
 &nbsp;&nbsp;
 <div *ngIf="tieneTramites == false; then tramiteOff; else tramiteOn"></div>
 <ng-template #tramiteOff>
-    <a href="" title="" class="btn btn-low-inactive disabled btnModalDisabled link-modal-ver-nota" disabled>VER TRÁMITES</a>
+    <a href="" title="" class="btn btn-low-inactive disabled btnModalDisabled link-modal-ver-nota" disabled>VER
+        TRÁMITES</a>
 </ng-template>
 <ng-template #tramiteOn>
     <a routerLink="{{url}}/{{IdCodigo}}/{{DepartamentoSeleccionado}}/{{MunicipioSeleccioando}}/{{codigo}}"
