@@ -42,9 +42,7 @@ export class TramitesIdComponent implements OnInit {
 
   ) {
     this.fichaTramiteService.abrirPuntosAtencion.subscribe(
-      async (data: DataBasicaPuntosInterface) => {
-        await this.abrirPuntosAtencion(data);
-      }
+      (data: DataBasicaPuntosInterface) => this.abrirPuntosAtencion(data)
     );
     this.previousUrl = appService.previousUrl;
   }
@@ -117,15 +115,13 @@ export class TramitesIdComponent implements OnInit {
           // Obtiene la URL de trámite en linea
           this.fichaTramiteService.GetBarraProcesoTramite(String(dataTramite.id)).subscribe((res) => {
             if (res.urlTramite != undefined) {
-              this.infoBasicaTramite.UrlTramiteEnLinea = res.urlTramite.match(/^https?:/) ?
-                res.urlTramite :
-                (res.urlTramite.includes('embebido') && res.urlTramite.includes('tramites-y-servicios')) ?
-                  res.urlTramite : res.urlTramite;
+              this.infoBasicaTramite.UrlTramiteEnLinea = res.urlTramite;
               this.infoBasicaTramite.EnLinea = res.isEnlinea;
             }
           },
             (error) => {
-              console.log('error', error), (this.activarTramitesId = true);
+              console.log('error', error); 
+              this.activarTramitesId = true;
             }, () => {
               this.activarTramitesId = true;
             }
@@ -179,10 +175,19 @@ export class TramitesIdComponent implements OnInit {
     let botonRetroalimentacion: HTMLElement = (
       document.querySelector('app-boton-retroalimentacion .button-container') as HTMLElement
     );
-    estado == 'ocultar' ? botonRetroalimentacion.style.opacity = '0'
-      : botonRetroalimentacion.style.opacity = '1', botonRetroalimentacion.style.zIndex = '7';
+
+    if (estado == 'ocultar') {
+      botonRetroalimentacion.style.opacity = '0';
+    } else {
+      botonRetroalimentacion.style.opacity = '1'; 
+      botonRetroalimentacion.style.zIndex = '7';
+    }
     botonRetroalimentacion.addEventListener('transitionend', () => {
-      estado == 'mostrar' ? botonRetroalimentacion.style.zIndex = '7' : botonRetroalimentacion.style.zIndex = '-1';
+      if (estado == 'mostrar') {
+        botonRetroalimentacion.style.zIndex = '7';
+      } else {
+        botonRetroalimentacion.style.zIndex = '-1';
+      }
     });
   }
 }

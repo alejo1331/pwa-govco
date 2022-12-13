@@ -66,7 +66,6 @@ export class QuintoItemAcordeonComponent implements OnInit {
   }
 
   descargarSeleccion() {
-
     let normas : any = document.getElementsByClassName('normas');
     this.selectedItemsListUrls = [];
     this.selectedItemsListNames = [];
@@ -87,12 +86,12 @@ export class QuintoItemAcordeonComponent implements OnInit {
       let normasCheck = 0
       for (const norma of normas) {
         if (norma.checked) {
-          normasCheck =+ 1;
+          normasCheck++;
         }
       }
-      if (normasCheck < normas.length) {
-        let estadoSelectorGeneral : any = document.getElementsByName('selectorGeneral')[0];
-        estadoSelectorGeneral.checked =false
+      let estadoSelectorGeneral : any = document.getElementsByName('selectorGeneral')[0];
+      if (normasCheck < normas.length) {        
+        estadoSelectorGeneral.checked = false;
       }
       if (normasCheck == 0) {
         this.toggleBool = true;

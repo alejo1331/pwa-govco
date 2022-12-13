@@ -25,9 +25,7 @@ export class PrimerItemAcordeonComponent implements OnInit {
   ngOnChanges(changes: SimpleChanges) {
     if (changes.dataAcordeon) {
       this.dataAcordeon = changes.dataAcordeon.currentValue;
-      if (!changes.dataAcordeon.previousValue) {
-        this.loadMomentosAudiencia();
-      } else if (changes.dataAcordeon.currentValue.idTramite != changes.dataAcordeon.previousValue.idTramite ||
+      if (!changes.dataAcordeon.previousValue || changes.dataAcordeon.currentValue.idTramite != changes.dataAcordeon.previousValue.idTramite ||
         changes.dataAcordeon.currentValue.perfil != changes.dataAcordeon.previousValue.perfil) {
         this.loadMomentosAudiencia();
       }

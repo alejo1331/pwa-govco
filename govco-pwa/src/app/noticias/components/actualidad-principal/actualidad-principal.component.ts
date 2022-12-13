@@ -261,7 +261,7 @@ export class ActualidadPrincipalComponent implements OnInit {
   }
 
   cargarCategoriaPorParametro() {
-    var categoria = this.selectcategoria.nativeElement["list"].find((categoria: { codigo: string | null; }) => categoria.codigo === this.idCategoriaParam)
+    let categoria = this.selectcategoria.nativeElement["list"].find((categoriaSelect: { codigo: string | null; }) => categoriaSelect.codigo === this.idCategoriaParam)
     this.nombreCategoriaParam = categoria.nombre;
     this.selectcategoria.nativeElement["seleccionado"] = categoria;
     this.getSubCategorias(categoria.codigo);
