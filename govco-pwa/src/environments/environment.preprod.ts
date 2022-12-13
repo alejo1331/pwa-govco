@@ -17,7 +17,7 @@ export const environment = {
   //Nosotros
   serverUrlHomeSNosotros: 'https://preapi-interno.www.gov.co/api/home',
   //Transversales
-  urlApiFooter: 'http://3.237.183.133:8091/api',
+  urlApiFooter: 'https://preapi-interno.www.gov.co/api/cross',
   //Noticias o Actualidad
   apiNoticiasDetalle: 'https://preapi-interno.www.gov.co/api/noticias/',
   serverCategoriaSubcategoriaUrl:
