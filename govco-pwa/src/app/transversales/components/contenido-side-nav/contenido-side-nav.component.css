@@ -50,6 +50,7 @@ li.govco-pwa-sidenav-item {
   background-size: 200% 100%;
   background-position: right bottom;
   height: 48px;
+  max-width: 94%;
 }
 
 .active {
