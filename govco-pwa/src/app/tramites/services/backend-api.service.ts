@@ -49,8 +49,8 @@ export class BackendApiService {
     return this.http.get<CodigoCIIU[]>( this.restUrl+"codigoCIIU/ObtenerActividadesEconomicas/"+filtro);
   }
 
-  getCodigosCIIUValidadosPorTramite(requestCodigo: requestCodigo): Observable<responseCodigoPaginated>{
-    return this.http.post<responseCodigoPaginated>(this.restUrl+"codigoCIIU/ObtenerActividadesEconomicas/requestCodigo",requestCodigo, this.httpOptions);
+  getCodigosCIIUValidadosPorTramite(requestCod: requestCodigo): Observable<responseCodigoPaginated>{
+    return this.http.post<responseCodigoPaginated>(this.restUrl+"codigoCIIU/ObtenerActividadesEconomicas/requestCodigo",requestCod, this.httpOptions);
   }
 
   insertarHistoricoDeBusquedaCIIU(request: requestHistoricoBusqueda){
