@@ -1,180 +1,178 @@
 h3 {
   font-size: 20px;
   font-weight: 700;
-  color:#004884;
-  font-family: "Montserrat",sans-serif;
-} 
+  color: #004884;
+  font-family: "Montserrat", sans-serif;
+}
 
 
 .contenedor-seguimiento {
-    margin-top: 3rem;
-    border: 2px solid #004884;
-    border-radius: 8px;
-    opacity: 1;
+  margin-top: 3rem;
+  border: 2px solid #004884;
+  border-radius: 8px;
+  opacity: 1;
+}
+
+.contenedor-saberMas {
+  margin-bottom: 3.75rem;
+}
+
+.table-personalizada {
+  table-layout: fixed;
+  border: 1px solid #E6EFFD;
+}
+
+.table-personalizada thead th {
+  border-bottom: 1px solid #E6EFFD;
+}
+
+#columna-personalizada th:first-child {
+  width: 300px;
+}
+
+.container-icono-tabla {
+  width: 32px;
+  height: 32px;
+  background-color: #004884;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    filter: invert(83%) sepia(93%) saturate(1018%) hue-rotate(184deg) brightness(126%) contrast(95%);
   }
-  
-  .contenedor-saberMas {
-    margin-bottom: 3.75rem;
+}
+
+.titulo-canal {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #4B4B4B;
+}
+
+.canal-enlace p {
+  color: #007BFF !important;
+}
+
+.link-puntos {
+  color: #3366CC !important;
+  text-decoration: underline !important;
+  font-size: 16px;
+}
+
+.link-web {
+  text-align: left;
+  text-decoration: underline !important;
+  font: normal 16px/9px Work Sans;
+  letter-spacing: 0px;
+  color: #3366CC !important;
+  opacity: 1;
+}
+
+.link-web:hover {
+  color: #004884 !important;
+}
+
+.seguimiento-telefonico {
+  margin-bottom: .5rem;
+  font-family: "Work Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: #4B4B4B
+}
+
+.btn-puntos-atencion {
+  background-color: #fff;
+  font-family: "Work Sans" !important;
+  font-size: 15px;
+  font-weight: 500 !important;
+  border: 1px solid #3366CC;
+  color: #3366CC !important;
+
+  &:hover {
+    text-decoration: underline;
   }
-  
-  .table-personalizada {
-    table-layout: fixed;
-    border: 1px solid #E6EFFD;
-  }
-  
-  .table-personalizada thead th {
-    border-bottom:  1px solid #E6EFFD;
-  }
-  
-  #columna-personalizada th:first-child {
-    width: 300px;
-  }
-  
-  .container-icono-tabla {
-    width: 32px;
-    height: 32px;
-    background-color: #004884;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  
-    img {
-      filter: invert(83%) sepia(93%) saturate(1018%) hue-rotate(184deg) brightness(126%) contrast(95%);
-    }
-  }
-  
-  .titulo-canal {
-      font-family: 'Work Sans', sans-serif;
-      font-size: 14px;
-      font-weight: 600;
-      color: #4B4B4B;
-  }
-  
-  .canal-enlace p{
-    color: #007BFF !important;
-  }
-  .link-puntos{
-    color: #3366CC !important;
-    text-decoration: underline !important;
-    font-size: 16px;
-  }
-  
-  .btn-puntos-atencion{
-          
-    font-family: "Work Sans" !important;
-    font-size: 15px;
-    font-weight: 500 !important;
-    border: 1px solid #3366CC;
-    color: #3366CC !important;
-  }
-  
-  .link-web{
-    text-align: left;
-    text-decoration: underline !important;
-    font: normal 16px/9px Work Sans;
-    letter-spacing: 0px;
-    color: #3366CC !important;
-    opacity: 1;
-  }
-  
-  .link-web:hover {
-    color: #004884 !important;
-  }
-  
-  .seguimiento-telefonico{
-      margin-bottom: .5rem;
-      font-family: "Work Sans", sans-serif;
-      font-size: 14px;
-      font-weight: 400;
-      line-height: 1.2;
-      color: #4B4B4B
-  }
-  
-  .btn-puntos-atencion{
-    background-color: #fff;
-    &:hover{
-      text-decoration: underline;
-    }
-  }
-  
-  .textofilas {
-    text-align: left;
-    font: bold 16px/27px Montserrat;
-    letter-spacing: 0px;
-    color: #4B4B4B;
-    opacity: 1;
-  }
-  
-  .thead-seguimiento {
-    background-color: #E6EFFD !important;
-  }
-  
-  .textofilastable {
-    text-align: left;
-    font: 500 14px/27px Montserrat;
-    letter-spacing: 0px;
-    color: #004884;
-    opacity: 1;
-  }
-  
+}
+
+.textofilas {
+  text-align: left;
+  font: bold 16px/27px Montserrat;
+  letter-spacing: 0px;
+  color: #4B4B4B;
+  opacity: 1;
+}
+
+.thead-seguimiento {
+  background-color: #E6EFFD !important;
+}
+
+.textofilastable {
+  text-align: left;
+  font: 500 14px/27px Montserrat;
+  letter-spacing: 0px;
+  color: #004884;
+  opacity: 1;
+}
+
+.enlace-correo {
+  text-align: left;
+  text-decoration: underline;
+  font: normal 16px/21px Work Sans !important;
+  letter-spacing: 0px;
+  color: #3366CC !important;
+  opacity: 1;
+}
+
+.enlace-correo:hover {
+  color: #004884 !important;
+}
+
+
+.title-table-responsive {
+  background: #E6EFFD 0% 0% no-repeat padding-box;
+  text-align: left;
+  font: normal 16px/23px Work Sans !important;
+  letter-spacing: 0px;
+  color: #004884;
+  opacity: 1;
+}
+
+.texto-tutoriales {
+  text-align: left;
+  cursor: pointer;
+  text-decoration: underline;
+  font: normal 16px/21px Work Sans;
+  letter-spacing: 0px;
+  color: #3366CC;
+  opacity: 1;
+}
+
+.texto-tutoriales:hover {
+  color: #004884;
+}
+
+table td {
+  border-bottom: 1px solid #E6EFFD;
+}
+
+table th {
+  border-top: 1px solid #E6EFFD;
+}
+
+table thead th {
+  border-bottom: 1px solid #E6EFFD;
+}
+
+@media (max-width:992px) {
   .enlace-correo {
-    text-align: left;
-    text-decoration: underline;
-    font: normal 16px/21px Work Sans !important;
-    letter-spacing: 0px;
-    color: #3366CC !important;
-    opacity: 1;
+    font: normal 14px/21px Work Sans !important;
+    word-break: break-word;
   }
-  
-  .enlace-correo:hover {
-    color: #004884 !important;
-  }
-  
-  
-  .title-table-responsive {
-    background: #E6EFFD 0% 0% no-repeat padding-box;
-    text-align: left;
-    font: normal 16px/23px Work Sans !important;
-    letter-spacing: 0px;
-    color: #004884;
-    opacity: 1;
-  }
-  
-  .texto-tutoriales{
-    text-align: left;
-    cursor: pointer;
-    text-decoration: underline;
-    font: normal 16px/21px Work Sans;
-    letter-spacing: 0px;
-    color: #3366CC;
-    opacity: 1;
-  }
-  
-  .texto-tutoriales:hover {
-    color: #004884;
-  }
-  
-  table td {
-    border-bottom:  1px solid #E6EFFD;
-  }
-  
-  table th {
-    border-top:  1px solid #E6EFFD;
-  }
-  
-  table thead th {
-    border-bottom:  1px solid #E6EFFD;
-  }
-  
-  @media (max-width:992px) {
-    .enlace-correo {
-      font: normal 14px/21px Work Sans !important;
-      word-break: break-word;
-    }
-  }
-  
-  .texto-seguimiento {
-    margin-top: 1.5rem;
-    margin-bottom: 1.5rem;
-  }
+}
+
+.texto-seguimiento {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}

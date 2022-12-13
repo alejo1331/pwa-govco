@@ -87,7 +87,7 @@ export class QuintoItemAcordeonComponent implements OnInit {
       let normasCheck = 0
       for (const norma of normas) {
         if (norma.checked) {
-          normasCheck =+ 1;
+          normasCheck += 1;
         }
       }
       if (normasCheck < normas.length) {

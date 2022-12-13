@@ -187,7 +187,7 @@ export class MomentosDeVidaComponent implements OnInit, AfterViewInit {
   // inncesariamente.
   ngAfterViewInit(): void {
     setTimeout(() => {
-      let buscadorNoticias: NodeListOf<HTMLElement> = document.querySelectorAll("[href='/noticias/']");
+      let buscadorNoticias = (document.querySelectorAll("[href='/noticias/']") as NodeListOf<HTMLElement>);
       buscadorNoticias.forEach((etiqueta_a) => {
         etiqueta_a.addEventListener('click', () => {
           this.router.navigate(['/noticias']);
