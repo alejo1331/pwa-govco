@@ -31,6 +31,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { BreadCrumbComponent } from './shared/components/bread-crumb/components/bread-crumb/bread-crumb.component';
 import { BuscadorPrefiltradoComponent } from './components/buscador-prefiltrado/buscador-prefiltrado.component';
 import { ModalPrefiltradoComponent } from './components/buscador-prefiltrado/modal-prefiltrado/modal-prefiltrado.component';
+import { TerminosCondicionesComponent } from './components/terminos-condiciones/terminos-condiciones.component';
 
 
 @NgModule({
@@ -69,7 +70,8 @@ import { ModalPrefiltradoComponent } from './components/buscador-prefiltrado/mod
     PortalesComponent,
     BreadCrumbComponent,
     BuscadorPrefiltradoComponent,
-    ModalPrefiltradoComponent
+    ModalPrefiltradoComponent,
+    TerminosCondicionesComponent
   ],
   exports: [
     GeolocalizacionComponent,

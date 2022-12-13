@@ -9,6 +9,7 @@ import { DatosUsuarioComponent } from './components/datos-usuario/datos-usuario.
 import { LogoutComponent } from './components/logout/logout.component';
 import { SigninOidcComponent } from './components/signin-oidc/signin-oidc.component';
 import { PortalesComponent } from './components/portales/portales.component';
+import { TerminosCondicionesComponent } from './components/terminos-condiciones/terminos-condiciones.component';
 
 
 const routes: Routes = [
@@ -20,7 +21,8 @@ const routes: Routes = [
   { path: 'logout', component: LogoutComponent},
   { path: 'datosusuario', component: DatosUsuarioComponent},
   { path: 'signin-oidc', component: SigninOidcComponent},
-  { path: 'portales', component: PortalesComponent }
+  { path: 'portales', component: PortalesComponent },
+  { path: 'terminos-y-condiciones', component: TerminosCondicionesComponent },
 ];
 
 @NgModule({
