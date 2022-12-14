@@ -19,8 +19,14 @@ export class SeccionTemasInteresComponent implements OnInit {
       (data: ObtenerTemasInteresRespuesta) => {
         if (data.succeeded) {
           this.dataTemasInteres = data.data.contenidoPanelInferior;
-          this.titulo = data.data.panelSuperior.mapaDeSitio == null ?
-            data.data.panelInferior.mapaDeSitio.tituloSeccion : data.data.panelSuperior.mapaDeSitio.tituloSeccion;
+          
+          if (data.data.panelSuperior.mapaDeSitio) {
+            this.titulo = data.data.panelSuperior.mapaDeSitio.tituloSeccion;
+          } else if (data.data.panelSuperior.titulo) {
+            this.titulo = data.data.panelSuperior.titulo;
+          } else {
+            this.titulo = data.data.panelInferior.mapaDeSitio.tituloSeccion;
+          }
         } else {
           console.log('error al consultar temas de interés.');
         }
