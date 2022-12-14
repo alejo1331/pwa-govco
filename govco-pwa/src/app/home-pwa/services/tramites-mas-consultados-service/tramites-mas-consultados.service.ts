@@ -27,7 +27,7 @@ export class TramitesMasConsultadosService {
   }
 
   getTramitesMasConsultadosTitulo(seccion: string): Observable<TituloInterface> {
-    return this.http.get<TituloInterface>(`${this.fichaTramite}Titulo/ObtenerTitulo?seccion=` + seccion);
+    return this.http.get<TituloInterface>(`${this.fichaTramite}secciones/` + seccion);
   }
 
   getTramitesMasConsultadosPorMunicipio(codigoCiudad: string | null): Observable<PorMunicipioInterface> {

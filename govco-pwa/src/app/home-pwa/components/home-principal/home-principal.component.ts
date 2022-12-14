@@ -24,7 +24,7 @@ export class HomePrincipalComponent implements OnInit {
   codigoMunicipio: string | null = "";
   codigoDepartamento: string | null = "";
   nombreMunicipio: string = "";
-  seccion: string = 'LoMasConsultadoHome';
+  seccion: string = 'los-mas-consultados-en-home';
 
   constructor(
     public bottomService: BottomMenuService,
