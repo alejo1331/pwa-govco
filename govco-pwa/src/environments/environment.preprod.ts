@@ -70,9 +70,9 @@ export const environment = {
 
   //buscador
   serverBuscador:
-    'https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api/buscador/',
+    'https://prebuscador.www.gov.co/',
   serverUrlValidarUrl:
-    'https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api',
+    'https://preapi-interno.www.gov.co/api',
 
   //captcha
   keyCaptcha: '6LeCqOcUAAAAAMu9McR1zoUH0z6wDj_dekAODW5h',
