@@ -82,7 +82,7 @@ export class EntidadesEstadoComponent implements OnInit {
 
   activarDesacticarMenuCollapse() {
     var seccion = document.getElementById(
-      'seccion_' + this.objeto.rama.items[0].tituloAlternativo
+      'seccion_' + this.objeto[0].tituloAlternativo
     )!;
 
     seccion.style.marginTop = '0px';
