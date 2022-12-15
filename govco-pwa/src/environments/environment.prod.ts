@@ -17,7 +17,7 @@ export const environment = {
   //Nosotros
   serverUrlHomeSNosotros: 'https://api-interno.www.gov.co/api/home',
   //Transversales
-  urlApiFooter: 'http://3.237.183.133:8091/api',
+  urlApiFooter: 'https://api-interno.www.gov.co/api/cross',
   //Noticias o Actualidad
   apiNoticiasDetalle: 'https://api-interno.www.gov.co/api/noticias/',
   serverCategoriaSubcategoriaUrl:
@@ -70,9 +70,9 @@ export const environment = {
 
   //buscador
   serverBuscador:
-    'https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api/buscador/',
+    'https://buscador.www.gov.co/',
   serverUrlValidarUrl:
-    'https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api',
+    'https://api-interno.www.gov.co/api',
 
   //captcha
   keyCaptcha: '6LeCqOcUAAAAAMu9McR1zoUH0z6wDj_dekAODW5h',
