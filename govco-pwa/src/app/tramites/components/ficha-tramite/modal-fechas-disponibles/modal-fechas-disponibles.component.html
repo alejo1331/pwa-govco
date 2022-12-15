@@ -1,94 +1,95 @@
 <div class="fechas-atencion-tramite">
-    <div class="modal-header row">
-        <button type="button" class="close" (click)="closeModal()"><span class="material-icons">clear</span></button>
+  <div class="modal-header row">
+      <button type="button" class="close" (click)="closeModal()"><span class="material-icons">clear</span></button>
 
-            <div class="col-sm-12 col-md-12 col-lg-5">
-                <ng-container>
-                    <h2>Fechas específicas para realizar el trámite</h2>
-                </ng-container>
-            </div>
-            <div class="col-sm-12 col-md-12 col-lg-7 pr-5">
-                <ng-container >
-                <div class="buscador">
-                    <input class="form-control" type="text" aria-label="Buscar" placeholder="Buscar" [(ngModel)]="serchText">
-                    <button class="content-search"><span class="govco-icon govco-icon-search-cn icon-color-blue"></span></button>
-                </div>
-                </ng-container>
-            </div>
-            <div  class="order-movile">
-                <th [class.active]="order == 'PuntoAtencionNombre'"
-                (click)="setOrder('PuntoAtencionNombre')"
-                class="textofilas order-puntos">
-                    <span [hidden]="reversePunto" class="icon-order-punto">
-                        <i class="material-icons">arrow_downward</i>
-                    </span>
-                    <span [hidden]="!reversePunto" class="icon-order-punto">
-                        <i class="material-icons">arrow_upward</i>
-                    </span>
-                    <span class="text-order-punto">Fecha inicio</span>
-                </th> 
-                <th [class.active]="order == 'Departamento'"
-                (click)="setOrder('Departamento')" 
-                class="textofilas order-puntos">
-                    <span [hidden]="reverseDepartamento" class="icon-order">
-                        <i class="material-icons">arrow_downward</i>
-                    </span>
-                    <span [hidden]="!reverseDepartamento" class="icon-order">
-                        <i class="material-icons">arrow_upward</i>
-                    </span>
-                    <span class="text-order">Fecha fin</span>
-                </th>
-            </div>
-    </div>
-    <div class="modal-body">
-        <div class="row">
-            <div class="col-md-12">
-                <div *ngIf="fechas" >
-                  <small *ngIf="fechas.length == 0">Trámite no contiene fechas específicas</small>
-                </div>
-                <table class="table table-responsive" *ngIf="fechas">
-                    <!-- |filter:serchText | paginate: { itemsPerPage: 5, currentPage: p}; -->
-                    <ng-container  *ngFor="let punto of fechas; let i = index">
-                    <thead *ngIf="i == 0" >
-                        <th [class.active]="order == 'PuntoAtencionNombre'"
-                        (click)="setOrder('PuntoAtencionNombre')"
-                        class="textofilas order-puntos columna-fecha-inicio">
-                            <span [hidden]="reversePunto" class="icon-order-punto">
-                                <i class="material-icons">arrow_downward</i>
-                            </span>
-                            <span [hidden]="!reversePunto" class="icon-order-punto">
-                                <i class="material-icons">arrow_upward</i>
-                            </span>
-                            <span class="text-order-punto">Fecha inicio</span>
-                        </th>
-                        <th [class.active]="order == 'Departamento'"
-                        (click)="setOrder('Departamento')" 
-                        class="textofilas order-puntos columna-fecha-inicio">
-                            <span [hidden]="reverseDepartamento" class="icon-order">
-                                <i class="material-icons">arrow_downward</i>
-                            </span>
-                            <span [hidden]="!reverseDepartamento" class="icon-order">
-                                <i class="material-icons">arrow_upward</i>
-                            </span>
-                            <span class="text-order">Fecha fin</span>
-                        </th>
-                        <th class="textofilas" >Observaciones</th>
-                    </thead>
-                    </ng-container>
-                    <tbody>
-                        <!-- |orderBy: order:reverseDepartamento:true |orderBy: order:reversePunto:true |filter:serchText | paginate: { itemsPerPage: 5, currentPage: p}; -->
-                        <ng-container  *ngFor="let item of fechas; let i = index">
-                        <tr>
-                           
-                        </tr>
-                        </ng-container>
-                    </tbody>
-                </table>
-                
-                <div class="paginacion">
-                    <pagination-controls (pageChange)="p = $event" previousLabel="" nextLabel="" [maxSize]="9" [autoHide]="true"></pagination-controls>
-                </div>
-            </div>
-        </div>
-    </div>
+          <div class="col-sm-12 col-md-12 col-lg-5">
+              <ng-container>
+                  <h2>Fechas específicas para realizar el trámite</h2>
+              </ng-container>
+          </div>
+          <div class="col-sm-12 col-md-12 col-lg-7 pr-5">
+              <ng-container >
+              <div class="buscador">
+                  <input class="form-control" type="text" aria-label="Buscar" placeholder="Buscar" [(ngModel)]="serchText">
+                  <button class="content-search"><span class="govco-icon govco-icon-search-cn icon-color-blue"></span></button>
+              </div>
+              </ng-container>
+          </div>
+          <div  class="order-movile">
+              <th [class.active]="order == 'PuntoAtencionNombre'"
+              (click)="setOrder('PuntoAtencionNombre')"
+              class="textofilas order-puntos">
+                  <span [hidden]="reversePunto" class="icon-order-punto">
+                      <i class="material-icons">arrow_downward</i>
+                  </span>
+                  <span [hidden]="!reversePunto" class="icon-order-punto">
+                      <i class="material-icons">arrow_upward</i>
+                  </span>
+                  <span class="text-order-punto">Fecha inicio</span>
+              </th>
+              <th [class.active]="order == 'Departamento'"
+              (click)="setOrder('Departamento')"
+              class="textofilas order-puntos">
+                  <span [hidden]="reverseDepartamento" class="icon-order">
+                      <i class="material-icons">arrow_downward</i>
+                  </span>
+                  <span [hidden]="!reverseDepartamento" class="icon-order">
+                      <i class="material-icons">arrow_upward</i>
+                  </span>
+                  <span class="text-order">Fecha fin</span>
+              </th>
+          </div>
+  </div>
+  <div class="modal-body">
+      <div class="row">
+          <div class="col-md-12">
+              <div *ngIf="fechas" >
+                <small *ngIf="fechas.length == 0">Trámite no contiene fechas específicas</small>
+              </div>
+              <table class="table table-responsive" *ngIf="fechas">
+                  <ng-container  *ngFor="let punto of fechas |filter:serchText | paginate: { itemsPerPage: 5, currentPage: p}; let i = index">
+                  <thead *ngIf="i == 0" >
+                      <th [class.active]="order == 'PuntoAtencionNombre'"
+                      (click)="setOrder('PuntoAtencionNombre')"
+                      class="textofilas order-puntos columna-fecha-inicio">
+                          <span [hidden]="reversePunto" class="icon-order-punto">
+                              <i class="material-icons">arrow_downward</i>
+                          </span>
+                          <span [hidden]="!reversePunto" class="icon-order-punto">
+                              <i class="material-icons">arrow_upward</i>
+                          </span>
+                          <span class="text-order-punto">Fecha inicio</span>
+                      </th>
+                      <th [class.active]="order == 'Departamento'"
+                      (click)="setOrder('Departamento')"
+                      class="textofilas order-puntos columna-fecha-inicio">
+                          <span [hidden]="reverseDepartamento" class="icon-order">
+                              <i class="material-icons">arrow_downward</i>
+                          </span>
+                          <span [hidden]="!reverseDepartamento" class="icon-order">
+                              <i class="material-icons">arrow_upward</i>
+                          </span>
+                          <span class="text-order">Fecha fin</span>
+                      </th>
+                      <th class="textofilas" >Observaciones</th>
+                  </thead>
+                  </ng-container>
+                  <tbody>
+                      <ng-container  *ngFor="let item of fechas |orderBy: order:reverseDepartamento:true |orderBy: order:reversePunto:true |filter:serchText | paginate: { itemsPerPage: 5, currentPage: p}; let i = index">
+                      <tr>
+                          <td class="columna-fecha-inicio">{{ item.FechaInicio | date:'d/MM/yyyy'}}</td>
+                          <td class="columna-fecha-fin">{{ item.FechaFin | date:'d/MM/yyyy' }}</td>
+                          <td>{{ item.Observaciones }}</td>
+
+                      </tr>
+                      </ng-container>
+                  </tbody>
+              </table>
+
+              <div class="paginacion">
+                  <pagination-controls (pageChange)="p = $event" previousLabel="" nextLabel=""></pagination-controls>
+              </div>
+          </div>
+      </div>
+  </div>
 </div>

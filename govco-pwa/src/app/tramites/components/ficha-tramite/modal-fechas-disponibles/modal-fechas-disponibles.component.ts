@@ -1,15 +1,15 @@
-import { Component, Input } from '@angular/core';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { OrderPipe } from 'ngx-order-pipe';
 import { UtilsService } from 'src/app/tramites/services/utils.service';
 import { ValidateUrlService } from 'src/app/tramites/services/validate-url.service';
+import { Component, Input, OnInit } from '@angular/core';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { OrderPipe } from 'ngx-order-pipe';
 
 @Component({
   selector: 'app-modal-fechas-disponibles',
   templateUrl: './modal-fechas-disponibles.component.html',
   styleUrls: ['./modal-fechas-disponibles.component.scss']
 })
-export class ModalFechasDisponiblesComponent  {
+export class ModalFechasDisponiblesComponent implements OnInit {
 
   @Input() fechas: string;
   p = 1;
@@ -20,19 +20,23 @@ export class ModalFechasDisponiblesComponent  {
   sortedCollection: any[];
 
   constructor(
+    private modalService: NgbModal,
     private activeModal: NgbActiveModal,
     private validateUrlService: ValidateUrlService,
     private utilsService: UtilsService,
-    private orderPipe: OrderPipe
-  ) {
-    this.sortedCollection = orderPipe.transform(this.fechas, 'PuntoAtencionNombre');
+    private orderPipe: OrderPipe) {
+      this.sortedCollection = orderPipe.transform(this.fechas, 'PuntoAtencionNombre');
+    }
+
+  ngOnInit() {
+
   }
 
   closeModal() {
     this.activeModal.close();
   }
 
-  validateUrl(url: string, e: any) {
+  validateUrl(url: string, e:any) {
     e.preventDefault();
     this.validateUrlService.validate(url)
       .subscribe((data: boolean) => {
@@ -46,12 +50,12 @@ export class ModalFechasDisponiblesComponent  {
   }
 
   setOrder(value: string) {
-    if (value === 'PuntoAtencionNombre') {
-      this.reversePunto = !this.reversePunto;
-    } else {
-      this.reverseDepartamento = !this.reverseDepartamento;
-    }
-    this.order = value;
+      if (value === 'PuntoAtencionNombre') {
+        this.reversePunto = !this.reversePunto;
+      } else {
+        this.reverseDepartamento = !this.reverseDepartamento;
+      }
+      this.order = value;
   }
 
 }

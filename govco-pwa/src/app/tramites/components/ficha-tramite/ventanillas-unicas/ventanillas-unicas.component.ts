@@ -96,7 +96,7 @@ export class VentanillasUnicasComponent implements OnInit {
     this.validateItemsPerPage();
   }
 
-  public onPageChange(number: number) {
+  public onPageChange(number: any) {
     this.config.currentPage = number;
     this.pagina = number.toString();
     this.validateItemsPerPage();

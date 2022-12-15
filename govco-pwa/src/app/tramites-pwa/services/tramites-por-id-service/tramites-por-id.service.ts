@@ -123,7 +123,7 @@ export class TramitesPorIdService {
   }
 
   GetFechasByTramite(idTramite: any) {
-    return this.getGeneric<PuntosDeAtencionInterface[]>('FichaTramite/GetFechasEspecificaByTramite/', `${idTramite}`);
+    return this.getGeneric<any>('FichaTramite/GetFechasEspecificaByTramite/', `${idTramite}`);
   }
 
   setTipoAtencionPresencial(data: number) {

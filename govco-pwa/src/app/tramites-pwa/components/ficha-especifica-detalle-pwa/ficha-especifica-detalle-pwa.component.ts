@@ -3,6 +3,8 @@ import { DataBasicaPuntosInterface } from '../../models/puntos-de-atencion/data-
 import { TramitesPorIdService } from '../../services/tramites-por-id-service/tramites-por-id.service';
 import { TipoEnlace } from '../../models/tramites-id-models/tramites-por-id-interface';
 import { ValidateUrlService } from '../../services/validate-url.service';
+import { ModalFechasDisponiblesComponent } from 'src/app/tramites/components/ficha-tramite/modal-fechas-disponibles/modal-fechas-disponibles.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
@@ -11,7 +13,7 @@ import { ValidateUrlService } from '../../services/validate-url.service';
   styleUrls: ['./ficha-especifica-detalle-pwa.component.scss'],
 })
 export class FichaEspecificaDetallePwaComponent implements OnInit {
-  @Input() data: TipoEnlace;
+  @Input() data: any;
   @Output() abrirPuntosAtencion = new EventEmitter<DataBasicaPuntosInterface>();
 
   infoDescripcionTramite: any;
@@ -23,12 +25,14 @@ export class FichaEspecificaDetallePwaComponent implements OnInit {
   urlBoton = '';
   iconoTramite = '';
   iconoCosto = '';
+  nombreEnlace: string;
 
   showBotonFechas: boolean;
 
   constructor(
     protected fichaTramiteService: TramitesPorIdService,
-    public validarUrlService: ValidateUrlService) { }
+    public validarUrlService: ValidateUrlService,
+    private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.fichaTramiteService
@@ -47,6 +51,7 @@ export class FichaEspecificaDetallePwaComponent implements OnInit {
     this.getIconoTramite(this.data.Tipotramite);
     this.setDataBoton(this.data.Tipotramite);
     this.showBotonFecha();
+    this.nombreEnlaceFechas()
   }
 
   goToLink(url: string) {
@@ -92,18 +97,39 @@ export class FichaEspecificaDetallePwaComponent implements OnInit {
   showBotonFecha() {
     this.fichaTramiteService.GetFechasByTramite(this.data.IdTramite).subscribe(
       (resp: any) => {
-        this.showBotonFechas = resp.length != 0 ? true: false;
+        if(resp.UrlCalendarioEjecucion != null || resp.fechasEspecificas.length > 0) {
+          return this.showBotonFechas = true
+        } else {
+          return this.showBotonFechas = false;
+        }
       },
       (error) => console.log(error)
     );
   }
 
-  getFechas() {
-    this.fichaTramiteService
-      .GetFechasByTramite(this.data.IdTramite)
-      .subscribe((resp) => {
-        // this.showModalFechas(resp)
+  nombreEnlaceFechas(){
+    this.fichaTramiteService.GetFechasByTramite(this.data.IdTramite).subscribe(
+      (resp:any)=> {
+      if(resp.UrlCalendarioEjecucion != null) {
+        return this.nombreEnlace = "Ir a página web";
+      } else {
+        return this.nombreEnlace = "Ver fechas";
+      }
+    });
+
+  }
+
+  getFechas(){
+
+    if(this.data.UrlCalendarioEjecucion){
+      console.log(this.data.UrlCalendarioEjecucion)
+      console.log(this.data)
+      window.open(this.data.UrlCalendarioEjecucion,'_blank');
+    } else {
+      this.fichaTramiteService.GetFechasByTramite(this.data.IdTramite).subscribe(  (resp)=> {
+        this.showModalFechas(resp.fechasEspecificas)
       });
+    }
   }
 
   setDataBoton(data: any) {
@@ -124,5 +150,15 @@ export class FichaEspecificaDetallePwaComponent implements OnInit {
       idAccion: 0,
     };
     this.abrirPuntosAtencion.emit(data);
+  }
+
+  showModalFechas(data: any) {
+    console.log(data)
+    const modal = this.modalService.open(ModalFechasDisponiblesComponent, {
+      size: 'lg',
+      backdrop: 'static',
+      keyboard: false,
+    });
+    modal.componentInstance.fechas = data;
   }
 }
