@@ -5,17 +5,17 @@
   [ngStyle]="(estadoContenedor?estiloFijo:'')">
   <div class="container" *ngIf="objeto">
     <div class="titulo-entidades" *ngIf="!estadoContenedor">
-      <h1 tabindex="0">{{objeto.rama.titulo}}</h1>
+      <h1 tabindex="0">{{objeto.titulo}}</h1>
     </div>
     <div *ngIf="objeto"
       [class]="estadoContenedor?'row contenedor-menu-entidades-collapse':'row contenedor-menu-entidades'">
-      <a id="item_menu_{{rama.titulo}}" class="items-menu" *ngFor="let rama of objeto.rama.items;let i=index;"
-        href="javascript:void(0)" [attr.aria-label]="rama.titulo" (click)="arrasteASeccion($event,rama.titulo)"
-        title="Ir a la sección {{rama.titulo}}">
+      <a id="item_menu_{{rama.tituloAlternativo}}" class="items-menu" *ngFor="let rama of objeto;let i=index;"
+        href="javascript:void(0)" [attr.aria-label]="rama.tituloAlternativo"
+        (click)="arrasteASeccion($event,rama.tituloAlternativo)" title="Ir a la sección {{rama.tituloAlternativo}}">
         <div class="contenedor-icono">
           <img src="{{rama.iconoUrl}}" alt="Ícono decorativo">
         </div>
-        <div class="texto-items-menu"><span>{{rama.titulo}}</span></div>
+        <div class="texto-items-menu"><span>{{rama.tituloAlternativo}}</span></div>
       </a>
     </div>
   </div>
@@ -23,15 +23,15 @@
 
 <!-- SECCION DE ENTIDADES -->
 <div class="container pt-4" *ngIf="objeto">
-  <div id="seccion_{{rama.titulo}}" class="" *ngFor="let rama of objeto.rama.items;let i=index;" tabindex="0"
-    [attr.aria-label]="rama.titulo" (focus)="arrasteASeccion(null,rama.titulo)">
+  <div id="seccion_{{rama.tituloAlternativo}}" class="" *ngFor="let rama of objeto;let i=index;" tabindex="0"
+    [attr.aria-label]="rama.tituloAlternativo" (focus)="arrasteASeccion(null,rama.tituloAlternativo)">
     <div class="contenedor-seccion-dos py-4">
       <div class="contenedor-titulo-entidad">
         <div class="icono">
           <img src="{{rama.iconoUrl}}" alt="Ícono decorativo">
         </div>
         <div class="titulo">
-          <h1>{{rama.titulo}}</h1>
+          <h1>{{rama.tituloAlternativo}}</h1>
         </div>
       </div>
       <div class="contenedor-info-entidad">
