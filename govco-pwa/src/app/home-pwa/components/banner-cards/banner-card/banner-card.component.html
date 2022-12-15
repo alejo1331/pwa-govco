@@ -1,17 +1,15 @@
-<a (click)="onClickTag(tagName)">
-    <div class="card-container">
-        <div class="icon-container" *ngIf="iconNameClass; else templateImage">
-            <span class="material-symbols-outlined">
-                {{iconNameClass}}
-            </span>
+<a class="card-container"(click)="onClickTag(tagName)" (keyup.enter)="onClickTag(tagName)" tabindex="0">
+    <div class="icon-container" *ngIf="iconNameClass; else templateImage">
+        <span class="material-symbols-outlined">
+            {{iconNameClass}}
+        </span>
+    </div>
+    <ng-template #templateImage>
+        <div class="icon-container">
+            <img class="logo-carpeta" src="../../../../../assets/icons-fonts/folder-user2.svg" alt="">
         </div>
-        <ng-template #templateImage>
-            <div class="icon-container">
-                <img class="logo-carpeta" src="../../../../../assets/icons-fonts/folder-user2.svg" alt="">
-            </div>
-        </ng-template>
-        <div class="text-container">
-            <p>{{textNameClass}}</p>
-        </div>
+    </ng-template>
+    <div class="text-container">
+        <p>{{textNameClass}}</p>
     </div>
 </a>

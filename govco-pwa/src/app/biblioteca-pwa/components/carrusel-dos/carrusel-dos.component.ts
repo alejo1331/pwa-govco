@@ -16,12 +16,14 @@ export class CarruselDosComponent {
       if (!next.length) {
         next = $(this).siblings(':first');
       }
-      next.children(':first-child').clone().appendTo($(this));
+      
+      const elementClone = next.children(':first-child').clone().appendTo($(this));
+      $(<HTMLElement>elementClone[0].querySelector('a')).attr("tabindex", '0');
 
-      if (next.next().length>0) {
-        next.next().children(':first-child').clone().appendTo($(this));
+      if (next.next().length > 0) {
+        const aa = next.next().children(':first-child').clone().appendTo($(this));
       } else {
-        $(this).siblings(':first').children(':first-child').clone().appendTo($(this));
+        const ee = $(this).siblings(':first').children(':first-child').clone().appendTo($(this));
       }
     });
 
