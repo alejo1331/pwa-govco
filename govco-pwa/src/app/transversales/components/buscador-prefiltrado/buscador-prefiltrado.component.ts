@@ -35,7 +35,7 @@ export class BuscadorPrefiltradoComponent implements OnInit {
     router.events.subscribe((event: Event) => {
       if (event instanceof NavigationStart) {
         let regex = /([T][0-9])\w+/;
-        if (event.url != '/buscador') {
+        if (event.url != '/buscador' && !event.url.includes('/ficha-tramites-y-servicios')) {
           if (!(regex.test(event.url) && event.url.includes('noticias/detalle'))) {
             this.inputBuscadorSegundoNivel = document.getElementById('buscador-pwa');
             if (this.inputBuscadorSegundoNivel) {
@@ -43,7 +43,7 @@ export class BuscadorPrefiltradoComponent implements OnInit {
             }
             this.buscadorService.setSugerenrciasBuscador([])
             this.estadoInicialInput = true;
-            
+
             const i: number = 0;
             const buscadorParams: BuscadorParams = {
               index: ItemsBuscador[i].id,
