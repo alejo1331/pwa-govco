@@ -185,10 +185,12 @@ export class FiltrosPrincipalComponent implements OnInit {
     delete this.filtrosSeleccionados[item];
     this.itemSeleccionados--;
 
-    if (item == 'categorias') {
+    if (item == 'categorias' && this.filtrosSeleccionados['subcategorias']) {
       delete this.filtrosSeleccionados['subcategorias'];
-    } else if (item == 'anioPublicacionFiltro') {
+      this.itemSeleccionados--;
+    } else if (item == 'anioPublicacionFiltro' && this.filtrosSeleccionados['mesPublicacionFiltro']) {
       delete this.filtrosSeleccionados['mesPublicacionFiltro'];
+      this.itemSeleccionados--;
     }
 
     this.actualizarBusqueda();

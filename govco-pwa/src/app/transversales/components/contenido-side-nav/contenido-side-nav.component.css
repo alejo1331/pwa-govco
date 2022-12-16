@@ -51,6 +51,12 @@ li.govco-pwa-sidenav-item {
   background-position: right bottom;
   height: 48px;
   max-width: 94%;
+  border: 2px solid #3366CC;
+  margin-left: -2px;
+}
+
+li.govco-pwa-sidenav-item:focus-visible {
+  border: 2px solid #000;
 }
 
 .active {
@@ -178,10 +184,6 @@ span.material-icons {
     'wght' 500,
     'GRAD' 0,
     'opsz' 20
-}
-
-li {
-  outline: none !important;
 }
 
 a {

@@ -11,6 +11,13 @@ export class BannerCardComponent {
   @Input() tagName: string;
 
   onClickTag(section: any) {
-    document.getElementById(section)?.scrollIntoView({ behavior: 'smooth' });
+    const element = document.getElementById(section);    
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+      const focusableElement = <HTMLElement>element.querySelector(
+        'a[href], button, input, textarea, select, details, [tabindex]:not([tabindex="-1"])'
+      );
+      focusableElement?.focus();
+    }
   }
 }

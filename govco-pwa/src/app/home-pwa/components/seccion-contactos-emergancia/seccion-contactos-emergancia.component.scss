@@ -1,18 +1,18 @@
 
-.govco-pwa-contactos-container{
+.govco-pwa-contactos-container {
   width: 100%;
   padding: 0 16px 0 16px;
   margin-top: 40px;
 
-  .govco-pwa-descripcion{
+  .govco-pwa-descripcion {
     margin-top: 24px;
     font-family: 'WorkSans-Regular';
   }
 
-  .govco-pwa-contactos-lista{
+  .govco-pwa-contactos-lista {
     margin-top: 24px;
 
-    .govco-pwa-contactos-item{
+    .govco-pwa-contactos-item {
       margin-top: 16px;
       display: grid;
       column-gap: 8px;
@@ -20,7 +20,7 @@
       grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     }
 
-    .govco-pwa-item-descipcion{
+    .govco-pwa-item-descipcion {
       grid-column-start: 1;
       grid-column-end: 6;
       height: 48px;
@@ -34,20 +34,26 @@
       align-content: center;
       letter-spacing: 0.01px;
       line-height: normal;
-      .item-description-numero{
+
+      .item-description-numero {
         text-align: center;
         align-self: center;
       }
-      .item-description-titulo{
+
+      .item-description-titulo {
         padding: 8px 8px 8px 0;
       }
     }
 
-    a{
+    a {
       text-decoration: none;
+
+      &:focus-visible {
+        outline: 2px solid #000;
+      }
     }
 
-    .govco-pwa-item-icon{
+    .govco-pwa-item-icon {
       border-radius: 4px;
       background: #E6EFFD 0% 0%;
       text-align: center;
@@ -59,9 +65,9 @@
       color: #004884;
       padding: 4px;
 
-  }
+    }
 
-  .govco-icon-callin-cn {
+    .govco-icon-callin-cn {
       font-size: 1.125rem;
       font-family: 'Montserrat', sans-serif !important;
       display: flex;
@@ -70,20 +76,18 @@
       align-items: center;
       margin-right: 0 !important;
       font-weight: 800;
-      color: #004884
-  }
+      color: #004884;
+    }
 
-  .govco-icon-callin-cn::before {
+    .govco-icon-callin-cn::before {
       font-family: "Govco Icon";
       font-size: 1.5rem;
-  }
-
+    }
   }
 }
 
-.govco-pwa-heading-4{
+.govco-pwa-heading-4 {
   font-family: 'Montserrat-SemiBold';
   font-size: 20px;
   color: #004884;
-
 }

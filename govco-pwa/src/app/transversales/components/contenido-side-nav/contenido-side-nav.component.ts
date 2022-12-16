@@ -3,6 +3,8 @@ import { BottomMenuService } from '../../services/bottom-menu/bottom-menu.servic
 import { HeaderService } from '../../services/header-service/header.service';
 import { SidenavService } from '../../services/sidenav-service/sidenav-service.service';
 
+const ENTER_KEY_CODE = 13;
+
 @Component({
   selector: 'app-contenido-side-nav',
   templateUrl: './contenido-side-nav.component.html',
@@ -57,7 +59,13 @@ export class ContenidoSideNavComponent implements OnInit, AfterViewInit {
         setTimeout(() => {
           this.sidenav.cerrar();
         }, 600);
-      })
+      });
+
+      item.addEventListener("keydown", (e: any) => {
+        if (e.keyCode == ENTER_KEY_CODE) {
+          item.click();
+        }
+      });
     })
   }
 
