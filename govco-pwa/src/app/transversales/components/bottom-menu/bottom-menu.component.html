@@ -2,7 +2,7 @@
   <ul class="list-items">
     <span class="pointer"></span>
     <li class="item">
-      <a class="link" (click)="clickBottomMenu('/')">
+      <a class="link" (click)="clickBottomMenu('/')" (keyup.enter)="clickBottomMenu('/')" tabindex="0">
         <div class="govco-pwa-icon-bottom-menu home">
           <img src="../../../../assets/icons-fonts/home_FILL0_wght500_GRAD0_opsz20.svg" alt="">
         </div>
@@ -11,7 +11,7 @@
     </li>
 
     <li class="item">
-      <a class="link" (click)="clickBottomMenu('/ficha-tramites-y-servicios')">
+      <a class="link" (click)="clickBottomMenu('/ficha-tramites-y-servicios')" (keyup.enter)="clickBottomMenu('/ficha-tramites-y-servicios')" tabindex="0">
         <div class="govco-pwa-icon-bottom-menu task">
           <img src="../../../../assets/icons-fonts/task_FILL0_wght500_GRAD0_opsz20.svg" alt="">
         </div>
@@ -20,7 +20,7 @@
     </li>
 
     <li class="item">
-      <a class="link" routerLink="/perfil">
+      <a class="link" routerLink="/perfil" tabindex="0">
         <div class="govco-pwa-icon-bottom-menu person">
           <img src="../../../../assets/icons-fonts/person_FILL0_wght500_GRAD0_opsz20.svg" alt="">
         </div>
@@ -30,7 +30,7 @@
     </li>
 
     <li class="item">
-      <a class="link" routerLink="/servicios">
+      <a class="link" routerLink="/servicios" tabindex="0">
         <div class="govco-pwa-icon-bottom-menu apps">
           <img src="../../../../assets/icons-fonts/apps_FILL1_wght500_GRAD0_opsz20.svg" alt="">
         </div>

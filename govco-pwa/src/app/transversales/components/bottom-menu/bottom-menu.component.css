@@ -1,4 +1,4 @@
-a{
+a {
   text-decoration: none;
 }
 
@@ -31,6 +31,7 @@ ul {
   margin-top: 0.875rem;
   width: 70px;
 }
+
 .navigation-bar .list-items .item .link {
   display: inline-block;
   height: 4rem;
@@ -39,19 +40,27 @@ ul {
   width: 100%;
   line-height: initial;
 }
+
+.navigation-bar .list-items .item .link:focus-visible {
+  outline: 2px solid #000;
+}
+
 .navigation-bar .list-items .item .link span {
   color: #BABABA;
   margin: 0px 0px 0px 0px;
   font-size: 20px;
 }
+
 .navigation-bar .list-items .item .link p {
   margin-top: 4px;
   color: #4B4B4B;
   height: 1rem;
 }
+
 .navigation-bar .list-items .item.active .link {
   background-color: #F6F8F9;
 }
+
 .navigation-bar .list-items .item.active .link span,
 .navigation-bar .list-items .item.active .link p {
   color: #3366CC;
@@ -69,7 +78,7 @@ img {
   filter: invert(92%) sepia(6%) saturate(16%) hue-rotate(32deg) brightness(84%) contrast(81%)
 }
 
-.navigation-bar .list-items .item.active .link .govco-pwa-icon-bottom-menu img{
+.navigation-bar .list-items .item.active .link .govco-pwa-icon-bottom-menu img {
   filter: invert(33%) sepia(96%) saturate(2610%) hue-rotate(212deg) brightness(87%) contrast(81%);
   box-sizing:border-box;
   display:block;
@@ -78,22 +87,21 @@ img {
   padding-left:20px;
 }
 
-.navigation-bar .list-items .item.active .link .govco-pwa-icon-bottom-menu.home img{
+.navigation-bar .list-items .item.active .link .govco-pwa-icon-bottom-menu.home img {
   background: url('../../../../assets/icons-fonts/home_FILL1_wght500_GRAD0_opsz20.svg')
 }
 
-.navigation-bar .list-items .item.active .link .govco-pwa-icon-bottom-menu.task img{
+.navigation-bar .list-items .item.active .link .govco-pwa-icon-bottom-menu.task img {
   background: url('../../../../assets/icons-fonts/task_FILL1_wght500_GRAD0_opsz20.svg')
 }
 
-.navigation-bar .list-items .item.active .link .govco-pwa-icon-bottom-menu.person img{
+.navigation-bar .list-items .item.active .link .govco-pwa-icon-bottom-menu.person img {
   background: url('../../../../assets/icons-fonts/person_FILL1_wght500_GRAD0_opsz20.svg')
 }
 
-.navigation-bar .list-items .item.active .link .govco-pwa-icon-bottom-menu.apps img{
+.navigation-bar .list-items .item.active .link .govco-pwa-icon-bottom-menu.apps img {
   background: url('../../../../assets/icons-fonts/apps_FILL1_wght500_GRAD0_opsz20.svg')
 }
-
 
 .navigation-bar .list-items .pointer {
   position: absolute;
@@ -104,6 +112,7 @@ img {
   -o-transition: all 0.2s linear;
   transition: all 0.2s linear;
 }
+
 .navigation-bar .list-items .pointer::before {
   content: "";
   position: absolute;
@@ -121,12 +130,12 @@ img {
   border-bottom: 6px solid #F6F8F9;
 }
 
-p{
+p {
   font-family: 'work sans';
   font-size: 14px;
 }
 
-.govco-pwa-icon-bottom-menu{
+.govco-pwa-icon-bottom-menu {
   height: 24px;
   display: flex;
   align-items: center;
