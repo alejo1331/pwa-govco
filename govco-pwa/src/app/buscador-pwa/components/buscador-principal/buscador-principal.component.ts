@@ -63,7 +63,7 @@ export class BuscadorPrincipalComponent implements OnInit {
     (document.getElementById('topScroll') as HTMLElement).style.top = '7.25rem';
     (document.getElementById('topScroll') as HTMLElement).scrollTop = 0;
 
-    this.suscripcionFilter();    
+    this.suscripcionFilter();
   }
 
   suscripcionFilter() {
@@ -79,7 +79,7 @@ export class BuscadorPrincipalComponent implements OnInit {
         if (data.pageNumber == 1) {
           this.cantidadResultados = 0;
         }
-        
+
         if (data.spinner) {
           this.activarSpinner(true);
         }
@@ -111,7 +111,7 @@ export class BuscadorPrincipalComponent implements OnInit {
       this.resultadosBusqueda = resultado;
       this.filtrosService.ResultadoBusqueda = resultado;
       this.dataResultado = this.resultadosBusqueda.data.length > 0 ? this.resultadosBusqueda.data : [];
-      
+
       if (this.dataResultado.length > 0) {
         this.cantidadResultados = resultado.total;
       } else {
