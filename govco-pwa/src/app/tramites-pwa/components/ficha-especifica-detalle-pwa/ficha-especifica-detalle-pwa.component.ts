@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { DataBasicaPuntosInterface } from '../../models/puntos-de-atencion/data-basica-puntos-interface';
 import { TramitesPorIdService } from '../../services/tramites-por-id-service/tramites-por-id.service';
-import { TipoEnlace } from '../../models/tramites-id-models/tramites-por-id-interface';
+// import { TipoEnlace } from '../../models/tramites-id-models/tramites-por-id-interface';
 import { ValidateUrlService } from '../../services/validate-url.service';
 import { ModalFechasDisponiblesComponent } from 'src/app/tramites/components/ficha-tramite/modal-fechas-disponibles/modal-fechas-disponibles.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';

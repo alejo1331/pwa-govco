@@ -249,7 +249,7 @@ export class BusquedaCodigosCiiuComponent implements OnInit {
   }
 
   public renderizarTabla() {
-    if (!(this.filtroBusqueda.length > 0)) return false;
+    if (this.filtroBusqueda.length <= 0) return false;
     this.loadingService.startLoading();
     let historico = new RequestHistoricoBusqueda();
     historico.texto = this.filtroBusqueda;

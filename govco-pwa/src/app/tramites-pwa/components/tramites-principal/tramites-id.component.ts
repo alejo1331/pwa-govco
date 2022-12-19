@@ -120,7 +120,8 @@ export class TramitesIdComponent implements OnInit {
             }
           },
             (error) => {
-              console.log('error', error), (this.activarTramitesId = true);
+              console.log('error', error);
+              (this.activarTramitesId = true);
             }, () => {
               this.activarTramitesId = true;
             }

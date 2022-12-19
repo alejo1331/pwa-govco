@@ -4,7 +4,7 @@ import { Injectable } from "@angular/core";
 import { ConoceModel, NosotrosResponse } from "../models/conoce.model";
 import { Observable } from 'rxjs';
 import { SobreNosotrosModel } from '../models/sobre-nosotros.model';
-import { NosotrosModel, NosotrosModelV2 } from '../models/nosotros.model';
+import { NosotrosModelV2 } from '../models/nosotros.model';
 
 @Injectable({
     providedIn: 'root'
