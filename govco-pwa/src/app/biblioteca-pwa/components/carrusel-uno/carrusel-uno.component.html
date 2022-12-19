@@ -8,7 +8,8 @@
     <div class="carousel-inner">
         <div class="carousel-item" [class.active]="i==0" *ngFor="let slide of this.dataCarrusel; let i = index">
             <div [class]="'d-block card-item card-' + j" *ngFor="let item of slide; let j = index">
-                <a role="link" routerLink="{{'/ficha-tramites-y-servicios/T' + contenidoTarjetas[j + i * catidadTarjetas].id }}">
+                <a role="link"
+                    routerLink="{{'/ficha-tramites-y-servicios/T' + contenidoTarjetas[j + i * catidadTarjetas].id }}">
                     <div class="tarjeta-pwa">
                         <img src="{{contenidoTarjetas[j + i * catidadTarjetas].iconoCategoria != '' ? contenidoTarjetas[j + i * catidadTarjetas].iconoCategoria :
                             'https://govco-prod-webutils.s3.amazonaws.com/uploads/2021-10-26/d8f3f555-6765-451f-8ea8-d8109692f458-CAT_DEFAULT-80px.svg'}}"
@@ -31,7 +32,7 @@
         <span class="sr-only">Mostrar siguientes</span>
     </button>
     <ol class="carousel-indicators">
-        <li data-target="#carouselUnoTramites" [attr.data-slide-to]="x" [class.active]="x==0"
+        <li #indicators (keypress)="keypressLi(x)" data-target="#carouselUnoTramites" [attr.data-slide-to]="x" [class.active]="x==0" tabindex="0"
             *ngFor="let slide of this.dataCarrusel; let x = index"></li>
     </ol>
 </div>

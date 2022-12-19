@@ -30,6 +30,10 @@
     border: 0;
     background-color: transparent;
     padding: 10px 8px;
-    outline: none;
+    outline-color: #FFFFFF;
   }
+
+  .govco-botones-ubicacion button:focus-visible {
+    outline-color: #000000;
+  } 
   

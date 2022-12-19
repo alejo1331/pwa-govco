@@ -3,7 +3,7 @@
         'barra-superior-general-pwa-govco': !barraSuperiorInterna,
         'barra-superior-interna-pwa-govco': barraSuperiorInterna}">
         <div class="menu-logo-pwa-govco">
-            <span (click)="onClickMenu()" (keypress)="onClickMenu()" class="menu-hamburgesa-pwa-govco" tabindex="0"
+            <span #menuHamburguesa (click)="onClickMenu()" (keypress)="onClickMenu()" class="menu-hamburgesa-pwa-govco" tabindex="0"
                 [attr.aria-label]="'Abrir menu lateral, puedes encontrar las secciones de noticias, participa, entidades del estado, sobre nosotros, acerca del portal y servicios para entidades'">
                 <span class="menu-caja-pwa-govco">
                     <span class="menu-hamburgesa-superior"

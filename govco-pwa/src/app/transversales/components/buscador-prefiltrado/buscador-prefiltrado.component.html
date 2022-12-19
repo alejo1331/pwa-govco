@@ -3,7 +3,7 @@
         (click)="estadoBotonFiltro == false ? abrirBuscadorPWA() : filtrarPor()"
         (keypress)="estadoBotonFiltro == false ? abrirBuscadorPWA() : filtrarPor()" placeholder="Buscar en GOV.CO"
         style="background-image: url(../../../../assets/icons-fonts/search_bababa.svg)" type="text"
-        [attr.aria-label]="'Este es el campo para acceder al buscador, puedes abrirlo dando clic o enter. Ademas puedes seleccionar un tipo de prefiltro dando tab'">
+        [attr.aria-label]="'Buscar en GOV.CO'">
     <button #botonPrefiltro class="boton-filtro" (click)="filtrarPor()"
         [attr.aria-label]="'Boton para seleccionar el tipo de prefiltro'">
         <p>{{itemsBuscador[posicion].txtCorto}}</p>

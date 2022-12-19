@@ -10,7 +10,7 @@ import { BuscadorPrefiltradoComponent } from '../buscador-prefiltrado.component'
 export class ModalPrefiltradoComponent implements OnInit {
 
   itemFiltro: number;
-  @Output() itemSelected = new EventEmitter<[ boolean, number, boolean, boolean]>();
+  @Output() itemSelected = new EventEmitter<[boolean, number, boolean, boolean]>();
   @ViewChildren('listaPrefiltro', { read: ElementRef }) listaPrefiltro: QueryList<ElementRef>
   @ViewChild('modal') modal: ElementRef;
 
@@ -28,7 +28,7 @@ export class ModalPrefiltradoComponent implements OnInit {
     // Suscribe a los parametros de busqueda para actualizar el boton del filtro
     this.buscadorService.getBuscadorParams$.subscribe(
       (parametros: BuscadorParams) => {
-        if(this.itemFiltro != parametros.index){
+        if (this.itemFiltro != parametros.index) {
           this.itemFiltro = parametros.index;
           this.itemSelected.emit([false, this.itemFiltro, false, false]);
         }
@@ -64,8 +64,9 @@ export class ModalPrefiltradoComponent implements OnInit {
   }
 
   onKeyDown(event: KeyboardEvent) {
+    if (event.shiftKey) this.reiniciarFocus = false;
     if (event.key == 'Tab') {
-      if (this.reiniciarFocus) {
+      if (this.reiniciarFocus && event.shiftKey === false) {
         this.focusBuscador();
       }
     } else if (event.key == 'Escape') {

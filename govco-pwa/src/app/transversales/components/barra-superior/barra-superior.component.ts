@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { BuscadorService, BuscadorParams } from 'src/app/buscador-pwa/services/buscador.service';
 import { ItemsBuscador } from 'src/variables-globales/items-buscador';
@@ -12,10 +12,11 @@ import { BuscadorPrefiltradoComponent } from '../buscador-prefiltrado/buscador-p
   templateUrl: './barra-superior.component.html',
   styleUrls: ['./barra-superior.component.css']
 })
-export class BarraSuperiorComponent implements OnInit {
+export class BarraSuperiorComponent implements OnInit, AfterViewInit {
 
   @Output() outEstadoMenu = new EventEmitter<boolean>();
   @ViewChild(BuscadorPrefiltradoComponent) buscadorPrefiltrado: BuscadorPrefiltradoComponent;
+  @ViewChild('menuHamburguesa') icono_menu: ElementRef;
   estadoFocusFiltro: boolean = true;
 
   estadoMenu: boolean = false;
@@ -35,6 +36,11 @@ export class BarraSuperiorComponent implements OnInit {
       this.ocultar = estado;
       this.barraSuperiorInterna = estilo;
     })
+  }
+
+  ngAfterViewInit(): void {
+    const modalVisto = sessionStorage.getItem('modalVisto');
+    if(modalVisto) this.icono_menu.nativeElement.focus();
   }
 
   onClickMenu() {

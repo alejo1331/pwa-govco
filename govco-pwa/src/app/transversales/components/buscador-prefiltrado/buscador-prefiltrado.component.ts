@@ -21,6 +21,7 @@ export class BuscadorPrefiltradoComponent implements OnInit {
   inputBuscadorSegundoNivel: any
   posicion: number = 0;
   abrirBuscadorCheck: boolean = false;
+  estadoModal: boolean
 
   //Elementos clave para el focus del modal prefiltrado
   @ViewChild('botonPrefiltro') botonPrefiltro: ElementRef;
@@ -61,6 +62,7 @@ export class BuscadorPrefiltradoComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.estadoFocusFiltro.emit(this.estadoBotonFiltro);
     this.itemsBuscador = ItemsBuscador;
     let input: any = document.querySelector("input");
     // Suscribe para abrir el buscador

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnChanges } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, ViewChildren, QueryList, ElementRef } from '@angular/core';
 import { CarruselUnoInterface } from '../../models/carrusel-uno-models/carrusel-uno-interface';
 import { DataTarjetasInterface } from '../../models/carrusel-uno-models/data-tarjetas-interface';
 
@@ -10,6 +10,7 @@ import { DataTarjetasInterface } from '../../models/carrusel-uno-models/data-tar
 export class CarruselUnoComponent implements OnInit, OnChanges {
 
   @Input() dataCarruselUno: CarruselUnoInterface;
+  @ViewChildren('indicators', { read: ElementRef }) indicators: QueryList<ElementRef>;
 
   public contenidoTarjetas: DataTarjetasInterface[];
   public dataCarrusel: any = [];
@@ -37,6 +38,10 @@ export class CarruselUnoComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.estado = false;
+  }
+
+  keypressLi(index: number) {
+    this.indicators.toArray()[index].nativeElement.click();
   }
 
   agruparData(arr: any, len: number) {
