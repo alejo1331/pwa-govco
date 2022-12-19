@@ -11,6 +11,7 @@ import { ModalService } from 'src/app/modal-natvivo/services/modal.service';
 import { ModalInterface } from 'src/app/modal-natvivo/models/modal-interface';
 import { ModalClasicoComponent } from 'src/app/modal-natvivo/components/modal-clasico/modal-clasico.component';
 import { SwUpdate } from '@angular/service-worker';
+import { BarraSuperiorComponent } from '../barra-superior/barra-superior.component';
 
 @Component({
   selector: 'app-geolocalizacion-formulario',
@@ -99,6 +100,10 @@ export class GeolocalizacionFormularioComponent implements OnInit, AfterViewInit
         });
         IngresarUbicacion.afterClosed().subscribe(resultado => {
           sessionStorage.setItem('modalVisto', 'true');
+          if (resultado === false) {
+            var menuHamburguesa = (document.getElementsByClassName('menu-hamburgesa-pwa-govco') as HTMLCollectionOf<HTMLElement>)[0];
+            menuHamburguesa.focus();
+          }
           this.updatePWA();
           if (resultado) {
             this.getGeolocalizacion();

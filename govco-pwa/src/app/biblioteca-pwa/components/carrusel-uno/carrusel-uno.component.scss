@@ -26,6 +26,10 @@
             transition: transform .6s linear;
             width: 100%;
 
+            a {
+                outline-color: #000000;
+            }
+
             .tarjeta-pwa {
                 width: auto;
                 height: 6rem;
@@ -149,11 +153,18 @@
         }
     }
 
+    .carousel-control-prev:focus-visible img, 
+    .carousel-control-next:focus-visible img {
+        border: 2px solid #000000;
+        border-radius: 4px;
+    }
+
     .carousel-indicators {
         margin-bottom: 0;
         z-index: 0;
 
         li {
+            outline-color: #000000;
             -moz-border-radius: 50%;
             -webkit-border-radius: 50%;
             border-radius: 50%;
