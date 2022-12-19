@@ -12,9 +12,9 @@ import { TerminosCondicionesService } from '../../services/terminos-condiciones/
 
 @Component({
   selector: 'app-terminos-condiciones',
-  templateUrl: './terminos-condiciones.component.html',
-  styleUrls: ['./terminos-condiciones.component.scss']
+  templateUrl: './terminos-condiciones.component.html'
 })
+
 export class TerminosCondicionesComponent implements OnInit, AfterContentInit {
 
   terminosCondiciones: TerminosCondicionesModel;
