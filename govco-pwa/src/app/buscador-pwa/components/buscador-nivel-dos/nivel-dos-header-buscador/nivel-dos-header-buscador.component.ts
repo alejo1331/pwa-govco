@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, ElementRef, Input, ViewChild, AfterViewInit, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppComponent } from 'src/app/app.component';
 import { BuscadorParams, BuscadorService } from 'src/app/buscador-pwa/services/buscador.service';
@@ -16,6 +16,7 @@ export class NivelDosHeaderBuscadorComponent implements AfterViewInit {
 
   @Input() activarServicio: boolean;
   @ViewChild('input') input: ElementRef<HTMLInputElement>;
+  @ViewChild('botonAtras') botonAtras: ElementRef;
   numeroSugerencias: number = Parametros.numeroSugerencias;
   maxlength: number = Parametros.maxLength;
   minCaracterTexto: number = Parametros.minCaracterTexto;
@@ -26,6 +27,7 @@ export class NivelDosHeaderBuscadorComponent implements AfterViewInit {
   txtInputBuscador = '';
   index = 0;
   matSidenavContent: HTMLElement;
+  reiniciarFocus: boolean = true;
 
   constructor(
     private sugerenciasService: SugerenciasService,
@@ -105,6 +107,7 @@ export class NivelDosHeaderBuscadorComponent implements AfterViewInit {
 
   cerrarBuscadorPWA() {
     this.buscadorService.setAbrirBuscador(false);
+    this.reiniciarFocus = true
   }
 
   styleOpacity() {
@@ -115,6 +118,23 @@ export class NivelDosHeaderBuscadorComponent implements AfterViewInit {
       seccionBuscador.removeAttribute('style');
       seccionBuscador.classList.remove('off-buscador');
     });
+  }
+
+  focus() {
+    this.botonAtras.nativeElement.focus();
+    this.reiniciarFocus = false;
+  }
+
+  @HostListener('window:keyup', ['$event']) onTab(event: KeyboardEvent) {
+    let evento : any = event.target
+    if (this.reiniciarFocus) {
+      this.focus();
+    }
+
+    if (evento.id == 5) {
+
+      this.reiniciarFocus = true;
+    }
   }
 
 }
