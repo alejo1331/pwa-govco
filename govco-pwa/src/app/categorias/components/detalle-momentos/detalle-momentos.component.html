@@ -7,13 +7,13 @@
             codigo-categoria: este prop se usa para filtrar por categoría los tramites que carga el componente, donde se implemente este componete se debe enviar un codigo de categoría válido
           -->
 
-      <tramites-mas-consultados id_="momentosdevida" seccion="LoMasConsultadoDetalleMomentoVida"
+      <tramites-mas-consultados id_="momentosdevida" seccion="los-mas-consultados-en-home"
         [codigoCategoria]="idRecurso"></tramites-mas-consultados>
     </div>
   </div>
   <div class="container" tabindex="0"
     [attr.aria-label]="' A continuación encontrará la sección de los trámites destacados del momento de vida'+nombreTramite">
-    <seccion-lo-mas-destacado seccion="LoMasDestacadoTramites" [codigoCategoria]="idRecurso"></seccion-lo-mas-destacado>
+    <seccion-lo-mas-destacado seccion="lo-mas-destacado-en-momentos-de-vida" [codigoCategoria]="idRecurso"></seccion-lo-mas-destacado>
   </div>
 </div>
 <div class="contenedor-buscador-momentos" *ngIf="categoria.item !== '' || categoria.item!== null ">
@@ -29,6 +29,6 @@
 <seccion-actualidad *ngIf="estadoCargaActualidad" seccion="detallemomentodevida" [codigoCategoria]=idRecurso
   [categoriaTexto]=nombreTramite></seccion-actualidad>
 
-<temas-de-interes></temas-de-interes>
+<!-- <temas-de-interes></temas-de-interes> -->
 <govco-iteraccion-component module="Momento de Vida" [itemid]="idRecurso" [nombretramite]="nombreTramite">
 </govco-iteraccion-component>

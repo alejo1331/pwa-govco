@@ -41,7 +41,7 @@ export const environment = {
   serverUrlNoticias: 'https://preapi-interno.www.gov.co/api/noticias/',
   //Categorias-Subcategorias o momentos de vida
   serverCategorias:
-    'https://preapi-interno.www.gov.co/api/categorias-subcategorias/',
+    'https://aws-api-interno.www.gov.co/api/categorias-subcategorias/',
 
   //URL plan de integracion
   urlPlanIntegracion:
