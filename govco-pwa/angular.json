@@ -196,10 +196,10 @@
                             "namedChunks": true,
                             "fileReplacements": [{
                                 "replace": "src/environments/environment.ts",
-                                "with": "src/environments/environment.preprod.ts"
+                                "with": "src/environments/environment.operaciones.ts"
                             }],
                             "index": {
-                                "input": "src/index.preprod.html",
+                                "input": "src/index.operaciones.html",
                                 "output": "index.html"
                             }
                         },
