@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { TerminosCondicionesModel } from '../../models/terminos-condiciones/terminos-condiciones.model';
-;
 
 const API_URL = environment.serverUrlHome;
 

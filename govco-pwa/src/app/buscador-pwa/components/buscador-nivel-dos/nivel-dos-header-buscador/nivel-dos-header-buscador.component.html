@@ -1,7 +1,9 @@
 
 <div class="govco-pwa-nivel-dos-header">
   <div class="govco-pwa-botones-header">
-    <div class="govco-pwa-icon-container" (click)="cerrarBuscadorPWA()">
+    <div class="govco-pwa-icon-container" tabindex="0" #botonAtras
+    [attr.aria-label]="'Cerrar buscador'" (keypress)="cerrarBuscadorPWA()"
+    (click)="cerrarBuscadorPWA()">
       <span class="material-symbols-outlined backSymbol">
           arrow_back
       </span>

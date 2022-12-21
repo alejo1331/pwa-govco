@@ -58,8 +58,6 @@ export class BottomMenuComponent implements OnInit, OnDestroy {
     if ((document.getElementById('topScroll') as HTMLElement).scrollTop != 0 && window.location.pathname != '/ficha-tramites-y-servicios') {
       if (window.location.pathname != url) {
         url = url == '/' ? window.location.pathname : url;
-      } else {
-        url = url
       }
     }
     if (window.location.pathname != url) {
