@@ -38,6 +38,7 @@ import { HomePwaModule } from './home-pwa/home-pwa.module';
 import { TramitesPwaModule } from './tramites-pwa/tramites-pwa.module';
 import { BuscadorPwaModule } from './buscador-pwa/buscador-pwa.module';
 import { MapaDelSitioModule } from './mapa-del-sitio/mapa-del-sitio.module';
+import { CategoriasPwaModule } from './categorias-pwa/categorias-pwa.module';
 
 
 
@@ -87,7 +88,8 @@ registerLocaleData(es)
     HomePwaModule,
     TramitesPwaModule,
     BuscadorPwaModule,
-    MapaDelSitioModule
+    MapaDelSitioModule,
+    CategoriasPwaModule
   ],
   providers: [
     SidenavService,
