@@ -1,8 +1,3 @@
-.titulo-descripcion {
-    height: 100vh;
-    background: linear-gradient(70deg, #1B4AA7, #113680);
-}
-
 .modal-desplegable-pwa.contenedor {
     width: 100%;
     height: auto;
@@ -55,4 +50,3 @@
     width: 100%;
     padding: 0 1rem 1rem 1rem;
 }
-

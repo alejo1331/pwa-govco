@@ -1,6 +1,6 @@
-.container-component {
-    background: #3366CC;
+.titulo-descripcion {
     height: 100vh;
+    background: linear-gradient(70deg, #1B4AA7, #113680);
 }
 
 .container-header {

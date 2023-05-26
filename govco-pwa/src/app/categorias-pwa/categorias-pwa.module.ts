@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { CategoriasPwaRoutingModule } from './categorias-pwa-routing.module';
 import { MomentosDeVidaComponent } from './components/momentos-de-vida/momentos-de-vida.component';
 import { DetalleMomentosDeVidaComponent } from './components/detalle-momentos-de-vida/detalle-momentos-de-vida.component';
+import { BibliotecaPwaModule } from '../biblioteca-pwa/biblioteca-pwa.module';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { DetalleMomentosDeVidaComponent } from './components/detalle-momentos-de
   ],
   imports: [
     CommonModule,
-    CategoriasPwaRoutingModule
+    CategoriasPwaRoutingModule,
+    BibliotecaPwaModule,
   ]
 })
 export class CategoriasPwaModule { }
