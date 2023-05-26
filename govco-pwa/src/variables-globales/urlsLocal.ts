@@ -1,5 +1,9 @@
 export const urlsLocal = {
     fichaTramite: '/ficha-tramites-y-servicios',
+    ficha_tramite_pwa: 'ficha-tramites-y-servicios',
+    codigo_ciiu_tramites: 'codigos-ciiu-y-tramites',
+    certificados:'consulta-certificados',
+    ventanillas:'ventanillas-unicas',
     fichaTramiteId: '/ficha-tramites-y-servicios/T',
     servicios: '/servicios',
     noticias: '/noticias',
@@ -9,5 +13,6 @@ export const urlsLocal = {
     sobreNosotros: '/sobre-nosotros',
     acercaPortal: '/acerca-del-portal',
     serviciosEntidades: '/servicios-para-entidades',
+    categorias_subcategorias:'categorias-subcategorias-pwa',
     buscador: 'buscador',
 }

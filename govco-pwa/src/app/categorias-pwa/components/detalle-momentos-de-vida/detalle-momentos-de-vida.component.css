@@ -1,14 +1,17 @@
 .titulo-descripcion {
-    height: 100vh;
+    height: 100%;
     background: linear-gradient(70deg, #1B4AA7, #113680);
+    position: fixed;
+    width: 100%;
+    top: 5.75rem;
 }
 
 .modal-desplegable-pwa.contenedor {
     width: 100%;
     height: auto;
-    z-index: 4;
-    position: fixed;
-    top: 70%;
+    z-index: 2;
+    position: absolute;
+    top: 12.5rem;
     margin: 0;
 }
 
@@ -27,14 +30,6 @@
     outline: 0;
 }
 
-.modal-desplegable-pwa .header-modal {
-    display: -ms-flexbox;
-    display: flex;
-    align-items: flex-start;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-}
-
 .modal-desplegable-pwa .hr {
     height: 4px;
     width: 60px;
@@ -45,9 +40,6 @@
 }
 
 .modal-desplegable-pwa .body-modal {
-    position: relative;
-    -ms-flex: 1 1 auto;
-    flex: 1 1 auto;
     padding: 0 1rem 0 1rem;
 }
 
@@ -55,4 +47,3 @@
     width: 100%;
     padding: 0 1rem 1rem 1rem;
 }
-

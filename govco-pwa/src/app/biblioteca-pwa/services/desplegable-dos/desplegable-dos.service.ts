@@ -6,43 +6,13 @@ import { ElementRef, Injectable } from '@angular/core';
 })
 export class DesplegableDosService {
 
-  position_top: number = 0;
-  position_top_initial: number = 0;
-  lastY: number = 0;
-  speed_top: number = 0;
-  modal_desplegable: ElementRef;
-
   constructor(
     public platform: Platform,
   ) { }
 
-  createElement(desplegable: ElementRef) {
-    this.modal_desplegable = desplegable;
-  }
-
-  getPositionInitial() {
-    this.position_top_initial = this.getPropertyElement('top');
-
-    if (this.getPropertyElement('height') <= 10) this.speed_top = 0.125;
-    else if (this.getPropertyElement('height') > 10 && this.getPropertyElement('height') <= 50) this.speed_top = 0.75;
-    // else if (this.getPropertyElement('height') > 20 && this.getPropertyElement('height') <= 50) this.speed_top = 0.375;
-    else if (this.getPropertyElement('height') > 50) this.speed_top = 1;
-  }
-
-  getPositionTop() {
-    this.position_top = this.getPropertyElement('top');
-  }
-
-  setPositionTop(direction: string) {
-    this.refreshF5(direction);
-    this.modal_desplegable.nativeElement.style.top = this.position_top + "rem";
-
-    if (direction == 'up' && this.getPropertyElement('bottom') < 4.25)
-      this.position_top -= this.speed_top;
-    else if (direction == 'down' && this.getPropertyElement('top') < this.position_top_initial)
-      this.position_top += this.speed_top;
-  }
-
+  // Este metodo permite dehabilitar o habilitar la accion actulizar por scroll o touchmove
+  // garantizando una buena fluides del control de modales desplegables al momento de deplzarlos 
+  // en direccion a la accion de actualizar por scroll o touchmove
   refreshF5(direction: string) {
     var body = (document.getElementsByTagName('body') as HTMLCollectionOf<HTMLElement>)[0];
     // if (direction == 'down' && this.getPropertyElement('bottom') >= 4) { // Habilita la actualizacion por scroll
@@ -60,10 +30,5 @@ export class DesplegableDosService {
         body.style.overflow = 'hidden';
       }
     // }
-  }
-
-  getPropertyElement(property: string): number {
-    const property_value: string = getComputedStyle(this.modal_desplegable.nativeElement).getPropertyValue(property);
-    return Number(property_value.split("px").join('')) / 16; // px a rem
   }
 }
