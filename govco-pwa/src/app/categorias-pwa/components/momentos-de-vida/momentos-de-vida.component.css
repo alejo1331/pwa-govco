@@ -1,0 +1,46 @@
+.container-component {
+    background: #3366CC;
+    height: 100vh;
+}
+
+.container-header {
+    padding: 3rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title {
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    opacity: 1;
+}
+
+.description {
+    text-align: center;
+    font-family: 'WorkSans-Regular', sans-serif;
+    font-size: 1rem;
+    font-weight: normal;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    opacity: 1;
+}
+
+.icon-container {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background-color: #E6EFFD;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0.5rem;
+
+    .material-symbols-outlined {
+        color: #004884;
+    }
+}
