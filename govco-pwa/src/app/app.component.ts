@@ -64,8 +64,6 @@ export class AppComponent implements OnInit, AfterContentChecked, AfterContentCh
 
   modalClasico: ModalInterface;
 
-  prueba: any;
-
   abrirBuscadorCheck: boolean = false;
   ulitmoEstadoBuscador: boolean = false;
 
@@ -132,13 +130,6 @@ export class AppComponent implements OnInit, AfterContentChecked, AfterContentCh
       .subscribe((event: any) => {
         this.appService.previousUrl = this.appService.currentUrl;
         this.appService.currentUrl = event.url;
-
-        if (this.appGeolocalizacion != undefined) {
-          if (event.url == '/' + urlsLocal.buscador) {
-            this.appGeolocalizacion.removeAttribute('style');
-            this.appGeolocalizacion.classList.add('fixed')
-          } else this.appGeolocalizacion.classList.remove('fixed')
-        }
       });
     this.bottomService.ajustePantalla.subscribe((estado) => {
       this.cambiarEstilo = estado;
@@ -305,7 +296,8 @@ export class AppComponent implements OnInit, AfterContentChecked, AfterContentCh
   }
 
   @HostListener('touchmove', ['$event']) onTouchMove(event: any): void {
-    if (this.router.url != ('/' + urlsLocal.buscador) && this.appGeolocalizacion != undefined) {
+    this.configPropiedadesBarraGeo(this.router.url);
+    if (this.estadoMicroiteracionGeo(this.router.url)) {
       this.touchMoveFinal = event.changedTouches[0].screenY;
       this.touchMoveDiferencia = this.touchMoveFinal - this.touchMoveInicial;
       if (this.touchMoveInicial < this.touchMoveFinal) {
@@ -336,15 +328,29 @@ export class AppComponent implements OnInit, AfterContentChecked, AfterContentCh
     // Fin solucion redireccionamiento slide
   }
 
-  @HostListener('document:mousewheel', ['$event']) onMousedown(event: any) {
-    if (this.appGeolocalizacion != undefined) {
-      if (this.router.url == '/' + urlsLocal.buscador) {
-        this.appGeolocalizacion.removeAttribute('style');
-        this.appGeolocalizacion.classList.add('fixed');
-      } else {
-        this.appGeolocalizacion.classList.remove('fixed');
-      }
+  // Este metodo identifica cual es la seccion que necesita anular 
+  // la microiteracion de la barra de geolocalizacion
+  estadoMicroiteracionGeo(comparar: string): boolean {
+    if (comparar == '/' + urlsLocal.buscador)
+      return false
+    else if (comparar.indexOf(urlsLocal.categorias_subcategorias) > 0)
+      return false
+    else return true;
+  }
+
+  // Este metodo permite deshabilitar o habilitar la microiteracion de la 
+  // barra de geolocalizacion
+  configPropiedadesBarraGeo(comparar: string) {
+    if (!this.estadoMicroiteracionGeo(comparar)) {
+      this.appGeolocalizacion.removeAttribute('style');
+      this.appGeolocalizacion.classList.add('fixed');
+    } else {
+      this.appGeolocalizacion.classList.remove('fixed');
     }
+  }
+
+  @HostListener('document:mousewheel', ['$event']) onMousedown(event: any) {
+    this.configPropiedadesBarraGeo(this.router.url);
   }
 
   // solucion redireccionamiento slide

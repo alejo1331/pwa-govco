@@ -1,17 +1,9 @@
-.titulo-descripcion {
-    height: 100%;
-    background: linear-gradient(70deg, #1B4AA7, #113680);
-    position: fixed;
-    width: 100%;
-    top: 5.75rem;
-}
-
 .modal-desplegable-pwa.contenedor {
     width: 100%;
     height: auto;
-    z-index: 2;
+    z-index: 4;
     position: absolute;
-    top: 12.5rem;
+    top: calc(100% - 12.25rem);
     margin: 0;
 }
 

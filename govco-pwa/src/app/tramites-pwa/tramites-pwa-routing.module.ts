@@ -5,17 +5,18 @@ import { ConsultaCertificadosComponent } from '../tramites/components/ficha-tram
 import { GeneralComponent } from '../tramites/components/ficha-tramite/detalle/general/general.component';
 import { VentanillasUnicasComponent } from '../tramites/components/ficha-tramite/ventanillas-unicas/ventanillas-unicas.component';
 import { TramitesHomeComponent } from '../tramites/components/tramites-home/tramites-home.component';
+import { urlsLocal } from 'src/variables-globales/urlsLocal';
 
 const routes: Routes = [
   {
-    path: 'ficha-tramites-y-servicios',
+    path: urlsLocal.ficha_tramite_pwa,
     children: [
       {
         path: '',
         component: TramitesHomeComponent
       },
       {
-        path: 'codigos-ciiu-y-tramites',
+        path: urlsLocal.codigo_ciiu_tramites,
         component: CodigosCiiuYTramitesComponent
       },
       {
@@ -32,11 +33,11 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'consulta-certificados',
+    path: urlsLocal.certificados,
     component: ConsultaCertificadosComponent
   },
   {
-    path: 'ventanillas-unicas',
+    path: urlsLocal.ventanillas,
     component: VentanillasUnicasComponent
   },
 ];
