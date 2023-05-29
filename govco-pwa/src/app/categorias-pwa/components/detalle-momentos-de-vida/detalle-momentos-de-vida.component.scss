@@ -39,11 +39,42 @@
     margin: 1rem auto 1rem auto;
 }
 
-.modal-desplegable-pwa .body-modal {
-    padding: 0 1rem 0 1rem;
-}
-
 .modal-desplegable-pwa .footer-modal {
     width: 100%;
     padding: 0 1rem 1rem 1rem;
 }
+
+.govco-pwa-momentos-subcategorias{
+    .govco-pwa-momentos-elemento{
+      outline-color: #000000;
+    }
+    ul{
+    list-style: none;
+    padding: 0px;
+    display: flex;
+    overflow-x: scroll;
+    margin-right: 8px;
+    padding-left: 8px;
+    }
+    ul::-webkit-scrollbar {
+      display: none;
+    }
+    li{
+      height: 40px;
+      padding: 12px;
+      display: flex;
+      align-items: center;
+      
+      a{
+        text-decoration: none;
+        font-family: 'WorkSans-Medium';
+        color: #004884;
+        white-space: nowrap;
+        font-size: 14px;
+      }
+    }
+    .filtro-active{
+      background-color: #E6EFFD;
+    }
+  }
+  
