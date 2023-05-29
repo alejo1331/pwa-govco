@@ -6,13 +6,19 @@ import { MomentosDeVidaComponent } from './components/momentos-de-vida/momentos-
 import { DetalleMomentosDeVidaComponent } from './components/detalle-momentos-de-vida/detalle-momentos-de-vida.component';
 import { BibliotecaPwaModule } from '../biblioteca-pwa/biblioteca-pwa.module';
 import { LoMasConsultadoComponent } from './components/lo-mas-consultado/lo-mas-consultado.component';
+import { TodosLosTramitesComponent } from './components/todos-los-tramites/todos-los-tramites.component';
+import { BarraFiltrosComponent } from './components/todos-los-tramites/barra-filtros/barra-filtros.component';
+import { CardTramiteComponent } from './components/todos-los-tramites/card-tramite/card-tramite.component';
 
 
 @NgModule({
   declarations: [
     MomentosDeVidaComponent,
     DetalleMomentosDeVidaComponent,
-    LoMasConsultadoComponent
+    LoMasConsultadoComponent,
+    TodosLosTramitesComponent,
+    BarraFiltrosComponent,
+    CardTramiteComponent
   ],
   imports: [
     CommonModule,

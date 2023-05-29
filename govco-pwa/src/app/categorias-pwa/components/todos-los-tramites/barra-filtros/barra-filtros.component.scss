@@ -1,0 +1,40 @@
+.filter-header-all-procedures {
+    background-color: #E8EFFC;
+    border-bottom: 2px solid #004884;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem;
+    align-items: center;
+    height: 2.5rem;
+
+    p {
+        color: #000000;
+        font-size: 0.875rem;
+        font-family: 'WorkSans-Medium';
+        padding: 0 0.75rem;
+        margin: 0;
+    }
+
+    button {
+        border: 0;
+        background-color: transparent;        
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        
+        p {
+            color: #004884;
+            font-size: 0.875rem;
+            font-family: 'WorkSans-Regular';
+            margin-left: 0.75rem;
+            padding: 0;
+        }        
+
+        span {
+            content: url(../../../../assets/icons-fonts/filter_list_004884.svg);
+            width: 1.5rem;
+            height: 1.5rem;
+            margin: 0 0.5rem;
+        }
+    }
+}

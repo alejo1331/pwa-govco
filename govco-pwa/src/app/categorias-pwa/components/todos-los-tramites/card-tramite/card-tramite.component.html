@@ -1,0 +1,54 @@
+<div class="accordion acordeon-pwa-govco" id="cardsTramite">
+    <div class="card" *ngFor="let item of items; let i = index;" [class.active]="item.active">
+        <div class="card-header" [id]="'heading' + i">
+            <h3 class="mb-0">
+                <button (click)="activarItem(i)" class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" [attr.data-target]="'#collapse' + i" aria-expanded="false" [attr.aria-controls]="'collapse' + i">
+                    <span class="title-card-header" *ngIf="item.titulo">GOV.CO ¡Integrado!</span>
+                    <div>
+                        <a>{{item.titulo}}</a>
+                        <span class="material-symbols-outlined icon-expand">
+                            expand_more
+                        </span>
+                    </div>
+                    <p>
+                        <span>Entidad responsable:</span><br/>
+                        {{item.subtitulo}}
+                    </p>
+                </button>
+            </h3>
+        </div>
+        <div [id]="'collapse' + i" class="collapse" [attr.aria-labelledby]="'heading' + i" data-parent="#cardsTramite">
+            <div class="card-body">
+                <hr>
+                <p>{{item.descripcion}}</p>
+                <div class="detail-card">
+                    <span class="material-symbols-outlined">
+                        laptop_mac
+                    </span>
+                    <span class="text-detail">
+                        <h6>Tipo de trámite</h6>
+                        En línea
+                    </span>
+                </div>
+                <div class="detail-card">
+                    <span class="material-symbols-outlined">
+                        monetization_on
+                    </span>
+                    <span class="text-detail">
+                        <h6>¿Tiene costo?</h6>
+                        Si
+                    </span>
+                </div>
+                <div class="detail-card">
+                    <span class="material-symbols-outlined">
+                        schedule
+                    </span>
+                    <span class="text-detail">
+                        <h6>Duración del proceso</h6>
+                        15 días (hábiles)
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
