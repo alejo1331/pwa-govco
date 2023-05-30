@@ -6,12 +6,15 @@ import { HeaderService } from 'src/app/transversales/services/header-service/hea
 import { SidenavService } from 'src/app/transversales/services/sidenav-service/sidenav-service.service';
 
 @Component({
-  selector: 'app-detalle-momentos-de-vida',
+  selector: 'govco-app-detalle-momentos-de-vida',
   templateUrl: './detalle-momentos-de-vida.component.html',
   styleUrls: ['./detalle-momentos-de-vida.component.scss']
 })
 export class DetalleMomentosDeVidaComponent implements OnInit {
   subcategoriaMomentos : number = 0;
+  title: string = '';
+  description: string = '';
+
   constructor(
     private router: Router,
     protected servicioSideNav: SidenavService,
@@ -28,6 +31,8 @@ export class DetalleMomentosDeVidaComponent implements OnInit {
     (document.getElementById('topScroll') as HTMLElement).style.top = '3.5rem';
     (document.getElementById('topScroll') as HTMLElement).scrollTop = 0;
 
+    this.title = 'Quiero estudiar';
+    this.description = 'Encuentra información relacionada con educación básica, media y superior.';
     let tramiteSelected = document.getElementsByClassName('govco-pwa-momentos-elemento')[this.subcategoriaMomentos]
     tramiteSelected.classList.add('filtro-active');
 

@@ -27,6 +27,7 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
 import { ModalInformativoComponent } from './components/modal-informativo/modal-informativo.component';
 import { OrderByDatePipe } from './pipes/filtro-segundo-nivel/order-by-date.pipe';
 import { DesplegableDosComponent } from './components/desplegable-dos/desplegable-dos.component';
+import { CardsUnoComponent } from './components/cards-uno/cards-uno.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { DesplegableDosComponent } from './components/desplegable-dos/desplegabl
     ModalInformativoComponent,
     OrderByDatePipe,
     DesplegableDosComponent,
+    CardsUnoComponent,
   ],
   imports: [
     CommonModule,
@@ -82,6 +84,7 @@ import { DesplegableDosComponent } from './components/desplegable-dos/desplegabl
     SpinnerComponent,
     ModalInformativoComponent,
     DesplegableDosComponent,
+    CardsUnoComponent
   ],
 })
 export class BibliotecaPwaModule {}

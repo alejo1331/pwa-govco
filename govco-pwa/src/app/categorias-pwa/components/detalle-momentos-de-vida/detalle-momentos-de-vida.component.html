@@ -1,10 +1,18 @@
-<section class="titulo-descripcion"> Hola mundo</section>
+<section class="titulo-descripcion">
+
+</section>
 <div #modal_desplegable class="modal-desplegable-pwa contenedor">
     <div class="modal-contenido">
         <div class="header-modal">
-            <hr class="hr">
+            <hr class="hr_circle">
         </div>
         <div class="body-modal">
+            <div class="container-header">
+                <h2 tabindex="0" [attr.aria-label]="this.title" class="title">{{this.title}}</h2>
+                <p tabindex="0" [attr.aria-label]="this.description" class="description">
+                    {{this.description}}</p>
+            </div>
+            <govco-app-lo-mas-consultado></govco-app-lo-mas-consultado>
             <div class="govco-pwa-momentos-subcategorias">
                 <ul id="govco-pwa-momentos-subcategorias-container">
                   <li class="govco-pwa-momentos-elemento" id="0" tabindex="0">
