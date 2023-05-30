@@ -8,4 +8,11 @@
             {{this.description}}</p>
     </div>
 </section>
-<app-desplegable-dos-govco></app-desplegable-dos-govco>
+<app-desplegable-dos-govco>
+    <div class="container-cards">
+        <div *ngFor="let categoria of categorias; let i = index">
+            <app-momentos-de-vida-card [categoria]="categoria"></app-momentos-de-vida-card>
+        </div>
+    </div>
+    <app-banner-ciiu-buscador></app-banner-ciiu-buscador>
+</app-desplegable-dos-govco>

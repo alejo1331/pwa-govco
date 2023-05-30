@@ -48,6 +48,10 @@ import { BannerCiiuBuscadorComponent } from './components/banner-ciiu-buscador/b
     BrowserAnimationsModule,
     HomePwaModule,
   ],
-  exports: [BuscadorPrincipalComponent, BuscadorNivelDosComponent],
+  exports: [
+    BuscadorPrincipalComponent,
+    BuscadorNivelDosComponent,
+    BannerCiiuBuscadorComponent,
+  ],
 })
 export class BuscadorPwaModule {}

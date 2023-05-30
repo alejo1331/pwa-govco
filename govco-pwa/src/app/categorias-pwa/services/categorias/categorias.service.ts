@@ -8,6 +8,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { MomentosTitle } from './../../Models/MomentosModel';
+import { CategoriasModel } from './../../Models/CategoriasModel';
 
 @Injectable({
   providedIn: 'root',
@@ -16,6 +17,7 @@ export class CategoriasService {
   urlcategorias: string = environment.serverCategorias;
   url_apiCross: string = environment.apiCrossUrl;
   errorMsg?: string;
+  categoriasMomentos: string = 'MV';
 
   constructor(private http: HttpClient) {}
 
@@ -25,6 +27,18 @@ export class CategoriasService {
       .get<MomentosTitle>(`${this.url_apiCross}cross/ObtenerTituloPagina`, {
         params,
       })
+      .pipe(
+        catchError((error) => {
+          return this.errorMensaje(error);
+        })
+      );
+  }
+
+  getCategorias(): Observable<CategoriasModel[]> {
+    return this.http
+      .get<CategoriasModel[]>(
+        `${this.urlcategorias}Categorias/Categorias/TipoCategoria/${this.categoriasMomentos}`
+      )
       .pipe(
         catchError((error) => {
           return this.errorMensaje(error);
