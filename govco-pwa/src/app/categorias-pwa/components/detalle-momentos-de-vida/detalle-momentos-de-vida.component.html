@@ -1,28 +1,39 @@
-<section class="titulo-descripcion"> Hola mundo</section>
+<section class="titulo-descripcion">
+
+</section>
 <div #modal_desplegable class="modal-desplegable-pwa contenedor">
-    <div class="modal-contenido">
-        <div class="header-modal">
-            <hr class="hr">
-        </div>
-        <div class="body-modal">
-            <div class="govco-pwa-momentos-subcategorias">
-                <ul id="govco-pwa-momentos-subcategorias-container">
-                  <li class="govco-pwa-momentos-elemento" id="0" tabindex="0">
-                    <a (click)="changePrefilter(0)">Lo más consultado</a>
-                  </li>
-                  <li class="govco-pwa-momentos-elemento" id="1" tabindex="0">
-                    <a (click)="changePrefilter(1)">Trámites destacados</a>
-                  </li >
-                  <li class="govco-pwa-momentos-elemento" id="2" tabindex="0">
-                    <a (click)="changePrefilter(2)">Todos los trámites</a>
-                  </li>
-                  <li class="govco-pwa-momentos-elemento" id="3" tabindex="0">
-                    <a (click)="changePrefilter(3)">Actualidad</a>
-                  </li>
-                </ul>
-              </div>
-        </div>
-        <div class="footer-modal">
-        </div>
+  <div class="modal-contenido">
+    <div class="header-modal">
+      <hr class="hr_circle">
     </div>
+    <div class="body-modal">
+      <div class="container-header">
+        <h2 tabindex="0" [attr.aria-label]="this.title" class="title">{{this.title}}</h2>
+        <p tabindex="0" [attr.aria-label]="this.description" class="description">
+          {{this.description}}</p>
+      </div>
+      <div class="govco-pwa-momentos-subcategorias">
+        <ul id="govco-pwa-momentos-subcategorias-container">
+          <li class="govco-pwa-momentos-elemento" id="0" tabindex="0">
+            <a (click)="changePrefilter(0)" routerLink="/categorias-subcategorias-pwa/12/lo-mas-consultado">Lo más
+              consultado</a>
+          </li>
+          <li class="govco-pwa-momentos-elemento" id="1" tabindex="0">
+            <a (click)="changePrefilter(1)">Trámites destacados</a>
+          </li>
+          <li class="govco-pwa-momentos-elemento" id="2" tabindex="0">
+            <a (click)="changePrefilter(2)">Todos los trámites</a>
+          </li>
+          <li class="govco-pwa-momentos-elemento" id="3" tabindex="0">
+            <a (click)="changePrefilter(3)">Actualidad</a>
+          </li>
+        </ul>
+      </div>
+      <section class="router-detalle">
+        <router-outlet></router-outlet>
+      </section>
+    </div>
+    <div class="footer-modal">
+    </div>
+  </div>
 </div>

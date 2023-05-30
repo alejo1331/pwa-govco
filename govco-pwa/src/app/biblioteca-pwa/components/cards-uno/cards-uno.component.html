@@ -1,0 +1,17 @@
+<div class="cards-pwa-govco">
+    <div class="card" *ngFor="let item of items_href; index as i;">
+        <!-- <button #botonAcordeon (click)="activarItem(i)" class="btn btn-link btn-block text-left" type="button" -->
+        <button #botonAcordeon class="btn btn-link btn-block text-left" type="button" [id]="'card_' + i">
+            <hr class="hr">
+            <a *ngIf="item.href" href="{{item.link}}" class="line-clamp-3"
+                [attr.aria-label]="'Abrir pagina ' + item.titulo">{{item.titulo}}</a>
+            <a *ngIf="!item.href" routerLink="{{item.link}}" class="line-clamp-3" tabindex="0"
+                [attr.aria-label]="'Abrir pagina ' + item.titulo">{{item.titulo}}</a>
+            <div class="caja-icono-24-pwa">
+                <span class="material-icons-outlined chevron_right">
+                    chevron_right
+                </span>
+            </div>
+        </button>
+    </div>
+</div>

@@ -1,0 +1,72 @@
+.cards-pwa-govco {
+    width: 100%;
+    margin-bottom: 1.5rem;
+
+    .card {
+        width: 100%;
+        border: 2px solid #E8EFFC;
+        border-radius: 4px;
+        background-color: #FFFFFF;
+        margin-bottom: 0.5rem;
+
+        button {
+            padding: 0.75rem 0.75rem;
+            border: 0;
+            text-decoration: none;
+            display: flex;
+            justify-content: space-between;
+
+            .hr {
+                // height: 56px;
+                max-height: 56px;
+                width: 4px;
+                background-color: #FFAB00;
+                border-radius: 1.25rem;
+                border: 0;
+                margin: auto 0.5rem auto 0;
+            }
+
+            a {
+                color: #000000;
+                outline-color: #000000;
+                font-family: 'WorkSans-Medium';
+                font-size: 0.875rem;
+                margin: 0;
+                padding: 0;
+                line-height: 1.15rem;
+                text-decoration: underline;
+                width: calc(100% - 2.75rem);
+            }
+
+            .caja-icono-24-pwa {
+                margin: auto;
+                background-color: #3366CC;
+                border-radius: 0.25rem;
+
+                .chevron_right {
+                    color: #FFFFFF;
+                }
+            }
+        }
+
+        button:focus {
+            box-shadow: none;
+        }
+    }
+
+    .card:has(button:focus-visible) {
+        border: 2px solid #000000;
+        border-radius: 4px;
+    }
+
+}
+
+.hr {
+    height: 56px;
+    max-height: 56px;
+    width: 4px;
+    background-color: #FFAB00;
+    border-radius: 1.25rem;
+    border: 0;
+    margin: auto 0.5rem auto 0;
+}
