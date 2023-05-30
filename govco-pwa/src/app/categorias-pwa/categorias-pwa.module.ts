@@ -8,6 +8,7 @@ import { BibliotecaPwaModule } from '../biblioteca-pwa/biblioteca-pwa.module';
 import { LoMasConsultadoComponent } from './components/lo-mas-consultado/lo-mas-consultado.component';
 import { MomentosDeVidaCardComponent } from './components/momentos-de-vida/momentos-de-vida-card/momentos-de-vida-card.component';
 import { BuscadorPwaModule } from '../buscador-pwa/buscador-pwa.module';
+import { TramitesDestacadosComponent } from './components/tramites-destacados/tramites-destacados.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { BuscadorPwaModule } from '../buscador-pwa/buscador-pwa.module';
     DetalleMomentosDeVidaComponent,
     LoMasConsultadoComponent,
     MomentosDeVidaCardComponent,
+    TramitesDestacadosComponent
   ],
   imports: [
     CommonModule,
