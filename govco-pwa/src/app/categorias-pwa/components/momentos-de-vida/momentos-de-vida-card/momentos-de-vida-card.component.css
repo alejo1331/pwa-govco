@@ -1,0 +1,23 @@
+.container-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #E8EFFC;
+    border-radius: 5px;
+    height: 148px;
+    width: 154px;
+    padding: 1rem 0.5rem;
+}
+
+.img-category {
+    width: 4rem;
+    height: 4rem;
+}
+
+.category-name {
+    font-size: 0.875rem;
+    color: #004884;
+    text-align: center;
+    font-family: 'WorkSans-Medium', sans-serif;
+}
