@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MomentosDeVidaComponent } from './components/momentos-de-vida/momentos-de-vida.component';
 import { DetalleMomentosDeVidaComponent } from './components/detalle-momentos-de-vida/detalle-momentos-de-vida.component';
 import { urlsLocal } from 'src/variables-globales/urlsLocal';
+import { LoMasConsultadoComponent } from './components/lo-mas-consultado/lo-mas-consultado.component';
 
 const routes: Routes = [
   {
@@ -14,8 +15,15 @@ const routes: Routes = [
       },
       {
         path: ':id',
-        component: DetalleMomentosDeVidaComponent
+        component: DetalleMomentosDeVidaComponent,
+        children: [
+          {
+            path: 'lo-mas-consultado',
+            component: LoMasConsultadoComponent
+          },
+        ]
       },
+      
       {
         path: '**',
         redirectTo: 'momentos-de-vida'
