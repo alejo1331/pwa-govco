@@ -3,9 +3,13 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'govco-app-lo-mas-consultado',
   templateUrl: './lo-mas-consultado.component.html',
-  styleUrls: ['./lo-mas-consultado.component.css']
+  styleUrls: ['./lo-mas-consultado.component.scss']
 })
 export class LoMasConsultadoComponent implements OnInit {
+
+  codigoMunicipio: string | null = "";
+  nombreMunicipio: string = "";
+  titulo: string = "";
 
   public data_mas_consultado: data_mas_consultado[];
 
@@ -13,6 +17,9 @@ export class LoMasConsultadoComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.codigoMunicipio = '0005';
+    this.nombreMunicipio = 'Bogotá D.C.';
+    this.titulo ='Lo más consultado'
     this.data_mas_consultado = [
       {
         link: '/noticias',
