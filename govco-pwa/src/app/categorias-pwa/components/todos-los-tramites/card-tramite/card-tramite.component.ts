@@ -28,6 +28,27 @@ export class CardTramiteComponent {
       subtitulo: 'Consejo Profesional Nacional de Ingeniería.',
       descripcion: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam gravida.',
       integrado: true
+    },
+    {
+      active: false,
+      titulo: 'Matrícula profesional',
+      subtitulo: 'Consejo Profesional Nacional de Ingeniería.',
+      descripcion: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam gravida.',
+      integrado: true
+    },
+    {
+      active: false,
+      titulo: 'Matrícula profesional',
+      subtitulo: 'Consejo Profesional Nacional de Ingeniería.',
+      descripcion: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam gravida.',
+      integrado: true
+    },
+    {
+      active: false,
+      titulo: 'Matrícula profesional',
+      subtitulo: 'Consejo Profesional Nacional de Ingeniería.',
+      descripcion: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam gravida.',
+      integrado: true
     }
   ]
 
