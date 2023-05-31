@@ -1,8 +1,11 @@
-<div class="container-card">
-    <div class="container-img-category pb-3">
-        <img class="img-category" src="{{categoria.icono}}" alt="{{categoria.descripcionCorta}}">
+<a id="{{categoria.id}}" [attr.aria-label]="categoria.nombre + categoria.descripcionCorta"
+    [routerLink]="[urlCategorias, categoria.id]" [title]="'Ir a '+ categoria.nombre">
+    <div class="container-card">
+        <div class="container-img-category pb-3">
+            <img class="img-category" src="{{categoria.icono}}" alt="{{categoria.descripcionCorta}}">
+        </div>
+        <div class="category-text">
+            <p class="category-name">{{categoria.nombre | titlecase}}</p>
+        </div>
     </div>
-    <div class="category-text">
-        <p class="category-name">{{categoria.nombre}}</p>
-    </div>
-</div>
+</a>
