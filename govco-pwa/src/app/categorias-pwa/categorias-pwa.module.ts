@@ -11,6 +11,7 @@ import { BarraFiltrosComponent } from './components/todos-los-tramites/barra-fil
 import { CardTramiteComponent } from './components/todos-los-tramites/card-tramite/card-tramite.component';
 import { MomentosDeVidaCardComponent } from './components/momentos-de-vida/momentos-de-vida-card/momentos-de-vida-card.component';
 import { BuscadorPwaModule } from '../buscador-pwa/buscador-pwa.module';
+import { HomePwaModule } from '../home-pwa/home-pwa.module';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { BuscadorPwaModule } from '../buscador-pwa/buscador-pwa.module';
     CategoriasPwaRoutingModule,
     BibliotecaPwaModule,
     BuscadorPwaModule,
+    HomePwaModule,
   ],
 })
 export class CategoriasPwaModule {}
