@@ -25,7 +25,7 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
     BarraFiltrosComponent,
     CardTramiteComponent,
     MomentosDeVidaCardComponent,
-    TramitesDestacadosComponent
+    TramitesDestacadosComponent,
     FiltrosPrimerNivelComponent,
   ],
   imports: [
