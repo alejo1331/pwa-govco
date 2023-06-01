@@ -23,3 +23,7 @@
 .govco-mt-40 {
     margin-top: 2.5rem;
 }
+
+::ng-deep .govco-pwa-footer {
+    margin-bottom: 0 !important;
+}
