@@ -12,6 +12,8 @@ import { CardTramiteComponent } from './components/todos-los-tramites/card-trami
 import { MomentosDeVidaCardComponent } from './components/momentos-de-vida/momentos-de-vida-card/momentos-de-vida-card.component';
 import { BuscadorPwaModule } from '../buscador-pwa/buscador-pwa.module';
 import { HomePwaModule } from '../home-pwa/home-pwa.module';
+import { FiltrosPrimerNivelComponent } from './components/todos-los-tramites/filtros-primer-nivel/filtros-primer-nivel.component';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,7 @@ import { HomePwaModule } from '../home-pwa/home-pwa.module';
     BarraFiltrosComponent,
     CardTramiteComponent,
     MomentosDeVidaCardComponent,
+    FiltrosPrimerNivelComponent,
   ],
   imports: [
     CommonModule,
@@ -29,6 +32,7 @@ import { HomePwaModule } from '../home-pwa/home-pwa.module';
     BibliotecaPwaModule,
     BuscadorPwaModule,
     HomePwaModule,
+    NgxSkeletonLoaderModule,
   ],
 })
 export class CategoriasPwaModule {}

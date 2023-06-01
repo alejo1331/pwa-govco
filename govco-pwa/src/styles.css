@@ -180,6 +180,11 @@ body {
   display: none;
 }
 
+.govco-pwa-content.active-filter-tramites {
+  top: 0!important;
+  height: 100%;
+}
+
 .govco-pwa-content-2 {
   overflow: visible;
   height: 100%;
@@ -516,7 +521,7 @@ select-search-1 a,
   overflow: hidden;
 }
 
-.fixed {
+.fixed:not(.active-filter-tramites) {
   position: fixed !important;
   transition: 0s !important;
 }

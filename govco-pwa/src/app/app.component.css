@@ -17,7 +17,7 @@
   left: 0;
 }
 
-.govco-pwa-header{
+.govco-pwa-header {
   position: -moz-fixed;
   position: -o-fixed;
   position: -ms-fixed;
@@ -26,7 +26,11 @@
   width: 100%;
   max-width: 100%;
   z-index: 5;
+}
 
+.govco-pwa-header.hide,
+.govco-pwa-bottom-menu.hide {
+  display: none;
 }
 
 /* ESTILOS DEL SIDE NAV */

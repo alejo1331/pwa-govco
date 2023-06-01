@@ -1,7 +1,8 @@
 <nav class="filter-header-all-procedures">
     <p>({{totalResultados}}) Resultados</p>
-    <button>
+    <button (click)="abrirFiltroPrimerNivel()">
         <p>Filtros (0)</p>
         <span type="image" alt="Abrir filtro"></span>
     </button>
 </nav>
+<app-filtros-primer-nivel></app-filtros-primer-nivel>
