@@ -12,6 +12,7 @@ import { CardTramiteComponent } from './components/todos-los-tramites/card-trami
 import { MomentosDeVidaCardComponent } from './components/momentos-de-vida/momentos-de-vida-card/momentos-de-vida-card.component';
 import { BuscadorPwaModule } from '../buscador-pwa/buscador-pwa.module';
 import { HomePwaModule } from '../home-pwa/home-pwa.module';
+import { TramitesDestacadosComponent } from './components/tramites-destacados/tramites-destacados.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { HomePwaModule } from '../home-pwa/home-pwa.module';
     BarraFiltrosComponent,
     CardTramiteComponent,
     MomentosDeVidaCardComponent,
+    TramitesDestacadosComponent
   ],
   imports: [
     CommonModule,

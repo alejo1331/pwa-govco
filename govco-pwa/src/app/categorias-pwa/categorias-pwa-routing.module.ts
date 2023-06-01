@@ -5,6 +5,7 @@ import { DetalleMomentosDeVidaComponent } from './components/detalle-momentos-de
 import { urlsLocal } from 'src/variables-globales/urlsLocal';
 import { LoMasConsultadoComponent } from './components/lo-mas-consultado/lo-mas-consultado.component';
 import { TodosLosTramitesComponent } from './components/todos-los-tramites/todos-los-tramites.component';
+import { TramitesDestacadosComponent } from './components/tramites-destacados/tramites-destacados.component';
 
 const routes: Routes = [
   {
@@ -26,9 +27,13 @@ const routes: Routes = [
             path: 'todos-los-tramites',
             component: TodosLosTramitesComponent
           },
+          {
+            path: 'tramites-destacados',
+            component: TramitesDestacadosComponent
+          },
         ]
       },
-      
+
       {
         path: '**',
         redirectTo: 'momentos-de-vida'

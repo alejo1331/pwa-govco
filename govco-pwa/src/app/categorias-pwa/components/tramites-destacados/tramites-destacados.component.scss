@@ -1,0 +1,25 @@
+.seccion-tramites-destacados {
+  padding: 0 .75rem;
+
+  .titulo-tramites {
+      h2 {
+          color: #004884;
+          font-family: 'Montserrat-SemiBold';
+          font-size: 1.25rem;
+          margin: 0 0 .25rem 0;
+      }
+
+      h3 {
+          font-family: 'WorkSans-SemiBold';
+          color: #3366CC;
+          font-size: 0.875rem;
+          margin: 0 0 1.5rem 0;
+          text-decoration: underline
+      }
+  }
+}
+
+
+.govco-mt-40 {
+  margin-top: 2.5rem;
+}
