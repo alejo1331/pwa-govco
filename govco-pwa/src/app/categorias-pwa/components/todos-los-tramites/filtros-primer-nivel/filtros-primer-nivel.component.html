@@ -9,7 +9,7 @@
         <hr>
         <ul>
             <li>
-                <button>
+                <button >
                     <div class="filtro-sin-seleccion">
                         Subcategorías
                     </div>
@@ -17,7 +17,7 @@
                         chevron_right
                     </span>
                 </button>
-                <button>
+                <button (click)="seleccionaFiltroNivelUno('entidadNombre ', 'Entidad', $event)">
                     <div class="filtro-sin-seleccion">
                         Entidad
                     </div>
@@ -50,3 +50,6 @@
         </ul>
     </div>
 </div>
+<app-modal-filtro-segundo-nivel *ngIf="informacionModalFiltro" [informacionModal]="informacionModalFiltro"
+    (itemSelected)="itemFiltroNivelDos($event)">
+</app-modal-filtro-segundo-nivel>

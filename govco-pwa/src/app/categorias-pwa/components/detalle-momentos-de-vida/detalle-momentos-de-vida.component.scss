@@ -17,6 +17,10 @@
 
 .modal-desplegable-pwa {
 
+  &.backdrop-active-filter-tramites {
+    z-index: 8;
+  }
+
   .modal-contenido {
     height: 100%;
     width: 100%;
@@ -110,8 +114,4 @@
     width: 100%;
     padding: 0 1rem 1rem 1rem;
   }
-}
-
-.active-filter {
-  margin-top: 1rem;
 }
