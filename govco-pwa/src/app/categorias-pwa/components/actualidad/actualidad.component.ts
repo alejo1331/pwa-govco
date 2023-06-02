@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ActualidadComponent implements OnInit {
 
+  public data_actualidad: data_actualidad[];
+
   constructor() { }
 
   ngOnInit() {
   }
+
+}
+
+export interface data_actualidad {
 
 }

@@ -1,3 +1,14 @@
-<p>
-  actualidad works!
-</p>
+<section class="seccion">
+  <!-- <div class="titulo-tramites" tabIndex={0}
+      [attr.aria-labe]="nombreMunicipio == '' ? 'A continuación encontrará la sección '+ titulo + '.' : 'A continuación encontrará la sección ' + titulo + ' filtrados por el municipio de ' + nombreMunicipio + '.'">
+      <h2>{{ titulo }}</h2>
+      <h3 *ngIf="codigoMunicipio != '' ">{{nombreMunicipio}}</h3>
+  </div> -->
+  <govco-app-cards-dos class="mt-0"></govco-app-cards-dos>
+  <div class="govco-mt-40">
+      <app-boton [inverted]="false">Ver más</app-boton>
+      <!-- <app-boton [inverted]="false" *ngIf="cantidadResultados > 5 && contadorResultados < cantidadResultados" (click)="VerMasResultados()">Ver más</app-boton> -->
+      <!-- <app-boton [inverted]="false" *ngIf="cantidadResultados > 5 && contadorResultados >= cantidadResultados" (click)="VerMenosResultados()">Ver menos</app-boton> -->
+  </div>
+</section>
+<app-footer></app-footer>

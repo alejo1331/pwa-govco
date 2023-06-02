@@ -1,0 +1,44 @@
+.cards-pwa-govco {
+  width: 100%;
+
+  .card {
+    border: 2px solid;
+    border-radius: 0 !important;
+    height: 80px;
+    margin: 0 16px;
+    flex-direction: row;
+
+    .contenido-card{
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      height: 100%;
+
+      .contenido-fecha{
+        height: 27px;
+        font-family: 'WorkSans-Regular';
+        font-size: 12px;
+      }
+      .contenido-link{
+        height: 100%;
+        font-family: "Montserrat-SemiBold";
+        font-size: 14px;
+        margin-right: 8px;
+        font-style: #004884;
+        a {
+          color: #004884;
+          text-decoration: underline;
+          background-color: transparent;
+        }
+      }
+    }
+
+    .imagen-card{
+      width: 104px;
+      border-radius: 5px;
+
+    }
+
+
+  }
+}
