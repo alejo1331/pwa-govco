@@ -14,7 +14,7 @@
       </div>
       <div class="govco-pwa-momentos-subcategorias">
         <ul id="govco-pwa-momentos-subcategorias-container">
-          <li class="govco-pwa-momentos-elemento" id="0" tabindex="0">
+          <li class="govco-pwa-momentos-elemento" id="0" tabindex="0" [hidden]="estado_mas_consultado">
             <a (click)="changePrefilter(0)"
               routerLink="/categorias-subcategorias-pwa/{{id_momento}}/lo-mas-consultado">Lo más
               consultado</a>

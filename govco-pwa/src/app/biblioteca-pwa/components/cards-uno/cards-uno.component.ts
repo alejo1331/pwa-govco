@@ -23,22 +23,25 @@ export class CardsUnoComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    changes.data.currentValue.forEach((element: CardsUno, i: number) => {
-      this.items_href.push({
-        href: true,
-        link: element.link,
-        titulo: element.titulo
-      })
-      for (const url of Object.values(urlsLocal)) {
-        if (element.link.includes(url)) {
-          this.items_href[i] = {
-            href: false,
-            link: element.link,
-            titulo: element.titulo
+    this.items_href = []
+    if (changes.data.currentValue.length > 0) {
+      changes.data.currentValue.forEach((element: CardsUno, i: number) => {
+        this.items_href.push({
+          href: true,
+          link: element.link,
+          titulo: element.titulo
+        })
+        for (const url of Object.values(urlsLocal)) {
+          if (element.link.includes(url)) {
+            this.items_href[i] = {
+              href: false,
+              link: element.link,
+              titulo: element.titulo
+            }
           }
         }
-      }
-    })
+      })
+    }
   }
 
 }

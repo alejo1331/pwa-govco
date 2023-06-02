@@ -6,7 +6,7 @@
     </div>
     <govco-app-cards-uno [data]="data_mas_consultado" class="mt-0"></govco-app-cards-uno>
     <div class="govco-mt-40">
-        <app-boton [inverted]="false">Ver más</app-boton>
+        <app-boton [inverted]="false" [hidden]="data_mas_consultado.length < 5">Ver más</app-boton>
         <!-- <app-boton [inverted]="false" *ngIf="cantidadResultados > 5 && contadorResultados < cantidadResultados" (click)="VerMasResultados()">Ver más</app-boton> -->
         <!-- <app-boton [inverted]="false" *ngIf="cantidadResultados > 5 && contadorResultados >= cantidadResultados" (click)="VerMenosResultados()">Ver menos</app-boton> -->
     </div>
