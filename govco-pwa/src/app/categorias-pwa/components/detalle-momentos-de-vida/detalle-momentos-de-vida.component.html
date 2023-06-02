@@ -1,10 +1,16 @@
 <section class="titulo-descripcion">
+  <div class="govco-pwa-icon-container" tabindex="0" #botonAtras [attr.aria-label]="'Retornar Home Categorias'"
+    (click)="returnCategoriesPWA()">
+    <span class="material-symbols-outlined backSymbol">
+      arrow_back
+    </span>
+  </div>
 
 </section>
 <div #modal_desplegable class="modal-desplegable-pwa contenedor">
   <div class="modal-contenido">
     <div class="header-modal">
-      <hr class="hr_circle">
+      <img class="header-img" src="{{this.icon}}" alt="{{this.longDescription}}">
     </div>
     <div class="body-modal">
       <div class="container-header">

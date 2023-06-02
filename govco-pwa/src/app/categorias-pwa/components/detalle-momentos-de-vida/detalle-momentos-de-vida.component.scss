@@ -1,9 +1,21 @@
 .titulo-descripcion {
   height: 100%;
-  background: linear-gradient(70deg, #1B4AA7, #113680);
+  background: linear-gradient(70deg, #1b4aa7, #113680);
   position: fixed;
   width: 100%;
   top: 5.75rem;
+}
+
+.govco-pwa-icon-container {
+  align-items: center;
+  width: 48px;
+  height: 48px;
+  justify-content: center;
+  display: flex;
+  pointer-events: auto !important;
+  .material-symbols-outlined {
+    color: #ffffff;
+  }
 }
 
 .modal-desplegable-pwa.contenedor {
@@ -16,7 +28,6 @@
 }
 
 .modal-desplegable-pwa {
-
   &.backdrop-active-filter-tramites {
     z-index: 8;
   }
@@ -25,24 +36,32 @@
     height: 100%;
     width: 100%;
     pointer-events: auto;
-    background-color: #FFFFFF;
+    background-color: #ffffff;
     background-clip: padding-box;
     border-top-right-radius: 1.25rem;
     border-top-left-radius: 1.25rem;
     outline: 0;
 
-    .hr_circle {
+    .header-modal {
       border-radius: 50%;
       width: 6rem;
       height: 6rem;
-      background-color: #FFFFFF;
-      border: 3px solid #E8EFFC;
-      box-shadow: 0 3px 10px 0.5px #13173D14;
+      background-color: #ffffff;
+      border: 3px solid #e8effc;
+      box-shadow: 0 3px 10px 0.5px #13173d14;
       margin: 1rem auto 1rem auto;
       position: absolute;
       top: -4rem;
       left: 0;
       right: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .header-img {
+        height: 4rem;
+        width: 4rem;
+      }
     }
 
     .container-header {
@@ -60,7 +79,7 @@
 
       .description {
         text-align: center;
-        font-family: 'WorkSans-Regular', sans-serif;
+        font-family: "WorkSans-Regular", sans-serif;
         font-size: 1rem;
         font-weight: normal;
         letter-spacing: 0px;
@@ -70,7 +89,6 @@
     }
 
     .govco-pwa-momentos-subcategorias {
-
       .govco-pwa-momentos-elemento {
         outline-color: #000000;
       }
@@ -97,7 +115,7 @@
 
         a {
           text-decoration: none;
-          font-family: 'WorkSans-Medium';
+          font-family: "WorkSans-Medium";
           color: #004884;
           white-space: nowrap;
           font-size: 14px;
@@ -105,7 +123,7 @@
       }
 
       .filtro-active {
-        background-color: #E6EFFD;
+        background-color: #e6effd;
       }
     }
   }

@@ -2,7 +2,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     border: 2px solid #E8EFFC;
     border-radius: 5px;
     height: 148px;
@@ -10,14 +9,23 @@
     padding: 1rem 0.5rem;
 }
 
-.img-category {
-    width: 4rem;
-    height: 4rem;
+.container-img-category {
+    width: 3rem;
+    height: 3rem;
+
+    .img-category {
+        width: 3rem;
+        height: 3rem;
+    }
 }
+
+
 
 .category-name {
     font-size: 0.875rem;
     color: #004884;
     text-align: center;
-    font-family: 'WorkSans-Medium', sans-serif;
+    font-family: 'WorkSans-SemiBold', sans-serif;
+    text-decoration: underline;
+    line-height: 18px;
 }

@@ -46,7 +46,19 @@ export class CategoriasService {
       );
   }
 
-  private errorMensaje(error: any) {
+  getCategoriasPorId(id: string): Observable<CategoriasModel[]> {
+    return this.http
+      .get<CategoriasModel[]>(
+        `${this.urlcategorias}CategoriasSubcategorias/Categoria/${id}`
+      )
+      .pipe(
+        catchError((error) => {
+          return this.errorMensaje(error);
+        })
+      );
+  }
+
+  public errorMensaje(error: any) {
     if (error.error instanceof ErrorEvent) {
       this.errorMsg = `Error: ${error.error.message}`;
     } else {
