@@ -2,6 +2,8 @@
     padding: 0 .75rem;
 
     .titulo-tramites {
+        margin: 0 0 1.5rem 0;
+
         h2 {
             color: #004884;
             font-family: 'Montserrat-SemiBold';
@@ -13,8 +15,7 @@
             font-family: 'WorkSans-SemiBold';
             color: #3366CC;
             font-size: 0.875rem;
-            margin: 0 0 1.5rem 0;
-            text-decoration: underline
+            text-decoration: underline;
         }
     }
 }

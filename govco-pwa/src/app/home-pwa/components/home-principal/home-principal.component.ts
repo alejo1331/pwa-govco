@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { BottomMenuService } from 'src/app/transversales/services/bottom-menu/bottom-menu.service';
-import { GeolocalizacionService } from 'src/app/transversales/services/geolocalizacion/geolocalizacion.service';
 import { HeaderService } from 'src/app/transversales/services/header-service/header.service';
 import { SidenavService } from 'src/app/transversales/services/sidenav-service/sidenav-service.service';
 import { EspecificoInterface } from '../../models/tramites-mas-consultados/especifico-interface';
@@ -9,6 +8,8 @@ import { GeneralInterface } from '../../models/tramites-mas-consultados/general-
 import { PorMunicipioInterface } from '../../models/tramites-mas-consultados/por-municipio-interface';
 import { TituloInterface } from '../../models/tramites-mas-consultados/titulo-interface';
 import { TramitesMasConsultadosService } from '../../services/tramites-mas-consultados-service/tramites-mas-consultados.service';
+import { GeolocalizacionViewService } from 'src/app/transversales/services/geolocalizacion-view/geolocalizacion-view.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-home-principal',
@@ -25,20 +26,16 @@ export class HomePrincipalComponent implements OnInit {
   codigoDepartamento: string | null = "";
   nombreMunicipio: string = "";
   seccion: string = 'los-mas-consultados-en-home';
+  private getUbicacion: Subscription;
+
 
   constructor(
     public bottomService: BottomMenuService,
     protected servicioHeader: HeaderService,
     protected servicioSideNav: SidenavService,
     protected tramitesService: TramitesMasConsultadosService,
-    protected ServicioGeolocalizacion: GeolocalizacionService,
+    protected serviceGeoView: GeolocalizacionViewService
   ) {
-    this.ServicioGeolocalizacion.getUbicacion.subscribe(([codigoDepartamento, codigoMunicipio]) => {
-      if (codigoDepartamento != null && codigoMunicipio != null) {
-        this.dataGeolocalizacion();
-        this.dataFichaTramite();
-      }
-    })
     this.bottomService.putOcultandoBottomMenu(false);
   }
 
@@ -60,47 +57,12 @@ export class HomePrincipalComponent implements OnInit {
     (document.getElementById('topScroll') as HTMLElement).style.top = '7.25rem';
     (document.getElementById('topScroll') as HTMLElement).scrollTop = 0;
 
-    this.dataGeolocalizacion();
-    this.dataFichaTramite();
-  }
-
-  dataGeolocalizacion() {
-    this.codigoDepartamento = localStorage.getItem("codigoDepartamento") != null ? localStorage.getItem("codigoDepartamento") : '';
-    this.codigoMunicipio = localStorage.getItem("codigoMunicipio") != null ? localStorage.getItem("codigoMunicipio") : '';
-
-    if (this.codigoMunicipio != '') {
-      this.getMunicipiosPorDepartamento([String(this.codigoDepartamento), String(this.codigoMunicipio)])
-    }
-
-  }
-
-  getMunicipiosPorDepartamento([codigoDepartamento, codigoMunicipio]: [string, string]) {
-    if (codigoDepartamento == 'TodosLosDepartamentos') {
-      this.nombreMunicipio = 'Toda Colombia';
-    }
-
-    if (codigoDepartamento != null) {
-      codigoDepartamento = codigoDepartamento != 'TodosLosDepartamentos' ? codigoDepartamento : '';
-    } else {
-      codigoDepartamento = '';
-    }
-
-    if (codigoMunicipio != null) {
-      codigoMunicipio = codigoMunicipio != 'TodosLosMunicipios' ? codigoMunicipio : '';
-    } else {
-      codigoMunicipio = '';
-    }
-
-    if (codigoMunicipio != '') {
-      this.ServicioGeolocalizacion.getCacheJsonMunicipiosPorDepartamento(codigoDepartamento)
-        .then((municipios: any) => {
-          municipios.forEach((data: any) => {
-            if (data['codigo'] == codigoMunicipio) {
-              this.nombreMunicipio = data['nombre'];
-            }
-          });
-        })
-    }
+    this.getUbicacion = this.serviceGeoView.getUbicacion$.subscribe((data: BaseUbicacion) => {
+      this.codigoDepartamento = data.codigoDepartamento;
+      this.codigoMunicipio = data.codigoMunicipio;
+      this.nombreMunicipio = data.nombreMunicipio;
+      this.dataFichaTramite();
+    })
   }
 
   dataFichaTramite() {
@@ -132,4 +94,10 @@ export class HomePrincipalComponent implements OnInit {
     }
   }
 
+}
+
+export interface BaseUbicacion {
+  codigoDepartamento: string,
+  codigoMunicipio: string,
+  nombreMunicipio: string
 }

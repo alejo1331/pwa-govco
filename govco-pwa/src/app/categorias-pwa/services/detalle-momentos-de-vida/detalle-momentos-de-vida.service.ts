@@ -10,6 +10,8 @@ export class DetalleMomentosDeVidaService {
 
   constructor() { }
 
+  // El siguiente fragmento de codigo permite capturar y leer el id de la seccion detalle momento
+  // seleccionada
   get getIdMomento$(): Observable<string> {
     return this.id_momento$.asObservable();
   }
@@ -18,7 +20,4 @@ export class DetalleMomentosDeVidaService {
     this.id_momento$.next(id)
   }
 
-  get getIdMomento(): string {
-    return this.id_momento$.getValue();
-  }
 }
