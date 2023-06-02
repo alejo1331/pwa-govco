@@ -180,11 +180,6 @@ body {
   display: none;
 }
 
-.govco-pwa-content.active-filter-tramites {
-  top: 0!important;
-  height: 100%;
-}
-
 .govco-pwa-content-2 {
   overflow: visible;
   height: 100%;
