@@ -15,6 +15,8 @@ import { HomePwaModule } from '../home-pwa/home-pwa.module';
 import { TramitesDestacadosComponent } from './components/tramites-destacados/tramites-destacados.component';
 import { FiltrosPrimerNivelComponent } from './components/todos-los-tramites/filtros-primer-nivel/filtros-primer-nivel.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { ActualidadComponent } from './components/actualidad/actualidad.component';
+
 
 @NgModule({
   declarations: [
@@ -27,6 +29,7 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
     MomentosDeVidaCardComponent,
     TramitesDestacadosComponent,
     FiltrosPrimerNivelComponent,
+    ActualidadComponent
   ],
   imports: [
     CommonModule,

@@ -6,6 +6,7 @@ import { urlsLocal } from 'src/variables-globales/urlsLocal';
 import { LoMasConsultadoComponent } from './components/lo-mas-consultado/lo-mas-consultado.component';
 import { TodosLosTramitesComponent } from './components/todos-los-tramites/todos-los-tramites.component';
 import { TramitesDestacadosComponent } from './components/tramites-destacados/tramites-destacados.component';
+import { ActualidadComponent } from './components/actualidad/actualidad.component';
 
 const routes: Routes = [
   {
@@ -30,6 +31,10 @@ const routes: Routes = [
           {
             path: 'tramites-destacados',
             component: TramitesDestacadosComponent
+          },
+          {
+            path: 'actualidad',
+            component: ActualidadComponent
           },
         ]
       },
