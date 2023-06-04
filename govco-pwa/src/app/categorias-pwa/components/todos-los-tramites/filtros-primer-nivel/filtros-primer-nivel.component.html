@@ -4,43 +4,30 @@
         <div class="dropdown-arrow"></div>
         <div class="header">
             <h5>Filtrar por:</h5>
-            <button class="clean">Limpiar filtros</button>
+            <button class="clean" (click)="limpiarFiltros()" [disabled]="itemSeleccionados == 0 ? true : false">Limpiar filtros</button>
         </div>
         <hr>
-        <ul>
-            <li>
-                <button >
-                    <div class="filtro-sin-seleccion">
-                        Subcategorías
-                    </div>
-                    <span class="material-symbols-outlined arrow">
-                        chevron_right
-                    </span>
-                </button>
-                <button (click)="seleccionaFiltroNivelUno('entidadNombre ', 'Entidad', $event)">
-                    <div class="filtro-sin-seleccion">
-                        Entidad
-                    </div>
-                    <span class="material-symbols-outlined arrow">
-                        chevron_right
-                    </span>
-                </button>
-                <button>
-                    <div class="filtro-sin-seleccion">
-                        Sector
-                    </div>
-                    <span class="material-symbols-outlined arrow">
-                        chevron_right
-                    </span>
-                </button>
-                <button>
-                    <button class="infoBoton">
+        <ngx-skeleton-loader appearance="line" count="3" *ngIf="!resultadosBusqueda"
+            [theme]="{ height: '12px', 'background-color': '#888cc93d'}">
+        </ngx-skeleton-loader>
+        <ul *ngIf="resultadosBusqueda">
+            <li *ngFor="let filtro of seccionFiltros" [class.contiene-etiqueta]="filtrosSeleccionados[filtro.id] != undefined">
+                <button [class.disabled]="!filtro.active" (click)="seleccionaFiltroNivelUno(filtro.id, filtro.nombre, $event)" [tabindex]="filtro.active ? '0' : '-1'" [attr.itemfiltroniveluno]="filtro.id == 'subCategorias' ? 'subcategorias' : filtro.id">
+                    <app-etiqueta estado="informative" *ngIf="filtrosSeleccionados[filtro.id == 'subCategorias' ? 'subcategorias' : filtro.id] != undefined">
+                        <span class="text" [class.contiene-tooltip]="filtro.id == 'nombreEstandarizado'">
+                            {{filtrosSeleccionados[filtro.id]}}
+                        </span>
+                        <button class="material-symbols-outlined delete-selection" (click)="eliminarFiltro(filtro.id == 'subCategorias' ? 'subcategorias' : filtro.id)">
+                            close
+                        </button>
+                    </app-etiqueta>
+                    <button class="infoBoton" *ngIf="filtro.id == 'nombreEstandarizado'" (click)="abrirModalInformativo()">
                         <span class="material-symbols-outlined info">
                             question_mark
                         </span>
                     </button>
-                    <div class="filtro-sin-seleccion">
-                        Trámite estándar
+                    <div class="filtro-sin-seleccion" *ngIf="filtrosSeleccionados[filtro.id == 'subCategorias' ? 'subcategorias' : filtro.id] == null">
+                        {{filtro.nombre}}
                     </div>
                     <span class="material-symbols-outlined arrow">
                         chevron_right

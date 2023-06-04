@@ -44,16 +44,9 @@ export class FiltrosTramitesService {
   constructor(private http: HttpClient) { }
 
   obtenerResultadoFiltro(dataBusqueda: FiltroBusquedaTramites): Observable<ResultadoFiltroTramites> {
-    const data = {
-      filters: dataBusqueda.filters,
-      pageNumber: dataBusqueda.pageNumber,
-      pageSize: dataBusqueda.pageSize,
-      search: dataBusqueda.search,
-      sort: dataBusqueda.sort
-    }
 
-    const buscar = environment.serverBuscador + dataBusqueda.seccion + '/buscar/';
-    return this.http.post<ResultadoFiltroTramites>(buscar, data);
+    const buscar = environment.serverBuscador + 'tramite/buscar/';
+    return this.http.post<ResultadoFiltroTramites>(buscar, dataBusqueda);
   }
 
   // Asigna un nuevo valor a filtros, de los seleccionados y dispara un evento para que en los suscribe lo escuchen

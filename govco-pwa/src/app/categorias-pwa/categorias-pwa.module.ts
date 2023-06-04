@@ -16,6 +16,7 @@ import { TramitesDestacadosComponent } from './components/tramites-destacados/tr
 import { FiltrosPrimerNivelComponent } from './components/todos-los-tramites/filtros-primer-nivel/filtros-primer-nivel.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { ActualidadComponent } from './components/actualidad/actualidad.component';
+import { AvisoSinResultadosComponent } from './components/aviso-sin-resultados/aviso-sin-resultados.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { ActualidadComponent } from './components/actualidad/actualidad.componen
     MomentosDeVidaCardComponent,
     TramitesDestacadosComponent,
     FiltrosPrimerNivelComponent,
-    ActualidadComponent
+    ActualidadComponent,
+    AvisoSinResultadosComponent
   ],
   imports: [
     CommonModule,

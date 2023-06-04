@@ -6,6 +6,7 @@ import { ModalInterface } from 'src/app/modal-natvivo/models/modal-interface';
 import { MunicipioInterface } from '../../models/geolocalizacion/municipio-interface';
 import { GeolocalizacionService } from '../../services/geolocalizacion/geolocalizacion.service';
 import { HeaderService } from '../../services/header-service/header.service';
+import { FiltrosTramitesService } from 'src/app/categorias-pwa/services/filtros-tramites/filtros-tramites.service';
 
 @Component({
   selector: 'app-geolocalizacion',
@@ -32,6 +33,7 @@ export class GeolocalizacionComponent implements OnInit, AfterViewInit {
     protected ServicioGeolocalizacion: GeolocalizacionService,
     protected servicioHeader: HeaderService,
     private filtrosService: FiltrosService,
+    private filtrosTramitesService: FiltrosTramitesService,
     private buscadorService: BuscadorService
   ) { }
 
@@ -93,8 +95,23 @@ export class GeolocalizacionComponent implements OnInit, AfterViewInit {
         spinner: false,
       };
 
+      this.actualizarFiltroTramites();
     })
+  }
 
+  actualizarFiltroTramites() {
+    const filtrosSeleccionados = this.filtrosTramitesService.getFilters;
+    this.filters.categorias = filtrosSeleccionados?.filters?.categorias;
+    this.filters.tipocategorias = filtrosSeleccionados?.filters?.tipocategorias;
+    
+    this.filtrosTramitesService.setFilters = {
+      filters: this.filters,
+      pageNumber: 1,
+      pageSize: 5,
+      search: ' ',
+      sort: '',
+      spinner: false,
+    };
   }
 
   ngAfterViewInit(): void {
