@@ -7,4 +7,5 @@ import { Component, Input } from '@angular/core';
 })
 export class FooterComponent {
   @Input() fixed: boolean = false;
+  @Input() position = false;
 }

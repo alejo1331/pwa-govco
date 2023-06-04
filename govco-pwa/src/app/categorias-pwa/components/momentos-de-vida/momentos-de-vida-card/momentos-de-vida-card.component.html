@@ -1,11 +1,11 @@
 <a id="{{categoria.id}}" [attr.aria-label]="categoria.nombre + categoria.descripcionCorta"
     [routerLink]="[urlCategorias, categoria.id]" [title]="'Ir a '+ categoria.nombre">
     <div class="container-card">
-        <div class="container-img-category pb-3">
+        <div class="container-img-category">
             <img class="img-category" src="{{categoria.icono}}" alt="{{categoria.descripcionCorta}}">
         </div>
-        <div class="category-text">
-            <p class="category-name">{{categoria.nombre | titlecase}}</p>
+        <div class="category-text mt-3">
+            <p class="category-name">{{ this.textCardTransform(categoria.nombre) }}</p>
         </div>
     </div>
 </a>
