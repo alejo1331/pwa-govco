@@ -9,6 +9,7 @@ import { GeolocalizacionViewService } from 'src/app/transversales/services/geolo
 import { Subscription } from 'rxjs';
 import { LoMasConsultadoService } from '../../services/lo-mas-consultado/lo-mas-consultado.service';
 import { CategoriasService } from '../../services/categorias/categorias.service';
+import { urlsLocal } from 'src/variables-globales/urlsLocal';
 import { MatSidenav, MatSidenavContent } from '@angular/material/sidenav';
 import { ModalAvisoComponent } from '../modal-aviso/modal-aviso.component';
 import { FiltrosTramitesService } from '../../services/filtros-tramites/filtros-tramites.service';
@@ -33,6 +34,11 @@ export class DetalleMomentosDeVidaComponent implements OnInit, OnDestroy {
   ulitmoEstadoAviso: boolean = false;
   matSidenavContent: HTMLElement;
   activarSeccion: boolean = false;
+  cat_sub: string = '';
+  tra_des: string = '';
+  mas_con: string = '';
+  tod_tra: string = '';
+  act: string = '';
 
   private getParametroId: Subscription;
   private getUbicacion: Subscription;
@@ -53,6 +59,7 @@ export class DetalleMomentosDeVidaComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    this.getUrlNavigate();
     this.id_momento = this.activatedRoute.snapshot.params.id;
     this.serviceDetalleMomento.setIdMomento(this.id_momento);
 
@@ -87,6 +94,14 @@ export class DetalleMomentosDeVidaComponent implements OnInit, OnDestroy {
     this.mostrarAvisoSinResultados();
   }
 
+  getUrlNavigate() {
+    this.cat_sub = urlsLocal.categorias_subcategorias;
+    this.mas_con = urlsLocal.c_s_mas_consultado;
+    this.tra_des = urlsLocal.c_s_tramites_destacados;
+    this.tod_tra = urlsLocal.c_s_todos_los_tramites;
+    this.act = urlsLocal.c_s_actualidad;
+  }
+
   getLoMasConsultado() {
     this.getUbicacion = this.serviceGeoView.getUbicacion$.subscribe(
       (data: any) => {
@@ -112,14 +127,14 @@ export class DetalleMomentosDeVidaComponent implements OnInit, OnDestroy {
       (data: any) => {
         if (data.data.length > 0) {
           this.estado_mas_consultado = false;
-          this.router.navigate([
+        this.router.navigate(['/' + this.cat_sub + '/' + this.id_momento + '/' + this.mas_con]);
             '/categorias-subcategorias-pwa/' +
               this.id_momento +
               '/lo-mas-consultado',
           ]);
         } else {
           this.estado_mas_consultado = true;
-          this.router.navigate([
+        this.router.navigate(['/' + this.cat_sub + '/' + this.id_momento + '/' + this.tra_des]);
             '/categorias-subcategorias-pwa/' +
               this.id_momento +
               '/tramites-destacados',

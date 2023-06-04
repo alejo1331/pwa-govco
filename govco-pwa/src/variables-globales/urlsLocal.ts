@@ -14,5 +14,9 @@ export const urlsLocal = {
     acercaPortal: '/acerca-del-portal',
     serviciosEntidades: '/servicios-para-entidades',
     categorias_subcategorias:'categorias-subcategorias-pwa',
+    c_s_mas_consultado:'lo-mas-consultado',
+    c_s_tramites_destacados:'tramites-destacados',
+    c_s_todos_los_tramites: 'todos-los-tramites',
+    c_s_actualidad: 'actualidad',
     buscador: 'buscador',
 }

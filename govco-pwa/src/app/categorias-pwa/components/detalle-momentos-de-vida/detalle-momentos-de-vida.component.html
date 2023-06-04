@@ -22,21 +22,21 @@
         <ul id="govco-pwa-momentos-subcategorias-container">
           <li class="govco-pwa-momentos-elemento" id="0" tabindex="0" [hidden]="estado_mas_consultado">
             <a (click)="changePrefilter(0)"
-              routerLink="/categorias-subcategorias-pwa/{{id_momento}}/lo-mas-consultado">Lo más
+              routerLink="/{{cat_sub}}/{{id_momento}}/lo-mas-consultado">Lo más
               consultado</a>
           </li>
           <li class="govco-pwa-momentos-elemento" id="1" tabindex="0">
             <a (click)="changePrefilter(1)"
-              routerLink="/categorias-subcategorias-pwa/{{id_momento}}/tramites-destacados">
+              routerLink="/{{cat_sub}}/{{id_momento}}/tramites-destacados">
               Trámites destacados</a>
           </li>
           <li class="govco-pwa-momentos-elemento" id="2" tabindex="0">
             <a (click)="changePrefilter(2)"
-              routerLink="/categorias-subcategorias-pwa/{{id_momento}}/todos-los-tramites">Todos los trámites</a>
+              routerLink="/{{cat_sub}}/{{id_momento}}/todos-los-tramites">Todos los trámites</a>
           </li>
           <li class="govco-pwa-momentos-elemento" id="3" tabindex="0">
             <a (click)="changePrefilter(3)"
-              routerLink="/categorias-subcategorias-pwa/{{id_momento}}/actualidad">Actualidad</a>
+              routerLink="/{{cat_sub}}/{{id_momento}}/actualidad">Actualidad</a>
           </li>
         </ul>
       </div>

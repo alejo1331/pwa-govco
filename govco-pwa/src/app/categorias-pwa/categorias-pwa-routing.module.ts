@@ -21,15 +21,15 @@ const routes: Routes = [
         component: DetalleMomentosDeVidaComponent,
         children: [
           {
-            path: 'lo-mas-consultado',
+            path: urlsLocal.c_s_mas_consultado,
             component: LoMasConsultadoComponent
           },
           {
-            path: 'todos-los-tramites',
+            path: urlsLocal.c_s_todos_los_tramites,
             component: TodosLosTramitesComponent
           },
           {
-            path: 'tramites-destacados',
+            path: urlsLocal.c_s_tramites_destacados,
             component: TramitesDestacadosComponent
           },
           {
