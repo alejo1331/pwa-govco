@@ -9,12 +9,15 @@
     </div>
 </section>
 <app-desplegable-dos-govco>
-    <div class="container-cards">
-        <div *ngFor="let categoria of categorias; let i = index">
-            <app-momentos-de-vida-card [categoria]="categoria"></app-momentos-de-vida-card>
+    <section class="content-body">
+        <div class="container-cards">
+            <div *ngFor="let categoria of categorias; let i = index">
+                <app-momentos-de-vida-card [categoria]="categoria"></app-momentos-de-vida-card>
+            </div>
         </div>
-    </div>
-    <app-boton>Ver más momentos de vida</app-boton>
-    <app-banner-ciiu-buscador></app-banner-ciiu-buscador>
+        <app-boton>Ver más momentos de vida</app-boton>
+        <app-banner-ciiu-buscador></app-banner-ciiu-buscador>
+    </section>
+    <app-footer class="content-footer"></app-footer>
 </app-desplegable-dos-govco>
 <app-boton-retroalimentacion [position]="true"></app-boton-retroalimentacion>

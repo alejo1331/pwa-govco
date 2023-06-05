@@ -1,4 +1,4 @@
-.footer-fixed{
+.footer-fixed {
   position: fixed;
   bottom: 0.75rem;
 }
@@ -6,12 +6,19 @@
 .govco-pwa-footer {
   width: 100%;
   height: 2.5rem;
-  background-color: #3366CC;
+  background-color: #3366cc;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-bottom: 3.75rem;
   margin-top: 2.5rem;
+
+  &:not(.position) {
+    margin-bottom: 0rem;
+  }
+
+  &.position {
+    margin-bottom: 3.75rem;
+  }
 
   p {
     font-family: "WorkSans-Medium";
