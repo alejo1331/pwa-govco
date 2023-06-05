@@ -11,6 +11,7 @@ export interface FiltroBusqueda {
 export interface Filter {
     categorias?: Name;
     subcategorias?: Name;
+    tipocategorias?: Sigla;
     entidadNombre?: string;
     sector?: string;
     fechaPublicacionFiltro?: string;
@@ -40,4 +41,8 @@ export interface FilterMordal {
 
 export interface Name {
     nombre: string;
+}
+
+export interface Sigla {
+    sigla: string;
 }

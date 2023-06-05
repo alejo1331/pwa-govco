@@ -129,7 +129,7 @@ export class DetalleMomentosDeVidaComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.getParametroId.unsubscribe;
+    // this.getParametroId.unsubscribe;
     this.getUbicacion.unsubscribe;
   }
 

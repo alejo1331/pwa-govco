@@ -1,7 +1,7 @@
 <nav class="filter-header-all-procedures">
     <p>({{totalResultados}}) Resultados</p>
     <button (click)="abrirFiltroPrimerNivel()">
-        <p>Filtros (0)</p>
+        <p>{{ totalFiltros == 0 ? 'Filtros': 'Filtros (' +  totalFiltros + ')'}}</p>
         <span type="image" alt="Abrir filtro"></span>
     </button>
 </nav>
