@@ -45,3 +45,7 @@
   </div>
 </div>
 <app-boton-retroalimentacion [position]="true"></app-boton-retroalimentacion>
+
+<section #seccionAviso class="seccion-aviso" *ngIf="activarSeccion">
+  <app-modal-aviso (closedModal)="cerrarAvisoSinResultados()"></app-modal-aviso>
+</section>

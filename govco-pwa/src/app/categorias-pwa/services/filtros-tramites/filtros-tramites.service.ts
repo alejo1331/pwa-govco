@@ -11,8 +11,8 @@ import { environment } from 'src/environments/environment';
 export class FiltrosTramitesService {
 
   private filters = new BehaviorSubject<FiltroBusquedaTramites | undefined>(undefined);
-
   private resultadoBusqueda = new BehaviorSubject<ResultadoFiltroTramites | undefined>(undefined);
+  private abrirAviso$ = new BehaviorSubject<boolean>(false);
 
   private data: ResultadoFiltroTramites = {
     success: 0,
@@ -81,5 +81,15 @@ export class FiltrosTramitesService {
 
   get EmptyData(): ResultadoFiltroTramites {
     return JSON.parse(JSON.stringify(this.data));
+  }
+ 
+  // Obtener el observador de apertura del aviso cuando no se encuentran resultados
+  get getAbrirAvisor$ (): Observable<boolean>{
+    return this.abrirAviso$.asObservable();
+  }
+
+  // Asigna valor para abrir o cerrar el aviso cuando no se encuentran resultados
+  set setAbrirAviso(abrir : boolean){
+    this.abrirAviso$.next(abrir)
   }
 }

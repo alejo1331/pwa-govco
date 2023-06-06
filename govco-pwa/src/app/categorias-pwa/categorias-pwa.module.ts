@@ -17,6 +17,7 @@ import { FiltrosPrimerNivelComponent } from './components/todos-los-tramites/fil
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { ActualidadComponent } from './components/actualidad/actualidad.component';
 import { AvisoSinResultadosComponent } from './components/aviso-sin-resultados/aviso-sin-resultados.component';
+import { ModalAvisoComponent } from './components/modal-aviso/modal-aviso.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { AvisoSinResultadosComponent } from './components/aviso-sin-resultados/a
     TramitesDestacadosComponent,
     FiltrosPrimerNivelComponent,
     ActualidadComponent,
-    AvisoSinResultadosComponent
+    AvisoSinResultadosComponent,
+    ModalAvisoComponent
   ],
   imports: [
     CommonModule,
@@ -41,5 +43,8 @@ import { AvisoSinResultadosComponent } from './components/aviso-sin-resultados/a
     HomePwaModule,
     NgxSkeletonLoaderModule,
   ],
+  exports: [    
+    ModalAvisoComponent,
+  ]
 })
 export class CategoriasPwaModule {}

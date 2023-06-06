@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild, ElementRef, HostListener } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DesplegableDosService } from 'src/app/biblioteca-pwa/services/desplegable-dos/desplegable-dos.service';
 import { BottomMenuService } from 'src/app/transversales/services/bottom-menu/bottom-menu.service';
@@ -9,6 +9,9 @@ import { GeolocalizacionViewService } from 'src/app/transversales/services/geolo
 import { Subscription } from 'rxjs';
 import { LoMasConsultadoService } from '../../services/lo-mas-consultado/lo-mas-consultado.service';
 import { CategoriasService } from '../../services/categorias/categorias.service';
+import { MatSidenav, MatSidenavContent } from '@angular/material/sidenav';
+import { ModalAvisoComponent } from '../modal-aviso/modal-aviso.component';
+import { FiltrosTramitesService } from '../../services/filtros-tramites/filtros-tramites.service';
 
 @Component({
   selector: 'govco-app-detalle-momentos-de-vida',
@@ -16,12 +19,20 @@ import { CategoriasService } from '../../services/categorias/categorias.service'
   styleUrls: ['./detalle-momentos-de-vida.component.scss'],
 })
 export class DetalleMomentosDeVidaComponent implements OnInit, OnDestroy {
+  @ViewChild('sidenav') sidenav!: MatSidenav;
+  @ViewChild(MatSidenavContent) sidenavcontent!: MatSidenavContent;
+  @ViewChild('seccionAviso') seccionAviso: ElementRef;
+  @ViewChild(ModalAvisoComponent) ModalAvisoComponent: ModalAvisoComponent;
+
   subcategoriaMomentos: number = 0;
   title: string = '';
   description: string = '';
   longDescription: string = '';
   id_momento: string = '';
   icon: string = '';
+  ulitmoEstadoAviso: boolean = false;
+  matSidenavContent: HTMLElement;
+  activarSeccion: boolean = false;
 
   private getParametroId: Subscription;
   private getUbicacion: Subscription;
@@ -37,7 +48,8 @@ export class DetalleMomentosDeVidaComponent implements OnInit, OnDestroy {
     private serviceDetalleMomento: DetalleMomentosDeVidaService,
     protected serviceGeoView: GeolocalizacionViewService,
     private serviceFichaTramite: LoMasConsultadoService,
-    private serviceCategorias: CategoriasService
+    private serviceCategorias: CategoriasService,
+    protected filtrosService: FiltrosTramitesService,
   ) {}
 
   ngOnInit(): void {
@@ -71,7 +83,17 @@ export class DetalleMomentosDeVidaComponent implements OnInit, OnDestroy {
       this.subcategoriaMomentos.toString()
     )?.offsetLeft;
 
-    this.getLoMasConsultado();
+    this.getLoMasConsultado();    
+
+    this.filtrosService.getAbrirAvisor$.subscribe(
+      (abrir: boolean) => {
+        if (abrir === true) {
+          this.abrirAvisoSinResultados();
+        } else if (abrir === false && this.ulitmoEstadoAviso === true) {
+          this.cerrarAvisoSinResultados();
+        }
+      }
+    );
   }
 
   getLoMasConsultado() {
@@ -135,5 +157,31 @@ export class DetalleMomentosDeVidaComponent implements OnInit, OnDestroy {
 
   returnCategoriesPWA() {
     this.router.navigate(['/categorias-subcategorias-pwa']);
+  }
+
+  @HostListener('window:load') onLoad() {
+    this.activarSeccion = true;
+  }
+
+  // Función para abrir el aviso sin sesultados de busqueda tipo modal
+  abrirAvisoSinResultados() {
+    if (this.seccionAviso != undefined) {
+      this.seccionAviso.nativeElement.style.transform = 'translate(0%)';
+      this.seccionAviso.nativeElement.style.transition = '0.6s ease';
+      this.matSidenavContent.style.transform = 'translate(-100%)';
+      this.matSidenavContent.style.transition = '0.6s ease';
+      this.ulitmoEstadoAviso = true;
+    }
+  }
+
+  // Función para cerrar el aviso sin sesultados de busqueda tipo modal
+  cerrarAvisoSinResultados() {
+    if (this.seccionAviso != undefined) {
+      this.seccionAviso.nativeElement.style.transform = 'translate(100%)';
+      this.seccionAviso.nativeElement.style.transition = '0.6s ease';
+      this.matSidenavContent.style.transform = 'translate(0%)';
+      this.matSidenavContent.style.transition = '0.6s ease';
+      this.ulitmoEstadoAviso = false;
+    }
   }
 }

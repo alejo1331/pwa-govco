@@ -3,7 +3,12 @@
         <div class="card-header" [id]="'heading' + i">
             <h3 class="mb-0">
                 <button #botonAcordeon (click)="activarItem(i)" class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" [attr.data-target]="'#collapse' + i" aria-expanded="false" [attr.aria-controls]="'collapse' + i">
-                    <span class="title-card-header" *ngIf="item.titulo">GOV.CO ¡Integrado!</span>
+                    <div class="govco-integrated">
+                        <span class="material-symbols-outlined icon-done">
+                            done
+                        </span>
+                        <span class="text-govco-integrated" *ngIf="item.titulo">GOV.CO ¡Integrado!</span>
+                    </div>
                     <div>
                         <a *ngIf="href" (click)="validarUrlService.validarUrl(item.link, '_blank')" class="line-clamp-3"
                             tabindex="0" [attr.aria-label]="'Abrir pagina ' + item.titulo">{{item.titulo}}</a>

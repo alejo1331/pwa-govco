@@ -1,0 +1,11 @@
+<div class="modal-aviso-sin-resultados">
+    <div class="pwa-govco-back-arrow-header">
+        <div #botonAtras class="caja-pwa-govco-back-arrow" (keypress)="closedAviso()" (click)="closedAviso()"
+            [attr.aria-label]="'Cerrar formulario de ubicación'" tabindex="0">
+            <span class="material-symbols-outlined pwa-govco-back-arrow">arrow_back</span>
+        </div>
+    </div>
+    <div class="container-app-aviso">
+        <app-aviso-sin-resultados></app-aviso-sin-resultados>
+    </div>
+</div>
