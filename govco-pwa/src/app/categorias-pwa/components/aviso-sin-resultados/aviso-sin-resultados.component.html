@@ -7,7 +7,7 @@
         <p class=" tarjeta-aviso-contenido-mensaje">No aparecen coincidencias con los criterios seleccionados.</p>
         <p class="tarjeta-aviso-mensaje-texto">Sigue estas sugerencias:</p>     
         <div class="tarjeta-aviso-mensaje-texto">
-            <span *ngIf="!(totalFiltros > 0 || geoLocMunName == 'Toda Colombia')"
+            <span *ngIf="totalFiltros == 0 && geoLocMunName !== 'Toda Colombia' && !mostrarAvisoModal"
                 class="tarjeta-aviso-mensaje-texto">• 
                 <a class="tarjeta-aviso-mensaje-link" href="javascript:void(0)" (click)="abrirGeolocalizacion()">Cambia la ubicación</a>
                 <span> para refinar la búsqueda.</span>

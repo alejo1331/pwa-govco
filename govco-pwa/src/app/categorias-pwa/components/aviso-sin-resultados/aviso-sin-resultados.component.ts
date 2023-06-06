@@ -2,11 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AppComponent } from 'src/app/app.component';
 import { MunicipioInterface } from './../../../transversales/models/geolocalizacion/municipio-interface';
 import { GeolocalizacionService } from './../../../transversales/services/geolocalizacion/geolocalizacion.service';
-import {
-  BuscadorService,
-  BuscadorParams,
-} from 'src/app/buscador-pwa/services/buscador.service';
-import { ItemsBuscador } from 'src/variables-globales/items-buscador';
 import { DepartamentoInterface } from 'src/app/transversales/models/geolocalizacion/departamento-interface';
 import { Subscription } from 'rxjs';
 import { FiltrosTramitesService } from '../../services/filtros-tramites/filtros-tramites.service';
@@ -25,11 +20,11 @@ export class AvisoSinResultadosComponent implements OnInit {
   resConsumoApi = '';
   filterSubscription: Subscription;
   totalFiltros: number = 0;
+  mostrarAvisoModal: boolean = false;
 
   constructor(
     private appprincipal: AppComponent,
     protected ServicioGeolocalizacion: GeolocalizacionService,
-    private buscadorService: BuscadorService,
     private filtrosService: FiltrosTramitesService
   ) { }
 
@@ -51,6 +46,8 @@ export class AvisoSinResultadosComponent implements OnInit {
           })
         }
       });
+    
+    this.mostrarAvisoSinResultados();
   }
 
   abrirGeolocalizacion() {
@@ -112,6 +109,14 @@ export class AvisoSinResultadosComponent implements OnInit {
       }
     });
     return municipioMod.join(' ');
+  }
+
+  mostrarAvisoSinResultados() {
+    this.filtrosService.getAbrirAvisor$.subscribe(
+      (abrir: boolean) => {
+        this.mostrarAvisoModal = abrir;
+      }
+    );
   }
 
   ngOnDestroy() {
