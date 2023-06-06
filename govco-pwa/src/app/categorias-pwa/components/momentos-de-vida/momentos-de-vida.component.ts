@@ -15,6 +15,7 @@ export class MomentosDeVidaComponent implements OnInit {
   title: string = '';
   description: string = '';
   categorias: CategoriasModel[] = [];
+  page: number = 0;
 
   constructor(
     private router: Router,
@@ -39,6 +40,12 @@ export class MomentosDeVidaComponent implements OnInit {
         this.description = resp.data.descripcion ? resp.data.descripcion : '';
       });
     this.listarCategorias();
+
+    this.categoriasService
+      .getCategoriasPaginacion(this.page)
+      .subscribe((resp) => {
+        console.log(resp);
+      });
   }
 
   listarCategorias() {
