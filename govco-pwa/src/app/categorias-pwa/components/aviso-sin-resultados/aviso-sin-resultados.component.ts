@@ -36,7 +36,6 @@ export class AvisoSinResultadosComponent implements OnInit {
   ngOnInit(): void {
     this.filterSubscription = this.filtrosService.getFilters$.subscribe(
       async (data: FiltroBusquedaTramites | undefined) => {
-        console.log('avisoooooooooooo', data)
         let codDepartamento: string, codMunicipio: string;
         codDepartamento = localStorage.getItem('codigoDepartamento')!;
         codMunicipio = localStorage.getItem('codigoMunicipio')!;

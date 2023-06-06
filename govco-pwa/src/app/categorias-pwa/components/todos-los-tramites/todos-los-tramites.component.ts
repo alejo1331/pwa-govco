@@ -60,7 +60,6 @@ export class TodosLosTramitesComponent implements OnInit {
   suscripcionFilter() {
     this.filterSubscription = this.filtrosService.getFilters$.subscribe(
       async (data: FiltroBusquedaTramites | undefined) => {
-        console.log('data', data)
         
         if (data == undefined) {
           return;
@@ -84,7 +83,6 @@ export class TodosLosTramitesComponent implements OnInit {
   async realizarBusqueda(data: FiltroBusquedaTramites) {
     try {
       let resultado: ResultadoFiltroTramites = await this.filtrosService.obtenerResultadoFiltro(data).toPromise();
-      console.log('resultado', resultado)
 
       this.filters = {
         departamento: data?.filters?.departamento,

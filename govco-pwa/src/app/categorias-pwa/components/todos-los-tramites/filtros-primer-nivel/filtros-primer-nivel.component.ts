@@ -180,8 +180,6 @@ export class FiltrosPrimerNivelComponent implements OnInit {
   }
 
   actualizarBusqueda() {
-    console.log('actualizarBusqueda');
-
     this.filtrosService.setFilters = {
       filters: {
         categorias: this.filters['categorias'],
