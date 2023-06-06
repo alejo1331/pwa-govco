@@ -14,10 +14,11 @@ import { CategoriasModel } from './../../Models/CategoriasModel';
   providedIn: 'root',
 })
 export class CategoriasService {
-  urlcategorias: string = environment.serverCategorias;
+  urlcategorias: string = environment.serverCategoriaSubcategoriaUrl;
   url_apiCross: string = environment.apiCrossUrl;
   errorMsg?: string;
   categoriasMomentos: string = 'MV';
+  categoriasParametro: string = 'NumMomentoLista';
 
   constructor(private http: HttpClient) {}
 
@@ -34,7 +35,7 @@ export class CategoriasService {
       );
   }
 
-  getCategorias(): Observable<CategoriasModel[]> {
+  getCategorias() {
     return this.http
       .get<CategoriasModel[]>(
         `${this.urlcategorias}Categorias/Categorias/TipoCategoria/${this.categoriasMomentos}`
@@ -50,6 +51,18 @@ export class CategoriasService {
     return this.http
       .get<CategoriasModel[]>(
         `${this.urlcategorias}CategoriasSubcategorias/Categoria/${id}`
+      )
+      .pipe(
+        catchError((error) => {
+          return this.errorMensaje(error);
+        })
+      );
+  }
+
+  getCategoriasPaginacion(page: number): Observable<CategoriasModel[]> {
+    return this.http
+      .get<CategoriasModel[]>(
+        `${this.urlcategorias}Categorias/Categorias/TipoCategoriaPaginacion/${this.categoriasMomentos}/${this.categoriasParametro}/${page}`
       )
       .pipe(
         catchError((error) => {
