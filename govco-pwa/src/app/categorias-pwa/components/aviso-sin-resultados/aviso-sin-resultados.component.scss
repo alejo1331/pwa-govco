@@ -1,0 +1,70 @@
+.tarjeta-aviso {
+    margin-top: -2rem;
+    color: #000000;
+
+    .tarjeta-aviso-cabecera {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 1.5rem;
+    
+        .tarjeta-aviso-cabecera-img {
+            height: 10rem;
+            margin-bottom: 1.5rem;
+        }
+    
+        .tarjeta-aviso-cabecera-titulo {
+            font-family: 'Montserrat-SemiBold';
+            font-size: 1.5rem;
+            color: #004884;
+            margin: 0;
+        }
+    }
+    
+    .tarjeta-aviso-contenido {
+        font-family: 'workSans-Regular';
+        font-size: 0.875rem;
+    
+        .tarjeta-aviso-contenido-mensaje {
+            font-family: 'workSans-Medium';
+            margin-bottom: 1rem;
+        }
+    
+        p.tarjeta-aviso-mensaje-texto {
+            margin-bottom: 1rem;
+        }
+    
+        .tarjeta-aviso-mensaje-texto {
+            display: flex;
+            flex-direction: column;
+
+            span {
+                margin-bottom: 0.5rem;
+                display: block;
+
+                &.text-bold {
+                    font-family: 'workSans-Medium';
+                }
+
+                a, span {
+                    display: inline-block;
+                }
+
+                a {
+                    margin-right: 0.25rem;
+                }
+            }
+        }
+    
+        .tarjeta-aviso-listado {
+            padding-left: 1rem;
+        }
+    }  
+    
+    .tarjeta-aviso-mensaje-link {
+        font-family: 'workSans-Medium';
+        color: #3366CC;
+        text-decoration: underline;
+        font-size: 0.875rem;
+    }
+}

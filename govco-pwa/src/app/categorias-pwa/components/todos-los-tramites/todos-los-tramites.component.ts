@@ -3,8 +3,6 @@ import { Subscription } from 'rxjs';
 import { FiltrosTramitesService } from '../../services/filtros-tramites/filtros-tramites.service';
 import { FiltroBusquedaTramites } from '../../Models/filtroBusquedaTramitesModel';
 import { ResultadoFiltroTramites } from '../../Models/resultadoFiltroTramitesModel';
-import { GeolocalizacionViewService } from 'src/app/transversales/services/geolocalizacion-view/geolocalizacion-view.service';
-import { GeolocalizacionService } from 'src/app/transversales/services/geolocalizacion/geolocalizacion.service';
 
 @Component({
   selector: 'app-todos-los-tramites',
@@ -18,27 +16,25 @@ export class TodosLosTramitesComponent implements OnInit {
   filterSubscription: Subscription;
   resultadosBusqueda: ResultadoFiltroTramites;
   loading: boolean;
-  private getUbicacion: Subscription;
   filters: any;
 
   constructor(    
     protected filtrosService: FiltrosTramitesService,
-    protected serviceGeoView: GeolocalizacionViewService,
-    protected ServicioGeolocalizacion: GeolocalizacionService
   ) { }
 
   ngOnInit(): void {
     this.cantidadResultados = 0;
     this.initializeParameters();
     this.suscripcionFilter();
-    // this.suscripcionGeolocalizacion();
+
+    // this.filtrosService.setAbrirAviso = true;
   }
 
-  initializeParameters() {
-
-    // const geolocalizacion = this.ServicioGeolocalizacion.getUbicacion;
-    // console.log('geolocalizacion', geolocalizacion.)
-    this.filtrosService.setFilters = {
+  initializeParameters() {    
+    const departamento = localStorage.getItem("codigoDepartamento");
+    const municipio = localStorage.getItem("codigoMunicipio");
+    
+    let filtros: FiltroBusquedaTramites = {
       pageNumber: 1,
       pageSize: 5,
       search: "  ",
@@ -52,6 +48,13 @@ export class TodosLosTramitesComponent implements OnInit {
       },
       sort: ""
     }
+
+    if (departamento && municipio) {
+      filtros.filters!.departamento = { codigoDepartamento: parseInt(departamento) };
+      filtros.filters!.municipio = { codigoMunicipio: parseInt(municipio) };
+    }
+
+    this.filtrosService.setFilters = filtros;
   }
 
   suscripcionFilter() {
@@ -76,31 +79,6 @@ export class TodosLosTramitesComponent implements OnInit {
         this.realizarBusqueda(data);
       }
     );
-  }
-
-  suscripcionGeolocalizacion() {
-    this.getUbicacion = this.serviceGeoView.getUbicacion$.subscribe((data: any) => {
-      console.log('suscripcionGeolocalizacion', data)
-      const filtrosSeleccionados = this.filtrosService.getFilters;
-
-      this.filtrosService.setFilters = {
-        filters: {
-          categorias: filtrosSeleccionados?.filters?.categorias,
-          tipocategorias: filtrosSeleccionados?.filters?.tipocategorias,        
-          departamento: data.codigoDepartamento && data.codigoMunicipio != "TodosLosMunicipios" && data.codigoMunicipio != '' ? { 'codigoDepartamento': parseInt(data.codigoDepartamento) } : undefined,
-          municipio: data.codigoMunicipio && data.codigoMunicipio != "TodosLosMunicipios" ? { 'codigoMunicipio': parseInt(data.codigoMunicipio) } : undefined
-        },
-        pageNumber: 1,
-        pageSize: 5,
-        search: ' ',
-        sort: '',
-        spinner: true,
-      };
-
-      this.cantidadResultados = 0;
-      this.dataResultado = [];
-      this.activarSpinner(true);
-    });
   }
 
   async realizarBusqueda(data: FiltroBusquedaTramites) {
@@ -141,7 +119,7 @@ export class TodosLosTramitesComponent implements OnInit {
       element?.classList.remove('show');
       backdrop?.classList.remove('show');
     }
-  }
+  }  
 
   ngOnDestroy() {
     if (this.filterSubscription) {
