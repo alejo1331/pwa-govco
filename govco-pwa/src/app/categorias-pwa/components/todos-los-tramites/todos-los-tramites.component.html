@@ -9,7 +9,9 @@
                 </ngx-skeleton-loader>
             </div>
         </div>
-        <app-aviso-sin-resultados *ngIf="dataResultado.length === 0 && !loading"></app-aviso-sin-resultados>
+        <div class="container-aviso-sin-resultados" *ngIf="dataResultado.length === 0 && !mostrarAvisoModal && !loading">
+            <app-aviso-sin-resultados></app-aviso-sin-resultados>
+        </div>
         <app-card-tramite *ngIf="dataResultado" [data]="dataResultado" [cantidadResultados]="cantidadResultados">
         </app-card-tramite>    
         <app-banner-ciiu-buscador></app-banner-ciiu-buscador>

@@ -17,6 +17,9 @@ export class TodosLosTramitesComponent implements OnInit {
   resultadosBusqueda: ResultadoFiltroTramites;
   loading: boolean;
   filters: any;
+  departamento: any;
+  municipio: any;
+  mostrarAvisoModal:boolean = false;
 
   constructor(    
     protected filtrosService: FiltrosTramitesService,
@@ -24,16 +27,15 @@ export class TodosLosTramitesComponent implements OnInit {
 
   ngOnInit(): void {
     this.cantidadResultados = 0;
+    this.departamento = localStorage.getItem("codigoDepartamento");
+    this.municipio = localStorage.getItem("codigoMunicipio");
+
     this.initializeParameters();
     this.suscripcionFilter();
-
-    // this.filtrosService.setAbrirAviso = true;
+    this.mostrarModalAvisoSinResultados();
   }
 
-  initializeParameters() {    
-    const departamento = localStorage.getItem("codigoDepartamento");
-    const municipio = localStorage.getItem("codigoMunicipio");
-    
+  initializeParameters() {        
     let filtros: FiltroBusquedaTramites = {
       pageNumber: 1,
       pageSize: 5,
@@ -49,9 +51,9 @@ export class TodosLosTramitesComponent implements OnInit {
       sort: ""
     }
 
-    if (departamento && municipio) {
-      filtros.filters!.departamento = { codigoDepartamento: parseInt(departamento) };
-      filtros.filters!.municipio = { codigoMunicipio: parseInt(municipio) };
+    if (this.departamento && this.municipio) {
+      filtros.filters!.departamento = { codigoDepartamento: parseInt(this.departamento) };
+      filtros.filters!.municipio = { codigoMunicipio: parseInt(this.municipio) };
     }
 
     this.filtrosService.setFilters = filtros;
@@ -75,12 +77,12 @@ export class TodosLosTramitesComponent implements OnInit {
           this.activarSpinner(true);
         }
 
-        this.realizarBusqueda(data);
+        this.search(data);
       }
     );
   }
 
-  async realizarBusqueda(data: FiltroBusquedaTramites) {
+  async search(data: FiltroBusquedaTramites) {
     try {
       let resultado: ResultadoFiltroTramites = await this.filtrosService.obtenerResultadoFiltro(data).toPromise();
 
@@ -92,18 +94,41 @@ export class TodosLosTramitesComponent implements OnInit {
       // Se almacena la respuesta de la búsqueda
       this.resultadosBusqueda = resultado;
       this.filtrosService.ResultadoBusqueda = resultado;
+      // this.dataResultado = [];
       this.dataResultado = this.resultadosBusqueda.data.length > 0 ? this.resultadosBusqueda.data : [];
 
       if (this.dataResultado.length > 0) {
         this.cantidadResultados = resultado.total;
       } else {
+        this.checkFilters(data);
         this.cantidadResultados = 0;
       }
+
+        
+      // const elementSubcategorias = document.querySelector('.modal-desplegable-pwa .container-header p');
+      // elementSubcategorias?.scrollIntoView({ inline: "start", block: "start" });
     } catch (error) {
       console.error(error);
     } finally {
       this.activarSpinner(false);
       this.loading = false;
+    }
+  }
+
+  checkFilters(data: FiltroBusquedaTramites) {
+    let totalFiltros = 0;
+    if (data?.filters != undefined) {
+      Object.entries(data?.filters).forEach(element => {
+        if (element[0] != "departamento" && element[0] != "municipio" && 
+          element[0] != "categorias" && element[0] != "tipocategorias") {
+          totalFiltros += element[1] != undefined ? 1 : 0
+        }
+      })
+    }
+
+    if (totalFiltros > 0) {
+      this.filtrosService.setAbrirAviso = true;
+      this.initializeParameters();
     }
   }
 
@@ -117,7 +142,15 @@ export class TodosLosTramitesComponent implements OnInit {
       element?.classList.remove('show');
       backdrop?.classList.remove('show');
     }
-  }  
+  }    
+
+  mostrarModalAvisoSinResultados() {
+    this.filtrosService.getAbrirAvisor$.subscribe(
+      (abrir: boolean) => {
+        this.mostrarAvisoModal = abrir;
+      }
+    );
+  }
 
   ngOnDestroy() {
     if (this.filterSubscription) {

@@ -54,9 +54,10 @@ export class FiltrosPrimerNivelComponent implements OnInit {
 
     this.clickBackdrop();
     this.clickEscape();
+    this.mostrarAvisoSinResultados();
   }
 
-  actualizarFiltrosSeleccionados(filter:FiltroBusquedaTramites) {
+  actualizarFiltrosSeleccionados(filter: FiltroBusquedaTramites | undefined) {
     this.filtrosSeleccionados = {};
 
     const filtrosS = filter? filter.filters : {};
@@ -265,5 +266,18 @@ export class FiltrosPrimerNivelComponent implements OnInit {
       windowClass: 'background-modal',
     });
     modalRef.componentInstance.data = "Trámites que se repiten en diferentes entidades que realizan el mismo proceso y son agrupados bajo un nombre común.";
+  } 
+
+  mostrarAvisoSinResultados() {
+    this.filtrosService.getAbrirAvisor$.subscribe(
+      (abrir: boolean) => {
+        if (abrir === true) {
+          this.filtroPrimerNivel.nativeElement.classList.remove('show');
+          this.removerFocus();
+          this.removeClassActiveFilter();
+          this.limpiarFiltros();
+        }
+      }
+    );
   }
 }

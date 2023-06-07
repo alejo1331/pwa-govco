@@ -83,17 +83,8 @@ export class DetalleMomentosDeVidaComponent implements OnInit, OnDestroy {
       this.subcategoriaMomentos.toString()
     )?.offsetLeft;
 
-    this.getLoMasConsultado();    
-
-    this.filtrosService.getAbrirAvisor$.subscribe(
-      (abrir: boolean) => {
-        if (abrir === true) {
-          this.abrirAvisoSinResultados();
-        } else if (abrir === false && this.ulitmoEstadoAviso === true) {
-          this.cerrarAvisoSinResultados();
-        }
-      }
-    );
+    this.getLoMasConsultado();       
+    this.mostrarAvisoSinResultados();
   }
 
   getLoMasConsultado() {
@@ -159,6 +150,18 @@ export class DetalleMomentosDeVidaComponent implements OnInit, OnDestroy {
     this.router.navigate(['/categorias-subcategorias-pwa']);
   }
 
+  mostrarAvisoSinResultados() {
+    this.filtrosService.getAbrirAvisor$.subscribe(
+      (abrir: boolean) => {
+        if (abrir === true) {
+          this.abrirAvisoSinResultados();
+        } else if (abrir === false && this.ulitmoEstadoAviso === true) {
+          this.cerrarAvisoSinResultados();
+        }
+      }
+    );
+  }
+
   @HostListener('window:load') onLoad() {
     this.activarSeccion = true;
   }
@@ -168,8 +171,6 @@ export class DetalleMomentosDeVidaComponent implements OnInit, OnDestroy {
     if (this.seccionAviso != undefined) {
       this.seccionAviso.nativeElement.style.transform = 'translate(0%)';
       this.seccionAviso.nativeElement.style.transition = '0.6s ease';
-      this.matSidenavContent.style.transform = 'translate(-100%)';
-      this.matSidenavContent.style.transition = '0.6s ease';
       this.ulitmoEstadoAviso = true;
     }
   }
@@ -179,8 +180,6 @@ export class DetalleMomentosDeVidaComponent implements OnInit, OnDestroy {
     if (this.seccionAviso != undefined) {
       this.seccionAviso.nativeElement.style.transform = 'translate(100%)';
       this.seccionAviso.nativeElement.style.transition = '0.6s ease';
-      this.matSidenavContent.style.transform = 'translate(0%)';
-      this.matSidenavContent.style.transition = '0.6s ease';
       this.ulitmoEstadoAviso = false;
     }
   }
