@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit, ViewChild, ElementRef, HostListener } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { DesplegableDosService } from 'src/app/biblioteca-pwa/services/desplegable-dos/desplegable-dos.service';
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { BottomMenuService } from 'src/app/transversales/services/bottom-menu/bottom-menu.service';
 import { HeaderService } from 'src/app/transversales/services/header-service/header.service';
 import { SidenavService } from 'src/app/transversales/services/sidenav-service/sidenav-service.service';
@@ -10,6 +10,7 @@ import { Subscription } from 'rxjs';
 import { LoMasConsultadoService } from '../../services/lo-mas-consultado/lo-mas-consultado.service';
 import { CategoriasService } from '../../services/categorias/categorias.service';
 import { urlsLocal } from 'src/variables-globales/urlsLocal';
+import { filter } from 'rxjs/operators';
 import { MatSidenav, MatSidenavContent } from '@angular/material/sidenav';
 import { ModalAvisoComponent } from '../modal-aviso/modal-aviso.component';
 import { FiltrosTramitesService } from '../../services/filtros-tramites/filtros-tramites.service';
@@ -19,7 +20,7 @@ import { FiltrosTramitesService } from '../../services/filtros-tramites/filtros-
   templateUrl: './detalle-momentos-de-vida.component.html',
   styleUrls: ['./detalle-momentos-de-vida.component.scss'],
 })
-export class DetalleMomentosDeVidaComponent implements OnInit, OnDestroy {
+export class DetalleMomentosDeVidaComponent implements OnInit, OnDestroy, AfterViewInit {
   @ViewChild('sidenav') sidenav!: MatSidenav;
   @ViewChild(MatSidenavContent) sidenavcontent!: MatSidenavContent;
   @ViewChild('seccionAviso') seccionAviso: ElementRef;
@@ -39,11 +40,13 @@ export class DetalleMomentosDeVidaComponent implements OnInit, OnDestroy {
   mas_con: string = '';
   tod_tra: string = '';
   act: string = '';
+  estado_mas_consultado: boolean = false;
+  init_observer: number = 0;
 
-  private getParametroId: Subscription;
+  private observador: ResizeObserver;
   private getUbicacion: Subscription;
 
-  estado_mas_consultado: boolean = false;
+  @ViewChild('desplegable') desplegable: ElementRef;
 
   constructor(
     private router: Router,
@@ -56,7 +59,7 @@ export class DetalleMomentosDeVidaComponent implements OnInit, OnDestroy {
     private serviceFichaTramite: LoMasConsultadoService,
     private serviceCategorias: CategoriasService,
     protected filtrosService: FiltrosTramitesService,
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.getUrlNavigate();
@@ -92,6 +95,8 @@ export class DetalleMomentosDeVidaComponent implements OnInit, OnDestroy {
 
     this.getLoMasConsultado();       
     this.mostrarAvisoSinResultados();
+    this.getCurrentUrl();
+    this.resizeObserver();
   }
 
   getUrlNavigate() {
@@ -127,21 +132,28 @@ export class DetalleMomentosDeVidaComponent implements OnInit, OnDestroy {
       (data: any) => {
         if (data.data.length > 0) {
           this.estado_mas_consultado = false;
-        this.router.navigate(['/' + this.cat_sub + '/' + this.id_momento + '/' + this.mas_con]);
-            '/categorias-subcategorias-pwa/' +
-              this.id_momento +
-              '/lo-mas-consultado',
-          ]);
+          this.router.navigate(
+            ['/' + this.cat_sub + '/' + this.id_momento + '/' + this.mas_con]
+          );
         } else {
           this.estado_mas_consultado = true;
-        this.router.navigate(['/' + this.cat_sub + '/' + this.id_momento + '/' + this.tra_des]);
-            '/categorias-subcategorias-pwa/' +
-              this.id_momento +
-              '/tramites-destacados',
-          ]);
+          this.router.navigate(
+            ['/' + this.cat_sub + '/' + this.id_momento + '/' + this.tra_des]
+          );
         }
       }
     );
+  }
+
+  getCurrentUrl() {
+    this.router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe((event: any) => {
+        if (this.desplegable != undefined) {
+          this.desplegable.nativeElement.classList.remove('height');
+          (document.querySelector('.govco-pwa-footer') as HTMLElement).classList.remove('position')
+        }
+      });
   }
 
   changePrefilter(index: number) {
@@ -156,13 +168,33 @@ export class DetalleMomentosDeVidaComponent implements OnInit, OnDestroy {
     activePrefilter.classList.add('filtro-active');
   }
 
+  ngAfterViewInit(): void {
+    this.init_observer = this.desplegable.nativeElement.getBoundingClientRect().height
+    this.observador.observe(this.desplegable.nativeElement);
+  }
+
+  resizeObserver() {
+    const viewport_scroll = (
+      document.getElementById('topScroll') as HTMLElement
+    ).getBoundingClientRect().height * 0.88;
+    this.observador = new ResizeObserver((entradas) => {
+      entradas.forEach((entrada) => {
+        const desplegable: number = entrada.contentRect.height;
+        if (desplegable != this.init_observer)
+          if (viewport_scroll > desplegable) {
+            this.desplegable.nativeElement.classList.add('height');
+            (document.querySelector('.govco-pwa-footer') as HTMLElement).classList.add('position')
+          }
+      })
+    })
+  }
+
   ngOnDestroy(): void {
-    // this.getParametroId.unsubscribe;
     this.getUbicacion.unsubscribe;
   }
 
   returnCategoriesPWA() {
-    this.router.navigate(['/categorias-subcategorias-pwa']);
+    this.router.navigate(['/' + this.cat_sub]);
   }
 
   mostrarAvisoSinResultados() {

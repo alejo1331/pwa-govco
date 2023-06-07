@@ -7,12 +7,12 @@
   </div>
 
 </section>
-<div #modal_desplegable class="modal-desplegable-pwa contenedor">
+<div #desplegable class="modal-desplegable-pwa contenedor">
   <div class="modal-contenido">
     <div class="header-modal">
       <img class="header-img" src="{{this.icon}}" alt="{{this.longDescription}}">
     </div>
-    <div class="body-modal">
+    <div #body_modal class="body-modal">
       <div class="container-header">
         <h2 tabindex="0" [attr.aria-label]="this.title" class="title">{{this.title}}</h2>
         <p tabindex="0" [attr.aria-label]="this.description" class="description">
@@ -21,22 +21,18 @@
       <div class="govco-pwa-momentos-subcategorias">
         <ul id="govco-pwa-momentos-subcategorias-container">
           <li class="govco-pwa-momentos-elemento" id="0" tabindex="0" [hidden]="estado_mas_consultado">
-            <a (click)="changePrefilter(0)"
-              routerLink="/{{cat_sub}}/{{id_momento}}/lo-mas-consultado">Lo más
+            <a (click)="changePrefilter(0)" routerLink="/{{cat_sub}}/{{id_momento}}/{{mas_con}}">Lo más
               consultado</a>
           </li>
           <li class="govco-pwa-momentos-elemento" id="1" tabindex="0">
-            <a (click)="changePrefilter(1)"
-              routerLink="/{{cat_sub}}/{{id_momento}}/tramites-destacados">
+            <a (click)="changePrefilter(1)" routerLink="/{{cat_sub}}/{{id_momento}}/{{tra_des}}">
               Trámites destacados</a>
           </li>
           <li class="govco-pwa-momentos-elemento" id="2" tabindex="0">
-            <a (click)="changePrefilter(2)"
-              routerLink="/{{cat_sub}}/{{id_momento}}/todos-los-tramites">Todos los trámites</a>
+            <a (click)="changePrefilter(2)" routerLink="/{{cat_sub}}/{{id_momento}}/{{tod_tra}}">Todos los trámites</a>
           </li>
           <li class="govco-pwa-momentos-elemento" id="3" tabindex="0">
-            <a (click)="changePrefilter(3)"
-              routerLink="/{{cat_sub}}/{{id_momento}}/actualidad">Actualidad</a>
+            <a (click)="changePrefilter(3)" routerLink="/{{cat_sub}}/{{id_momento}}/{{act}}">Actualidad</a>
           </li>
         </ul>
       </div>
