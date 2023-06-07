@@ -13,6 +13,7 @@
   justify-content: center;
   display: flex;
   pointer-events: auto !important;
+
   .material-symbols-outlined {
     color: #ffffff;
   }
@@ -25,6 +26,23 @@
   position: absolute;
   top: 9.25rem;
   margin: 0;
+}
+
+.modal-desplegable-pwa.height {
+  @media screen and (min-height: 740px) {
+    height: calc(100% - 9.25rem);
+  }
+}
+
+::ng-deep .govco-pwa-footer {
+  margin-bottom: 0 !important;
+}
+
+::ng-deep .govco-pwa-footer.position {
+  @media screen and (min-height: 740px) {
+    position: absolute;
+    bottom: 0;
+  }
 }
 
 .modal-desplegable-pwa {
@@ -126,11 +144,6 @@
         background-color: #e6effd;
       }
     }
-  }
-
-  .footer-modal {
-    width: 100%;
-    padding: 0 1rem 1rem 1rem;
   }
 }
 
