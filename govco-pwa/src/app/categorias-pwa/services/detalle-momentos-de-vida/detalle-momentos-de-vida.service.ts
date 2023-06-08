@@ -7,6 +7,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class DetalleMomentosDeVidaService {
 
   private id_momento$ = new BehaviorSubject<string>('');
+  private nombreMomento = '';
 
   constructor() { }
 
@@ -20,4 +21,11 @@ export class DetalleMomentosDeVidaService {
     this.id_momento$.next(id)
   }
 
+  get getNombreMomento(): string {
+    return this.nombreMomento;
+  }
+
+  setNombreMomento(descripcion: string): void {
+    this.nombreMomento = descripcion;
+  }
 }

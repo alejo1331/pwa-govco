@@ -77,10 +77,13 @@ export class CardTramiteComponent implements OnChanges {
         if ((i + 1) == changes.data.currentValue.length) {
           setTimeout(() => {
             this.focusCard(pageNumber, changes.data.currentValue.length);
+
+            const elementSubcategorias = document.querySelector('.modal-desplegable-pwa .container-header p');
+            elementSubcategorias?.scrollIntoView({ inline: "start", block: "start" });
           }, 100);
         }
       }
-    );
+    );      
   }
 
   focusCard(pageNumber: number, cantidadResultados: number) {

@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { FiltrosTramitesService } from '../../services/filtros-tramites/filtros-tramites.service';
 import { FiltroBusquedaTramites } from '../../Models/filtroBusquedaTramitesModel';
 import { ResultadoFiltroTramites } from '../../Models/resultadoFiltroTramitesModel';
+import { DetalleMomentosDeVidaService } from '../../services/detalle-momentos-de-vida/detalle-momentos-de-vida.service';
 
 @Component({
   selector: 'app-todos-los-tramites',
@@ -23,10 +24,11 @@ export class TodosLosTramitesComponent implements OnInit {
 
   constructor(    
     protected filtrosService: FiltrosTramitesService,
+    private serviceDetalleMomento: DetalleMomentosDeVidaService,
   ) { }
 
   ngOnInit(): void {
-    this.cantidadResultados = 0;
+    this.cantidadResultados = 0;    
     this.departamento = localStorage.getItem("codigoDepartamento");
     this.municipio = localStorage.getItem("codigoMunicipio");
 
@@ -42,7 +44,7 @@ export class TodosLosTramitesComponent implements OnInit {
       search: "  ",
       filters: {
         categorias: {
-          nombre: "Quiero viajar por colombia"
+          nombre: this.serviceDetalleMomento.getNombreMomento.toLowerCase()
         },
         tipocategorias: {
           sigla: "MV"
@@ -51,7 +53,7 @@ export class TodosLosTramitesComponent implements OnInit {
       sort: ""
     }
 
-    if (this.departamento && this.municipio) {
+    if (this.departamento && this.municipio && this.municipio != "TodosLosMunicipios") {
       filtros.filters!.departamento = { codigoDepartamento: parseInt(this.departamento) };
       filtros.filters!.municipio = { codigoMunicipio: parseInt(this.municipio) };
     }
@@ -103,10 +105,6 @@ export class TodosLosTramitesComponent implements OnInit {
         this.checkFilters(data);
         this.cantidadResultados = 0;
       }
-
-        
-      // const elementSubcategorias = document.querySelector('.modal-desplegable-pwa .container-header p');
-      // elementSubcategorias?.scrollIntoView({ inline: "start", block: "start" });
     } catch (error) {
       console.error(error);
     } finally {

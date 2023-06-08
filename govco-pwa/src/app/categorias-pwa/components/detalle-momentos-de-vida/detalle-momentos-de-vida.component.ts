@@ -75,6 +75,9 @@ export class DetalleMomentosDeVidaComponent implements OnInit, OnDestroy, AfterV
     this.serviceCategorias
       .getCategoriasPorId(this.id_momento)
       .subscribe((resp: any) => {
+        
+        this.serviceDetalleMomento.setNombreMomento(resp.nombre);
+
         this.title = resp?.nombre ? resp.nombre : '';
         this.description = resp?.descripcionCorta ? resp.descripcionCorta : '';
         this.icon = resp?.icono ? resp.icono : '';
