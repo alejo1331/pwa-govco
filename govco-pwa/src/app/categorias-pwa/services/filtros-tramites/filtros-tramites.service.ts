@@ -95,7 +95,7 @@ export class FiltrosTramitesService {
   }
 
   getParameterPageSize(): Observable<PageSizeTramites> {
-    const url = 'http://localhost:8087/api/Parametros/ObtenerValorParametro?sigla=' + this.sigla;
+    const url = environment.urlApiParametros + 'ObtenerValorParametro?sigla=' + this.sigla;
     return this.http.post<PageSizeTramites>(url, {});
   }
 }
