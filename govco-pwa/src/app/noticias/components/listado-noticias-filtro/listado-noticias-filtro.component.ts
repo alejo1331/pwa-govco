@@ -12,7 +12,6 @@ import { ItemsBuscador } from 'src/variables-globales/items-buscador';
   styleUrls: ['./listado-noticias-filtro.component.scss']
 })
 export class ListadoNoticiasFiltroComponent implements OnInit, OnChanges {
-
   objetoNoticias: any;
   noticias: NoticiaPublicadaModel[] = [];
   showNext: boolean = false;
@@ -194,6 +193,19 @@ export class ListadoNoticiasFiltroComponent implements OnInit, OnChanges {
       aplicaGeoreferenciacion: ItemsBuscador[i].aplicaGeoreferenciacion
     }
     this.buscadorService.setBuscadorParams(buscadorParams);
+  }
+
+  async shareNews(noticia: any) {
+    let shareData = {
+      url: '/noticias/detalle/' + noticia.id,
+      title: noticia.titulo
+    }
+
+    try {
+      await navigator.share(shareData);
+    } catch (err) {
+      console.log('error al compartir noticia.');
+    }
   }
 }
 

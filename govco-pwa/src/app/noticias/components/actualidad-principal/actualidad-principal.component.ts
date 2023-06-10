@@ -7,6 +7,7 @@ import { SidenavService } from 'src/app/transversales/services/sidenav-service/s
 import { HeaderService } from 'src/app/transversales/services/header-service/header.service';
 import { BottomMenuService } from 'src/app/transversales/services/bottom-menu/bottom-menu.service';
 import { environment } from "src/environments/environment";
+import { NoticiasServiceService } from 'src/app/noticias/services/noticias-service/noticias-service.service';
 
 
 @Component({
@@ -32,6 +33,7 @@ export class ActualidadPrincipalComponent implements OnInit {
   listaAnos: any[] = [];
   filtro: FiltrosNoticiasModel;
   fitrosDesplegados: boolean | null = false;
+  OrderDesplegados: boolean | null = false;
   esResponsive = esResponsive;
   anoActual = new Date().getFullYear();
   mesActual = new Date().getMonth() + 1;
@@ -39,15 +41,15 @@ export class ActualidadPrincipalComponent implements OnInit {
   idCategoriaParam: string | null = "";
   nombreCategoriaParam: string = "";
   codNoticias: string = environment.codNoticias;
-
-
+  totalNoticias: number = 0;
 
   constructor(
     private serviceActualidadPrincipal: ActualidadPrincipalService,
     private activatedRouter: ActivatedRoute,
     protected servicioSideNav: SidenavService,
     protected servicioHeader: HeaderService,
-    public bottomService: BottomMenuService
+    public bottomService: BottomMenuService,
+    private noticiasService: NoticiasServiceService
   ) {
     this.iniciarFiltro();
     this.bottomService.putOcultandoBottomMenu(false);
@@ -64,6 +66,7 @@ export class ActualidadPrincipalComponent implements OnInit {
     //bottomService.ajustandoPantalla(true)    true -> Agrega clase de css para ajustar
     //                                                 la pantalla cuando en la seccion
     //                                                 consultada no tiene header
+    this.obtenerNoticiasPaginacion(0);
     this.servicioHeader.estadoHeader(true, true);
     this.bottomService.seleccionandoItem(0);
     this.bottomService.ajustandoPantalla(false);
@@ -102,7 +105,7 @@ export class ActualidadPrincipalComponent implements OnInit {
       listTmp.push({ nombre: anoInicio, codigo: anoInicio });
       anoInicio++;
     }
-    
+
     listTmp.push({ nombre: anoInicio, codigo: anoInicio });
     this.listaAnos = listTmp;
   }
@@ -121,11 +124,10 @@ export class ActualidadPrincipalComponent implements OnInit {
 
   abrirSeccionFiltros() {
     this.fitrosDesplegados = !this.fitrosDesplegados;
-    setTimeout(() => {
-      if (this.fitrosDesplegados) {
-        document.getElementById("seccion-filtros")?.focus();
-      }
-    }, 200);
+  }
+
+  abrirSeccionOrder() {
+    this.OrderDesplegados = !this.OrderDesplegados;
   }
 
   cargarCombosBox() {
@@ -249,8 +251,6 @@ export class ActualidadPrincipalComponent implements OnInit {
     }
   }
 
-
-
   limpiarFiltros() {
     this.seleccionado = { codigo: "", nombre: "" };
     this.iniciarFiltro();
@@ -269,4 +269,14 @@ export class ActualidadPrincipalComponent implements OnInit {
     this.getEntidades();
   }
 
+  obtenerNoticiasPaginacion(page: any) {
+    this.noticiasService.obtenerNoticiasPaginacion(this.filtro).subscribe(
+      (data) => {
+        console.log("data", data)
+        if (data) {
+          this.totalNoticias = data.data.totalRegistros;
+        }
+      }
+    );
+  }
 }

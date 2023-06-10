@@ -1,79 +1,81 @@
 <app-banner-principal [codigo]="codNoticias" [segundoTitulo]=nombreCategoriaParam></app-banner-principal>
 <div class="contenedor-actualidad-principal">
   <div class="container mt-0">
-    <div class="row mb-3 px-0">
-      <div class="col-sm-12 col-md-4 col-lg-3">
-        <div class="btn-filtros">
-          <a data-toggle="collapse" href="javascript:void(0)" role="button" aria-label="Filtros para noticias"
-            class="btn btn-round link-filtros" (click)="abrirSeccionFiltros()">
-            Filtros
-            <i class="fa fa-sliders" aria-hidden="true" *ngIf="!fitrosDesplegados"></i>
-            <i class="fa fa-times" aria-hidden="true" *ngIf="fitrosDesplegados"></i>
-          </a>
+
+    <div class="row mt-2">
+      <div id="total-noticias" class="col-sm-12 col-md-4 col-lg-3 my-0 pb-0" *ngIf="this.totalNoticias">
+        <span> Se encontraron <strong>{{this.totalNoticias?this.totalNoticias:"0"}} Resultados de
+            noticias</strong></span>
+      </div>
+    </div>
+
+    <div class="col-sm-12 px-0">
+      <div class="mt-2 mb-3 px-0 mx-0 d-flex">
+        <div class="col-sm-6 mx-0 pl-0 pr-1">
+          <div class="btn-filtros">
+            <a data-toggle="collapse" href="javascript:void(0)" role="button" aria-label="Filtros para noticias"
+              class="btn btn-round link-filtros pt-2" (click)="abrirSeccionFiltros()" data-target="#exampleModal">
+              Filtros
+              <i class="icon-end mt-1 fa fa-sliders" aria-hidden="true" *ngIf="!fitrosDesplegados"></i>
+              <i class="icon-end mt-1 fa fa-times" aria-hidden="true" *ngIf="fitrosDesplegados"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="col-sm-6 mx-0 pl-1 pr-0">
+          <div class="btn-filtros">
+            <a data-toggle="collapse" href="javascript:void(0)" role="button" aria-label="Ordenar noticias por"
+              class="btn btn-round link-filtros pt-2" (click)="abrirSeccionOrder()">
+              Ordenar por:
+              <i class="icon-end mt-1 fa fa-sort" aria-hidden="true" *ngIf="!OrderDesplegados"></i>
+              <i class="icon-end mt-1 fa fa-times" aria-hidden="true" *ngIf="OrderDesplegados"></i>
+            </a>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="container mt-4 collapse {{fitrosDesplegados==true?'show':''}}" id="seccion-filtros" tabindex="0"
-    aria-label="Una vez seleccione alguno de los siguientes filtros, se actualizarán  automáticamente los resultados de su busqueda. Si en algún momento desea saltar a los resultados de busqueda de noticias, presione la tecla espacio.">
-    <div class="px-0">
-      <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3" [style]="estadoComboCategoria?'':{display:'none'}">
-        <select-search-1 id-select="selectcategoria" label-select="Categorías" aria-label-select="Escoge una categoría"
-          aria-label-validation="" (clicEmitEvent)="cargarDependienteMomentosDeVida($event)" [list]=listaMomentosDeVida
-          [seleccionado]=seleccionado place-holder="Escoger" ngModel #selectcategoria>
-        </select-search-1>
-      </div>
-      <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
-        <select-search-1 id-select="selectsubcategoria" label-select="Subcategoria"
-          aria-label-select="Escoge una subcategoria"
-          aria-label-validation="Para seleccionar un subcategoria, debe seleccionar primero un momento de vida"
-          (clicEmitEvent)="cargarDependienteSubcategoria($event)" [list]=listaSubCategorias [seleccionado]=seleccionado
-          place-holder="Escoger" ngModel #selectsubcategoria>
-        </select-search-1>
-      </div>
-      <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
-        <select-search-1 id-select="selectsector" label-select="Sector" aria-label-select="Escoge un sector"
-          aria-label-validation="" (clicEmitEvent)="cargarDependienteSector($event)" [list]=listaSectores
-          [seleccionado]=seleccionado place-holder="Escoger" ngModel #selectsector>
-        </select-search-1>
-      </div>
-      <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
-        <select-search-1 id-select="selectentidad" label-select="Entidad" aria-label-select="Escoge una entidad"
-          aria-label-validation="" (clicEmitEvent)="seleccionadoEntidad()" [list]=listaEntidades
-          [seleccionado]=seleccionado place-holder="Escoger" ngModel #selectentidad>
-        </select-search-1>
+
+  <div id="OrdenarModal">
+    Ordenar por:
+    <div class="row">
+      <div class="form-check container d-flex col-sm-12">
+        <label class="form-check-label col-sm-10" for="name_asc">De la A a la Z</label>
+        <div class="col-sm-2">
+          <input class="form-check-input" type="radio" name="flexRadioDefault" id="name_asc" checked />
+        </div>
       </div>
     </div>
-    <div class="px-0">
-      <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
-        <select-search-1 id-select="ano" label-select="Año" aria-label-select="Escoge un año" aria-label-validation=""
-          (clicEmitEvent)="cargarDependienteAno($event)" [list]=listaAnos [seleccionado]=seleccionado
-          place-holder="Escoger" ngModel #selectano>
-        </select-search-1>
-      </div>
-      <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
-        <select-search-1 id-select="mes" label-select="Mes" aria-label-select="Escoge un mes"
-          aria-label-validation="Para seleccionar un mes primero debe seleccionar un Año."
-          (clicEmitEvent)="setFecha($event)" [list]=listaMeses [seleccionado]=seleccionado place-holder="Escoger"
-          ngModel #selectmes>
-        </select-search-1>
-      </div>
 
-      <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 align-self-center mt-5 limpiar-filtros">
-        <a href="javascript:void(0)" (click)="limpiarFiltros()"
-          aria-label="Limpiar filtros, borrara los filtros introducidos y volverá a su estado inicial">Limpiar
-          filtros</a>
+    <div class="row">
+      <div class="form-check container d-flex">
+        <label class="form-check-label col-sm-10" for="name_desc">De la Z a la A</label>
+        <div class="col-sm-2">
+          <input class="form-check-input" type="radio" name="flexRadioDefault" id="name_desc" checked />
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-check container d-flex">
+        <label class="form-check-label col-sm-10" for="date_asc">Más reciente a menos reciente</label>
+        <div class="col-sm-2">
+          <input class="form-check-input" type="radio" name="flexRadioDefault" id="date_asc" checked />
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-check container d-flex">
+        <label class="form-check-label col-sm-10" for="date_desc">Menos reciente a más reciente</label>
+        <div class="col-sm-2">
+          <input class="form-check-input" type="radio" name="flexRadioDefault" id="date_desc" checked />
+        </div>
       </div>
     </div>
   </div>
-  <div class="container" *ngIf="!esResponsive()">
-    <div class="row col-12">
-      <div class="col-4 filtros mt-4"></div>
-    </div>
-  </div>
 
-  <div class="container">
+  <div class="container mt-0 pt-0">
     <govco-listado-noticias-filtros [filtro]=filtro #listadonoticias></govco-listado-noticias-filtros>
   </div>
-  <temas-de-interes></temas-de-interes>
 </div>

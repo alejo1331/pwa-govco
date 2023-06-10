@@ -1,97 +1,56 @@
 <div class="pb-5" *ngIf="noticias.length>0">
-    <div class="row ">
-      <div id="listado-noticias" class="col-12 mt-4" *ngIf="this.objetoNoticias" tabindex="0">
-        <span class="pre-resultados">Se encontraron </span><span class="resultados">{{this.objetoNoticias.totalRegistros?this.objetoNoticias.totalRegistros:"0"}} Resultados de noticias</span>
-      </div>
-    </div>
-  
-    <div id="contenedor-noticias-focus" tabindex="0" [attr.aria-label]="'Se encuentra en la página'+(currentPage+1)+' con'+noticias.length+' noticias, para navegar entre las noticias presione la tecla tab.'">
-        <div class="col-12 link-container mt-4" *ngIf="currentPage==0 && noticias.length>0" >
-          <a class="current-link" [routerLink]="['/noticias/detalle', noticias[0].id]" tabIndex="0" [attr.aria-label]="'Título de la noticia: ' + noticias[0].titulo+ '. Descripción: '+noticias[0].sumario+ '. Fecha de publicación: '+noticias[0].textoFecha" [title]="'Ir a ' + noticias[0].titulo">
-            <!-- DESKTOP CARD PRINCIPAL -->
-  
-            <div class="row new-container-principal" *ngIf="!esResponsive()">
-              <div class="col-4 info-container-principal">
-                <div class="date-text mt-4 mb-2" >{{ noticias[0].textoFecha }}</div>
-                <div class="news-title" title={{noticias[0].titulo}}>{{noticias[0].titulo}}</div>
-                <div class="date-text my-2" title="{{noticias[0].sumario}}">
-                  {{(noticias[0].sumario.length>370)?noticias[0].sumario.substring(0,370)+"...":noticias[0].sumario}}
-                </div>
-              </div>
-              <div class="col-8 image-container-principal">
-                <img class="img" [src]="noticias[0].imagen" alt="Imagen decorativa" (error)="$any($event.target).src = 'https://govco-prod-webutils.s3.amazonaws.com/uploads/2022-04-19/0afed651-6c25-48ee-85d0-46aceeff88a9-Default_image_Background.svg'" />
-              </div>
-            </div>
-            <!-- RESPOSIVE CARD PRINCIPAL-->
-            <div class="row new-container-principal" *ngIf="esResponsive()">
-              <div class="col-12 info-container-principal-top">
-                <div class="date-text my-2" >{{ noticias[0].textoFecha }}</div>
-                <div class="news-title mb-4" title={{noticias[0].titulo}}>{{noticias[0].titulo}}</div>
-              </div>
-              <div class="col-12 image-container-principal">
-                <img class="img" [src]="noticias[0].imagen" (error)="$any($event.target).src = 'https://govco-prod-webutils.s3.amazonaws.com/uploads/2022-04-19/0afed651-6c25-48ee-85d0-46aceeff88a9-Default_image_Background.svg'" alt="Imagen decorativa"/>
-              </div>
-              <div class="col-12 info-container-principal">
-                <div class="date-text my-2" title="{{noticias[0].sumario}}">
-                  {{(noticias[0].sumario.length>370)?noticias[0].sumario.substring(0,370)+"...":noticias[0].sumario}}
-                </div>
-              </div>
-            </div>
-          </a>
-        </div>
-  
-        <div class="col-12 cards-container">
-          <div class="row mt-4">
-            <div class="col-sm-12 col-lg-4 link-container mb-5" *ngFor="let noticia of noticias|slice:indexIni:noticias.length; let i = index">
-              <a class="current-link" [routerLink]="['/noticias/detalle', noticia.id]" tabIndex={0} [attr.aria-label]="'Título de la noticia: ' + noticia.titulo+ '. Descripción: '+noticia.sumario+ '. Fecha de publicación: '+noticia.textoFecha" [title]="'Ir a ' + noticia.titulo ">
-                <div class="news-container">
-                  <div class="image-container">
-                    <img class="img" [src]="noticia.imagen" alt="Imagen decorativa"  (error)="$any($event.target).src = 'https://govco-prod-webutils.s3.amazonaws.com/uploads/2022-04-19/0afed651-6c25-48ee-85d0-46aceeff88a9-Default_image_Background.svg'" />
-                  </div>
-                  <div class="info-container">
-                    <div class="date-text my-2" >{{ noticia.textoFecha }}</div>
-                    <div class="news-title" title={{noticia.titulo}}>{{(noticia.titulo.length>65)?noticia.titulo.substring(0,65)+"...":noticia.titulo}}</div>
-                    <div class="date-text my-2" title="{{noticia.sumario}}">
-                      {{(noticia.sumario.length>110)?noticia.sumario.substring(0,110)+"...":noticia.sumario}}
-                    </div>
-                  </div>
-                </div>
-              </a>
+  <div id="contenedor-noticias-focus" tabindex="0"
+    [attr.aria-label]="'Se encuentra en la página'+(currentPage+1)+' con'+noticias.length+' noticias, para navegar entre las noticias presione la tecla tab.'">
+    <div class="col-12 link-container mt-4" *ngIf="currentPage==0 && noticias.length>0">
+      <a class="current-link" [title]="'Ir a ' + noticias[0].titulo">
+        <!-- <a class="current-link" [routerLink]="['/noticias/detalle', noticias[0].id]" tabIndex="0" [attr.aria-label]="'Título de la noticia: ' + noticias[0].titulo+ '. Descripción: '+noticias[0].sumario+ '. Fecha de publicación: '+noticias[0].textoFecha" [title]="'Ir a ' + noticias[0].titulo"> -->
+        <!-- DESKTOP CARD PRINCIPAL -->
+
+        <div class="row new-container-principal" *ngIf="!esResponsive()">
+          <div class="col-4 info-container-principal">
+            <div class="date-text mt-4 mb-2">{{ noticias[0].textoFecha }}</div>
+            <div class="news-title" title={{noticias[0].titulo}}>{{noticias[0].titulo}}</div>
+            <div class="date-text my-2" title="{{noticias[0].sumario}}">
+              {{(noticias[0].sumario.length>370)?noticias[0].sumario.substring(0,370)+"...":noticias[0].sumario}}
             </div>
           </div>
+          <div class="col-8 image-container-principal">
+            <img class="img" [src]="noticias[0].imagen" alt="Imagen decorativa"
+              (error)="$any($event.target).src = 'https://govco-prod-webutils.s3.amazonaws.com/uploads/2022-04-19/0afed651-6c25-48ee-85d0-46aceeff88a9-Default_image_Background.svg'" />
+          </div>
         </div>
-    </div>
-    <div class="row justify-content-center">
-      <div id="mensaje-numero-paginas" *ngIf="estadoAlertaAccesible" tabindex="0" class="descripcion-skipe skip-link mb-4">
-        No puede ingresar páginas mayores que {{totalPages}}, presione la tecla tab para ingresar nuevamente la página.
-      </div>
-      <div *ngIf="estadoPaginadorAccesible" class="paginador-accesible mb-4 p-2">
-        <span class="mb-4">
-          Este es el paginador accesible. Ingrese el número de página que desea visitar y presione la tecla enter. Recuerde que página ingresada no debe ser mayor a {{totalPages}}
-        </span>
-  
-        <input  id="paginador-accesible" type="number" class="mb-3 " (change)="cargarPaginaAccesible($event)" [min]="1" [max]="totalPages" [value]="currentPageAccesibilidad" [attr.aria-label]="'Este es el paginador accesible. Ingrese el número de página que desea visitar y presione la tecla enter. Recuerde que página ingresada no debe ser mayor a '+totalPages"  placeholder=""/>
-      </div>
-  
-    </div>
-  
-    <noticias-govco-pagination *ngIf="totalPages!=1 && totalPages!=0" [page]='currentPage' [showNext]='showNext' [totalPages]='totalPages' (prev)="changePage($event)" (next)="changePage($event)">
-    </noticias-govco-pagination>
-  
-  
-    <div class="justify-content-center {{totalPages!=1 && totalPages!=0?'mt-5':''}}">
-      <div class="px-0 btn-mas-noticias text-center">
-        <a (click)="abrirBuscadorPWA()"  class="link-mas-noticias" role="button" aria-label=" Buscar más noticias. Abrirá la página del buscador, la cual contiene más opciones de busqueda">Buscar más noticias</a>
-      </div>
+      </a>
     </div>
   </div>
-  <div class="mt-5 pb-3 container" *ngIf="mostrarMensajeSinDatos">
-    <govco-sin-resultados-noticias></govco-sin-resultados-noticias>
-    <div class="justify-content-center mt-5">
-      <div class="px-0 btn-mas-noticias text-center">
-        <a (click)="abrirBuscadorPWA()" class="link-mas-noticias" role="button" aria-label=" Buscar más noticias. Abrirá la página del buscador, la cual contiene más opciones de busqueda">Buscar más noticias</a>
+
+  <div class="container-noticia-listado mx-0 mt-0">
+    <div class="container-tarjeta-noticias" *ngFor="let noticia of noticias">
+
+      <app-tarjeta-informativa [imagen]="noticia.imagen" [descripcionImagen]="noticia.titulo"
+        [url]="'/noticias/detalle/' + noticia.id" [descripcioUrl]="noticia.titulo" [titulo]="noticia.titulo">
+      </app-tarjeta-informativa>
+
+      <div class="container-etiqueta-noticias">
+        <app-etiqueta estado="informative">
+          <span class="material-symbols-outlined">
+            calendar_today
+          </span>
+          {{noticia.textoFecha}}
+        </app-etiqueta>
       </div>
+
+      <div class="container-boton-noticias">
+        <app-boton [symbol]="true" (click)="shareNews(noticia)">
+          <span class="material-symbols-outlined">
+            share
+          </span>
+        </app-boton>
+      </div>
+
     </div>
   </div>
-  
-  
+</div>
+
+<div class="mt-5 pb-3 container" *ngIf="mostrarMensajeSinDatos">
+  <govco-sin-resultados-noticias></govco-sin-resultados-noticias>
+</div>
