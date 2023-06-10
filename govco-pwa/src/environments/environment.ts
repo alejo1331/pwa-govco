@@ -42,6 +42,7 @@ export const environment = {
   //Categorias-Subcategorias o momentos de vida
   serverCategorias:
     'https://a1u3bqb22e.execute-api.us-east-1.amazonaws.com/qa/api/categorias-subcategorias/',
+  urlApiParametros: 'https://preapi-interno.www.gov.co/api/Parametros/',
 
   //URL plan de integracion
   urlPlanIntegracion:
