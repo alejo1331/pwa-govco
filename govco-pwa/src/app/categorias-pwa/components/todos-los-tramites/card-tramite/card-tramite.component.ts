@@ -24,6 +24,7 @@ export class CardTramiteComponent implements OnChanges {
   href: boolean = true;
   urlFichaTramite = '/ficha-tramites-y-servicios/T';
   expandirTexto: boolean = false;
+  focusCardOne: boolean = false;
 
   items: {
     active: boolean;
@@ -74,12 +75,9 @@ export class CardTramiteComponent implements OnChanges {
           titulo: element.titulo,
         });
 
-        if ((i + 1) == changes.data.currentValue.length) {
+        if ((i + 1) == changes.data.currentValue.length && this.focusCardOne) {
           setTimeout(() => {
             this.focusCard(pageNumber, changes.data.currentValue.length);
-
-            const elementSubcategorias = document.querySelector('.modal-desplegable-pwa .container-header p');
-            elementSubcategorias?.scrollIntoView({ inline: "start", block: "start" });
           }, 100);
         }
       }
@@ -103,6 +101,8 @@ export class CardTramiteComponent implements OnChanges {
         button.scrollIntoView();
       }
     }
+    
+    this.focusCardOne = false;
   }
 
   activarItem(index:number) {
@@ -154,6 +154,7 @@ export class CardTramiteComponent implements OnChanges {
       spinner: false,
     };
     this.contadorResultados = this.pageSize * (pageNumber + 1);
+    this.focusCardOne = true;
   }
 
   VerMenosResultados() {
@@ -167,5 +168,6 @@ export class CardTramiteComponent implements OnChanges {
       spinner: false,
     };
     this.contadorResultados = 0;
+    this.focusCardOne = true;
   }
 }
