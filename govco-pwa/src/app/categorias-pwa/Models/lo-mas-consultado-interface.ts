@@ -36,3 +36,15 @@ export interface PorMunicipioInterface {
     message: string | null,
     totalRegistros: number
 }
+
+export interface MasConsultadoI {
+    link: string,
+    titulo: string
+  }
+  
+  export interface UbicacionI {
+    codigoDepartamento: string,
+    codigoMunicipio: string,
+    nombreMunicipio: string
+  }
+  

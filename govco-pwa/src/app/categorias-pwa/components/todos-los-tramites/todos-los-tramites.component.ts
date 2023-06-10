@@ -39,6 +39,7 @@ export class TodosLosTramitesComponent implements OnInit {
     this.initializeParameters();  
     this.suscripcionFilter();
     this.showModalNoContent();
+    this.serviceDetalleMomento.setItemBarra(2);
   }
 
   async parameterPageSize() {

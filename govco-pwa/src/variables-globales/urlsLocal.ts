@@ -13,7 +13,7 @@ export const urlsLocal = {
     sobreNosotros: '/sobre-nosotros',
     acercaPortal: '/acerca-del-portal',
     serviciosEntidades: '/servicios-para-entidades',
-    categorias_subcategorias:'categorias-subcategorias-pwa',
+    categorias_subcategorias:'categorias-subcategorias',
     c_s_mas_consultado:'lo-mas-consultado',
     c_s_tramites_destacados:'tramites-destacados',
     c_s_todos_los_tramites: 'todos-los-tramites',

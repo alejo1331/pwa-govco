@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { LoMasConsultadoService } from '../../services/lo-mas-consultado/lo-mas-consultado.service';
-import { LoMasConsultado } from '../../Models/lo-mas-consultado-interface';
+import { LoMasConsultado, MasConsultadoI, UbicacionI } from '../../Models/lo-mas-consultado-interface';
 import { DetalleMomentosDeVidaService } from '../../services/detalle-momentos-de-vida/detalle-momentos-de-vida.service';
 import { Subscription } from 'rxjs';
 import { GeolocalizacionViewService } from 'src/app/transversales/services/geolocalizacion-view/geolocalizacion-view.service';
@@ -17,7 +17,7 @@ export class LoMasConsultadoComponent implements OnInit, OnDestroy {
   nombreMunicipio: string = "";
   titulo: string = 'Lo más consultado';
 
-  public data_mas_consultado: data_mas_consultado[] = [];
+  public data_mas_consultado: MasConsultadoI[] = [];
   private getParametroId: Subscription
   private getUbicacion: Subscription;
   private id_momento: string;
@@ -29,26 +29,40 @@ export class LoMasConsultadoComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
+    this.getDataLoMasConsultado();
+    this.serviceDetalleMomento.setItemBarra(0);
+  }
+
+  private getDataLoMasConsultado() {
     this.getParametroId = this.serviceDetalleMomento.getIdMomento$.subscribe((id_momento: string) => {
       this.id_momento = id_momento;
-      this.getUbicacion = this.serviceGeoView.getUbicacion$.subscribe((data: BaseUbicacion) => {
-        this.codigoDepartamento = data.codigoDepartamento;
-        this.codigoMunicipio = data.codigoMunicipio;
-        this.nombreMunicipio = data.nombreMunicipio;
-        if (data.codigoMunicipio != "TodosLosMunicipios" && data.codigoMunicipio != '') {
-          this.serviceFichaTramite.getLoMasConsultadoPorUbicacion(data.codigoMunicipio, id_momento);
-          this.getUbicacion = this.serviceFichaTramite.getMasConsultado$.subscribe((data: LoMasConsultado) => {
-            this.getArrayPush(data);
-          })
-        } else {
-          this.serviceFichaTramite.getLoMasConsultado(id_momento);
-          this.getUbicacion = this.serviceFichaTramite.getMasConsultado$.subscribe((data: LoMasConsultado) => {
-            this.getArrayPush(data);
-          })
-        }
-      })
+      this.validacionPorUbicacion(id_momento);
     })
+  }
 
+  validacionPorUbicacion(id_momento: string) {
+    this.getUbicacion = this.serviceGeoView.getUbicacion$.subscribe((data: UbicacionI) => {
+      this.dataUbicacion(data);
+      if (data.codigoMunicipio != "TodosLosMunicipios" && data.codigoMunicipio != '') {
+        this.serviceFichaTramite.getLoMasConsultadoPorUbicacion(data.codigoMunicipio, id_momento);
+        this.getUbicacion = this.serviceFichaTramite.getMasConsultado$.subscribe(
+          (data: [LoMasConsultado, string]) => {
+            this.getArrayPush(data[0]);
+          })
+      } else {
+        this.serviceFichaTramite.getLoMasConsultado(id_momento);
+        this.getUbicacion = this.serviceFichaTramite.getMasConsultado$.subscribe(
+          (data: [LoMasConsultado, string]) => {
+            this.getArrayPush(data[0]);
+          })
+      }
+    })
+  }
+
+  dataUbicacion(data: UbicacionI) {
+    this.codigoDepartamento = data.codigoDepartamento;
+    this.codigoMunicipio = data.codigoMunicipio;
+    this.nombreMunicipio = data.nombreMunicipio;
   }
 
   private getArrayPush(lo_mas_consultado: LoMasConsultado) {
@@ -69,16 +83,4 @@ export class LoMasConsultadoComponent implements OnInit, OnDestroy {
     this.getParametroId.unsubscribe;
     this.getUbicacion.unsubscribe
   }
-
-}
-
-export interface data_mas_consultado {
-  link: string,
-  titulo: string
-}
-
-export interface BaseUbicacion {
-  codigoDepartamento: string,
-  codigoMunicipio: string,
-  nombreMunicipio: string
 }

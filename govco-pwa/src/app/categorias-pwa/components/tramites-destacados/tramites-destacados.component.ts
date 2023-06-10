@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DetalleMomentosDeVidaService } from '../../services/detalle-momentos-de-vida/detalle-momentos-de-vida.service';
 
 @Component({
   selector: 'app-tramites-destacados',
@@ -9,10 +10,13 @@ export class TramitesDestacadosComponent implements OnInit {
 
   titulo: string = "";
 
-  constructor() { }
+  constructor(
+    private serviceDetalleMomento: DetalleMomentosDeVidaService,
+  ) { }
 
   ngOnInit() {
-    this.titulo ='Trámites destacados'
+    this.titulo ='Trámites destacados';
+    this.serviceDetalleMomento.setItemBarra(1);
   }
 
 }
