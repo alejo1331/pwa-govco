@@ -15,7 +15,7 @@
                 <button [class.disabled]="!filtro.active" (click)="seleccionaFiltroNivelUno(filtro.id, filtro.nombre, $event)" [tabindex]="filtro.active ? '0' : '-1'" [attr.itemfiltroniveluno]="filtro.id == 'subCategorias' ? 'subcategorias' : filtro.id">
                     <app-etiqueta estado="informative" *ngIf="filtrosSeleccionados[filtro.id == 'subCategorias' ? 'subcategorias' : filtro.id] != undefined">
                         <span class="text" [class.contiene-tooltip]="filtro.id == 'nombreEstandarizado'">
-                            {{filtrosSeleccionados[filtro.id]}}
+                            {{filtro.id == 'subCategorias' ? filtrosSeleccionados[filtro.id == 'subCategorias' ? 'subcategorias' : filtro.id]?.nombre : filtrosSeleccionados[filtro.id]}}
                         </span>
                         <button class="material-symbols-outlined delete-selection" (click)="eliminarFiltro(filtro.id == 'subCategorias' ? 'subcategorias' : filtro.id)">
                             close

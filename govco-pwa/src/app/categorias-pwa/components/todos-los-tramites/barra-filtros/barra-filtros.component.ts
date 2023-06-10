@@ -34,7 +34,7 @@ export class BarraFiltrosComponent implements OnInit {
   }
 
   abrirFiltroPrimerNivel() {
-    const elementSubcategorias = document.querySelector('.modal-desplegable-pwa .container-header p');
+    const elementSubcategorias = document.querySelector('.modal-desplegable-pwa .govco-pwa-momentos-subcategorias');
     elementSubcategorias?.scrollIntoView({ inline: "start", block: "start" });
     const elementModal = document.querySelector('.modal-desplegable-pwa');
     elementModal?.classList.add('backdrop-active-filter-tramites');

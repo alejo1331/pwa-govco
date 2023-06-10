@@ -37,21 +37,23 @@
         .tarjeta-aviso-mensaje-texto {
             display: flex;
             flex-direction: column;
+            margin: 0;
+            padding: 0;
+            list-style: disc;
 
-            span {
+            li {
                 margin-bottom: 0.5rem;
-                display: block;
+                margin-left: 1rem;
 
                 &.text-bold {
                     font-family: 'workSans-Medium';
                 }
-
-                a, span {
-                    display: inline-block;
-                }
-
-                a {
-                    margin-right: 0.25rem;
+    
+                .tarjeta-aviso-mensaje-link {
+                    font-family: 'workSans-Medium';
+                    color: #3366CC;
+                    text-decoration: underline;
+                    font-size: 0.875rem;
                 }
             }
         }
@@ -60,11 +62,4 @@
             padding-left: 1rem;
         }
     }  
-    
-    .tarjeta-aviso-mensaje-link {
-        font-family: 'workSans-Medium';
-        color: #3366CC;
-        text-decoration: underline;
-        font-size: 0.875rem;
-    }
 }

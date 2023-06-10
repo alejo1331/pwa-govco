@@ -4,6 +4,7 @@ import { FiltroBusquedaTramites } from '../../Models/filtroBusquedaTramitesModel
 import { ResultadoFiltroTramites } from '../../Models/resultadoFiltroTramitesModel';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { PageSizeTramites } from '../../Models/pageSizeTramites';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,7 @@ export class FiltrosTramitesService {
   private filters = new BehaviorSubject<FiltroBusquedaTramites | undefined>(undefined);
   private resultadoBusqueda = new BehaviorSubject<ResultadoFiltroTramites | undefined>(undefined);
   private abrirAviso$ = new BehaviorSubject<boolean>(false);
+  private sigla: string = 'NumMomentoTodosTramitesLista';
 
   private data: ResultadoFiltroTramites = {
     success: 0,
@@ -44,7 +46,6 @@ export class FiltrosTramitesService {
   constructor(private http: HttpClient) { }
 
   obtenerResultadoFiltro(dataBusqueda: FiltroBusquedaTramites): Observable<ResultadoFiltroTramites> {
-
     const buscar = environment.serverBuscador + 'tramite/buscar/';
     return this.http.post<ResultadoFiltroTramites>(buscar, dataBusqueda);
   }
@@ -91,5 +92,10 @@ export class FiltrosTramitesService {
   // Asigna valor para abrir o cerrar el aviso cuando no se encuentran resultados
   set setAbrirAviso(abrir : boolean){
     this.abrirAviso$.next(abrir)
+  }
+
+  getParameterPageSize(): Observable<PageSizeTramites> {
+    const url = 'http://localhost:8087/api/Parametros/ObtenerValorParametro?sigla=' + this.sigla;
+    return this.http.post<PageSizeTramites>(url, {});
   }
 }

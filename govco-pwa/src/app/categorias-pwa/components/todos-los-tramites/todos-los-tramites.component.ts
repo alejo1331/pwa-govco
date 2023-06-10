@@ -3,6 +3,8 @@ import { Subscription } from 'rxjs';
 import { FiltrosTramitesService } from '../../services/filtros-tramites/filtros-tramites.service';
 import { FiltroBusquedaTramites } from '../../Models/filtroBusquedaTramitesModel';
 import { ResultadoFiltroTramites } from '../../Models/resultadoFiltroTramitesModel';
+import { DetalleMomentosDeVidaService } from '../../services/detalle-momentos-de-vida/detalle-momentos-de-vida.service';
+import { PageSizeTramites } from '../../Models/pageSizeTramites';
 
 @Component({
   selector: 'app-todos-los-tramites',
@@ -20,29 +22,45 @@ export class TodosLosTramitesComponent implements OnInit {
   departamento: any;
   municipio: any;
   mostrarAvisoModal:boolean = false;
+  pageSize: number = 5;
 
   constructor(    
     protected filtrosService: FiltrosTramitesService,
+    private serviceDetalleMomento: DetalleMomentosDeVidaService,
   ) { }
 
-  ngOnInit(): void {
-    this.cantidadResultados = 0;
+  async ngOnInit() {
+    this.cantidadResultados = 0;    
     this.departamento = localStorage.getItem("codigoDepartamento");
     this.municipio = localStorage.getItem("codigoMunicipio");
 
-    this.initializeParameters();
+    this.loading = true;
+    await this.parameterPageSize();
+    this.initializeParameters();  
     this.suscripcionFilter();
-    this.mostrarModalAvisoSinResultados();
+    this.showModalNoContent();
   }
 
-  initializeParameters() {        
+  async parameterPageSize() {
+    try {
+      const resultadoPageTramites: PageSizeTramites = await this.filtrosService.getParameterPageSize().toPromise();
+      this.pageSize = parseInt(resultadoPageTramites.data.valor);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      this.activarSpinner(false);
+    }  
+  }
+
+  initializeParameters() { 
+    const nombreMomento = this.serviceDetalleMomento.getNombreMomento.trim().toLowerCase();    
     let filtros: FiltroBusquedaTramites = {
       pageNumber: 1,
-      pageSize: 5,
+      pageSize: this.pageSize,
       search: "  ",
       filters: {
         categorias: {
-          nombre: "Quiero viajar por colombia"
+          nombre: nombreMomento[0].toUpperCase() + nombreMomento.slice(1)
         },
         tipocategorias: {
           sigla: "MV"
@@ -51,7 +69,7 @@ export class TodosLosTramitesComponent implements OnInit {
       sort: ""
     }
 
-    if (this.departamento && this.municipio) {
+    if (this.departamento && this.municipio && this.municipio != "TodosLosMunicipios") {
       filtros.filters!.departamento = { codigoDepartamento: parseInt(this.departamento) };
       filtros.filters!.municipio = { codigoMunicipio: parseInt(this.municipio) };
     }
@@ -103,10 +121,6 @@ export class TodosLosTramitesComponent implements OnInit {
         this.checkFilters(data);
         this.cantidadResultados = 0;
       }
-
-        
-      // const elementSubcategorias = document.querySelector('.modal-desplegable-pwa .container-header p');
-      // elementSubcategorias?.scrollIntoView({ inline: "start", block: "start" });
     } catch (error) {
       console.error(error);
     } finally {
@@ -144,7 +158,7 @@ export class TodosLosTramitesComponent implements OnInit {
     }
   }    
 
-  mostrarModalAvisoSinResultados() {
+  showModalNoContent() {
     this.filtrosService.getAbrirAvisor$.subscribe(
       (abrir: boolean) => {
         this.mostrarAvisoModal = abrir;

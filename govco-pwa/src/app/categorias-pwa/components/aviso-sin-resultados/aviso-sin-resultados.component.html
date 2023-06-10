@@ -6,17 +6,18 @@
     <div class="tarjeta-aviso-contenido">
         <p class=" tarjeta-aviso-contenido-mensaje">No aparecen coincidencias con los criterios seleccionados.</p>
         <p class="tarjeta-aviso-mensaje-texto">Sigue estas sugerencias:</p>     
-        <div class="tarjeta-aviso-mensaje-texto">
-            <span *ngIf="totalFiltros == 0 && geoLocMunName !== 'Toda Colombia' && !mostrarAvisoModal"
-                class="tarjeta-aviso-mensaje-texto">• 
+        <ul class="tarjeta-aviso-mensaje-texto">
+            <li *ngIf="totalFiltros == 0 && geoLocMunName !== 'Toda Colombia' && !mostrarAvisoModal">
                 <a class="tarjeta-aviso-mensaje-link" href="javascript:void(0)" (click)="abrirGeolocalizacion()">Cambia la ubicación</a>
-                <span> para refinar la búsqueda.</span>
-            </span>   
-            <span>• Limpiar los filtros e ingresar nuevos criterios.</span>
-            <span>• Cambiar la categoría, el sector, la fecha de publicación, etc.</span>
-            <span>• Digita palabras claves (temas generales) en la barra de búsqueda del portal.</span>
-            <span class="text-bold">• Si aún no encuentras lo que buscas,</span>
-        </div>
-        <a class="tarjeta-aviso-mensaje-link">Contáctanos</a>
+                 para refinar la búsqueda.
+            </li>   
+            <li>Limpiar los filtros e ingresar nuevos criterios.</li>
+            <li>Cambiar la categoría, el sector, la fecha de publicación, etc.</li>
+            <li>Digita palabras claves (temas generales) en la barra de búsqueda del portal.</li>
+            <li class="text-bold">
+                Si aún no encuentras lo que buscas, 
+                <a class="tarjeta-aviso-mensaje-link" href="mailto:soporteccc@mintic.gov.co>Contáctanos" target="_blank">Contáctanos.</a>
+            </li>
+        </ul>        
     </div>
 </div>
