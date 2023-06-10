@@ -4,7 +4,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { GeneralIterceptorService } from './interceptors/general-iterceptor/general-iterceptor.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from 'src/app/app-routing.module';
-
+import { BibliotecaPwaModule } from '../biblioteca-pwa/biblioteca-pwa.module';
 import { NoticiasRoutingModule } from './noticias-routing.module';
 import { ListadoNoticiasComponent } from './components/listado-noticias/listado-noticias.component';
 import { AvisoDeConstruccionModule } from '../aviso-de-construccion/aviso-de-construccion.module';
@@ -19,10 +19,6 @@ import { ListadoNoticiasFiltroComponent } from './components/listado-noticias-fi
 import { SinResultadosNoticiasComponent } from './components/sin-resultados-noticias/sin-resultados-noticias.component';
 import { BannerPrincipalComponent } from './shared/banner-principal/banner-principal.component';
 import { BreadcumbsComponent } from './shared/breadcumbs/breadcumbs.component';
-
-
-
-
 
 @NgModule({
   declarations: [
@@ -42,6 +38,7 @@ import { BreadcumbsComponent } from './shared/breadcumbs/breadcumbs.component';
     { provide: HTTP_INTERCEPTORS, useClass: GeneralIterceptorService, multi: true }
   ],
   imports: [
+    BibliotecaPwaModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
