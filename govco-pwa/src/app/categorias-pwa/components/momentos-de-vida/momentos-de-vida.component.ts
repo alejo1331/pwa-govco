@@ -16,6 +16,8 @@ export class MomentosDeVidaComponent implements OnInit {
   description: string = '';
   categorias: CategoriasModel[] = [];
   page: number = 0;
+  totalCategories: number = 0;
+  textMoreCategories: string = 'Ver más momentos de vida';
 
   constructor(
     private router: Router,
@@ -40,17 +42,43 @@ export class MomentosDeVidaComponent implements OnInit {
         this.description = resp.data.descripcion ? resp.data.descripcion : '';
       });
     this.listarCategorias();
+    this.totalCategorias();
+  }
 
-    this.categoriasService
-      .getCategoriasPaginacion(this.page)
-      .subscribe((resp) => {
-        console.log(resp);
-      });
+  totalCategorias() {
+    this.categoriasService.getCategorias().subscribe((resp: any) => {
+      this.totalCategories = resp.data.length;
+    });
   }
 
   listarCategorias() {
-    this.categoriasService.getCategorias().subscribe((resp: any) => {
-      this.categorias = resp.data;
-    });
+    this.categoriasService
+      .getCategoriasPaginacion(this.page)
+      .subscribe((resp: any) => {
+        if (this.categorias.length > 0) {
+          this.categorias = this.categorias.concat(resp?.data);
+        } else {
+          this.categorias = resp?.data;
+        }
+      });
+  }
+
+  cargarMasCategorias() {
+    if (Math.ceil(this.totalCategories / 5) > this.page + 1) {
+      this.page = this.page + 1;
+    } else {
+      this.page = 0;
+      this.categorias = [];
+    }
+    this.listarCategorias();
+  }
+
+  changeTextButton() {
+    if (Math.ceil(this.totalCategories / 5) > this.page + 1) {
+      this.textMoreCategories = 'Ver más momentos de vida';
+    } else {
+      this.textMoreCategories = 'Ver menos momentos de vida';
+    }
+    return this.textMoreCategories;
   }
 }
