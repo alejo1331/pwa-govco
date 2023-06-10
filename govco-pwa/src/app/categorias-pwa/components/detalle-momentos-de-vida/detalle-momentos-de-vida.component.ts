@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, AfterViewInit, ViewChild, ElementRef, HostListener } from '@angular/core';
+import { Component, OnDestroy, OnInit, AfterViewInit, ViewChild, ElementRef, HostListener, ViewChildren, QueryList, AfterViewChecked } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { BottomMenuService } from 'src/app/transversales/services/bottom-menu/bottom-menu.service';
 import { HeaderService } from 'src/app/transversales/services/header-service/header.service';
@@ -13,39 +13,48 @@ import { filter } from 'rxjs/operators';
 import { MatSidenav, MatSidenavContent } from '@angular/material/sidenav';
 import { ModalAvisoComponent } from '../modal-aviso/modal-aviso.component';
 import { FiltrosTramitesService } from '../../services/filtros-tramites/filtros-tramites.service';
+import { AppService } from 'src/app/app.service';
+import { LoMasConsultado } from '../../Models/lo-mas-consultado-interface';
 
 @Component({
   selector: 'govco-app-detalle-momentos-de-vida',
   templateUrl: './detalle-momentos-de-vida.component.html',
   styleUrls: ['./detalle-momentos-de-vida.component.scss'],
 })
-export class DetalleMomentosDeVidaComponent implements OnInit, OnDestroy, AfterViewInit {
+export class DetalleMomentosDeVidaComponent implements OnInit, AfterViewInit, AfterViewChecked, OnDestroy {
   @ViewChild('sidenav') sidenav!: MatSidenav;
   @ViewChild(MatSidenavContent) sidenavcontent!: MatSidenavContent;
   @ViewChild('seccionAviso') seccionAviso: ElementRef;
   @ViewChild(ModalAvisoComponent) ModalAvisoComponent: ModalAvisoComponent;
 
   subcategoriaMomentos: number = 0;
+  init_observe: number = 0;
+
   title: string = '';
   description: string = '';
   longDescription: string = '';
   id_momento: string = '';
   icon: string = '';
-  ulitmoEstadoAviso: boolean = false;
-  matSidenavContent: HTMLElement;
-  activarSeccion: boolean = false;
   cat_sub: string = '';
-  tra_des: string = '';
+  cat_sub_id: string = ';'
   mas_con: string = '';
-  tod_tra: string = '';
-  act: string = '';
-  estado_mas_consultado: boolean = false;
-  init_observer: number = 0;
+  tra_des: string = '';
+  current_url: string = '';
+  urls: string[] = [];
+  titulo_pestana: string[] = [];
 
+  estado_item: boolean[];
+  ulitmoEstadoAviso: boolean = false;
+  activarSeccion: boolean = false;
+
+  viewport_scroll: HTMLElement
+  matSidenavContent: HTMLElement;
   private observador: ResizeObserver;
   private getUbicacion: Subscription;
+  private getSelectItem: Subscription;
 
   @ViewChild('desplegable') desplegable: ElementRef;
+  @ViewChildren('item', { read: ElementRef }) indicators: QueryList<ElementRef>;
 
   constructor(
     private router: Router,
@@ -58,20 +67,63 @@ export class DetalleMomentosDeVidaComponent implements OnInit, OnDestroy, AfterV
     private serviceFichaTramite: LoMasConsultadoService,
     private serviceCategorias: CategoriasService,
     protected filtrosService: FiltrosTramitesService,
-  ) { }
+    public appService: AppService,
+  ) {
+    this.id_momento = this.activatedRoute.snapshot.params.id;
+    this.getUrlNavigate();
+    this.construccionUrls()
+    this.getCurrentUrl();
+  }
 
   ngOnInit(): void {
-    this.getUrlNavigate();
-    this.id_momento = this.activatedRoute.snapshot.params.id;
     this.serviceDetalleMomento.setIdMomento(this.id_momento);
+    this.configGeneral();
 
+    let container: any = document.getElementById(
+      this.subcategoriaMomentos.toString()
+    )?.offsetLeft;
+
+    this.getDescripcionMomento();
+    this.validacionPorUbicacion();
+    this.mostrarAvisoSinResultados();
+    this.resizeObserver();
+  }
+
+  getUrlNavigate() {
+    this.cat_sub = '/' + urlsLocal.categorias_subcategorias;
+    this.urls = [
+      urlsLocal.c_s_mas_consultado,
+      urlsLocal.c_s_tramites_destacados,
+      urlsLocal.c_s_todos_los_tramites,
+      urlsLocal.c_s_actualidad
+    ];
+    this.titulo_pestana = [
+      'Lo más consultado',
+      'Trámites destacados',
+      'Todos los trámites',
+      'Actualidad'
+    ];
+    this.estado_item = [true, false, false, false]
+  }
+
+  construccionUrls() {
+    this.cat_sub_id = this.cat_sub + '/' + this.id_momento;
+    this.mas_con = this.cat_sub_id + '/' + urlsLocal.c_s_mas_consultado;
+    this.tra_des = this.cat_sub_id + '/' + urlsLocal.c_s_tramites_destacados;
+  }
+
+  // Este metodo permite configurar la presentación de la barra superior e  inferior de govco
+  // y tambien realiza unos ajustes de pisicion respecto a los valores ingresados al ajuste pantalla
+  configGeneral() {
     this.servicioHeader.estadoHeader(true, true);
     this.bottomService.desactivarSeleccion();
-
     this.bottomService.ajustandoPantalla(false);
-    (document.getElementById('topScroll') as HTMLElement).style.top = '3.5rem';
-    (document.getElementById('topScroll') as HTMLElement).scrollTop = 0;
+    this.viewport_scroll = document.getElementById('topScroll') as HTMLElement;
+    this.viewport_scroll.style.top = '3.5rem';
+    this.viewport_scroll.scrollTop = 0;
+  }
 
+  getDescripcionMomento() {
     this.serviceCategorias
       .getCategoriasPorId(this.id_momento)
       .subscribe((resp: any) => {
@@ -85,31 +137,11 @@ export class DetalleMomentosDeVidaComponent implements OnInit, OnDestroy, AfterV
           ? resp.descripcionLarga
           : '';
       });
-
-    let tramiteSelected = document.getElementsByClassName(
-      'govco-pwa-momentos-elemento'
-    )[this.subcategoriaMomentos];
-    tramiteSelected.classList.add('filtro-active');
-
-    let container: any = document.getElementById(
-      this.subcategoriaMomentos.toString()
-    )?.offsetLeft;
-
-    this.getLoMasConsultado();       
-    this.mostrarAvisoSinResultados();
-    this.getCurrentUrl();
-    this.resizeObserver();
   }
 
-  getUrlNavigate() {
-    this.cat_sub = urlsLocal.categorias_subcategorias;
-    this.mas_con = urlsLocal.c_s_mas_consultado;
-    this.tra_des = urlsLocal.c_s_tramites_destacados;
-    this.tod_tra = urlsLocal.c_s_todos_los_tramites;
-    this.act = urlsLocal.c_s_actualidad;
-  }
-
-  getLoMasConsultado() {
+  // Este metodo permite consultar y vigilar el estado de la ubicacion permitiendo
+  // elegir la consulta que se requiere para lo mas consultado
+  validacionPorUbicacion() {
     this.getUbicacion = this.serviceGeoView.getUbicacion$.subscribe(
       (data: any) => {
         if (
@@ -120,28 +152,26 @@ export class DetalleMomentosDeVidaComponent implements OnInit, OnDestroy, AfterV
             data.codigoMunicipio,
             this.id_momento
           );
-          this.navigateSeccion();
+          this.validacionInicioRuta();
         } else {
           this.serviceFichaTramite.getLoMasConsultado(this.id_momento);
-          this.navigateSeccion();
+          this.validacionInicioRuta();
         }
       }
     );
   }
 
-  navigateSeccion() {
+  validacionInicioRuta() {
     this.getUbicacion = this.serviceFichaTramite.getMasConsultado$.subscribe(
-      (data: any) => {
-        if (data.data.length > 0) {
-          this.estado_mas_consultado = false;
-          this.router.navigate(
-            ['/' + this.cat_sub + '/' + this.id_momento + '/' + this.mas_con]
-          );
-        } else {
-          this.estado_mas_consultado = true;
-          this.router.navigate(
-            ['/' + this.cat_sub + '/' + this.id_momento + '/' + this.tra_des]
-          );
+      ([data, estado]: [LoMasConsultado, string]) => {
+        if (estado != '') {
+          if (data.data.length > 0) {
+            this.estado_item[0] = false;
+          } else {
+            this.estado_item[0] = true;
+            if (this.current_url == this.mas_con)
+              this.router.navigate([this.tra_des]);
+          }
         }
       }
     );
@@ -151,39 +181,56 @@ export class DetalleMomentosDeVidaComponent implements OnInit, OnDestroy, AfterV
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe((event: any) => {
-        if (this.desplegable != undefined) {
+        this.current_url = event.url;
+        if (event.url == this.cat_sub_id) {
+          this.router.navigate([this.mas_con]);
+        }
+        // console.log('url 1', this.appService.previousUrl);
+        // console.log('url 2', this.cat_sub + '/' + this.id_momento);
+        const footer = document.querySelector('.govco-pwa-footer') as HTMLElement;
+        // console.log('footer', footer.classList.remove)
+
+        // if ((this.appService.previousUrl == this.cat_sub)
+        //   || (this.appService.previousUrl == this.cat_sub + '/' + this.id_momento))
+        // console.log('router', this.appService.previousUrl) // this.appService.previousUrl = this.cat_sub 
+
+        if (this.desplegable != undefined && footer != null) {
           this.desplegable.nativeElement.classList.remove('height');
-          (document.querySelector('.govco-pwa-footer') as HTMLElement).classList.remove('position')
+          footer.classList.remove('position')
         }
       });
   }
 
-  changePrefilter(index: number) {
-    let textoInputBuscador: any = document.getElementById('buscador-pwa');
-    let currentActive = document.getElementsByClassName('filtro-active')[0];
-    if (currentActive) {
-      currentActive.classList.remove('filtro-active');
-    }
-    let activePrefilter = document.getElementsByClassName(
-      'govco-pwa-momentos-elemento'
-    )[index];
-    activePrefilter.classList.add('filtro-active');
-  }
-
   ngAfterViewInit(): void {
-    this.init_observer = this.desplegable.nativeElement.getBoundingClientRect().height
+    this.init_observe = this.desplegable.nativeElement.getBoundingClientRect().height;
     this.observador.observe(this.desplegable.nativeElement);
   }
 
+  ngAfterViewChecked(): void {
+    this.selectItemBarra();
+  }
+
+  // Este metodo permite leer el valor index para seleccionar el item de la barra horizontal
+  // logica funcional: al momento de ingresar o actualizar (refresh - f5) en alguna de las pestañas 
+  // de la barra horizontal, este componente inicia e informa cual es el item que necesita seleccionar.
+  selectItemBarra() {
+    this.getSelectItem = this.serviceDetalleMomento.getItemBarra$.subscribe((index: number) => {
+      this.indicators.toArray().forEach((item) => {
+        item.nativeElement.classList.remove('filtro-active');
+      })
+      this.indicators.toArray()[index].nativeElement.classList.add('filtro-active');
+    })
+  }
+
+  // Este metodo crea un objeto observable que permite vigilizar el tamaño de la ventana desplegable
+  // y decide que cacteristicas debe tomar la venta desplegable y el mini footer
   resizeObserver() {
-    const viewport_scroll = (
-      document.getElementById('topScroll') as HTMLElement
-    ).getBoundingClientRect().height * 0.88;
+    const height_viewport_scroll = this.viewport_scroll.getBoundingClientRect().height * 0.88;
     this.observador = new ResizeObserver((entradas) => {
       entradas.forEach((entrada) => {
-        const desplegable: number = entrada.contentRect.height;
-        if (desplegable != this.init_observer)
-          if (viewport_scroll > desplegable) {
+        const height_desplegable: number = entrada.contentRect.height;
+        if (height_desplegable != this.init_observe)
+          if (height_viewport_scroll > height_desplegable) {
             this.desplegable.nativeElement.classList.add('height');
             (document.querySelector('.govco-pwa-footer') as HTMLElement).classList.add('position')
           }
@@ -193,10 +240,27 @@ export class DetalleMomentosDeVidaComponent implements OnInit, OnDestroy, AfterV
 
   ngOnDestroy(): void {
     this.getUbicacion.unsubscribe;
+    this.getSelectItem.unsubscribe;
   }
 
   returnCategoriesPWA() {
-    this.router.navigate(['/' + this.cat_sub]);
+    this.resetSetLoMasConsultado();
+    this.router.navigate([this.cat_sub]);
+  }
+
+  // Este metodo resetea los valores de lo mas consultado en el momento de cerrar el detalle momento
+  // garantizando un control continuo de lanzamiento del siguiente detalle momento de vida
+  resetSetLoMasConsultado() {
+    const rest_mas_consultado: LoMasConsultado = {
+      data: [],
+      base: {
+        succeeded: true,
+        errors: '',
+        message: '',
+        totalRegistros: 0
+      }
+    }
+    this.serviceFichaTramite.setLoMasConsultado(rest_mas_consultado, '');
   }
 
   mostrarAvisoSinResultados() {

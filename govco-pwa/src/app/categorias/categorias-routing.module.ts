@@ -5,7 +5,7 @@ import { MomentosDeVidaComponent } from './components/momentos-de-vida/momentos-
 
 const routes: Routes = [
   {
-    path: 'categorias-subcategorias',
+    path: 'categorias-subcategorias-pwa',
     children: [
       {
         path: '',

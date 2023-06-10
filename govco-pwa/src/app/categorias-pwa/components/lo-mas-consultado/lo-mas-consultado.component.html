@@ -1,4 +1,4 @@
-<section class="seccion-lo-mas-consultado">
+<section class="seccion-lo-mas-consultado" [hidden]="data_mas_consultado.length == 0">
     <div class="titulo-tramites" tabIndex={0}
         [attr.aria-labe]="nombreMunicipio == '' ? 'A continuación encontrará la sección '+ titulo + '.' : 'A continuación encontrará la sección ' + titulo + ' filtrados por el municipio de ' + nombreMunicipio + '.'">
         <h2>{{ titulo }}</h2>
