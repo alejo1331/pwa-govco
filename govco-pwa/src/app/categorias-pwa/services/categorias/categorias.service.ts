@@ -15,6 +15,7 @@ import { CategoriasModel } from './../../Models/CategoriasModel';
 })
 export class CategoriasService {
   urlcategorias: string = environment.serverCategoriaSubcategoriaUrl;
+  urlcategoriasPaginado: string = environment.serverCategoriasUrl;
   url_apiCross: string = environment.apiCrossUrl;
   errorMsg?: string;
   categoriasMomentos: string = 'MV';
@@ -62,7 +63,7 @@ export class CategoriasService {
   getCategoriasPaginacion(page: number): Observable<CategoriasModel[]> {
     return this.http
       .get<CategoriasModel[]>(
-        `${this.urlcategorias}Categorias/Categorias/TipoCategoriaPaginacion/${this.categoriasMomentos}/${this.categoriasParametro}/${page}`
+        `${this.urlcategoriasPaginado}Categorias/Categorias/TipoCategoriaPaginado/${this.categoriasMomentos}/${this.categoriasParametro}/${page}`
       )
       .pipe(
         catchError((error) => {

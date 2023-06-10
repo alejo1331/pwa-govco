@@ -1,7 +1,7 @@
 <section class="titulo-descripcion">
     <div class="container-header">
         <div class="icon-container">
-            <img class="logo-carpeta" src="../../../../../assets/icons-fonts/folder-user2.svg" alt="">
+            <img class="logo-carpeta" src="../../../../../assets/icons-fonts/frame_person.svg" alt="">
         </div>
         <h2 tabindex="0" [attr.aria-label]="this.title" class="title">{{this.title}}</h2>
         <p tabindex="0" [attr.aria-label]="this.description" class="description">
@@ -15,7 +15,7 @@
                 <app-momentos-de-vida-card [categoria]="categoria"></app-momentos-de-vida-card>
             </div>
         </div>
-        <app-boton>Ver más momentos de vida</app-boton>
+        <app-boton (click)="cargarMasCategorias()">{{changeTextButton()}}</app-boton>
         <app-banner-ciiu-buscador></app-banner-ciiu-buscador>
     </section>
     <app-footer class="content-footer"></app-footer>
