@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { TituloInterface } from '../../Models/lo-mas-consultado-interface';
+import { BaseInterface, LoMasConsultado, TituloInterface } from '../../Models/lo-mas-consultado-interface';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,7 @@ import { TituloInterface } from '../../Models/lo-mas-consultado-interface';
 export class LoMasConsultadoService {
 
   urlFichaTramite: string = environment.serverUrlFichaTramite;
-  private lo_mas_consultado$ = new BehaviorSubject<LoMasConsultado>(mas_consultado);
+  private lo_mas_consultado$ = new BehaviorSubject<[LoMasConsultado, string]>([reset_mas_consultado, '']);
 
 
   constructor(private htpp: HttpClient) { }
@@ -24,24 +24,26 @@ export class LoMasConsultadoService {
   getLoMasConsultado(id: string) {
     this.getTramitesMasConsultadosPorCategoria(id)
       .subscribe((lo_mas_consultado: LoMasConsultado) => {
-        this.setLoMasConsultado(lo_mas_consultado);
+        const estado: string = lo_mas_consultado.data.length > 0 ? 'true' : 'fasle';
+        this.setLoMasConsultado(lo_mas_consultado, estado);
       })
   }
 
   getLoMasConsultadoPorUbicacion(municipio: string, id: string) {
     this.getTramitesMasConsultadosPorMunicipioYCategoria(municipio, id)
       .subscribe((lo_mas_consultado: LoMasConsultado) => {
-        this.setLoMasConsultado(lo_mas_consultado);
+        const estado: string = lo_mas_consultado.data.length > 0 ? 'true' : 'fasle';
+        this.setLoMasConsultado(lo_mas_consultado, estado);
       })
   }
 
   // El siguiente fragmento de codigo permite escribir y leer los datos "lo mas consultado"
-  get getMasConsultado$(): Observable<LoMasConsultado> {
+  get getMasConsultado$(): Observable<[LoMasConsultado, string]> {
     return this.lo_mas_consultado$.asObservable();
   }
 
-  setLoMasConsultado(mas_consultado: LoMasConsultado): void {
-    this.lo_mas_consultado$.next(mas_consultado)
+  setLoMasConsultado(mas_consultado: LoMasConsultado, estado: string): void {
+    this.lo_mas_consultado$.next([mas_consultado, estado])
   }
 
   // ******************************************************************************************
@@ -61,21 +63,6 @@ export class LoMasConsultadoService {
 
 }
 
-export interface BaseInterface {
-  succeeded: boolean,
-  errors: string | null,
-  message: string | null,
-  totalRegistros: number
-}
-export interface LoMasConsultado {
-  data: {
-    iconoCategoria: string,
-    id: string,
-    nombre: string
-  }[],
-  base: BaseInterface
-}
-
 const base: BaseInterface = {
   succeeded: true,
   errors: '',
@@ -83,11 +70,7 @@ const base: BaseInterface = {
   totalRegistros: 0
 }
 
-const mas_consultado: LoMasConsultado = {
-  data: [{
-    iconoCategoria: '',
-    id: '',
-    nombre: ''
-  }],
+const reset_mas_consultado: LoMasConsultado = {
+  data: [],
   base: base
 }

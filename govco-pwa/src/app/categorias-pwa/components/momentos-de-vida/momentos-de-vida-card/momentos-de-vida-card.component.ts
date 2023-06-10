@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { urlsLocal } from 'src/variables-globales/urlsLocal';
 
 @Component({
   selector: 'app-momentos-de-vida-card',
@@ -6,12 +7,12 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./momentos-de-vida-card.component.css'],
 })
 export class MomentosDeVidaCardComponent implements OnInit {
-  urlCategorias: string = '/categorias-subcategorias-pwa/';
+  urlCategorias: string = '/' + urlsLocal.categorias_subcategorias + '/';
   @Input() categoria: any;
 
-  constructor() {}
+  constructor() { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   textCardTransform(text: string) {
     let init = 0;
