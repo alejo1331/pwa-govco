@@ -2,7 +2,7 @@
   width: 100%;
 
   .card {
-    border: 2px solid;
+    border: none;
     border-radius: 0 !important;
     height: 80px;
     margin: 0 16px;
@@ -34,11 +34,9 @@
     }
 
     .imagen-card{
-      width: 104px;
       border-radius: 5px;
-
+      width: 100%;
+      max-width: 104px;
     }
-
-
   }
 }
