@@ -78,4 +78,7 @@ export const environment = {
 
   //Carpeta ciudadana
   carpetaciudadana: 'https://precarpetaciudadana.and.gov.co/',
+
+  serverTramitesDestacados : 'https://preapi-interno.www.gov.co/api/TramitesDestacados',
+
 };
